@@ -1,0 +1,234 @@
+:root {
+  --bg: #0f1220;
+  --panel: #171b2f;
+  --p2: #1f2542;
+  --txt: #e7ebff;
+  --muted: #aab3d9;
+  --ok: #8be38b;
+  --danger: #ff6b7a;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0c1022, #0b0f1e 60%, #0a0e1b);
+  color: var(--txt);
+  font: 14px/1.4 system-ui, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+.listItem [data-pin] { 
+  display: none;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 430px 1fr;
+  gap: 12px;
+  height: 100%;
+  padding: 12px;
+}
+
+header {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid #2a315a;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+header .title {
+ font-weight: 700;
+margin-right: auto; 
+}
+
+header .sep { 
+  width: 1px; 
+  background: #2c3361; 
+  height: 22px; 
+  margin: 0 6px; 
+}
+
+button, select, input[type="color"], .chip {
+  background: var(--p2);
+  border: 1px solid #2a315a;
+  color: var(--txt);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+/* Lock mode: allow panning even over markers */
+.mapViewport.locked .marker { pointer-events: none; }
+
+button.small { padding: 6px 8px; }
+button.active { outline: 2px solid #78f1c2; }
+.danger { background: #3b1f29; border-color: #6a2b3b; }
+.ok { background: #1e3a2a; border-color: #2e6143; }
+
+input[type="text"] {
+  width: 100%;
+  background: #0f1330;
+  color: var(--txt);
+  border: 1px solid #2a315a;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.sidebar {
+  background: var(--panel);
+  border: 1px solid #2a315a;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.section {
+  background: var(--p2);
+  border: 1px dashed #384073;
+  border-radius: 12px;
+  padding: 10px;
+}
+.section h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--muted);
+}
+
+.row { 
+  display: flex; 
+  gap: 8px; 
+  align-items: center; 
+  flex-wrap: wrap; 
+}
+
+.row > * { flex: 1; }
+
+.mapWrap {
+  position: relative;
+  background: #0a0e1b;
+  border: 1px solid #2a315a;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.mapViewport { 
+  position: absolute; 
+  inset: 0; 
+  touch-action: none; 
+  user-select: none; 
+}
+.mapViewport.pan { cursor: grab; }
+.mapViewport.add { cursor: crosshair; }
+
+.mapInner { 
+  position: absolute; 
+  left: 0; 
+  top: 0; 
+  transform-origin: 0 0; 
+}
+.mapInner img { 
+  display: block; 
+  max-width: none; 
+  user-select: none; 
+  pointer-events: none; 
+}
+
+.marker {
+  position: absolute;
+  transform: translate(-50%, -100%) scale(var(--mk, 1));
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform-origin: bottom left;
+ }
+
+.pin {
+   width: 23px; 
+   height: 23px; 
+   border-radius: 50%; 
+   border: 2px solid #ffffff; 
+   background: #ffffff;
+}
+
+.label { 
+  background: rgba(10,13,28,.8); 
+  border: 1px solid #2a315a; 
+  border-radius: 10px; 
+  padding: 4px 6px; 
+  color: var(--txt); max-width: 240px; 
+}
+
+.marker.completed .pin { opacity: 0.4; }
+
+.floating { 
+  position: absolute; 
+  right: 12px; 
+  bottom: 12px; 
+  display: flex; 
+  gap: 8px; 
+}
+
+.list { 
+  min-height: 0; 
+  flex: 1; 
+  overflow: auto; 
+  border-radius: 10px; 
+}
+.listItem { 
+  padding: 8px; 
+  border-bottom: 1px solid #2a315a; 
+  display: grid; 
+  grid-template-columns: auto 1fr auto; 
+  gap: 8px; 
+  align-items: center; 
+}
+.listItem:last-child { 
+  border-bottom: none; 
+}
+.chip { 
+  font-size: 12px; 
+  opacity: .85; 
+}
+
+/* Better color input layout */
+.listItem input[type="color"] { 
+  flex: 0 0 36px; 
+  width: 36px; 
+  height: 36px; 
+  padding: 0; 
+  border-radius: 8px; 
+}
+
+/* Icon rendering inside pin */
+.pin {
+ display: flex; 
+ align-items: center; 
+ justify-content: center; 
+}
+
+.pin .icon { 
+  font-size: 14px; 
+  line-height: 1; 
+}
+
+/* Ensure visible color swatch in the New marker box */
+#newColor { 
+  flex: 0 0 36px; 
+  width: 36px; 
+  height: 36px; 
+  padding: 0; 
+  border-radius: 8px; 
+}

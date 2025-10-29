@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grim Dawn Map Marker Tool — v6.3</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="title">🗺️ Grim Dawn Map Marker Tool — v6.3</div>
+      <button id="toolPan" class="small">🖐️ Pan</button>
+      <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
+      <div class="sep"></div>
+      <select id="profileSelect" title="Profils"><option value="">(profil)</option></select>
+      <button id="newProfile" class="small">New</button>
+      <button id="renProfile" class="small">Rename</button>
+      <button id="delProfile" class="small danger">Delete</button>
+      <div class="sep"></div><button id="exportAllBtn" class="small">Save</button>
+      <button id="importReplaceBtn" class="small">Open</button>
+    </header>
+
+    <aside class="sidebar">
+      <div class="section">
+        <h3>Map</h3>
+        <div class="row">
+          <input id="mapFile" type="file" accept="image/*" />
+        </div>
+        <div class="row">
+          <span class="chip">Load your map from file</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>New marker</h3>
+        <div class="row">
+          <input id="newLabel" type="text" placeholder="Nom / note" />
+        </div>
+        <div class="row">
+          <select id="newCategory">
+            <option>General</option>
+            <option>Quest</option>
+            <option>Boss</option>
+            <option>Loot</option>
+            <option>Waypoint</option>
+            <option>Donjon</option>
+            <option>NPC</option>
+          </select>
+          <input id="newColor" type="color" value="#78f1c2" style="flex:0 0 auto" />
+          <label style="flex:0 0 auto">
+            <input id="newCompleted" type="checkbox" /> Done
+          </label>
+          <button id="toolAdd" class="small">📍 Add</button>
+        </div>
+      </div>
+
+      <div class="section" style="min-height:180px;display:flex;flex-direction:column;gap:8px;min-height:0;">
+        <h3>Markers (<span id="count">0</span>)</h3>
+        <div id="list" class="list"></div>
+      </div>
+
+      <div class="section">
+        <h3>Session</h3>
+        <div class="row" style="gap:8px">
+          <button id="clearProfile" class="small danger">Empty profile</button>
+          <button id="clearSession" class="small danger">Reset all</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="mapWrap">
+      <div id="mapViewport" class="mapViewport">
+        <div id="mapInner" class="mapInner">
+          <img id="mapImg" alt="Map" draggable="false" />
+        </div>
+      </div>
+      <div class="floating">
+        <span class="chip" id="zoomReadout">100%</span>
+        <span class="chip" id="cursorReadout">x: –, y: –</span>
+      </div>
+    </main>
+  </div>
+
+  <input id="importInput" type="file" accept="application/json" hidden />
+
+  <template id="tplItem">
+    <div class="listItem">
+      <div class="pin" data-pin></div>
+      <div>
+        <div class="row" style="gap:6px">
+          <input data-label type="text" placeholder="Nom du marqueur" />
+        </div>
+        <div class="row" style="gap:6px;margin-top:6px">
+          <select data-cat>
+            <option>General</option>
+            <option>Quest</option>
+            <option>Boss</option>
+            <option>Loot</option>
+            <option>Waypoint</option>
+            <option>Donjon</option>
+            <option>NPC</option>
+          </select>
+          <input data-color type="color" style="flex:0 0 36px" />
+          <label style="flex:0 0 auto">
+            <input data-done type="checkbox" /> Done
+          </label>
+          <button data-center class="small">Center</button>
+          <button data-delete class="small danger">Suppr</button>
+        </div>
+      </div>
+
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
