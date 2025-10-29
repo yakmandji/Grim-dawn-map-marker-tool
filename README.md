@@ -1,5 +1,7 @@
-📍 Add, move, rename, and delete markers easily
+📍 Add, move, rename, and delete markers easily.
+
 🗂️ Multiple profiles support (different maps or playthroughs)
+
 💾 Save and load your data as a single JSON file
 💬 100% client-side — no data upload, no server required
 
