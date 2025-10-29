@@ -12,10 +12,10 @@ Download as Zip file and extract.
 Open the tool - Run index.html locally
 
 Open the gdmm_all_profiles.json file
-Add markers by clicking📍 Add button
+Add markers by clicking📍. Add button
 
-Save your progress
+Save your progress :
 Click Save to export your changes to gdmm_all_profiles.json.
 
-Reload later with the same file.
+Reload later with the same file :
 Click Open again and choose your saved JSON file to restore everything.
