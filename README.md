@@ -7,6 +7,7 @@
 
 
 📦 How to use
+
 Download as Zip file and extract.
 Open the tool - Run index.html locally
 
