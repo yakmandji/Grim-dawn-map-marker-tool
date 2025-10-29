@@ -11,7 +11,7 @@
 Download as Zip file and extract.
 Open the tool - Run index.html locally
 
-Load open the gdmm_all_profiles.json file
+Open the gdmm_all_profiles.json file
 Add markers by clicking📍 Add button
 
 Save your progress
