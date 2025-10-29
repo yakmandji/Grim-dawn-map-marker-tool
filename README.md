@@ -1,4 +1,5 @@
 📍 Add, move, rename, and delete markers easily.
+100% client-side (no dependencies, no build)
 
 🗂️ Multiple profiles support (different maps or playthroughs)
 
