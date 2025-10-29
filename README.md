@@ -20,3 +20,11 @@ Click Save to export your changes to gdmm_all_profiles.json.
 
 Reload later with the same file :
 Click Open again and choose your saved JSON file to restore everything.
+
+
+⚠️ Disclaimer
+
+This is a fan-made utility.
+It is not affiliated with or endorsed by Crate Entertainment or the developers of Grim Dawn.
+All game assets and names are property of their respective owners.
+Contributions, suggestions, and feedback are welcome!
