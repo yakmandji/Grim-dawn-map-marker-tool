@@ -14,9 +14,9 @@
       <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
       <div class="sep"></div>
       <select id="profileSelect" title="Profils"><option value="">(profil)</option></select>
-      <button id="newProfile" class="small">New</button>
-      <button id="renProfile" class="small">Rename</button>
-      <button id="delProfile" class="small danger">Delete</button>
+      <button id="newProfile" class="small">Create new map</button>
+      <button id="renProfile" class="small">Rename map</button>
+      <button id="delProfile" class="small danger">Delete map</button>
       <div class="sep"></div><button id="exportAllBtn" class="small">Save</button>
       <button id="importReplaceBtn" class="small">Open</button>
     </header>
@@ -28,7 +28,7 @@
           <input id="mapFile" type="file" accept="image/*" />
         </div>
         <div class="row">
-          <span class="chip">Load your map from file</span>
+          <span class="chip">Load new image of map for your current map</span>
         </div>
       </div>
 
@@ -60,13 +60,23 @@
         <div id="list" class="list"></div>
       </div>
 
-      <div class="section">
-        <h3>Session</h3>
+      <div class="section" id="admin-section">
+        <h3>Admin section</h3>
         <div class="row" style="gap:8px">
           <button id="clearProfile" class="small danger">Empty profile</button>
           <button id="clearSession" class="small danger">Reset all</button>
         </div>
       </div>
+
+      <div class="section" id="admin-section">
+        <h3>Update</h3>
+        <div class="row" style="gap:8px">
+          <p class="chip">If you want download new map or update map, click download, then load map on you current profile.<br/>
+            If it's a new map, create first a new empty map then upload image file
+          </p>
+          <button id="downloadMaps" class="small danger">Download all map</button>
+        </div>
+      </div>      
     </aside>
 
     <main class="mapWrap">
