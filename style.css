@@ -57,10 +57,9 @@ header .sep {
 
 button, select, input[type="color"], .chip {
   background: var(--p2);
-  border: 1px solid #2a315a;
   color: var(--txt);
   border-radius: 10px;
-  padding: 8px 10px;
+  padding: 8px 2px;
   cursor: pointer;
 }
 /* Lock mode: allow panning even over markers */
