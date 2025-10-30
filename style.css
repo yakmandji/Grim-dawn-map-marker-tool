@@ -66,7 +66,8 @@ button, select, input[type="color"], .chip {
 .mapViewport.locked .marker { pointer-events: none; }
 
 button.small { padding: 6px 8px; }
-button.active { outline: 2px solid #78f1c2; }
+button.active,
+select.active { outline: 2px solid #78f1c2; }
 .danger { background: #3b1f29; border-color: #6a2b3b; }
 .ok { background: #1e3a2a; border-color: #2e6143; }
 
@@ -77,6 +78,7 @@ input[type="text"] {
   border: 1px solid #2a315a;
   border-radius: 10px;
   padding: 8px;
+  margin-bottom: 8px;
 }
 
 .sidebar {
@@ -187,7 +189,7 @@ input[type="text"] {
   border-radius: 10px; 
 }
 .listItem { 
-  padding: 8px; 
+  padding: 4px; 
   border-bottom: 1px solid #2a315a; 
   display: grid; 
   grid-template-columns: auto 1fr auto; 
@@ -200,6 +202,13 @@ input[type="text"] {
 .chip { 
   font-size: 12px; 
   opacity: .85; 
+}
+
+.small{
+    color: var(--txt);
+    font-size: 12px;
+    opacity: .85;
+    margin-top: 0;
 }
 
 /* Better color input layout */
@@ -230,4 +239,84 @@ input[type="text"] {
   height: 36px; 
   padding: 0; 
   border-radius: 8px; 
+}
+
+.helpPopup{
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--p2);
+  border: 1px solid #2a315a;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  width: 400px;
+  max-width: 90vw;
+  color: var(--txt);
+  z-index: 50;
+  animation: fadeIn .2s ease;
+}
+
+.helpPopup h3 {
+  margin-top: 0;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+}
+
+.helpPopup ul {
+  margin: 0;
+  padding-left: 18px;
+  list-style: none;
+}
+
+.helpPopup li::before {
+  content: "– ";
+  color: var(--muted);
+}
+
+.helpPopup .closeHelp {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--txt);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.helpPopup .closeHelp:hover {
+  opacity: 1;
+  color: #78f1c2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}&
+
+#helpToggle{
+    color: #78f1c2;
+    text-decoration: none;
+    border-bottom: 1px dotted #78f1c2;
+    padding-bottom: 2px;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+#downloadMaps{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.m0{
+  margin: 0!important;
 }
