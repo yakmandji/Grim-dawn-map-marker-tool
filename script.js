@@ -1,6 +1,8 @@
 (()=>{
   const $ = s => document.querySelector(s), $$ = s => Array.from(document.querySelectorAll(s));
 
+  const DEV_MODE = false;
+
   // --- State (RAM only) ---
   const state = {
     profiles: {},
@@ -361,7 +363,7 @@
 
   // Profiles controls
   $('#newProfile').addEventListener('click', ()=>{
-    const n = prompt('Name of new profile profil ?'); if(!n) return;
+    const n = prompt('Name of new map ?'); if(!n) return;
     if(state.profiles[n]){ alert('this name already exist'); return; }
     state.profiles[n] = deepClone({ markers:[], map:{}, created:now(), updated:now() }); setActiveProfile(n);
   });
@@ -376,7 +378,7 @@
 
   $('#delProfile').addEventListener('click', ()=>{
     if(!state.active) return;
-    const victim = state.active; if(!confirm('Supprimer le profil « '+victim+' » ?')) return;
+    const victim = state.active; if(!confirm('You will delete « '+victim+' » map and all associated markers')) return;
     const names = Object.keys(state.profiles); delete state.profiles[victim];
     const next = names.find(n=>n!==victim) || null; state.active = null;
     mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
@@ -384,6 +386,9 @@
   });
 
   $('#profileSelect').addEventListener('change', e=>setActiveProfile(e.target.value));
+
+
+if (DEV_MODE) {
 
   $('#clearProfile').addEventListener('click', ()=>{
     if(!state.active) return; if(!confirm('Empty this profil (markers + map) ?')) return;
@@ -398,6 +403,9 @@
     mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
     refreshProfilesUI();
   });
+} else{
+  document.getElementById('admin-section')?.remove();
+}
 
   // File input
   $('#mapFile').addEventListener('change', e=>{ const f=e.target.files?.[0]; if(f) setMapSrc(f); });
@@ -463,6 +471,40 @@
     newCatEl.addEventListener('change', syncNewColor);
     syncNewColor(); // au chargement
   }
+
+//Download map pack
+
+  const REMOTE_MAPS_JSON = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/maps.json';
+
+  async function downloadMapsZip() {
+    try {
+      const resp = await fetch(REMOTE_MAPS_JSON, { cache: 'no-cache' });
+      if (!resp.ok) throw new Error('HTTP '+resp.status);
+      const data = await resp.json();
+
+      if (!data.zip) {
+        alert("There is actualy no map");
+        return;
+      }
+
+      // Création d’un lien de téléchargement
+      const a = document.createElement('a');
+      a.href = data.zip;
+      const filename = data.zip.split('/').pop() || 'grim-dawn-maps.zip';
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+
+    } catch (err) {
+      console.error(err);
+      alert("Error when trying to download");
+    }
+  }
+
+  // Branchement du bouton
+  document.getElementById('downloadMaps')?.addEventListener('click', downloadMapsZip);
+
 
 
 })();
