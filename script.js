@@ -505,6 +505,47 @@ if (DEV_MODE) {
   // Branchement du bouton
   document.getElementById('downloadMaps')?.addEventListener('click', downloadMapsZip);
 
+// fermer via la croix
+document.querySelector('.closeHelp')?.addEventListener('click', () => {
+  const sec = document.getElementById('helpSection');
+  if (!sec) return;
+  sec.style.display = 'none';
+});
+
+// fonction qui gère le clic en dehors
+const toggleOutsideClose = (enable) => {
+  // on crée le handler dans la fonction pour pouvoir le remove
+  const handler = (e) => {
+    const sec = document.getElementById('helpSection');
+    const toggle = document.getElementById('helpToggle');
+    if (!sec || sec.style.display === 'none') return;
+    const clickedInside = sec.contains(e.target) || e.target === toggle;
+    if (!clickedInside) {
+      sec.style.display = 'none';
+      document.removeEventListener('click', handler);
+    }
+  };
+
+  if (enable) {
+    document.addEventListener('click', handler);
+  }
+};
+
+// toggle via le lien
+document.getElementById('helpToggle')?.addEventListener('click', (e) => {
+  e.preventDefault(); // évite le scroll en haut si c’est un <a>
+  const sec = document.getElementById('helpSection');
+  if (!sec) return;
+
+  const show = sec.style.display === 'none' || sec.style.display === '';
+  sec.style.display = show ? 'block' : 'none';
+
+  // si on ouvre → on active le clic en dehors
+  if (show) {
+    toggleOutsideClose(true);
+  }
+});
+
 
 
 })();
