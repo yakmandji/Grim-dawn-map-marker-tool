@@ -4,23 +4,18 @@
 🗂️ Multiple profiles support (different maps or playthroughs)
 
 💾 Save and load your data as a single JSON file
-💬 100% client-side — no data upload, no server required
+💬 100% client-side — no data upload, no server, no privacy risk
 
 
 📦 How to use
 
-Download as Zip file and extract.
-Open the tool - Run index.html locally
+- Choose a map from the selection list (main game or DLC).
+- AAdd markers by clicking on the map 📍 then pressing Add.
+- Save your changes to a JSON file on your computer.
+- When you reopen the page, simply load your saved file
+  Done
 
-Open the gdmm_all_profiles.json file
-Add markers by clicking📍. Add button
-
-Save your progress :
-Click Save to export your changes to gdmm_all_profiles.json.
-
-Reload later with the same file :
-Click Open again and choose your saved JSON file to restore everything.
-
+✅ Tip: You can also download updated maps from the “Update” section when new areas are added.
 
 ⚠️ Disclaimer
 
