@@ -13,7 +13,7 @@
       <button id="toolPan" class="small">🖐️ Pan</button>
       <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
       <div class="sep"></div>
-      <select id="profileSelect" title="Profils"><option value="">(profil)</option></select>
+      <select id="profileSelect" title="Profils" class="active"><option value="">(profil)</option></select>
       <button id="newProfile" class="small">Create new map</button>
       <button id="renProfile" class="small">Rename map</button>
       <button id="delProfile" class="small danger">Delete map</button>
@@ -23,12 +23,12 @@
 
     <aside class="sidebar">
       <div class="section">
-        <h3>Map</h3>
+        <h3>Map file</h3>
         <div class="row">
           <input id="mapFile" type="file" accept="image/*" />
         </div>
         <div class="row">
-          <span class="chip">Load new image of map for your current map</span>
+          <span class="small">Load a new image to update your current map</span>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
       </div>
 
       <div class="section" style="min-height:180px;display:flex;flex-direction:column;gap:8px;min-height:0;">
-        <h3>Markers (<span id="count">0</span>)</h3>
+        <h3 class="m0">Markers (<span id="count">0</span>)</h3>
         <div id="list" class="list"></div>
       </div>
 
@@ -70,14 +70,26 @@
 
       <div class="section" id="admin-section">
         <h3>Update</h3>
-        <div class="row" style="gap:8px">
-          <p class="chip">If you want download new map or update map, click download, then load map on you current profile.<br/>
-            If it's a new map, create first a new empty map then upload image file
+        <div class="row" style="gap:8px; flex-direction: column;">
+          <p class="small"> To get the latest maps or update your current ones, click <a id="downloadMaps"><b>Download all maps</b></a>,
+            then load the new image into your current map profile.
+            For a brand-new map, create an empty map first, then upload the image file.
           </p>
-          <button id="downloadMaps" class="small danger">Download all map</button>
         </div>
-      </div>      
+      </div>   
+      <a id="helpToggle">❔How to use</a>
     </aside>
+
+    <div class="helpPopup" id="helpSection" style="display:none">
+      <button class="closeHelp">×</button>
+      <h3>Help</h3>
+      <ul>
+        <li>Choose a map from the list in the header (main or DLC)</li>
+        <li>Add markers 📍</li>
+        <li><b>Remember to save after making changes, so you don’t lose them</b></li>
+        <li>Reopen your saved file next time</li>
+      </ul>
+    </div>
 
     <main class="mapWrap">
       <div id="mapViewport" class="mapViewport">
