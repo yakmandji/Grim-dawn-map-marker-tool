@@ -402,12 +402,51 @@
   // File input
   $('#mapFile').addEventListener('change', e=>{ const f=e.target.files?.[0]; if(f) setMapSrc(f); });
 
-  // --- Init ---
-  state.profiles['Profil 1'] = { markers:[], map:{}, created:now(), updated:now() };
-  setActiveProfile('Profil 1');
+  // --- Init (auto-load from GitHub if available) ---
+  (async () => {
+    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json';
 
-  state.locked = true;
-  applyLockUI();
+    // 1) on crée quand même un profil vide, au cas où
+    state.profiles['Profil 1'] = { markers:[], map:{}, created:now(), updated:now() };
+    setActiveProfile('Profil 1');
+
+    // 2) on essaie de charger le JSON distant
+    try {
+      const resp = await fetch(REMOTE_JSON_URL, { cache: 'no-cache' });
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const txt = await resp.text();
+      const obj = JSON.parse(txt);
+
+      // si c’est un “gros” objet de profils (format de ton export)
+      if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+        state.profiles = obj;
+        const first = Object.keys(state.profiles)[0] || 'Profil 1';
+        setActiveProfile(first);
+
+        // si la map du profil chargé est embarquée → on l’affiche
+        const p = currentProfile();
+        if (p && p.map && p.map.embedData) {
+          setMapSrc(p.map.embedData);
+        }
+      }
+    } catch (err) {
+      console.warn('[GDMM] remote JSON not loaded, using local empty profile', err);
+      // on reste sur Profil 1
+    }
+
+    // lock par défaut
+    state.locked = true;
+    applyLockUI();
+
+    // re-sync color picker for “New marker”
+    const newCatEl = document.getElementById('newCategory');
+    const newColorEl = document.getElementById('newColor');
+    if (newCatEl && newColorEl) {
+      const syncNewColor = ()=>{ newColorEl.style.display = isColorAllowed(newCatEl.value) ? '' : 'none'; };
+      newCatEl.addEventListener('change', syncNewColor);
+      syncNewColor();
+    }
+  })();
 
   // Lock checkbox binding (now centralized here)
   const lockEl = document.getElementById('lockAll');
