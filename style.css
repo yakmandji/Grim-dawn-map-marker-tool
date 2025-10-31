@@ -18,6 +18,10 @@ body {
   font: 14px/1.4 system-ui, Segoe UI, Roboto, Helvetica, Arial;
 }
 
+.mb0{
+  margin-bottom: 0;
+}
+
 .listItem [data-pin] { 
   display: none;
 }
