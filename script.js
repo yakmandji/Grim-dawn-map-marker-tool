@@ -152,6 +152,8 @@
     act('upd',()=>{ const m=currentProfile().markers.find(m=>m.id===id); 
       if(m) Object.assign(m,patch); }, rerender); 
     markAsChanged();
+    showToast('Marker name updated 💾');
+    markAsChanged();
   }
   function deleteMarker(id){ 
     act('del',()=>{ currentProfile().markers = currentProfile().markers.filter(m=>m.id!==id);
@@ -479,7 +481,17 @@ if (DEV_MODE) {
 }
 
   // File input
-  $('#mapFile').addEventListener('change', e=>{ const f=e.target.files?.[0]; if(f) setMapSrc(f); });
+  $('#mapFile').addEventListener('change', e => { 
+    const f = e.target.files?.[0]; 
+    if (f) {
+      setMapSrc(f);
+
+      // ✅ User Feedback + state
+      showToast('🗺️ Map image updated successfully');
+      markAsChanged();
+    }
+  });
+
 
   // --- Init (auto-load from GitHub if available) ---
   (async () => {
@@ -701,6 +713,22 @@ function showToast(message, type = 'success', duration = 2200) {
     }, 250);
   }, duration);
 }
+
+//Flash button
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.marker-save');
+  if (!btn) return;
+
+  // effet flash 💾
+  btn.classList.add('flash');
+  setTimeout(() => btn.classList.remove('flash'), 400);
+
+  // ici, tu peux aussi forcer le blur du champ à côté si besoin
+  const input = btn.closest('.listItem')?.querySelector('.marker-name');
+  if (input) input.blur();
+
+});
 
 
 })();
