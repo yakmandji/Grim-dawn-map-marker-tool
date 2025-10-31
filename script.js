@@ -1,6 +1,8 @@
 (()=>{
   const $ = s => document.querySelector(s), $$ = s => Array.from(document.querySelectorAll(s));
 
+  const DEV_MODE = false;
+
   // --- State (RAM only) ---
   const state = {
     profiles: {},
@@ -500,25 +502,88 @@ $('#exportFileBtn').addEventListener('click', async () => {
   });
 
 
-  function mergeUserMarkers(userData) {
-    if (!userData) return;
-    const profiles = state.profiles || {};
+    // normalise profile name
+    function normalizeName(name) {
+      return name
+        .toLowerCase()
+        .replace(/\(.*?\)/g, '') 
+        .replace(/\s+/g, '')    
+        .trim();
+    }
 
-    for (const [name, u] of Object.entries(userData)) {
-      if (!profiles[name]) continue; // si la map n'existe pas côté site, on ignore
+    function mergeUserMarkers(userData) {
+      if (!userData) return;
+      const profiles = state.profiles || {};
 
-      // on remplace juste les markers (c'est le but de ce nouveau format)
-      profiles[name].markers = Array.isArray(u.markers) ? u.markers : [];
+      // on indexe les profils existants par nom "normalisé"
+      const normalizedIndex = {};
+      for (const key of Object.keys(profiles)) {
+        normalizedIndex[normalizeName(key)] = key;
+      }
 
-      // si on avait sauvegardé la vue
-      if (u.view) {
-        profiles[name].view = u.view;
+      for (const [importName, u] of Object.entries(userData)) {
+        const norm = normalizeName(importName);
+        const realKey = normalizedIndex[norm];
+
+        if (!realKey) continue;
+
+        const p = profiles[realKey];
+        p.markers = Array.isArray(u.markers) ? u.markers : [];
+        if (u.view) p.view = u.view;
       }
     }
-  }
 
   $('#profileSelect').addEventListener('change', e=>setActiveProfile(e.target.value));
 
+
+if (DEV_MODE) {
+
+  $('#clearSession').addEventListener('click', ()=>{
+    if(!confirm('Delete all session ?')) return;
+    state.profiles = {}; state.active=null;
+    mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
+    refreshProfilesUI();
+  });
+
+  // Profiles controls
+  $('#newProfile').addEventListener('click', ()=>{
+    const n = prompt('Name of new map ?'); if(!n) return;
+    if(state.profiles[n]){ alert('this name already exist'); return; }
+    state.profiles[n] = deepClone({ markers:[], map:{}, created:now(), updated:now() }); setActiveProfile(n);
+  });
+
+  document.getElementById('renProfile').addEventListener('click', function () {
+    if (!state.active) return;
+    const n = prompt('New name ?', state.active); if (!n || n === state.active) return;
+    if (state.profiles[n]) { alert('Name already exist'); return; }
+    state.profiles[n] = deepClone(state.profiles[state.active]); delete state.profiles[state.active];
+    state.active = n; refreshProfilesUI();
+  });
+
+    $('#delProfile').addEventListener('click', ()=>{
+    if(!state.active) return;
+    const victim = state.active; if(!confirm('You will delete « '+victim+' » map and all associated markers')) return;
+    const names = Object.keys(state.profiles); delete state.profiles[victim];
+    const next = names.find(n=>n!==victim) || null; state.active = null;
+    mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
+    if (next && state.profiles[next]) setActiveProfile(next); else refreshProfilesUI();
+  });
+
+     // File input
+  $('#mapFile').addEventListener('change', e => { 
+    const f = e.target.files?.[0]; 
+    if (f) {
+      setMapSrc(f);
+
+      // ✅ User Feedback + state
+      showToast('🗺️ Map image updated successfully');
+      markAsChanged();
+    }
+  }); 
+
+} else{
+  document.getElementById('admin-section')?.remove();
+}
 
 
 $('#clearProfile').addEventListener('click', () => {
@@ -776,6 +841,39 @@ document.addEventListener('click', (e) => {
   if (input) input.blur();
 
 });
+
+// === ADMIN: export only maps (no markers) ===
+$('#exportMapsOnlyBtn')?.addEventListener('click', async () => {
+  const snapshot = JSON.parse(JSON.stringify(state.profiles || {}));
+
+  // On nettoie les marqueurs et on embarque les images
+  const entries = Object.entries(snapshot);
+  for (const [name, p] of entries) {
+    // Supprimer tous les marqueurs
+    p.markers = [];
+
+    try {
+      const src = state.profiles[name]?.map?.sessionSrc;
+      if (src) {
+        const data = await srcToDataURL(src, 'image/jpeg', 0.85);
+        p.map = p.map || {};
+        p.map.embedData = data;
+      }
+    } catch (_e) {}
+    if (p.map) delete p.map.sessionSrc;
+  }
+
+  const data = JSON.stringify(snapshot, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'gdmm_all_profiles.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+
+  showToast('Maps exported (without markers) ✅');
+});
+
 
 
 })();
