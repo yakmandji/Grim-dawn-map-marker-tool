@@ -16,6 +16,10 @@
     mapReady: false
   };
 
+    // --- Save system flags
+    let hasUnsavedChanges = false;   // pass to true when modifie
+    let fileHandle = null;
+
   // Refs
   const viewport = $('#mapViewport'), inner = $('#mapInner'), mapImg = $('#mapImg');
 
@@ -142,9 +146,17 @@
     act('add',()=>{ currentProfile().markers.push({id:uid(), xp, yp, label, cat, color, done}); });
     $('#newLabel').value='';
     setTool('pan'); // auto back to pan after add
+    markAsChanged();
   }
-  function updateMarker(id,patch, rerender=true){ act('upd',()=>{ const m=currentProfile().markers.find(m=>m.id===id); if(m) Object.assign(m,patch); }, rerender); }
-  function deleteMarker(id){ act('del',()=>{ currentProfile().markers = currentProfile().markers.filter(m=>m.id!==id); }); }
+  function updateMarker(id,patch, rerender=true){ 
+    act('upd',()=>{ const m=currentProfile().markers.find(m=>m.id===id); 
+      if(m) Object.assign(m,patch); }, rerender); 
+    markAsChanged();
+  }
+  function deleteMarker(id){ 
+    act('del',()=>{ currentProfile().markers = currentProfile().markers.filter(m=>m.id!==id);
+    markAsChanged();
+   }); }
 
   // --- Renderers ---
   function refreshProfilesUI(){
@@ -317,30 +329,89 @@
     });
   }
 
-  // Export / Import
-  $('#exportAllBtn').addEventListener('click', async ()=>{
-    const embed = true;
-    const snapshot = JSON.parse(JSON.stringify(state.profiles||{}));
-    if (embed) {
-      const entries = Object.entries(snapshot);
-      for (const [name, p] of entries){
-        try{
-          const src = state.profiles[name]?.map?.sessionSrc;
-          if (src){
-            const data = await srcToDataURL(src, 'image/jpeg', 0.85);
-            p.map = p.map || {}; p.map.embedData = data;
-          }
-        }catch(_e){}
-        if (p.map) delete p.map.sessionSrc;
-      }
-    } else {
-      Object.values(snapshot).forEach(p=>{ if(p && p.map){ delete p.map.sessionSrc; } });
+
+// === version corrigée ===
+async function saveWithPicker(data) {
+  const json = JSON.stringify(data, null, 2);
+
+  // navigateur compatible ?
+  if ("showSaveFilePicker" in window) {
+
+    // 1️⃣ si on a déjà choisi un fichier dans cette session → on réécrit dedans
+    if (fileHandle) {
+      const writable = await fileHandle.createWritable();
+      await writable.write(json);
+      await writable.close();
+      hasUnsavedChanges = false;
+      updateSaveIndicator(true);
+      return true;
     }
-    const data = JSON.stringify(snapshot, null, 2);
-    const blob = new Blob([data], {type:'application/json'});
-    const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='gdmm_all_profiles.json'; a.click();
-    setTimeout(()=>URL.revokeObjectURL(a.href), 3000);
-  });
+
+    // 2️⃣ sinon (première fois) → on ouvre la fenêtre
+    fileHandle = await window.showSaveFilePicker({
+      suggestedName: "gdmm_all_profiles.json",
+      types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
+    });
+
+    const writable = await fileHandle.createWritable();
+    await writable.write(json);
+    await writable.close();
+    hasUnsavedChanges = false;
+    updateSaveIndicator(true);
+    return true;
+  }
+
+  return false; // pas supporté → on fera le fallback
+}
+
+
+
+// Export / Import
+$('#exportAllBtn').addEventListener('click', async ()=>{
+  const embed = true;
+  const snapshot = JSON.parse(JSON.stringify(state.profiles||{}));
+
+  if (embed) {
+    const entries = Object.entries(snapshot);
+    for (const [name, p] of entries){
+      try {
+        const src = state.profiles[name]?.map?.sessionSrc;
+        if (src){
+          const data = await srcToDataURL(src, 'image/jpeg', 0.85);
+          p.map = p.map || {}; 
+          p.map.embedData = data;
+        }
+      } catch(_e){}
+      if (p.map) delete p.map.sessionSrc;
+    }
+  } else {
+    Object.values(snapshot).forEach(p=>{
+      if(p && p.map){ delete p.map.sessionSrc; }
+    });
+  }
+
+  // 🧩 ESSAI D'ENREGISTREMENT LOCAL AVEC FILE SYSTEM ACCESS
+  const saved = await saveWithPicker(snapshot);
+  if (saved) {
+    console.log('Profiles saved via File System Access API');
+    return; // ✅ pas besoin de faire un téléchargement
+  }
+
+  // 🧩 FALLBACK : téléchargement classique
+  const data = JSON.stringify(snapshot, null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'gdmm_all_profiles.json';
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 3000);
+
+  hasUnsavedChanges = false;
+  updateSaveIndicator(true);
+
+  console.log('Profiles exported (fallback download) and marked as saved');
+});
+
 
   $('#importReplaceBtn').addEventListener('click', ()=>$('#importInput').click());
   $('#importInput').addEventListener('change', async e=>{
@@ -546,6 +617,64 @@ document.getElementById('helpToggle')?.addEventListener('click', (e) => {
   }
 });
 
+// SAVE FONCTION
 
+function saveMap() {
+  try {
+    // ton objet global, selon ton code (remplace "appState" si besoin)
+    const data = appState || markers || {}; 
+    const json = JSON.stringify(data, null, 2);
+
+    // création du fichier et téléchargement
+    const blob = new Blob([json], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "grim_dawn_map.json";
+    a.click();
+
+    // indicateur vert
+    hasUnsavedChanges = false;
+    updateSaveIndicator(true);
+
+    // petite sauvegarde locale (optionnelle)
+    localStorage.setItem("gdmap_autosave", json);
+
+    console.log("Map saved successfully!");
+  } catch (err) {
+    console.error("Save failed:", err);
+  }
+}
+
+
+
+
+// SAVE UTILS
+
+function updateSaveIndicator(saved) {
+  const el = document.querySelector("#saveStatus");
+  if (!el) return;
+
+  if (saved) {
+    el.textContent = "● Saved";
+    el.style.color = "#8be38b";           // vert
+  } else {
+    el.textContent = "● Unsaved";
+    el.style.color = "#ff6b7a";           // rouge
+  }
+}
+updateSaveIndicator(true);
+
+function markAsChanged() {
+  hasUnsavedChanges = true;
+  updateSaveIndicator(false);
+}
+
+// refresh browser
+window.addEventListener("beforeunload", (e) => {
+  if (hasUnsavedChanges) {
+    e.preventDefault();
+    e.returnValue = "";
+  }
+});
 
 })();
