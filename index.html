@@ -14,11 +14,9 @@
       <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
       <div class="sep"></div>
       <select id="profileSelect" title="Profils" class="active"><option value="">(profil)</option></select>
-      <button id="newProfile" class="small">Create new map</button>
-      <button id="renProfile" class="small">Rename map</button>
-      <button id="delProfile" class="small danger">Delete map</button>
-      <div class="sep"></div><button id="exportAllBtn" class="small">Save</button>
+      <div class="sep"></div><button id="exportAllBtn" class="small">Save markers</button>
       <button id="importReplaceBtn" class="small">Open</button>
+      <button id="exportFileBtn" class="small">Export JSON</button>
       <span id="saveStatus" style="margin-left:8px;">● Saved</span>
     </header>
 
@@ -52,25 +50,12 @@
       </div>
 
       <div class="section" id="admin-section">
-        <h3>Admin section</h3>
-        <div class="row" style="gap:8px">
-          <button id="clearProfile" class="small danger">Empty profile</button>
-          <button id="clearSession" class="small danger">Reset all</button>
-        </div>
-      </div>
+        <h3>Settings</h3>
+        <div class="row" style="gap:8px; margin-top:10px;">
+          <button id="clearProfile" class="small danger">Delet all markers</button>
+        </div>        
+      </div> 
 
-      <div class="section" id="admin-section">
-        <h3>Only for image map Update</h3>
-        <div class="row" style="gap:8px; flex-direction: column;">
-          <p class="small">
-            For futur update map, if you want to keep you markers<br>
-            Load a new image to replace the current map background.
-          </p>
-        </div>
-        <div class="row">
-          <input id="mapFile" type="file" accept="image/*" />
-        </div>       
-      </div>   
       <a id="helpToggle">❔How to use</a>
     </aside>
 
@@ -80,17 +65,9 @@
       <ul>
         <li>Choose a map from the list in the header (main or DLC)</li>
         <li>Add markers 📍</li>
-        <li><b>Remember to save after making changes, so you don’t lose them</b><br>
-          <i>(Firefox users: the map will be downloaded each time you save. To overwrite the same file, use Chrome / Edge / Brave.)</i>
+        <li><b>Remember to save after making changes, so you don’t lose them</b>
         </li>
-        <li>Reopen your saved file next time</li>
       </ul>
-        <p class="small"><br> <b>For future map updates, if you want to keep your markers:</b><br>
-        click <a id="downloadMaps"><b>Download all maps</b></a> to get all the updated map images.
-       Then extract them and load the desired image into your current map profile.<br>
-        For a brand-new map, create a new map first, then upload the image file.<br>
-        If you want to start from scratch, you don’t need to do anything. Just save to your JSON file locally.
-        </p>
     </div>
 
     <main class="mapWrap">
