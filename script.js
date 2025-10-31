@@ -159,7 +159,7 @@ function loadUserDataFromLocal() {
     const vb = viewport.getBoundingClientRect();
     const iw = state.mapNatural.w || 1, ih = state.mapNatural.h || 1;
     const s = Math.min(vb.width/iw, vb.height/ih);
-    state.view.scale = isFinite(s) ? s : 1;
+    state.view.scale = 0.17;
     state.view.x = (vb.width - iw*state.view.scale)/2;
     state.view.y = (vb.height - ih*state.view.scale)/2;
     applyView();
@@ -786,7 +786,7 @@ function clampViewToMap() {
   // If map is too small
 /*  if (iw <= vb.width && ih <= vb.height) return;*/
 
-  const margin = 400;
+  const margin = 320;
 
   const minX = vb.width - iw - margin;
   const maxX = margin;
