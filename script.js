@@ -1,8 +1,6 @@
 (()=>{
   const $ = s => document.querySelector(s), $$ = s => Array.from(document.querySelectorAll(s));
 
-  const DEV_MODE = false;
-
   // --- State (RAM only) ---
   const state = {
     profiles: {},
@@ -19,6 +17,50 @@
     // --- Save system flags
     let hasUnsavedChanges = false;   // pass to true when modifie
     let fileHandle = null;
+
+
+// --- USER DATA (markers only) ---
+
+function getUserDataOnly() {
+  const out = {};
+  const src = state.profiles || {};
+  for (const [name, profile] of Object.entries(src)) {
+    if (!profile) continue;
+    out[name] = {
+      markers: profile.markers || [],
+      view: profile.view || null
+    };
+  }
+  return out;
+}
+
+// local save
+function saveUserDataToLocal() {
+  try {
+    const data = getUserDataOnly();
+    localStorage.setItem('gdmm_user_data', JSON.stringify(data));
+  } catch (e) {
+    console.warn('[GDMM] could not save user data locally:', e);
+  }
+}
+
+// load users marker
+function loadUserDataFromLocal() {
+  try {
+    const raw = localStorage.getItem('gdmm_user_data');
+    if (!raw) return;
+    const userData = JSON.parse(raw);
+    // on fusionne dans les profils existants
+    for (const [name, uProfile] of Object.entries(userData)) {
+      if (!state.profiles[name]) continue; // si la map n'existe pas côté site, on ignore
+      state.profiles[name].markers = uProfile.markers || [];
+      if (uProfile.view) state.profiles[name].view = uProfile.view;
+    }
+    updateSaveIndicator(true);
+  } catch (e) {
+    console.warn('[GDMM] could not load user data:', e);
+  }
+}
 
   // Refs
   const viewport = $('#mapViewport'), inner = $('#mapInner'), mapImg = $('#mapImg');
@@ -148,15 +190,29 @@
     setTool('pan'); // auto back to pan after add
     markAsChanged();
   }
-  function updateMarker(id,patch, rerender=true){ 
-    act('upd',()=>{ const m=currentProfile().markers.find(m=>m.id===id); 
-      if(m) Object.assign(m,patch); }, rerender); 
+
+
+
+  function updateMarker(id, patch, rerender = true) {
+    act('upd', () => {
+      const m = currentProfile().markers.find(m => m.id === id);
+      if (m) Object.assign(m, patch);
+    }, rerender);
+
+    // on met le flag
     markAsChanged();
-     if (patch.label !== undefined) {
+
+    // on autosave léger (pas d'images)
+    saveUserDataToLocal();
+
+    if (patch.label !== undefined) {
       showToast('Marker name updated 💾');
-      }
-      markAsChanged();
+    }
   }
+
+
+
+
   function deleteMarker(id){ 
     act('del',()=>{ currentProfile().markers = currentProfile().markers.filter(m=>m.id!==id);
     markAsChanged();
@@ -369,130 +425,115 @@ async function saveWithPicker(data) {
 
 
 
-// Export / Import
-$('#exportAllBtn').addEventListener('click', async ()=>{
-  const embed = true;
-  const snapshot = JSON.parse(JSON.stringify(state.profiles||{}));
-
-  if (embed) {
-    const entries = Object.entries(snapshot);
-    for (const [name, p] of entries){
-      try {
-        const src = state.profiles[name]?.map?.sessionSrc;
-        if (src){
-          const data = await srcToDataURL(src, 'image/jpeg', 0.85);
-          p.map = p.map || {}; 
-          p.map.embedData = data;
-        }
-      } catch(_e){}
-      if (p.map) delete p.map.sessionSrc;
-    }
-  } else {
-    Object.values(snapshot).forEach(p=>{
-      if(p && p.map){ delete p.map.sessionSrc; }
-    });
-  }
-
-  // Try to save with local access
-  const saved = await saveWithPicker(snapshot);
-  if (saved) {
-    console.log('Profiles saved via File System Access API');
-    showToast('Map saved successfully ✅');
-    return;
-  }
-
-  // FALLBACK : Classic download
-  const data = JSON.stringify(snapshot, null, 2);
-  const blob = new Blob([data], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'gdmm_all_profiles.json';
-  a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href), 3000);
+$('#exportAllBtn').addEventListener('click', () => {
+  // on sauvegarde seulement les marqueurs/profils de l'utilisateur
+  saveUserDataToLocal();
 
   hasUnsavedChanges = false;
   updateSaveIndicator(true);
-  showToast('Map downloaded (save it on your PC) 📁', 'success');
-  console.log('Profiles exported (fallback download) and marked as saved');
+  showToast('Markers saved locally 💾');
 });
 
 
-  $('#importReplaceBtn').addEventListener('click', ()=>$('#importInput').click());
-  $('#importInput').addEventListener('change', async e=>{
-    const f = e.target.files && e.target.files[0]; if(!f){ e.target.value=''; return; }
-    try{
-      const txt = await f.text(); const obj = JSON.parse(txt);
-      if(obj && obj.markers && (obj.map!==undefined)){
-        const def='import-'+Math.random().toString(36).slice(2,6);
-        const name = prompt('Nom pour le profil importé ?', def) || def;
-        state.profiles = { ...state.profiles, [name]: obj }; setActiveProfile(name);
-      } else if (obj && typeof obj === 'object'){
-        if(!confirm('Remplace all data from this file ?')){ e.target.value=''; return; }
-        state.profiles = obj; const first = Object.keys(state.profiles)[0] || 'Profil 1'; setActiveProfile(first);
+$('#exportFileBtn').addEventListener('click', async () => {
+  const data = getUserDataOnly();
+  const saved = await saveWithPicker(data);
+  if (saved) return;
+
+  // fallback
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'gdmm_user_markers.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+});
+
+
+    // bouton "Open"
+  // -------------------------
+  // IMPORT (markers only OR full)
+  // -------------------------
+  $('#importReplaceBtn').addEventListener('click', () => {
+    const input = $('#importInput');
+    input.value = "";        // pour pouvoir ré-importer le même fichier
+    input.click();
+  });
+
+  $('#importInput').addEventListener('change', async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const imported = JSON.parse(text);
+
+      // est-ce que c'est un export complet (ancienne version) ?
+      const isFullExport = Object.values(imported).some(p => p && (p.map || p.embedData));
+
+      if (isFullExport) {
+        state.profiles = imported;
+        const first = Object.keys(state.profiles)[0] || null;
+        state.active = first;
+        refreshProfilesUI();
+        renderList();
+        renderMarkers();
+        updateSaveIndicator(true);
+        showToast('Full map data imported ✅');
+        return;
       }
-      const p = currentProfile(); if (p && p.map && p.map.embedData){ setMapSrc(p.map.embedData); }
-      refreshProfilesUI(); renderList(); renderMarkers();
-    }catch(err){ alert('JSON invalide'); }
-    finally{ e.target.value=''; }
+
+      // markers only → on fusionne
+      mergeUserMarkers(imported);
+
+      refreshProfilesUI();
+      renderList();
+      renderMarkers();
+      updateSaveIndicator(true);
+      showToast('Markers imported ✅');
+
+
+    } catch (err) {
+      console.error('[GDMM] import failed:', err);
+      showToast('Import failed (invalid JSON) ❌', 'error');
+    }
   });
 
-  // Profiles controls
-  $('#newProfile').addEventListener('click', ()=>{
-    const n = prompt('Name of new map ?'); if(!n) return;
-    if(state.profiles[n]){ alert('this name already exist'); return; }
-    state.profiles[n] = deepClone({ markers:[], map:{}, created:now(), updated:now() }); setActiveProfile(n);
-  });
 
-  document.getElementById('renProfile').addEventListener('click', function () {
-    if (!state.active) return;
-    const n = prompt('New name ?', state.active); if (!n || n === state.active) return;
-    if (state.profiles[n]) { alert('Name already exist'); return; }
-    state.profiles[n] = deepClone(state.profiles[state.active]); delete state.profiles[state.active];
-    state.active = n; refreshProfilesUI();
-  });
+  function mergeUserMarkers(userData) {
+    if (!userData) return;
+    const profiles = state.profiles || {};
 
-  $('#delProfile').addEventListener('click', ()=>{
-    if(!state.active) return;
-    const victim = state.active; if(!confirm('You will delete « '+victim+' » map and all associated markers')) return;
-    const names = Object.keys(state.profiles); delete state.profiles[victim];
-    const next = names.find(n=>n!==victim) || null; state.active = null;
-    mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
-    if (next && state.profiles[next]) setActiveProfile(next); else refreshProfilesUI();
-  });
+    for (const [name, u] of Object.entries(userData)) {
+      if (!profiles[name]) continue; // si la map n'existe pas côté site, on ignore
+
+      // on remplace juste les markers (c'est le but de ce nouveau format)
+      profiles[name].markers = Array.isArray(u.markers) ? u.markers : [];
+
+      // si on avait sauvegardé la vue
+      if (u.view) {
+        profiles[name].view = u.view;
+      }
+    }
+  }
 
   $('#profileSelect').addEventListener('change', e=>setActiveProfile(e.target.value));
 
 
-if (DEV_MODE) {
 
-  $('#clearProfile').addEventListener('click', ()=>{
-    if(!state.active) return; if(!confirm('Empty this profil (markers + map) ?')) return;
-    state.profiles[state.active] = { markers:[], map:{}, created:now(), updated:now() };
-    mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
-    renderList(); renderMarkers();
-  });
+$('#clearProfile').addEventListener('click', () => {
+  const prof = currentProfile();
+  if (!prof) return;
 
-  $('#clearSession').addEventListener('click', ()=>{
-    if(!confirm('Delete all session ?')) return;
-    state.profiles = {}; state.active=null;
-    mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
-    refreshProfilesUI();
-  });
-} else{
-  document.getElementById('admin-section')?.remove();
-}
+  if (!confirm('Do you really want to delete all markers from this map?')) return;
 
-  // File input
-  $('#mapFile').addEventListener('change', e => { 
-    const f = e.target.files?.[0]; 
-    if (f) {
-      setMapSrc(f);
-
-      // ✅ User Feedback + state
-      showToast('🗺️ Map image updated successfully');
-      markAsChanged();
-    }
-  });
+  prof.markers = [];
+  saveUserDataToLocal();
+  renderList();
+  renderMarkers();
+  markAsChanged();
+  showToast('Markers cleared for this map 🧹');
+});
 
 
   // --- Init (auto-load from GitHub if available) ---
@@ -526,6 +567,10 @@ if (DEV_MODE) {
       console.warn('[GDMM] remote JSON not loaded, using local empty profile', err);
       // on reste sur Profil 1
     }
+
+    loadUserDataFromLocal();
+    renderList();
+    renderMarkers();
 
     // lock par défaut
     state.locked = true;
