@@ -320,3 +320,42 @@ input[type="text"] {
 .m0{
   margin: 0!important;
 }
+
+#toastContainer {
+  position: fixed;
+  top: 100px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  background: rgba(16, 22, 40, 0.95);
+  border: 1px solid #2a315a;
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #e7ebff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.success {
+  border-color: #78f1c2;
+}
+
+.toast.error {
+  border-color: #ff6b7a;
+}
