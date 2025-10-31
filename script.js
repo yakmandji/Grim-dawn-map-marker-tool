@@ -191,8 +191,8 @@ function loadUserDataFromLocal() {
     $('#newLabel').value='';
     setTool('pan'); // auto back to pan after add
     markAsChanged();
+    saveUserDataToLocal();
   }
-
 
 
   function updateMarker(id, patch, rerender = true) {
@@ -792,15 +792,6 @@ function markAsChanged() {
   hasUnsavedChanges = true;
   updateSaveIndicator(false);
 }
-
-// refresh browser
-window.addEventListener("beforeunload", (e) => {
-  if (hasUnsavedChanges) {
-    e.preventDefault();
-    e.returnValue = "";
-  }
-});
-
 
 //Tolltips
 
