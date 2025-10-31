@@ -14,9 +14,8 @@
       <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
       <div class="sep"></div>
       <select id="profileSelect" title="Profils" class="active"><option value="">(profil)</option></select>
-      <div class="sep"></div><button id="exportAllBtn" class="small">Save markers</button>
-      <button id="importReplaceBtn" class="small">Import JSON</button>
-      <button id="exportFileBtn" class="small">Export JSON</button>
+      <div class="sep"></div><button id="exportAllBtn" class="small">💾 Save markers</button>
+       <div class="sep"></div>
       <span id="saveStatus" style="margin-left:8px;">● Saved</span>
     </header>
 
@@ -49,12 +48,28 @@
         <div id="list" class="list"></div>
       </div>
 
-      <div class="section" id="admin-section">
+      <div class="section">
         <h3>Tools</h3>
         <div class="row" style="gap:8px; margin-top:10px;">
           <button id="clearProfile" class="small danger">Delete all markers</button>
+          <button id="importReplaceBtn" class="small">Import save</button>
+          <button id="exportFileBtn" class="small">Export save</button>
         </div>        
       </div> 
+
+      <div class="section" id="admin-section">
+        <h3>Admin section</h3>
+        <div class="row" style="gap:8px">
+          <button id="clearSession" class="small danger">Reset all</button>
+          <button id="newProfile" class="small">Create new map</button>
+          <button id="renProfile" class="small">Rename map</button>
+          <button id="delProfile" class="small danger">Delete map</button>
+          <button id="exportMapsOnlyBtn" class="small">Export maps</button>
+          <div class="row">
+            <input id="mapFile" type="file" accept="image/*" />
+          </div>      
+        </div>
+      </div>
 
       <a id="helpToggle">❔How to use</a>
     </aside>
@@ -128,4 +143,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
