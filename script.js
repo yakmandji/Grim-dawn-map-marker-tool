@@ -345,7 +345,9 @@ function loadUserDataFromLocal() {
     }
     e.preventDefault();
     const dx = e.clientX - panStart.x, dy = e.clientY - panStart.y;
-    state.view.x = viewStart.x + dx; state.view.y = viewStart.y + dy; applyView();
+    state.view.x = viewStart.x + dx; state.view.y = viewStart.y + dy; 
+    clampViewToMap();
+    applyView();
   });
 
   function stopPan(){ panning=false; panId=null; }
@@ -359,7 +361,7 @@ function loadUserDataFromLocal() {
     e.preventDefault();
     const delta = -Math.sign(e.deltaY)*0.12;
     const old = state.view.scale;
-    const ns = clamp(old*(1+delta), 0.2, 5);
+    const ns = clamp(old*(1+delta), 0.17, 5);
     if(ns===old) return;
     const vb = viewport.getBoundingClientRect();
     const ox=e.clientX-vb.left, oy=e.clientY-vb.top;
@@ -773,6 +775,29 @@ function saveMap() {
 
 
 // SAVE UTILS
+
+function clampViewToMap() {
+  if (!state.mapReady) return;
+
+  const vb = viewport.getBoundingClientRect();
+  const iw = state.mapNatural.w * state.view.scale;
+  const ih = state.mapNatural.h * state.view.scale;
+
+  // If map is too small
+/*  if (iw <= vb.width && ih <= vb.height) return;*/
+
+  const margin = 400;
+
+  const minX = vb.width - iw - margin;
+  const maxX = margin;
+  const minY = vb.height - ih - margin;
+  const maxY = margin;
+
+  state.view.x = clamp(state.view.x, minX, maxX);
+  state.view.y = clamp(state.view.y, minY, maxY);
+}
+
+
 
 function updateSaveIndicator(saved) {
   const el = document.querySelector("#saveStatus");
