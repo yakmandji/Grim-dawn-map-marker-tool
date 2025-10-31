@@ -45,7 +45,14 @@ header {
 }
 header .title {
  font-weight: 700;
-margin-right: auto; 
+ margin-right: auto;
+ display: flex;
+ align-items: anchor-center;
+ gap: 17px; 
+}
+
+header .title img{
+  border-radius: 16px;
 }
 
 header .sep { 
