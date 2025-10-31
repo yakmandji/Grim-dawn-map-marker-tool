@@ -7,7 +7,7 @@
 📦 How to use
 
 - Choose a map from the selection list (main game or DLC).
-- AAdd markers by clicking on the map 📍 then pressing Add.
+- Add markers by clicking on the map 📍 then pressing Add.
 - Save your changes to a JSON file on your computer.
 - When you reopen the page, simply load your saved file
   Done
