@@ -7,8 +7,6 @@
   const state = {
     profiles: {},
     active: null,
-    undo: [],
-    redo: [],
     view: { scale: 1, x: 0, y: 0 },
     tool: 'pan',
     locked: true,               // <— NEW: global lock for markers
@@ -52,9 +50,9 @@ function loadUserDataFromLocal() {
     const raw = localStorage.getItem('gdmm_user_data');
     if (!raw) return;
     const userData = JSON.parse(raw);
-    // on fusionne dans les profils existants
+    // Merge all profiles
     for (const [name, uProfile] of Object.entries(userData)) {
-      if (!state.profiles[name]) continue; // si la map n'existe pas côté site, on ignore
+      if (!state.profiles[name]) continue;
       state.profiles[name].markers = uProfile.markers || [];
       if (uProfile.view) state.profiles[name].view = uProfile.view;
     }
@@ -95,8 +93,6 @@ function loadUserDataFromLocal() {
     if(!state.profiles[name]) state.profiles[name] = { markers:[], map:{}, created:now(), updated:now() };
 
     state.active = name;
-    state.undo = [];
-    state.redo = [];
 
     const p = currentProfile();
 
@@ -113,19 +109,20 @@ function loadUserDataFromLocal() {
     refreshProfilesUI();
     renderList();
     renderMarkers();
-    setTool(state.tool); // update cursor
-    applyLockUI();       // sync lock checkbox + class
+    setTool(state.tool);
+    applyLockUI();
   }
 
-  function act(_d, mut, rerender=true){
-    if(!state.active) return;
-    const snap = JSON.stringify(state.profiles[state.active]);
+  function act(_d, mut, rerender = true) {
+    if (!state.active) return;
     mut();
-    state.undo.push(snap);
-    state.redo.length = 0;
     state.profiles[state.active].updated = now();
-    if (rerender){ renderList(); renderMarkers(); }
+    if (rerender) {
+      renderList();
+      renderMarkers();
+    }
   }
+
 
   // --- Map load (session only) ---
   let loadToken = 0;
@@ -201,19 +198,13 @@ function loadUserDataFromLocal() {
       if (m) Object.assign(m, patch);
     }, rerender);
 
-    // on met le flag
     markAsChanged();
-
-    // on autosave léger (pas d'images)
     saveUserDataToLocal();
 
     if (patch.label !== undefined) {
       showToast('Marker name updated 💾');
     }
   }
-
-
-
 
   function deleteMarker(id){ 
     act('del',()=>{ currentProfile().markers = currentProfile().markers.filter(m=>m.id!==id);
@@ -228,7 +219,7 @@ function loadUserDataFromLocal() {
     if (active) sel.value = active;
   }
 
-  function listFiltered(){ // (filtrage retiré de l'UI — cette fonction garde compat)
+  function listFiltered(){
     const p = currentProfile(); if (!p) return [];
     return [...(p.markers || [])];
   }
@@ -246,7 +237,6 @@ function loadUserDataFromLocal() {
       const color = el.querySelector('[data-color]'); color.value = m.color||'#78f1c2'; color.oninput = e=>{ el.querySelector('[data-pin]').style.background = e.target.value; updateMarker(m.id,{color:e.target.value}, false); };
       const done = el.querySelector('[data-done]'); done.checked = !!m.done; done.onchange = e=>updateMarker(m.id,{done:e.target.checked});
 
-      // Affiche/masque le color picker selon la catégorie
       const syncColorVis = (c)=>{ const allow = isColorAllowed(c); color.style.display = allow ? '' : 'none'; };
       syncColorVis(cat.value);
 
@@ -401,7 +391,6 @@ async function saveWithPicker(data) {
   // ompatible browser
   if ("showSaveFilePicker" in window) {
 
-    // 1️⃣ si on a déjà choisi un fichier dans cette session → on réécrit dedans
     if (fileHandle) {
       const writable = await fileHandle.createWritable();
       await writable.write(json);
@@ -430,9 +419,7 @@ async function saveWithPicker(data) {
 
 
 $('#exportAllBtn').addEventListener('click', () => {
-  // on sauvegarde seulement les marqueurs/profils de l'utilisateur
   saveUserDataToLocal();
-
   hasUnsavedChanges = false;
   updateSaveIndicator(true);
   showToast('Markers saved locally 💾');
@@ -460,7 +447,7 @@ $('#exportFileBtn').addEventListener('click', async () => {
   // -------------------------
   $('#importReplaceBtn').addEventListener('click', () => {
     const input = $('#importInput');
-    input.value = "";        // pour pouvoir ré-importer le même fichier
+    input.value = "";
     input.click();
   });
 
@@ -471,8 +458,6 @@ $('#exportFileBtn').addEventListener('click', async () => {
     try {
       const text = await file.text();
       const imported = JSON.parse(text);
-
-      // est-ce que c'est un export complet (ancienne version) ?
       const isFullExport = Object.values(imported).some(p => p && (p.map || p.embedData));
 
       if (isFullExport) {
@@ -486,8 +471,6 @@ $('#exportFileBtn').addEventListener('click', async () => {
         showToast('Full map data imported ✅');
         return;
       }
-
-      // markers only → on fusionne
       mergeUserMarkers(imported);
 
       refreshProfilesUI();
@@ -503,8 +486,7 @@ $('#exportFileBtn').addEventListener('click', async () => {
     }
   });
 
-
-    // normalise profile name
+  // normalise profile name
     function normalizeName(name) {
       return name
         .toLowerCase()
@@ -516,8 +498,6 @@ $('#exportFileBtn').addEventListener('click', async () => {
     function mergeUserMarkers(userData) {
       if (!userData) return;
       const profiles = state.profiles || {};
-
-      // on indexe les profils existants par nom "normalisé"
       const normalizedIndex = {};
       for (const key of Object.keys(profiles)) {
         normalizedIndex[normalizeName(key)] = key;
@@ -577,7 +557,7 @@ if (DEV_MODE) {
     if (f) {
       setMapSrc(f);
 
-      // ✅ User Feedback + state
+      // User Feedback + state
       showToast('🗺️ Map image updated successfully');
       markAsChanged();
     }
@@ -607,24 +587,20 @@ $('#clearProfile').addEventListener('click', () => {
   (async () => {
     const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json';
 
-    // 1) on crée quand même un profil vide, au cas où
     state.profiles['Profil 1'] = { markers:[], map:{}, created:now(), updated:now() };
     setActiveProfile('Profil 1');
 
-    // 2) on essaie de charger le JSON distant
+    // try to load online JSON
     try {
       const resp = await fetch(REMOTE_JSON_URL, { cache: 'no-cache' });
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const txt = await resp.text();
       const obj = JSON.parse(txt);
 
-      // si c’est un “gros” objet de profils (format de ton export)
       if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
         state.profiles = obj;
         const first = Object.keys(state.profiles)[0] || 'Profil 1';
         setActiveProfile(first);
-
-        // si la map du profil chargé est embarquée → on l’affiche
         const p = currentProfile();
         if (p && p.map && p.map.embedData) {
           setMapSrc(p.map.embedData);
@@ -632,7 +608,6 @@ $('#clearProfile').addEventListener('click', () => {
       }
     } catch (err) {
       console.warn('[GDMM] remote JSON not loaded, using local empty profile', err);
-      // on reste sur Profil 1
     }
 
     loadUserDataFromLocal();
@@ -666,50 +641,17 @@ $('#clearProfile').addEventListener('click', () => {
   if (newCatEl && newColorEl) {
     const syncNewColor = ()=>{ newColorEl.style.display = isColorAllowed(newCatEl.value) ? '' : 'none'; };
     newCatEl.addEventListener('change', syncNewColor);
-    syncNewColor(); // au chargement
+    syncNewColor();
   }
 
-//Download map pack
 
-  const REMOTE_MAPS_JSON = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/maps.json';
-
-  async function downloadMapsZip() {
-    try {
-      const resp = await fetch(REMOTE_MAPS_JSON, { cache: 'no-cache' });
-      if (!resp.ok) throw new Error('HTTP '+resp.status);
-      const data = await resp.json();
-
-      if (!data.zip) {
-        alert("There is actualy no map");
-        return;
-      }
-
-      // Création d’un lien de téléchargement
-      const a = document.createElement('a');
-      a.href = data.zip;
-      const filename = data.zip.split('/').pop() || 'grim-dawn-maps.zip';
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-    } catch (err) {
-      console.error(err);
-      alert("Error when trying to download");
-    }
-  }
-
-  // Branchement du bouton
-  document.getElementById('downloadMaps')?.addEventListener('click', downloadMapsZip);
-
-// fermer via la croix
+// Close help popup
 document.querySelector('.closeHelp')?.addEventListener('click', () => {
   const sec = document.getElementById('helpSection');
   if (!sec) return;
   sec.style.display = 'none';
 });
 
-// fonction qui gère le clic en dehors
 const toggleOutsideClose = (enable) => {
   // on crée le handler dans la fonction pour pouvoir le remove
   const handler = (e) => {
@@ -728,7 +670,7 @@ const toggleOutsideClose = (enable) => {
   }
 };
 
-// toggle via le lien
+// toggle link
 document.getElementById('helpToggle')?.addEventListener('click', (e) => {
   e.preventDefault(); // évite le scroll en haut si c’est un <a>
   const sec = document.getElementById('helpSection');
@@ -743,36 +685,6 @@ document.getElementById('helpToggle')?.addEventListener('click', (e) => {
   }
 });
 
-// SAVE FONCTION
-
-function saveMap() {
-  try {
-    // ton objet global, selon ton code (remplace "appState" si besoin)
-    const data = appState || markers || {}; 
-    const json = JSON.stringify(data, null, 2);
-
-    // création du fichier et téléchargement
-    const blob = new Blob([json], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "grim_dawn_map.json";
-    a.click();
-
-    // indicateur vert
-    hasUnsavedChanges = false;
-    updateSaveIndicator(true);
-
-    // petite sauvegarde locale (optionnelle)
-    localStorage.setItem("gdmap_autosave", json);
-
-    console.log("Map saved successfully!");
-  } catch (err) {
-    console.error("Save failed:", err);
-  }
-}
-
-
-
 
 // SAVE UTILS
 
@@ -782,12 +694,7 @@ function clampViewToMap() {
   const vb = viewport.getBoundingClientRect();
   const iw = state.mapNatural.w * state.view.scale;
   const ih = state.mapNatural.h * state.view.scale;
-
-  // If map is too small
-/*  if (iw <= vb.width && ih <= vb.height) return;*/
-
   const margin = 320;
-
   const minX = vb.width - iw - margin;
   const maxX = margin;
   const minY = vb.height - ih - margin;
@@ -798,17 +705,16 @@ function clampViewToMap() {
 }
 
 
-
 function updateSaveIndicator(saved) {
   const el = document.querySelector("#saveStatus");
   if (!el) return;
 
   if (saved) {
     el.textContent = "● Saved";
-    el.style.color = "#8be38b";           // vert
+    el.style.color = "#8be38b";   // Green
   } else {
     el.textContent = "● Unsaved";
-    el.style.color = "#ff6b7a";           // rouge
+    el.style.color = "#ff6b7a";  // red
   }
 }
 updateSaveIndicator(true);
@@ -848,12 +754,11 @@ document.addEventListener('click', (e) => {
   const btn = e.target.closest('.marker-save');
   if (!btn) return;
 
-  // effet flash 💾
+  // Flash effect
   btn.classList.add('flash');
   setTimeout(() => btn.classList.remove('flash'), 400);
 
-  // ici, tu peux aussi forcer le blur du champ à côté si besoin
-  const input = btn.closest('.listItem')?.querySelector('.marker-name');
+  const input = btn.closest('.listItem')?.querySelector('[data-label]');
   if (input) input.blur();
 
 });
@@ -862,10 +767,8 @@ document.addEventListener('click', (e) => {
 $('#exportMapsOnlyBtn')?.addEventListener('click', async () => {
   const snapshot = JSON.parse(JSON.stringify(state.profiles || {}));
 
-  // On nettoie les marqueurs et on embarque les images
   const entries = Object.entries(snapshot);
   for (const [name, p] of entries) {
-    // Supprimer tous les marqueurs
     p.markers = [];
 
     try {
