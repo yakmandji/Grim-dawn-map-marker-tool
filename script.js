@@ -156,7 +156,7 @@ function loadUserDataFromLocal() {
     const vb = viewport.getBoundingClientRect();
     const iw = state.mapNatural.w || 1, ih = state.mapNatural.h || 1;
     const s = Math.min(vb.width/iw, vb.height/ih);
-    state.view.scale = 0.17;
+    state.view.scale = 0.18;
     state.view.x = (vb.width - iw*state.view.scale)/2;
     state.view.y = (vb.height - ih*state.view.scale)/2;
     applyView();
@@ -209,6 +209,7 @@ function loadUserDataFromLocal() {
   function deleteMarker(id){ 
     act('del',()=>{ currentProfile().markers = currentProfile().markers.filter(m=>m.id!==id);
     markAsChanged();
+    saveUserDataToLocal();
    }); }
 
   // --- Renderers ---
@@ -347,20 +348,27 @@ function loadUserDataFromLocal() {
   window.addEventListener('pointercancel', ()=>stopPan());
   viewport.addEventListener('lostpointercapture', ()=>stopPan());
 
-  viewport.addEventListener('wheel', e=>{
+  viewport.addEventListener('wheel', e => {
     e.preventDefault();
-    const delta = -Math.sign(e.deltaY)*0.12;
+    const delta = -Math.sign(e.deltaY) * 0.12;
     const old = state.view.scale;
-    const ns = clamp(old*(1+delta), 0.17, 5);
-    if(ns===old) return;
+    const ns = clamp(old * (1 + delta), 0.18, 5);
+    if (ns === old) return;
+
     const vb = viewport.getBoundingClientRect();
-    const ox=e.clientX-vb.left, oy=e.clientY-vb.top;
-    const ix=(ox-state.view.x)/old, iy=(oy-state.view.y)/old;
-    state.view.x = ox - ix*ns;
-    state.view.y = oy - iy*ns;
+    const ox = e.clientX - vb.left;
+    const oy = e.clientY - vb.top;
+    const ix = (ox - state.view.x) / old;
+    const iy = (oy - state.view.y) / old;
+
+    state.view.x = ox - ix * ns;
+    state.view.y = oy - iy * ns;
     state.view.scale = ns;
+
+    clampViewToMap();
     applyView();
-  }, {passive:false});
+  }, { passive: false });
+
 
   // Drag & drop map
   ;['dragenter','dragover'].forEach(ev=>viewport.addEventListener(ev,e=>{e.preventDefault();viewport.style.outline='2px dashed #78f1c2'}));
