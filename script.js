@@ -330,11 +330,11 @@
   }
 
 
-// === version corrigée ===
+// === Save engine ===
 async function saveWithPicker(data) {
   const json = JSON.stringify(data, null, 2);
 
-  // navigateur compatible ?
+  // ompatible browser
   if ("showSaveFilePicker" in window) {
 
     // 1️⃣ si on a déjà choisi un fichier dans cette session → on réécrit dedans
@@ -347,7 +347,6 @@ async function saveWithPicker(data) {
       return true;
     }
 
-    // 2️⃣ sinon (première fois) → on ouvre la fenêtre
     fileHandle = await window.showSaveFilePicker({
       suggestedName: "gdmm_all_profiles.json",
       types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
@@ -361,7 +360,7 @@ async function saveWithPicker(data) {
     return true;
   }
 
-  return false; // pas supporté → on fera le fallback
+  return false;
 }
 
 
@@ -390,14 +389,15 @@ $('#exportAllBtn').addEventListener('click', async ()=>{
     });
   }
 
-  // 🧩 ESSAI D'ENREGISTREMENT LOCAL AVEC FILE SYSTEM ACCESS
+  // Try to save with local access
   const saved = await saveWithPicker(snapshot);
   if (saved) {
     console.log('Profiles saved via File System Access API');
-    return; // ✅ pas besoin de faire un téléchargement
+    showToast('Map saved successfully ✅');
+    return;
   }
 
-  // 🧩 FALLBACK : téléchargement classique
+  // FALLBACK : Classic download
   const data = JSON.stringify(snapshot, null, 2);
   const blob = new Blob([data], {type:'application/json'});
   const a = document.createElement('a');
@@ -408,7 +408,7 @@ $('#exportAllBtn').addEventListener('click', async ()=>{
 
   hasUnsavedChanges = false;
   updateSaveIndicator(true);
-
+  showToast('Map downloaded (save it on your PC) 📁', 'success');
   console.log('Profiles exported (fallback download) and marked as saved');
 });
 
@@ -676,5 +676,31 @@ window.addEventListener("beforeunload", (e) => {
     e.returnValue = "";
   }
 });
+
+
+//Tolltips
+
+function showToast(message, type = 'success', duration = 2200) {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.textContent = message;
+
+  container.appendChild(el);
+
+  requestAnimationFrame(() => {
+    el.classList.add('show');
+  });
+
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => {
+      el.remove();
+    }, 250);
+  }, duration);
+}
+
 
 })();
