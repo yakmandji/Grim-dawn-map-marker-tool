@@ -152,8 +152,10 @@
     act('upd',()=>{ const m=currentProfile().markers.find(m=>m.id===id); 
       if(m) Object.assign(m,patch); }, rerender); 
     markAsChanged();
-    showToast('Marker name updated 💾');
-    markAsChanged();
+     if (patch.label !== undefined) {
+      showToast('Marker name updated 💾');
+      }
+      markAsChanged();
   }
   function deleteMarker(id){ 
     act('del',()=>{ currentProfile().markers = currentProfile().markers.filter(m=>m.id!==id);
