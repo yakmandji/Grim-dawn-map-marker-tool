@@ -510,7 +510,7 @@ function renderRoutesPanel() {
     });
     row.appendChild(saveBtn);
 
-    // --- Bouton Center avec ton SVG ---
+    // --- Bouton Center witdth SVG ---
     const centerBtn = document.createElement('button');
     centerBtn.className = 'marker-center';
     centerBtn.title = 'Center on map';
@@ -531,7 +531,7 @@ function renderRoutesPanel() {
     });
     row.appendChild(centerBtn);
 
-    // --- Bouton Delete ---
+    // --- Delete button---
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
     delBtn.className = 'marker-delete danger small';
@@ -585,7 +585,6 @@ function renderRoutesPanel() {
     if (addBtn)  addBtn.classList.toggle('active', t === 'add');
     if (pathBtn) pathBtn.classList.toggle('active', t === 'path');
 
-    // 👇 On ne finalize PAS si on est dans un switch temporaire (espace)
     if (t !== 'path' && !skipFinalize) {
       finalizeCurrentPath();
     }
@@ -763,7 +762,6 @@ function renderRoutesPanel() {
         const isFullExport = values.some(p => p && (p.map || p.embedData));
         const isPathsOnly  = values.some(p => p && p.paths && !p.markers);
 
-        // 1) cas FULL → on remplace tout (comme avant)
         if (isFullExport && !isPathsOnly) {
           state.profiles = imported;
           const first = Object.keys(state.profiles)[0] || null;
@@ -777,16 +775,15 @@ function renderRoutesPanel() {
           return;
         }
 
-        // 2) cas PATHS ONLY → on fusionne
         if (isPathsOnly) {
-          // petit choix utilisateur
+          // User choice
           const mode = confirm('Import paths: OK = merge, Cancel = replace paths on matching maps ?')
             ? 'merge'
             : 'replace';
 
           for (const [name, incoming] of Object.entries(imported)) {
             const prof = state.profiles[name];
-            if (!prof) continue; // on n’écrase pas une map qu’on n’a pas
+            if (!prof) continue;
             if (!incoming.paths) continue;
 
             if (!prof.paths) prof.paths = [];
@@ -794,7 +791,6 @@ function renderRoutesPanel() {
             if (mode === 'replace') {
               prof.paths = incoming.paths;
             } else {
-              // merge = on ajoute à la fin (sans dédup, volontairement simple)
               prof.paths = prof.paths.concat(incoming.paths);
             }
           }
@@ -805,7 +801,6 @@ function renderRoutesPanel() {
           return;
         }
 
-        // 3) sinon → comportement markers only (ton cas actuel)
         mergeUserMarkers(imported);
         refreshProfilesUI();
         renderList();
@@ -832,15 +827,12 @@ function renderRoutesPanel() {
 
         out[name] = {
           paths: prof.paths,
-          // on peut mettre le nom de la map aussi, mais pas les markers
           map: {
-            // on met juste le nom si tu veux
           }
         };
       }
 
     document.getElementById('newPathBtn')?.addEventListener('click', () => {
-      // on force le mode path et on commence une route vide
       setTool('path');
       startNewPath();
       const badge = document.getElementById('currentPathName');
@@ -870,7 +862,6 @@ function renderRoutesPanel() {
     });
 
     document.getElementById('importPathsBtn')?.addEventListener('click', () => {
-      // on réutilise l’input global
       document.getElementById('importInput')?.click();
     });
 
@@ -890,7 +881,6 @@ function renderRoutesPanel() {
   $('#profileSelect')?.addEventListener('change', e => {
     const name = e.target.value;
     setActiveProfile(name);
-    // côté UI : recharger image si profil a embedData
     const p = currentProfile();
     if (p && p.map && p.map.embedData) {
       setMapSrc(p.map.embedData);
@@ -969,7 +959,7 @@ function renderRoutesPanel() {
     showToast('Markers cleared for this map 🧹');
   });
 
-  // --- Aide ---
+  // --- Help ---
   document.querySelector('.closeHelp')?.addEventListener('click', () => {
     const sec = document.getElementById('helpSection');
     if (!sec) return;
@@ -1044,14 +1034,13 @@ function renderRoutesPanel() {
     applyLockUI();
   })();
 
-  // === PATCH: brancher les boutons tools ===
+  // === PATCH: Link button ===
   window.addEventListener('DOMContentLoaded', () => {
     const btnPan  = document.getElementById('toolPan');
     const btnAdd  = document.getElementById('toolAdd');
     const btnPath = document.getElementById('toolPath');
     const btnNewPath = document.getElementById('newPathBtn');
 
-    // sécurité : si setTool n'existe pas, on ne fait rien
     if (typeof setTool !== 'function') {
       console.warn('[GDMM] setTool() not found');
       return;
@@ -1060,7 +1049,7 @@ function renderRoutesPanel() {
     if (btnPan)  btnPan.addEventListener('click', () => setTool('pan'));
     if (btnAdd)  btnAdd.addEventListener('click', () => setTool('add'));
 
-    // bouton dans l'aside (➕ Add)
+    // ADD button
     if (btnNewPath) btnNewPath.addEventListener('click', () => {
       setTool('path');
       // là on crée vraiment une route
@@ -1070,7 +1059,7 @@ function renderRoutesPanel() {
     });
   });
 
-  // === PATCH: clic sur la carte en mode path ===
+  // === PATCH: click on map ===
   window.addEventListener('DOMContentLoaded', () => {
     const viewport = document.getElementById('mapViewport');
 
@@ -1080,7 +1069,6 @@ function renderRoutesPanel() {
     if (typeof addPathPoint !== 'function') return;
 
     viewport.addEventListener('pointerdown', (e) => {
-      // si on n'est pas en mode path, on laisse le vieux code faire son taf
       if (!window.GDMMCore || window.GDMMCore.state?.tool !== 'path') return;
       e.preventDefault();
 
@@ -1091,18 +1079,13 @@ function renderRoutesPanel() {
     });
   });
 
-
 // === SPACE → PAN (global) ===
-// === SPACE → hold-to-pan ===
-// === SPACE → hold-to-pan ===
-// === SPACE → hold-to-pan (avec protection des inputs) ===
   let isSpaceDown = false;
   let prevTool = null;
 
   window.addEventListener(
     'keydown',
     (e) => {
-      // 1. si on est dans un champ → on ne vole pas la barre espace
       const active = document.activeElement;
       if (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) {
         return;
@@ -1114,8 +1097,6 @@ function renderRoutesPanel() {
         if (!isSpaceDown) {
           isSpaceDown = true;
 
-          // 2. si on était en train d'ajouter (marker) ou de tracer (path)
-          //    -> on passe en pan SANS finaliser
           if (state.tool === 'path' || state.tool === 'add') {
             prevTool = state.tool;
             setTool('pan', { skipFinalize: true });
@@ -1133,7 +1114,6 @@ function renderRoutesPanel() {
         e.preventDefault();
         isSpaceDown = false;
 
-        // 3. on revient à l'outil d'avant (add ou path)
         if (prevTool) {
           setTool(prevTool);
           prevTool = null;
@@ -1142,12 +1122,6 @@ function renderRoutesPanel() {
     },
     true
   );
-
-
-
-
-
-
 
 
 })();
