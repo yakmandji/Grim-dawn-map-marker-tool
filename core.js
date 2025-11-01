@@ -17,7 +17,7 @@
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const uid   = () => Math.random().toString(36).slice(2, 10);
 
-  // --- Icons by catégorie ---
+  // --- Icons by catégorie for UI ---
   const defaultIcons = {
     'General': '',
     'Quest': '⭐',
