@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grim Dawn Map Marker Tool — v1.1</title>
+  <title>Grim Dawn Map Marker Tool — v1.2</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app">
     <header>
-      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.1
+      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.2
       </div>
       <button id="toolPan" class="small">🖐️ Pan</button>
       <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
@@ -22,11 +22,14 @@
 
     <aside class="sidebar">
       <div class="section">
-        <h3>New marker</h3>
+        <div class="row title-icon">
+          <img src="img/add-circle.png" width="20">
+          <h3>New marker</h3>
+        </div>
         <div class="row">
           <input id="newLabel" type="text" placeholder="Name / note" />
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 4px;">
           <select id="newCategory">
             <option>General</option>
             <option>Quest</option>
@@ -44,12 +47,32 @@
         </div>
       </div>
 
-      <div class="section" style="min-height:180px;display:flex;flex-direction:column;gap:8px;min-height:0;">
+      <div class="section">
+        <div class="row title-icon">
+          <img src="img/add-circle.png" width="20">
+          <h3>New Path</h3>
+        </div>        
+        <div class="row">
+            <p class="small">Press Space to move during your path</p>
+        </div>        
+        <div id="currentPathName" class="path-badge"></div>
+        <div class="row">
+          <button id="newPathBtn" class="small" type="button">➕ Add</button>
+          <button id="toolFinishPath" class="toolBtn small">✅ Finish</button>
+        </div>
+      </div>      
+
+      <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:8px;max-height:200px;">
+        <h3>Routes list (<span id="routesCount">0</span>)</h3>
+        <div id="routesList"></div>
+      </section>
+
+      <div class="section light" style="display:flex;flex-direction:column;gap:8px;max-height:400px;">
         <h3 class="m0">Markers list(<span id="count">0</span>)</h3>
         <div id="list" class="list"></div>
       </div>
 
-      <div class="section">
+      <div class="section light">
         <h3>Tools</h3>
         <div class="row">
           <p class="small mb0"><b>Import</b> and <b>Export</b> are only needed if you switch browser, computer, reload a backup ect... Use the header button to save manually.</p> 
@@ -58,6 +81,7 @@
           <button id="clearProfile" class="small danger">Delete all markers</button>
           <button id="importReplaceBtn" class="small">Import save</button>
           <button id="exportFileBtn" class="small">Export save</button>
+          <button id="exportPathsBtn" class="small">Export paths only</button>
         </div>        
       </div> 
 
@@ -142,8 +166,11 @@
 
     </div>
   </template>
+
   <div id="toastContainer"></div>
 
-  <script src="script.js"></script>
+  <script src="core.js"></script>
+  <script src="ui.js"></script>
+
 </body>
 </html>
