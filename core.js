@@ -1,0 +1,228 @@
+(function(){
+  const DEV_MODE = false;
+
+  // --- State (pas de DOM ici) ---
+  const state = {
+    profiles: {},            // { name: { markers:[], map:{}, created, updated, view? } }
+    active: null,
+    view: { scale: 1, x: 0, y: 0 }, // mémorisé par profil si besoin
+    tool: 'pan',
+    locked: true,
+    mapNatural: { w: 0, h: 0 }, // largeur/hauteur de la map courante (renseignées par l'UI)
+    mapReady: false,
+  };
+
+  // --- Utils ---
+  const now   = () => new Date().toISOString();
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const uid   = () => Math.random().toString(36).slice(2, 10);
+
+  // --- Icons par catégorie (reutilisé par l'UI) ---
+  const defaultIcons = {
+    'General': '',
+    'Quest': '⭐',
+    'Boss': '💀',
+    'Loot': '🗝️',
+    'Waypoint': '📍',
+    'Donjon' : '🏰',
+    'NPC': '💬'
+  };
+  const iconFor = (cat) => defaultIcons[cat] || '';
+  const isColorAllowed = (cat) => !iconFor(cat);
+
+  // --- Profils ---
+  function currentProfile(){
+    return state.active ? state.profiles[state.active] : null;
+  }
+
+  function ensureProfile(name){
+    if (!state.profiles[name]) {
+      state.profiles[name] = { markers: [], map: {}, created: now(), updated: now() };
+    }
+    return state.profiles[name];
+  }
+
+  function setActiveProfile(name){
+    if (!name) return null;
+    const p = ensureProfile(name);
+    state.active = name;
+    return p;
+  }
+
+  function createProfile(name){
+    if (!name) return null;
+    if (state.profiles[name]) return null;
+    state.profiles[name] = { markers: [], map: {}, created: now(), updated: now() };
+    state.active = name;
+    return state.profiles[name];
+  }
+
+  function renameProfile(oldName, newName){
+    if (!oldName || !newName) return false;
+    if (!state.profiles[oldName]) return false;
+    if (state.profiles[newName]) return false;
+    state.profiles[newName] = JSON.parse(JSON.stringify(state.profiles[oldName]));
+    delete state.profiles[oldName];
+    if (state.active === oldName) state.active = newName;
+    return true;
+  }
+
+  function deleteProfile(name){
+    if (!state.profiles[name]) return false;
+    delete state.profiles[name];
+    if (state.active === name) {
+      const next = Object.keys(state.profiles)[0] || null;
+      state.active = next;
+    }
+    return true;
+  }
+
+  function listProfiles(){
+    return Object.keys(state.profiles);
+  }
+
+  // --- Markers (aucun DOM ici) ---
+  function addMarker(raw){
+    const p = currentProfile();
+    if (!p) return null;
+    const marker = {
+      id: uid(),
+      xp: raw.xp,
+      yp: raw.yp,
+      label: raw.label || '',
+      cat: raw.cat || 'General',
+      color: raw.color || '#78f1c2',
+      done: !!raw.done,
+    };
+    p.markers.push(marker);
+    p.updated = now();
+    return marker;
+  }
+
+  function updateMarker(id, patch){
+    const p = currentProfile();
+    if (!p) return false;
+    const m = p.markers.find(m => m.id === id);
+    if (!m) return false;
+    Object.assign(m, patch);
+    p.updated = now();
+    return true;
+  }
+
+  function deleteMarker(id){
+    const p = currentProfile();
+    if (!p) return false;
+    const before = p.markers.length;
+    p.markers = p.markers.filter(m => m.id !== id);
+    if (p.markers.length !== before) {
+      p.updated = now();
+      return true;
+    }
+    return false;
+  }
+
+  function clearMarkers(){
+    const p = currentProfile();
+    if (!p) return false;
+    p.markers = [];
+    p.updated = now();
+    return true;
+  }
+
+  // --- User-data only (pour export rapide) ---
+function getUserDataOnly() {
+  const out = {};
+  const src = state.profiles || {};
+  for (const [name, profile] of Object.entries(src)) {
+    if (!profile) continue;
+    out[name] = {
+      markers: profile.markers || [],
+      paths: profile.paths || [], 
+      view: profile.view || null
+    };
+  }
+  return out;
+}
+
+
+  function saveUserDataToLocal(){
+    try {
+      const data = getUserDataOnly();
+      localStorage.setItem('gdmm_user_data', JSON.stringify(data));
+    } catch (e) {
+      console.warn('[GDMM] could not save user data locally:', e);
+    }
+  }
+
+  function loadUserDataFromLocal(){
+    try {
+      const raw = localStorage.getItem('gdmm_user_data');
+      if (!raw) return;
+      const userData = JSON.parse(raw);
+      for (const [name, uProfile] of Object.entries(userData)) {
+        if (!state.profiles[name]) continue;
+        state.profiles[name].markers = uProfile.markers || [];
+        if (uProfile.view) state.profiles[name].view = uProfile.view;
+        if (uProfile.paths) state.profiles[name].paths = uProfile.paths;
+      }
+    } catch (e) {
+      console.warn('[GDMM] could not load user data:', e);
+    }
+  }
+
+  // --- Import helpers ---
+  function normalizeName(name){
+    return name
+      .toLowerCase()
+      .replace(/\(.*?\)/g, '')
+      .replace(/\s+/g, '')
+      .trim();
+  }
+
+  function mergeUserMarkers(userData){
+    if (!userData) return;
+    const profiles = state.profiles || {};
+    const normalizedIndex = {};
+    for (const key of Object.keys(profiles)) {
+      normalizedIndex[normalizeName(key)] = key;
+    }
+    for (const [importName, u] of Object.entries(userData)) {
+      const norm = normalizeName(importName);
+      const realKey = normalizedIndex[norm];
+      if (!realKey) continue;
+      const p = profiles[realKey];
+      p.markers = Array.isArray(u.markers) ? u.markers : [];
+      if (u.view) p.view = u.view;
+    }
+  }
+
+  // --- Export complet (maps + markers) depuis un snapshot déjà préparé par l'UI ---
+  // (la partie "toDataURL" reste dans l'UI car elle dépend d'un <img>)
+
+  // --- Expose global ---
+  window.GDMMCore = {
+    DEV_MODE,
+    state,
+    now,
+    clamp,
+    uid,
+    defaultIcons,
+    iconFor,
+    isColorAllowed,
+    currentProfile,
+    setActiveProfile,
+    ensureProfile,
+    createProfile,
+    renameProfile,
+    deleteProfile,
+    listProfiles,
+    addMarker,
+    updateMarker,
+    deleteMarker,
+    clearMarkers,
+    getUserDataOnly,
+    saveUserDataToLocal,
+    loadUserDataFromLocal,
+    mergeUserMarkers,
+  };
+})();
