@@ -1,14 +1,14 @@
 (function(){
   const DEV_MODE = false;
 
-  // --- State (pas de DOM ici) ---
+  // --- State  ---
   const state = {
-    profiles: {},            // { name: { markers:[], map:{}, created, updated, view? } }
+    profiles: {},
     active: null,
-    view: { scale: 1, x: 0, y: 0 }, // mémorisé par profil si besoin
+    view: { scale: 1, x: 0, y: 0 },
     tool: 'pan',
     locked: true,
-    mapNatural: { w: 0, h: 0 }, // largeur/hauteur de la map courante (renseignées par l'UI)
+    mapNatural: { w: 0, h: 0 },
     mapReady: false,
   };
 
@@ -17,7 +17,7 @@
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const uid   = () => Math.random().toString(36).slice(2, 10);
 
-  // --- Icons par catégorie (reutilisé par l'UI) ---
+  // --- Icons by catégorie ---
   const defaultIcons = {
     'General': '',
     'Quest': '⭐',
@@ -81,7 +81,7 @@
     return Object.keys(state.profiles);
   }
 
-  // --- Markers (aucun DOM ici) ---
+  // --- Markers  ---
   function addMarker(raw){
     const p = currentProfile();
     if (!p) return null;
@@ -129,7 +129,7 @@
     return true;
   }
 
-  // --- User-data only (pour export rapide) ---
+  // --- User-data only  ---
 function getUserDataOnly() {
   const out = {};
   const src = state.profiles || {};
@@ -195,9 +195,6 @@ function getUserDataOnly() {
       if (u.view) p.view = u.view;
     }
   }
-
-  // --- Export complet (maps + markers) depuis un snapshot déjà préparé par l'UI ---
-  // (la partie "toDataURL" reste dans l'UI car elle dépend d'un <img>)
 
   // --- Expose global ---
   window.GDMMCore = {
