@@ -29,7 +29,7 @@
   const inner    = $('#mapInner');
   const mapImg   = $('#mapImg');
 
-  // Convertit une image affichée (sessionSrc / embedData) en base64 pour l'export admin
+  // Convert image (sessionSrc / embedData) in base64 for admin export
   async function srcToDataURL(src, mime = 'image/jpeg', quality = 0.85) {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -52,21 +52,17 @@
   }
 
   $('#exportMapsOnlyBtn')?.addEventListener('click', async () => {
-    // on clone l'état pour ne pas toucher au vrai
     const snapshot = JSON.parse(JSON.stringify(state.profiles || {}));
 
-    // on parcourt chaque profil
     for (const [name, p] of Object.entries(snapshot)) {
-      // 1. on vire les markers (c'est un export admin des maps SEULEMENT)
+      // Remove marker
       p.markers = [];
 
       try {
-        // 2. on récupère la vraie source d'image dans l'état "live"
         const live = state.profiles[name];
         const src = live?.map?.sessionSrc || live?.map?.embedData;
 
         if (src) {
-          // on convertit en dataURL pour avoir un JSON portable
           const data = await srcToDataURL(src, 'image/jpeg', 0.85);
           p.map = p.map || {};
           p.map.embedData = data;
@@ -75,13 +71,12 @@
         console.warn('[GDMM] export map failed for', name, e);
       }
 
-      // on nettoie les traces de session
       if (p.map) {
         delete p.map.sessionSrc;
       }
     }
 
-    // 3. on télécharge le JSON final
+    // Download final JSON
     const data = JSON.stringify(snapshot, null, 2);
     const blob = new Blob([data], { type: 'application/json' });
     const a = document.createElement('a');
@@ -90,7 +85,7 @@
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 3000);
 
-    // petit feedback
+    // feedback
     if (typeof showToast === 'function') {
       showToast('Maps exported (without markers) ✅');
     }
@@ -143,7 +138,7 @@
   });
   mapImg.addEventListener('error', () => {
     state.mapReady = false;
-    alert('Échec du chargement de l\'image');
+    alert('Failed to load image');
   });
 
   // --- View helpers (DOM) ---
@@ -442,7 +437,7 @@ function ensurePathsArray() {
 
       const lab = document.createElement('div');
       lab.className = 'label';
-      lab.textContent = m.label || '(sans titre)';
+      lab.textContent = m.label || '(no name)';
       el.appendChild(lab);
 
       const pt = pctToPx(m.xp, m.yp);
@@ -501,7 +496,7 @@ function renderRoutesPanel() {
     const saveBtn = document.createElement('button');
     saveBtn.type = 'button';
     saveBtn.className = 'marker-save';
-    saveBtn.title = 'Sauvegarder';
+    saveBtn.title = 'Save';
     saveBtn.innerHTML = '💾';
     saveBtn.addEventListener('click', () => {
       name.blur();
@@ -535,8 +530,8 @@ function renderRoutesPanel() {
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
     delBtn.className = 'marker-delete danger small';
-    delBtn.title = 'Supprimer la route';
-    delBtn.innerHTML = 'Suppr';
+    delBtn.title = 'Delete path';
+    delBtn.innerHTML = 'Delete';
     delBtn.addEventListener('click', () => {
       p.paths = p.paths.filter(r => r.id !== path.id);
       renderMarkers();
@@ -607,9 +602,9 @@ function renderRoutesPanel() {
       if (state.tool === 'path') {
         finalizeCurrentPath();
         setTool('pan');
-        showToast('Trajet terminé ✅');
+        showToast('Path finished ✅');
       } else {
-        showToast('Aucune route en cours', 'error');
+        showToast('No current path', 'error');
       }
     });
   }
@@ -838,7 +833,7 @@ function renderRoutesPanel() {
       const badge = document.getElementById('currentPathName');
       if (badge) {
         badge.style.display = 'inline-block';
-        badge.textContent = 'Route en cours…';
+        badge.textContent = 'Path in progress…';
       }
       renderRoutesPanel();
     });
