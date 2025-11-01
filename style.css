@@ -32,7 +32,7 @@ body {
   grid-template-columns: 430px 1fr;
   gap: 12px;
   height: 100%;
-  padding: 12px;
+  padding: 0 12px 12px 12px;
 }
 
 header {
