@@ -36,16 +36,19 @@ body {
 }
 
 header {
-  grid-column: 1 / -1;
-  background: var(--panel);
-  border: 1px solid #2a315a;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 10px 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+    grid-column: 1 / -1;
+    background: var(--panel);
+    border: 1px solid #2a315a;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: fixed;
+    z-index: 2;
+    width: 99%;
 }
 header .title {
  font-weight: 700;
@@ -94,19 +97,19 @@ input[type="text"] {
   border: 1px solid #2a315a;
   border-radius: 10px;
   padding: 8px;
-  margin-bottom: 8px;
 }
 
 .sidebar {
-  background: var(--panel);
-  border: 1px solid #2a315a;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-height: 0;
+    background: var(--panel);
+    border: 1px solid #2a315a;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 5rem;
+    min-height: 90vh;
 }
 
 .section {
@@ -123,6 +126,10 @@ input[type="text"] {
   color: var(--muted);
 }
 
+.section.light{
+  background: none;
+}
+
 .row { 
   display: flex; 
   gap: 8px; 
@@ -131,6 +138,14 @@ input[type="text"] {
 }
 
 .row > * { flex: 1; }
+
+.row.title-icon img{
+  max-width: 20px;
+}
+
+.row.title-icon h3{
+    margin: 5px 0px 6px;
+}
 
 .mapWrap {
   position: relative;
@@ -198,7 +213,7 @@ input[type="text"] {
   gap: 8px; 
 }
 
-.list { 
+.list,#routesList { 
   min-height: 0; 
   flex: 1; 
   overflow: auto; 
@@ -228,7 +243,7 @@ input[type="text"] {
 .marker-save {
   background: #1f2542;
   border-radius: 8px;
-  width: 30px;
+  width: 44px;
   height: 30px;
   cursor: pointer;
   color: #e7ebff;
@@ -237,8 +252,7 @@ input[type="text"] {
   align-items: center;
   justify-content: center;
   transition: background 0.25s ease, transform 0.15s ease;
-  margin-bottom: 8px;
-  max-width: 60px;
+  max-width: 44px;
 }
 
 .marker-save:hover {
@@ -280,12 +294,6 @@ input[type="text"] {
   transition: opacity 0.2s ease, transform 0.15s ease;
 }
 
-.marker-center:hover {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.2);
-}
-
-
 .small{
     color: var(--txt);
     font-size: 12px;
@@ -324,10 +332,11 @@ input[type="text"] {
 }
 
 .helpPopup{
-  position: absolute;
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
+ position: fixed;  
+  top: 50%;  
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  z-index: 9999; 
   background: var(--p2);
   border: 1px solid #2a315a;
   border-radius: 12px;
@@ -338,6 +347,15 @@ input[type="text"] {
   color: var(--txt);
   z-index: 50;
   animation: fadeIn .2s ease;
+}
+
+.helpPopup::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  z-index: -1;
 }
 
 .helpPopup h3 {
@@ -440,4 +458,66 @@ input[type="text"] {
 
 .toast.error {
   border-color: #ff6b7a;
+}
+
+/* Path */
+
+#routesPanel {
+  margin-top: 1rem;
+  border-top: 1px solid #333;
+  padding-top: .5rem;
+}
+
+#routesList .routeItem {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .4rem;
+}
+
+#routesList .routeColor {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #111;
+  cursor: pointer;
+  padding: 0;
+}
+
+#routesList .route-item input[type="text"]{
+    max-width: 176px;
+}
+
+.path-badge {
+  font-size: .75rem;
+  background: rgba(255,204,0,.15);
+  border: 1px solid rgba(255,204,0,.6);
+  padding: 2px 8px;
+  border-radius: 999px;
+  display: none;
+  margin-bottom: .5rem;
+}
+
+.path-point {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 65%);
+  pointer-events: none;
+  animation: pathPulse 0.9s ease-out;
+  box-shadow: 0 0 10px rgba(255, 210, 0, 0.8);
+}
+
+@keyframes pathPulse {
+  0%   { transform: scale(0.4); opacity: 1; }
+  60%  { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0.35; }
+}
+
+
+#mapViewport.space-pan {
+  cursor: grab;
 }
