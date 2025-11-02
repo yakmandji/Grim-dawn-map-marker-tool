@@ -147,7 +147,7 @@
     const iw = state.mapNatural.w || 1;
     const ih = state.mapNatural.h || 1;
     const s = Math.min(vb.width/iw, vb.height/ih);
-    state.view.scale = 0.18; // même choix que ton code original
+    state.view.scale = 0.18; 
     state.view.x = (vb.width  - iw * state.view.scale) / 2;
     state.view.y = (vb.height - ih * state.view.scale) / 2;
     applyView();
@@ -221,20 +221,16 @@
     saveUserDataToLocal();
   }
 
-
- // Path
-
 // ==============================
 // PATH MODE
 // ==============================
 
-// état local du mode Path
+// Local state of path mode
 let pathMode = {
   active: false,
   current: null // {id, points: [{xp, yp}]}
 };
 
-// assure que le profil actif a un tableau de paths
 function ensurePathsArray() {
   const p = currentProfile();
   if (!p) return null;
@@ -242,7 +238,7 @@ function ensurePathsArray() {
   return p.paths;
 }
 
-// crée une nouvelle route vide
+// create new empty path
   function startNewPath(defaultName = '') {
     const p = currentProfile();
     if (!p) return null;
@@ -270,7 +266,7 @@ function ensurePathsArray() {
     return path;
   }
 
-  // ajoute un point à la route en cours
+  // add point current path
   function addPathPoint(xp, yp) {
     let path = pathMode.current;
     if (!path) {
@@ -282,7 +278,7 @@ function ensurePathsArray() {
     saveUserDataToLocal();
   }
 
-  // finalise la route en cours (appelée quand on quitte le mode Path)
+  // finish route
   function finalizeCurrentPath() {
     if (!pathMode.current) {
       const badge = document.getElementById('currentPathName');
@@ -292,7 +288,7 @@ function ensurePathsArray() {
 
     const p = currentProfile();
     if (p && p.paths && pathMode.current.points.length < 2) {
-      // si moins de 2 points → on la supprime
+      // delete if path not finished
       p.paths = p.paths.filter(r => r.id !== pathMode.current.id);
     }
 
@@ -323,136 +319,268 @@ function ensurePathsArray() {
     return [...(p.markers || [])];
   }
 
-  function renderList(){
-    const list = listFiltered();
-    const host = $('#list');
-    const tpl  = $('#tplItem');
-    if (!host || !tpl) return;
-    const countEl = $('#count');
-    if (countEl) countEl.textContent = list.length;
-    host.innerHTML = '';
-    list.forEach(m => {
-      const el = tpl.content.firstElementChild.cloneNode(true);
-      el.querySelector('[data-pin]').style.background = m.color || '#78f1c2';
-      const label = el.querySelector('[data-label]');
-      label.value = m.label || '';
-      label.addEventListener('blur', e => updateMarkerFromUI(m.id, { label: e.target.value }, true));
-      const cat = el.querySelector('[data-cat]');
-      cat.value = m.cat || 'General';
-      const color = el.querySelector('[data-color]');
-      color.value = m.color || '#78f1c2';
-      const done = el.querySelector('[data-done]');
-      done.checked = !!m.done;
-      const syncColorVis = (c) => { const allow = isColorAllowed(c); color.style.display = allow ? '' : 'none'; };
-      syncColorVis(cat.value);
-      cat.onchange = e => { const v = e.target.value; updateMarkerFromUI(m.id, { cat: v }, false); syncColorVis(v); renderMarkers(); };
-      color.oninput = e => { el.querySelector('[data-pin]').style.background = e.target.value; updateMarkerFromUI(m.id, { color: e.target.value }, false); renderMarkers(); };
-      done.onchange = e => updateMarkerFromUI(m.id, { done: e.target.checked }, true);
-      el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5);
-      el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
-      host.appendChild(el);
-    });
-  }
+function renderList() {
+  const markers = listFiltered();
+  const host = $('#list');
+  const tpl  = $('#tplItem');
+  if (!host || !tpl) return;
 
-  function renderMarkers(options = {}) {
-    const { skipRoutesPanel = false } = options;
+  // compteur
+  const countEl = $('#count');
+  if (countEl) countEl.textContent = markers.length;
 
-    // 0) on nettoie ce qui existe
-    document.querySelectorAll('#mapInner .marker').forEach(n => n.remove());
-    document.querySelectorAll('#mapInner .path-point').forEach(n => n.remove());
-    const oldSvg = document.getElementById('pathLayer');
-    if (oldSvg) oldSvg.remove();
+  host.innerHTML = '';
 
-    const p = currentProfile();
-    if (!(p && state.mapReady)) return;
+  markers.forEach(m => {
+    const el = tpl.content.firstElementChild.cloneNode(true);
 
-    // 1) on recrée le calque SVG pour les routes
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('id', 'pathLayer');
-    svg.setAttribute('class', 'path-layer');
-    svg.setAttribute('width', state.mapNatural.w);
-    svg.setAttribute('height', state.mapNatural.h);
-    svg.style.position = 'absolute';
-    svg.style.left = '0';
-    svg.style.top = '0';
-    svg.style.pointerEvents = 'none';
-    inner.appendChild(svg);
+    el.dataset.mid = m.id;
 
-    // 2) on dessine les routes
-    const paths = p.paths || [];
-    paths.forEach(path => {
-      if (path.visible === false) return;
-      if (!path.points || !path.points.length) return;
+    // pin color
+    el.querySelector('[data-pin]').style.background = m.color || '#78f1c2';
 
-      // ligne
-      if (path.points.length >= 2) {
-        const d = path.points.map((pt, idx) => {
-          const px = (pt.xp / 100) * (state.mapNatural.w || 1);
-          const py = (pt.yp / 100) * (state.mapNatural.h || 1);
-          return (idx === 0 ? 'M' : 'L') + px + ' ' + py;
-        }).join(' ');
+    // label
+    const label = el.querySelector('[data-label]');
+    label.value = m.label || '';
+    label.addEventListener('blur', e => updateMarkerFromUI(m.id, { label: e.target.value }, true));
 
-        const el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        el.setAttribute('d', d);
-        el.setAttribute('fill', 'none');
-        el.setAttribute('stroke', path.color || '#ffcc00');
-        el.setAttribute('stroke-width', path.width || 4);
-        el.setAttribute('stroke-linecap', 'round');
-        el.setAttribute('stroke-linejoin', 'round');
-        el.setAttribute('opacity', path.opacity ?? 0.85);
-        el.setAttribute('vector-effect', 'non-scaling-stroke'); // 👈 important
-        svg.appendChild(el);
-      }
+    // categorie
+    const cat = el.querySelector('[data-cat]');
+    cat.value = m.cat || 'General';
 
-      // points
-      path.points.forEach(pt => {
+    // color
+    const color = el.querySelector('[data-color]');
+    color.value = m.color || '#78f1c2';
+
+    // done
+    const done = el.querySelector('[data-done]');
+    done.checked = !!m.done;
+
+    //color picker
+    const syncColorVis = (c) => {
+      const allow = isColorAllowed(c);
+      color.style.display = allow ? '' : 'none';
+    };
+    syncColorVis(cat.value);
+
+    cat.onchange = e => {
+      const v = e.target.value;
+      updateMarkerFromUI(m.id, { cat: v }, false);
+      syncColorVis(v);
+      renderMarkers();
+    };
+
+    color.oninput = e => {
+      el.querySelector('[data-pin]').style.background = e.target.value;
+      updateMarkerFromUI(m.id, { color: e.target.value }, false);
+      renderMarkers();
+    };
+
+    done.onchange = e => updateMarkerFromUI(m.id, { done: e.target.checked }, true);
+
+    // center
+    el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5);
+
+    // delete
+    el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
+
+    host.appendChild(el);
+  });
+}
+
+
+// Render Marker
+function renderMarkers(options = {}) {
+  const { skipRoutesPanel = false } = options;
+
+  // clean existing
+  document.querySelectorAll('#mapInner .marker').forEach(n => n.remove());
+  document.querySelectorAll('#mapInner .path-point').forEach(n => n.remove());
+  const oldSvg = document.getElementById('pathLayer');
+  if (oldSvg) oldSvg.remove();
+
+  const p = currentProfile();
+  if (!(p && state.mapReady)) return;
+
+  // SVG layer
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('id', 'pathLayer');
+  svg.setAttribute('class', 'path-layer');
+  svg.setAttribute('width', state.mapNatural.w);
+  svg.setAttribute('height', state.mapNatural.h);
+  svg.style.position = 'absolute';
+  svg.style.left = '0';
+  svg.style.top = '0';
+  svg.style.pointerEvents = 'none';
+  inner.appendChild(svg);
+
+  // 2) draw routes
+  const paths = p.paths || [];
+  paths.forEach(path => {
+    if (path.visible === false) return;
+    if (!path.points || !path.points.length) return;
+
+    // line
+    if (path.points.length >= 2) {
+      const d = path.points.map((pt, idx) => {
         const px = (pt.xp / 100) * (state.mapNatural.w || 1);
         const py = (pt.yp / 100) * (state.mapNatural.h || 1);
-        const dot = document.createElement('div');
-        dot.className = 'path-point';
-        dot.style.left = px + 'px';
-        dot.style.top = py + 'px';
-        inner.appendChild(dot);
-      });
-    });
+        return (idx === 0 ? 'M' : 'L') + px + ' ' + py;
+      }).join(' ');
 
-    // 3) on dessine les markers
-    const list = p.markers || [];
-    list.forEach(m => {
-      const el = document.createElement('div');
-      el.className = 'marker' + (m.done ? ' completed' : '');
-
-      const pin = document.createElement('div');
-      pin.className = 'pin';
-      const ic = iconFor(m.cat);
-      if (ic) {
-        const span = document.createElement('span');
-        span.className = 'icon';
-        span.textContent = ic;
-        pin.appendChild(span);
-      } else {
-        pin.style.background = m.color || '#78f1c2';
-      }
-      el.appendChild(pin);
-
-      const lab = document.createElement('div');
-      lab.className = 'label';
-      lab.textContent = m.label || '(no name)';
-      el.appendChild(lab);
-
-      const pt = pctToPx(m.xp, m.yp);
-      el.style.left = pt.x + 'px';
-      el.style.top = pt.y + 'px';
-
-      // (si tu avais déjà le drag, tu le remets ici)
-      inner.appendChild(el);
-    });
-
-    // 4) on met à jour le panneau routes (⚠️ sauf si on a demandé de ne PAS le faire)
-    if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
-      renderRoutesPanel();
+      const el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      el.setAttribute('d', d);
+      el.setAttribute('fill', 'none');
+      el.setAttribute('stroke', path.color || '#ffcc00');
+      el.setAttribute('stroke-width', path.width || 4);
+      el.setAttribute('stroke-linecap', 'round');
+      el.setAttribute('stroke-linejoin', 'round');
+      el.setAttribute('opacity', path.opacity ?? 0.85);
+      el.setAttribute('vector-effect', 'non-scaling-stroke');
+      svg.appendChild(el);
     }
+
+    // points
+    path.points.forEach(pt => {
+      const px = (pt.xp / 100) * (state.mapNatural.w || 1);
+      const py = (pt.yp / 100) * (state.mapNatural.h || 1);
+      const dot = document.createElement('div');
+      dot.className = 'path-point';
+      dot.style.left = px + 'px';
+      dot.style.top = py + 'px';
+      inner.appendChild(dot);
+    });
+  });
+
+  // 3) draw markers
+const markers = p.markers || [];
+markers.forEach(m => {
+  const el = document.createElement('div');
+  el.className = 'marker' + (m.done ? ' completed' : '');
+
+  // pin
+  const pin = document.createElement('div');
+  pin.className = 'pin';
+  const ic = iconFor(m.cat);
+  if (ic) {
+    const span = document.createElement('span');
+    span.className = 'icon';
+    span.textContent = ic;
+    pin.appendChild(span);
+  } else {
+    pin.style.background = m.color || '#78f1c2';
   }
+  el.appendChild(pin);
+
+  // label
+  const lab = document.createElement('div');
+  lab.className = 'label';
+  lab.textContent = m.label || '(no name)';
+  el.appendChild(lab);
+
+  // position
+  const pt = pctToPx(m.xp, m.yp);
+  el.style.left = pt.x + 'px';
+  el.style.top  = pt.y + 'px';
+
+  // ========== INTERACTION ==========
+  let dragging = false;
+  let startPct = null;
+  let startClient = null;
+  const dragThreshold = 6;
+
+  el.addEventListener('pointerdown', (e) => {
+    // on enregistre toujours le point de départ (pour savoir si c’est un clic)
+    startClient = { x: e.clientX, y: e.clientY };
+
+    if (state.locked) {
+      el.setPointerCapture(e.pointerId);
+      return;
+    }
+
+    dragging = true;
+    el.setPointerCapture(e.pointerId);
+
+    const p1 = viewToPct(e.clientX, e.clientY);
+    startPct = {
+      dx: p1.xp - m.xp,
+      dy: p1.yp - m.yp
+    };
+  });
+
+  el.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    if (!startPct) return;
+
+    const p1 = viewToPct(e.clientX, e.clientY);
+    let nx = clamp(p1.xp - startPct.dx, 0, 100);
+    let ny = clamp(p1.yp - startPct.dy, 0, 100);
+
+    const pt2 = pctToPx(nx, ny);
+    el.style.left = pt2.x + 'px';
+    el.style.top  = pt2.y + 'px';
+  });
+
+  el.addEventListener('pointerup', (e) => {
+    const dx = e.clientX - (startClient?.x ?? e.clientX);
+    const dy = e.clientY - (startClient?.y ?? e.clientY);
+    const moved = Math.sqrt(dx*dx + dy*dy) > dragThreshold;
+
+    try { el.releasePointerCapture(e.pointerId); } catch(_) {}
+
+    if (state.locked) {
+      if (!moved) {
+        const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+        if (row) {
+          row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          row.classList.add('highlight');
+          setTimeout(() => row.classList.remove('highlight'), 1500);
+        }
+      }
+      return;
+    }
+
+    // Lock disable
+    if (!dragging) {
+      if (!moved) {
+        const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+        if (row) {
+          row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          row.classList.add('highlight');
+          setTimeout(() => row.classList.remove('highlight'), 800);
+        }
+      }
+      return;
+    }
+
+    dragging = false;
+    if (!moved) {
+      const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+      if (row) {
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        row.classList.add('highlight');
+        setTimeout(() => row.classList.remove('highlight'), 800);
+      }
+      return;
+    }
+    const p1 = viewToPct(e.clientX, e.clientY);
+    let nx = clamp(p1.xp - startPct.dx, 0, 100);
+    let ny = clamp(p1.yp - startPct.dy, 0, 100);
+
+    updateMarkerFromUI(m.id, { xp: nx, yp: ny }, false);
+    renderMarkers({ skipRoutesPanel: true });
+    saveUserDataToLocal();
+  });
+
+  inner.appendChild(el);
+});
+
+
+  // maj routes panel
+  if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
+    renderRoutesPanel();
+  }
+}
 
 
 
@@ -467,7 +595,7 @@ function renderRoutesPanel() {
     const row = document.createElement('div');
     row.className = 'listItem route-item';
 
-    // --- Couleur ---
+    // --- Color ---
     const color = document.createElement('input');
     color.type = 'color';
     color.value = path.color || '#ffcc00';
@@ -481,7 +609,7 @@ function renderRoutesPanel() {
     });
     row.appendChild(color);
 
-    // --- Nom ---
+    // --- Name ---
     const name = document.createElement('input');
     name.type = 'text';
     name.value = path.name || '(route)';
@@ -492,7 +620,7 @@ function renderRoutesPanel() {
     });
     row.appendChild(name);
 
-    // --- Bouton Save ---
+    // --- Save button ---
     const saveBtn = document.createElement('button');
     saveBtn.type = 'button';
     saveBtn.className = 'marker-save';
@@ -505,7 +633,7 @@ function renderRoutesPanel() {
     });
     row.appendChild(saveBtn);
 
-    // --- Bouton Center witdth SVG ---
+    // --- Center button witdth SVG ---
     const centerBtn = document.createElement('button');
     centerBtn.className = 'marker-center';
     centerBtn.title = 'Center on map';
@@ -611,7 +739,7 @@ function renderRoutesPanel() {
 
 
   viewport.addEventListener('pointerdown', e => {
-    // --- MODE MARKER ---
+    // --- MODE MARKER add ---
     if (state.tool === 'add') {
       const { xp, yp } = viewToPct(e.clientX, e.clientY);
       if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
@@ -620,7 +748,7 @@ function renderRoutesPanel() {
       return;
     }
 
-    // --- MODE PATH ---
+    // --- MODE PATH (point add) ---
     if (state.tool === 'path') {
       const { xp, yp } = viewToPct(e.clientX, e.clientY);
       if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
@@ -629,9 +757,12 @@ function renderRoutesPanel() {
       return;
     }
 
-    // --- PAN classique ---
+    // --- classic PAN ---
     e.preventDefault();
-    if (e.target.closest && e.target.closest('.marker') && !state.locked) return;
+    if (e.target.closest && e.target.closest('.marker')) {
+      return;
+    }
+
     if (e.pointerType === 'mouse' && e.button !== 0) return;
 
     panning = true;
@@ -640,8 +771,6 @@ function renderRoutesPanel() {
     panStart = { x: e.clientX, y: e.clientY };
     viewStart = { ...state.view };
   });
-
-
 
 
   viewport.addEventListener('pointermove', e => {
@@ -797,10 +926,24 @@ function renderRoutesPanel() {
         }
 
         mergeUserMarkers(imported);
+
+        // check if path
+        const profiles = state.profiles || {};
+        for (const [name, incoming] of Object.entries(imported)) {
+          if (!incoming) continue;
+          if (!incoming.paths) continue;
+          if (!profiles[name]) continue;
+
+          const target = profiles[name];
+          if (!target.paths) target.paths = [];
+          target.paths = incoming.paths;
+        }
+
         refreshProfilesUI();
         renderList();
         renderMarkers();
         renderRoutesPanel();
+        saveUserDataToLocal();
         updateSaveIndicator(true);
         showToast('Markers imported ✅');
 
@@ -811,68 +954,55 @@ function renderRoutesPanel() {
     });
 
 
-    //Export path only
-    document.getElementById('exportPathsBtn')?.addEventListener('click', () => {
-      const out = {};
-      const profiles = state.profiles || {};
+// === PATHS (ADD / EXPORT / IMPORT) ===
+const newPathBtn = document.getElementById('newPathBtn');
+if (newPathBtn) {
+  newPathBtn.addEventListener('click', () => {
+    setTool('path');
+    startNewPath();
+    const badge = document.getElementById('currentPathName');
+    if (badge) {
+      badge.style.display = 'inline-block';
+      badge.textContent = 'Path in progress…';
+    }
+    renderRoutesPanel();
+  });
+}
 
-      for (const [name, prof] of Object.entries(profiles)) {
-        if (!prof) continue;
-        if (!prof.paths || !prof.paths.length) continue; // on n'exporte pas les vides
+const exportPathsBtn = document.getElementById('exportPathsBtn');
+if (exportPathsBtn) {
+  exportPathsBtn.addEventListener('click', () => {
+    const out = {};
+    const profiles = state.profiles || {};
+    for (const [name, prof] of Object.entries(profiles)) {
+      if (!prof?.paths || !prof.paths.length) continue;
+      out[name] = { paths: prof.paths };
+    }
 
-        out[name] = {
-          paths: prof.paths,
-          map: {
-          }
-        };
-      }
+    if (Object.keys(out).length === 0) {
+      showToast('No paths to export ❌', 'error');
+      return;
+    }
 
-    document.getElementById('newPathBtn')?.addEventListener('click', () => {
-      setTool('path');
-      startNewPath();
-      const badge = document.getElementById('currentPathName');
-      if (badge) {
-        badge.style.display = 'inline-block';
-        badge.textContent = 'Path in progress…';
-      }
-      renderRoutesPanel();
-    });
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'gdmm_paths_only.json';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    showToast('Routes exported ✅');
+  });
+}
 
-    document.getElementById('exportPathsBtn')?.addEventListener('click', () => {
-      const out = {};
-      const profiles = state.profiles || {};
-      for (const [name, prof] of Object.entries(profiles)) {
-        if (!prof?.paths || !prof.paths.length) continue;
-        out[name] = {
-          paths: prof.paths
-        };
-      }
-      const blob = new Blob([JSON.stringify(out, null, 2)], {type:'application/json'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'gdmm_paths_only.json';
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-      showToast('Routes exported ✅');
-    });
-
-    document.getElementById('importPathsBtn')?.addEventListener('click', () => {
-      document.getElementById('importInput')?.click();
-    });
+const importPathsBtn = document.getElementById('importPathsBtn');
+if (importPathsBtn) {
+  importPathsBtn.addEventListener('click', () => {
+    document.getElementById('importInput')?.click();
+  });
+}
 
 
-      const blob = new Blob([JSON.stringify(out, null, 2)], {type:'application/json'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'gdmm_paths_only.json';
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 3000);
-
-      showToast('Paths exported ✅');
-    });
-
-
-  // --- Profils (boutons) ---
+  // --- Profils (buttons) ---
   $('#profileSelect')?.addEventListener('change', e => {
     const name = e.target.value;
     setActiveProfile(name);
@@ -941,7 +1071,7 @@ function renderRoutesPanel() {
     document.getElementById('admin-section')?.remove();
   }
 
-  // --- Clear markers du profil actif ---
+  // --- Clear markers actif profil ---
   $('#clearProfile')?.addEventListener('click', () => {
     const prof = currentProfile(); if (!prof) return;
     if (!confirm('Do you really want to delete all markers from this map?')) return;
@@ -994,10 +1124,10 @@ function renderRoutesPanel() {
     syncNewColor();
   }
 
-  // --- Init au chargement ---
+  // --- Init on load ---
   (async () => {
     const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json';
-    // Base vide
+    // empty base
     state.profiles['Profil 1'] = { markers:[], map:{}, created: new Date().toISOString(), updated: new Date().toISOString() };
     setActiveProfile('Profil 1');
     // Try remote
@@ -1024,55 +1154,10 @@ function renderRoutesPanel() {
     renderList();
     renderMarkers();
     renderRoutesPanel();
-    // lock par défaut
+    // defaut lock
     state.locked = true;
     applyLockUI();
   })();
-
-  // === PATCH: Link button ===
-  window.addEventListener('DOMContentLoaded', () => {
-    const btnPan  = document.getElementById('toolPan');
-    const btnAdd  = document.getElementById('toolAdd');
-    const btnPath = document.getElementById('toolPath');
-    const btnNewPath = document.getElementById('newPathBtn');
-
-    if (typeof setTool !== 'function') {
-      console.warn('[GDMM] setTool() not found');
-      return;
-    }
-
-    if (btnPan)  btnPan.addEventListener('click', () => setTool('pan'));
-    if (btnAdd)  btnAdd.addEventListener('click', () => setTool('add'));
-
-    // ADD button
-    if (btnNewPath) btnNewPath.addEventListener('click', () => {
-      setTool('path');
-      // là on crée vraiment une route
-      if (typeof startNewPath === 'function') {
-        startNewPath();
-      }
-    });
-  });
-
-  // === PATCH: click on map ===
-  window.addEventListener('DOMContentLoaded', () => {
-    const viewport = document.getElementById('mapViewport');
-
-    // sécurité
-    if (!viewport) return;
-    if (typeof viewToPct !== 'function') return;
-    if (typeof addPathPoint !== 'function') return;
-
-    viewport.addEventListener('pointerdown', (e) => {
-      if (!window.GDMMCore || window.GDMMCore.state?.tool !== 'path') return;
-      e.preventDefault();
-
-      const { xp, yp } = viewToPct(e.clientX, e.clientY);
-      if (xp < 0 || xp > 100 || yp < 0 || yp > 100) return;
-
-      addPathPoint(xp, yp);
-    });
-  });
 
 // === SPACE → PAN (global) ===
   let isSpaceDown = false;
