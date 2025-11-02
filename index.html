@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grim Dawn Map Marker Tool — v1.2</title>
+  <title>Grim Dawn Map Marker Tool — v1.3</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app">
     <header>
-      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.2
+      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.3
       </div>
       <button id="toolPan" class="small">🖐️ Pan</button>
       <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
@@ -147,7 +147,7 @@
          </button>
         </div>
         <div class="row" style="gap:6px;margin-top:6px">
-          <select data-cat>
+          <select data-cat class="small">
             <option>General</option>
             <option>Quest</option>
             <option>Boss</option>
@@ -157,7 +157,7 @@
             <option>NPC</option>
           </select>
           <input data-color type="color" style="flex:0 0 36px" />
-          <label style="flex:0 0 auto">
+          <label style="flex:0 0 auto" class="small">
             <input data-done type="checkbox" /> Done
           </label>
           <button data-delete class="small danger">Delete</button>
