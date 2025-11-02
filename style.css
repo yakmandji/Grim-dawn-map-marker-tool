@@ -28,7 +28,7 @@ body {
 
 .app {
   display: grid;
-  grid-template-rows: auto 1fr;
+/*  grid-template-rows: auto 1fr;*/
   grid-template-columns: 430px 1fr;
   gap: 12px;
   height: 100%;
@@ -73,7 +73,7 @@ button, select, input[type="color"], .chip {
   background: var(--p2);
   color: var(--txt);
   border-radius: 10px;
-  padding: 8px 2px;
+  padding: 6px 2px;
   cursor: pointer;
 }
 
@@ -82,7 +82,10 @@ button:hover{
 }
 
 /* Lock mode: allow panning even over markers */
-.mapViewport.locked .marker { pointer-events: none; }
+.mapViewport.locked .marker {
+  pointer-events: auto;
+  cursor: pointer;
+}
 
 button.small { padding: 6px 8px; }
 button.active,
@@ -109,14 +112,14 @@ input[type="text"] {
     flex-direction: column;
     gap: 12px;
     margin-top: 5rem;
-    min-height: 90vh;
+    height: 94%;
 }
 
 .section {
   background: var(--p2);
-  border: 1px dashed #384073;
+  border: 1px dashed #4d5691;
   border-radius: 12px;
-  padding: 10px;
+  padding: 10px 10px 10px 6px;
 }
 .section h3 {
   margin: 0 0 8px;
@@ -124,6 +127,7 @@ input[type="text"] {
   text-transform: uppercase;
   letter-spacing: .8px;
   color: var(--muted);
+  padding-left: 10px;
 }
 
 .section.light{
@@ -220,12 +224,13 @@ input[type="text"] {
   border-radius: 10px; 
 }
 .listItem { 
-  padding: 4px; 
+  padding: 9px 0px 9px 9px;
   border-bottom: 1px solid #2a315a; 
   display: grid; 
   grid-template-columns: auto 1fr auto; 
   gap: 8px; 
-  align-items: center; 
+  align-items: center;
+  border-radius: 6px;
 }
 
 .listItem > div {
@@ -304,11 +309,23 @@ input[type="text"] {
 /* Better color input layout */
 .listItem input[type="color"] { 
   flex: 0 0 36px; 
-  width: 36px; 
-  height: 36px; 
+  width: 30px; 
+  height: 30px; 
   padding: 0; 
   border-radius: 8px; 
 }
+
+#list .listItem.highlight {
+  background: rgba(255, 255, 255, 0.15);
+  animation: highlightPulse 2s ease-out;
+}
+
+@keyframes highlightPulse {
+  0%   { background: rgba(255,255,255,0.1); border: 1px solid rgba(160,200,255,0.5); }
+  50%  { background: rgba(255,255,255,0.2); border: 1px solid rgba(160,200,255,1); }
+  100% { background: rgba(255,255,255,0);    border: 1px solid rgba(160,200,255,0); }
+}
+
 
 /* Icon rendering inside pin */
 .pin {
@@ -515,9 +532,4 @@ input[type="text"] {
   0%   { transform: scale(0.4); opacity: 1; }
   60%  { transform: scale(1);   opacity: 1; }
   100% { transform: scale(1.4); opacity: 0.35; }
-}
-
-
-#mapViewport.space-pan {
-  cursor: grab;
 }
