@@ -19,7 +19,7 @@ body {
 }
 
 .mb0{
-  margin-bottom: 0;
+  margin-bottom: 0!important;
 }
 
 .listItem [data-pin] { 
@@ -121,13 +121,18 @@ input[type="text"] {
   border-radius: 12px;
   padding: 10px 0px 10px 0px;
 }
+
+.section.principal {
+  padding: 10px 10px 10px 10px;
+ }
+  
 .section h3 {
   margin: 0 0 8px;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .8px;
   color: var(--muted);
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 .section.light{
@@ -222,7 +227,7 @@ input[type="text"] {
   flex: 1; 
   overflow: auto; 
   border-radius: 10px;
-  padding: 9px;
+  padding: 0px 9px 9px 9px;
 }
 .listItem { 
   padding: 9px 9px 9px 9px;
