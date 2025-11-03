@@ -262,7 +262,7 @@ function ensurePathsArray() {
       badge.style.display = 'inline-block';
       badge.textContent = name;
     }
-
+    updateFinishButtonPulse();
     return path;
   }
 
@@ -300,7 +300,15 @@ function ensurePathsArray() {
 
     renderMarkers();
     saveUserDataToLocal();
+    updateFinishButtonPulse();
   }
+
+    function updateFinishButtonPulse() {
+      const btn = document.getElementById('toolFinishPath');
+      if (!btn) return;
+      const isCurrentPath = pathMode.active && pathMode.current && state.tool === 'path';
+      btn.classList.toggle('pulse', !!isCurrentPath);
+    }
 
 
   // --- UI renderers ---
@@ -470,33 +478,6 @@ function renderMarkers(options = {}) {
         inner.appendChild(dot);
       });
 
-      // ---- label au milieu de la route (comme avant) ----
-      if (
-        path.points &&
-        path.points.length &&
-        (!pathMode.current || pathMode.current.id !== path.id) // pas de label pour la route en cours
-      ) {
-        const midIndex = Math.floor(path.points.length / 2);
-        const mid = path.points[midIndex];
-
-        const lx = (mid.xp / 100) * (state.mapNatural.w || 1);
-        const ly = (mid.yp / 100) * (state.mapNatural.h || 1);
-
-        const label = document.createElement('div');
-        label.className = 'path-label';
-        label.textContent = path.name || '(route)';
-        label.style.left = lx + 'px';
-        label.style.top  = ly + 'px';
-
-        if (path.color) {
-          label.style.background  = hexToRgba(path.color, 0.55);
-          label.style.borderColor = path.color;
-          label.style.color       = '#fff';
-        }
-
-        inner.appendChild(label);
-      }
-
       // ---- bulles Start / End 👣 🚩 ----
       if (path.points && path.points.length) {
         const first = path.points[0];
@@ -508,14 +489,26 @@ function renderMarkers(options = {}) {
 
           const tag = document.createElement('div');
           tag.className = 'path-endpoint ' + (type === 'start' ? 'path-start' : 'path-end');
-          tag.textContent = type === 'start' ? '👣' : '🚩';
-          tag.style.left = ex + 'px';
-          tag.style.top  = ey + 'px';
+          if (type === 'start') {
+          tag.textContent = '👣 ' + (path.name || '(route)');
+             } else {
+          tag.textContent = '🚩';
+             }
+            tag.style.left = ex + 'px';
+            tag.style.top  = ey + 'px';
 
           if (path.color) {
             tag.style.background  = hexToRgba(path.color, 0.9);
             tag.style.borderColor = path.color;
-            tag.style.color       = '#ffffff';
+
+            // --- Brighnes calcul ---
+            const c = path.color.replace('#', '');
+            const r = parseInt(c.substring(0, 2), 16);
+            const g = parseInt(c.substring(2, 4), 16);
+            const b = parseInt(c.substring(4, 6), 16);
+            const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+            tag.style.color = luminance > 0.6 ? '#000' : '#fff';
           }
 
           inner.appendChild(tag);
@@ -799,6 +792,7 @@ function renderRoutesPanel() {
     if (t !== 'path' && !skipFinalize) {
       finalizeCurrentPath();
     }
+    updateFinishButtonPulse();
   }
 
 
