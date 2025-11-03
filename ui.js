@@ -406,6 +406,7 @@ function renderMarkers(options = {}) {
   document.querySelectorAll('#mapInner .marker').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-point').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-label').forEach(n => n.remove());
+  document.querySelectorAll('#mapInner .path-endpoint').forEach(n => n.remove());
   const oldSvg = document.getElementById('pathLayer');
   if (oldSvg) oldSvg.remove();
 
@@ -429,11 +430,14 @@ function renderMarkers(options = {}) {
   paths.forEach(path => {
     if (path.visible === false) return;
     if (!path.points || !path.points.length) return;
+
     const isEditing =
       state.editingPathId === path.id ||
       (pathMode.current && pathMode.current.id === path.id);
+      const isCurrentPath = pathMode.current && pathMode.current.id === path.id;
 
-    // line
+
+    // ---- ligne principale (SVG) ----
     if (path.points.length >= 2) {
       const d = path.points.map((pt, idx) => {
         const px = (pt.xp / 100) * (state.mapNatural.w || 1);
@@ -453,23 +457,24 @@ function renderMarkers(options = {}) {
       svg.appendChild(el);
     }
 
-    // points
-    path.points.forEach(pt => {
-      const px = (pt.xp / 100) * (state.mapNatural.w || 1);
-      const py = (pt.yp / 100) * (state.mapNatural.h || 1);
-      const dot = document.createElement('div');
-      dot.className = 'path-point';
-      dot.style.left = px + 'px';
-      dot.style.top = py + 'px';
+    // ---- points de la route ----
+      path.points.forEach(pt => {
+        const px = (pt.xp / 100) * (state.mapNatural.w || 1);
+        const py = (pt.yp / 100) * (state.mapNatural.h || 1);
+        const dot = document.createElement('div');
+        dot.className = 'path-point';
+        dot.style.left = px + 'px';
+        dot.style.top  = py + 'px';
 
-      if (isEditing) dot.classList.add('active-glow');
-      inner.appendChild(dot);
-    });
-      // Route labels
+        if (isEditing) dot.classList.add('active-glow');
+        inner.appendChild(dot);
+      });
+
+      // ---- label au milieu de la route (comme avant) ----
       if (
         path.points &&
         path.points.length &&
-        (!pathMode.current || pathMode.current.id !== path.id) // 👈 pas de label pour la route en cours
+        (!pathMode.current || pathMode.current.id !== path.id) // pas de label pour la route en cours
       ) {
         const midIndex = Math.floor(path.points.length / 2);
         const mid = path.points[midIndex];
@@ -492,7 +497,41 @@ function renderMarkers(options = {}) {
         inner.appendChild(label);
       }
 
-  });
+      // ---- bulles Start / End 👣 🚩 ----
+      if (path.points && path.points.length) {
+        const first = path.points[0];
+        const last  = path.points[path.points.length - 1];
+
+        const makeEndpoint = (pt, type) => {
+          const ex = (pt.xp / 100) * (state.mapNatural.w || 1);
+          const ey = (pt.yp / 100) * (state.mapNatural.h || 1);
+
+          const tag = document.createElement('div');
+          tag.className = 'path-endpoint ' + (type === 'start' ? 'path-start' : 'path-end');
+          tag.textContent = type === 'start' ? '👣' : '🚩';
+          tag.style.left = ex + 'px';
+          tag.style.top  = ey + 'px';
+
+          if (path.color) {
+            tag.style.background  = hexToRgba(path.color, 0.9);
+            tag.style.borderColor = path.color;
+            tag.style.color       = '#ffffff';
+          }
+
+          inner.appendChild(tag);
+        };
+
+        // start
+        makeEndpoint(first, 'start');
+
+        // end
+        if (path.points.length > 1 && !isCurrentPath) {
+          makeEndpoint(last, 'end');
+        }
+
+      }
+    });
+
 
   // 3) draw markers
 const markers = p.markers || [];
@@ -1132,6 +1171,26 @@ if (importPathsBtn) {
     renderRoutesPanel();
     showToast('Markers cleared for this map 🧹');
   });
+
+    // --- Clear all paths for active profile ---
+    $('#clearPaths')?.addEventListener('click', () => {
+      const prof = currentProfile();
+      if (!prof) return;
+
+      if (!prof.paths || prof.paths.length === 0) {
+        showToast('No paths to delete ❌', 'error');
+        return;
+      }
+
+      if (!confirm('Do you really want to delete all paths from this map?')) return;
+
+      prof.paths = [];
+      saveUserDataToLocal();
+      renderMarkers();
+      renderRoutesPanel();
+      markAsChanged();
+      showToast('All paths cleared for this map 🧹');
+    });
 
   // --- Help ---
   document.querySelector('.closeHelp')?.addEventListener('click', () => {
