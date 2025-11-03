@@ -267,28 +267,43 @@ input[type="text"] {
 
 .marker {
   position: absolute;
-  transform: translate(-50%, -100%) scale(var(--mk, 1));
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transform-origin: bottom left;
- }
+  /* centre du pin = position du clic */
+  transform: translate(-50%, -50%) scale(var(--mk, 1));
+  transform-origin: center center;
+}
 
 .pin {
-   width: 23px; 
-   height: 23px; 
-   border-radius: 50%; 
-   border: 2px solid #ffffff; 
-   background: #ffffff;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-.label { 
-  background: rgba(10,13,28,.8); 
-  border: 1px solid #2a315a; 
-  border-radius: 10px; 
-  padding: 4px 6px; 
-  color: var(--txt); max-width: 240px; 
+.pin .icon {
+  font-size: 14px;
+  line-height: 1;
 }
+
+/* label détaché, à droite du pin */
+.label {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(6px, -50%);
+  background: rgba(10,13,28,0.85);
+  border: 1px solid #2a315a;
+  border-radius: 10px;
+  padding: 4px 6px;
+  color: var(--txt);
+  white-space: nowrap;
+  max-width: 240px;
+}
+
 
 .marker.completed .pin { opacity: 0.4; }
 
@@ -400,11 +415,12 @@ input[type="text"] {
   border-radius: 8px; 
 }
 
-#list{
+#list,#routesList{
   padding-top: 9px;
 }
 
-#list .listItem.highlight {
+#list .listItem.highlight,
+#routesList .listItem.highlight {
   position: relative;
   overflow: visible;
   border-radius: 10px;
@@ -663,8 +679,11 @@ input[type="text"] {
   color: #ffffff;
   border: 2px solid #ffffff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
-  pointer-events: none;
   white-space: nowrap;
+}
+
+#mapInner .path-endpoint.path-start {
+  cursor: pointer;
 }
 
 #mapInner .path-start {
