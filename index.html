@@ -62,13 +62,13 @@
       </div>      
 
       <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:8px;max-height:200px;">
-        <h3 class="mb0 pl-20">Routes list (<span id="routesCount">0</span>)</h3>
+        <h3 class="mb0 pl-20">🚩 Routes list (<span id="routesCount">0</span>)</h3>
         <div id="routesList"></div>
       </section>
 
       <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:400px;">
         <div class="row">
-          <h3 class="m0 pl-20">Markers list(<span id="count">0</span>)
+          <h3 class="m0 pl-20">📍Markers list(<span id="count">0</span>)
           </h3>
           <label class="lock-label">🔒 Lock markers<input id="lockAll" type="checkbox" /></label>
         </div>
@@ -81,11 +81,14 @@
           <p class="small mb0"><b>Import</b> and <b>Export</b> are only needed if you switch browser, computer, or for share. For normal save use the header button.</p> 
         </div>
         <div class="row" style="gap:8px; margin-top:10px;">
-          <button id="clearProfile" class="small danger">Delete all markers</button>
           <button id="importReplaceBtn" class="small">Import save</button>
           <button id="exportFileBtn" class="small">Export save</button>
           <button id="exportPathsBtn" class="small">Export paths only</button>
-        </div>        
+        </div>
+        <div class="row" style="margin-top:10px;">
+            <button id="clearProfile" class="small danger">Delete all markers</button>
+            <button id="clearPaths" class="small danger">Delete all paths</button>
+        </div>   
       </div> 
 
       <div class="section principal" id="admin-section">
