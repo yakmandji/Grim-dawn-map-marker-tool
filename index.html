@@ -12,7 +12,6 @@
       <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.3
       </div>
       <button id="toolPan" class="small">🖐️ Pan</button>
-      <label class="chip"><input id="lockAll" type="checkbox" /> Lock markers</label>
       <div class="sep"></div>
       <select id="profileSelect" title="Profils" class="active"><option value="">(profil)</option></select>
       <div class="sep"></div><button id="exportAllBtn" class="small">💾 Save markers</button>
@@ -67,8 +66,12 @@
         <div id="routesList"></div>
       </section>
 
-      <div class="section light" style="display:flex;flex-direction:column;gap:8px;max-height:400px;">
-        <h3 class="m0 pl-20">Markers list(<span id="count">0</span>)</h3>
+      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:400px;">
+        <div class="row">
+          <h3 class="m0 pl-20">Markers list(<span id="count">0</span>)
+          </h3>
+          <label class="lock-label">🔒 Lock markers<input id="lockAll" type="checkbox" /></label>
+        </div>
         <div id="list" class="list"></div>
       </div>
 
@@ -85,7 +88,7 @@
         </div>        
       </div> 
 
-      <div class="section" id="admin-section">
+      <div class="section principal" id="admin-section">
         <h3>Admin section</h3>
         <div class="row" style="gap:8px">
           <button id="clearSession" class="small danger">Reset all</button>
