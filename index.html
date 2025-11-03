@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grim Dawn Map Marker Tool — v1.6</title>
-  <link rel="stylesheet" href="style.css?1.6" />
+  <title>Grim Dawn Map Marker Tool — v1.7</title>
+  <link rel="stylesheet" href="style.css?1.7" />
 </head>
 <body>
   <div class="app">
     <header>
-      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.6
+      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.7
       </div>
       <button id="toolPan" class="small">🖐️ Pan</button>
       <div class="sep"></div>
@@ -56,12 +56,15 @@
         </div>        
         <div id="currentPathName" class="path-badge"></div>
         <div class="row">
+          <input id="newPathName" type="text" placeholder="Path name (optional)">
+        </div>        
+        <div class="row" style="margin-top: 4px;">
           <button id="newPathBtn" class="small" type="button">➕ Add</button>
           <button id="toolFinishPath" class="toolBtn small">✅ Finish</button>
         </div>
       </div>      
 
-      <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:8px;max-height:200px;">
+      <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:200px;">
         <h3 class="mb0 pl-20">🚩 Routes list (<span id="routesCount">0</span>)</h3>
         <div id="routesList"></div>
       </section>
