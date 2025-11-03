@@ -2,7 +2,7 @@
   --bg: #0f1220;
   --panel: #171b2f;
   --p2: #1f2542;
-  --txt: #e7ebff;
+  --txt: #ced3ec;
   --muted: #aab3d9;
   --ok: #8be38b;
   --danger: #ff6b7a;
@@ -73,16 +73,63 @@ header .sep {
   margin: 0 6px; 
 }
 
-button, select, input[type="color"], .chip {
-  background: var(--p2);
-  color: var(--txt);
-  border-radius: 10px;
-  padding: 6px 2px;
-  cursor: pointer;
+.small{
+    color: var(--txt);
+    font-size: 12px;
+    opacity: .85;
+    margin-top: 0;
 }
 
-button:hover{
-  background: #27305a;
+button, select, input[type="color"], .chip {
+  background: linear-gradient(145deg, #242f66, #1f2859);
+  color: #ced3ec;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3), 
+    0 4px 8px rgba(0, 0, 0, 0.2), 
+    0 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.15s ease-in-out;
+  font-size: 12px;
+}
+
+button.marker-center{
+  padding: 8px 10px 4px 10px;
+}
+
+input[type="color"]{
+  box-shadow: none;
+  background: none;
+}
+
+select option {
+  background-color: #2e3869;
+  color: #e7ebff;
+  border: none;
+}
+
+select option:hover,
+select option:checked {
+  background-color: #2e3869;
+  color: #e7ebff;
+}
+
+button:hover {
+  background: linear-gradient(145deg, #313d7c, #2a3d9e);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 5px 10px rgba(0,0,0,0.45),
+    0 1px 3px rgba(0,0,0,0.7);
+}
+
+button:active {
+  background: linear-gradient(145deg, #0f121e, #1a1d30);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.6),
+    0 1px 1px rgba(255,255,255,0.05);
 }
 
 /* Lock mode: allow panning even over markers */
@@ -94,7 +141,31 @@ button:hover{
 button.small { padding: 6px 8px; }
 button.active,
 select.active { outline: 2px solid #78f1c2; }
-.danger { background: #3b1f29; border-color: #6a2b3b; }
+
+button.danger {
+  background: linear-gradient(145deg, #752010, #56190d);
+  color: #e0b5a5;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 4px 8px rgba(0,0,0,0.5);
+}
+button.danger:hover {
+  background: linear-gradient(145deg, #5e190d, #49150a);
+  color: #ffc0cb;
+}
+
+button.ok {
+  background: linear-gradient(145deg, #1e3a2a, #15291e);
+  color: #b7ffd2;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 4px 8px rgba(0,0,0,0.5);
+}
+button.ok:hover {
+  background: linear-gradient(145deg, #234931, #183424);
+  color: #d0ffe5;
+}
+
 .ok { background: #1e3a2a; border-color: #2e6143; }
 
 input[type="text"] {
@@ -104,6 +175,10 @@ input[type="text"] {
   border: 1px solid #2a315a;
   border-radius: 10px;
   padding: 8px;
+}
+
+#list button.danger, #routesPanel button.danger{
+  max-width: 55px;
 }
 
 .sidebar {
@@ -332,14 +407,6 @@ input[type="text"] {
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-
-.small{
-    color: var(--txt);
-    font-size: 12px;
-    opacity: .85;
-    margin-top: 0;
-}
-
 /* Better color input layout */
 .listItem input[type="color"] { 
   flex: 0 0 36px; 
@@ -534,7 +601,7 @@ input[type="text"] {
 /* Path */
 
 #routesPanel {
-  margin-top: 1rem;
+  margin-top: 2rem;
   padding-top: .5rem;
 }
 
@@ -595,4 +662,31 @@ input[type="text"] {
   0%   { transform: scale(0.4); opacity: 1; }
   60%  { transform: scale(1);   opacity: 1; }
   100% { transform: scale(1.4); opacity: 0.35; }
+}
+
+/* Start / End bubble on paths */
+#mapInner .path-endpoint {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(var(--mk, 1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1;
+  background: rgba(6, 12, 28, 0.9);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+#mapInner .path-start {
+  /* specific start */
+}
+
+#mapInner .path-end {
+  /* Specific end */
 }
