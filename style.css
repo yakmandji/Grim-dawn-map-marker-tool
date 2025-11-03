@@ -217,6 +217,14 @@ input[type="text"] {
 
 .marker.completed .pin { opacity: 0.4; }
 
+.lock-label{
+  flex: none;
+  padding-right: 14px;
+  font-size: 11px;
+  display: flex;
+  opacity: .85;
+}
+
 .floating { 
   position: absolute; 
   right: 12px; 
@@ -322,6 +330,10 @@ input[type="text"] {
   height: 30px; 
   padding: 0; 
   border-radius: 8px; 
+}
+
+#list{
+  padding-top: 9px;
 }
 
 #list .listItem.highlight {
