@@ -388,6 +388,15 @@ function renderList() {
   });
 }
 
+  function hexToRgba(hex, alpha = 1) {
+    const clean = hex.replace('#', '');
+    const bigint = parseInt(clean, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
+
 
 // Render Marker
 function renderMarkers(options = {}) {
@@ -396,6 +405,7 @@ function renderMarkers(options = {}) {
   // clean existing
   document.querySelectorAll('#mapInner .marker').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-point').forEach(n => n.remove());
+  document.querySelectorAll('#mapInner .path-label').forEach(n => n.remove());
   const oldSvg = document.getElementById('pathLayer');
   if (oldSvg) oldSvg.remove();
 
@@ -419,6 +429,9 @@ function renderMarkers(options = {}) {
   paths.forEach(path => {
     if (path.visible === false) return;
     if (!path.points || !path.points.length) return;
+    const isEditing =
+      state.editingPathId === path.id ||
+      (pathMode.current && pathMode.current.id === path.id);
 
     // line
     if (path.points.length >= 2) {
@@ -448,8 +461,37 @@ function renderMarkers(options = {}) {
       dot.className = 'path-point';
       dot.style.left = px + 'px';
       dot.style.top = py + 'px';
+
+      if (isEditing) dot.classList.add('active-glow');
       inner.appendChild(dot);
     });
+      // Route labels
+      if (
+        path.points &&
+        path.points.length &&
+        (!pathMode.current || pathMode.current.id !== path.id) // 👈 pas de label pour la route en cours
+      ) {
+        const midIndex = Math.floor(path.points.length / 2);
+        const mid = path.points[midIndex];
+
+        const lx = (mid.xp / 100) * (state.mapNatural.w || 1);
+        const ly = (mid.yp / 100) * (state.mapNatural.h || 1);
+
+        const label = document.createElement('div');
+        label.className = 'path-label';
+        label.textContent = path.name || '(route)';
+        label.style.left = lx + 'px';
+        label.style.top  = ly + 'px';
+
+        if (path.color) {
+          label.style.background  = hexToRgba(path.color, 0.55);
+          label.style.borderColor = path.color;
+          label.style.color       = '#fff';
+        }
+
+        inner.appendChild(label);
+      }
+
   });
 
   // 3) draw markers
@@ -600,14 +642,20 @@ function renderRoutesPanel() {
     color.type = 'color';
     color.value = path.color || '#ffcc00';
     color.className = 'routeColor';
+
     color.addEventListener('input', (e) => {
       path.color = e.target.value;
+      state.editingPathId = path.id; // on note la route éditée
       renderMarkers({ skipRoutesPanel: true });
     });
+
     color.addEventListener('change', () => {
+      delete state.editingPathId;    // on enlève le flag
       saveUserDataToLocal();
     });
+
     row.appendChild(color);
+
 
     // --- Name ---
     const name = document.createElement('input');
@@ -617,6 +665,7 @@ function renderRoutesPanel() {
     name.addEventListener('blur', (e) => {
       path.name = e.target.value.trim() || '(route)';
       saveUserDataToLocal();
+      renderMarkers({ skipRoutesPanel: true });
     });
     row.appendChild(name);
 
