@@ -318,11 +318,13 @@ function ensurePathsArray() {
     const badge = document.getElementById('currentPathName');
     if (badge) {
       badge.style.display = 'inline-block';
-      badge.textContent = name;
+      badge.textContent = 'Path in progress…';
     }
+
     updateFinishButtonPulse();
     return path;
   }
+
 
   // add point current path
   function addPathPoint(xp, yp) {
@@ -340,28 +342,38 @@ function ensurePathsArray() {
   // finish route
   function finalizeCurrentPath() {
     if (!pathMode.current) {
-      const badge = document.getElementById('currentPathName');
-      if (badge) badge.style.display = 'none';
+      const badge0 = document.getElementById('currentPathName');
+      if (badge0) {
+        badge0.style.display = 'none';
+        badge0.textContent = '';
+      }
       return;
     }
 
     const p = currentProfile();
+
+    // If no route -> delete
     if (p && p.paths && pathMode.current.points.length < 2) {
-      // delete if path not finished
       p.paths = p.paths.filter(r => r.id !== pathMode.current.id);
     }
 
+    // reset mode path
     pathMode.current = null;
     pathMode.active = false;
 
+    // Badge cache
     const badge = document.getElementById('currentPathName');
-    if (badge) badge.style.display = 'none';
+    if (badge) {
+      badge.style.display = 'none';
+      badge.textContent = '';
+    }
 
     clearPathPreview();
     renderMarkers();
     saveUserDataToLocal();
     updateFinishButtonPulse();
   }
+
 
     function updateFinishButtonPulse() {
       const btn = document.getElementById('toolFinishPath');
@@ -471,7 +483,7 @@ function renderList() {
 function renderMarkers(options = {}) {
   const { skipRoutesPanel = false } = options;
 
-  // 1) Nettoyage de l'existant
+  // 1) Cleaning
   document.querySelectorAll('#mapInner .marker').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-point').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-label').forEach(n => n.remove());
@@ -482,7 +494,7 @@ function renderMarkers(options = {}) {
   const p = currentProfile();
   if (!(p && state.mapReady)) return;
 
-  // 2) Nouveau calque SVG pour les routes
+  // 2) New SVG layer
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('id', 'pathLayer');
   svg.setAttribute('class', 'path-layer');
@@ -494,10 +506,9 @@ function renderMarkers(options = {}) {
   svg.style.pointerEvents = 'none';
   inner.appendChild(svg);
 
-  // On oublie l'ancienne ligne de preview (nouveau layer)
   pathPreviewLine = null;
 
-  // 3) Dessin des routes
+  // 3) Route draw
   const paths = p.paths || [];
   paths.forEach(path => {
     if (path.visible === false) return;
@@ -508,7 +519,7 @@ function renderMarkers(options = {}) {
       (pathMode.current && pathMode.current.id === path.id);
     const isCurrentPath = pathMode.current && pathMode.current.id === path.id;
 
-    // Ligne principale
+    // Main line
     if (path.points.length >= 2) {
       const d = path.points.map((pt, idx) => {
         const px = (pt.xp / 100) * (state.mapNatural.w || 1);
@@ -528,7 +539,7 @@ function renderMarkers(options = {}) {
       svg.appendChild(el);
     }
 
-    // Points de la route
+    // Route point
     path.points.forEach(pt => {
       const px = (pt.xp / 100) * (state.mapNatural.w || 1);
       const py = (pt.yp / 100) * (state.mapNatural.h || 1);
@@ -566,7 +577,7 @@ function renderMarkers(options = {}) {
           tag.style.background  = hexToRgba(path.color, 0.9);
           tag.style.borderColor = path.color;
 
-          // Texte noir ou blanc selon luminosité de la couleur
+          // text black or white
           const c = path.color.replace('#', '');
           const r = parseInt(c.substring(0, 2), 16);
           const g = parseInt(c.substring(2, 4), 16);
@@ -575,13 +586,28 @@ function renderMarkers(options = {}) {
           tag.style.color = luminance > 0.6 ? '#000' : '#fff';
         }
 
+        // --- Clic label route ---
+        if (type === 'start') {
+          tag.addEventListener('pointerdown', (e) => {
+            e.stopPropagation();
+            const row = document.querySelector(
+              `#routesList .listItem[data-pid="${path.id}"]`
+            );
+            if (row) {
+              row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              row.classList.add('highlight');
+              setTimeout(() => row.classList.remove('highlight'), 1500);
+            }
+          });
+        }
+
         inner.appendChild(tag);
       };
 
       // Start
       makeEndpoint(first, 'start');
 
-      // End (seulement si route finie)
+      // End (If route done)
       if (path.points.length > 1 && !isCurrentPath) {
         makeEndpoint(last, 'end');
       }
@@ -626,11 +652,9 @@ function renderMarkers(options = {}) {
     const dragThreshold = 6;
 
     el.addEventListener('pointerdown', (e) => {
-      // on enregistre la position de départ pour savoir si c’est un clic ou un drag
       startClient = { x: e.clientX, y: e.clientY };
 
       if (state.locked) {
-        // en mode lock, on ne permet pas le drag, mais on capte quand même le pointer
         el.setPointerCapture(e.pointerId);
         return;
       }
@@ -665,7 +689,7 @@ function renderMarkers(options = {}) {
 
       try { el.releasePointerCapture(e.pointerId); } catch(_) {}
 
-      // --- Mode LOCK : pas de drag, juste scroll + highlight sur clic ---
+      // --- Mode LOCK : no drag
       if (state.locked) {
         if (!moved) {
           const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
@@ -678,7 +702,6 @@ function renderMarkers(options = {}) {
         return;
       }
 
-      // --- Non lock, mais pas de drag enclenché → clic simple ---
       if (!dragging) {
         if (!moved) {
           const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
@@ -691,10 +714,9 @@ function renderMarkers(options = {}) {
         return;
       }
 
-      // --- Fin de drag ---
+      // --- End drag ---
       dragging = false;
 
-      // Clic sans réel déplacement → scroll + highlight
       if (!moved) {
         const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
         if (row) {
@@ -705,7 +727,6 @@ function renderMarkers(options = {}) {
         return;
       }
 
-      // Vrai drag → on met à jour les coordonnées du marker
       const p1 = viewToPct(e.clientX, e.clientY);
       let nx = clamp(p1.xp - startPct.dx, 0, 100);
       let ny = clamp(p1.yp - startPct.dy, 0, 100);
@@ -718,8 +739,6 @@ function renderMarkers(options = {}) {
     inner.appendChild(el);
   });
 
-
-  // 5) Maj du panneau ROUTES si besoin
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
   }
@@ -736,11 +755,13 @@ function renderRoutesPanel() {
   if (!wrap) return;
 
   const p = currentProfile();
+  if (!p) return;
   wrap.innerHTML = '';
 
   p.paths.forEach((path) => {
     const row = document.createElement('div');
     row.className = 'listItem route-item';
+    row.dataset.pid = path.id;
 
     // --- Color ---
     const color = document.createElement('input');
@@ -750,12 +771,12 @@ function renderRoutesPanel() {
 
     color.addEventListener('input', (e) => {
       path.color = e.target.value;
-      state.editingPathId = path.id; // on note la route éditée
+      state.editingPathId = path.id;
       renderMarkers({ skipRoutesPanel: true });
     });
 
     color.addEventListener('change', () => {
-      delete state.editingPathId;    // on enlève le flag
+      delete state.editingPathId;
       saveUserDataToLocal();
     });
 
@@ -1137,12 +1158,13 @@ const newPathBtn = document.getElementById('newPathBtn');
 if (newPathBtn) {
   newPathBtn.addEventListener('click', () => {
     setTool('path');
-    startNewPath();
-    const badge = document.getElementById('currentPathName');
-    if (badge) {
-      badge.style.display = 'inline-block';
-      badge.textContent = 'Path in progress…';
-    }
+
+    const input = document.getElementById('newPathName');
+    const customName = input ? input.value.trim() : '';
+
+    const path = startNewPath(customName);
+    if (input) input.value = '';
+
     renderRoutesPanel();
   });
 }
