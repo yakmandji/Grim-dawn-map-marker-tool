@@ -588,12 +588,13 @@ function renderMarkers(options = {}) {
     }
   });
 
-  // 4) Markers
+  // 3) draw markers
   const markers = p.markers || [];
   markers.forEach(m => {
     const el = document.createElement('div');
     el.className = 'marker' + (m.done ? ' completed' : '');
 
+    // pin
     const pin = document.createElement('div');
     pin.className = 'pin';
     const ic = iconFor(m.cat);
@@ -607,20 +608,116 @@ function renderMarkers(options = {}) {
     }
     el.appendChild(pin);
 
+    // label
     const lab = document.createElement('div');
     lab.className = 'label';
     lab.textContent = m.label || '(no name)';
     el.appendChild(lab);
 
+    // position initiale
     const pt = pctToPx(m.xp, m.yp);
     el.style.left = pt.x + 'px';
     el.style.top  = pt.y + 'px';
 
-    // ... toute ta logique de drag & drop des markers ici, inchangée ...
-    // (tu peux juste laisser ton bloc actuel tel quel)
+    // ========== INTERACTIONS ==========
+    let dragging = false;
+    let startPct = null;
+    let startClient = null;
+    const dragThreshold = 6;
+
+    el.addEventListener('pointerdown', (e) => {
+      // on enregistre la position de départ pour savoir si c’est un clic ou un drag
+      startClient = { x: e.clientX, y: e.clientY };
+
+      if (state.locked) {
+        // en mode lock, on ne permet pas le drag, mais on capte quand même le pointer
+        el.setPointerCapture(e.pointerId);
+        return;
+      }
+
+      dragging = true;
+      el.setPointerCapture(e.pointerId);
+
+      const p1 = viewToPct(e.clientX, e.clientY);
+      startPct = {
+        dx: p1.xp - m.xp,
+        dy: p1.yp - m.yp
+      };
+    });
+
+    el.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      if (!startPct) return;
+
+      const p1 = viewToPct(e.clientX, e.clientY);
+      let nx = clamp(p1.xp - startPct.dx, 0, 100);
+      let ny = clamp(p1.yp - startPct.dy, 0, 100);
+
+      const pt2 = pctToPx(nx, ny);
+      el.style.left = pt2.x + 'px';
+      el.style.top  = pt2.y + 'px';
+    });
+
+    el.addEventListener('pointerup', (e) => {
+      const dx = e.clientX - (startClient?.x ?? e.clientX);
+      const dy = e.clientY - (startClient?.y ?? e.clientY);
+      const moved = Math.sqrt(dx*dx + dy*dy) > dragThreshold;
+
+      try { el.releasePointerCapture(e.pointerId); } catch(_) {}
+
+      // --- Mode LOCK : pas de drag, juste scroll + highlight sur clic ---
+      if (state.locked) {
+        if (!moved) {
+          const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+          if (row) {
+            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            row.classList.add('highlight');
+            setTimeout(() => row.classList.remove('highlight'), 1500);
+          }
+        }
+        return;
+      }
+
+      // --- Non lock, mais pas de drag enclenché → clic simple ---
+      if (!dragging) {
+        if (!moved) {
+          const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+          if (row) {
+            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            row.classList.add('highlight');
+            setTimeout(() => row.classList.remove('highlight'), 800);
+          }
+        }
+        return;
+      }
+
+      // --- Fin de drag ---
+      dragging = false;
+
+      // Clic sans réel déplacement → scroll + highlight
+      if (!moved) {
+        const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+        if (row) {
+          row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          row.classList.add('highlight');
+          setTimeout(() => row.classList.remove('highlight'), 800);
+        }
+        return;
+      }
+
+      // Vrai drag → on met à jour les coordonnées du marker
+      const p1 = viewToPct(e.clientX, e.clientY);
+      let nx = clamp(p1.xp - startPct.dx, 0, 100);
+      let ny = clamp(p1.yp - startPct.dy, 0, 100);
+
+      updateMarkerFromUI(m.id, { xp: nx, yp: ny }, false);
+      renderMarkers({ skipRoutesPanel: true });
+      saveUserDataToLocal();
+    });
 
     inner.appendChild(el);
   });
+
 
   // 5) Maj du panneau ROUTES si besoin
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
