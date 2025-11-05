@@ -24,10 +24,26 @@
   const $  = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
 
-  // Refs DOM
+  //-------- Refs DOM
   const viewport = $('#mapViewport');
   const inner    = $('#mapInner');
   const mapImg   = $('#mapImg');
+
+  // Loader overlay refs + helpers
+  const loaderOverlay = document.getElementById('mapLoader');
+  const loaderMessage = loaderOverlay?.querySelector('.loader-message');
+
+  function showLoader(msg = 'Loading map…') {
+    if (!loaderOverlay) return;
+    loaderMessage.textContent = msg;
+    loaderOverlay.classList.remove('hidden');
+  }
+
+  function hideLoader() {
+    if (!loaderOverlay) return;
+    loaderOverlay.classList.add('hidden');
+  }
+  //------------------------
 
   // Convert image (sessionSrc / embedData) in base64 for admin export
   async function srcToDataURL(src, mime = 'image/jpeg', quality = 0.85) {
@@ -135,10 +151,13 @@
     }
     fitToScreen();
     renderMarkers();
+    hideLoader();
   });
+
   mapImg.addEventListener('error', () => {
     state.mapReady = false;
     alert('Failed to load image');
+    hideLoader();
   });
 
   // --- View helpers (DOM) ---
@@ -1208,6 +1227,7 @@ if (importPathsBtn) {
     setActiveProfile(name);
     const p = currentProfile();
     if (p && p.map && p.map.embedData) {
+      showLoader('Loading map…');
       setMapSrc(p.map.embedData);
     } else if (p && p.map && p.map.sessionSrc) {
       setMapSrc(p.map.sessionSrc);
@@ -1362,6 +1382,7 @@ if (importPathsBtn) {
         setActiveProfile(first);
         const p = currentProfile();
         if (p && p.map && p.map.embedData) {
+          showLoader('Loading map…');
           setMapSrc(p.map.embedData);
         }
       }
