@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="style.css?1.7" />
 </head>
 <body>
+  <div id="mapLoader">
+    <div class="loader-panel">
+      <div class="loader-spinner"></div>
+      <div class="loader-message">Loading map…</div>
+    </div>
+  </div>
   <div class="app">
     <header>
       <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.7
@@ -30,13 +36,13 @@
         </div>
         <div class="row" style="margin-top: 4px;">
           <select id="newCategory">
-            <option>🔘 General</option>
-            <option>⭐ Quest</option>
-            <option>💀 Boss</option>
-            <option>🗝️ Loot</option>
-            <option>📍 Waypoint</option>
-            <option>🏰 Donjon</option>
-            <option>💬 NPC</option>
+            <option value="General">🔘 General</option>
+            <option value="Quest">⭐ Quest</option>
+            <option value="Boss">💀 Boss</option>
+            <option value="Loot">🗝️ Loot</option>
+            <option value="Waypoint">📍 Waypoint</option>
+            <option value="Donjon">🏰 Donjon</option>
+            <option value="NPC">💬 NPC</option>
           </select>
           <input id="newColor" type="color" value="#78f1c2" style="flex:0 0 auto" />
           <label style="flex:0 0 auto">
