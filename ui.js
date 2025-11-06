@@ -175,7 +175,7 @@
   function applyView(){
     const {x, y, scale} = state.view;
     inner.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
-    const MIN_RATIO = 0.8;
+    const MIN_RATIO = 0.82; //scale for marker
     const mk = (scale < MIN_RATIO) ? (MIN_RATIO / scale) : 1;
     inner.style.setProperty('--mk', mk);
     const zr = $('#zoomReadout');
@@ -634,30 +634,75 @@ function renderMarkers(options = {}) {
   });
 
   // 3) draw markers
-  const markers = p.markers || [];
-  markers.forEach(m => {
-    const el = document.createElement('div');
-    el.className = 'marker' + (m.done ? ' completed' : '');
+const markers = p.markers || [];
+markers.forEach(m => {
+  const el = document.createElement('div');
+  el.className = 'marker' + (m.done ? ' completed' : '');
 
-    // pin
-    const pin = document.createElement('div');
-    pin.className = 'pin';
-    const ic = iconFor(m.cat);
-    if (ic) {
-      const span = document.createElement('span');
-      span.className = 'icon';
-      span.textContent = ic;
-      pin.appendChild(span);
-    } else {
-      pin.style.background = m.color || '#78f1c2';
+  // --- PIN ---
+  const pin = document.createElement('div');
+  pin.className = 'pin';
+
+  // image de fond (goutte)
+  const bg = document.createElement('img');
+  bg.className = 'pin-bg';
+  bg.src = 'img/pin_fill.svg';
+  bg.alt = '';
+  pin.appendChild(bg);
+
+  // couleur du pin (pour tous les types)
+  const color = m.color || '#78f1c2';
+
+  function hexToHSL(hex) {
+    let r = 0, g = 0, b = 0;
+    if (hex.length === 4) {
+      r = "0x" + hex[1] + hex[1];
+      g = "0x" + hex[2] + hex[2];
+      b = "0x" + hex[3] + hex[3];
+    } else if (hex.length === 7) {
+      r = "0x" + hex[1] + hex[2];
+      g = "0x" + hex[3] + hex[4];
+      b = "0x" + hex[5] + hex[6];
     }
-    el.appendChild(pin);
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h = 0, s = 0, l = (max + min) / 2;
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return { h: h * 360, s: s * 100, l: l * 100 };
+  }
 
-    // label
-    const lab = document.createElement('div');
-    lab.className = 'label';
-    lab.textContent = m.label || '(no name)';
-    el.appendChild(lab);
+  const { h, s, l } = hexToHSL(color);
+  // on recolore uniquement le fond, pas l'icône
+  bg.style.filter =
+    `drop-shadow(0 2px 6px rgba(0,0,0,0.4)) ` +
+    `hue-rotate(${h}deg) saturate(${1 + s / 100}) brightness(${0.9 + (l / 200)})`;
+
+  // icône selon la catégorie (si tu veux que General soit vide, on le saute)
+  const ic = iconFor(m.cat);
+  if (ic && m.cat !== 'General') {
+    const iconImg = document.createElement('img');
+    iconImg.className = 'pin-icon';
+    iconImg.src = ic;
+    iconImg.alt = m.cat || '';
+    pin.appendChild(iconImg);
+  }
+
+  el.appendChild(pin);
+
+  // --- LABEL (ta partie d'origine) ---
+  const lab = document.createElement('div');
+  lab.className = 'label';
+  lab.textContent = m.label || '(no name)';
+  el.appendChild(lab);
 
     // position initiale
     const pt = pctToPx(m.xp, m.yp);
@@ -755,14 +800,13 @@ function renderMarkers(options = {}) {
       saveUserDataToLocal();
     });
 
-    inner.appendChild(el);
+    inner.appendChild(el);   
   });
 
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
   }
 }
-
 
 
 // END RENDER MARKER ------
