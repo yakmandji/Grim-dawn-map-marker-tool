@@ -258,7 +258,7 @@ input[type="text"] {
   top: 0; 
   transform-origin: 0 0; 
 }
-.mapInner img { 
+.mapInner>img { 
   display: block; 
   max-width: none; 
   user-select: none; 
@@ -268,26 +268,51 @@ input[type="text"] {
 .marker {
   position: absolute;
   /* centre du pin = position du clic */
-  transform: translate(-50%, -50%) scale(var(--mk, 1));
+  transform: translate(-49%, -90%) scale(var(--mk, 1));
   transform-origin: center center;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+
+.pin[data-light="true"] .pin-icon {
+  /* Si le fond est clair, on garde icône foncée */
+  filter: none;
+  opacity: 0.85;
 }
 
 .pin {
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  background: #ffffff;
+  position: relative;
+  width: 36px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-.pin .icon {
-  font-size: 14px;
-  line-height: 1;
+/* fond goutte SVG, qu'on va recolorer */
+.pin-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
 }
+
+/* icône blanche par-dessus */
+.pin-icon {
+  position: relative;
+  width: 18px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.9;
+  margin-top: -12px;
+}
+
+
 
 /* label détaché, à droite du pin */
 .label {
@@ -453,11 +478,6 @@ input[type="text"] {
  display: flex; 
  align-items: center; 
  justify-content: center; 
-}
-
-.pin .icon { 
-  font-size: 14px; 
-  line-height: 1; 
 }
 
 /* Ensure visible color swatch in the New marker box */
