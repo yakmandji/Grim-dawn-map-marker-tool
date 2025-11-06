@@ -19,16 +19,25 @@
 
   // --- Icons by catégorie for UI ---
   const defaultIcons = {
-    'General': '',
-    'Quest': '⭐',
-    'Boss': '💀',
-    'Loot': '🗝️',
-    'Waypoint': '📍',
-    'Donjon' : '🏰',
-    'NPC': '💬'
+    General:  '', 
+    Quest:    'img/quest.svg',
+    Boss:     'img/boss.svg',
+    Loot:     'img/loot.svg',
+    Waypoint: 'img/waypoint.svg',
+    Donjon:   'img/donjon.svg',
+    NPC:      'img/npc.svg'
   };
-  const iconFor = (cat) => defaultIcons[cat] || '';
-  const isColorAllowed = (cat) => !iconFor(cat);
+
+  const iconFor = (cat) => {
+    if (!cat) return '';
+    const lower = String(cat).toLowerCase();
+    const key = Object.keys(defaultIcons).find(
+      k => k.toLowerCase() === lower
+    );
+    return key ? defaultIcons[key] : '';
+  };
+  const isColorAllowed = () => true;
+
 
   // --- Profils ---
   function currentProfile(){
