@@ -269,7 +269,7 @@ input[type="text"] {
   position: absolute;
   /* centre du pin = position du clic */
   transform: translate(-49%, -90%) scale(var(--mk, 1));
-  transform-origin: center center;
+  transform-origin: 50% 100%;
   pointer-events: auto;
   cursor: pointer;
 }
