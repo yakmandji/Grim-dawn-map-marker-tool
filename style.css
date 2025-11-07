@@ -341,11 +341,13 @@ input[type="text"] {
 }
 
 .floating { 
-  position: absolute; 
-  right: 12px; 
-  bottom: 12px; 
-  display: flex; 
-  gap: 8px; 
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+  pointer-events: none;
 }
 
 .list,#routesList { 
