@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grim Dawn Map Marker Tool — v1.9</title>
-  <link rel="stylesheet" href="style.css?1.9" />
+  <title>Grim Dawn Map Marker Tool — v2.0</title>
+  <link rel="stylesheet" href="style.css?2.0" />
 </head>
 <body>
   <div id="mapLoader">
@@ -15,7 +15,7 @@
   </div>
   <div class="app">
     <header>
-      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v1.9
+      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v2.0
       </div>
       <button id="toolPan" class="small">🖐️ Pan</button>
       <div class="sep"></div>
@@ -70,19 +70,46 @@
         </div>
       </div>      
 
-      <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:200px;">
-        <h3 class="mb0 pl-20">🚩 Routes list (<span id="routesCount">0</span>)</h3>
-        <div id="routesList"></div>
-      </section>
-
-      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:400px;">
+      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:400px;margin-top: 2rem;">
         <div class="row">
           <h3 class="m0 pl-20">📍Markers list(<span id="count">0</span>)
           </h3>
           <label class="lock-label">🔒 Lock markers<input id="lockAll" type="checkbox" /></label>
         </div>
+        <div class="row">
+          <!-- === FILTER BAR === -->
+              <div class="filterBar">
+                <button class="filterToggle is-on" data-cat="General" title="Show/Hide General">
+                  <img src="img/general.svg" alt="General">
+                </button>
+                <button class="filterToggle is-on" data-cat="Quest" title="Show/Hide Quests">
+                  <img src="img/quest.svg" alt="Quest">
+                </button>                
+                <button class="filterToggle is-on" data-cat="Boss" title="Show/Hide Boss">
+                  <img src="img/boss.svg" alt="Boss">
+                </button>
+                <button class="filterToggle is-on" data-cat="Loot" title="Show/Hide Loot">
+                  <img src="img/loot.svg" alt="Loot">
+                </button>
+                <button class="filterToggle is-on" data-cat="Waypoint" title="Show/Hide Waypoint">
+                  <img src="img/waypoint.svg" alt="Loot">
+                </button>
+                <button class="filterToggle is-on" data-cat="Donjon" title="Show/Hide Donjon">
+                  <img src="img/donjon.svg" alt="Loot">
+                </button>
+                <button class="filterToggle is-on" data-cat="NPC" title="Show/Hide Donjon">
+                  <img src="img/NPC.svg" alt="NPC">
+                </button>
+              </div>
+              <!-- === END FILTER BAR === -->
+        </div>
         <div id="list" class="list"></div>
       </div>
+
+      <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:200px;">
+        <h3 class="mb0 pl-20">🚩 Routes list (<span id="routesCount">0</span>)</h3>
+        <div id="routesList"></div>
+      </section>
 
       <div class="section light principal">
         <h3>Tools</h3>
@@ -185,7 +212,10 @@
   <div id="toastContainer"></div>
 
   <script src="core.js"></script>
-  <script src="ui.js"></script>
+  <script src="ui.core.js"></script>
+  <script src="ui.tools.js"></script>
+  <script src="ui.filter.js"></script>
+
 
 </body>
 </html>
