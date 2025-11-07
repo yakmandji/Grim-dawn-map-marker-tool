@@ -10,6 +10,7 @@
     locked: true,
     mapNatural: { w: 0, h: 0 },
     mapReady: false,
+    lastCreatedMarkerId: null,
   };
 
   // --- Utils ---
@@ -27,6 +28,26 @@
     Donjon:   'img/donjon.svg',
     NPC:      'img/npc.svg'
   };
+
+  // --- Save indicator ---
+  function updateSaveIndicator(saved){
+    const el = document.querySelector('#saveStatus');
+    if (!el) return;
+    if (saved) {
+      el.textContent = '● Saved';
+      el.style.color = '#8be38b';
+    } else {
+      el.textContent = '● Unsaved';
+      el.style.color = '#ff6b7a';
+    }
+  }
+  updateSaveIndicator(true);
+
+  function markAsChanged(){
+    updateSaveIndicator(false);
+  }
+  //------------------------
+
 
   const iconFor = (cat) => {
     if (!cat) return '';
@@ -209,8 +230,10 @@ function getUserDataOnly() {
   window.GDMMCore = {
     DEV_MODE,
     state,
+    updateSaveIndicator,
     now,
     clamp,
+    markAsChanged,
     uid,
     defaultIcons,
     iconFor,
@@ -231,4 +254,5 @@ function getUserDataOnly() {
     loadUserDataFromLocal,
     mergeUserMarkers,
   };
+
 })();
