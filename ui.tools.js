@@ -76,33 +76,23 @@
           renderMarkers();
           renderRoutesPanel();
           updateSaveIndicator(true);
-          showToast('Full map data imported ✅');
+          showToast(GDMMLang.t('toast.FullMapDataImported'));
           return;
         }
 
         if (isPathsOnly) {
-          // User choice
-          const mode = confirm('Import paths: OK = merge, Cancel = replace paths on matching maps ?')
-            ? 'merge'
-            : 'replace';
-
           for (const [name, incoming] of Object.entries(imported)) {
             const prof = state.profiles[name];
             if (!prof) continue;
             if (!incoming.paths) continue;
 
             if (!prof.paths) prof.paths = [];
-
-            if (mode === 'replace') {
-              prof.paths = incoming.paths;
-            } else {
-              prof.paths = prof.paths.concat(incoming.paths);
-            }
+            prof.paths = prof.paths.concat(incoming.paths);
           }
 
           renderMarkers();
           updateSaveIndicator(false);
-          showToast('Paths imported ✅');
+          showToast(GDMMLang.t('toast.PathImported'));
           return;
         }
 
@@ -126,7 +116,7 @@
         renderRoutesPanel();
         saveUserDataToLocal();
         updateSaveIndicator(true);
-        showToast('Markers imported ✅');
+        showToast(GDMMLang.t('toast.MarkerImported'));
 
       } catch (err) {
         console.error('[GDMM] import failed:', err);
@@ -142,7 +132,7 @@
     input.click();
   });
 
-  // Export fichier JSON (markers only)
+  // Export fichier JSON
   $('#exportFileBtn')?.addEventListener('click', async () => {
     const data = getUserDataOnly();
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -151,6 +141,7 @@
     a.download = 'gdmm_user_markers.json';
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+    showToast(GDMMLang.t('toast.ExportAll'));
   });
 
 // Export path only
@@ -165,7 +156,7 @@
 	    }
 
 	    if (Object.keys(out).length === 0) {
-	      showToast('No paths to export ❌', 'error');
+	      showToast(GDMMLang.t('toast.NoPathToExport'));
 	      return;
 	    }
 	    const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
@@ -174,7 +165,7 @@
 	    a.download = 'gdmm_paths_only.json';
 	    a.click();
 	    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-	    showToast('Routes exported ✅');
+	    showToast(GDMMLang.t('toast.RoutesExported'));
 	  });
 	}
 
@@ -184,18 +175,18 @@
       if (!prof) return;
 
       if (!prof.paths || prof.paths.length === 0) {
-        showToast('No paths to delete ❌', 'error');
+        showToast(GDMMLang.t('toast.NoPathToDelete'));
         return;
       }
 
-      if (!confirm('Do you really want to delete all paths from this map?')) return;
+      if (!confirm(GDMMLang.t('toast.WarnDeleteAllPath'))) return;
 
       prof.paths = [];
       saveUserDataToLocal();
       renderMarkers();
       renderRoutesPanel();
       markAsChanged();
-      showToast('All paths cleared for this map 🧹');
+      showToast(GDMMLang.t('toast.AllPathDeleted'));
     });
 
 
@@ -302,7 +293,7 @@
     renderMarkers();
     markAsChanged();
     renderRoutesPanel();
-    showToast('Markers cleared for this map 🧹');
+    showToast(GDMMLang.t('toast.MarkerMapCleared'));
   });
 
 
@@ -334,5 +325,5 @@
   $('#exportAllBtn')?.addEventListener('click', () => {
     saveUserDataToLocal();
     updateSaveIndicator(true);
-    showToast('Markers & routes saved locally 💾');
+    showToast(GDMMLang.t('toast.SaveMarkerAndRoute'));
   });
