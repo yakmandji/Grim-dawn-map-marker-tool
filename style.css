@@ -1,19 +1,23 @@
 :root {
   --bg: #0f1220;
-  --panel: #171b2f;
-  --p2: #1f2542;
-  --txt: #ced3ec;
-  --muted: #aab3d9;
+  --panel: #0e1c22;
+  --p2: #08242d;
+  --txt: #5b8d8f;
+  --titlecolor: #6b9597;
+  --buttontxt : #059999;
+  --placeholdertext : #2d6f72;
+  --muted: #8cb9ac;
   --ok: #8be38b;
   --danger: #ff6b7a;
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+  --sidebar-width: 430px;
 }
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   margin: 0;
-  background: linear-gradient(180deg, #0c1022, #0b0f1e 60%, #0a0e1b);
+  background: linear-gradient(81deg, #1a4f5d, #07181d 116%, #123843);
   color: var(--txt);
   font: 14px/1.4 system-ui, Segoe UI, Roboto, Helvetica, Arial;
 }
@@ -33,55 +37,63 @@ body {
 .app {
   display: grid;
 /*  grid-template-rows: auto 1fr;*/
-  grid-template-columns: 430px 1fr;
+  grid-template-columns: var(--sidebar-width) 1fr;
   gap: 12px;
   height: 100%;
   padding: 0 12px 12px 12px;
 }
 
 header {
-    grid-column: 1 / -1;
-    background: var(--panel);
-    border: 1px solid #2a315a;
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-    padding: 10px 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    position: fixed;
-    z-index: 2;
-    width: 99%;
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid #17373c;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 17px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 15px;
+  left: calc(var(--sidebar-width) + 42px);
+  right: 28px;
+  width: auto;
+  z-index: 2;
 }
-header .title {
+
+header .right-panel{
+    display: flex;
+    right: 24px;
+    position: absolute;
+    align-items: center;
+}
+
+.title {
  font-weight: 700;
  margin-right: auto;
  display: flex;
  align-items: anchor-center;
  gap: 17px; 
-}
-
-header .title img{
-  border-radius: 16px;
+ display: flex;
+ margin: 15px auto;
 }
 
 header .sep { 
   width: 1px; 
   background: #2c3361; 
   height: 22px; 
-  margin: 0 6px; 
+  margin: 0 12px; 
 }
 
 .small{
-    color: var(--txt);
     font-size: 12px;
     opacity: .85;
     margin-top: 0;
 }
 
 button, select, input[type="color"], .chip {
-  background: linear-gradient(145deg, #242f66, #1f2859);
+  background: linear-gradient(145deg, #0d3646, #1b485d);
   color: #ced3ec;
   border: none;
   border-radius: 10px;
@@ -96,6 +108,16 @@ button, select, input[type="color"], .chip {
   font-size: 12px;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: var(--placeholdertext);
+  opacity: 1;
+}
+
+button{
+  color:var(--buttontxt);
+}
+
 button.marker-center{
   padding: 8px 10px 4px 10px;
 }
@@ -106,7 +128,7 @@ input[type="color"]{
 }
 
 select option {
-  background-color: #2e3869;
+  background-color: #1a4d63;
   color: #e7ebff;
   border: none;
 }
@@ -118,7 +140,7 @@ select option:checked {
 }
 
 button:hover {
-  background: linear-gradient(145deg, #313d7c, #2a3d9e);
+  background: linear-gradient(145deg, #113646, #1c4a5f);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 5px 10px rgba(0,0,0,0.45),
@@ -140,10 +162,10 @@ button:active {
 
 button.small { padding: 6px 8px; }
 button.active,
-select.active { outline: 2px solid #78f1c2; }
+select.active { outline: 1px solid #78f1c2; }
 
 button.danger {
-  background: linear-gradient(145deg, #752010, #56190d);
+  background: linear-gradient(145deg, #491810, #76130c);
   color: #e0b5a5;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.05),
@@ -168,35 +190,44 @@ button.ok:hover {
 
 .ok { background: #1e3a2a; border-color: #2e6143; }
 
-input[type="text"] {
-  width: 100%;
-  background: #0f1330;
-  color: var(--txt);
-  border: 1px solid #2a315a;
-  border-radius: 10px;
-  padding: 8px;
+
+input[type="text"],
+input[type="search"],
+input[type="password"],
+textarea {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--placeholdertext);
+  border-radius: 6px;
+  padding: 6px 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-#list button.danger, #routesPanel button.danger{
-  max-width: 55px;
+input[type="text"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-accent, #00ff96);
+  box-shadow: 0 0 6px rgba(0, 255, 150, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .sidebar {
     background: var(--panel);
-    border: 1px solid #2a315a;
+    border: 1px solid #285259;
     border-radius: 14px;
     box-shadow: var(--shadow);
     padding: 12px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 5rem;
-    height: 94%;
+    margin-top: 1rem;
+    height: 100%;
 }
 
 .section {
   background: var(--p2);
-  border: 1px dashed #4d5691;
+  border: 1px dashed #354e59;
   border-radius: 12px;
   padding: 10px 0px 10px 0px;
 }
@@ -210,7 +241,7 @@ input[type="text"] {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .8px;
-  color: var(--muted);
+  color:var(--titlecolor);
 }
 
 .section.light{
@@ -236,8 +267,8 @@ input[type="text"] {
 
 .mapWrap {
   position: relative;
-  background: #0a0e1b;
-  border: 1px solid #2a315a;
+  background: #070d12;
+  border: 1px solid #244b51;
   border-radius: 14px;
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -380,7 +411,7 @@ input[type="text"] {
 }
 
 .marker-save {
-  background: #1f2542;
+  background: #213544;
   border-radius: 8px;
   width: 44px;
   height: 30px;
@@ -497,6 +528,7 @@ input[type="text"] {
 #list select{
   font-size: 11px;
   padding: 5px 8px;
+  max-width: 112px;
 }
 
 #list input[type="color"]{
@@ -692,7 +724,7 @@ input[type="text"] {
 }
 
 #routesList .route-item input[type="text"]{
-    max-width: 150px;
+    max-width: 138px;
 }
 
 .path-badge {
@@ -850,7 +882,7 @@ input[type="text"] {
   border: none;
   padding: 0;
   border-radius: 10px;
-  background: linear-gradient(145deg, #252b4f, #1a1f3b);
+  background: linear-gradient(145deg, #16222a, #132632);
   box-shadow:
     0 4px 8px rgba(0,0,0,0.45),
     0 0 0 1px rgba(0,0,0,0.6);
@@ -894,7 +926,7 @@ input[type="text"] {
   box-shadow:
     0 1px 3px rgba(0,0,0,0.8),
     0 0 0 1px rgba(120, 241, 194, 0.4);
-  background: linear-gradient(145deg, #29315f, #20264a);
+  background: linear-gradient(145deg, #111e29, #142634);
 }
 
 .filterToggle.is-on::after {
@@ -911,11 +943,11 @@ input[type="text"] {
 }
 
 .filterToggle:hover:not(.is-on) {
-  background: linear-gradient(145deg, #2a305a, #20274c);
+  background: linear-gradient(145deg, #172b39, #0c2f3b);
 }
 
 .filterToggle.is-on:hover {
-  background: linear-gradient(145deg, #2d3562, #242b55);
+  background: linear-gradient(145deg, #17444b, #092626);
 }
 
 
@@ -948,4 +980,104 @@ input[type="text"] {
 .filterToggle:not(.is-on) .filterCount {
   opacity: 0.6;
   box-shadow: none;
+}
+
+
+.app-logo {
+  position: relative;
+  width: 120px;      /* adapte si besoin */
+  height: 120px;
+  margin: 16px auto;
+}
+
+.app-logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.app-logo::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(0, 255, 150, 0.8) 0%,
+    rgba(0, 255, 150, 0.35) 35%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(4px);
+  opacity: 0.8;
+  z-index: 1;
+  animation: logo-pulse 4s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+
+/*ZOOM BUTTON*/
+
+#zoomControls {
+  position: absolute;
+  bottom: -7px;
+  right: 138px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  font-size: 14px;
+  color: var(--color-text, #d8e0e3);
+}
+
+#zoomControls button {
+  background: background: linear-gradient(145deg, #0d3646, #1b485d);
+  border: 1px solid var(--color-border, #1d2326);
+  color: var(--color-text, #d8e0e3);
+  padding: 7px 11px;
+  width: 34px;
+  height: 29px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#zoomControls button:hover {
+  background: var(--color-accent-soft, #00c47a);
+  transform: scale(1.1);
+}
+
+#zoomDisplay {
+  min-width: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#zoomControls,
+#zoomControls * {
+  pointer-events: auto;
+}
+
+
+body, #app, #sidebar, #viewport, #header {
+  user-select: none;
+  cursor: default;
+}
+
+input, textarea, [contenteditable="true"] {
+  user-select: text;
+  cursor: text;
 }
