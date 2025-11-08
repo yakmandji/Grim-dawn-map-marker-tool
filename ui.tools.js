@@ -394,11 +394,15 @@ if (mergeBtn) {
     markAsChanged();
 
     delete profiles[sharedName];
-
     document.body.classList.remove('shared-only-view');
-
     mergeBtn.disabled = true;
     mergeBtn.style.display = 'none';
+
+    // Clean URL
+    if (window.history && window.history.replaceState) {
+      const cleanUrl = location.origin + location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
 
     showToast(
       (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) ||
