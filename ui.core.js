@@ -1113,6 +1113,70 @@ if (newPathBtn) {
     newCatEl.addEventListener('change', syncNewColor);
     syncNewColor();
   }
+//----------------------------------------------------------------------------------------
+
+  // Decode share payload from URL
+  function decodeSharePayload(str) {
+    const json = decodeURIComponent(escape(atob(str)));
+    return JSON.parse(json);
+  }
+
+  // Load shared routes from ?share= parameter
+  function loadSharedFromUrl() {
+    const params = new URLSearchParams(location.search);
+    const raw = params.get('share');
+    if (!raw) return;
+
+    let data;
+    try {
+      data = decodeSharePayload(raw);
+    } catch (e) {
+      console.warn('[GDMM] invalid share payload', e);
+      return;
+    }
+
+    if (!data || !Array.isArray(data.routes) || !data.routes.length) return;
+
+    const baseName = `[Shared] ${data.map || 'Route'}`;
+    let name = baseName;
+    let i = 2;
+    while (state.profiles[name]) {
+      name = `${baseName} #${i++}`;
+    }
+
+    const p = ensureProfile(name);
+    p.markers = p.markers || [];
+    p.paths = data.routes || [];
+    p.isShared = true;
+    p.sharedSourceMap = data.map || null;
+    const src = data.map && state.profiles[data.map];
+    if (src && src.map) {
+      p.map = src.map;
+    }
+
+    setActiveProfile(name);
+
+    if (p.map && p.map.embedData) {
+      showLoader(GDMMLang.t('toast.LoadingMap'));
+      setMapSrc(p.map.embedData);
+    } else if (p.map && p.map.sessionSrc) {
+      showLoader(GDMMLang.t('toast.LoadingMap'));
+      setMapSrc(p.map.sessionSrc);
+    }
+
+    refreshProfilesUI();
+    renderList();
+    renderMarkers();
+    renderRoutesPanel();
+
+    document.body.classList.add('shared-only-view');
+
+  }
+
+
+//---------------------------------------------------------------------------------------
+
+
 
   // --- Init on load ---
   (async () => {
@@ -1148,6 +1212,7 @@ if (newPathBtn) {
     // defaut lock
     state.locked = true;
     applyLockUI();
+    loadSharedFromUrl();
   })();
 
 // === SPACE → PAN (global) ===
