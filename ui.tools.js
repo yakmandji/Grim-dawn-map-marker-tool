@@ -357,58 +357,87 @@
 
 const mergeBtn = document.getElementById('mergeSharedBtn');
 if (mergeBtn) {
-  mergeBtn.addEventListener('click', () => {
-    const profiles = state.profiles || {};
-    const entries  = Object.entries(profiles);
+  const mergeBtn = document.getElementById('mergeSharedBtn');
+  if (mergeBtn) {
+    mergeBtn.addEventListener('click', () => {
+      const profiles = state.profiles || {};
+      const entries  = Object.entries(profiles);
 
-    const sharedEntry = entries.find(([name, p]) => p && p.isShared);
-    if (!sharedEntry) {
-      showToast('No shared map loaded ❌', 'error');
-      return;
-    }
-    const [sharedName, sharedProf] = sharedEntry;
+      // 1) Shared Profil
+      const sharedEntry = entries.find(([name, p]) => p && p.isShared);
+      if (!sharedEntry) {
+        showToast('No shared map loaded ❌', 'error');
+        return;
+      }
+      const [sharedName, sharedProf] = sharedEntry;
 
-    const targetName = sharedProf.sharedSourceMap;
-    if (!targetName || !profiles[targetName] || profiles[targetName].isShared) {
-      showToast(
-        (GDMMLang.t && GDMMLang.t('toast.SharedTargetMissing')) ||
-        'Original map not found ❌',
-        'error'
+      // 2) Map cible
+      const targetName = sharedProf.sharedSourceMap;
+      if (!targetName || !profiles[targetName] || profiles[targetName].isShared) {
+        showToast(
+          (GDMMLang.t && GDMMLang.t('toast.SharedTargetMissing')) ||
+          'Original map not found ❌',
+          'error'
+        );
+        return;
+      }
+
+      const target = profiles[targetName];
+
+      // 3) Préparation data
+      const incomingMarkers = Array.isArray(sharedProf.markers) ? sharedProf.markers : [];
+      const incomingPaths   = Array.isArray(sharedProf.paths)   ? sharedProf.paths   : [];
+
+      // 4) Sets ID
+      const existingMarkerIds = new Set(
+        (target.markers || []).map(m => m.id).filter(Boolean)
       );
-      return;
-    }
+      const existingPathIds = new Set(
+        (target.paths || []).map(p => p.id).filter(Boolean)
+      );
 
-    const target = profiles[targetName];
+      // 5) Only Keep news
+      const newMarkers = incomingMarkers.filter(m => m && m.id && !existingMarkerIds.has(m.id));
+      const newPaths   = incomingPaths.filter(p => p && p.id && !existingPathIds.has(p.id));
 
-    // Merge markers + paths
-    target.markers = (target.markers || []).concat(sharedProf.markers || []);
-    target.paths   = (target.paths   || []).concat(sharedProf.paths   || []);
+      if (!newMarkers.length && !newPaths.length) {
+        showToast(
+          (GDMMLang.t && GDMMLang.t('toast.SharedNoNewData')) ||
+          'Nothing new to add from shared map ✅'
+        );
+      } else {
+        // 6) Merge réel
+        target.markers = (target.markers || []).concat(newMarkers);
+        target.paths   = (target.paths   || []).concat(newPaths);
 
-    // Sauvegarde et switch sur la map cible
-    saveUserDataToLocal();
-    setActiveProfile(targetName);
-    refreshProfilesUI();
-    renderList();
-    renderMarkers();
-    renderRoutesPanel();
-    markAsChanged();
+        saveUserDataToLocal();
+        setActiveProfile(targetName);
+        refreshProfilesUI();
+        renderList();
+        renderMarkers();
+        renderRoutesPanel();
+        markAsChanged();
 
-    delete profiles[sharedName];
-    document.body.classList.remove('shared-only-view');
-    mergeBtn.disabled = true;
-    mergeBtn.style.display = 'none';
+        showToast(
+          (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) ||
+          'Shared data added to your map ✅'
+        );
+      }
 
-    // Clean URL
-    if (window.history && window.history.replaceState) {
-      const cleanUrl = location.origin + location.pathname;
-      window.history.replaceState({}, document.title, cleanUrl);
-    }
+      delete profiles[sharedName];
+      document.body.classList.remove('shared-only-view');
 
-    showToast(
-      (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) ||
-      'Shared data added to your map ✅'
-    );
-  });
+      mergeBtn.disabled = true;
+      mergeBtn.style.display = 'none';
+
+      // Clean URL
+      if (window.history && window.history.replaceState) {
+        const cleanUrl = location.origin + location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    });
+  }
+
 }
 
 
