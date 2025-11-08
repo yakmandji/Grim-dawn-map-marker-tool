@@ -30,17 +30,21 @@
   };
 
   // --- Save indicator ---
-  function updateSaveIndicator(saved){
+  function updateSaveIndicator(saved) {
     const el = document.querySelector('#saveStatus');
     if (!el) return;
+
     if (saved) {
-      el.textContent = '● Saved';
+      el.setAttribute('data-i18n', 'toast.SaveState');
+      el.textContent = GDMMLang.t('toast.SaveState');
       el.style.color = '#8be38b';
     } else {
-      el.textContent = '● Unsaved';
+      el.setAttribute('data-i18n', 'toast.UnsaveState');
+      el.textContent = GDMMLang.t('toast.UnsaveState');
       el.style.color = '#ff6b7a';
     }
   }
+
   updateSaveIndicator(true);
 
   function markAsChanged(){
@@ -180,7 +184,7 @@ function getUserDataOnly() {
       const data = getUserDataOnly();
       localStorage.setItem('gdmm_user_data', JSON.stringify(data));
     } catch (e) {
-      console.warn('[GDMM] could not save user data locally:', e);
+      console.warn(GDMMLang.t('toast.CantSaveData'), e);
     }
   }
 
@@ -196,7 +200,7 @@ function getUserDataOnly() {
         if (uProfile.paths) state.profiles[name].paths = uProfile.paths;
       }
     } catch (e) {
-      console.warn('[GDMM] could not load user data:', e);
+      console.warn(GDMMLang.t('toast.CantLoadData'), e);
     }
   }
 
