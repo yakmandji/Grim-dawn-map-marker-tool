@@ -15,6 +15,7 @@
     mergeUserMarkers,
   } = window.GDMMCore;
 
+
   const {
   	$,
   	mapImg,
@@ -27,6 +28,8 @@
   	setMapSrc,
   	showToast,
   } = window.UiCore;
+
+//--------------------------------------------------
 
 
   // Convert image (sessionSrc / embedData) in base64 for admin export
@@ -143,31 +146,6 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 3000);
     showToast(GDMMLang.t('toast.ExportAll'));
   });
-
-// Export path only
-  const exportPathsBtn = document.getElementById('exportPathsBtn');
-	if (exportPathsBtn) {
-	  exportPathsBtn.addEventListener('click', () => {
-	    const out = {};
-	    const profiles = state.profiles || {};
-	    for (const [name, prof] of Object.entries(profiles)) {
-	      if (!prof?.paths || !prof.paths.length) continue;
-	      out[name] = { paths: prof.paths };
-	    }
-
-	    if (Object.keys(out).length === 0) {
-	      showToast(GDMMLang.t('toast.NoPathToExport'));
-	      return;
-	    }
-	    const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
-	    const a = document.createElement('a');
-	    a.href = URL.createObjectURL(blob);
-	    a.download = 'gdmm_paths_only.json';
-	    a.click();
-	    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-	    showToast(GDMMLang.t('toast.RoutesExported'));
-	  });
-	}
 
       // --- Clear all paths for active profile ---
     $('#clearPaths')?.addEventListener('click', () => {
@@ -296,6 +274,59 @@
     showToast(GDMMLang.t('toast.MarkerMapCleared'));
   });
 
+  // Encode payload for share link -----------------------------------
+
+  function encodeSharePayload(obj) {
+    const json = JSON.stringify(obj);
+    return btoa(unescape(encodeURIComponent(json)));
+  }
+
+  // Share current routes as URL
+  const shareBtn = document.getElementById('shareRoutesBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      const prof = currentProfile();
+      if (!prof || !prof.paths || !prof.paths.length) {
+        showToast(GDMMLang.t('toast.NoPathToExport'));
+        return;
+      }
+
+      const payload = {
+        v: '2.5',
+        map: state.active,
+        routes: prof.paths
+      };
+
+      let share;
+      try {
+        share = encodeSharePayload(payload);
+      } catch (e) {
+        console.error('[GDMM] share encoding failed', e);
+        return;
+      }
+
+      const url = `${location.origin}${location.pathname}?share=${encodeURIComponent(share)}`;
+
+      let copied = false;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(url);
+          copied = true;
+        } catch (e) {
+          copied = false;
+        }
+      }
+
+      if (!copied) {
+        window.prompt('Share this link:', url);
+      }
+
+      showToast(GDMMLang.t('toast.ShareUrlCopied'));
+    });
+  }
+
+//------------------------------------------------------------------------------------
+
 
   // --- Help ---
   document.querySelector('.closeHelp')?.addEventListener('click', () => {
@@ -320,6 +351,63 @@
       document.addEventListener('click', handler);
     }
   });
+
+
+  // Merge function
+
+const mergeBtn = document.getElementById('mergeSharedBtn');
+if (mergeBtn) {
+  mergeBtn.addEventListener('click', () => {
+    const profiles = state.profiles || {};
+    const entries  = Object.entries(profiles);
+
+    const sharedEntry = entries.find(([name, p]) => p && p.isShared);
+    if (!sharedEntry) {
+      showToast('No shared map loaded ❌', 'error');
+      return;
+    }
+    const [sharedName, sharedProf] = sharedEntry;
+
+    const targetName = sharedProf.sharedSourceMap;
+    if (!targetName || !profiles[targetName] || profiles[targetName].isShared) {
+      showToast(
+        (GDMMLang.t && GDMMLang.t('toast.SharedTargetMissing')) ||
+        'Original map not found ❌',
+        'error'
+      );
+      return;
+    }
+
+    const target = profiles[targetName];
+
+    // Merge markers + paths
+    target.markers = (target.markers || []).concat(sharedProf.markers || []);
+    target.paths   = (target.paths   || []).concat(sharedProf.paths   || []);
+
+    // Sauvegarde et switch sur la map cible
+    saveUserDataToLocal();
+    setActiveProfile(targetName);
+    refreshProfilesUI();
+    renderList();
+    renderMarkers();
+    renderRoutesPanel();
+    markAsChanged();
+
+    delete profiles[sharedName];
+
+    document.body.classList.remove('shared-only-view');
+
+    mergeBtn.disabled = true;
+    mergeBtn.style.display = 'none';
+
+    showToast(
+      (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) ||
+      'Shared data added to your map ✅'
+    );
+  });
+}
+
+
 
   // --- Save marker ---
   $('#exportAllBtn')?.addEventListener('click', () => {
