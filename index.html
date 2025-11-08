@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grim Dawn Map Marker Tool — v2.0</title>
-  <link rel="stylesheet" href="style.css?2.01" />
+  <title>Grim Dawn Map Marker Tool — v2.2</title>
+  <link rel="stylesheet" href="style.css?2.2" />
 </head>
 <body>
   <div id="mapLoader">
@@ -15,66 +15,78 @@
   </div>
   <div class="app">
     <header>
-      <div class="title"><img src="img/grim_dawn_icon.jpg" width="40"> Grim Dawn Map Marker Tool — v2.0
-      </div>
-      <button id="toolPan" class="small">🖐️ Pan</button>
+      <select id="langSelect">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="es">ES</option>
+        <option value="pt">PT</option>
+        <option value="it">IT</option>
+        <option value="ru">RU</option>
+      </select>
       <div class="sep"></div>
-      <select id="profileSelect" title="Profils" class="active"><option value="">(profil)</option></select>
-      <div class="sep"></div><button id="exportAllBtn" class="small">💾 Save markers</button>
-       <div class="sep"></div>
-      <span id="saveStatus" style="margin-left:8px;">● Saved</span>
+      <div class="right-panel">
+        <button id="toolPan" >🖐️ Pan</button>
+        <div class="sep"></div>
+        <select id="profileSelect" title="Profils" class="active"><option value="">(profil)</option></select>
+        <div class="sep"></div><button id="exportAllBtn" data-i18n="ui.SaveMarkerButton">💾 Save markers</button>
+         <div class="sep"></div>
+        <span id="saveStatus" style="margin-left:8px;">● Saved</span>
+      </div>
     </header>
 
     <aside class="sidebar">
+      <div class="title">
+        <div class="app-logo">
+          <img src="img/grim_dawn_icon.png" width="90">
+        </div>
+        <img src="img/logo.png" width="200" >
+      </div>
       <div class="section principal">
         <div class="row title-icon">
           <img src="img/add-circle.png" width="20">
-          <h3>New marker</h3>
+          <h3 data-i18n="ui.NewMarkerTitle">New marker</h3>
         </div>
         <div class="row">
-          <input id="newLabel" type="text" placeholder="Name / note" />
+          <input id="newLabel" type="text" data-i18n-placeholder="ui.MarkerNamePlaceholder" placeholder="Name / note" />
         </div>
-        <div class="row" style="margin-top: 4px;">
+        <div class="row" style="margin-top: 6px;">
           <select id="newCategory">
-            <option value="General">🔘 General</option>
-            <option value="Quest">⭐ Quest</option>
-            <option value="Boss">💀 Boss</option>
-            <option value="Loot">🗝️ Loot</option>
-            <option value="Waypoint">📍 Waypoint</option>
-            <option value="Donjon">🏰 Donjon</option>
-            <option value="NPC">💬 NPC</option>
+            <option value="General" data-i18n="ui.GeneralMarker">🔘 General</option>
+            <option value="Quest" data-i18n="ui.QuestMarker">⭐ Quest</option>
+            <option value="Boss" data-i18n="ui.BossMarker">💀 Boss</option>
+            <option value="Loot" data-i18n="ui.LootMarker">🗝️ Loot</option>
+            <option value="Waypoint" data-i18n="ui.WaypointMarker">📍 Waypoint</option>
+            <option value="Donjon" data-i18n="ui.DonjonMarker">🏰 Donjon</option>
+            <option value="NPC" data-i18n="ui.NPCMarker">💬 NPC</option>
           </select>
           <input id="newColor" type="color" value="#78f1c2" style="flex:0 0 auto" />
-          <label style="flex:0 0 auto">
-            <input id="newCompleted" type="checkbox" /> Done
-          </label>
-          <button id="toolAdd" class="small">📍 Add</button>
+          <button id="toolAdd" class="small" data-i18n="ui.AddMarkerButton">📍 Add</button>
         </div>
       </div>
 
       <div class="section principal">
         <div class="row title-icon">
           <img src="img/add-circle.png" width="20">
-          <h3>New Path</h3>
+          <h3 data-i18n="ui.NewPathTitle">New Path</h3>
         </div>        
         <div class="row">
-            <p class="small">Hold Space to drag the map while drawing a path</p>
+            <p class="small" data-i18n="ui.PathHelper">Hold Space to drag the map while drawing a path</p>
         </div>        
         <div id="currentPathName" class="path-badge"></div>
         <div class="row">
-          <input id="newPathName" type="text" placeholder="Path name (optional)">
+          <input id="newPathName" type="text" data-i18n-placeholder="ui.PathNamePlaceholder" placeholder="Path name (optional)">
         </div>        
-        <div class="row" style="margin-top: 4px;">
-          <button id="newPathBtn" class="small" type="button">➕ Add</button>
-          <button id="toolFinishPath" class="toolBtn small">✅ Finish</button>
+        <div class="row" style="margin-top: 6px;">
+          <button id="newPathBtn" class="small" type="button" data-i18n="ui.AddRouteButton">➕ Add</button>
+          <button id="toolFinishPath" class="toolBtn small" data-i18n="ui.FinishPath">✅ Finish</button>
         </div>
       </div>      
 
       <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:400px;margin-top: 2rem;">
         <div class="row">
-          <h3 class="m0 pl-20">📍Markers list(<span id="count">0</span>)
+          <h3 class="m0 pl-20" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
           </h3>
-          <label class="lock-label">🔒 Lock markers<input id="lockAll" type="checkbox" /></label>
+          <label class="lock-label"><span data-i18n="ui.LockMarker">🔒 Lock markers</span><input id="lockAll" type="checkbox" /></label>
         </div>
         <div class="row">
           <!-- === FILTER BAR === -->
@@ -107,23 +119,23 @@
       </div>
 
       <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:200px;">
-        <h3 class="mb0 pl-20">🚩 Routes list (<span id="routesCount">0</span>)</h3>
+        <h3 class="mb0 pl-20"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
         <div id="routesList"></div>
       </section>
 
-      <div class="section light principal">
-        <h3>Tools</h3>
+      <div class="section principal">
+        <h3 data-i18n="ui.ToolsTitle">Tools</h3>
         <div class="row">
-          <p class="small mb0"><b>Import</b> and <b>Export</b> are only needed if you switch browser, computer, or for share. For normal save use the header button.</p> 
+          <p class="small mb0" data-i18n="ui.ImportExportHelper">Import and Export are only needed if you switch browser, computer, or for share. For normal save use the header button.</p> 
         </div>
         <div class="row" style="gap:8px; margin-top:10px;">
-          <button id="importReplaceBtn" class="small">Import save</button>
-          <button id="exportFileBtn" class="small">Export save</button>
-          <button id="exportPathsBtn" class="small">Export paths only</button>
+          <button id="importReplaceBtn" class="small" data-i18n="ui.ImportButton">Import save</button>
+          <button id="exportFileBtn" class="small" data-i18n="ui.ExportButton">Export save</button>
+          <button id="exportPathsBtn" class="small" data-i18n="ui.ExportPathButton">Export paths only</button>
         </div>
         <div class="row" style="margin-top:10px;">
-            <button id="clearProfile" class="small danger">Delete all markers</button>
-            <button id="clearPaths" class="small danger">Delete all paths</button>
+            <button id="clearProfile" class="small danger" data-i18n="ui.DeleteMarkerButton">Delete all markers</button>
+            <button id="clearPaths" class="small danger" data-i18n="ui.DeletePathButton">Delete all paths</button>
         </div>   
       </div> 
 
@@ -141,16 +153,16 @@
         </div>
       </div>
 
-      <a id="helpToggle">❔How to use</a>
+      <a id="helpToggle" data-i18n="ui.Help">❔How to use</a>
     </aside>
 
     <div class="helpPopup" id="helpSection" style="display:none">
       <button class="closeHelp">×</button>
-      <h3>Help</h3>
+      <h3 data-i18n="ui.HelpTitle">Help</h3>
       <ul>
-        <li>Select a map from the dropdown in the header (main or DLC)</li>
-        <li>Add your markers 📍</li>
-        <li><b>Your markers are saved automatically. Use the "Save markers" button in the header to save manually if needed</b>
+        <li data-i18n="ui.HelpLine1">Select a map from the dropdown in the header (main or DLC)</li>
+        <li data-i18n="ui.HelpLine2">Add your markers 📍</li>
+        <li data-i18n="ui.HelpLine3"><b>Your markers are saved automatically. Use the "Save markers" button in the header to save manually if needed</b>
         </li>
       </ul>
     </div>
@@ -162,7 +174,13 @@
         </div>
       </div>
       <div class="floating">
-        <span class="chip" id="zoomReadout">100%</span>
+
+        <div id="zoomControls">
+          <button id="zoomOut">−</button>
+          <span class="chip" id="zoomReadout">100%</span>
+          <button id="zoomIn">+</button>
+        </div>
+
         <span class="chip" id="cursorReadout">x: –, y: –</span>
       </div>
     </main>
@@ -190,19 +208,19 @@
         </div>
         <div class="row" style="gap:6px;margin-top:6px">
           <select data-cat class="small">
-            <option value="General">🔘 General</option>
-            <option value="Quest">⭐ Quest</option>
-            <option value="Boss">💀 Boss</option>
-            <option value="Loot">🗝️ Loot</option>
-            <option value="Waypoint">📍 Waypoint</option>
-            <option value="Donjon">🏰 Donjon</option>
-            <option value="NPC">💬 NPC</option>
+            <option value="General" data-i18n="ui.GeneralMarker">🔘 General</option>
+            <option value="Quest" data-i18n="ui.QuestMarker">⭐ Quest</option>
+            <option value="Boss" data-i18n="ui.BossMarker">💀 Boss</option>
+            <option value="Loot" data-i18n="ui.LootMarker">🗝️ Loot</option>
+            <option value="Waypoint" data-i18n="ui.WaypointMarker">📍 Waypoint</option>
+            <option value="Donjon" data-i18n="ui.DonjonMarker">🏰 Donjon</option>
+            <option value="NPC" data-i18n="ui.NPCMarker">💬 NPC</option>
           </select>
           <input data-color type="color" style="flex:0 0 36px" />
           <label style="flex:0 0 auto" class="small">
-            <input data-done type="checkbox" /> Done
+            <input data-done type="checkbox" /> <span data-i18n="ui.Done">Done</span>
           </label>
-          <button data-delete class="small danger">Delete</button>
+          <button data-delete class="small danger" data-i18n="ui.DeleteButton">Delete</button>
         </div>
       </div>
 
@@ -211,11 +229,11 @@
 
   <div id="toastContainer"></div>
 
+  <script src="ui.lang.js"></script>
   <script src="core.js"></script>
   <script src="ui.core.js"></script>
   <script src="ui.tools.js"></script>
   <script src="ui.filter.js"></script>
-
 
 </body>
 </html>
