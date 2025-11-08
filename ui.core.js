@@ -376,6 +376,7 @@ function renderList() {
       updateMarkerFromUI(m.id, { cat: v }, false);
       syncColorVis(v);
       renderMarkers();
+      renderList();
     };
 
     color.oninput = e => {
