@@ -1118,9 +1118,31 @@ if (newPathBtn) {
 
   // Decode share payload from URL
   function decodeSharePayload(str) {
-    const json = decodeURIComponent(escape(atob(str)));
+    let json = null;
+
+    if (window.LZString && typeof LZString.decompressFromEncodedURIComponent === 'function') {
+      try {
+        const out = LZString.decompressFromEncodedURIComponent(str);
+        if (out) {
+          json = out;
+        }
+      } catch (e) {
+        console.warn('[GDMM] LZString decompress failed, fallback to base64', e);
+      }
+    }
+
+    if (!json) {
+      try {
+        json = decodeURIComponent(escape(atob(str)));
+      } catch (e) {
+        console.error('[GDMM] Base64 decode failed', e);
+        throw e;
+      }
+    }
+
     return JSON.parse(json);
   }
+
 
   // Load shared routes from ?share= parameter
   function loadSharedFromUrl() {
