@@ -62,6 +62,7 @@
       'ui.SharedTargetLabel': 'Add to map:',
       'ui.SharedMergeButton': 'Add to my map',
       'ui.MergeRoutesButton': 'Add shared to my map',
+      'toast.NoPathToExport': "There are no routes to share",
 
       'ui.PathNamePlaceholder': 'Path name (optional)',
       'ui.MarkerNamePlaceholder': 'Name / note',
@@ -116,10 +117,11 @@
       'toast.PathInProgress' : 'Tracé en cours…',
       'toast.ExportAll' : 'Toutes les données ont été sauvegardées 💾',
       'toast.SharedNoNewData': 'Aucune nouvelle donnée à ajouter depuis la carte partagée ✅',
-      
+
       'toast.ShareUrlCopied': 'Lien de partage copié dans le presse-papiers 📋',
       'toast.SharedMerged': 'Marqueurs et tracés partagés ajoutés à votre carte ✅',
       'toast.SharedTargetMissing': 'Carte d’origine introuvable. Elle a peut-être été renommée ou supprimée ❌',
+      'toast.NoPathToExport': 'Il n\'y a aucune route à partager',
 
       'ui.ShareRoutesButton': 'Partager les tracés',
       'ui.SharedViewLabel': 'Carte partagée (lecture seule)',
@@ -191,6 +193,7 @@
       'ui.SharedTargetLabel': 'Agregar al mapa:',
       'ui.SharedMergeButton': 'Agregar a mi mapa',
       'ui.MergeRoutesButton': 'Agregar el compartido a mi mapa',
+      'toast.NoPathToExport': "No hay rutas para compartir",
 
 
       'ui.PathNamePlaceholder': 'Nombre del recorrido (opcional)',
@@ -254,6 +257,7 @@
     'toast.ShareUrlCopied': 'Link de compartilhamento copiado para a área de transferência 📋',
     'toast.SharedMerged': 'Marcadores e rotas compartilhados adicionados ao seu mapa ✅',
     'toast.SharedTargetMissing': 'Mapa original não encontrado. Pode ter sido renomeado ou excluído ❌',
+    'toast.NoPathToExport': "Não há rotas para compartilhar",
 
     'ui.ShareRoutesButton': 'Compartilhar trajetos',
     'ui.SharedViewLabel': 'Mapa compartilhado (somente leitura)',
@@ -326,6 +330,7 @@
     'ui.SharedTargetLabel': 'Добавить на карту:',
     'ui.SharedMergeButton': 'Добавить на мою карту',
     'ui.MergeRoutesButton': 'Добавить общие данные на мою карту',
+    'toast.NoPathToExport': "Нет маршрутов для общего доступа",
 
     'ui.PathNamePlaceholder': 'Название пути (необязательно)',
     'ui.MarkerNamePlaceholder': 'Имя / заметка',
@@ -394,6 +399,7 @@
       'ui.SharedViewLabel': 'Mappa condivisa (solo lettura)',
       'ui.SharedTargetLabel': 'Aggiungi alla mappa:',
       'ui.SharedMergeButton': 'Aggiungi alla mia mappa',
+      'toast.NoPathToExport': "Non ci sono percorsi da condividere",
 
        'ui.PathNamePlaceholder': 'Nome del percorso (facoltativo)',
        'ui.MarkerNamePlaceholder': 'Nome / nota',
