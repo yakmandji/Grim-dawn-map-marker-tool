@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grim Dawn Map Marker Tool — v2.2</title>
-  <link rel="stylesheet" href="style.css?2.2" />
+  <title>Grim Dawn Map Marker Tool — v2.5</title>
+  <link rel="stylesheet" href="style.css?2.5" />
 </head>
 <body>
   <div id="mapLoader">
@@ -23,6 +23,16 @@
         <option value="it">IT</option>
         <option value="ru">RU</option>
       </select>
+       <button id="shareRoutesBtn">
+          <img src="img/share-icon.svg" width="18" alt="Share">
+          <span data-i18n="ui.ShareRoutesButton">Share routes</span>
+        </button>
+
+       <button id="mergeSharedBtn" >
+          <img src="img/merge.svg" width="18" alt="Merge"> 
+          <span data-i18n="ui.MergeRoutesButton">Add shared to my map</span>
+        </button>
+
       <div class="sep"></div>
       <div class="right-panel">
         <button id="toolPan" >🖐️ Pan</button>
@@ -131,7 +141,6 @@
         <div class="row" style="gap:8px; margin-top:10px;">
           <button id="importReplaceBtn" class="small" data-i18n="ui.ImportButton">Import save</button>
           <button id="exportFileBtn" class="small" data-i18n="ui.ExportButton">Export save</button>
-          <button id="exportPathsBtn" class="small" data-i18n="ui.ExportPathButton">Export paths only</button>
         </div>
         <div class="row" style="margin-top:10px;">
             <button id="clearProfile" class="small danger" data-i18n="ui.DeleteMarkerButton">Delete all markers</button>
