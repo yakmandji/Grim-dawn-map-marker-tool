@@ -274,13 +274,6 @@
     showToast(GDMMLang.t('toast.MarkerMapCleared'));
   });
 
-  // Encode payload for share link -----------------------------------
-
-  function encodeSharePayload(obj) {
-    const json = JSON.stringify(obj);
-    return btoa(unescape(encodeURIComponent(json)));
-  }
-
   // Share current routes as URL
   const shareBtn = document.getElementById('shareRoutesBtn');
   if (shareBtn) {
@@ -297,15 +290,9 @@
         routes: prof.paths
       };
 
-      let share;
-      try {
-        share = encodeSharePayload(payload);
-      } catch (e) {
-        console.error('[GDMM] share encoding failed', e);
-        return;
-      }
-
-      const url = `${location.origin}${location.pathname}?share=${encodeURIComponent(share)}`;
+      // Compress payload for shorter link
+      const compressed = LZString.compressToEncodedURIComponent(JSON.stringify(payload));
+      const url = `${location.origin}${location.pathname}?share=${compressed}`;
 
       let copied = false;
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -324,6 +311,7 @@
       showToast(GDMMLang.t('toast.ShareUrlCopied'));
     });
   }
+
 
 //------------------------------------------------------------------------------------
 
@@ -355,90 +343,91 @@
 
   // Merge function
 
+// Merge function
+
 const mergeBtn = document.getElementById('mergeSharedBtn');
 if (mergeBtn) {
-  const mergeBtn = document.getElementById('mergeSharedBtn');
-  if (mergeBtn) {
-    mergeBtn.addEventListener('click', () => {
-      const profiles = state.profiles || {};
-      const entries  = Object.entries(profiles);
+  mergeBtn.addEventListener('click', () => {
+    const profiles = state.profiles || {};
+    const entries  = Object.entries(profiles);
 
-      // 1) Shared Profil
-      const sharedEntry = entries.find(([name, p]) => p && p.isShared);
-      if (!sharedEntry) {
-        showToast('No shared map loaded ❌', 'error');
-        return;
-      }
-      const [sharedName, sharedProf] = sharedEntry;
+    // 1) Shared profile
+    const sharedEntry = entries.find(([name, p]) => p && p.isShared);
+    if (!sharedEntry) {
+      showToast('No shared map loaded ❌', 'error');
+      return;
+    }
+    const [sharedName, sharedProf] = sharedEntry;
 
-      // 2) Map cible
-      const targetName = sharedProf.sharedSourceMap;
-      if (!targetName || !profiles[targetName] || profiles[targetName].isShared) {
-        showToast(
-          (GDMMLang.t && GDMMLang.t('toast.SharedTargetMissing')) ||
-          'Original map not found ❌',
-          'error'
-        );
-        return;
-      }
-
-      const target = profiles[targetName];
-
-      // 3) Préparation data
-      const incomingMarkers = Array.isArray(sharedProf.markers) ? sharedProf.markers : [];
-      const incomingPaths   = Array.isArray(sharedProf.paths)   ? sharedProf.paths   : [];
-
-      // 4) Sets ID
-      const existingMarkerIds = new Set(
-        (target.markers || []).map(m => m.id).filter(Boolean)
+    // 2) Target map
+    const targetName = sharedProf.sharedSourceMap;
+    if (!targetName || !profiles[targetName] || profiles[targetName].isShared) {
+      showToast(
+        (GDMMLang.t && GDMMLang.t('toast.SharedTargetMissing')) ||
+        'Original map not found ❌',
+        'error'
       );
-      const existingPathIds = new Set(
-        (target.paths || []).map(p => p.id).filter(Boolean)
+      return;
+    }
+
+    const target = profiles[targetName];
+
+    // 3) Incoming data
+    const incomingMarkers = Array.isArray(sharedProf.markers) ? sharedProf.markers : [];
+    const incomingPaths   = Array.isArray(sharedProf.paths)   ? sharedProf.paths   : [];
+
+    // 4) Sets of existing IDs
+    const existingMarkerIds = new Set(
+      (target.markers || []).map(m => m.id).filter(Boolean)
+    );
+    const existingPathIds = new Set(
+      (target.paths || []).map(p => p.id).filter(Boolean)
+    );
+
+    // 5) Only new items
+    const newMarkers = incomingMarkers.filter(m => m && m.id && !existingMarkerIds.has(m.id));
+    const newPaths   = incomingPaths.filter(p => p && p.id && !existingPathIds.has(p.id));
+
+    if (!newMarkers.length && !newPaths.length) {
+      showToast(
+        (GDMMLang.t && GDMMLang.t('toast.SharedNoNewData')) ||
+        'Nothing new to add from shared map ✅'
       );
+    } else {
+      // 6) Real merge
+      target.markers = (target.markers || []).concat(newMarkers);
+      target.paths   = (target.paths   || []).concat(newPaths);
 
-      // 5) Only Keep news
-      const newMarkers = incomingMarkers.filter(m => m && m.id && !existingMarkerIds.has(m.id));
-      const newPaths   = incomingPaths.filter(p => p && p.id && !existingPathIds.has(p.id));
+      saveUserDataToLocal();
+      setActiveProfile(targetName);
+      refreshProfilesUI();
+      renderList();
+      renderMarkers();
+      renderRoutesPanel();
+      markAsChanged();
 
-      if (!newMarkers.length && !newPaths.length) {
-        showToast(
-          (GDMMLang.t && GDMMLang.t('toast.SharedNoNewData')) ||
-          'Nothing new to add from shared map ✅'
-        );
-      } else {
-        // 6) Merge réel
-        target.markers = (target.markers || []).concat(newMarkers);
-        target.paths   = (target.paths   || []).concat(newPaths);
+      showToast(
+        (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) ||
+        'Shared data added to your map ✅'
+      );
+    }
 
-        saveUserDataToLocal();
-        setActiveProfile(targetName);
-        refreshProfilesUI();
-        renderList();
-        renderMarkers();
-        renderRoutesPanel();
-        markAsChanged();
+    // Remove shared profile & exit shared mode
+    delete profiles[sharedName];
+    refreshProfilesUI(); 
+    document.body.classList.remove('shared-only-view');
 
-        showToast(
-          (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) ||
-          'Shared data added to your map ✅'
-        );
-      }
+    mergeBtn.disabled = true;
+    mergeBtn.style.display = 'none';
 
-      delete profiles[sharedName];
-      document.body.classList.remove('shared-only-view');
-
-      mergeBtn.disabled = true;
-      mergeBtn.style.display = 'none';
-
-      // Clean URL
-      if (window.history && window.history.replaceState) {
-        const cleanUrl = location.origin + location.pathname;
-        window.history.replaceState({}, document.title, cleanUrl);
-      }
-    });
-  }
-
+    // Clean URL
+    if (window.history && window.history.replaceState) {
+      const cleanUrl = location.origin + location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+  });
 }
+
 
 
 
