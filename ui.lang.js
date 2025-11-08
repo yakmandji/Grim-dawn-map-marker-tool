@@ -52,7 +52,7 @@
       'toast.CantSaveData' : 'Could not save user data locally:',
       'toast.PathInProgress' : 'Path in progress…',
       'toast.ExportAll' : 'All data have been saved 💾',
-
+      'toast.SharedNoNewData': 'Nothing new to add from shared map ✅',
       'toast.ShareUrlCopied': 'Share link copied to clipboard 📋',
       'toast.SharedMerged': 'Shared markers and routes added to your map ✅',
       'toast.SharedTargetMissing': 'Original map not found. Maybe it was renamed or deleted ❌',
@@ -115,7 +115,8 @@
       'toast.CantSaveData' : 'Impossible d’enregistrer les données localement :',
       'toast.PathInProgress' : 'Tracé en cours…',
       'toast.ExportAll' : 'Toutes les données ont été sauvegardées 💾',
-
+      'toast.SharedNoNewData': 'Aucune nouvelle donnée à ajouter depuis la carte partagée ✅',
+      
       'toast.ShareUrlCopied': 'Lien de partage copié dans le presse-papiers 📋',
       'toast.SharedMerged': 'Marqueurs et tracés partagés ajoutés à votre carte ✅',
       'toast.SharedTargetMissing': 'Carte d’origine introuvable. Elle a peut-être été renommée ou supprimée ❌',
