@@ -205,10 +205,11 @@ textarea {
 
 input[type="text"]:focus,
 input[type="search"]:focus,
+select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color-accent, #00ff96);
-  box-shadow: 0 0 6px rgba(0, 255, 150, 0.4);
+  box-shadow: 0px 0px 4px 1px rgba(0, 255, 150, 0.4);
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -1080,4 +1081,57 @@ body, #app, #sidebar, #viewport, #header {
 input, textarea, [contenteditable="true"] {
   user-select: text;
   cursor: text;
+}
+
+/*HIDE UI*/
+
+/* === Shared read-only view === */
+
+/* On masque tout ce qui est "interaction" */
+body.shared-only-view header .right-panel {
+  display: none;
+}
+
+body.shared-only-view .sidebar .section,
+body.shared-only-view #helpToggle,
+body.shared-only-view .helpPopup,
+body.shared-only-view .listItem .marker-delete,
+body.shared-only-view .listItem .marker-save,
+body.shared-only-view #shareRoutesBtn
+ {
+  display: none;
+}
+
+/* On garde seulement le bloc logo dans la sidebar */
+body.shared-only-view .sidebar .title {
+  display: flex;
+}
+
+/* Optionnel : on peut aussi griser légèrement le fond de la sidebar */
+body.shared-only-view .sidebar {
+  opacity: 0.8;
+}
+
+/* Mais on laisse la map et les contrôles de zoom fonctionnels */
+body.shared-only-view .mapWrap,
+body.shared-only-view #zoomControls,
+body.shared-only-view #cursorReadout {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+
+/*Merge button*/
+
+/* caché en mode normal */
+#mergeSharedBtn {
+  display: none;
+}
+
+/* visible uniquement quand on est en vue partagée */
+body.shared-only-view #mergeSharedBtn,
+#shareRoutesBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
