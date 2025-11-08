@@ -11,6 +11,8 @@
     mapNatural: { w: 0, h: 0 },
     mapReady: false,
     lastCreatedMarkerId: null,
+    sharedView: false,
+    sharedProfileName: null,
   };
 
   // --- Utils ---
@@ -169,15 +171,15 @@ function getUserDataOnly() {
   const src = state.profiles || {};
   for (const [name, profile] of Object.entries(src)) {
     if (!profile) continue;
+    if (profile.isShared) continue;
     out[name] = {
       markers: profile.markers || [],
-      paths: profile.paths || [], 
+      paths: profile.paths || [],
       view: profile.view || null
     };
   }
   return out;
 }
-
 
   function saveUserDataToLocal(){
     try {
