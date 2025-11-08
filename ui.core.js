@@ -107,7 +107,7 @@
     const label = $('#newLabel').value.trim();
     const cat   = $('#newCategory').value;
     const color = $('#newColor').value;
-    const done  = $('#newCompleted').checked;
+    const done  = false;
     const marker = coreAddMarker({ xp, yp, label, cat, color, done });
     if (marker) {
       state.lastCreatedMarkerId = marker.id; // Laste created marker
@@ -133,7 +133,7 @@
       renderRoutesPanel();
     }
     if (patch.label !== undefined) {
-      showToast('Marker name updated 💾');
+      showToast(GDMMLang.t('toast.MarkerNameUpdated'));
     }
   }
 
@@ -243,7 +243,7 @@ function ensurePathsArray() {
     const badge = document.getElementById('currentPathName');
     if (badge) {
       badge.style.display = 'inline-block';
-      badge.textContent = 'Path in progress…';
+      badge.textContent = GDMMLang.t('toast.PathInProgress');
     }
 
     updateFinishButtonPulse();
@@ -395,6 +395,11 @@ function renderList() {
     if (window.UiFilters && typeof window.UiFilters.applyCategoryFilters === 'function') {
     window.UiFilters.applyCategoryFilters();
   }
+
+  if (window.GDMMLang && typeof window.GDMMLang.applyLang === 'function') {
+    window.GDMMLang.applyLang(window.GDMMLang.getLang());
+  }
+  
 }
 
   function hexToRgba(hex, alpha = 1) {
@@ -586,12 +591,10 @@ function renderMarkers(options = {}) {
     }
 
     const { h, s, l } = hexToHSL(color);
-    // on recolore uniquement le fond, pas l'icône
     bg.style.filter =
       `drop-shadow(0 2px 6px rgba(0,0,0,0.4)) ` +
       `hue-rotate(${h}deg) saturate(${1 + s / 100}) brightness(${0.9 + (l / 200)})`;
 
-    // icône selon la catégorie (si tu veux que General soit vide, on le saute)
     const ic = iconFor(m.cat);
     if (ic && m.cat !== 'General') {
       const iconImg = document.createElement('img');
@@ -783,7 +786,7 @@ function renderRoutesPanel() {
     saveBtn.addEventListener('click', () => {
       name.blur();
       saveUserDataToLocal();
-      showToast('Route name saved 💾');
+      showToast(GDMMLang.t('toast.RouteNameSaved'));
     });
     row.appendChild(saveBtn);
 
@@ -812,8 +815,8 @@ function renderRoutesPanel() {
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
     delBtn.className = 'marker-delete danger small';
-    delBtn.title = 'Delete path';
-    delBtn.innerHTML = 'Delete';
+    delBtn.setAttribute('data-i18n', 'ui.DeleteButton');
+    delBtn.textContent = GDMMLang.t('ui.DeleteButton');
     delBtn.addEventListener('click', () => {
       p.paths = p.paths.filter(r => r.id !== path.id);
       renderMarkers();
@@ -895,9 +898,9 @@ function renderRoutesPanel() {
       if (state.tool === 'path') {
         finalizeCurrentPath();
         setTool('pan');
-        showToast('Path finished ✅');
+        showToast(GDMMLang.t('toast.PathFinished'));
       } else {
-        showToast('No current path', 'error');
+        showToast(GDMMLang.t('toast.NoPath'));
       }
     });
   }
@@ -979,23 +982,55 @@ function renderRoutesPanel() {
   window.addEventListener('pointercancel', stopPan);
   viewport.addEventListener('lostpointercapture', stopPan);
 
-  viewport.addEventListener('wheel', e => {
-    e.preventDefault();
-    const delta = -Math.sign(e.deltaY) * 0.12;
-    const old = state.view.scale;
-    const ns = clamp(old * (1 + delta), 0.18, 5);
-    if (ns === old) return;
-    const vb = viewport.getBoundingClientRect();
-    const ox = e.clientX - vb.left;
-    const oy = e.clientY - vb.top;
-    const ix = (ox - state.view.x) / old;
-    const iy = (oy - state.view.y) / old;
-    state.view.x = ox - ix * ns;
-    state.view.y = oy - iy * ns;
-    state.view.scale = ns;
-    clampViewToMap();
-    applyView();
-  }, { passive: false });
+  //ZOOM FONCTION
+
+    function zoomAt(clientX, clientY, step) {
+      const old = state.view.scale;
+      const ns = clamp(old * (1 + step), 0.18, 5);
+      if (ns === old) return;
+
+      const vb = viewport.getBoundingClientRect();
+      const ox = clientX - vb.left;
+      const oy = clientY - vb.top;
+      const ix = (ox - state.view.x) / old;
+      const iy = (oy - state.view.y) / old;
+
+      state.view.x = ox - ix * ns;
+      state.view.y = oy - iy * ns;
+      state.view.scale = ns;
+
+      clampViewToMap();
+      applyView();
+    }
+
+    viewport.addEventListener('wheel', e => {
+      e.preventDefault();
+      const step = -Math.sign(e.deltaY) * 0.12;
+      zoomAt(e.clientX, e.clientY, step);
+    }, { passive: false });
+
+
+  const zoomInBtn  = document.getElementById('zoomIn');
+  const zoomOutBtn = document.getElementById('zoomOut');
+
+  if (zoomInBtn) {
+    zoomInBtn.addEventListener('click', () => {
+      const vb = viewport.getBoundingClientRect();
+      const cx = vb.left + vb.width  / 2;
+      const cy = vb.top  + vb.height / 2;
+      zoomAt(cx, cy, +0.32);
+    });
+  }
+
+  if (zoomOutBtn) {
+    zoomOutBtn.addEventListener('click', () => {
+      const vb = viewport.getBoundingClientRect();
+      const cx = vb.left + vb.width  / 2;
+      const cy = vb.top  + vb.height / 2;
+      zoomAt(cx, cy, -0.32);
+    });
+  }
+
 
   function clampViewToMap(){
     if (!state.mapReady) return;
@@ -1047,7 +1082,7 @@ if (newPathBtn) {
     setActiveProfile(name);
     const p = currentProfile();
     if (p && p.map && p.map.embedData) {
-      showLoader('Loading map…');
+      showLoader(GDMMLang.t('toast.LoadingMap'));
       setMapSrc(p.map.embedData);
     } else if (p && p.map && p.map.sessionSrc) {
       setMapSrc(p.map.sessionSrc);
