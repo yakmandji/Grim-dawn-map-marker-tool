@@ -274,77 +274,82 @@
     showToast(GDMMLang.t('toast.MarkerMapCleared'));
   });
 
-  // --- Advanced compression toggle ---
-  const ADVANCED_COMPRESSION = true;
+// --- Advanced compression toggle ---
+const ADVANCED_COMPRESSION = true;
 
-  // Share current routes as URL
-  const shareBtn = document.getElementById('shareRoutesBtn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-      const prof = currentProfile();
-      if (!prof || !prof.paths || !prof.paths.length) {
-        showToast(GDMMLang.t('toast.NoPathToExport'));
-        return;
+// Share current routes as URL
+const shareBtn = document.getElementById('shareRoutesBtn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    const prof = currentProfile();
+    if (!prof) return;
+
+    const allMarkers = Array.isArray(prof.markers) ? prof.markers : [];
+    const sharedMarkers = allMarkers.filter(m => m && m.shared);
+    const hasRoutes = Array.isArray(prof.paths) && prof.paths.length > 0;
+
+    // ✅ Check for both shared markers OR routes
+    if (!hasRoutes && sharedMarkers.length === 0) {
+      showToast(GDMMLang.t('toast.NothingToShare') || 'Nothing to share');
+      return;
+    }
+
+    const round = v => Math.round((v || 0) * 10) / 10;
+
+    const compactRoutes = (prof.paths || []).map(p => ({
+      i: p.id,
+      n: p.name || '',
+      c: p.color || '#ffcc00',
+      w: p.width || 4,
+      o: typeof p.opacity === 'number' ? p.opacity : 0.85,
+      pts: (p.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
+    }));
+
+    const compactMarkers = sharedMarkers.map(m => ({
+      i: m.id,
+      x: round(m.xp),
+      y: round(m.yp),
+      l: m.label || '',
+      k: m.cat || 'General',
+      c: m.color || '#78f1c2',
+    }));
+
+    const payload = {
+      v: '2.8',
+      map: state.active,
+      r: compactRoutes,
+      m: compactMarkers,
+    };
+
+    // --- Compression phase ---
+    let compressed;
+    try {
+      const json = JSON.stringify(payload);
+
+      if (ADVANCED_COMPRESSION && window.pako) {
+        const gzipped = pako.deflate(json, { level: 9 });
+        const b64 = btoa(String.fromCharCode.apply(null, gzipped));
+        compressed = encodeURIComponent(b64);
+      } else {
+        compressed = LZString.compressToEncodedURIComponent(json);
       }
+    } catch (e) {
+      console.error('[GDMM] compression failed', e);
+      showToast('Compression error ❌', 'error');
+      return;
+    }
 
-      const allMarkers = Array.isArray(prof.markers) ? prof.markers : [];
-      const sharedMarkers = allMarkers.filter(m => m && m.shared);
+    const url = `${location.origin}${location.pathname}?share=${compressed}`;
 
-      const round = v => Math.round((v || 0) * 10) / 10;
+    try {
+      await navigator.clipboard.writeText(url);
+      showToast(GDMMLang.t('toast.ShareUrlCopied'));
+    } catch (e) {
+      window.prompt('Share this link:', url);
+    }
+  });
+}
 
-      const compactRoutes = (prof.paths || []).map(p => ({
-        i: p.id,
-        n: p.name || '',
-        c: p.color || '#ffcc00',
-        w: p.width || 4,
-        o: typeof p.opacity === 'number' ? p.opacity : 0.85,
-        pts: (p.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
-      }));
-
-      const compactMarkers = sharedMarkers.map(m => ({
-        i: m.id,
-        x: round(m.xp),
-        y: round(m.yp),
-        l: m.label || '',
-        k: m.cat || 'General',
-        c: m.color || '#78f1c2',
-      }));
-
-      const payload = {
-        v: '2.8',
-        map: state.active,
-        r: compactRoutes,
-        m: compactMarkers,
-      };
-
-      // --- Compression phase ---
-      let compressed;
-      try {
-        const json = JSON.stringify(payload);
-
-        if (ADVANCED_COMPRESSION && window.pako) {
-          const gzipped = pako.deflate(json, { level: 9 });
-          const b64 = btoa(String.fromCharCode.apply(null, gzipped));
-          compressed = encodeURIComponent(b64);
-        } else {
-          compressed = LZString.compressToEncodedURIComponent(json);
-        }
-      } catch (e) {
-        console.error('[GDMM] compression failed', e);
-        showToast('Compression error ❌', 'error');
-        return;
-      }
-
-      const url = `${location.origin}${location.pathname}?share=${compressed}`;
-
-      try {
-        await navigator.clipboard.writeText(url);
-        showToast(GDMMLang.t('toast.ShareUrlCopied'));
-      } catch (e) {
-        window.prompt('Share this link:', url);
-      }
-    });
-  }
 
 //------------------------------------------------------------------------------------
 
