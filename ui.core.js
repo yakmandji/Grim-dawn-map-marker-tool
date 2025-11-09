@@ -1,8 +1,28 @@
 (function(){
-  const {
-    state,DEV_MODE,clamp,iconFor,isColorAllowed,currentProfile,markAsChanged,updateSaveIndicator,setActiveProfile,renameProfile,deleteProfile,listProfiles,addMarker: coreAddMarker,updateMarker: coreUpdateMarker,
-    deleteMarker: coreDeleteMarker,clearMarkers: coreClearMarkers,getUserDataOnly,saveUserDataToLocal,loadUserDataFromLocal,mergeUserMarkers,
-  } = window.GDMMCore;
+const {
+  state,
+  DEV_MODE,
+  clamp,
+  iconFor,
+  isColorAllowed,
+  currentProfile,
+  markAsChanged,
+  updateSaveIndicator,
+  setActiveProfile,
+  renameProfile,
+  deleteProfile,
+  listProfiles,
+  addMarker: coreAddMarker,
+  updateMarker: coreUpdateMarker,
+  deleteMarker: coreDeleteMarker,
+  clearMarkers: coreClearMarkers,
+  getUserDataOnly,
+  saveUserDataToLocal,
+  loadUserDataFromLocal,
+  mergeUserMarkers,
+  ensureProfile,
+} = window.GDMMCore;
+
 
   const $  = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
@@ -108,9 +128,11 @@
     const cat   = $('#newCategory').value;
     const color = $('#newColor').value;
     const done  = false;
-    const marker = coreAddMarker({ xp, yp, label, cat, color, done });
+    const sharedCheckbox = document.getElementById('newShared');
+    const shared = sharedCheckbox ? !!sharedCheckbox.checked : false;
+    const marker = coreAddMarker({ xp, yp, label, cat, color, done, shared });
     if (marker) {
-      state.lastCreatedMarkerId = marker.id; // Laste created marker
+      state.lastCreatedMarkerId = marker.id;
     }
 
     $('#newLabel').value = '';
@@ -344,6 +366,10 @@ function renderList() {
       el.classList.add(m.cat.toLowerCase());
     }
 
+    if (m.shared) {
+      el.classList.add('shared');
+    }
+
     // pin color
     el.querySelector('[data-pin]').style.background = m.color || '#78f1c2';
 
@@ -363,6 +389,18 @@ function renderList() {
     // done
     const done = el.querySelector('[data-done]');
     done.checked = !!m.done;
+
+    // shared
+    const sharedInput = el.querySelector('[data-shared]');
+    if (sharedInput) {
+      sharedInput.checked = !!m.shared;
+      sharedInput.addEventListener('change', e => {
+        updateMarkerFromUI(m.id, { shared: !!e.target.checked }, false);
+        renderMarkers();   // met à jour la carte (icône, filtre, etc.)
+        renderList();      // rafraîchit la liste pour refléter le changement
+      });
+    }
+
 
     //color picker
     const syncColorVis = (c) => {
@@ -393,6 +431,7 @@ function renderList() {
 
     host.appendChild(el);
   });
+
     if (window.UiFilters && typeof window.UiFilters.applyCategoryFilters === 'function') {
     window.UiFilters.applyCategoryFilters();
   }
@@ -548,6 +587,7 @@ function renderMarkers(options = {}) {
     el.classList.add('marker');
     if (m.done) el.classList.add('completed'); 
     if (m.cat) el.classList.add(m.cat.toLowerCase());
+    if (m.shared) el.classList.add('shared');
     el.dataset.mid = m.id;
 
     // --- PIN ---
@@ -603,6 +643,17 @@ function renderMarkers(options = {}) {
       iconImg.src = ic;
       iconImg.alt = m.cat || '';
       pin.appendChild(iconImg);
+    }
+
+    // Shared Badge
+    if (m.shared) {
+      const sharedBadge = document.createElement('img');
+      sharedBadge.className = 'shared-badge';
+      sharedBadge.src = 'img/share-icon.svg'; // mets ici ton SVG
+      sharedBadge.alt = (window.GDMMLang && GDMMLang.t)
+        ? GDMMLang.t('ui.SharedMarker')
+        : 'Shared';
+      pin.appendChild(sharedBadge);
     }
 
     el.appendChild(pin);
@@ -782,8 +833,9 @@ function renderRoutesPanel() {
     const saveBtn = document.createElement('button');
     saveBtn.type = 'button';
     saveBtn.className = 'marker-save';
-    saveBtn.title = 'Save';
-    saveBtn.innerHTML = '💾';
+    saveBtn.setAttribute('data-i18n-title', 'ui.SaveTitle');
+    saveBtn.title = GDMMLang.t('ui.SaveTitle');
+    saveBtn.innerHTML = `<img src="img/save-icon.svg" width="16" alt="${GDMMLang.t('ui.SaveTitle')}">`;
     saveBtn.addEventListener('click', () => {
       name.blur();
       saveUserDataToLocal();
@@ -794,17 +846,9 @@ function renderRoutesPanel() {
     // --- Center button witdth SVG ---
     const centerBtn = document.createElement('button');
     centerBtn.className = 'marker-center';
-    centerBtn.title = 'Center on map';
-    centerBtn.innerHTML = `
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="3"></circle>
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="2" x2="12" y2="6"></line>
-        <line x1="12" y1="18" x2="12" y2="22"></line>
-        <line x1="2" y1="12" x2="6" y2="12"></line>
-        <line x1="18" y1="12" x2="22" y2="12"></line>
-      </svg>
-    `;
+    centerBtn.setAttribute('data-i18n-title', 'ui.CenterOnMap');
+    centerBtn.title = GDMMLang.t('ui.CenterOnMap');
+    centerBtn.innerHTML = `<img src="img/center-icon.svg" width="16" alt="${GDMMLang.t('ui.CenterOnMap')}">`;
     centerBtn.addEventListener('click', () => {
       if (!path.points || !path.points.length) return;
       const first = path.points[0];
@@ -816,8 +860,14 @@ function renderRoutesPanel() {
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
     delBtn.className = 'marker-delete danger small';
-    delBtn.setAttribute('data-i18n', 'ui.DeleteButton');
-    delBtn.textContent = GDMMLang.t('ui.DeleteButton');
+    const deleteKey = 'ui.DeleteButton';
+    const deleteLabel = GDMMLang.t(deleteKey);
+    delBtn.setAttribute('data-i18n-title', deleteKey);
+    delBtn.setAttribute('data-i18n-alt', deleteKey);
+    delBtn.title = deleteLabel;
+    delBtn.setAttribute('aria-label', deleteLabel);
+    delBtn.innerHTML = `<img src="img/bin-icon.svg" width="16" alt="${deleteLabel}">`;
+
     delBtn.addEventListener('click', () => {
       p.paths = p.paths.filter(r => r.id !== path.id);
       renderMarkers();
@@ -1116,31 +1166,49 @@ if (newPathBtn) {
   }
 //----------------------------------------------------------------------------------------
 
-  // Decode share payload from URL
+// Decode share payload from URL (handles GZIP + Base64 + LZString)
   function decodeSharePayload(str) {
-    let json = null;
+    if (!str) return null;
 
+    if (window.pako) {
+      try {
+        const b64 = decodeURIComponent(str);
+        const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+        const out = pako.inflate(bin, { to: 'string' });
+        if (out) {
+          return JSON.parse(out);
+        }
+      } catch (e) {
+        console.warn('[GDMM] GZIP decode failed, fallback to LZString/base64', e);
+      }
+    }
+
+    // 2) Try LZString (ancien format ?share= compressToEncodedURIComponent)
     if (window.LZString && typeof LZString.decompressFromEncodedURIComponent === 'function') {
       try {
         const out = LZString.decompressFromEncodedURIComponent(str);
         if (out) {
-          json = out;
+          return JSON.parse(out);
         }
       } catch (e) {
-        console.warn('[GDMM] LZString decompress failed, fallback to base64', e);
+        console.warn('[GDMM] LZString decompress failed', e);
       }
     }
 
-    if (!json) {
+    try {
+      const decoded = atob(str);
+      return JSON.parse(decoded);
+    } catch (e) {
+      // 4) Try URI-encoded base64 JSON
       try {
-        json = decodeURIComponent(escape(atob(str)));
-      } catch (e) {
-        console.error('[GDMM] Base64 decode failed', e);
-        throw e;
+        const decoded = atob(decodeURIComponent(str));
+        return JSON.parse(decoded);
+      } catch (e2) {
+        console.error('[GDMM] All decode methods failed', e2);
       }
     }
 
-    return JSON.parse(json);
+    return null;
   }
 
 
@@ -1158,9 +1226,57 @@ if (newPathBtn) {
       return;
     }
 
-    if (!data || !Array.isArray(data.routes) || !data.routes.length) return;
+    if (!data) return;
 
-    const baseName = `[Shared] ${data.map || 'Route'}`;
+    let routes = [];
+    let markers = [];
+    const mapName = data.map || null;
+
+    // --- Nouveau format compact : { r: [...], m: [...] }
+    if (Array.isArray(data.r) || Array.isArray(data.m)) {
+      const compactRoutes = Array.isArray(data.r) ? data.r : [];
+
+      routes = compactRoutes.map(r => ({
+        id: r.i,
+        name: r.n || '',
+        color: r.c || '#ffcc00',
+        width: r.w || 4,
+        opacity: (typeof r.o === 'number') ? r.o : 0.85,
+        points: Array.isArray(r.pts)
+          ? r.pts.map(pt => ({
+              xp: pt[0],
+              yp: pt[1],
+            }))
+          : [],
+      }));
+
+      markers = (Array.isArray(data.m) ? data.m : []).map(m => ({
+        id: m.i || (window.GDMMCore && GDMMCore.uid ? GDMMCore.uid() : Math.random().toString(36).slice(2)),
+        xp: m.x,
+        yp: m.y,
+        label: m.l || '',
+        cat: m.k || 'General',
+        color: m.c || '#78f1c2',
+        done: false,
+        shared: true,
+      }));
+    }
+    // --- Ancien format : { routes: [...], markers: [...] }
+    else if (Array.isArray(data.routes)) {
+      routes = data.routes;
+      const incomingMarkers = Array.isArray(data.markers) ? data.markers : [];
+      markers = incomingMarkers.map(m => {
+        if (!m || typeof m !== 'object') return m;
+        return { ...m, shared: true };
+      });
+    } else {
+      // rien d'exploitable
+      return;
+    }
+
+    if (!routes.length && !markers.length) return;
+
+    const baseName = `[Shared] ${mapName || 'Route'}`;
     let name = baseName;
     let i = 2;
     while (state.profiles[name]) {
@@ -1168,17 +1284,20 @@ if (newPathBtn) {
     }
 
     const p = ensureProfile(name);
-    p.markers = p.markers || [];
-    p.paths = data.routes || [];
+
+    p.markers = markers;
+    p.paths = routes;
     p.isShared = true;
-    p.sharedSourceMap = data.map || null;
-    const src = data.map && state.profiles[data.map];
+    p.sharedSourceMap = mapName;
+
+    const src = mapName && state.profiles[mapName];
     if (src && src.map) {
       p.map = src.map;
     }
 
     setActiveProfile(name);
 
+    // Si la map originale a un embed / sessionSrc, on la réutilise
     if (p.map && p.map.embedData) {
       showLoader(GDMMLang.t('toast.LoadingMap'));
       setMapSrc(p.map.embedData);
@@ -1192,9 +1311,11 @@ if (newPathBtn) {
     renderMarkers();
     renderRoutesPanel();
 
+    // 🔒 Active le mode lecture seule + bouton "Add shared to my map"
     document.body.classList.add('shared-only-view');
-
   }
+
+
 
 
 //---------------------------------------------------------------------------------------
