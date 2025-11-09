@@ -1,6 +1,6 @@
 :root {
   --bg: #0f1220;
-  --panel: #0e1c22;
+  --panel: #031517;
   --p2: #08242d;
   --txt: #67999b;
   --titlecolor: #6b9597;
@@ -76,7 +76,11 @@ header .right-panel{
  align-items: anchor-center;
  gap: 17px; 
  display: flex;
- margin: 15px auto;
+ margin: 0px auto;
+}
+
+.app-logo img{
+  opacity: 0.8;
 }
 
 header .sep { 
@@ -92,12 +96,16 @@ header .sep {
     margin-top: 0;
 }
 
-button, select, input[type="color"], .chip {
+#langSelect{
+  padding: 8px 16px;
+}
+
+button, select, .chip {
   background: linear-gradient(145deg, #0d3646, #1b485d);
   color: #ced3ec;
   border: none;
   border-radius: 10px;
-  padding: 8px 16px;
+  padding: 7px 16px;
   cursor: pointer;
   font-weight: 500;
   box-shadow:
@@ -119,8 +127,31 @@ button{
 }
 
 input[type="color"]{
-  box-shadow: none;
-  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  width: 26px;
+  min-width: 26px;
+  height: 26px;
+  opacity: 0.7;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 8px;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 8px;
 }
 
 select option {
@@ -156,9 +187,28 @@ button:active {
   cursor: pointer;
 }
 
-button.small { padding: 6px 8px; }
+button.small { 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; 
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: pointer; 
+}
+
+button.small img {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
 button.active,
-select.active { outline: 1px solid #78f1c2; }
+select.active { 
+  outline: 1px solid #78f1c2; 
+}
 
 button.danger {
   background: linear-gradient(145deg, #491c14, #65110b);
@@ -219,7 +269,7 @@ textarea:focus {
 .done-input{
   flex: 0 0 auto;
   background: #17313c;
-  padding: 2px 7px 2px 3px;
+  padding: 7px 10px 7px 5px;
   border-radius: 6px;
   display: flex;
   align-self: center;
@@ -230,7 +280,7 @@ textarea:focus {
     border: 1px solid #285259;
     border-radius: 14px;
     box-shadow: var(--shadow);
-    padding: 12px;
+    padding: 6px 12px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -495,11 +545,8 @@ button.marker-center,
   }
 }
 
-/* Better color input layout */
-.listItem input[type="color"] { 
-  flex: 0 0 26px;
-  height: 30px; 
-  padding: 0;
+.listItem input[type="text"]{
+  min-width: 248px;
 }
 
 #list .listItem.highlight,
@@ -512,8 +559,8 @@ button.marker-center,
 
 #list select{
   font-size: 11px;
-  padding: 5px 8px;
-  max-width: 112px;
+  padding: 9px 0px;
+  max-width: 117px;
 }
 
 @keyframes highlightPulse {
@@ -536,21 +583,11 @@ button.marker-center,
 }
 
 
-
 /* Icon rendering inside pin */
 .pin {
  display: flex; 
  align-items: center; 
  justify-content: center; 
-}
-
-/* Ensure visible color swatch in the New marker box */
-#newColor { 
-  flex: 0 0 36px; 
-  width: 36px; 
-  height: 36px; 
-  padding: 0; 
-  border-radius: 8px; 
 }
 
 .helpPopup{
@@ -705,19 +742,6 @@ button.marker-center,
   align-items: center;
   gap: .5rem;
   margin-bottom: .4rem;
-}
-
-#routesList .routeColor {
-  width: 30px;
-  height: 30px;
-  border-radius: 4px;
-  border: 1px solid #111;
-  cursor: pointer;
-  padding: 0;
-}
-
-#routesList .route-item input[type="text"]{
-    max-width: 138px;
 }
 
 .path-badge {
@@ -974,50 +998,6 @@ button.marker-center,
   opacity: 0.6;
   box-shadow: none;
 }
-
-
-.app-logo {
-  position: relative;
-  width: 120px;      /* adapte si besoin */
-  height: 120px;
-  margin: 16px auto;
-}
-
-.app-logo img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-}
-
-.app-logo::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-    rgba(0, 255, 150, 0.8) 0%,
-    rgba(0, 255, 150, 0.35) 35%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  filter: blur(4px);
-  opacity: 0.8;
-  z-index: 1;
-  animation: logo-pulse 4s ease-in-out infinite;
-}
-
-@keyframes logo-pulse {
-  0%, 100% {
-    transform: scale(0.97);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 1;
-  }
-}
-
 
 /*ZOOM BUTTON*/
 
