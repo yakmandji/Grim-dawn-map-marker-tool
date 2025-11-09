@@ -648,41 +648,50 @@ button.marker-center,
 
 #toastContainer {
   position: fixed;
-  top: 100px;
-  right: 16px;
+  top: 6rem;
+  right: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.5rem;
   z-index: 9999;
+  pointer-events: none;
 }
 
 .toast {
-  background: rgba(16, 22, 40, 0.95);
-  border: 1px solid #2a315a;
-  border-radius: 10px;
-  padding: 10px 14px;
-  color: #e7ebff;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.35);
   opacity: 0;
-  transform: translateX(20px);
-  transition: opacity .25s ease, transform .25s ease;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(30, 30, 30, 0.6); /* transparent dark */
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  backdrop-filter: blur(6px); /* effet glass */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
 .toast.show {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
+/* Variantes par type */
 .toast.success {
-  border-color: #78f1c2;
+  border-left: 4px solid #4caf50; /* vert */
 }
 
 .toast.error {
-  border-color: #ff6b7a;
+  border-left: 4px solid #e53935; /* rouge */
+}
+
+.toast.info {
+  border-left: 4px solid #2196f3; /* bleu */
+}
+
+.toast.warning {
+  border-left: 4px solid #ff9800; /* orange */
 }
 
 /* Path */
