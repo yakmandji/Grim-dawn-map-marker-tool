@@ -264,7 +264,7 @@
     // --- Clear markers actif profil ---
   $('#clearProfile')?.addEventListener('click', () => {
     const prof = currentProfile(); if (!prof) return;
-    if (!confirm('Do you really want to delete all markers from this map?')) return;
+    if (!confirm(GDMMLang.t('toast.WarnDeleteAllMarkers'))) return;
     coreClearMarkers();
     saveUserDataToLocal();
     renderList();
@@ -273,6 +273,9 @@
     renderRoutesPanel();
     showToast(GDMMLang.t('toast.MarkerMapCleared'));
   });
+
+  // --- Advanced compression toggle ---
+  const ADVANCED_COMPRESSION = true;
 
   // Share current routes as URL
   const shareBtn = document.getElementById('shareRoutesBtn');
@@ -284,34 +287,64 @@
         return;
       }
 
+      const allMarkers = Array.isArray(prof.markers) ? prof.markers : [];
+      const sharedMarkers = allMarkers.filter(m => m && m.shared);
+
+      const round = v => Math.round((v || 0) * 10) / 10;
+
+      const compactRoutes = (prof.paths || []).map(p => ({
+        i: p.id,
+        n: p.name || '',
+        c: p.color || '#ffcc00',
+        w: p.width || 4,
+        o: typeof p.opacity === 'number' ? p.opacity : 0.85,
+        pts: (p.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
+      }));
+
+      const compactMarkers = sharedMarkers.map(m => ({
+        i: m.id,
+        x: round(m.xp),
+        y: round(m.yp),
+        l: m.label || '',
+        k: m.cat || 'General',
+        c: m.color || '#78f1c2',
+      }));
+
       const payload = {
-        v: '2.5',
+        v: '2.8',
         map: state.active,
-        routes: prof.paths
+        r: compactRoutes,
+        m: compactMarkers,
       };
 
-      // Compress payload for shorter link
-      const compressed = LZString.compressToEncodedURIComponent(JSON.stringify(payload));
+      // --- Compression phase ---
+      let compressed;
+      try {
+        const json = JSON.stringify(payload);
+
+        if (ADVANCED_COMPRESSION && window.pako) {
+          const gzipped = pako.deflate(json, { level: 9 });
+          const b64 = btoa(String.fromCharCode.apply(null, gzipped));
+          compressed = encodeURIComponent(b64);
+        } else {
+          compressed = LZString.compressToEncodedURIComponent(json);
+        }
+      } catch (e) {
+        console.error('[GDMM] compression failed', e);
+        showToast('Compression error ❌', 'error');
+        return;
+      }
+
       const url = `${location.origin}${location.pathname}?share=${compressed}`;
 
-      let copied = false;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        try {
-          await navigator.clipboard.writeText(url);
-          copied = true;
-        } catch (e) {
-          copied = false;
-        }
-      }
-
-      if (!copied) {
+      try {
+        await navigator.clipboard.writeText(url);
+        showToast(GDMMLang.t('toast.ShareUrlCopied'));
+      } catch (e) {
         window.prompt('Share this link:', url);
       }
-
-      showToast(GDMMLang.t('toast.ShareUrlCopied'));
     });
   }
-
 
 //------------------------------------------------------------------------------------
 
@@ -319,29 +352,33 @@
   // --- Help ---
   document.querySelector('.closeHelp')?.addEventListener('click', () => {
     const sec = document.getElementById('helpSection');
-    if (!sec) return;
-    sec.style.display = 'none';
+    const backdrop = document.getElementById('helpBackdrop');
+    if (sec) sec.style.display = 'none';
+    if (backdrop) backdrop.style.display = 'none';
   });
   
   document.getElementById('helpToggle')?.addEventListener('click', (e) => {
     e.preventDefault();
     const sec = document.getElementById('helpSection');
+    const backdrop = document.getElementById('helpBackdrop');
     if (!sec) return;
     const show = sec.style.display === 'none' || sec.style.display === '';
     sec.style.display = show ? 'block' : 'none';
+    if (backdrop) {
+      backdrop.style.display = show ? 'block' : 'none';
+    }
     if (show) {
       const handler = (e2) => {
+        // Clic en dehors de la popup ET du lien qui l'a ouverte
         if (!sec.contains(e2.target) && e2.target !== e.target) {
           sec.style.display = 'none';
+          if (backdrop) backdrop.style.display = 'none';
           document.removeEventListener('click', handler);
         }
       };
       document.addEventListener('click', handler);
     }
   });
-
-
-  // Merge function
 
 // Merge function
 
@@ -376,6 +413,9 @@ if (mergeBtn) {
     const incomingMarkers = Array.isArray(sharedProf.markers) ? sharedProf.markers : [];
     const incomingPaths   = Array.isArray(sharedProf.paths)   ? sharedProf.paths   : [];
 
+     // Only shared marker
+    const sharedIncomingMarkers = incomingMarkers.filter(m => m && m.shared);
+
     // 4) Sets of existing IDs
     const existingMarkerIds = new Set(
       (target.markers || []).map(m => m.id).filter(Boolean)
@@ -384,9 +424,13 @@ if (mergeBtn) {
       (target.paths || []).map(p => p.id).filter(Boolean)
     );
 
-    // 5) Only new items
-    const newMarkers = incomingMarkers.filter(m => m && m.id && !existingMarkerIds.has(m.id));
-    const newPaths   = incomingPaths.filter(p => p && p.id && !existingPathIds.has(p.id));
+    const newMarkers = sharedIncomingMarkers.filter(
+      m => m.id && !existingMarkerIds.has(m.id)
+    );
+
+    const newPaths   = incomingPaths.filter(
+      p => p.id && !existingPathIds.has(p.id)
+    );
 
     if (!newMarkers.length && !newPaths.length) {
       showToast(
