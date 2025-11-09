@@ -34,7 +34,7 @@
       'ui.HelpLine1': 'Select a map from the dropdown in the header (main or DLC)',
       'ui.HelpLine2': 'Add your markers 📍',
       'ui.HelpLine3': 'Your markers are saved automatically. Use the "Save markers" button in the header to save manually if needed',
-      'ui.HelpLineShare': 'You can share your map with other users. Only the routes and the markers checked as "shared" will be shared. Other markers will remain private to your map.',
+      'ui.HelpLine4': 'You can share your map with other users. Only the routes and the markers checked as "shared" will be shared. Other markers will remain private to your map.',
       'ui.DeleteButton': 'Delete',
       'toast.MarkerNameUpdated' : 'Marker name updated 💾',
       'toast.RouteNameSaved' : 'Route name saved 💾',
@@ -59,6 +59,8 @@
       'toast.ShareUrlCopied': 'Share link copied to clipboard 📋',
       'toast.SharedMerged': 'Shared markers and routes added to your map ✅',
       'toast.SharedTargetMissing': 'Original map not found. Maybe it was renamed or deleted ❌',
+      'toast.MarkerDeleted': 'Marker deleted 🗑️',
+      'toast.RouteDeleted': 'Route deleted 🧹',
       'ui.ShowHideGeneral': 'Show/Hide General',
       'ui.ShowHideQuest': 'Show/Hide General',
       'ui.ShowHideBoss': 'Show/Hide General',
@@ -76,7 +78,6 @@
       'ui.SharedMergeButton': 'Add to my map',
       'ui.MergeRoutesButton': 'Add shared to my map',
       'ui.SharedMarker' :'Shared',
-      'toast.NoPathToExport': "There are no routes to share",
 
       'ui.PathNamePlaceholder': 'Path name (optional)',
       'ui.MarkerNamePlaceholder': 'Name / note',
@@ -137,6 +138,9 @@
       'toast.PathInProgress' : 'Tracé en cours…',
       'toast.ExportAll' : 'Toutes les données ont été sauvegardées 💾',
       'toast.SharedNoNewData': 'Aucune nouvelle donnée à ajouter depuis la carte partagée ✅',
+      'toast.MarkerDeleted': 'Marqueur supprimé 🗑️',
+      'toast.RouteDeleted': 'Tracé supprimé 🧹',
+
 
      'ui.ShowHideGeneral': 'Afficher/Masquer Général',
       'ui.ShowHideQuest': 'Afficher/Masquer Quêtes',
@@ -152,7 +156,6 @@
       'toast.SharedMerged': 'Marqueurs et tracés partagés ajoutés à votre carte ✅',
       'toast.SharedTargetMissing': 'Carte d’origine introuvable. Elle a peut-être été renommée ou supprimée ❌',
       'ui.SharedMarker' :'Partagé',
-      'toast.NoPathToExport': 'Il n\'y a aucune route à partager',
 
       'ui.ShareMapButton': 'Partager ma carte',
       'ui.SharedViewLabel': 'Carte partagée (lecture seule)',
@@ -164,7 +167,7 @@
       'ui.PathNamePlaceholder': 'Nom du trajet (optionnel)',
       'ui.MarkerNamePlaceholder': 'Nom / note',
       'toast.WarnDeleteAllMarkers': 'Voulez-vous vraiment supprimer tous les marqueurs de cette carte ?',
-      'toast.NothingToShare': 'Il n’y a rien à partager (aucune route ou marqueur partagé)',
+      'toast.NothingToShare': 'Aucune route et aucun marqueur partagé. Cochez « Partagé » pour les inclure dans le lien !',
 
 
     },
@@ -199,7 +202,7 @@
       'ui.HelpLine1': 'Selecciona un mapa desde el menú desplegable en el encabezado (principal o DLC)',
       'ui.HelpLine2': 'Añade tus marcadores 📍',
       'ui.HelpLine3': 'Tus marcadores se guardan automáticamente. Usa el botón "Guardar marcadores" en el encabezado si lo necesitas.',
-      'ui.HelpLineShare': 'Puedes compartir tu mapa con otros usuarios. Solo se compartirán las rutas y los marcadores marcados como "compartido". Los demás marcadores serán privados de tu mapa.',
+      'ui.HelpLine4': 'Puedes compartir tu mapa con otros usuarios. Solo se compartirán las rutas y los marcadores marcados como "compartido". Los demás marcadores serán privados de tu mapa.',
       'ui.DeleteButton': 'Eliminar',
       'ui.CenterOnMap': 'Centrar en el mapa',
       'ui.ShowHideGeneral': 'Mostrar/Ocultar General',
@@ -230,6 +233,9 @@
       'toast.CantSaveData': 'No se pudieron guardar los datos localmente:',
       'toast.PathInProgress': 'Recorrido en progreso…',
       'toast.ExportAll': 'Todos los datos se han guardado 💾',
+      'toast.MarkerDeleted': 'Marcador eliminado 🗑️',
+      'toast.RouteDeleted': 'Ruta eliminada 🧹',
+   
 
       'toast.ShareUrlCopied': 'Enlace de compartición copiado al portapapeles 📋',
       'toast.SharedMerged': 'Marcadores y rutas compartidos añadidos a tu mapa ✅',
@@ -241,13 +247,12 @@
       'ui.SharedTargetLabel': 'Agregar al mapa:',
       'ui.SharedMergeButton': 'Agregar a mi mapa',
       'ui.MergeRoutesButton': 'Agregar el compartido a mi mapa',
-      'toast.NoPathToExport': "No hay rutas para compartir",
 
 
       'ui.PathNamePlaceholder': 'Nombre del recorrido (opcional)',
       'ui.MarkerNamePlaceholder': 'Nombre / nota',
       'toast.WarnDeleteAllMarkers': '¿Realmente deseas eliminar todos los marcadores de este mapa?',
-      'toast.NothingToShare': 'No hay nada que compartir (sin rutas ni marcadores compartidos)',
+      'toast.NothingToShare': 'No hay rutas ni marcadores compartidos. Marca “Compartido” para incluirlos en tu enlace.',
 
 
     },
@@ -282,7 +287,7 @@
     'ui.HelpLine1': 'Selecione um mapa no menu suspenso do cabeçalho (principal ou DLC)',
     'ui.HelpLine2': 'Adicione seus marcadores 📍',
     'ui.HelpLine3': 'Seus marcadores são salvos automaticamente. Use o botão "Salvar marcadores" no cabeçalho se necessário.',
-    'ui.HelpLineShare': 'Você pode compartilhar seu mapa com outros usuários. Apenas as rotas e os marcadores marcados como "compartilhado" serão compartilhados. Os outros marcadores permanecerão privados no seu mapa.',
+    'ui.HelpLine4': 'Você pode compartilhar seu mapa com outros usuários. Apenas as rotas e os marcadores marcados como "compartilhado" serão compartilhados. Os outros marcadores permanecerão privados no seu mapa.',
     'ui.DeleteButton': 'Excluir',
     'ui.CenterOnMap': 'Centralizar no mapa',
      'toast.ExportAll': 'Todos os dados foram salvos 💾',
@@ -317,11 +322,13 @@
     'toast.CantSaveData': 'Não foi possível salvar os dados localmente:',
     'toast.PathInProgress': 'Trajeto em andamento…',
     'toast.ExportAll': 'Todos os dados foram salvos 💾',
+    'toast.MarkerDeleted': 'Marcador excluído 🗑️',
+    'toast.RouteDeleted': 'Rota excluída 🧹',
+
 
     'toast.ShareUrlCopied': 'Link de compartilhamento copiado para a área de transferência 📋',
     'toast.SharedMerged': 'Marcadores e rotas compartilhados adicionados ao seu mapa ✅',
     'toast.SharedTargetMissing': 'Mapa original não encontrado. Pode ter sido renomeado ou excluído ❌',
-    'toast.NoPathToExport': "Não há rotas para compartilhar",
     'ui.SharedMarker' :'Compartilhado',
 
     'ui.ShareMapButton': 'Compartilhar meu mapa',
@@ -333,7 +340,7 @@
       'ui.PathNamePlaceholder': 'Nome do trajeto (opcional)',
       'ui.MarkerNamePlaceholder': 'Nome / anotação',
       'toast.WarnDeleteAllMarkers': 'Tem certeza de que deseja excluir todos os marcadores deste mapa?',
-      'toast.NothingToShare': 'Nada para compartilhar (sem rotas ou marcadores compartilhados)',
+      'toast.NothingToShare': 'Nenhuma rota ou marcador compartilhado. Marque “Compartilhado” para incluí-los no link!',
 
 
   },
@@ -369,7 +376,7 @@
     'ui.HelpLine1': 'Выберите карту из выпадающего списка вверху (основная или DLC)',
     'ui.HelpLine2': 'Добавляйте свои маркеры 📍',
     'ui.HelpLine3': 'Ваши маркеры сохраняются автоматически. При необходимости используйте кнопку "Сохранить маркеры" вверху.',
-    'ui.HelpLineShare': 'Вы можете поделиться своей картой с другими пользователями. Будут переданы только маршруты и метки, отмеченные как «общие». Остальные метки останутся приватными на вашей карте.',
+    'ui.HelpLine4': 'Вы можете поделиться своей картой с другими пользователями. Будут переданы только маршруты и метки, отмеченные как «общие». Остальные метки останутся приватными на вашей карте.',
     'ui.DeleteButton': 'Удалить',
     'ui.CenterOnMap': 'Центрировать на карте',
     'ui.ShowHideGeneral': 'Показать/скрыть Общие',
@@ -400,6 +407,9 @@
     'toast.CantSaveData': 'Не удалось сохранить данные локально:',
     'toast.PathInProgress': 'Путь в процессе…',
     'toast.ExportAll': 'Все данные сохранены 💾',
+    'toast.MarkerDeleted': 'Метка удалена 🗑️',
+    'toast.RouteDeleted': 'Маршрут удалён 🧹',
+
 
     'toast.ShareUrlCopied': 'Ссылка для обмена скопирована в буфер обмена 📋',
     'toast.SharedMerged': 'Общие маркеры и маршруты добавлены на вашу карту ✅',
@@ -411,13 +421,11 @@
     'ui.SharedTargetLabel': 'Добавить на карту:',
     'ui.SharedMergeButton': 'Добавить на мою карту',
     'ui.MergeRoutesButton': 'Добавить общие данные на мою карту',
-    'toast.NoPathToExport': "Нет маршрутов для общего доступа",
 
     'ui.PathNamePlaceholder': 'Название пути (необязательно)',
     'ui.MarkerNamePlaceholder': 'Имя / заметка',
     'toast.WarnDeleteAllMarkers': 'Вы действительно хотите удалить все маркеры с этой карты?',
-    'toast.NothingToShare': 'Нечего поделиться (нет маршрутов или общих меток)',
-
+    'toast.NothingToShare': 'Нет маршрутов или общих меток. Отметьте «Общий», чтобы добавить их в ссылку!',
 
   },
 
@@ -452,7 +460,7 @@
       'ui.HelpLine1': 'Seleziona una mappa dal menu a discesa in alto (principale o DLC)',
       'ui.HelpLine2': 'Aggiungi i tuoi marcatori 📍',
       'ui.HelpLine3': 'I tuoi marcatori vengono salvati automaticamente. Usa il pulsante "Salva marcatori" nell’intestazione se necessario.',
-      'ui.HelpLineShare': 'Puoi condividere la tua mappa con altri utenti. Solo i percorsi e i marcatori contrassegnati come "condivisi" verranno condivisi. Gli altri marcatori rimarranno privati sulla tua mappa.',
+      'ui.HelpLine4': 'Puoi condividere la tua mappa con altri utenti. Solo i percorsi e i marcatori contrassegnati come "condivisi" verranno condivisi. Gli altri marcatori rimarranno privati sulla tua mappa.',
       'ui.DeleteButton': 'Elimina',
       'ui.CenterOnMap': 'Centra sulla mappa',
       'ui.ShowHideGeneral': 'Mostra/Nascondi Generale',
@@ -486,6 +494,8 @@
       'toast.CantSaveData': 'Impossibile salvare i dati localmente:',
       'toast.PathInProgress': 'Percorso in corso…',
       'toast.ExportAll': 'Tutti i dati sono stati salvati 💾',
+      'toast.MarkerDeleted': 'Marcatore eliminato 🗑️',
+      'toast.RouteDeleted': 'Percorso eliminato 🧹',
 
       'toast.ShareUrlCopied': 'Link di condivisione copiato negli appunti 📋',
       'toast.SharedMerged': 'Marcatori e percorsi condivisi aggiunti alla tua mappa ✅',
@@ -496,14 +506,12 @@
       'ui.SharedViewLabel': 'Mappa condivisa (solo lettura)',
       'ui.SharedTargetLabel': 'Aggiungi alla mappa:',
       'ui.SharedMergeButton': 'Aggiungi alla mia mappa',
-      'toast.NoPathToExport': "Non ci sono percorsi da condividere",
       'ui.SharedMarker' :'Condiviso',
 
       'ui.PathNamePlaceholder': 'Nome del percorso (facoltativo)',
       'ui.MarkerNamePlaceholder': 'Nome / nota',
       'toast.WarnDeleteAllMarkers': 'Vuoi davvero eliminare tutti i marcatori da questa mappa?',
-      'toast.NothingToShare': 'Niente da condividere (nessun percorso o marcatore condiviso)',
-
+      'toast.NothingToShare': 'Nessun percorso o marcatore condiviso. Seleziona “Condiviso” per includerli nel link!',
 
     },
 
@@ -538,7 +546,7 @@
       'ui.HelpLine1': '从标题栏的下拉菜单中选择地图（主线或DLC）',
       'ui.HelpLine2': '添加您的标记 📍',
       'ui.HelpLine3': '标记会自动保存。如需手动保存，请使用标题栏中的“保存标记”按钮',
-      'ui.HelpLineShare': '您可以与其他用户共享您的地图。只有选中“共享”的路线和标记会被共享，其他标记将保留为您地图的私人内容。',
+      'ui.HelpLine4': '您可以与其他用户共享您的地图。只有选中“共享”的路线和标记会被共享，其他标记将保留为您地图的私人内容。',
       'ui.DeleteButton': '删除',
       'ui.CenterOnMap': '居中显示地图',
       'ui.ShowHideGeneral': '显示/隐藏 通用标记',
@@ -573,6 +581,9 @@
       'toast.ShareUrlCopied': '共享链接已复制到剪贴板 📋',
       'toast.SharedMerged': '共享的标记和路线已添加到您的地图 ✅',
       'toast.SharedTargetMissing': '未找到原始地图，可能已被重命名或删除 ❌',
+      'toast.MarkerDeleted': '标记已删除 🗑️',
+      'toast.RouteDeleted': '路线已删除 🧹',
+
 
       'ui.ShareMapButton': '分享我的地图',
       'ui.SharedViewLabel': '共享地图（只读）',
@@ -580,16 +591,13 @@
       'ui.SharedMergeButton': '添加到我的地图',
       'ui.SharedMarker' :'共享',
       'ui.MergeRoutesButton': '添加共享路线到我的地图',
-      'toast.NoPathToExport': '没有可分享的路线',
 
       'ui.PathNamePlaceholder': '路线名称（可选）',
       'ui.MarkerNamePlaceholder': '名称 / 备注',
       'toast.WarnDeleteAllMarkers': '确定要删除此地图上的所有标记吗？',
-      'toast.NothingToShare': '没有可分享的内容（没有路线或共享标记）',
+      'toast.NothingToShare': '没有路线或共享标记。勾选“共享”以将它们包含在链接中！',
 
     },
-
-
 
   };
 
