@@ -3,48 +3,96 @@
   const { currentProfile } = window.GDMMCore || {};
 
   function applyCategoryFilters() {
-    const buttons = document.querySelectorAll('.filterToggle');
-    if (!buttons.length) return;
+    const catButtons = document.querySelectorAll('.filterToggle[data-cat]');
+    const sharedBtn  = document.querySelector('.filterToggle[data-shared]');
+    const activeCats = new Set();
 
-    buttons.forEach(btn => {
+    catButtons.forEach(btn => {
       const cat = btn.getAttribute('data-cat');
       if (!cat) return;
+      if (btn.classList.contains('is-on')) {
+        activeCats.add(cat.toLowerCase());
+      }
+    });
 
-      const className = cat.toLowerCase();
-      const isOn = btn.classList.contains('is-on');
-      const shouldShow = isOn;
+    const sharedOn = sharedBtn ? sharedBtn.classList.contains('is-on') : false;
 
-      // Map markers
-      document.querySelectorAll('.marker.' + className).forEach(el => {
-        el.style.display = shouldShow ? '' : 'none';
+    // --- Markers on map ---
+    document.querySelectorAll('.marker').forEach(el => {
+      const cl = el.classList;
+      const isShared = cl.contains('shared');
+
+      let markerCat = null;
+      ['general','quest','boss','loot','waypoint','donjon','npc'].some(cat => {
+        if (cl.contains(cat)) {
+          markerCat = cat;
+          return true;
+        }
+        return false;
       });
 
-      // List items
-      document.querySelectorAll('#list .listItem.' + className).forEach(el => {
-        el.style.display = shouldShow ? '' : 'none';
+      const catVisible   = !markerCat || activeCats.has(markerCat);
+      const sharedVisible = sharedOn && isShared;
+
+      const finalVisible = sharedVisible || catVisible;
+      el.style.display = finalVisible ? '' : 'none';
+    });
+
+    // --- Éléments dans la liste ---
+    document.querySelectorAll('#list .listItem').forEach(el => {
+      const cl = el.classList;
+      const isShared = cl.contains('shared');
+
+      let itemCat = null;
+      ['general','quest','boss','loot','waypoint','donjon','npc'].some(cat => {
+        if (cl.contains(cat)) {
+          itemCat = cat;
+          return true;
+        }
+        return false;
       });
+
+      const catVisible   = !itemCat || activeCats.has(itemCat);
+      const sharedVisible = sharedOn && isShared;
+
+      const finalVisible = sharedVisible || catVisible;
+      el.style.display = finalVisible ? '' : 'none';
     });
   }
 
-  // Compteur par catégorie
+
+  // Count by category
   function updateFilterCounts() {
     if (!currentProfile) return;
     const p = currentProfile();
     if (!p || !Array.isArray(p.markers)) return;
 
-    // Compter les markers par catégorie (d’après m.cat)
+    // Count marker
     const counts = {};
+    let sharedCount = 0;
+
     for (const m of p.markers) {
       const cat = m.cat || 'General';
       counts[cat] = (counts[cat] || 0) + 1;
+
+      if (m.shared) {
+        sharedCount++;
+      }
     }
 
-    // Mettre à jour les badges sur chaque bouton
     document.querySelectorAll('.filterToggle').forEach(btn => {
-      const cat = btn.getAttribute('data-cat');
-      if (!cat) return;
+      const catAttr = btn.getAttribute('data-cat');
+      const isSharedBtn = btn.hasAttribute('data-shared');
 
-      const count = counts[cat] || 0;
+      let count = 0;
+
+      if (isSharedBtn) {
+        count = sharedCount;
+      } else if (catAttr) {
+        count = counts[catAttr] || 0;
+      } else {
+        return;
+      }
 
       let badge = btn.querySelector('.filterCount');
       if (!badge) {
@@ -54,17 +102,17 @@
       }
 
       badge.textContent = count;
-      // Si tu veux les cacher quand il y en a 0 :
-      badge.style.display = count > 0 ? 'flex' : 'none';
-		if (count > 0) {
-		  badge.style.display = 'flex';
-		  btn.style.display = 'inline-flex';
-		} else {
-		  badge.style.display = 'none';
-		  btn.style.display = 'none';
-		}      
+
+      if (count > 0) {
+        badge.style.display = 'flex';
+        btn.style.display = 'inline-flex';
+      } else {
+        badge.style.display = 'none';
+        btn.style.display = 'none';
+      }
     });
   }
+
 
   // Toggle visuel + re-apply filtres
   document.querySelectorAll('.filterToggle').forEach(btn => {
@@ -74,13 +122,11 @@
     });
   });
 
-  // Exposer aux autres modules
   window.UiFilters = {
     applyCategoryFilters,
     updateFilterCounts,
   };
 
-  // Premier passage au cas où des markers sont déjà là
   applyCategoryFilters();
   updateFilterCounts();
 
