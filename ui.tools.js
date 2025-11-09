@@ -472,8 +472,6 @@ if (mergeBtn) {
 }
 
 
-
-
   // --- Save marker ---
   $('#exportAllBtn')?.addEventListener('click', () => {
     saveUserDataToLocal();
