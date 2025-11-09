@@ -290,7 +290,7 @@ if (shareBtn) {
 
     // ✅ Check for both shared markers OR routes
     if (!hasRoutes && sharedMarkers.length === 0) {
-      showToast(GDMMLang.t('toast.NothingToShare') || 'Nothing to share');
+      showToast(GDMMLang.t('toast.NothingToShare') || 'Nothing to share','warning', 7000);
       return;
     }
 
@@ -343,7 +343,7 @@ if (shareBtn) {
 
     try {
       await navigator.clipboard.writeText(url);
-      showToast(GDMMLang.t('toast.ShareUrlCopied'));
+      showToast(GDMMLang.t('toast.ShareUrlCopied'),'success', 3800);
     } catch (e) {
       window.prompt('Share this link:', url);
     }
@@ -438,10 +438,7 @@ if (mergeBtn) {
     );
 
     if (!newMarkers.length && !newPaths.length) {
-      showToast(
-        (GDMMLang.t && GDMMLang.t('toast.SharedNoNewData')) ||
-        'Nothing new to add from shared map ✅'
-      );
+        showToast(GDMMLang.t('toast.SharedNoNewData'),'warning', 4200);
     } else {
       // 6) Real merge
       target.markers = (target.markers || []).concat(newMarkers);
@@ -455,10 +452,7 @@ if (mergeBtn) {
       renderRoutesPanel();
       markAsChanged();
 
-      showToast(
-        (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) ||
-        'Shared data added to your map ✅'
-      );
+      showToast(GDMMLang.t('toast.SharedMerged'),'success', 4500);
     }
 
     // Remove shared profile & exit shared mode
