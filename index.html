@@ -49,13 +49,11 @@
     <aside class="sidebar">
       <div class="title">
         <div class="app-logo">
-          <img src="img/grim_dawn_icon.png?v2.2" width="90">
+          <img src="img/grim_dawn_icon3.jpg?v2.2" width="280">
         </div>
-        <img src="img/logo.png" width="200" >
       </div>
       <div class="section principal">
-        <div class="row title-icon">
-          <img src="img/add-circle.png?v2.2" width="20">
+        <div class="row title-icon" style="padding-bottom: 8px;">
           <h3 data-i18n="ui.NewMarkerTitle">New marker</h3>
             <label style="flex:0 0 auto" class="small done-input">
               <input id="newShared" type="checkbox" />
@@ -76,13 +74,14 @@
             <option value="NPC" data-i18n="ui.NPCMarker">💬 NPC</option>
           </select>
           <input id="newColor" type="color" value="#78f1c2" style="flex:0 0 auto" />
-          <button id="toolAdd" class="small" data-i18n="ui.AddMarkerButton">📍 Add</button>
+          <button id="toolAdd" class="small">
+              <img src="img/add-circle.png?v2.2" width="16"><span data-i18n="ui.AddMarkerButton">Add</span>
+          </button>
         </div>
       </div>
 
       <div class="section principal">
           <div class="row title-icon">
-            <img src="img/add-circle.png?v2.2" width="20">
             <h3 data-i18n="ui.NewPathTitle">New Path</h3>
           </div>        
           <div class="row">
@@ -93,8 +92,12 @@
             <input id="newPathName" type="text" data-i18n-placeholder="ui.PathNamePlaceholder" placeholder="Path name (optional)">
           </div>        
           <div class="row" style="margin-top: 6px;">
-            <button id="newPathBtn" class="small" type="button" data-i18n="ui.AddRouteButton">➕ Add</button>
-            <button id="toolFinishPath" class="toolBtn small" data-i18n="ui.FinishPath">✅ Finish</button>
+            <button id="newPathBtn" class="small" type="button">
+              <img src="img/add-circle.png?v2.2" width="16"><span data-i18n="ui.AddRouteButton">Add</span>
+            </button>
+            <button id="toolFinishPath" class="toolBtn small">
+              <img src="img/check.svg" width="20"><span data-i18n="ui.FinishPath">Finish</span>
+            </button>
           </div>
       </div>      
 
