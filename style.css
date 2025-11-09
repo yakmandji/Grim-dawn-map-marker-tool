@@ -916,7 +916,6 @@ button.marker-center,
 .filterToggle img {
   width: 18px;
   height: 18px;
-  filter: brightness(0) invert(1);
   pointer-events: none;
 }
 
