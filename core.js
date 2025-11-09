@@ -129,6 +129,7 @@
       cat: raw.cat || 'General',
       color: raw.color || '#78f1c2',
       done: !!raw.done,
+      shared: !!raw.shared,
     };
     p.markers.push(marker);
     p.updated = now();
