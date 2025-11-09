@@ -2,7 +2,7 @@
   --bg: #0f1220;
   --panel: #0e1c22;
   --p2: #08242d;
-  --txt: #5b8d8f;
+  --txt: #67999b;
   --titlecolor: #6b9597;
   --buttontxt : #059999;
   --placeholdertext : #2d6f72;
@@ -10,7 +10,7 @@
   --ok: #8be38b;
   --danger: #ff6b7a;
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
-  --sidebar-width: 430px;
+  --sidebar-width: 470px;
 }
 
 * { box-sizing: border-box; }
@@ -118,10 +118,6 @@ button{
   color:var(--buttontxt);
 }
 
-button.marker-center{
-  padding: 8px 10px 4px 10px;
-}
-
 input[type="color"]{
   box-shadow: none;
   background: none;
@@ -165,15 +161,22 @@ button.active,
 select.active { outline: 1px solid #78f1c2; }
 
 button.danger {
-  background: linear-gradient(145deg, #491810, #76130c);
-  color: #e0b5a5;
+  background: linear-gradient(145deg, #491c14, #65110b);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.05),
     0 4px 8px rgba(0,0,0,0.5);
+    padding: 7px 10px 7px 10px;
+  color: #c0695a;
 }
+
+#routesPanel button.danger,
+#list button.danger{
+  max-width: 40px;
+}
+
 button.danger:hover {
   background: linear-gradient(145deg, #5e190d, #49150a);
-  color: #ffc0cb;
+  color: #cb939c;
 }
 
 button.ok {
@@ -211,6 +214,15 @@ textarea:focus {
   border-color: var(--color-accent, #00ff96);
   box-shadow: 0px 0px 4px 1px rgba(0, 255, 150, 0.4);
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.done-input{
+  flex: 0 0 auto;
+  background: #17313c;
+  padding: 2px 7px 2px 3px;
+  border-radius: 6px;
+  display: flex;
+  align-self: center;
 }
 
 .sidebar {
@@ -253,7 +265,8 @@ textarea:focus {
   display: flex; 
   gap: 8px; 
   align-items: center; 
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
+  padding-bottom: 2px;
 }
 
 .row > * { flex: 1; }
@@ -390,7 +403,7 @@ textarea:focus {
   padding: 0px 9px 9px 9px;
 }
 .listItem { 
-  padding: 12px 9px 12px 9px;
+  padding: 16px 9px 16px 9px;
   border-bottom: 1px solid #2a315a; 
   display: grid; 
   grid-template-columns: auto 1fr auto; 
@@ -409,26 +422,6 @@ textarea:focus {
 .chip { 
   font-size: 12px; 
   opacity: .85; 
-}
-
-.marker-save {
-  background: #213544;
-  border-radius: 8px;
-  width: 44px;
-  height: 30px;
-  cursor: pointer;
-  color: #e7ebff;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.25s ease, transform 0.15s ease;
-  max-width: 44px;
-}
-
-.marker-save:hover {
-  background: #27305a;
-  transform: scale(1.05);
 }
 
 .marker-save.flash {
@@ -451,12 +444,9 @@ textarea:focus {
   padding-right: 60px; /* laisse la place au bouton cible à droite */
 }
 
-.marker-center {
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
+button.marker-center,
+ button.marker-save{
+  padding: 6px 10px 2px 10px;
   border: none;
   color: #78f1c2;
   font-size: 16px;
@@ -507,15 +497,9 @@ textarea:focus {
 
 /* Better color input layout */
 .listItem input[type="color"] { 
-  flex: 0 0 36px; 
-  width: 30px; 
+  flex: 0 0 26px;
   height: 30px; 
-  padding: 0; 
-  border-radius: 8px; 
-}
-
-#list,#routesList{
-  padding-top: 9px;
+  padding: 0;
 }
 
 #list .listItem.highlight,
@@ -530,10 +514,6 @@ textarea:focus {
   font-size: 11px;
   padding: 5px 8px;
   max-width: 112px;
-}
-
-#list input[type="color"]{
-  height: 26px;
 }
 
 @keyframes highlightPulse {
@@ -574,7 +554,7 @@ textarea:focus {
 }
 
 .helpPopup{
- position: fixed;  
+  position: fixed;  
   top: 50%;  
   left: 50%; 
   transform: translate(-50%, -50%); 
@@ -584,20 +564,19 @@ textarea:focus {
   border-radius: 12px;
   box-shadow: var(--shadow);
   padding: 18px 20px;
-  width: 400px;
+  width: 600px;
   max-width: 90vw;
   color: var(--txt);
   z-index: 50;
   animation: fadeIn .2s ease;
 }
 
-.helpPopup::before {
-  content: "";
+#helpBackdrop {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(2px);
-  z-index: -1;
+  backdrop-filter: blur(4px);
+  z-index: 40;
 }
 
 .helpPopup h3 {
@@ -612,6 +591,10 @@ textarea:focus {
   margin: 0;
   padding-left: 18px;
   list-style: none;
+}
+
+.helpPopup ul li{
+  padding-bottom: 10px;
 }
 
 .helpPopup li::before {
@@ -1078,7 +1061,7 @@ body, #app, #sidebar, #viewport, #header {
   cursor: default;
 }
 
-input, textarea, [contenteditable="true"] {
+textarea, [contenteditable="true"] {
   user-select: text;
   cursor: text;
 }
@@ -1097,41 +1080,65 @@ body.shared-only-view #helpToggle,
 body.shared-only-view .helpPopup,
 body.shared-only-view .listItem .marker-delete,
 body.shared-only-view .listItem .marker-save,
-body.shared-only-view #shareRoutesBtn
+body.shared-only-view #shareRoutesBtn,
+body.shared-only-view #list select,
+body.shared-only-view #list label,
+body.shared-only-view #list button.danger,
+body.shared-only-view .section input[type="color"],
+body.shared-only-view .lock-label
  {
   display: none;
 }
 
-/* On garde seulement le bloc logo dans la sidebar */
 body.shared-only-view .sidebar .title {
   display: flex;
 }
 
-/* Optionnel : on peut aussi griser légèrement le fond de la sidebar */
 body.shared-only-view .sidebar {
   opacity: 0.8;
+}
+
+body.shared-only-view #list input,
+body.shared-only-view #routesList input
+{
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: default; 
 }
 
 /* Mais on laisse la map et les contrôles de zoom fonctionnels */
 body.shared-only-view .mapWrap,
 body.shared-only-view #zoomControls,
-body.shared-only-view #cursorReadout {
+body.shared-only-view #cursorReadout
+ {
   pointer-events: auto;
-  opacity: 1;
+  opacity: 0.7;
 }
 
-
-/*Merge button*/
-
-/* caché en mode normal */
+/* Hide normal mode */
 #mergeSharedBtn {
   display: none;
 }
 
-/* visible uniquement quand on est en vue partagée */
+/* only visible on shared mod */
 body.shared-only-view #mergeSharedBtn,
 #shareRoutesBtn {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+
+/* Shared pin position */
+.marker .pin {
+  position: relative;
+}
+
+.marker .pin .shared-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
 }
