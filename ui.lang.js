@@ -81,6 +81,7 @@
       'ui.PathNamePlaceholder': 'Path name (optional)',
       'ui.MarkerNamePlaceholder': 'Name / note',
       'toast.WarnDeleteAllMarkers': 'Do you really want to delete all markers from this map?',
+      'toast.NothingToShare': 'There is nothing to share (no routes or shared markers)',
 
     },
     fr: {
@@ -163,6 +164,8 @@
       'ui.PathNamePlaceholder': 'Nom du trajet (optionnel)',
       'ui.MarkerNamePlaceholder': 'Nom / note',
       'toast.WarnDeleteAllMarkers': 'Voulez-vous vraiment supprimer tous les marqueurs de cette carte ?',
+      'toast.NothingToShare': 'Il n’y a rien à partager (aucune route ou marqueur partagé)',
+
 
     },
     es: {
@@ -244,6 +247,8 @@
       'ui.PathNamePlaceholder': 'Nombre del recorrido (opcional)',
       'ui.MarkerNamePlaceholder': 'Nombre / nota',
       'toast.WarnDeleteAllMarkers': '¿Realmente deseas eliminar todos los marcadores de este mapa?',
+      'toast.NothingToShare': 'No hay nada que compartir (sin rutas ni marcadores compartidos)',
+
 
     },
   pt: {
@@ -328,6 +333,8 @@
       'ui.PathNamePlaceholder': 'Nome do trajeto (opcional)',
       'ui.MarkerNamePlaceholder': 'Nome / anotação',
       'toast.WarnDeleteAllMarkers': 'Tem certeza de que deseja excluir todos os marcadores deste mapa?',
+      'toast.NothingToShare': 'Nada para compartilhar (sem rotas ou marcadores compartilhados)',
+
 
   },
 
@@ -409,6 +416,8 @@
     'ui.PathNamePlaceholder': 'Название пути (необязательно)',
     'ui.MarkerNamePlaceholder': 'Имя / заметка',
     'toast.WarnDeleteAllMarkers': 'Вы действительно хотите удалить все маркеры с этой карты?',
+    'toast.NothingToShare': 'Нечего поделиться (нет маршрутов или общих меток)',
+
 
   },
 
@@ -493,6 +502,8 @@
       'ui.PathNamePlaceholder': 'Nome del percorso (facoltativo)',
       'ui.MarkerNamePlaceholder': 'Nome / nota',
       'toast.WarnDeleteAllMarkers': 'Vuoi davvero eliminare tutti i marcatori da questa mappa?',
+      'toast.NothingToShare': 'Niente da condividere (nessun percorso o marcatore condiviso)',
+
 
     },
 
@@ -574,6 +585,7 @@
       'ui.PathNamePlaceholder': '路线名称（可选）',
       'ui.MarkerNamePlaceholder': '名称 / 备注',
       'toast.WarnDeleteAllMarkers': '确定要删除此地图上的所有标记吗？',
+      'toast.NothingToShare': '没有可分享的内容（没有路线或共享标记）',
 
     },
 
