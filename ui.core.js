@@ -872,7 +872,9 @@ function renderRoutesPanel() {
       p.paths = p.paths.filter(r => r.id !== path.id);
       renderMarkers();
       renderRoutesPanel();
+      markAsChanged();
       saveUserDataToLocal();
+      showToast(GDMMLang.t('toast.RouteDeleted') || 'Route deleted', 'warning', 2500);
     });
     row.appendChild(delBtn);
     wrap.appendChild(row);
@@ -1103,16 +1105,25 @@ function renderRoutesPanel() {
   viewport.addEventListener('drop', e => { const f = e.dataTransfer.files?.[0]; if (!f) return; setMapSrc(f); });
 
   // --- Toast ---
-  function showToast(message, type = 'success', duration = 2200) {
-    const container = document.getElementById('toastContainer');
-    if (!container) return;
-    const el = document.createElement('div');
-    el.className = `toast ${type}`;
-    el.textContent = message;
-    container.appendChild(el);
-    requestAnimationFrame(() => { el.classList.add('show'); });
-    setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 250); }, duration);
-  }
+    function showToast(message, type = 'success', duration = 2500) {
+      const container = document.getElementById('toastContainer');
+      if (!container) {
+        console.warn('[GDMM] Missing #toastContainer element.');
+        return;
+      }
+
+      const el = document.createElement('div');
+      el.className = `toast ${type}`;
+      el.textContent = message;
+
+      container.appendChild(el);
+      requestAnimationFrame(() => el.classList.add('show'));
+      setTimeout(() => {
+        el.classList.remove('show');
+        setTimeout(() => el.remove(), 300);
+      }, duration);
+    }
+
 
 // === PATHS (ADD / EXPORT / IMPORT) ===
 const newPathBtn = document.getElementById('newPathBtn');
