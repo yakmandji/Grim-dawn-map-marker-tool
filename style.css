@@ -135,7 +135,6 @@ input[type="color"]{
   cursor: pointer;
   padding: 0;
   width: 26px;
-  min-width: 26px;
   height: 26px;
   opacity: 0.7;
 }
@@ -187,7 +186,8 @@ button:active {
   cursor: pointer;
 }
 
-button.small { 
+button.small,
+.right-panel button { 
   display: inline-flex;
   align-items: center;
   justify-content: center;
