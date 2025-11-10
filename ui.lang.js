@@ -258,6 +258,90 @@
 
 
     },
+
+    de: {
+      "ui.NewMarkerTitle": "Neuer Marker",
+      "ui.GeneralMarker": "🔘 Allgemein",
+      "ui.QuestMarker": "⭐ Quest",
+      "ui.BossMarker": "💀 Boss",
+      "ui.LootMarker": "🗝️ Beute",
+      "ui.WaypointMarker": "📍 Wegpunkt",
+      "ui.DonjonMarker": "🏰 Dungeon",
+      "ui.NPCMarker": "💬 NPC",
+      "ui.SaveMarkerButton": "Marker speichern",
+      "ui.ToolsTitle": "Werkzeuge",
+      "ui.RoutesList": "Routenliste",
+      "ui.MarkerList": "Markerliste",
+      "ui.Done": "Fertig",
+      "ui.AddMarkerButton": "Hinzufügen",
+      "ui.NewPathTitle": "Neuer Pfad",
+      "ui.PathHelper": "Halte die Leertaste gedrückt, um die Karte während des Zeichnens zu bewegen",
+      "ui.AddRouteButton": "Hinzufügen",
+      "ui.FinishPath": "Beenden",
+      "ui.LockMarker": "🔒 Marker sperren",
+      "ui.ImportExportHelper": "Import und Export werden nur benötigt, wenn du den Browser oder den Computer wechselst. Für normales Speichern benutze die Schaltfläche oben.",
+      "ui.ImportButton": "Speichern importieren",
+      "ui.ExportButton": "Speichern exportieren",
+      "ui.SaveTitle": "Speichern",
+      "ui.DeleteMarkerButton": "Alle Marker löschen",
+      "ui.DeletePathButton": "Alle Pfade löschen",
+      "ui.Help": "Anleitung",
+      "ui.HelpTitle": "Hilfe",
+      "ui.HelpLine1": "Wähle eine Karte im Dropdown-Menü oben (Hauptspiel oder DLC)",
+      "ui.HelpLine2": "Füge deine Marker hinzu 📍",
+      "ui.HelpLine3": "Deine Marker werden automatisch gespeichert. Verwende die Schaltfläche 'Marker speichern' im Header, um manuell zu speichern, falls nötig.",
+      "ui.HelpLine4": "Du kannst deine Karte mit anderen Benutzern teilen. Nur Routen und Marker mit dem Status 'geteilt' werden geteilt. Andere bleiben privat.",
+      "ui.DeleteButton": "Löschen",
+      "toast.MarkerNameUpdated": "Markername aktualisiert 💾",
+      "toast.RouteNameSaved": "Routenname gespeichert 💾",
+      "toast.PathFinished": "Pfad abgeschlossen ✅",
+      "toast.NoPath": "Kein aktueller Pfad",
+      "toast.NoPathToDelete": "Es gibt keinen Pfad zum Löschen",
+      "toast.LoadingMap": "Karte wird geladen...",
+      "toast.SaveState": "● Gespeichert",
+      "toast.UnsaveState": "● Nicht gespeichert",
+      "toast.SaveMarkerAndRoute": "Marker und Routen lokal gespeichert 💾",
+      "toast.FullMapDataImported": "Komplette Kartendaten importiert ✅",
+      "toast.PathImported": "Pfade importiert ✅",
+      "toast.MarkerImported": "Marker importiert ✅",
+      "toast.WarnDeleteAllPath": "Möchtest du wirklich alle Pfade von dieser Karte löschen?",
+      "toast.AllPathDeleted": "Alle Pfade gelöscht 🧹",
+      "toast.MarkerMapCleared": "Marker von dieser Karte gelöscht 🧹",
+      "toast.CantLoadData": "Benutzerdaten konnten nicht geladen werden:",
+      "toast.CantSaveData": "Benutzerdaten konnten nicht lokal gespeichert werden:",
+      "toast.PathInProgress": "Pfad in Bearbeitung…",
+      "toast.ExportAll": "Alle Daten wurden gespeichert 💾",
+      "toast.SharedNoNewData": "Keine neuen Daten zum Hinzufügen ✅",
+      "toast.ShareUrlCopied": "Freigabelink in die Zwischenablage kopiert 📋",
+      "toast.SharedMerged": "Geteilte Marker und Routen hinzugefügt ✅",
+      "toast.SharedTargetMissing": "Originalkarte nicht gefunden. Vielleicht wurde sie umbenannt oder gelöscht ❌",
+      "toast.MarkerDeleted": "Marker gelöscht 🗑️",
+      "toast.RouteDeleted": "Route gelöscht 🧹",
+      "ui.ShowHideGeneral": "Allgemein ein/ausblenden",
+      "ui.ShowHideQuest": "Quests ein/ausblenden",
+      "ui.ShowHideBoss": "Bosse ein/ausblenden",
+      "ui.ShowHideLoot": "Beute ein/ausblenden",
+      "ui.ShowHideWaypoint": "Wegpunkte ein/ausblenden",
+      "ui.ShowHideDonjon": "Dungeons ein/ausblenden",
+      "ui.ShowHideNPC": "NPCs ein/ausblenden",
+      "ui.ShowHideSharedMarker": "Geteilte Marker ein/ausblenden",
+      "ui.CenterOnMap": "Auf Karte zentrieren",
+      "ui.ShareMapButton": "Meine Karte teilen",
+      "ui.SharedViewLabel": "Geteilte Karte (nur Ansicht)",
+      "ui.SharedTargetLabel": "Hinzufügen zu Karte:",
+      "ui.SharedMergeButton": "Zu meiner Karte hinzufügen",
+      "ui.MergeRoutesButton": "Geteilte zu meiner Karte hinzufügen",
+      "ui.SharedMarker": "Geteilt",
+      "ui.PathNamePlaceholder": "Pfadname (optional)",
+      "ui.MarkerNamePlaceholder": "Name / Notiz",
+      "toast.WarnDeleteAllMarkers": "Möchtest du wirklich alle Marker von dieser Karte löschen?",
+      "toast.NothingToShare": "Nichts zum Teilen vorhanden (keine Routen oder geteilte Marker)",
+      "ui.ToolPan": "Verschieben"
+    },
+
+
+
+
   pt: {
     'ui.NewMarkerTitle': 'Novo marcador',
     'ui.GeneralMarker': '🔘 Geral',
@@ -645,7 +729,15 @@
 
   document.getElementById('langSelect')?.addEventListener('change', e => {
     const lang = e.target.value;
-    GDMMLang.setLang(lang);
+
+    // 1) on change la langue dans le système
+    setLang(lang);
+    applyLang(lang);
+
+    // 2) on redessine la carte / les marqueurs
+    if (window.UiCore && typeof UiCore.renderMarkers === 'function') {
+      UiCore.renderMarkers({ skipRoutesPanel: true });
+    }
   });
 
   document.getElementById('langSelect').value = GDMMLang.getLang();
