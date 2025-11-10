@@ -50,6 +50,7 @@ const {
 
   // --- Map load (avec DOM) ---
   let loadToken = 0;
+  
   function setMapSrc(src){
     if (!state.active) { alert('You need first to create profile'); return; }
     const token = ++loadToken;
@@ -763,6 +764,41 @@ function renderMarkers(options = {}) {
     inner.appendChild(el);   
   });
 
+  // 4) Rift map (admin markers)
+
+  let riftData = [];
+  if (window.RIFT_MARKERS_BY_SIZE && state.mapNatural) {
+    const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
+    riftData = window.RIFT_MARKERS_BY_SIZE[key] || [];
+  }
+
+  riftData.forEach(m => {
+    const el = document.createElement('div');
+    el.classList.add('marker', 'marker-rift', 'locked');
+
+    const labelText = window.getRiftLabel
+      ? getRiftLabel(m.tag, m.label || m.tag || 'Rift')
+      : (m.label || m.tag || 'Rift');
+
+    const lab = document.createElement('div');
+    lab.className = 'label rift-label';
+    lab.textContent = labelText;
+    el.appendChild(lab);
+
+    const iconImg = document.createElement('img');
+    iconImg.className = 'rift-icon';
+    iconImg.src = 'img/rift.png';
+    iconImg.alt = 'Rift';
+    el.appendChild(iconImg);
+
+    const pt = pctToPx(m.xp, m.yp);
+    el.style.left = pt.x + 'px';
+    el.style.top  = pt.y + 'px';
+
+    el.classList.add('is-static');
+    inner.appendChild(el);
+  });
+
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
   }
@@ -1335,7 +1371,7 @@ if (newPathBtn) {
 
   // --- Init on load ---
   (async () => {
-    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json';
+    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=2';
     // empty base
     state.profiles['Profil 1'] = { markers:[], map:{}, created: new Date().toISOString(), updated: new Date().toISOString() };
     setActiveProfile('Profil 1');
