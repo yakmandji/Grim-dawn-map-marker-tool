@@ -1,5 +1,5 @@
 (function(){
-  const DEV_MODE = true;
+  const DEV_MODE = false;
 
   // --- State  ---
   const state = {
