@@ -50,7 +50,7 @@ const {
 
   // --- Map load (avec DOM) ---
   let loadToken = 0;
-  
+
   function setMapSrc(src){
     if (!state.active) { alert('You need first to create profile'); return; }
     const token = ++loadToken;
@@ -1371,7 +1371,7 @@ if (newPathBtn) {
 
   // --- Init on load ---
   (async () => {
-    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=2';
+    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=2.1';
     // empty base
     state.profiles['Profil 1'] = { markers:[], map:{}, created: new Date().toISOString(), updated: new Date().toISOString() };
     setActiveProfile('Profil 1');
