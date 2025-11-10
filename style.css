@@ -1130,3 +1130,22 @@ body.shared-only-view #mergeSharedBtn,
   height: 14px;
   pointer-events: none;
 }
+
+
+/*RIFT MARKER*/
+
+.marker-rift {
+  display: flex;
+  align-items: center;
+  gap: 4px; 
+}
+
+.marker-rift .label {
+  font-size: 0.85em;
+  opacity: 0.9;
+}
+
+
+.marker-rift .rift-icon {
+  display: block;
+}
