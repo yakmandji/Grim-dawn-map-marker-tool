@@ -37,11 +37,26 @@
 
       <div class="sep"></div>
       <div class="right-panel">
-        <button id="toolPan" >🖐️ Pan</button>
+        <button id="toolPan" >
+            <img src="img/pan-icon.svg" width="18">
+            <span data-i18n="ui.ToolPan">Pan</span>
+        </button>
+
         <div class="sep"></div>
-        <select id="profileSelect" title="Profils" class="active"><option value="">(profil)</option></select>
-        <div class="sep"></div><button id="exportAllBtn" data-i18n="ui.SaveMarkerButton">💾 Save markers</button>
+
+        <select id="profileSelect" title="Profils" class="active">
+          <option value="">(profil)</option>
+        </select>
+
+        <div class="sep"></div>
+
+        <button id="exportAllBtn">
+          <img src="img/save-icon.svg" width="16">
+          <span data-i18n="ui.SaveMarkerButton">Save markers</span>
+        </button>
+
          <div class="sep"></div>
+
         <span id="saveStatus" style="margin-left:8px;">● Saved</span>
       </div>
     </header>
