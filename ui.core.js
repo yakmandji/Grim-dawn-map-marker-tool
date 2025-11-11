@@ -24,6 +24,8 @@ const {
 } = window.GDMMCore;
 
 
+
+
   const $  = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
 
@@ -65,16 +67,33 @@ const {
     if (Number(mapImg.dataset.token || 0) !== loadToken) return;
     state.mapNatural = { w: mapImg.naturalWidth, h: mapImg.naturalHeight };
     state.mapReady   = state.mapNatural.w > 0 && state.mapNatural.h > 0;
+
+    const vp = viewport;
+    if (vp && state.mapNatural.w && state.mapNatural.h) {
+      const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
+      // on nettoie d’abord
+      vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap');
+
+      if (key === '8948x9133') {
+        vp.classList.add('cairnmap');
+      } else if (key === '5142x3574') {
+        vp.classList.add('malmouthmap');
+      } else if (key === '3488x3608') {
+        vp.classList.add('korvanmap');
+      }
+    }
     const p = currentProfile();
     if (p && p.map) {
       p.map.width  = state.mapNatural.w;
       p.map.height = state.mapNatural.h;
       p.map.sessionSrc = mapImg.src;
     }
+
     fitToScreen();
     renderMarkers();
     hideLoader();
-  });
+});
+
 
   mapImg.addEventListener('error', () => {
     state.mapReady = false;
@@ -1475,7 +1494,7 @@ if (newPathBtn) {
 
   // --- Init on load ---
   (async () => {
-    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=2.3';
+    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=2.8';
     // empty base
     state.profiles['Profil 1'] = { markers:[], map:{}, created: new Date().toISOString(), updated: new Date().toISOString() };
     setActiveProfile('Profil 1');
