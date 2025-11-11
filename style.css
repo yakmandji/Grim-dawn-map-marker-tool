@@ -1161,10 +1161,10 @@ body.shared-only-view #mergeSharedBtn,
 
 .region-label {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 0.85em;
+  font-size: 1em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #e0e0e0;
+  color: #bba078;
   text-shadow:0 0 3px rgba(0, 2, 2, 2),
     0 0px 4px rgba(0, 2, 2, 2),
     0 0 7px rgba(0, 2, 2, 2);
@@ -1173,4 +1173,8 @@ body.shared-only-view #mergeSharedBtn,
   background: none;
   border: none;
   padding: 0;
+}
+
+.malmouthmap .region-label{
+  font-size: 1.5em;
 }
