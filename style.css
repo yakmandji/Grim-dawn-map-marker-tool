@@ -367,6 +367,7 @@ textarea:focus {
   transform-origin: 50% 100%;
   pointer-events: auto;
   cursor: pointer;
+  z-index: 1;
 }
 
 
@@ -1148,4 +1149,28 @@ body.shared-only-view #mergeSharedBtn,
 
 .marker-rift .rift-icon {
   display: block;
+}
+
+
+/*REGION MARKER*/
+
+.marker-region {
+  position: absolute;
+  pointer-events: none;
+}
+
+.region-label {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-shadow:0 0 3px rgba(0, 2, 2, 2),
+    0 0px 4px rgba(0, 2, 2, 2),
+    0 0 7px rgba(0, 2, 2, 2);
+  white-space: nowrap;
+  user-select: none;
+  background: none;
+  border: none;
+  padding: 0;
 }
