@@ -6,7 +6,7 @@
 - Multiple marker types and route creation 
 - Map sharing system: export your markers or full maps via the Share Map button with other players (only if you tag your markers as shared)
 - Seven-language support: English, French, Spanish, Portuguese, Russian, Italian etc...
-﻿- Full import/export If you switch browser or computer
+- Full import/export If you switch browser or computer
 
 📦 How to use
 
