@@ -6,7 +6,7 @@
  */
 
 (function(){
-  const DEV_MODE = false;
+  const DEV_MODE = true;
 
   // --- State  ---
   const state = {
@@ -271,5 +271,24 @@ function getUserDataOnly() {
     mergeUserMarkers,
   };
 
-})();
+// marker-signature: gdmmtool_2025_[Yakmandji]
 
+  const host = location.hostname || '';
+  if (
+    host &&
+    !host.includes('github.io') &&
+    !host.includes('localhost')
+  ) {
+    document.body.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;text-align:center;">
+        <div>
+          <h2>Unauthorized domain</h2>
+          <p>This project is protected and cannot be hosted here.</p>
+          <p>Original version: <a href="https://yakmandji.github.io/Grim-dawn-map-marker-tool/" target="_blank">GitHub Pages</a></p>
+        </div>
+      </div>`;
+    throw new Error('Unauthorized domain detected.');
+  }
+
+
+})();
