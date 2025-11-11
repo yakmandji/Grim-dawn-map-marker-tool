@@ -2,7 +2,7 @@
 
 📍 Add, move, rename, and delete markers easily.
 - 100% client-side (no dependencies, no build)
-- 100% client-side — no data upload, no server, no privacy risk
+- 100% client-side, no data upload, no server, no privacy risk
 - Multiple marker types and route creation 
 - Map sharing system: export your markers or full maps via the Share Map button with other players (only if you tag your markers as shared)
 - Seven-language support: English, French, Spanish, Portuguese, Russian, Italian etc...
