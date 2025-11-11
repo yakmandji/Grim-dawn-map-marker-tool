@@ -2,13 +2,16 @@
 
 📍 Add, move, rename, and delete markers easily.
 - 100% client-side (no dependencies, no build)
-- Multiple profiles support (different maps or playthroughs)
 - 100% client-side — no data upload, no server, no privacy risk
+- Multiple marker types and route creation 
+- Map sharing system: export your markers or full maps via the Share Map button with other players (only if you tag your markers as shared)
+- Seven-language support: English, French, Spanish, Portuguese, Russian, Italian etc...
+﻿- Full import/export If you switch browser or computer
 
 📦 How to use
 
 - Just open the web app :
-https://yakmandji.github.io/Grim-dawn-map-marker-tool/
+  https://yakmandji.github.io/Grim-dawn-map-marker-tool/
 - Choose a map from the selection list (main game or DLC).
 - Add markers by clicking on the map 📍 then pressing Add.
 - Save your changes
