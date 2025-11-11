@@ -463,6 +463,8 @@ function renderMarkers(options = {}) {
   document.querySelectorAll('#mapInner .path-point').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-label').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-endpoint').forEach(n => n.remove());
+  document.querySelectorAll('#mapInner .marker-region').forEach(n => n.remove());
+
   const oldSvg = document.getElementById('pathLayer');
   if (oldSvg) oldSvg.remove();
 
@@ -799,6 +801,36 @@ function renderMarkers(options = {}) {
     inner.appendChild(el);
   });
 
+  // --- Regions statiques (admin) ---
+  let regionData = [];
+  if (window.REGION_MARKERS_BY_SIZE && state.mapNatural) {
+    const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
+    regionData = window.REGION_MARKERS_BY_SIZE[key] || [];
+  }
+
+  regionData.forEach(m => {
+    const el = document.createElement('div');
+    el.classList.add('marker-region', 'locked'); 
+
+    const labelText = (window.getRegionLabel)
+      ? getRegionLabel(m.tag, m.tag)
+      : (m.tag || 'Region');
+
+    const lab = document.createElement('div');
+    lab.className = 'region-label';
+    lab.textContent = labelText;
+    el.appendChild(lab);
+
+    const pt = pctToPx(m.xp, m.yp);
+    el.style.left = pt.x + 'px';
+    el.style.top  = pt.y + 'px';
+
+    el.classList.add('is-static');
+    inner.appendChild(el);
+  });
+
+
+
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
   }
@@ -995,7 +1027,7 @@ function renderRoutesPanel() {
   }
 
 
-  viewport.addEventListener('pointerdown', e => {
+/*  viewport.addEventListener('pointerdown', e => {
     // --- MODE MARKER add ---
     if (state.tool === 'add') {
       const { xp, yp } = viewToPct(e.clientX, e.clientY);
@@ -1023,7 +1055,79 @@ function renderRoutesPanel() {
     viewport.setPointerCapture?.(panId);
     panStart = { x: e.clientX, y: e.clientY };
     viewStart = { ...state.view };
-  });
+  });*/
+
+
+//TEMP A RETIRER_________________________________________________________________
+viewport.addEventListener('pointerdown', e => {
+  // --- Copie rapide des coords (Alt+clic sur la carte) ---
+  if (e.altKey && state.mapReady) {
+    const { xp, yp } = viewToPct(e.clientX, e.clientY);
+    if (isFinite(xp) && isFinite(yp)) {
+      const cx = clamp(xp, 0, 100).toFixed(2);
+      const cy = clamp(yp, 0, 100).toFixed(2);
+      const text = `      xp: ${cx},\n      yp: ${cy}`;
+
+      const onDone = () => {
+        if (typeof showToast === 'function') {
+          showToast(`Coordonnées copiées : xp=${cx}, yp=${cy}`);
+        } else {
+          console.log('Coordonnées copiées :\n' + text);
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+          .then(onDone)
+          .catch(err => {
+            console.warn('Clipboard error', err);
+            onDone();
+          });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (err) {}
+        document.body.removeChild(ta);
+        onDone();
+      }
+    }
+    return; // très important : on n’entre PAS dans pan / add / path
+  }
+
+  // --- MODE MARKER add ---
+  if (state.tool === 'add') {
+    const { xp, yp } = viewToPct(e.clientX, e.clientY);
+    if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
+      addMarkerFromUI(xp, yp);
+    }
+    return;
+  }
+
+  // --- MODE PATH (point add) ---
+  if (state.tool === 'path') {
+    const { xp, yp } = viewToPct(e.clientX, e.clientY);
+    if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
+      addPathPoint(xp, yp);
+    }
+    return;
+  }
+
+  // --- classic PAN ---
+  e.preventDefault();
+  if (e.target.closest && e.target.closest('.marker')) {
+    return;
+  }
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  panning = true;
+  panId = e.pointerId;
+  viewport.setPointerCapture?.(panId);
+  panStart = { x: e.clientX, y: e.clientY };
+  viewStart = { ...state.view };
+});
+//______________________________________________________________________________
+
 
 
   viewport.addEventListener('pointermove', e => {
@@ -1075,7 +1179,7 @@ function renderRoutesPanel() {
 
     function zoomAt(clientX, clientY, step) {
       const old = state.view.scale;
-      const ns = clamp(old * (1 + step), 0.18, 5);
+      const ns = clamp(old * (1 + step), 0.18, 1.28);
       if (ns === old) return;
 
       const vb = viewport.getBoundingClientRect();
@@ -1451,5 +1555,6 @@ if (newPathBtn) {
   window.UiCore = {
     $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,renderRoutesPanel,setMapSrc,showToast,updateSaveIndicator,
   };
+
 
 })();
