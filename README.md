@@ -15,7 +15,7 @@
 - Choose a map from the selection list (main game or DLC).
 - Add markers by clicking on the map 📍 then pressing Add.
 - Save your changes
-  Done
+- Done
 
 Not necessary but to use it locally on your machine, download all files from Github and simply launch the index.html file.
 
