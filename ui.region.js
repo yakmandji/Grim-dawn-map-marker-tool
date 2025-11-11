@@ -754,7 +754,110 @@
 
   // --- MALMOUTH ---
   window.REGION_MARKERS_MALMOUTH = [
-    // plus tard
+
+    {
+  id: 'tag_gdx1_map_malmouth_industrial',
+  tag: 'tagGDX1MapMalmouthIndustrial',
+  xp: 41.39,
+  yp: 43.71
+},
+{
+  id: 'tag_gdx1_map_malmouth_docks',
+  tag: 'tagGDX1MapMalmouthDocks',
+  xp: 32.49,
+  yp: 35.06
+},
+{
+  id: 'tag_gdx1_map_ugdenbog_slums',
+  tag: 'tagGDX1MapUgdenbogSlums',
+  xp: 52.57,
+  yp: 30.06
+},
+{
+  id: 'tag_gdx1_map_malmouth_outskirts_ruins',
+  tag: 'tagGDX1MapMalmouthOutskirtsRuins',
+  xp: 64.44,
+  yp: 44.32
+},
+{
+  id: 'tag_gdx1_map_malmouth_outskirts',
+  tag: 'tagGDX1MapMalmouthOutskirts',
+  xp: 67.78,
+  yp: 69.30
+},
+{
+  id: 'tag_gdx1_map_malmouth_entry',
+  tag: 'tagGDX1MapMalmouthEntry',
+  xp: 66.52,
+  yp: 92.07
+},
+{
+  id: 'tag_gdx1_map_malmouth_inner',
+  tag: 'tagGDX1MapMalmouthInner',
+  xp: 44.38,
+  yp: 12.41
+},
+{
+  id: 'tag_gdx1_ug_malmouth_aetherial_factory01',
+  tag: 'tagGDX1UGMalmouthAetherialFactory01',
+  xp: 26.04,
+  yp: 3.26
+},
+{
+  id: 'tag_gdx1_ug_malmouth_aetherial_factory02',
+  tag: 'tagGDX1UGMalmouthAetherialFactory02',
+  xp: 4.34,
+  yp: 6.22
+},
+{
+  id: 'tag_gdx1_ug_malmouth_sewer02',
+  tag: 'tagGDX1UGMalmouthSewer02',
+  xp: 12.69,
+  yp: 42.24
+},
+{
+  id: 'tag_gdx1_ug_malmouth_lighthouse01',
+  tag: 'tagGDX1UGMalmouthLighthouse01',
+  xp: 14.38,
+  yp: 52.75
+},
+{
+  id: 'tag_gdx1_ug_malmouth_cathedral01',
+  tag: 'tagGDX1UGMalmouthCathedral01',
+  xp: 24.77,
+  yp: 73.23
+},
+{
+  id: 'tag_gdx1_ug_malmouth_hideout01',
+  tag: 'tagGDX1UGMalmouthHideout01',
+  xp: 31.04,
+  yp: 60.35
+},
+{
+  id: 'tag_gdx1_ug_malmouth_outskirts_cellar01',
+  tag: 'tagGDX1UGMalmouthOutskirtsCellar01',
+  xp: 46.48,
+  yp: 72.42
+},
+{
+  id: 'tag_gdx1_ug_ugdenbog_void_rift02',
+  tag: 'tagGDX1UGUgdenbogVoidRift02',
+  xp: 88.42,
+  yp: 60.36
+},
+{
+  id: 'tag_gdx1_ug_secret01',
+  tag: 'tagGDX1UGSecret01',
+  xp: 83.00,
+  yp: 32.16
+},
+{
+  id: 'tag_gdx1_ug_malmouth_fort01',
+  tag: 'tagGDX1UGMalmouthFort01',
+  xp: 89.10,
+  yp: 6.81
+},
+    
   ];
 
   // --- KORVAN ---
@@ -1179,6 +1282,8 @@ fr: {
   tagGDX1MapUgdenbogSlums: "District de Chandelle",
   tagGDX1MapMalmouthIndustrial: "District de Cap-Ferré",
   tagGDX1MapMalmouthInner: "Colline Couronnée",
+  tagGDX1MapMalmouthDocks: "Port de Malmouth",
+
 
   tagGDX2MapWitchGodBase: "Conclave des Trois",
   tagGDX2MapArea01: "Plateau de Korvan",
