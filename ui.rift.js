@@ -28,8 +28,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_flooded_passage',
     tag: 'tagRiftFloodedPassage',
-    xp: 77.4,
-    yp: 79.88
+      xp: 61.83,
+      yp: 70.65
   },
   {
     id: 'tag_rift_burrwitch_outskirts',
@@ -52,14 +52,14 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_wardens_labratory01',
     tag: 'tagRiftWardensLabratory01',
-    xp: 65.5,
-    yp: 53.65
+    xp: 63.97,
+    yp: 53.62
   },
   {
     id: 'rift_wardens_labratory02',
     tag: 'tagRiftWardensLabratory02',
-    xp: 62.4,
-    yp: 56.1
+      xp: 60.49,
+      yp: 56.44
   },
   {
     id: 'rift_broken_hills',
@@ -762,7 +762,7 @@ window.RIFT_LABELS = {
 
 
 window.getRiftLabel = function(tag, fallback) {
-  // langue actuelle (ton système existant)
+
   const langCode = (window.GDMMLang && GDMMLang.getLang && GDMMLang.getLang()) || 'en';
   const dict = window.RIFT_LABELS[langCode] || window.RIFT_LABELS.en || {};
   return dict[tag] || fallback || tag;
