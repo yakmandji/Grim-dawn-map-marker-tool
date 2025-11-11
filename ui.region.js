@@ -13,10 +13,23 @@
       yp: 90.13
     },
     {
+      id: 'UG_burial_cave',
+      tag: 'tagUGBurialCave',
+      xp: 73,
+      yp: 81.38
+    },
+    
+    {
+      id: 'world_map_witch_god_temple',
+      tag: 'tagWorldMapWitchGodTemple',
+      xp: 87.29,
+      yp: 62.23
+    },
+    {
       id: 'UG_devils_crossing_aquifer',
       tag: 'tagUGDevilsCrossingAquifer',
       xp: 71.0,
-      yp: 93.23
+      yp: 93.19
     },
     {
       id: 'map_old_grove',
@@ -55,10 +68,28 @@
       yp: 77.05
     },
     {
+      id: 'GDX1UGU_gdenbog_cellar01',
+      tag: 'tagGDX1UGUgdenbogCellar01',
+      xp: 67.43,
+      yp: 45.44
+    },
+    {
       id: 'map_flooded_passage01',
       tag: 'tagMapFloodedPassage01',
-      xp: 76.12,
-      yp: 74.56
+      xp: 61,
+      yp: 66.75
+    },
+    {
+      id: 'burrwitch_cellar02',
+      tag: 'tagBurrwitchCellar02',
+      xp: 75.48,
+      yp: 58.87
+    },
+    {
+      id: 'burrwitch_cellar03',
+      tag: 'tagBurrwitchCellar03',
+      xp: 61.67,
+      yp: 60.15
     },
     {
       id: 'UG_cellar02',
@@ -115,6 +146,12 @@
     yp: 65.76
   },
   {
+    id: 'GDX1UG_ugdenbog_wendigo01',
+    tag: 'tagGDX1UGUgdenbogWendigo01',
+      xp: 77.17,
+      yp: 26.49
+  },
+  {
     id: 'GDX2_map_side_areas_01',
     tag: 'tagGDX2MapSideAreas_01',
     xp: 72.06,
@@ -130,7 +167,7 @@
     id: 'map_burrwitch_estates',
     tag: 'tagMapBurrwitchEstates',
     xp: 68.89,
-    yp: 60.08
+    yp: 59.5
   },
   {
     id: 'GDX1_map_dark_wood',
@@ -201,13 +238,13 @@
   {
     id: 'GDX1_UG_ugdenbog_cave03',
     tag: 'tagGDX1UGUgdenbogCave03',
-    xp: 75.28,
-    yp: 30.57
+      xp: 95.94,
+      yp: 34.27
   },
   {
     id: 'GDX1_UG_ugdenbog_wendigo02',
     tag: 'tagGDX1UGUgdenbogWendigo02',
-    xp: 74.55,
+    xp: 74.3,
     yp: 26.52
   },
   {
@@ -748,8 +785,28 @@
   id: 'map_conflagration02',
   tag: 'tagMapConflagration02',
   xp: 32.38,
-  yp: 73.45
+  yp: 73.42
 },
+{
+  id: 'map_port_valbury_cellar',
+  tag: 'tagMapPortValburyCellar',
+    xp: 33,
+    yp: 28.71
+},
+{
+  id: 'map_port_valbury_aldritch_cellar',
+  tag: 'tagMapPortValburyAldritchCellar',
+      xp: 35.95,
+      yp: 19.55
+},
+{
+  id: 'GDX1UG_ugdenbog_cave02',
+  tag: 'tagGDX1UGUgdenbogCave02',
+      xp: 94.18,
+      yp: 42.73
+},
+
+
   ];
 
   // --- MALMOUTH ---
@@ -937,8 +994,8 @@
 {
   id: 'tag_gdx2_map_area03_a',
   tag: 'tagGDX2MapArea03',
-  xp: 68.53,
-  yp: 42.91
+  xp: 67.53,
+  yp: 44
 },
 {
   id: 'tag_gdx2_map_vanguard_base',
@@ -1135,6 +1192,7 @@ en: {
   tagMapEastMarsh01: "East Marsh",
   tagMapEastMarsh02: "Noxious Glade",
   tagMapEastMarsh03: "Craig's Crags",
+  tagWorldMapWitchGodTemple: "Temple of the Three",
 
   tagMapBrokenHills: "Broken Hills",
   tagMapOldArkovia: "Old Arkovia",
@@ -1430,6 +1488,7 @@ fr: {
   tagMapEastMarsh01: "Marais Oriental",
   tagMapEastMarsh02: "Clairière Nocive",
   tagMapEastMarsh03: "Escarpements de Craig",
+  tagWorldMapWitchGodTemple: "Temple des Trois",
 
   tagMapBrokenHills: "Collines Brisées",
   tagMapOldArkovia: "Vieil Arkovia",
@@ -1728,6 +1787,7 @@ fr: {
     tagMapEastMarsh01: "Pantano del Este",
     tagMapEastMarsh02: "Claro Nocivo",
     tagMapEastMarsh03: "Riscos de Craig",
+    tagWorldMapWitchGodTemple: "Templo de los Tres",
 
     tagMapBrokenHills: "Colinas Quebradas",
     tagMapOldArkovia: "Vieja Arkovia",
@@ -2024,6 +2084,7 @@ de: {
   tagMapEastMarsh01: "Ostsumpf",
   tagMapEastMarsh02: "Noxious Glade",
   tagMapEastMarsh03: "Craig's Crags",
+  tagWorldMapWitchGodTemple: "Der Tempel der Drei",
 
   tagMapBrokenHills: "Broken Hills",
   tagMapOldArkovia: "Old Arkovia",
@@ -2323,6 +2384,7 @@ pt: {
   tagMapEastMarsh01: "Pântano do Leste",
   tagMapEastMarsh02: "Clareira Nociva",
   tagMapEastMarsh03: "Penhascos de Craig",
+  tagWorldMapWitchGodTemple: "Templo dos Três",
 
   tagMapBrokenHills: "Colinas Partidas",
   tagMapOldArkovia: "Velha Arkóvia",
@@ -2620,6 +2682,7 @@ it: {
   tagMapEastMarsh01: "Palude Orientale",
   tagMapEastMarsh02: "Radura Tossica",
   tagMapEastMarsh03: "Dirupo di Craig",
+  tagWorldMapWitchGodTemple: "Tempio dei Tre",
 
   tagMapBrokenHills: "Colline Spezzate",
   tagMapOldArkovia: "Arkovia Vecchia",
@@ -2917,6 +2980,7 @@ ru: {
   tagMapEastMarsh01: "Восточное Болото",
   tagMapEastMarsh02: "Ядовитая Поляна",
   tagMapEastMarsh03: "Утёс Крэйга",
+  tagWorldMapWitchGodTemple: 'Храм Троих',
 
   tagMapBrokenHills: "Изломанные Холмы",
   tagMapOldArkovia: "Старая Арковия",
@@ -3214,6 +3278,7 @@ ru: {
     tagMapEastMarsh01: "东方沼泽",
     tagMapEastMarsh02: "剧毒林地",
     tagMapEastMarsh03: "克雷格的峭壁",
+    tagWorldMapWitchGodTemple: '三巫神神殿',
 
     tagMapBrokenHills: "破碎丘陵",
     tagMapOldArkovia: "古安克维亚",
