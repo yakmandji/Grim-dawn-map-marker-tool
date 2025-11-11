@@ -1077,7 +1077,6 @@ function renderRoutesPanel() {
   });*/
 
 
-//TEMP A RETIRER_________________________________________________________________
 viewport.addEventListener('pointerdown', e => {
   // --- Copie rapide des coords (Alt+clic sur la carte) ---
   if (e.altKey && state.mapReady) {
@@ -1112,7 +1111,7 @@ viewport.addEventListener('pointerdown', e => {
         onDone();
       }
     }
-    return; // très important : on n’entre PAS dans pan / add / path
+    return;
   }
 
   // --- MODE MARKER add ---
@@ -1145,7 +1144,6 @@ viewport.addEventListener('pointerdown', e => {
   panStart = { x: e.clientX, y: e.clientY };
   viewStart = { ...state.view };
 });
-//______________________________________________________________________________
 
 
 
