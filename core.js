@@ -1,3 +1,10 @@
+/*!
+ * Grim Dawn Map Marker Tool
+ * © 2025 [Yakmandji] — Licensed under CC BY-NC-ND 4.0
+ * Original: [https://yakmandji.github.io/Grim-dawn-map-marker-tool/]
+ * Unauthorized redistribution or modification is prohibited.
+ */
+
 (function(){
   const DEV_MODE = false;
 
@@ -265,3 +272,4 @@ function getUserDataOnly() {
   };
 
 })();
+
