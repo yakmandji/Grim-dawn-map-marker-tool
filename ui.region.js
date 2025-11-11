@@ -862,7 +862,234 @@
 
   // --- KORVAN ---
   window.REGION_MARKERS_KORVAN = [
-    // plus tard
+    {
+  id: 'tag_gdx2_map_secret_base_shrine',
+  tag: 'tagGDX2MapSecretBaseShrine',
+  xp: 24.19,
+  yp: 98.79
+  },
+  {
+    id: 'tag_gdx2_map_witch_god_base',
+    tag: 'tagGDX2MapWitchGodBase',
+    xp: 21.77,
+    yp: 96.28
+  },
+  {
+    id: 'tag_gdx2_map_area01_a',
+    tag: 'tagGDX2MapArea01',
+    xp: 25.90,
+    yp: 85.58
+  },
+  {
+    id: 'tag_gdx2_map_ruined_temple_city',
+    tag: 'tagGDX2MapRuinedTempleCity',
+    xp: 32.30,
+    yp: 75.00
+  },
+  {
+    id: 'tag_gdx2_map_ruined_temple01',
+    tag: 'tagGDX2MapRuinedTemple01',
+    xp: 38.50,
+    yp: 73.63
+  },
+  {
+    id: 'tag_gdx2_map_area01_b',
+    tag: 'tagGDX2MapArea01',
+    xp: 27.67,
+    yp: 63.92
+  },
+{
+  id: 'tag_gdx2_roguelike_area02',
+  tag: 'tagGDX2Roguelike_Area02',
+  xp: 21.80,
+  yp: 58.93
+},
+{
+  id: 'tag_gdx2_map_area02',
+  tag: 'tagGDX2MapArea02',
+  xp: 29.90,
+  yp: 54.39
+},
+{
+  id: 'tag_gdx2_map_ruined_city01',
+  tag: 'tagGDX2MapRuinedCity01',
+  xp: 35.39,
+  yp: 44.46
+},
+{
+  id: 'tag_gdx2_map_dead_lake',
+  tag: 'tagGDX2MapDeadLake',
+  xp: 27.27,
+  yp: 31.56
+},
+{
+  id: 'tag_gdx2_map_oasis',
+  tag: 'tagGDX2MapOasis',
+  xp: 53.42,
+  yp: 47.05
+},
+{
+  id: 'tag_gdx2_map_secret_desert_shrine',
+  tag: 'tagGDX2MapSecretDesertShrine',
+  xp: 63.08,
+  yp: 48.14
+},
+{
+  id: 'tag_gdx2_map_area03_a',
+  tag: 'tagGDX2MapArea03',
+  xp: 68.53,
+  yp: 42.91
+},
+{
+  id: 'tag_gdx2_map_vanguard_base',
+  tag: 'tagGDX2MapVanguardBase',
+  xp: 73.85,
+  yp: 42.77
+},
+{
+  id: 'tag_gdx2_map_ruined_city02',
+  tag: 'tagGDX2MapRuinedCity02',
+  xp: 79.74,
+  yp: 38.33
+},
+{
+  id: 'tag_gdx2_map_burning_spire',
+  tag: 'tagGDX2MapBurningSpire',
+  xp: 79.49,
+  yp: 38.99
+},
+{
+  id: 'tag_gdx2_map_area03_b',
+  tag: 'tagGDX2MapArea03',
+  xp: 69.19,
+  yp: 35.76
+},
+{
+  id: 'tag_gdx2_map_area04_a',
+  tag: 'tagGDX2MapArea04',
+  xp: 66.56,
+  yp: 27.21
+},
+{
+  id: 'tag_gdx2_map_area04_b',
+  tag: 'tagGDX2MapArea04',
+  xp: 61.42,
+  yp: 29.51
+},
+{
+  id: 'tag_gdx2_map_volcano01',
+  tag: 'tagGDX2MapVolcano01',
+  xp: 63.52,
+  yp: 31.00
+},
+{
+  id: 'tag_gdx2_map_tomb_valley',
+  tag: 'tagGDX2MapTombValley',
+  xp: 62.57,
+  yp: 20.64
+},
+{
+  id: 'tag_gdx2_map_area05',
+  tag: 'tagGDX2MapArea05',
+  xp: 59.09,
+  yp: 10.13
+},
+{
+  id: 'tag_gdx2_map_road_to_korvaak_temple',
+  tag: 'tagGDX2MapRoadToKorvaakTemple',
+  xp: 62.44,
+  yp: 6.82
+},
+{
+  id: 'tag_gdx2_map_raised_temple_a',
+  tag: 'tagGDX2MapRaisedTemple',
+  xp: 55.16,
+  yp: 3.76
+},
+{
+  id: 'tag_gdx2_map_raised_temple_b',
+  tag: 'tagGDX2MapRaisedTemple',
+  xp: 40.21,
+  yp: 3.00
+},
+{
+  id: 'tag_gdx1_ug_secret01',
+  tag: 'tagGDX1UGSecret01',
+  xp: 0.98,
+  yp: 8.53
+},
+{
+  id: 'tag_gdx2_cairan_ruins01',
+  tag: 'tagGDX2CairanRuins01',
+  xp: 1.17,
+  yp: 40.37
+},
+{
+  id: 'tag_gdx2_roguelike_area02_b',
+  tag: 'tagGDX2Roguelike_Area02',
+  xp: 7.30,
+  yp: 55.61
+},
+{
+  id: 'tag_gdx2_bysmiel_eldritch',
+  tag: 'tagGDX2BysmielEldritch',
+  xp: 1.34,
+  yp: 85.64
+},
+{
+  id: 'tag_gdx2_beetle01',
+  tag: 'tagGDX2Beetle01',
+  xp: 35.61,
+  yp: 91.25
+},
+{
+  id: 'tag_gdx2_ruined_temple01_b',
+  tag: 'tagGDX2RuinedTemple01',
+  xp: 57.10,
+  yp: 86.14
+},
+{
+  id: 'tag_gdx2_howling_chasm',
+  tag: 'tagGDX2HowlingChasm',
+  xp: 63.76,
+  yp: 53.79
+},
+{
+  id: 'tag_gdx2_ruined_dc',
+  tag: 'tagGDX2RuinedDC',
+  xp: 72.17,
+  yp: 53.95
+},
+{
+  id: 'tag_gdx2_ruined_temple02',
+  tag: 'tagGDX2RuinedTemple02',
+  xp: 91.11,
+  yp: 37.63
+},
+{
+  id: 'tag_gdx2_votc01',
+  tag: 'tagGDX2VOTC01',
+  xp: 95.63,
+  yp: 27.77
+},
+{
+  id: 'tag_gdx2_votc02',
+  tag: 'tagGDX2VOTC02',
+  xp: 95.08,
+  yp: 15.92
+},
+{
+  id: 'tag_gdx2_korvaak_tomb01',
+  tag: 'tagGDX2KorvaakTomb01',
+  xp: 70.09,
+  yp: 0.97
+},
+{
+  id: 'tag_gdx2_map_hidden_oasis',
+  tag: 'tagGDX2MapHiddenOasis',
+  xp: 36.89,
+  yp: 68.07
+},
   ];
 
 
