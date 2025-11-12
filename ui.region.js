@@ -148,8 +148,8 @@
   {
     id: 'GDX1UG_ugdenbog_wendigo01',
     tag: 'tagGDX1UGUgdenbogWendigo01',
-      xp: 77.17,
-      yp: 26.49
+      xp: 76.26,
+      yp: 27.18
   },
   {
     id: 'GDX2_map_side_areas_01',
@@ -244,8 +244,8 @@
   {
     id: 'GDX1_UG_ugdenbog_wendigo02',
     tag: 'tagGDX1UGUgdenbogWendigo02',
-    xp: 74.3,
-    yp: 26.52
+      xp: 72.40,
+      yp: 26.97
   },
   {
     id: 'GDX1_UG_ugdenbog_void_rift01',
@@ -502,8 +502,8 @@
 {
   id: 'UG_voidlands01c',
   tag: 'tagUGVoidlands01C',
-  xp: 14.46,
-  yp: 1.59
+      xp: 13.15,
+      yp: 1.37
 },
 {
   id: 'UG_crypt_final01',
@@ -514,14 +514,14 @@
 {
   id: 'UG_crypt_final02',
   tag: 'tagUGCryptFinal02',
-  xp: 13.54,
-  yp: 10.66
+      xp: 13.20,
+      yp: 10.77
 },
 {
   id: 'UG_fort_ikon_prison',
   tag: 'tagUGFortIkon_Prison',
-  xp: 7.02,
-  yp: 14.49
+      xp: 3.01,
+      yp: 13.50
 },
 {
   id: 'UG_crypt_faction_battle02',
@@ -532,8 +532,8 @@
 {
   id: 'UG_crypt_faction_battle01',
   tag: 'tagUGCryptFactionBattle01',
-  xp: 0.31,
-  yp: 23.05
+      xp: 0.73,
+      yp: 26.90
 },
 {
   id: 'UG_crypt_zealot01',
@@ -544,8 +544,8 @@
 {
   id: 'UG_fort_ikon_armory',
   tag: 'tagUGFortIkon_Armory',
-  xp: 21.61,
-  yp: 26.85
+      xp: 11.95,
+      yp: 12.27
 },
 {
   id: 'map_voidlands03',
@@ -556,8 +556,8 @@
 {
   id: 'map_voidlands',
   tag: 'tagMapVoidlands',
-  xp: 27.6,
-  yp: 29.08
+      xp: 28.57,
+      yp: 28.81
 },
 {
   id: 'map_darkvale_gate',
@@ -610,8 +610,8 @@
 {
   id: 'UG_fort_faction01',
   tag: 'tagUGFortFaction01',
-  xp: 43.73,
-  yp: 44.96
+    xp: 43.81,
+    yp: 43.61
 },
 {
   id: 'map_voidlands02',
@@ -628,14 +628,14 @@
 {
   id: 'UG_old_arkovia02',
   tag: 'tagUGOldArkovia02',
-  xp: 51.5,
-  yp: 62.17
+      xp: 50.86,
+      yp: 60.67
 },
 {
   id: 'map_cronleys_hideout',
   tag: 'tagMapCronleysHideout',
-  xp: 49.67,
-  yp: 67.68
+    xp: 52.06,
+    yp: 67.24
 },
 {
   id: 'UG_old_arkovia01',
@@ -682,8 +682,8 @@
 {
   id: 'GDX2_side_areas_02',
   tag: 'tagGDX2SideAreas_02',
-  xp: 39.41,
-  yp: 90.52
+      xp: 38.19,
+      yp: 90.61
 },
 {
   id: 'UG_burrwitch_flooded_cellars',
@@ -730,14 +730,14 @@
 {
   id: 'UG_secret01',
   tag: 'tagUGSecret01',
-  xp: 38.34,
-  yp: 8.39
+      xp: 39.79,
+      yp: 9.17
 },
 {
   id: 'UG_crypt_necropolis01',
   tag: 'tagUGCryptNecropolis01',
-  xp: 31.6,
-  yp: 8.04
+      xp: 31.89,
+      yp: 8.66
 },
 {
   id: 'UG_voidlands01',
