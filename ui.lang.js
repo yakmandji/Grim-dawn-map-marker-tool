@@ -70,6 +70,9 @@
       'ui.ShowHideNPC': 'Show/Hide General',
       'ui.ShowHideSharedMarker': 'Show/Hide General',
 
+      'ui.ShowHideRegion' : 'Show/Hide Region names',
+      'ui.ShowHideRift' : 'Show/Hide Rift',
+
       'ui.CenterOnMap': 'Center on map',
 
       'ui.ShareMapButton': 'Share my map',
@@ -152,6 +155,9 @@
       'ui.ShowHideNPC': 'Afficher/Masquer PNJ',
       'ui.ShowHideSharedMarker': 'Afficher/Masquer Partagés',
       'ui.CenterOnMap': 'Centrer sur la carte',
+      'ui.ShowHideRegion': 'Afficher/Masquer les noms de régions',
+      'ui.ShowHideRift': 'Afficher/Masquer les failles (Rifts)',
+
 
       'toast.ShareUrlCopied': 'Lien de partage copié dans le presse-papiers 📋',
       'toast.SharedMerged': 'Marqueurs et tracés partagés ajoutés à votre carte ✅',
@@ -215,6 +221,9 @@
       'ui.ShowHideNPC': 'Mostrar/Ocultar NPC',
       'ui.ShowHideSharedMarker': 'Mostrar/Ocultar Compartidos',
       'ui.ToolPan': 'Mover',
+      'ui.ShowHideRegion': 'Mostrar/Ocultar nombres de regiones',
+      'ui.ShowHideRift': 'Mostrar/Ocultar grietas',
+
 
       'toast.MarkerNameUpdated': 'Nombre del marcador actualizado 💾',
       'toast.RouteNameSaved': 'Nombre de la ruta guardado 💾',
@@ -325,6 +334,10 @@
       "ui.ShowHideDonjon": "Dungeons ein/ausblenden",
       "ui.ShowHideNPC": "NPCs ein/ausblenden",
       "ui.ShowHideSharedMarker": "Geteilte Marker ein/ausblenden",
+
+      'ui.ShowHideRegion': 'Regionnamen ein-/ausblenden',
+      'ui.ShowHideRift': 'Risse ein-/ausblenden',
+
       "ui.CenterOnMap": "Auf Karte zentrieren",
       "ui.ShareMapButton": "Meine Karte teilen",
       "ui.SharedViewLabel": "Geteilte Karte (nur Ansicht)",
@@ -388,6 +401,8 @@
     'ui.ShowHideDonjon': 'Mostrar/Ocultar Masmorras',
     'ui.ShowHideNPC': 'Mostrar/Ocultar NPC',
     'ui.ShowHideSharedMarker': 'Mostrar/Ocultar Compartilhados',
+    'ui.ShowHideRegion': 'Mostrar/Ocultar nomes das regiões',
+    'ui.ShowHideRift': 'Mostrar/Ocultar fendas',
 
 
     'toast.MarkerNameUpdated': 'Nome do marcador atualizado 💾',
@@ -475,6 +490,9 @@
     'ui.ShowHideNPC': 'Показать/скрыть NPC',
     'ui.ShowHideSharedMarker': 'Показать/скрыть Общие метки',
     'ui.ToolPan': 'Перемещение',
+    'ui.ShowHideRegion': 'Показать/скрыть названия регионов',
+    'ui.ShowHideRift': 'Показать/скрыть разломы',
+
 
     'toast.MarkerNameUpdated': 'Имя маркера обновлено 💾',
     'toast.RouteNameSaved': 'Имя маршрута сохранено 💾',
@@ -560,6 +578,9 @@
       'ui.ShowHideNPC': 'Mostra/Nascondi NPC',
       'ui.ShowHideSharedMarker': 'Mostra/Nascondi Condivisi',
       'ui.ToolPan': 'Muovi',
+      'ui.ShowHideRegion': 'Mostra/Nascondi nomi delle regioni',
+      'ui.ShowHideRift': 'Mostra/Nascondi fenditure',
+
 
       'ui.PathNamePlaceholder': 'Nome del percorso (facoltativo)',
       'ui.MarkerNamePlaceholder': 'Nome / nota',
@@ -647,6 +668,9 @@
       'ui.ShowHideNPC': '显示/隐藏 NPC 标记',
       'ui.ShowHideSharedMarker': '显示/隐藏 共享标记',
       'ui.ToolPan': '移动',
+      'ui.ShowHideRegion': '显示/隐藏区域名称',
+      'ui.ShowHideRift': '显示/隐藏裂隙',
+
 
       'toast.MarkerNameUpdated': '标记名称已更新 💾',
       'toast.RouteNameSaved': '路线名称已保存 💾',
