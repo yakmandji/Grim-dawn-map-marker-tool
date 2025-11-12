@@ -115,12 +115,38 @@
 
 
   // Toggle visuel + re-apply filtres
-  document.querySelectorAll('.filterToggle').forEach(btn => {
+  document.querySelectorAll('.filterToggle:not([data-admin])').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.classList.toggle('is-on');
       applyCategoryFilters();
     });
   });
+
+  // --- Admin markers toggles ---
+  const mapWrap = document.querySelector('.mapWrap');
+
+  function applyAdminVisibility() {
+    if (!mapWrap) return;
+    const riftBtn   = document.querySelector('.filterToggle[data-admin="rift"]');
+    const regionBtn = document.querySelector('.filterToggle[data-admin="region"]');
+
+    mapWrap.classList.toggle('hide-rift',   !riftBtn?.classList.contains('is-on'));
+    mapWrap.classList.toggle('hide-region', !regionBtn?.classList.contains('is-on'));
+  }
+
+  // Click listeners
+  document.querySelectorAll('.filterToggle[data-admin]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('is-on');
+      applyAdminVisibility();
+    });
+  });
+
+  // Apply initial state
+  applyAdminVisibility();
+
+/*------------------------------------------------------------------------
+*/
 
   window.UiFilters = {
     applyCategoryFilters,
