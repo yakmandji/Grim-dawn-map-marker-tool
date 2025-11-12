@@ -1178,3 +1178,12 @@ body.shared-only-view #mergeSharedBtn,
 .malmouthmap .region-label{
   font-size: 1.5em;
 }
+
+.korvanmap .region-label{
+  font-size: 0.85;
+}
+
+/*ADMIN MARKERS TOOGLE*/
+
+.mapWrap.hide-rift   .marker-rift   { display: none !important; }
+.mapWrap.hide-region .marker-region { display: none !important; }
