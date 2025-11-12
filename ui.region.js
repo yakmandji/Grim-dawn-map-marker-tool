@@ -28,8 +28,8 @@
     {
       id: 'UG_devils_crossing_aquifer',
       tag: 'tagUGDevilsCrossingAquifer',
-      xp: 71.0,
-      yp: 93.19
+      xp: 70.55,
+      yp: 93.33
     },
     {
       id: 'map_old_grove',
