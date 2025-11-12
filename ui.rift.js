@@ -28,8 +28,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_flooded_passage',
     tag: 'tagRiftFloodedPassage',
-      xp: 61.83,
-      yp: 70.65
+      xp: 61.14,
+      yp: 71.10
   },
   {
     id: 'tag_rift_burrwitch_outskirts',
@@ -46,20 +46,20 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'tift_wardens_cellar',
     tag: 'tagRiftWardensCellar',
-    xp: 65.3,
-    yp: 55.7
+      xp: 64.89,
+      yp: 55.32
   },
   {
     id: 'rift_wardens_labratory01',
     tag: 'tagRiftWardensLabratory01',
-    xp: 63.97,
-    yp: 53.62
+      xp: 64.16,
+      yp: 53.50
   },
   {
     id: 'rift_wardens_labratory02',
     tag: 'tagRiftWardensLabratory02',
-      xp: 60.49,
-      yp: 56.44
+      xp: 60.69,
+      yp: 56.35
   },
   {
     id: 'rift_broken_hills',
@@ -82,8 +82,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_cronleys_hideout',
     tag: 'tagRiftCronleysHideout',
-    xp: 50.21,
-    yp: 70.79
+      xp: 52.61,
+      yp: 70.27
   },
   {
     id: 'rift_twin_falls',
@@ -202,8 +202,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'dark_vale',
     tag: 'tagRiftDarkvale',
-    xp: 30.1,
-    yp: 38.8
+    xp: 28.88,
+    yp: 39.27
   }  
 ];
 
