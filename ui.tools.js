@@ -177,6 +177,7 @@
 	    for (const [name, p] of Object.entries(snapshot)) {
 	      // Remove marker
 	      p.markers = [];
+        p.paths   = [];
 
 	      try {
 	        const live = state.profiles[name];
