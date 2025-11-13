@@ -78,7 +78,7 @@ const {
         vp.classList.add('cairnmap');
       } else if (key === '5142x3574') {
         vp.classList.add('malmouthmap');
-      } else if (key === '3488x3608') {
+      } else if (key === '5427x5553') {
         vp.classList.add('korvanmap');
       }
     }
