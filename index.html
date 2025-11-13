@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grim Dawn Map Marker Tool — v3.4</title>
+  <title>Grim Dawn Map Marker Tool — v3.1</title>
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="style.css?3.4" />
+  <link rel="stylesheet" href="style.css?2.8" />
 </head>
 <body>
   <div id="mapLoader">
@@ -171,7 +171,7 @@
         <div id="routesList"></div>
       </section>
 
-      <div class="section principal toolpanel">
+      <div class="section principal">
         <h3 data-i18n="ui.ToolsTitle">Tools</h3>
         <div class="row">
           <p class="small mb0" data-i18n="ui.ImportExportHelper">Import and Export are only needed if you switch browser or computer. For normal save use the header button.</p> 
@@ -280,29 +280,15 @@
 
   <div id="toastContainer"></div>
 
-<!-- Languages -->
-<script src="js/ui.lang.js?v=3.55"></script>
-
-<!-- CORE BASE (absolutely required) -->
-<script src="js/core.js?v=3.15"></script>
-
-<!-- ADMIN MARKERS -->
-<script src="js/ui.region.js?v=3.75"></script>
-<script src="js/ui.rift.js?v=3.61"></script>
-
-<!-- MAIN ENGINE -->
-<script src="js/ui.core.js?v=3.4"></script>
-
-<!-- LIBRARIES (these run AFTER core init, it’s fine) -->
-<script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
-
-<!-- EXTRA UI -->
-<script src="js/ui.tools.js?v=3.1"></script>
-<script src="js/ui.filter.js?v=2.9"></script>
-
-
-
+  <script src="ui.lang.js?v=3.3"></script>
+  <script src="core.js?v=3.0"></script>
+  <script src="ui.rift.js?v=3.4"></script>
+  <script src="ui.region.js?v=3.5"></script>
+  <script src="ui.core.js??v=3.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+  <script src="ui.tools.js?v=2.9"></script>
+  <script src="ui.filter.js?v=2.9"></script>
 
 </body>
 </html>
