@@ -1,29 +1,13 @@
 (function(){
 const {
-  state,
-  DEV_MODE,
-  clamp,
-  iconFor,
-  isColorAllowed,
-  currentProfile,
-  markAsChanged,
-  updateSaveIndicator,
-  setActiveProfile,
-  renameProfile,
-  deleteProfile,
-  listProfiles,
+  state,DEV_MODE,clamp,iconFor,isColorAllowed,currentProfile,markAsChanged,updateSaveIndicator,
+  setActiveProfile,renameProfile,deleteProfile,listProfiles,
   addMarker: coreAddMarker,
   updateMarker: coreUpdateMarker,
   deleteMarker: coreDeleteMarker,
-  clearMarkers: coreClearMarkers,
-  getUserDataOnly,
-  saveUserDataToLocal,
-  loadUserDataFromLocal,
-  mergeUserMarkers,
-  ensureProfile,
+  clearMarkers: coreClearMarkers,getUserDataOnly,saveUserDataToLocal,loadUserDataFromLocal,
+  mergeUserMarkers,ensureProfile,
 } = window.GDMMCore;
-
-
 
 
   const $  = s => document.querySelector(s);
@@ -1045,38 +1029,6 @@ function renderRoutesPanel() {
     });
   }
 
-
-/*  viewport.addEventListener('pointerdown', e => {
-    // --- MODE MARKER add ---
-    if (state.tool === 'add') {
-      const { xp, yp } = viewToPct(e.clientX, e.clientY);
-      if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
-        addMarkerFromUI(xp, yp);
-      }
-      return;
-    }
-    // --- MODE PATH (point add) ---
-    if (state.tool === 'path') {
-      const { xp, yp } = viewToPct(e.clientX, e.clientY);
-      if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
-        addPathPoint(xp, yp);
-      }
-      return;
-    }
-    // --- classic PAN ---
-    e.preventDefault();
-    if (e.target.closest && e.target.closest('.marker')) {
-      return;
-    }
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    panning = true;
-    panId = e.pointerId;
-    viewport.setPointerCapture?.(panId);
-    panStart = { x: e.clientX, y: e.clientY };
-    viewStart = { ...state.view };
-  });*/
-
-
 viewport.addEventListener('pointerdown', e => {
   // --- Copie rapide des coords (Alt+clic sur la carte) ---
   if (e.altKey && state.mapReady) {
@@ -1492,7 +1444,7 @@ if (newPathBtn) {
 
   // --- Init on load ---
   (async () => {
-    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=3.1';
+    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=3.11';
     // empty base
     state.profiles['Profil 1'] = { markers:[], map:{}, created: new Date().toISOString(), updated: new Date().toISOString() };
     setActiveProfile('Profil 1');
@@ -1572,6 +1524,5 @@ if (newPathBtn) {
   window.UiCore = {
     $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,renderRoutesPanel,setMapSrc,showToast,updateSaveIndicator,
   };
-
 
 })();
