@@ -28,8 +28,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_flooded_passage',
     tag: 'tagRiftFloodedPassage',
-      xp: 61.14,
-      yp: 71.10
+      xp: 61.00,
+      yp: 70.42
   },
   {
     id: 'tag_rift_burrwitch_outskirts',
