@@ -728,12 +728,6 @@
   yp: 1.71
 },
 {
-  id: 'UG_secret01',
-  tag: 'tagUGSecret01',
-      xp: 65.67,
-      yp: 58.70
-},
-{
   id: 'UG_crypt_necropolis01',
   tag: 'tagUGCryptNecropolis01',
       xp: 31.89,
