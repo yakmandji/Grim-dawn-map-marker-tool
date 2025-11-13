@@ -863,8 +863,8 @@
 {
   id: 'tag_gdx1_ug_malmouth_sewer02',
   tag: 'tagGDX1UGMalmouthSewer02',
-  xp: 12.69,
-  yp: 42.24
+      xp: 10.14,
+      yp: 35.60
 },
 {
   id: 'tag_gdx1_ug_malmouth_lighthouse01',
@@ -907,6 +907,12 @@
   tag: 'tagGDX1UGMalmouthFort01',
   xp: 89.10,
   yp: 6.81
+},
+{
+  id: 'tag_GDX2_ruined_DC',
+  tag: 'tagGDX2RuinedDC',
+      xp: 84.15,
+      yp: 33.59
 },
     
   ];
@@ -1066,8 +1072,8 @@
 {
   id: 'tag_gdx1_ug_secret01',
   tag: 'tagGDX1UGSecret01',
-      xp: 7.80,
-      yp: 13.79
+      xp: 16.97,
+      yp: 24.51
 },
 {
   id: 'tag_gdx2_cairan_ruins01',
@@ -1126,8 +1132,8 @@
 {
   id: 'tag_gdx2_votc02',
   tag: 'tagGDX2VOTC02',
-  xp: 95.08,
-  yp: 15.92
+      xp: 71.99,
+      yp: 27.97
 },
 {
   id: 'tag_gdx2_korvaak_tomb01',
@@ -1153,7 +1159,48 @@
       xp: 43.44,
       yp: 37.50
 },
-
+{
+  id: 'tag_GDX2_roguelike_Area04',
+  tag: 'tagGDX2Roguelike_Area04',
+      xp: 79.72,
+      yp: 14.67
+},
+{
+  id: 'tagGDX2_roguelike_Area05',
+  tag: 'tagGDX2Roguelike_Area05',
+      xp: 94.55,
+      yp: 13.13
+},
+{
+  id: 'tag_GDX2_roguelike_01',
+  tag: 'tagGDX2Roguelike_01',
+      xp: 79.75,
+      yp: 31.64
+},
+{
+  id: 'tag_GDX2_roguelike_01B',
+  tag: 'tagGDX2Roguelike_01B',
+      xp: 94.07,
+      yp: 31.22
+},
+{
+  id: 'tag_GDX2_roguelike_01D',
+  tag: 'tagGDX2Roguelike_01D',
+      xp: 94.88,
+      yp: 22.04
+},
+{
+  id: 'tag_GDX2_roguelike_01C',
+  tag: 'tagGDX2Roguelike_01C',
+      xp: 91.8,
+      yp: 26.38
+},
+{
+  id: 'tag_GDX2_vOTC03',
+  tag: 'tagGDX2VOTC03',
+      xp: 41.47,
+      yp: 29.03
+},
   ];
 
 
