@@ -1,5 +1,24 @@
   // --- CAIRN ---
   window.REGION_MARKERS_CAIRN = [
+    
+    {
+      id: 'tag_map_hidden_path01',
+      tag: 'tagMapHiddenPath01',
+      xp: 76.24,
+      yp: 63.55
+    },
+    {
+      id: 'tag_map_hidden_path02',
+      tag: 'tagMapHiddenPath01',
+      xp: 46.82,
+      yp: 84.34
+    },  
+    {
+      id: 'tag_map_hidden_path03',
+      tag: 'tagMapHiddenPath01',
+      xp: 12.69,
+      yp: 33.90
+    },      
     {
       id: 'region_dc',
       tag: 'tagMapDevilsCrossing01',
@@ -94,8 +113,8 @@
     {
       id: 'UG_cellar02',
       tag: 'tagUGCellar02',
-      xp: 77.58,
-      yp: 70.86
+      xp: 78.14,
+      yp: 74.24
     },
     {
       id: 'map_foggy_bank',
@@ -646,8 +665,14 @@
 {
   id: 'UG_slith_lab02',
   tag: 'tagUGSlithLab02',
-  xp: 60.87,
-  yp: 76.49
+      xp: 56.62,
+      yp: 76
+},
+{
+  id: 'tag_uG_slith_lab03',
+  tag: 'tagUGSlithLab03',
+      xp: 60.17,
+      yp: 76.38
 },
 {
   id: 'UG_broken_hills01',
@@ -658,7 +683,7 @@
 {
   id: 'UG_arkovian_foothills01',
   tag: 'tagUGArkovianFoothills01',
-  xp: 53.3,
+  xp: 53,
   yp: 90.7
 },
 {
@@ -742,8 +767,8 @@
 {
   id: 'map_smugglers_pass',
   tag: 'tagMapSmugglersPass',
-      xp: 23.87,
-      yp: 84.32
+      xp: 30.86,
+      yp: 90.59
 },
 {
   id: 'map_mountain_deeps',
@@ -799,9 +824,42 @@
       xp: 94.18,
       yp: 42.73
 },
-
-
+{
+  id: 'GDX1UG_ugdenbog_cave02_b',
+  tag: 'tagGDX1UGUgdenbogCave02',
+      xp: 80.03,
+      yp: 35.11
+},
+{
+  id: 'tag_UG_cave_ghost01',
+  tag: 'tagUGCaveGhost01',
+      xp: 37.56,
+      yp: 49.80
+},
+{
+  id: 'tag_G_jagged_waste_cave02',
+  tag: 'tagUGJaggedWasteCave02',
+      xp: 23.56,
+      yp: 84.41
+},
+{
+  id: 'tag_GDX1UG_jgdenbog_cave04',
+  tag: 'tagGDX1UGUgdenbogCave04',
+      xp: 91.33,
+      yp: 31.95
+},
+{
+  id: 'tag_uG_secret01',
+  tag: 'tagUGSecret01',
+      xp: 41.97,
+      yp: 12.13
+},
   ];
+
+
+
+
+
 
   // --- MALMOUTH ---
   window.REGION_MARKERS_MALMOUTH = [
@@ -910,6 +968,10 @@
 },
     
   ];
+
+
+
+
 
   // --- KORVAN ---
   window.REGION_MARKERS_KORVAN = [
@@ -1201,6 +1263,7 @@
 
 window.REGION_LABELS = {
 en: {
+  tagMapHiddenPath01: "The Hidden Path",
   tagMapDevilsCrossing01: "Devil's Crossing",
   tagMapLowerCrossing01: "Lower Crossing",
   tagMapBurialHill: "Burial Hill",
@@ -1497,6 +1560,7 @@ en: {
 },
 
 fr: {
+  tagMapHiddenPath01: "Le Chemin Caché",
   tagMapDevilsCrossing01: "Le Passage du Diable",
   tagMapLowerCrossing01: "Le Bas Passage",
   tagMapBurialHill: "Colline aux Enterrements",
@@ -1796,6 +1860,7 @@ fr: {
 },
 
   es: {
+    tagMapHiddenPath01: "El Camino Oculto",
     tagMapDevilsCrossing01: "Cruce del Diablo",
     tagMapLowerCrossing01: "Cruce Inferior",
     tagMapBurialHill: "Colina del Túmulo",
@@ -2093,6 +2158,7 @@ fr: {
   },
 
 de: {
+  tagMapHiddenPath01: "Der Verborgene Pfad",
   tagMapDevilsCrossing01: "Devil's Crossing",
   tagMapLowerCrossing01: "Lower Crossing",
   tagMapBurialHill: "Burial Hill",
@@ -2393,6 +2459,7 @@ de: {
 },
 
 pt: {
+  tagMapHiddenPath01: "O Caminho Oculto",
   tagMapDevilsCrossing01: "Cruzamento do Diabo",
   tagMapLowerCrossing01: "Cruzamento Inferior",
   tagMapBurialHill: "Colina Sepulcral",
@@ -2691,6 +2758,7 @@ pt: {
 },
 
 it: {
+  tagMapHiddenPath01: "Il Sentiero Nascosto",
   tagMapDevilsCrossing01: "Crocevia del Diavolo",
   tagMapLowerCrossing01: "Crocevia Basso",
   tagMapBurialHill: "Collina Sepolcrale",
@@ -2989,6 +3057,7 @@ it: {
 },
 
 ru: {
+  tagMapHiddenPath01: "Скрытый Путь",
   tagMapDevilsCrossing01: "Перекрёсток Дьявола",
   tagMapLowerCrossing01: "Нижний Перекрёсток",
   tagMapBurialHill: "Погребальный Холм",
@@ -3287,6 +3356,7 @@ ru: {
 },
 
   zh: {
+    tagMapHiddenPath01: "隐藏之路",
     tagMapDevilsCrossing01: "恶魔十字",
     tagMapLowerCrossing01: "下游渡口",
     tagMapBurialHill: "殓葬山脉",
