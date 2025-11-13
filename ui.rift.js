@@ -236,8 +236,8 @@ window.RIFT_MARKERS_MALMOUTH = [
     {
     id: 'malmouth_sewers',
     tag: 'tagGDX1RiftMalmouthSewers',
-    xp: 35.25,
-    yp: 66.4
+      xp: 35.99,
+      yp: 70.11
   }      
 ]
 
