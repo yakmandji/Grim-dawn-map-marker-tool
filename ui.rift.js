@@ -94,8 +94,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_smugglers_pass',
     tag: 'tagRiftSmugglersPass',
-    xp: 19.95,
-    yp: 83.8
+      xp: 31.98,
+      yp: 95.13
   },
   {
     id: 'rift_smugglers_road',
