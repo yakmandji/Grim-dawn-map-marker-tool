@@ -978,26 +978,26 @@
     {
   id: 'tag_gdx2_map_secret_base_shrine',
   tag: 'tagGDX2MapSecretBaseShrine',
-  xp: 24.19,
-  yp: 98.79
+      xp: 22.86,
+      yp: 98.96
   },
   {
     id: 'tag_gdx2_map_witch_god_base',
     tag: 'tagGDX2MapWitchGodBase',
-    xp: 21.77,
-    yp: 96.28
+      xp: 20.83,
+      yp: 96.01
   },
   {
     id: 'tag_gdx2_map_area01_a',
     tag: 'tagGDX2MapArea01',
-    xp: 25.90,
-    yp: 85.58
+      xp: 23.72,
+      yp: 87.54
   },
   {
     id: 'tag_gdx2_map_ruined_temple_city',
     tag: 'tagGDX2MapRuinedTempleCity',
-    xp: 32.30,
-    yp: 75.00
+      xp: 25.54,
+      yp: 78.46
   },
   {
     id: 'tag_gdx2_map_ruined_temple01',
@@ -1008,8 +1008,8 @@
   {
     id: 'tag_gdx2_map_area01_b',
     tag: 'tagGDX2MapArea01',
-    xp: 27.67,
-    yp: 63.92
+      xp: 25.29,
+      yp: 59.98
   },
 {
   id: 'tag_gdx2_roguelike_area02',
@@ -1074,8 +1074,8 @@
 {
   id: 'tag_gdx2_map_area03_b',
   tag: 'tagGDX2MapArea03',
-      xp: 68.38,
-      yp: 48.52
+      xp: 60.00,
+      yp: 43.07
 },
 {
   id: 'tag_gdx2_map_area04_a',
@@ -1146,14 +1146,14 @@
 {
   id: 'tag_gdx2_bysmiel_eldritch',
   tag: 'tagGDX2BysmielEldritch',
-  xp: 1.34,
-  yp: 85.64
+      xp: 1.64,
+      yp: 87.32
 },
 {
   id: 'tag_gdx2_beetle01',
   tag: 'tagGDX2Beetle01',
-  xp: 35.61,
-  yp: 91.25
+      xp: 35.84,
+      yp: 92.03
 },
 {
   id: 'tag_gdx2_ruined_temple01_b',
@@ -1200,8 +1200,8 @@
 {
   id: 'tag_gdx2_map_hidden_oasis',
   tag: 'tagGDX2MapHiddenOasis',
-  xp: 36.89,
-  yp: 68.07
+      xp: 38.89,
+      yp: 60.74
 },
 {
   id: 'tagGDX2_roguelike_01A',
@@ -1256,6 +1256,12 @@
   tag: 'tagGDX2VOTC03',
       xp: 41.47,
       yp: 29.03
+},
+{
+  id: 'tag_gDX2_solael_void',
+  tag: 'tagGDX2SolaelVoid',
+      xp: 79.98,
+      yp: 54.72
 },
   ];
 
