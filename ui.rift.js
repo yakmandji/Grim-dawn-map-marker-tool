@@ -772,6 +772,5 @@ window.getRiftLabel = function(tag, fallback) {
 window.RIFT_MARKERS_BY_SIZE = {
   '8948x9133': window.RIFT_MARKERS_CAIRN,
   '5142x3574': window.RIFT_MARKERS_MALMOUTH,
-  '3488x3608': window.RIFT_MARKERS_KORVAN,
-
+  '5427x5553': window.RIFT_MARKERS_KORVAN,
 };
