@@ -897,12 +897,6 @@
   yp: 60.36
 },
 {
-  id: 'tag_gdx1_ug_secret01',
-  tag: 'tagGDX1UGSecret01',
-      xp: 10.10,
-      yp: 13.19
-},
-{
   id: 'tag_gdx1_ug_malmouth_fort01',
   tag: 'tagGDX1UGMalmouthFort01',
   xp: 89.10,
