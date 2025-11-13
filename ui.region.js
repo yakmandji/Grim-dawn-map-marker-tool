@@ -1200,8 +1200,8 @@
 {
   id: 'tag_gdx2_map_hidden_oasis',
   tag: 'tagGDX2MapHiddenOasis',
-      xp: 38.89,
-      yp: 60.74
+      xp: 32.09,
+      yp: 70.63
 },
 {
   id: 'tagGDX2_roguelike_01A',
@@ -1263,6 +1263,14 @@
       xp: 79.98,
       yp: 54.72
 },
+{
+  id: 'tag_gDX2_roguelike_area01',
+  tag: 'tagGDX2Roguelike_Area01',
+      xp: 40.63,
+      yp: 60.57
+},
+
+
   ];
 
 
