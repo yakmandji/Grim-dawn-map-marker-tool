@@ -15,8 +15,8 @@
     {
       id: 'UG_burial_cave',
       tag: 'tagUGBurialCave',
-      xp: 73,
-      yp: 81.38
+      xp: 74.91,
+      yp: 78.30
     },
     
     {
@@ -610,8 +610,8 @@
 {
   id: 'UG_fort_faction01',
   tag: 'tagUGFortFaction01',
-    xp: 43.81,
-    yp: 43.61
+      xp: 32.19,
+      yp: 38.97
 },
 {
   id: 'map_voidlands02',
@@ -748,8 +748,8 @@
 {
   id: 'map_smugglers_pass',
   tag: 'tagMapSmugglersPass',
-  xp: 18.4,
-  yp: 78.77
+      xp: 23.87,
+      yp: 84.32
 },
 {
   id: 'map_mountain_deeps',
