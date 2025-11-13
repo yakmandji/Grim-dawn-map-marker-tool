@@ -245,74 +245,74 @@ window.RIFT_MARKERS_KORVAN = [
     {
     id: 'rift_witch_god_base',
     tag: 'tagGDX2RiftWitchGodBase',
-    xp: 24.1,
-    yp: 97.9
+      xp: 21.12,
+      yp: 98.06
   },
     {
     id: 'rift_korvan_plateau',
     tag: 'tagGDX2RiftKorvanPlateau',
-    xp: 29.4,
-    yp: 85.2
+      xp: 25.92,
+      yp: 86.71
   },
     {
     id: 'rift_temple_of_osyr',
     tag: 'tagGDX2RiftTempleOfOsyr',
-    xp: 38.1,
-    yp: 75
+      xp: 33.77,
+      yp: 77.46
   },
     {
     id: 'rift_korvan_sands',
     tag: 'tagGDX2RiftKorvanSands',
-    xp: 31,
-    yp: 52
+      xp: 27.40,
+      yp: 57.09
   },
     {
     id: 'rift_cairan_docks',
     tag: 'tagGDX2RiftCairanDocks',
-    xp: 44.4,
-    yp: 45.8
+      xp: 38.83,
+      yp: 51.50
   },
     {
     id: 'rift_oasis',
     tag: 'tagGDX2RiftOasis',
-    xp: 60.4,
-    yp: 46.8
+      xp: 53.47,
+      yp: 52.56
   },
     {
     id: 'rift_vanguard',
     tag: 'tagGDX2RiftVanguard',
-    xp: 74.5,
-    yp: 41.83
+      xp: 65.87,
+      yp: 48.11
   },
     {
     id: 'rift_abyd',
     tag: 'tagGDX2RiftAbyd',
-    xp: 77.8,
-    yp: 35.55
+      xp: 68.64,
+      yp: 42.52
   },
     {
     id: 'rift_infernal_wastes',
     tag: 'tagGDX2RiftInfernalWastes',
-    xp: 68.7,
-    yp: 28.42
+      xp: 60.82,
+      yp: 36.08
   },
     {
     id: 'rift_temple',
     tag: 'tagGDX2RiftTemple',
-    xp: 70.2,
-    yp: 7.9
+      xp: 63.25,
+      yp: 16.83
   },
     {
     id: 'rift_korvan_city',
     tag: 'tagGDX2RiftKorvanCity',
-    xp: 60.6,
-    yp: 16.6
+      xp: 53.59,
+      yp: 25.55
   },
     {
     id: 'rift_lost_oasis',
     tag: 'tagGDX2RiftLostOasis',
-    xp: 92.6,
-    yp: 8.2
+      xp: 88.35,
+      yp: 17.58
   }  
 ]
 
