@@ -1576,15 +1576,16 @@ if (newPathBtn) {
       if (last && state.profiles[last]) {
         setActiveProfile(last);
         const p = currentProfile();
-        if (p && p.map) {
-          if (p.map.embedData) {
-            showLoader('Loading map…');
-            setMapSrc(p.map.embedData);
-          } else if (p.map.sessionSrc) {
-            showLoader('Loading map…');
-            setMapSrc(p.map.sessionSrc);
-          }
+        if (p.map.embedData) {
+            mapImg.src = p.map.embedData;
+        } 
+        else if (p.map.map) {
+            mapImg.src = p.map.map; 
+        } 
+        else if (p.map.sessionSrc) {
+            mapImg.src = p.map.sessionSrc;
         }
+
       }
     } catch (e) {
       console.warn('Cannot restore last active profile', e);
