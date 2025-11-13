@@ -946,8 +946,8 @@
   {
     id: 'tag_gdx2_map_ruined_temple01',
     tag: 'tagGDX2MapRuinedTemple01',
-    xp: 38.50,
-    yp: 73.63
+      xp: 35.41,
+      yp: 76.30
   },
   {
     id: 'tag_gdx2_map_area01_b',
@@ -958,8 +958,8 @@
 {
   id: 'tag_gdx2_roguelike_area02',
   tag: 'tagGDX2Roguelike_Area02',
-  xp: 21.80,
-  yp: 58.93
+      xp: 6.68,
+      yp: 61.05
 },
 {
   id: 'tag_gdx2_map_area02',
@@ -1042,20 +1042,20 @@
 {
   id: 'tag_gdx2_map_tomb_valley',
   tag: 'tagGDX2MapTombValley',
-  xp: 62.57,
-  yp: 20.64
+      xp: 54.52,
+      yp: 21.66
 },
 {
   id: 'tag_gdx2_map_area05',
   tag: 'tagGDX2MapArea05',
-  xp: 59.09,
-  yp: 10.13
+      xp: 44.17,
+      yp: 22.32
 },
 {
   id: 'tag_gdx2_map_road_to_korvaak_temple',
   tag: 'tagGDX2MapRoadToKorvaakTemple',
-  xp: 62.44,
-  yp: 6.82
+      xp: 56.14,
+      yp: 16.44
 },
 {
   id: 'tag_gdx2_map_raised_temple_a',
@@ -1072,14 +1072,14 @@
 {
   id: 'tag_gdx1_ug_secret01',
   tag: 'tagGDX1UGSecret01',
-  xp: 0.98,
-  yp: 8.53
+      xp: 7.80,
+      yp: 13.79
 },
 {
   id: 'tag_gdx2_cairan_ruins01',
   tag: 'tagGDX2CairanRuins01',
-  xp: 1.17,
-  yp: 40.37
+      xp: 2.28,
+      yp: 46.25
 },
 {
   id: 'tag_gdx2_roguelike_area02_b',
@@ -1102,8 +1102,8 @@
 {
   id: 'tag_gdx2_ruined_temple01_b',
   tag: 'tagGDX2RuinedTemple01',
-  xp: 57.10,
-  yp: 86.14
+      xp: 50.43,
+      yp: 86.97
 },
 {
   id: 'tag_gdx2_howling_chasm',
@@ -1114,8 +1114,8 @@
 {
   id: 'tag_gdx2_ruined_dc',
   tag: 'tagGDX2RuinedDC',
-  xp: 72.17,
-  yp: 53.95
+      xp: 65.80,
+      yp: 58.63
 },
 {
   id: 'tag_gdx2_ruined_temple02',
@@ -1138,8 +1138,8 @@
 {
   id: 'tag_gdx2_korvaak_tomb01',
   tag: 'tagGDX2KorvaakTomb01',
-  xp: 70.09,
-  yp: 0.97
+      xp: 70.59,
+      yp: 11.00
 },
 {
   id: 'tag_gdx2_map_hidden_oasis',
@@ -1147,6 +1147,19 @@
   xp: 36.89,
   yp: 68.07
 },
+{
+  id: 'tagGDX2_roguelike_01A',
+  tag: 'tagGDX2Roguelike_01A',
+      xp: 86.77,
+      yp: 31.09
+},
+{
+  id: 'tag_GDX2_sanctuary_ofHorran',
+  tag: 'tagGDX2SanctuaryOfHorran',
+      xp: 43.44,
+      yp: 37.50
+},
+
   ];
 
 
