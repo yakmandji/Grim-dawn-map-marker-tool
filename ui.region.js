@@ -3537,16 +3537,3 @@ ru: {
   }
 
 };
-
-
-window.getRegionLabel = function(tag, fallback) {
-  const lang = (window.GDMMLang && GDMMLang.getLang && GDMMLang.getLang()) || 'en';
-  const dict = window.REGION_LABELS[lang] || window.REGION_LABELS.en || {};
-  return dict[tag] || fallback || tag;
-};
-
-window.REGION_MARKERS_BY_SIZE = {
-  '8948x9133' : window.REGION_MARKERS_CAIRN,
-  '5142x3574' : window.REGION_MARKERS_MALMOUTH,
-  '5427x5553' : window.REGION_MARKERS_KORVAN,
-};
