@@ -730,8 +730,8 @@
 {
   id: 'UG_secret01',
   tag: 'tagUGSecret01',
-      xp: 39.79,
-      yp: 9.17
+      xp: 65.67,
+      yp: 58.70
 },
 {
   id: 'UG_crypt_necropolis01',
@@ -905,8 +905,8 @@
 {
   id: 'tag_gdx1_ug_secret01',
   tag: 'tagGDX1UGSecret01',
-  xp: 83.00,
-  yp: 32.16
+      xp: 10.10,
+      yp: 13.19
 },
 {
   id: 'tag_gdx1_ug_malmouth_fort01',
@@ -970,32 +970,32 @@
 {
   id: 'tag_gdx2_map_ruined_city01',
   tag: 'tagGDX2MapRuinedCity01',
-  xp: 35.39,
-  yp: 44.46
+      xp: 31.71,
+      yp: 50.00
 },
 {
   id: 'tag_gdx2_map_dead_lake',
   tag: 'tagGDX2MapDeadLake',
-  xp: 27.27,
-  yp: 31.56
+      xp: 23.56,
+      yp: 38.25
 },
 {
   id: 'tag_gdx2_map_oasis',
   tag: 'tagGDX2MapOasis',
-  xp: 53.42,
-  yp: 47.05
+      xp: 46.78,
+      yp: 53.12
 },
 {
   id: 'tag_gdx2_map_secret_desert_shrine',
   tag: 'tagGDX2MapSecretDesertShrine',
-  xp: 63.08,
-  yp: 48.14
+      xp: 55.20,
+      yp: 53.69
 },
 {
   id: 'tag_gdx2_map_area03_a',
   tag: 'tagGDX2MapArea03',
-  xp: 67.53,
-  yp: 44
+      xp: 61.15,
+      yp: 49.12
 },
 {
   id: 'tag_gdx2_map_vanguard_base',
@@ -1006,38 +1006,38 @@
 {
   id: 'tag_gdx2_map_ruined_city02',
   tag: 'tagGDX2MapRuinedCity02',
-  xp: 79.74,
-  yp: 38.33
+      xp: 70.30,
+      yp: 44.87
 },
 {
   id: 'tag_gdx2_map_burning_spire',
   tag: 'tagGDX2MapBurningSpire',
-  xp: 79.49,
-  yp: 38.99
+      xp: 70.27,
+      yp: 45.46
 },
 {
   id: 'tag_gdx2_map_area03_b',
   tag: 'tagGDX2MapArea03',
-  xp: 69.19,
-  yp: 35.76
+      xp: 68.38,
+      yp: 48.52
 },
 {
   id: 'tag_gdx2_map_area04_a',
   tag: 'tagGDX2MapArea04',
-  xp: 66.56,
-  yp: 27.21
+      xp: 54.88,
+      yp: 37.61
 },
 {
   id: 'tag_gdx2_map_area04_b',
   tag: 'tagGDX2MapArea04',
-  xp: 61.42,
-  yp: 29.51
+      xp: 59.47,
+      yp: 34.75
 },
 {
   id: 'tag_gdx2_map_volcano01',
   tag: 'tagGDX2MapVolcano01',
-  xp: 63.52,
-  yp: 31.00
+      xp: 55.02,
+      yp: 39.12
 },
 {
   id: 'tag_gdx2_map_tomb_valley',
@@ -1060,14 +1060,14 @@
 {
   id: 'tag_gdx2_map_raised_temple_a',
   tag: 'tagGDX2MapRaisedTemple',
-  xp: 55.16,
-  yp: 3.76
+      xp: 47.54,
+      yp: 12.87
 },
 {
   id: 'tag_gdx2_map_raised_temple_b',
   tag: 'tagGDX2MapRaisedTemple',
-  xp: 40.21,
-  yp: 3.00
+      xp: 33.29,
+      yp: 12.96
 },
 {
   id: 'tag_gdx1_ug_secret01',
@@ -1108,8 +1108,8 @@
 {
   id: 'tag_gdx2_howling_chasm',
   tag: 'tagGDX2HowlingChasm',
-  xp: 63.76,
-  yp: 53.79
+      xp: 55.80,
+      yp: 58.52
 },
 {
   id: 'tag_gdx2_ruined_dc',
@@ -1120,14 +1120,14 @@
 {
   id: 'tag_gdx2_ruined_temple02',
   tag: 'tagGDX2RuinedTemple02',
-  xp: 91.11,
-  yp: 37.63
+      xp: 79.74,
+      yp: 44.34
 },
 {
   id: 'tag_gdx2_votc01',
   tag: 'tagGDX2VOTC01',
-  xp: 95.63,
-  yp: 27.77
+      xp: 84.46,
+      yp: 35.55
 },
 {
   id: 'tag_gdx2_votc02',
