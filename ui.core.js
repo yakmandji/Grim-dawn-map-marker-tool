@@ -1460,7 +1460,7 @@ if (newPathBtn) {
 
   // --- Init on load ---
   (async () => {
-    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=3.11';
+    const REMOTE_JSON_URL = 'https://yakmandji.github.io/Grim-dawn-map-marker-tool/gdmm_all_profiles.json?v=3.12';
     // empty base
     state.profiles['Profil 1'] = { markers:[], map:{}, created: new Date().toISOString(), updated: new Date().toISOString() };
     setActiveProfile('Profil 1');
