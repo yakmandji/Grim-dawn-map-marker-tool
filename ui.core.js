@@ -9,121 +9,12 @@ const {
   mergeUserMarkers,ensureProfile,
 } = window.GDMMCore;
 
+  const {
+    $,
+    $$,
+    viewport,inner,mapImg,showLoader,hideLoader,fitToScreen,applyView,viewToPct,pctToPx,setMapSrc,
+  } = window.UiCore;
 
-  const $  = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
-
-  //-------- Refs DOM
-  const viewport = $('#mapViewport');
-  const inner    = $('#mapInner');
-  const mapImg   = $('#mapImg');
-
-  // Loader overlay refs + helpers
-  const loaderOverlay = document.getElementById('mapLoader');
-  const loaderMessage = loaderOverlay?.querySelector('.loader-message');
-
-  function showLoader(msg = 'Loading map…') {
-    if (!loaderOverlay) return;
-    loaderMessage.textContent = msg;
-    loaderOverlay.classList.remove('hidden');
-  }
-
-  function hideLoader() {
-    if (!loaderOverlay) return;
-    loaderOverlay.classList.add('hidden');
-  }
-  //------------------------
-
-  // --- Map load (avec DOM) ---
-  let loadToken = 0;
-
-  function setMapSrc(src){
-    if (!state.active) { alert('You need first to create profile'); return; }
-    const token = ++loadToken;
-    mapImg.dataset.token = String(token);
-    if (src instanceof File) src = URL.createObjectURL(src);
-    mapImg.src = src;
-    const p = currentProfile();
-    if (p && p.map) p.map.sessionSrc = mapImg.src;
-  }
-
-  mapImg.addEventListener('load', () => {
-    if (Number(mapImg.dataset.token || 0) !== loadToken) return;
-    state.mapNatural = { w: mapImg.naturalWidth, h: mapImg.naturalHeight };
-    state.mapReady   = state.mapNatural.w > 0 && state.mapNatural.h > 0;
-
-    const vp = viewport;
-    if (vp && state.mapNatural.w && state.mapNatural.h) {
-      const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-      // on nettoie d’abord
-      vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap');
-
-      if (key === '8948x9133') {
-        vp.classList.add('cairnmap');
-      } else if (key === '5142x3574') {
-        vp.classList.add('malmouthmap');
-      } else if (key === '5427x5553') {
-        vp.classList.add('korvanmap');
-      }
-    }
-    const p = currentProfile();
-    if (p && p.map) {
-      p.map.width  = state.mapNatural.w;
-      p.map.height = state.mapNatural.h;
-      p.map.sessionSrc = mapImg.src;
-    }
-
-    fitToScreen();
-    renderMarkers();
-    hideLoader();
-});
-
-
-  mapImg.addEventListener('error', () => {
-    state.mapReady = false;
-    alert('Failed to load image');
-    hideLoader();
-  });
-
-  // --- View helpers (DOM) ---
-  function fitToScreen(){
-    const vb = viewport.getBoundingClientRect();
-    const iw = state.mapNatural.w || 1;
-    const ih = state.mapNatural.h || 1;
-    const s = Math.min(vb.width/iw, vb.height/ih);
-    state.view.scale = 0.18; 
-    state.view.x = (vb.width  - iw * state.view.scale) / 2;
-    state.view.y = (vb.height - ih * state.view.scale) / 2;
-    applyView();
-  }
-
-  function applyView(){
-    const {x, y, scale} = state.view;
-    inner.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
-    const MIN_RATIO = 0.82; //scale for marker
-    const mk = (scale < MIN_RATIO) ? (MIN_RATIO / scale) : 1;
-    inner.style.setProperty('--mk', mk);
-    const zr = $('#zoomReadout');
-    if (zr) zr.textContent = Math.round(scale*100) + '%';
-  }
-
-  function viewToPct(cx, cy){
-    const vb = viewport.getBoundingClientRect();
-    const {x, y, scale} = state.view;
-    const mx = (cx - vb.left - x) / scale;
-    const my = (cy - vb.top  - y) / scale;
-    return {
-      xp: (mx / (state.mapNatural.w || 1)) * 100,
-      yp: (my / (state.mapNatural.h || 1)) * 100,
-    };
-  }
-
-  function pctToPx(xp, yp){
-    return {
-      x: (xp/100) * (state.mapNatural.w || 1),
-      y: (yp/100) * (state.mapNatural.h || 1),
-    };
-  }
 
   // --- Markers ---
   function addMarkerFromUI(xp, yp){
@@ -307,7 +198,6 @@ function ensurePathsArray() {
     if (p && p.paths && pathMode.current.points.length < 2) {
       p.paths = p.paths.filter(r => r.id !== pathMode.current.id);
     }
-
     // reset mode path
     pathMode.current = null;
     pathMode.active = false;
@@ -318,7 +208,6 @@ function ensurePathsArray() {
       badge.style.display = 'none';
       badge.textContent = '';
     }
-
     clearPathPreview();
     renderMarkers();
     saveUserDataToLocal();
@@ -355,7 +244,6 @@ function renderList() {
   const host = $('#list');
   const tpl  = $('#tplItem');
   if (!host || !tpl) return;
-
   // compteur
   const countEl = $('#count');
   if (countEl) countEl.textContent = markers.length;
@@ -432,7 +320,6 @@ function renderList() {
     el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
     // delete
     el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
-
     host.appendChild(el);
   });
 
@@ -884,7 +771,6 @@ function renderRoutesPanel() {
       delete state.editingPathId;
       saveUserDataToLocal();
     });
-
     row.appendChild(color);
 
 
@@ -961,7 +847,6 @@ function renderRoutesPanel() {
 
       const vb = viewport.getBoundingClientRect();
       const { x, y } = pctToPx(xp, yp);
-
       const scale = clamp(targetScale || state.view.scale, 0.2, 4);
       state.view.scale = scale;
 
@@ -1435,12 +1320,7 @@ if (newPathBtn) {
     document.body.classList.add('shared-only-view');
   }
 
-
-
-
 //---------------------------------------------------------------------------------------
-
-
 
   // --- Init on load ---
   (async () => {
@@ -1522,7 +1402,8 @@ if (newPathBtn) {
 
   // --- Expose global ---
   window.UiCore = {
-    $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,renderRoutesPanel,setMapSrc,showToast,updateSaveIndicator,
+    $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,
+    renderRoutesPanel,setMapSrc,showToast,updateSaveIndicator,
   };
 
 })();
