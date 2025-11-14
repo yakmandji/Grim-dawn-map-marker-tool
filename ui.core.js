@@ -763,6 +763,84 @@ function renderMarkers(options = {}) {
   });
 
 
+  // --- Navigation admin markers (icon-only, clickable) ---
+
+  if (window.NAV_MARKERS_BY_SIZE && state.mapNatural) {
+    const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
+    const navData = window.NAV_MARKERS_BY_SIZE[key] || [];
+
+    navData.forEach(m => {
+      const el = document.createElement('div');
+      el.classList.add('marker-link', 'locked');
+
+      const iconImg = document.createElement('img');
+      iconImg.className = 'link-icon';
+      iconImg.src = m.icon || 'img/icon-eye.png';
+      iconImg.alt = m.alt || 'Go to';
+      el.appendChild(iconImg);
+
+      const pt = pctToPx(m.xp, m.yp);
+      el.style.left = pt.x + 'px';
+      el.style.top  = pt.y + 'px';
+
+      // Empêche le pan de la map quand on clique sur l'icône
+      el.addEventListener('pointerdown', (e) => {
+        e.stopPropagation();
+      });
+
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+
+          // 1) Change profile
+          if (m.targetProfile) {
+            const name = m.targetProfile;
+
+            setActiveProfile(name);
+            const p2 = currentProfile();
+            if (!p2) return;
+
+            // Met à jour le select dans le header
+            const sel = document.getElementById('profileSelect');
+            if (sel) sel.value = name;
+
+            // Load map
+            if (p2.map && p2.map.embedData) {
+              showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
+              setMapSrc(p2.map.embedData);
+            } else if (p2.map && p2.map.sessionSrc) {
+              showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
+              setMapSrc(p2.map.sessionSrc);
+            }
+
+            // Center
+            if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
+              // petit délai pour laisser la map se charger
+              setTimeout(() => {
+                centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
+              }, 300);
+            }
+
+            renderList();
+            if (typeof renderRoutesPanel === 'function') {
+              renderRoutesPanel();
+            }
+
+            return;
+          }
+
+          // 2) Teleport on same map
+          if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
+            centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
+            return;
+          }
+        });
+
+      inner.appendChild(el);
+    });
+  }
+
+  // --- Navigation admin markers (icon-only, clickable) END---
+
 
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
