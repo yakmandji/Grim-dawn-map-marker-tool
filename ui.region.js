@@ -1425,6 +1425,7 @@ en: {
   tagGDX2MapSideAreas_01: "Burrwitch Cathedral",
   tagGDX2MapSideAreas_02: "Arkovian Docks",
   tagGDX2MapSideAreas_03: "Arkovian Coliseum",
+  tagGoTo: "Go to ",
 
 // --- Dungeons & Caves ---
   tagUGLowerCrossingRatDen01: "Putrid Den",
@@ -1574,6 +1575,7 @@ en: {
 },
 
 fr: {
+  tagGoTo: "Aller vers ",
   tagMapHiddenPath01: "Le Chemin Caché",
   tagMapDevilsCrossing01: "Le Passage du Diable",
   tagMapLowerCrossing01: "Le Bas Passage",
@@ -1874,6 +1876,7 @@ fr: {
 },
 
   es: {
+    tagGoTo: "Ir a ",
     tagMapHiddenPath01: "El Camino Oculto",
     tagMapDevilsCrossing01: "Cruce del Diablo",
     tagMapLowerCrossing01: "Cruce Inferior",
@@ -2172,6 +2175,7 @@ fr: {
   },
 
 de: {
+  tagGoTo: "Gehe zu ",
   tagMapHiddenPath01: "Der Verborgene Pfad",
   tagMapDevilsCrossing01: "Devil's Crossing",
   tagMapLowerCrossing01: "Lower Crossing",
@@ -2473,6 +2477,7 @@ de: {
 },
 
 pt: {
+  tagGoTo: "Ir para ",
   tagMapHiddenPath01: "O Caminho Oculto",
   tagMapDevilsCrossing01: "Cruzamento do Diabo",
   tagMapLowerCrossing01: "Cruzamento Inferior",
@@ -2772,6 +2777,7 @@ pt: {
 },
 
 it: {
+  tagGoTo: "Vai a ",
   tagMapHiddenPath01: "Il Sentiero Nascosto",
   tagMapDevilsCrossing01: "Crocevia del Diavolo",
   tagMapLowerCrossing01: "Crocevia Basso",
@@ -3071,6 +3077,7 @@ it: {
 },
 
 ru: {
+  tagGoTo: "Перейти к ",
   tagMapHiddenPath01: "Скрытый Путь",
   tagMapDevilsCrossing01: "Перекрёсток Дьявола",
   tagMapLowerCrossing01: "Нижний Перекрёсток",
@@ -3370,6 +3377,7 @@ ru: {
 },
 
   zh: {
+    tagGoTo: "前往",
     tagMapHiddenPath01: "隐藏之路",
     tagMapDevilsCrossing01: "恶魔十字",
     tagMapLowerCrossing01: "下游渡口",
