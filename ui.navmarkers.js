@@ -45,13 +45,37 @@
         targetXp: 19.94,
         targetYp: 98.47,
         targetScale: 1.2
-      },            
+      },
+      // Téléport Void's Eige
+      {
+        xp: 72.78,
+        yp: 13.00,
+        tag: 'tagGoTo + tagGDX1MapMalmouthEntry',
+        icon: 'img/icon-link.png',
+        targetProfile: 'Malmouth',
+        targetXp: 63.17,
+        targetYp: 94.86,
+        targetScale: 1.2
+      },                  
+    ],
+
+    // Malmouth (5427x5553)
+    '5142x3574': [
+      {
+        xp: 63.63,
+        yp: 95.08,
+        tag: 'tagGoTo + tagGDX1UGUgdenbogVoidRift03',
+        icon: 'img/icon-link.png',
+        targetProfile: 'Cairn',
+        targetXp: 74,
+        targetYp: 15,
+        targetScale: 1.1
+      },
     ],
 
 
     // map Korvan Basin (5427x5553)
     '5427x5553': [
-      // 1) Téléport
       {
         xp: 19.94,
         yp: 98.47,
