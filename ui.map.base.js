@@ -95,14 +95,22 @@
       p.map.height = state.mapNatural.h;
       p.map.sessionSrc = mapImg.src;
     }
+    
+    const skipRestore = !!state.skipViewRestoreOnce;
 
-    if (p && p.view && typeof p.view.scale === 'number') {
+    if (skipRestore) {
+    } else if (p && p.view && typeof p.view.scale === 'number') {
+      // Cas normal : vue mémorisée pour ce profil
       state.view.scale = p.view.scale;
       state.view.x     = p.view.x ?? 0;
       state.view.y     = p.view.y ?? 0;
       applyView();
     } else {
       fitToScreen();
+    }
+
+    if (skipRestore) {
+      state.skipViewRestoreOnce = false;
     }
 
     const ui = window.UiCore;
