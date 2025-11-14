@@ -9,10 +9,49 @@ const {
   mergeUserMarkers,ensureProfile,
 } = window.GDMMCore;
 
+
+  const LAST_PROFILE_KEY = 'gdmm_last_profile';
+
+  function rememberActiveProfile() {
+    if (!state.active) return;
+    try {
+      localStorage.setItem(LAST_PROFILE_KEY, state.active);
+    } catch (e) {
+      console.warn('[GDMM] cannot store last profile', e);
+    }
+  }
+
+  // Save zoom / pan in profile
+  function persistViewForCurrentProfile() {
+    const p = currentProfile();
+    if (!p) return;
+
+    p.view = {
+      x: state.view.x,
+      y: state.view.y,
+      scale: state.view.scale,
+    };
+    try {
+      saveUserDataToLocal();
+    } catch (e) {
+      console.warn('Failed to persist view', e);
+    }
+  }
+
+
   const {
     $,
     $$,
-    viewport,inner,mapImg,showLoader,hideLoader,fitToScreen,applyView,viewToPct,pctToPx,setMapSrc,
+    viewport,
+    inner,
+    mapImg,
+    showLoader,
+    hideLoader,
+    fitToScreen,
+    applyView,
+    viewToPct,
+    pctToPx,
+    setMapSrc,
   } = window.UiCore;
 
 
@@ -198,6 +237,7 @@ function ensurePathsArray() {
     if (p && p.paths && pathMode.current.points.length < 2) {
       p.paths = p.paths.filter(r => r.id !== pathMode.current.id);
     }
+
     // reset mode path
     pathMode.current = null;
     pathMode.active = false;
@@ -208,6 +248,7 @@ function ensurePathsArray() {
       badge.style.display = 'none';
       badge.textContent = '';
     }
+
     clearPathPreview();
     renderMarkers();
     saveUserDataToLocal();
@@ -244,6 +285,7 @@ function renderList() {
   const host = $('#list');
   const tpl  = $('#tplItem');
   if (!host || !tpl) return;
+
   // compteur
   const countEl = $('#count');
   if (countEl) countEl.textContent = markers.length;
@@ -320,6 +362,7 @@ function renderList() {
     el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
     // delete
     el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
+
     host.appendChild(el);
   });
 
@@ -771,6 +814,7 @@ function renderRoutesPanel() {
       delete state.editingPathId;
       saveUserDataToLocal();
     });
+
     row.appendChild(color);
 
 
@@ -842,30 +886,31 @@ function renderRoutesPanel() {
 
 
   // --- Center on marker ---
-    function centerOn(xp, yp, targetScale = 1.5, markerId = null) {
-      if (!state.mapReady) return;
+  function centerOn(xp, yp, targetScale = 1.5, markerId = null) {
+    if (!state.mapReady) return;
 
-      const vb = viewport.getBoundingClientRect();
-      const { x, y } = pctToPx(xp, yp);
-      const scale = clamp(targetScale || state.view.scale, 0.2, 4);
-      state.view.scale = scale;
+    const vb = viewport.getBoundingClientRect();
+    const pt = pctToPx(xp, yp);
 
-      // Centrage "mathématique"
-      state.view.x = vb.width  / 2 - x * scale;
-      state.view.y = vb.height / 2 - y * scale;
+    const scale = clamp(targetScale || state.view.scale, 0.2, 4);
+    state.view.scale = scale;
 
-      const markerScreenOffset = 30; // Offset of button
-      state.view.y += markerScreenOffset;
+    state.view.x = vb.width  / 2 - pt.x * scale;
+    state.view.y = vb.height / 2 - pt.y * scale;
 
-      applyView();
-      if (markerId) {
-        const markerEl = document.querySelector(`.marker[data-mid="${markerId}"]`);
-        if (markerEl) {
-          markerEl.classList.add('marker-highlight');
-          setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
-        }
+    clampViewToMap();
+    applyView();
+    persistViewForCurrentProfile();
+
+    if (markerId) {
+      const markerEl = document.querySelector(`.marker[data-mid="${markerId}"]`);
+      if (markerEl) {
+        markerEl.classList.add('marker-highlight');
+        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
       }
     }
+  }
+
 
 
 
@@ -1021,8 +1066,14 @@ viewport.addEventListener('pointerdown', e => {
     applyView();
   });
 
+    function stopPan(){
+    if (!panning) return;
+    panning = false;
+    panId = null;
+    // On mémorise la vue à la fin du drag
+    persistViewForCurrentProfile();
+  }
 
-  function stopPan(){ panning = false; panId = null; }
   viewport.addEventListener('pointerup', stopPan);
   viewport.addEventListener('pointerleave', stopPan);
   window.addEventListener('pointerup', stopPan);
@@ -1048,6 +1099,7 @@ viewport.addEventListener('pointerdown', e => {
 
       clampViewToMap();
       applyView();
+      persistViewForCurrentProfile();
     }
 
     viewport.addEventListener('wheel', e => {
@@ -1136,6 +1188,7 @@ if (newPathBtn) {
   $('#profileSelect')?.addEventListener('change', e => {
     const name = e.target.value;
     setActiveProfile(name);
+    rememberActiveProfile();
     const p = currentProfile();
     if (p && p.map && p.map.embedData) {
       showLoader(GDMMLang.t('toast.LoadingMap'));
@@ -1320,7 +1373,12 @@ if (newPathBtn) {
     document.body.classList.add('shared-only-view');
   }
 
+
+
+
 //---------------------------------------------------------------------------------------
+
+
 
   // --- Init on load ---
   (async () => {
@@ -1336,14 +1394,32 @@ if (newPathBtn) {
       const obj = JSON.parse(txt);
       if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
         state.profiles = obj;
-        const first = Object.keys(state.profiles)[0] || 'Profil 1';
-        setActiveProfile(first);
+
+        const keys = Object.keys(state.profiles);
+        let initial = keys[0] || 'Profil 1';
+
+        try {
+          const last = localStorage.getItem(LAST_PROFILE_KEY);
+          if (last && keys.includes(last)) {
+            initial = last;
+          }
+        } catch (e) {
+          console.warn('[GDMM] cannot read last profile', e);
+        }
+
+        setActiveProfile(initial);
+        rememberActiveProfile();
+
         const p = currentProfile();
         if (p && p.map && p.map.embedData) {
           showLoader('Loading map…');
           setMapSrc(p.map.embedData);
+        } else if (p && p.map && p.map.sessionSrc) {
+          showLoader('Loading map…');
+          setMapSrc(p.map.sessionSrc);
         }
       }
+
     } catch (err) {
       console.warn('[GDMM] remote JSON not loaded, using local empty profile', err);
     }
@@ -1402,8 +1478,7 @@ if (newPathBtn) {
 
   // --- Expose global ---
   window.UiCore = {
-    $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,
-    renderRoutesPanel,setMapSrc,showToast,updateSaveIndicator,
+    $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,renderRoutesPanel,setMapSrc,showToast,updateSaveIndicator,
   };
 
 })();
