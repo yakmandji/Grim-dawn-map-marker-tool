@@ -114,13 +114,13 @@
   }
 
 
-  // --- Exclure les filtres admin du système principal ---
+  // --- Exclure admin filter ---
   document.querySelectorAll('.filterToggle[data-admin]').forEach(btn => {
     btn.classList.add('filter-exempt');
   });
 
 
-  // Toggle visuel + re-apply filtres
+  // Toggle visuel + re-apply filters
   document.querySelectorAll('.filterToggle:not(.filter-exempt)').forEach(btn => {
 
     btn.addEventListener('click', () => {
@@ -148,6 +148,12 @@
       applyAdminVisibility();
     });
   });
+
+
+    const riftBtn = document.querySelector('.filterToggle[data-admin="rift"]');
+    if (riftBtn) {
+      riftBtn.classList.remove('is-on');
+    }
 
   // Apply initial state
   applyAdminVisibility();
