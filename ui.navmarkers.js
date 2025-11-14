@@ -8,6 +8,7 @@
         xp: 37.5,
         yp: 63.94,
         icon: 'img/icon-link.png',
+        tag: 'tagGoTo + tagGDX2MapWitchGodBase',
         targetProfile: 'Korvan Basin',
         targetXp: 20.11,
         targetYp: 95.22,
@@ -18,6 +19,7 @@
         xp: 62.89,
         yp: 89.74,
         icon: 'img/icon-link.png',
+        tag: 'tagGoTo + tagGDX2MapWitchGodBase',
         targetProfile: 'Korvan Basin',
         targetXp: 19.94,
         targetYp: 98.47,
@@ -27,6 +29,7 @@
       {
         xp: 39.26,
         yp: 60.25,
+        tag: 'tagGoTo + tagMapPortValbury',
         icon: 'img/icon-link.png',
         targetXp: 41.32,
         targetYp: 28.12,
@@ -36,6 +39,7 @@
       {
         xp: 15.13,
         yp: 22.44,
+        tag: 'tagGoTo + tagGDX2MapWitchGodBase',
         icon: 'img/icon-link.png',
         targetProfile: 'Korvan Basin',
         targetXp: 19.94,
@@ -51,6 +55,7 @@
       {
         xp: 19.94,
         yp: 98.47,
+        tag: 'tagGoTo + tagMapDevilsCrossing01',
         icon: 'img/icon-link.png',
         targetProfile: 'Cairn',
         targetXp: 62.90,
