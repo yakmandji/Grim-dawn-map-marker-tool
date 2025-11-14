@@ -20,6 +20,7 @@
     lastCreatedMarkerId: null,
     sharedView: false,
     sharedProfileName: null,
+    skipViewRestoreOnce: false,
   };
 
   // --- Utils ---
