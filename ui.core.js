@@ -397,6 +397,7 @@ function renderMarkers(options = {}) {
   document.querySelectorAll('#mapInner .path-label').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .path-endpoint').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .marker-region').forEach(n => n.remove());
+  document.querySelectorAll('#mapInner .marker-link').forEach(n => n.remove());
 
   const oldSvg = document.getElementById('pathLayer');
   if (oldSvg) oldSvg.remove();
@@ -763,111 +764,110 @@ function renderMarkers(options = {}) {
   });
 
 
-  // --- Navigation admin markers (icon-only, clickable) ---
+  // --- Nav admin markers (icon-only, clickable) ---
 
     function resolveCompositeTag(tag) {
     if (!tag) return '';
-
-    // Exemple de valeur : "TagGoTo + tagMapHomestead"
     const parts = tag.split('+').map(s => s.trim());
 
     let finalText = '';
-
     parts.forEach(part => {
       if (window.getRegionLabel) {
-        finalText += getRegionLabel(part, part); // traduit automatiquement
+        finalText += getRegionLabel(part, part);
       } else {
-        finalText += part; // fallback brut
+        finalText += part;
       }
     });
-
     return finalText;
   }
 
+  if (window.NAV_MARKERS_BY_SIZE && state.mapNatural) {
+    const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
+    const navData = window.NAV_MARKERS_BY_SIZE[key] || [];
 
-if (window.NAV_MARKERS_BY_SIZE && state.mapNatural) {
-  const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-  const navData = window.NAV_MARKERS_BY_SIZE[key] || [];
+    navData.forEach(m => {
+      const el = document.createElement('div');
+      el.classList.add('marker-link', 'locked');
 
-  navData.forEach(m => {
-    const el = document.createElement('div');
-    el.classList.add('marker-link', 'locked');
+      const iconImg = document.createElement('img');
+      iconImg.className = 'link-icon';
+      iconImg.src = m.icon || 'img/icon-eye.png';
+      iconImg.alt = m.alt || 'Go to';
+      el.appendChild(iconImg);
 
-    const iconImg = document.createElement('img');
-    iconImg.className = 'link-icon';
-    iconImg.src = m.icon || 'img/icon-eye.png';
-    iconImg.alt = m.alt || 'Go to';
-    el.appendChild(iconImg);
+      // 🔹 Tooltip multi-lang via region.js
+      let titleText = '';
+      if (m.tag) {
+        titleText = resolveCompositeTag(m.tag);
+      } else if (m.title) {
+        titleText = m.title;
+      }
 
-    // 🔹 Tooltip multi-lang via region.js
-    let titleText = '';
-    if (m.tag) {
-      titleText = resolveCompositeTag(m.tag);
-    } else if (m.title) {
-      titleText = m.title;
-    }
+      if (titleText) {
+        el.title = titleText;
+        iconImg.title = titleText;
+      }
 
-    if (titleText) {
-      el.title = titleText;
-      iconImg.title = titleText;
-    }
+      const pt = pctToPx(m.xp, m.yp);
+      el.style.left = pt.x + 'px';
+      el.style.top  = pt.y + 'px';
 
-    const pt = pctToPx(m.xp, m.yp);
-    el.style.left = pt.x + 'px';
-    el.style.top  = pt.y + 'px';
+      el.addEventListener('pointerdown', (e) => {
+        e.stopPropagation();
+      });
 
-    el.addEventListener('pointerdown', (e) => {
-      e.stopPropagation();
-    });
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
 
-    el.addEventListener('click', (e) => {
-      e.stopPropagation();
+        // 1) Change profile
+        if (m.targetProfile) {
+          const name = m.targetProfile;
 
-      // 1) Change profile
-      if (m.targetProfile) {
-        const name = m.targetProfile;
+          if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
+            state.skipViewRestoreOnce = true;
+          }
+          setActiveProfile(name);
+          rememberActiveProfile();
 
-        setActiveProfile(name);
-        const p2 = currentProfile();
-        if (!p2) return;
+          const p2 = currentProfile();
+          if (!p2) return;
 
-        const sel = document.getElementById('profileSelect');
-        if (sel) sel.value = name;
+          const sel = document.getElementById('profileSelect');
+          if (sel) sel.value = name;
+          if (p2.map && p2.map.embedData) {
+            showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
+            setMapSrc(p2.map.embedData);
+          } else if (p2.map && p2.map.sessionSrc) {
+            showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
+            setMapSrc(p2.map.sessionSrc);
+          }
 
-        if (p2.map && p2.map.embedData) {
-          showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
-          setMapSrc(p2.map.embedData);
-        } else if (p2.map && p2.map.sessionSrc) {
-          showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
-          setMapSrc(p2.map.sessionSrc);
+          if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
+            setTimeout(() => {
+              centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
+            }, 300);
+          }
+
+          renderList();
+          if (typeof renderRoutesPanel === 'function') {
+            renderRoutesPanel();
+          }
+          return;
         }
-
+        // 2) Teleport on same map
         if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
-          setTimeout(() => {
-            centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
-          }, 300);
+          centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
+          return;
         }
-
-        renderList();
-        if (typeof renderRoutesPanel === 'function') {
-          renderRoutesPanel();
-        }
-
-        return;
-      }
-
-      // 2) Teleport on same map
-      if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
-        centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
-        return;
-      }
+      });
+      inner.appendChild(el);
     });
-
-    inner.appendChild(el);
-  });
-}
+  }
 
   // --- Navigation admin markers (icon-only, clickable) END---
+
+
+
 
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
@@ -1396,7 +1396,6 @@ if (newPathBtn) {
     let markers = [];
     const mapName = data.map || null;
 
-    // --- Nouveau format compact : { r: [...], m: [...] }
     if (Array.isArray(data.r) || Array.isArray(data.m)) {
       const compactRoutes = Array.isArray(data.r) ? data.r : [];
 
