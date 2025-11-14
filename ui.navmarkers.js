@@ -7,7 +7,7 @@
       {
         xp: 37.5,
         yp: 63.94,
-        icon: 'img/icon-eye.png',
+        icon: 'img/icon-link.png',
         targetProfile: 'Korvan Basin',
         targetXp: 20.11,
         targetYp: 95.22,
