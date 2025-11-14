@@ -96,7 +96,14 @@
       p.map.sessionSrc = mapImg.src;
     }
 
-    fitToScreen();
+    if (p && p.view && typeof p.view.scale === 'number') {
+      state.view.scale = p.view.scale;
+      state.view.x     = p.view.x ?? 0;
+      state.view.y     = p.view.y ?? 0;
+      applyView();
+    } else {
+      fitToScreen();
+    }
 
     const ui = window.UiCore;
     if (ui) {
