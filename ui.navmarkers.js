@@ -1,9 +1,7 @@
 // ui.navmarkers.js
 (function () {
-  window.NAV_MARKERS_BY_SIZE = {
-    // map Cairn (8948x9133)
-    '8948x9133': [
-      // Home stade rift
+
+window.NAV_MARKERS_CAIRN = [
       {
         xp: 37.5,
         yp: 63.94,
@@ -56,11 +54,11 @@
         targetXp: 63.17,
         targetYp: 94.86,
         targetScale: 1.2
-      },                  
-    ],
+      }, 
 
-    // Malmouth (5427x5553)
-    '5142x3574': [
+];
+
+  window.NAV_MARKERS_MALMOUTH = [
       {
         xp: 63.63,
         yp: 95.08,
@@ -71,11 +69,10 @@
         targetYp: 15,
         targetScale: 1.1
       },
-    ],
+  ];
 
 
-    // map Korvan Basin (5427x5553)
-    '5427x5553': [
+  window.NAV_MARKERS_KORVAN = [
       {
         xp: 19.94,
         yp: 98.47,
@@ -86,7 +83,16 @@
         targetYp: 89.81,
         targetScale: 1.2
       },
-    ],
+  ];
 
+
+  // --- Mapping map sise ---
+  window.NAV_MARKERS_BY_SIZE = {
+    '8948x9133': window.NAV_MARKERS_CAIRN,
+    '5142x3574': window.NAV_MARKERS_MALMOUTH,
+    '5427x5553': window.NAV_MARKERS_KORVAN,
   };
+
+
 })();
+
