@@ -24,7 +24,6 @@ const {
   function persistViewForCurrentProfile() {
     const p = currentProfile();
     if (!p) return;
-
     p.view = {
       x: state.view.x,
       y: state.view.y,
@@ -37,20 +36,10 @@ const {
     }
   }
 
-
   const {
-    $,
-    $$,
-    viewport,
-    inner,
-    mapImg,
-    showLoader,
-    hideLoader,
-    fitToScreen,
-    applyView,
-    viewToPct,
-    pctToPx,
-    setMapSrc,
+    $,$$,viewport,inner,mapImg,
+    showLoader,hideLoader,fitToScreen,
+    applyView,viewToPct,pctToPx,setMapSrc,
   } = window.UiCore;
 
 
@@ -75,7 +64,6 @@ const {
     renderRoutesPanel();
     markAsChanged();
     saveUserDataToLocal();
-
   }
 
   function updateMarkerFromUI(id, patch, rerender = true){
@@ -101,19 +89,15 @@ const {
     saveUserDataToLocal();
   }
 
-// ==============================
 // PATH MODE
 // ==============================
 
-// Local state of path mode
 let pathMode = {
   active: false,
   current: null
 };
 
-
 // Visual Preview of route
-
 let pathPreviewLine = null;
 
 function clearPathPreview() {
@@ -135,7 +119,6 @@ function updatePathPreview(xp, yp) {
   const last = pathMode.current.points[pathMode.current.points.length - 1];
   const iw = state.mapNatural.w || 1;
   const ih = state.mapNatural.h || 1;
-
   const x1 = (last.xp / 100) * iw;
   const y1 = (last.yp / 100) * ih;
   const x2 = (xp / 100) * iw;
@@ -143,7 +126,6 @@ function updatePathPreview(xp, yp) {
 
   const svg = document.getElementById('pathLayer');
   if (!svg) return;
-
   if (!pathPreviewLine) {
     pathPreviewLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     pathPreviewLine.setAttribute('id', 'pathPreview');
@@ -153,10 +135,8 @@ function updatePathPreview(xp, yp) {
     pathPreviewLine.setAttribute('pointer-events', 'none');
     svg.appendChild(pathPreviewLine);
   }
-
   const color = pathMode.current.color || '#ffcc00';
   const width = pathMode.current.width || 4;
-
   pathPreviewLine.setAttribute('x1', x1);
   pathPreviewLine.setAttribute('y1', y1);
   pathPreviewLine.setAttribute('x2', x2);
@@ -200,11 +180,9 @@ function ensurePathsArray() {
       badge.style.display = 'inline-block';
       badge.textContent = GDMMLang.t('toast.PathInProgress');
     }
-
     updateFinishButtonPulse();
     return path;
   }
-
 
   // add point current path
   function addPathPoint(xp, yp) {
@@ -247,21 +225,18 @@ function ensurePathsArray() {
       badge.style.display = 'none';
       badge.textContent = '';
     }
-
     clearPathPreview();
     renderMarkers();
     saveUserDataToLocal();
     updateFinishButtonPulse();
   }
 
-
-    function updateFinishButtonPulse() {
+   function updateFinishButtonPulse() {
       const btn = document.getElementById('toolFinishPath');
       if (!btn) return;
       const isCurrentPath = pathMode.active && pathMode.current && state.tool === 'path';
       btn.classList.toggle('pulse', !!isCurrentPath);
     }
-
 
   // --- UI renderers ---
   function refreshProfilesUI(){
@@ -298,7 +273,6 @@ function renderList() {
     if (m.cat) {
       el.classList.add(m.cat.toLowerCase());
     }
-
     if (m.shared) {
       el.classList.add('shared');
     }
@@ -334,8 +308,7 @@ function renderList() {
       });
     }
 
-
-    //color picker
+    //color picker--------------------------------
     const syncColorVis = (c) => {
       const allow = isColorAllowed(c);
       color.style.display = allow ? '' : 'none';
@@ -357,11 +330,8 @@ function renderList() {
     };
 
     done.onchange = e => updateMarkerFromUI(m.id, { done: e.target.checked }, true);
-    // center
     el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
-    // delete
     el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
-
     host.appendChild(el);
   });
 
@@ -385,8 +355,7 @@ function renderList() {
   }
 
 
-// RENDER MARKER
-
+// RENDER MARKER----------------------------
 function renderMarkers(options = {}) {
   const { skipRoutesPanel = false } = options;
 
@@ -459,7 +428,7 @@ function renderMarkers(options = {}) {
         inner.appendChild(dot);
       });
 
-      // Bulles Start / End 👣 🚩
+      // Bulles Start / End
       if (path.points && path.points.length) {
         const first = path.points[0];
         const last  = path.points[path.points.length - 1];
@@ -676,7 +645,6 @@ function renderMarkers(options = {}) {
 
       // --- End drag ---
       dragging = false;
-
       if (!moved) {
         const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
         if (row) {
@@ -764,7 +732,6 @@ function renderMarkers(options = {}) {
 
 
   // --- Nav admin markers (icon-only, clickable) ---
-
     function resolveCompositeTag(tag) {
     if (!tag) return '';
     const parts = tag.split('+').map(s => s.trim());
@@ -794,7 +761,7 @@ function renderMarkers(options = {}) {
       iconImg.alt = m.alt || 'Go to';
       el.appendChild(iconImg);
 
-      // 🔹 Tooltip multi-lang via region.js
+      // Tooltip multi-lang via region.js
       let titleText = '';
       if (m.tag) {
         titleText = resolveCompositeTag(m.tag);
@@ -810,7 +777,6 @@ function renderMarkers(options = {}) {
       const pt = pctToPx(m.xp, m.yp);
       el.style.left = pt.x + 'px';
       el.style.top  = pt.y + 'px';
-
       el.addEventListener('pointerdown', (e) => {
         e.stopPropagation();
       });
@@ -827,11 +793,10 @@ function renderMarkers(options = {}) {
           }
           setActiveProfile(name);
           rememberActiveProfile();
-
           const p2 = currentProfile();
           if (!p2) return;
-
           const sel = document.getElementById('profileSelect');
+
           if (sel) sel.value = name;
           if (p2.map && p2.map.embedData) {
             showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
@@ -846,8 +811,8 @@ function renderMarkers(options = {}) {
               centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
             }, 300);
           }
-
           renderList();
+
           if (typeof renderRoutesPanel === 'function') {
             renderRoutesPanel();
           }
@@ -864,8 +829,6 @@ function renderMarkers(options = {}) {
   }
 
   // --- Navigation admin markers (icon-only, clickable) END---
-
-
 
 
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
@@ -888,7 +851,6 @@ function renderMarkers(options = {}) {
 }
 
 // END RENDER MARKER ---------------------------------------------------------
-
 
 function renderRoutesPanel() {
   const wrap = document.getElementById('routesList');
@@ -919,9 +881,7 @@ function renderRoutesPanel() {
       delete state.editingPathId;
       saveUserDataToLocal();
     });
-
     row.appendChild(color);
-
 
     // --- Name ---
     const name = document.createElement('input');
@@ -989,7 +949,6 @@ function renderRoutesPanel() {
   if (countEl) countEl.textContent = p.paths ? p.paths.length : 0;
 }
 
-
   // --- Center on marker ---
   function centerOn(xp, yp, targetScale = 1.5, markerId = null) {
     if (!state.mapReady) return;
@@ -1015,9 +974,6 @@ function renderRoutesPanel() {
       }
     }
   }
-
-
-
 
   // --- Pan & Zoom ---
   let panning = false, panId = null, panStart = {x:0,y:0}, viewStart = {x:0,y:0};
@@ -1132,8 +1088,6 @@ viewport.addEventListener('pointerdown', e => {
   viewStart = { ...state.view };
 });
 
-
-
   viewport.addEventListener('pointermove', e => {
     const { xp, yp } = viewToPct(e.clientX, e.clientY);
     if (!panning) {
@@ -1186,7 +1140,6 @@ viewport.addEventListener('pointerdown', e => {
   viewport.addEventListener('lostpointercapture', stopPan);
 
   //ZOOM FONCTION
-
     function zoomAt(clientX, clientY, step) {
       const old = state.view.scale;
       const ns = clamp(old * (1 + step), 0.18, 1.28);
@@ -1370,7 +1323,6 @@ if (newPathBtn) {
         console.error('[GDMM] All decode methods failed', e2);
       }
     }
-
     return null;
   }
 
@@ -1473,16 +1425,10 @@ if (newPathBtn) {
     renderMarkers();
     renderRoutesPanel();
 
-    // 🔒 Active le mode lecture seule + bouton "Add shared to my map"
+    // Active read only + bouton "Add shared to my map"
     document.body.classList.add('shared-only-view');
   }
-
-
-
-
 //---------------------------------------------------------------------------------------
-
-
 
   // --- Init on load ---
   (async () => {
