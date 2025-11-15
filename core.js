@@ -278,8 +278,10 @@ function getUserDataOnly() {
   if (
     host &&
     !host.includes('github.io') &&
-    !host.includes('localhost')
-  ) {
+    !host.includes('localhost') &&
+    !host.includes('grimcustommarker.org')
+  )
+  {
     document.body.innerHTML = `
       <div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;text-align:center;">
         <div>
