@@ -1324,8 +1324,9 @@ body.shared-only-view #mergeSharedBtn,
     display: none;
   }
 
-  section.light{
+  .section.light{
     min-width: 420px;
+    max-height: 400px!important;
   }
 
   #zoomControls{
