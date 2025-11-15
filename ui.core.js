@@ -9,7 +9,6 @@ const {
   mergeUserMarkers,ensureProfile,
 } = window.GDMMCore;
 
-
   const LAST_PROFILE_KEY = 'gdmm_last_profile';
 
   function rememberActiveProfile() {
@@ -1487,7 +1486,7 @@ if (newPathBtn) {
 
   // --- Init on load ---
   (async () => {
-    const REMOTE_JSON_URL = 'https://www.grimcustommarker.org/gdmm_all_profiles.json?v=3.25';
+    const REMOTE_JSON_URL = 'https://www.grimcustommarker.org/gdmm_all_profiles.json?v=3.26';
     // empty base
     state.profiles['Profil 1'] = {
      markers:[],
