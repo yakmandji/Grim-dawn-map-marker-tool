@@ -30,7 +30,6 @@ body {
   overflow: hidden;
 }
 
-
 .mb0{
   margin-bottom: 0!important;
 }
@@ -143,6 +142,7 @@ input[type="color"]{
   cursor: pointer;
   padding: 0;
   width: 26px;
+  max-width: 26px;
   height: 26px;
   opacity: 0.7;
 }
@@ -473,7 +473,7 @@ textarea:focus {
 }
 
 .listItem > div {
-  min-width: 282px;
+  min-width: 100%;
 }
 
 .listItem:last-child { 
@@ -514,6 +514,7 @@ button.marker-center,
   cursor: pointer;
   opacity: 0.8;
   transition: opacity 0.2s ease, transform 0.15s ease;
+  max-width: 48px;
 }
 
 /* Highlight pulse ring */
@@ -571,7 +572,6 @@ button.marker-center,
 #list select{
   font-size: 11px;
   padding: 9px 0px;
-  max-width: 100px;
 }
 
 @keyframes highlightPulse {
@@ -1218,6 +1218,45 @@ body.shared-only-view #mergeSharedBtn,
   opacity: 0.95;
 }
 
+/*Scrol bar ----------------------*/
+
+/* ---- CYBER GREEN SCROLLBAR ---- */
+
+.markers-scroll {
+  scrollbar-width: thin;   
+  scrollbar-color: #30af7d #082722;
+}
+
+/* Chromium browsers (Chrome / Edge / Brave) */
+.markers-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.markers-scroll::-webkit-scrollbar-track {
+  background: #051414;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px #0a2c2c;
+}
+
+.markers-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #12c47b, #26f0a0);
+  border-radius: 10px;
+
+  /* Glow cyber vert */
+  box-shadow:
+    0 0 4px #26f0a0,
+    0 0 6px #26f0a0;
+}
+
+.markers-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1dea8d, #4dffbd);
+  box-shadow:
+    0 0 6px #26f0a0,
+    0 0 10px #26f0a0;
+}
+
+
+/*Scrol bar ----------------------*/
 
 /*MOBILE VERSION*/
 
