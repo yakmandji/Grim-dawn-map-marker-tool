@@ -34,7 +34,7 @@ You are allowed to use and share this tool, but **not to redistribute, modify, o
 © 2025 [Yakmandji]  
 [https://yakmandji.github.io/Grim-dawn-map-marker-tool/]
 
-Map © Crate Entertainment — used for fan purposes only.  
+Map © Crate Entertainment - used for fan purposes only.  
 Not affiliated with or endorsed by Crate Entertainment.
 
 License: [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)
