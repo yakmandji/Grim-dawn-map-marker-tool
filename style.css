@@ -1,7 +1,7 @@
 :root {
   --bg: #0f1220;
   --panel: #031714;
-  --p2: #0e2928;
+  --p2: #122928;
   --txt: #67999b;
   --titlecolor: #6b9597;
   --buttontxt : #4ec393;
@@ -10,7 +10,7 @@
   --ok: #8be38b;
   --danger: #ff6b7a;
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
-  --sidebar-width: 470px;
+  --sidebar-width: 450px;
 }
 
 * { box-sizing: border-box; }
@@ -101,11 +101,10 @@ header .sep {
 }
 
 button, select, .chip {
-  background: linear-gradient(145deg, #0d463a, #1b5d54);
+  background: linear-gradient(145deg, #0c3a30, #174d46);
   color: #ced3ec;
   border: none;
   border-radius: 10px;
-  padding: 7px 16px;
   cursor: pointer;
   font-weight: 500;
   box-shadow:
@@ -188,12 +187,12 @@ button:active {
 }
 
 button.small,
-.right-panel button { 
+.right-panel button,select { 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px; 
-  padding: 6px 10px;
+  padding: 7px 10px;
   font-size: 12px;
   line-height: 1;
   vertical-align: middle;
@@ -562,7 +561,7 @@ button.marker-center,
 #list select{
   font-size: 11px;
   padding: 9px 0px;
-  max-width: 117px;
+  max-width: 100px;
 }
 
 @keyframes highlightPulse {
@@ -837,7 +836,7 @@ button.marker-center,
 #mapLoader {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top, #18233f 0, #0b111d 60%, #050812 100%);
+  background: radial-gradient(circle at top, #183f2a 0, #0b1d11 60%, #051210 100%);
   display: flex;
   align-items: center;
   justify-content: center;
