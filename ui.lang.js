@@ -361,7 +361,7 @@
     'ui.QuestMarker': '⭐ Missão',
     'ui.BossMarker': '💀 Chefe',
     'ui.LootMarker': '🗝️ Tesouro',
-    'ui.WaypointMarker': '📍 Ponto de viagem',
+    'ui.WaypointMarker': '📍 Marco',
     'ui.DonjonMarker': '🏰 Masmorra',
     'ui.NPCMarker': '💬 NPC',
     'ui.SaveMarkerButton': 'Salvar marcadores',
