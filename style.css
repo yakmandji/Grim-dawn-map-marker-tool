@@ -548,7 +548,7 @@ button.marker-center,
 }
 
 .listItem input[type="text"]{
-  min-width: 248px;
+  min-width: 216px;
 }
 
 #list .listItem.highlight,
