@@ -472,7 +472,8 @@ textarea:focus {
 }
 .chip { 
   font-size: 12px; 
-  opacity: .85; 
+  opacity: .85;
+  padding: 4px; 
 }
 
 .marker-save.flash {
