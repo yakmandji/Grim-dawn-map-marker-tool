@@ -22,6 +22,15 @@ body {
   font: 14px/1.4 system-ui, Segoe UI, Roboto, Helvetica, Arial;
 }
 
+.seo-summary {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+
 .mb0{
   margin-bottom: 0!important;
 }
