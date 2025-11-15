@@ -2,9 +2,8 @@
 
 📍 Add, move, rename, and delete markers easily.
 - 100% client-side (no dependencies, no build)
-- 100% client-side, no data upload, no server, no privacy risk
 - Multiple marker types and route creation 
-- Map sharing system: export your markers or full maps via the Share Map button with other players (only if you tag your markers as shared)
+- Map sharing system: share your markers/routes with a simple link and merge shared map with yours (only if you tag your markers as shared)
 - Seven-language support: English, French, Spanish, Portuguese, Russian, Italian etc...
 - Full import/export If you switch browser or computer
 
@@ -17,7 +16,7 @@
 - Save your changes
 - Done
 
-Not necessary but to use it locally on your machine, download all files from Github and simply launch the index.html file.
+Online version is recommanded, but to use it locally on your machine, download all files from Github and simply launch the index.html file.
 
 ⚠️ Disclaimer
 
