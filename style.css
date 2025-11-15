@@ -1,10 +1,10 @@
 :root {
   --bg: #0f1220;
-  --panel: #031517;
-  --p2: #08242d;
+  --panel: #031714;
+  --p2: #0e2928;
   --txt: #67999b;
   --titlecolor: #6b9597;
-  --buttontxt : #059999;
+  --buttontxt : #4ec393;
   --placeholdertext : #2d6f72;
   --muted: #8cb9ac;
   --ok: #8be38b;
@@ -17,7 +17,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  background: linear-gradient(81deg, #1a4f5d, #07181d 116%, #123843);
+  background: linear-gradient(81deg, #195441, #09342c 116%, #0c2d27);
   color: var(--txt);
   font: 14px/1.4 system-ui, Segoe UI, Roboto, Helvetica, Arial;
 }
@@ -101,7 +101,7 @@ header .sep {
 }
 
 button, select, .chip {
-  background: linear-gradient(145deg, #0d3646, #1b485d);
+  background: linear-gradient(145deg, #0d463a, #1b5d54);
   color: #ced3ec;
   border: none;
   border-radius: 10px;
@@ -122,7 +122,7 @@ textarea::placeholder {
   opacity: 1;
 }
 
-button{
+button, select{
   color:var(--buttontxt);
 }
 
@@ -154,19 +154,20 @@ input[type="color"]::-moz-color-swatch {
 }
 
 select option {
-  background-color: #1a4d63;
+  background-color: #256b6c;
   color: #e7ebff;
   border: none;
 }
 
 select option:hover,
+select option:enabled:hover,
 select option:checked {
-  background-color: #2e3869;
+  background-color: #256b6c;
   color: #e7ebff;
 }
 
 button:hover {
-  background: linear-gradient(145deg, #113646, #1c4a5f);
+  background:linear-gradient(145deg, #165238, #1f6642);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 5px 10px rgba(0,0,0,0.45),
@@ -262,13 +263,13 @@ select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color-accent, #00ff96);
-  box-shadow: 0px 0px 4px 1px rgba(0, 255, 150, 0.4);
+  box-shadow: 0px 0px 2px 2px rgb(30 231 148 / 40%);
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 .done-input{
   flex: 0 0 auto;
-  background: #17313c;
+  background: #113029;
   padding: 7px 10px 7px 5px;
   border-radius: 6px;
   display: flex;
