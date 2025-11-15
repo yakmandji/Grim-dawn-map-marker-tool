@@ -473,7 +473,7 @@ textarea:focus {
 .chip { 
   font-size: 12px; 
   opacity: .85;
-  padding: 4px; 
+  padding: 6px; 
 }
 
 .marker-save.flash {
@@ -1163,7 +1163,7 @@ body.shared-only-view #mergeSharedBtn,
 
 .region-label {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 1em;
+  font-size: 1.15em;
   text-transform: uppercase;
   font-weight: 600;
   color: #bba078;
