@@ -11,7 +11,7 @@
 📦 How to use
 
 - Just open the web app :
-  https://yakmandji.github.io/Grim-dawn-map-marker-tool/
+  https://www.grimcustommarker.org/
 - Choose a map from the selection list (main game or DLC).
 - Add markers by clicking on the map 📍 then pressing Add.
 - Save your changes
