@@ -19,6 +19,13 @@
 
     // --- Markers on map ---
     document.querySelectorAll('.marker').forEach(el => {
+
+      // 🔥 SI le marker est Done → il est TOUJOURS visible, ignore les filtres
+      if (el.dataset.done === '1') {
+        el.style.display = '';
+        return;
+      }
+
       const cl = el.classList;
       const isShared = cl.contains('shared');
 
@@ -37,6 +44,7 @@
       const finalVisible = sharedVisible || catVisible;
       el.style.display = finalVisible ? '' : 'none';
     });
+
 
     // --- Éléments dans la liste ---
     document.querySelectorAll('#list .listItem').forEach(el => {
@@ -63,6 +71,7 @@
 
   // Count by category
   function updateFilterCounts() {
+
     if (!currentProfile) return;
     const p = currentProfile();
     if (!p || !Array.isArray(p.markers)) return;
@@ -72,6 +81,7 @@
     let sharedCount = 0;
 
     for (const m of p.markers) {
+       if (m.done) continue;
       const cat = m.cat || 'General';
       counts[cat] = (counts[cat] || 0) + 1;
 

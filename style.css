@@ -1218,8 +1218,6 @@ body.shared-only-view #mergeSharedBtn,
   opacity: 0.95;
 }
 
-/*Scrol bar ----------------------*/
-
 /* ---- CYBER GREEN SCROLLBAR ---- */
 
 .markers-scroll {
@@ -1257,6 +1255,118 @@ body.shared-only-view #mergeSharedBtn,
 
 
 /*Scrol bar ----------------------*/
+
+
+/*Hystory menu*/
+
+/* Anim de disparition d’un item de la liste principale */
+.listItem.fade-out {
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+}
+
+/* Panneau flottant des Done */
+.done-panel {
+  position: fixed;
+  top: 80px; 
+  right: 24px;
+  width: 260px;
+  max-height: 60vh;
+  background: rgba(10, 10, 10, 0.92);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  z-index: 1200;
+  overflow: hidden;
+}
+
+body.light .done-panel {
+  background: rgba(245,245,245,0.96);
+  border-color: rgba(0,0,0,0.07);
+}
+
+.done-panel-header {
+  padding: 8px 10px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+body.light .done-panel-header {
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.done-list {
+  padding: 6px 8px 8px;
+  overflow-y: auto;
+}
+
+/* Lignes de l’historique */
+.doneItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 4px;
+  border-radius: 6px;
+  margin-bottom: 2px;
+  background: rgba(255,255,255,0.03);
+}
+
+.doneIcon {
+  flex: 0 0 auto;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doneIcon-img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.doneIcon-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(200, 220, 220, 0.7);
+}
+
+body.light .doneItem {
+  background: rgba(0,0,0,0.03);
+}
+
+.doneItem:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+body.light .doneItem:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+.doneLabel {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doneActions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 4px;
+}
+
 
 /*MOBILE VERSION*/
 

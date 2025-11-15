@@ -260,13 +260,22 @@ function renderList() {
   const tpl  = $('#tplItem');
   if (!host || !tpl) return;
 
-  // compteur
+  // ➜ On sépare les marqueurs actifs et done
+  const activeMarkers = markers.filter(m => !m.done);
+  const doneMarkers   = markers.filter(m => !!m.done);
+
+  // compteur de la liste principale = seulement les actifs
   const countEl = $('#count');
-  if (countEl) countEl.textContent = markers.length;
+  if (countEl) countEl.textContent = activeMarkers.length;
+
+  // compteur de l’historique
+  const doneCountEl = $('#doneCount');
+  if (doneCountEl) doneCountEl.textContent = doneMarkers.length;
 
   host.innerHTML = '';
 
-  markers.forEach(m => {
+  // === LISTE PRINCIPALE : uniquement les marqueurs NON done ===
+  activeMarkers.forEach(m => {
     const el = tpl.content.firstElementChild.cloneNode(true);
     el.dataset.mid = m.id;
 
@@ -283,9 +292,11 @@ function renderList() {
     // label
     const label = el.querySelector('[data-label]');
     label.value = m.label || '';
-    label.addEventListener('blur', e => updateMarkerFromUI(m.id, { label: e.target.value }, true));
+    label.addEventListener('blur', e => {
+      updateMarkerFromUI(m.id, { label: e.target.value }, true);
+    });
 
-    // categorie
+    // catégorie
     const cat = el.querySelector('[data-cat]');
     cat.value = m.cat || 'General';
 
@@ -293,7 +304,7 @@ function renderList() {
     const color = el.querySelector('[data-color]');
     color.value = m.color || '#78f1c2';
 
-    // done
+    // état done (normalement false ici, mais on reste cohérent)
     const done = el.querySelector('[data-done]');
     done.checked = !!m.done;
 
@@ -303,12 +314,12 @@ function renderList() {
       sharedInput.checked = !!m.shared;
       sharedInput.addEventListener('change', e => {
         updateMarkerFromUI(m.id, { shared: !!e.target.checked }, false);
-        renderMarkers();   // met à jour la carte (icône, filtre, etc.)
-        renderList();      // rafraîchit la liste pour refléter le changement
+        renderMarkers();
+        renderList();
       });
     }
 
-    //color picker--------------------------------
+    // visibilité du color picker selon la catégorie
     const syncColorVis = (c) => {
       const allow = isColorAllowed(c);
       color.style.display = allow ? '' : 'none';
@@ -329,21 +340,119 @@ function renderList() {
       renderMarkers();
     };
 
-    done.onchange = e => updateMarkerFromUI(m.id, { done: e.target.checked }, true);
+    // ✅ Quand on coche "Done" :
+    done.onchange = e => {
+      const isDone = !!e.target.checked;
+      if (isDone) {
+        // petite anim dans la liste
+        el.classList.add('fade-out');
+        setTimeout(() => {
+          updateMarkerFromUI(m.id, { done: true }, true); // va le déplacer dans le panneau Done
+        }, 180); // cohérent avec la transition CSS
+      } else {
+        updateMarkerFromUI(m.id, { done: false }, true);
+      }
+    };
+
     el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
     el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
+
     host.appendChild(el);
   });
 
-    if (window.UiFilters && typeof window.UiFilters.applyCategoryFilters === 'function') {
+  // Filtres existants sur la liste principale
+  if (window.UiFilters && typeof window.UiFilters.applyCategoryFilters === 'function') {
     window.UiFilters.applyCategoryFilters();
   }
 
+  // i18n
   if (window.GDMMLang && typeof window.GDMMLang.applyLang === 'function') {
     window.GDMMLang.applyLang(window.GDMMLang.getLang());
   }
-  
+
+  // ➜ Met à jour le panneau des Done
+  renderDoneList(doneMarkers);
 }
+
+// List of Done element
+function renderDoneList(doneMarkers) {
+const host = $('#doneList');
+  if (!host) return;
+
+  host.innerHTML = '';
+
+  doneMarkers.forEach(m => {
+    const row = document.createElement('div');
+    row.className = 'doneItem';
+    row.dataset.mid = m.id;
+
+    // === Icône de catégorie (même SVG que sur la map) ===
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'doneIcon';
+
+    const ic = iconFor(m.cat);
+    if (ic && m.cat !== 'General') {
+      const img = document.createElement('img');
+      img.className = 'doneIcon-img';
+      img.src = ic;
+      img.alt = m.cat || '';
+      iconWrap.appendChild(img);
+    } else {
+      // petit fallback discret si pas d’icône
+      const dot = document.createElement('div');
+      dot.className = 'doneIcon-dot';
+      iconWrap.appendChild(dot);
+    }
+
+    // === Label ===
+    const lab = document.createElement('div');
+    lab.className = 'doneLabel';
+    lab.textContent = m.label || '(no name)';
+
+    // === Actions (center + delete) ===
+    const actions = document.createElement('div');
+    actions.className = 'doneActions';
+
+    const centerBtn = document.createElement('button');
+    centerBtn.type = 'button';
+    centerBtn.className = 'marker-center small';
+    const centerKey = 'ui.CenterOnMap';
+    const centerLabel = GDMMLang.t(centerKey);
+    centerBtn.setAttribute('data-i18n-title', centerKey);
+    centerBtn.title = centerLabel;
+    centerBtn.innerHTML = `<img src="img/center-icon.svg" width="16" alt="${centerLabel}">`;
+
+    centerBtn.onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
+
+
+
+    const delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'marker-delete danger small';
+    const deleteKey = 'ui.DeleteButton';
+    const deleteLabel = GDMMLang.t(deleteKey);
+    delBtn.setAttribute('data-i18n-title', deleteKey);
+    delBtn.setAttribute('data-i18n-alt', deleteKey);
+    delBtn.title = deleteLabel;
+    delBtn.setAttribute('aria-label', deleteLabel);
+    delBtn.innerHTML = `<img src="img/bin-icon.svg" width="16" alt="${deleteLabel}">`;
+
+    delBtn.onclick = () => deleteMarkerFromUI(m.id);
+
+    actions.appendChild(centerBtn);
+    actions.appendChild(delBtn);
+
+    // 🧱 Ordre visuel : [icône] [label] [actions]
+    row.appendChild(iconWrap);
+    row.appendChild(lab);
+    row.appendChild(actions);
+
+    host.appendChild(row);
+  });
+}
+//END list of done element
+
+
 
   function hexToRgba(hex, alpha = 1) {
     const clean = hex.replace('#', '');
@@ -490,7 +599,12 @@ function renderMarkers(options = {}) {
   markers.forEach(m => {
     const el = document.createElement('div');
     el.classList.add('marker');
-    if (m.done) el.classList.add('completed'); 
+    if (m.done) {
+      el.classList.add('completed');
+      el.dataset.done = '1';
+    } else {
+      el.dataset.done = '0';
+    }
     if (m.cat) el.classList.add(m.cat.toLowerCase());
     if (m.shared) el.classList.add('shared');
     el.dataset.mid = m.id;
