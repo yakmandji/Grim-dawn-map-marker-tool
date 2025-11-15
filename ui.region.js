@@ -28,8 +28,8 @@
     {
       id: 'UG_devils_crossing_hidden_passage01',
       tag: 'tagUGDevilsCrossingHiddenPassage01',
-      xp: 68.45,
-      yp: 90.13
+      xp: 66.51,
+      yp: 89.82
     },
     {
       id: 'UG_burial_cave',
@@ -47,8 +47,8 @@
     {
       id: 'UG_devils_crossing_aquifer',
       tag: 'tagUGDevilsCrossingAquifer',
-      xp: 70.55,
-      yp: 93.33
+      xp: 69.88,
+      yp: 93.61
     },
     {
       id: 'map_old_grove',
@@ -95,8 +95,8 @@
     {
       id: 'map_flooded_passage01',
       tag: 'tagMapFloodedPassage01',
-      xp: 61,
-      yp: 66.75
+      xp: 60.00,
+      yp: 66.40
     },
     {
       id: 'burrwitch_cellar02',
@@ -107,8 +107,8 @@
     {
       id: 'burrwitch_cellar03',
       tag: 'tagBurrwitchCellar03',
-      xp: 61.67,
-      yp: 60.15
+      xp: 61.63,
+      yp: 58.29
     },
     {
       id: 'UG_cellar02',
@@ -233,8 +233,8 @@
   {
     id: 'GDX1_UG_ancient_grove01a',
     tag: 'tagGDX1UGAncientGrove01A',
-    xp: 92.38,
-    yp: 54.55
+      xp: 91.28,
+      yp: 54.26
   },
   {
     id: 'GDX1_UG_ancient_grove01b',
@@ -545,8 +545,8 @@
 {
   id: 'UG_crypt_faction_battle02',
   tag: 'tagUGCryptFactionBattle02',
-  xp: 0.32,
-  yp: 19.78
+      xp: 2.07,
+      yp: 23.53
 },
 {
   id: 'UG_crypt_faction_battle01',
@@ -635,8 +635,8 @@
 {
   id: 'map_voidlands02',
   tag: 'tagMapVoidlands02',
-  xp: 46.93,
-  yp: 48.91
+      xp: 46.26,
+      yp: 48.34
 },
 {
   id: 'map_jagged_waste_fort',
@@ -687,28 +687,40 @@
   yp: 90.7
 },
 {
+  id: 'tag_UG_broken_hills02',
+  tag: 'tagUGBrokenHills02',
+      xp: 44.58,
+      yp: 90.42
+},
+{
+  id: 'tag_UGBroken_hills02A',
+  tag: 'tagUGBrokenHills02A',
+      xp: 48.55,
+      yp: 90.42
+},
+{
   id: 'UG_broken_hills02c',
   tag: 'tagUGBrokenHills02C',
-  xp: 50.37,
-  yp: 92.95
+      xp: 49.86,
+      yp: 95.04
 },
 {
   id: 'UG_broken_hills02b',
   tag: 'tagUGBrokenHills02B',
-  xp: 45.8,
-  yp: 91.54
+      xp: 45.22,
+      yp: 95.19
 },
 {
   id: 'UG_broken_hills02d',
   tag: 'tagUGBrokenHills02D',
-  xp: 44.92,
-  yp: 95.59
+      xp: 54.26,
+      yp: 94.87
 },
 {
   id: 'GDX2_side_areas_02',
   tag: 'tagGDX2SideAreas_02',
-      xp: 38.19,
-      yp: 90.61
+      xp: 38.58,
+      yp: 90.15
 },
 {
   id: 'UG_burrwitch_flooded_cellars',
@@ -821,8 +833,8 @@
 {
   id: 'GDX1UG_ugdenbog_cave02',
   tag: 'tagGDX1UGUgdenbogCave02',
-      xp: 94.18,
-      yp: 42.73
+      xp: 94.30,
+      yp: 42.52
 },
 {
   id: 'GDX1UG_ugdenbog_cave02_b',
@@ -1104,8 +1116,8 @@
 {
   id: 'tag_gdx2_map_area05',
   tag: 'tagGDX2MapArea05',
-      xp: 44.17,
-      yp: 22.32
+      xp: 44.13,
+      yp: 21.8
 },
 {
   id: 'tag_gdx2_map_road_to_korvaak_temple',
@@ -1122,8 +1134,8 @@
 {
   id: 'tag_gdx2_map_raised_temple_b',
   tag: 'tagGDX2MapRaisedTemple',
-      xp: 33.29,
-      yp: 12.96
+      xp: 33.18,
+      yp: 12.27
 },
 {
   id: 'tag_gdx1_ug_secret01',
@@ -1194,8 +1206,8 @@
 {
   id: 'tag_gdx2_korvaak_tomb01',
   tag: 'tagGDX2KorvaakTomb01',
-      xp: 70.59,
-      yp: 11.00
+      xp: 69.10,
+      yp: 10.79
 },
 {
   id: 'tag_gdx2_map_hidden_oasis',
