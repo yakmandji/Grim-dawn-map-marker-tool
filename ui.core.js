@@ -415,6 +415,7 @@ function renderDoneList(doneMarkers) {
     const lab = document.createElement('div');
     lab.className = 'doneLabel';
     lab.textContent = m.label || '(no name)';
+    lab.title = m.label || '';
 
     // --- actions ---
     const actions = document.createElement('div');

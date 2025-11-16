@@ -434,7 +434,6 @@ textarea:focus {
   max-width: 240px;
 }
 
-
 .marker.completed .pin
  { opacity: 0.6; }
 
@@ -446,8 +445,8 @@ textarea:focus {
  }
 
 .marker.completed .pin-bg{
-    width: 89%;
-    height: 89%;
+  transform: scale(0.85);
+  transform-origin: 50% 100%;
      filter: grayscale(1) brightness(1) !important;
 }
 
@@ -455,7 +454,7 @@ textarea:focus {
     width: 15px;
     height: 19px;
     margin-top: -16px;
-    margin-left: -6px;
+    margin-left: -4px;
 }
 
 .lock-label{
@@ -1393,6 +1392,10 @@ body.shared-only-view #mergeSharedBtn,
   flex: 1 1 auto;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.doneLabel[title] {
+  cursor: help;
 }
 
 .doneActions {
