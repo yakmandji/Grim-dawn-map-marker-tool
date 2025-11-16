@@ -435,13 +435,20 @@ textarea:focus {
 }
 
 
-.marker.completed .pin,
-.marker.completed .label
- { opacity: 0.5; }
+.marker.completed .pin
+ { opacity: 0.6; }
+
+.marker.completed .label{ 
+  opacity: 0.7;
+  background: rgb(39 39 39 / 85%);
+  border: 1px solid #4b4b4b;
+  font-size: 0.8em;
+ }
 
 .marker.completed .pin-bg{
-      width: 89%;
+    width: 89%;
     height: 89%;
+     filter: grayscale(1) brightness(1) !important;
 }
 
 .marker.completed .pin-icon{
@@ -521,7 +528,7 @@ textarea:focus {
 
 button.marker-center,
  button.marker-save{
-  padding: 6px 10px 2px 10px;
+  padding: 7px 10px 7px 10px;
   border: none;
   color: #78f1c2;
   font-size: 16px;
@@ -529,6 +536,8 @@ button.marker-center,
   opacity: 0.8;
   transition: opacity 0.2s ease, transform 0.15s ease;
   max-width: 48px;
+  display: flex;
+  justify-content: center;  
 }
 
 /* Highlight pulse ring */
@@ -1141,7 +1150,6 @@ body.shared-only-view #mergeSharedBtn,
   gap: 10px;
 }
 
-
 /* Shared pin position */
 .marker .pin {
   position: relative;
@@ -1158,7 +1166,6 @@ body.shared-only-view #mergeSharedBtn,
 
 
 /*RIFT MARKER*/
-
 .marker-rift {
   display: flex;
   align-items: center;
@@ -1178,7 +1185,6 @@ body.shared-only-view #mergeSharedBtn,
 
 
 /*REGION MARKER*/
-
 .marker-region {
   position: absolute;
   pointer-events: none;
@@ -1267,11 +1273,7 @@ body.shared-only-view #mergeSharedBtn,
     0 0 10px #26f0a0;
 }
 
-
 /*Scrol bar ----------------------*/
-
-
-/*Hystory menu*/
 
 /* Anim de disparition d’un item de la liste principale */
 .listItem.fade-out {
@@ -1286,6 +1288,11 @@ body.shared-only-view #mergeSharedBtn,
   top: 50%; 
   right: 29px;
   width: 260px;
+  z-index: 1200;
+}
+
+.done-panel-inner {
+  width: 260px;
   max-height: 60vh;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.6);
@@ -1293,14 +1300,39 @@ body.shared-only-view #mergeSharedBtn,
   display: flex;
   flex-direction: column;
   font-size: 13px;
-  z-index: 1200;
-  overflow: hidden;
   background-color: rgba(3, 22, 20, 0.4);
+  border-top-left-radius: 0;
+  overflow: hidden;
 }
 
-body.light .done-panel {
-  background: rgba(245,245,245,0.96);
-  border-color: rgba(0,0,0,0.07);
+.done-panel #doneList button{
+  padding: 5px 8px;  
+}
+
+.done-panel #doneList img{
+  width: 14px;
+}
+
+.done-toggle {
+  width: 26px;
+  height: 40px;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-right: none;
+  background-color: rgba(3, 22, 20, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  left: -26px;
+  top: -2px;
+}
+
+.done-toggle img {
+  display: block;
+  transition: transform 0.18s ease-out;
 }
 
 .done-panel-header {
@@ -1310,10 +1342,6 @@ body.light .done-panel {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-body.light .done-panel-header {
-  border-bottom-color: rgba(0,0,0,0.08);
 }
 
 .done-list {
@@ -1357,22 +1385,13 @@ body.light .done-panel-header {
   background: rgba(200, 220, 220, 0.7);
 }
 
-body.light .doneItem {
-  background: rgba(0,0,0,0.03);
-}
-
 .doneItem:hover {
   background: rgba(255,255,255,0.06);
-}
-
-body.light .doneItem:hover {
-  background: rgba(0,0,0,0.06);
 }
 
 .doneLabel {
   flex: 1 1 auto;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -1380,6 +1399,54 @@ body.light .doneItem:hover {
   flex: 0 0 auto;
   display: flex;
   gap: 4px;
+}
+
+.doneItem .doneLabel {
+  position: relative;
+  opacity: 0.7;
+  max-width: 132px;
+  overflow: hidden;
+}
+
+.doneItem .doneLabel::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -26px;
+  width: 110%;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Le conteneur complet (panneau + bouton) va slider */
+.done-panel {
+  position: fixed;
+  top: 50%;
+  right: 29px;
+  z-index: 1200;
+  font-size: 13px;
+  transition: transform 0.2s ease-out;
+}
+
+.done-panel.collapsed {
+  transform: translateX(251px);
+}
+
+/* Les chevrons tournent pour indiquer le sens inverse */
+.done-panel.collapsed .done-toggle img {
+  transform: rotate(180deg);
+  transition: transform 0.18s ease-out;
+}
+
+.done-empty {
+  text-align: center;
+  padding: 12px 8px;
+  opacity: 0.6;
+  font-size: 12px;
+  font-style: italic;
+  color: #ccc;
 }
 
 

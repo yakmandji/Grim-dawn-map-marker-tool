@@ -10,6 +10,7 @@ const {
 } = window.GDMMCore;
 
   const LAST_PROFILE_KEY = 'gdmm_last_profile';
+  let hideDoneOnMap = false;
 
   function rememberActiveProfile() {
     if (!state.active) return;
@@ -379,17 +380,26 @@ function renderList() {
 
 // List of Done element
 function renderDoneList(doneMarkers) {
-const host = $('#doneList');
+  const host = $('#doneList');
   if (!host) return;
 
   host.innerHTML = '';
+
+  if (!doneMarkers.length) {
+    const emptyMsg = document.createElement('div');
+    emptyMsg.className = 'done-empty';
+    emptyMsg.setAttribute('data-i18n', 'ui.NothingDone');
+    emptyMsg.textContent = GDMMLang.t('ui.NothingDone');
+    host.appendChild(emptyMsg);
+    return;
+  }
 
   doneMarkers.forEach(m => {
     const row = document.createElement('div');
     row.className = 'doneItem';
     row.dataset.mid = m.id;
 
-    // === Icône de catégorie (même SVG que sur la map) ===
+    // --- icône catégorie ---
     const iconWrap = document.createElement('div');
     iconWrap.className = 'doneIcon';
 
@@ -398,48 +408,30 @@ const host = $('#doneList');
       const img = document.createElement('img');
       img.className = 'doneIcon-img';
       img.src = ic;
-      img.alt = m.cat || '';
       iconWrap.appendChild(img);
-    } else {
-      // petit fallback discret si pas d’icône
-      const dot = document.createElement('div');
-      dot.className = 'doneIcon-dot';
-      iconWrap.appendChild(dot);
     }
 
-    // === Label ===
+    // --- label ---
     const lab = document.createElement('div');
     lab.className = 'doneLabel';
     lab.textContent = m.label || '(no name)';
 
-    // === Actions (center + delete) ===
+    // --- actions ---
     const actions = document.createElement('div');
     actions.className = 'doneActions';
 
+    // Center button
     const centerBtn = document.createElement('button');
     centerBtn.type = 'button';
-    centerBtn.className = 'marker-center';
-    const centerKey = 'ui.CenterOnMap';
-    const centerLabel = GDMMLang.t(centerKey);
-    centerBtn.setAttribute('data-i18n-title', centerKey);
-    centerBtn.title = centerLabel;
-    centerBtn.innerHTML = `<img src="img/center-icon.svg" width="16" alt="${centerLabel}">`;
-
+    centerBtn.className = 'marker-center small';
+    centerBtn.innerHTML = `<img src="img/center-icon.svg" width="16">`;
     centerBtn.onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
 
-
-
+    // Delete button
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
     delBtn.className = 'marker-delete danger small';
-    const deleteKey = 'ui.DeleteButton';
-    const deleteLabel = GDMMLang.t(deleteKey);
-    delBtn.setAttribute('data-i18n-title', deleteKey);
-    delBtn.setAttribute('data-i18n-alt', deleteKey);
-    delBtn.title = deleteLabel;
-    delBtn.setAttribute('aria-label', deleteLabel);
-    delBtn.innerHTML = `<img src="img/bin-icon.svg" width="16" alt="${deleteLabel}">`;
-
+    delBtn.innerHTML = `<img src="img/bin-icon.svg" width="16">`;
     delBtn.onclick = () => deleteMarkerFromUI(m.id);
 
     actions.appendChild(centerBtn);
@@ -452,7 +444,21 @@ const host = $('#doneList');
     host.prepend(row);
   });
 }
+
 //END list of done element
+
+function initDonePanelToggle() {
+  const panel  = $('#donePanel');
+  const toggle = $('#donePanelToggle');
+  if (!panel || !toggle) return;
+
+  toggle.addEventListener('click', () => {
+    hideDoneOnMap = !hideDoneOnMap;
+    panel.classList.toggle('collapsed', hideDoneOnMap);
+    renderMarkers();
+    renderList();
+  });
+}
 
 
 
@@ -599,6 +605,9 @@ function renderMarkers(options = {}) {
   // 3) draw markers
   const markers = p.markers || [];
   markers.forEach(m => {
+    //Hide done collapesd
+    if (hideDoneOnMap && m.done) return;
+
     const el = document.createElement('div');
     el.classList.add('marker');
     if (m.done) {
@@ -1601,6 +1610,7 @@ if (newPathBtn) {
     renderList();
     renderMarkers();
     renderRoutesPanel();
+    initDonePanelToggle();
     // defaut lock
     state.locked = true;
     applyLockUI();
