@@ -1008,11 +1008,8 @@ function renderMarkers(options = {}) {
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
   }
-    // Re-apply filters after re-render
-  if (window.UiFilters && typeof window.UiFilters.applyCategoryFilters === 'function') {
-    window.UiFilters.applyCategoryFilters();
-  }
-
+  
+  // Re-apply filters after re-render
   if (window.UiFilters) {
     if (typeof window.UiFilters.applyCategoryFilters === 'function') {
       window.UiFilters.applyCategoryFilters();
@@ -1151,6 +1148,29 @@ function renderRoutesPanel() {
 
   // --- Pan & Zoom ---
   let panning = false, panId = null, panStart = {x:0,y:0}, viewStart = {x:0,y:0};
+
+  // --- Pinch zoom (mobile) ---
+  const activeTouches = new Map();
+  const pinchState = {
+    active: false,
+    id1: null,
+    id2: null,
+    startDistance: 0,
+    startScale: 1,
+    startCenter: { x: 0, y: 0 },
+    startView: { x: 0, y: 0 },
+  };
+
+  function distance(a, b) {
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  function midpoint(a, b) {
+    return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+  }
+
   function setTool(t, options = {}) {
     const { skipFinalize = false } = options;
     state.tool = t;
@@ -1249,6 +1269,31 @@ viewport.addEventListener('pointerdown', e => {
     return;
   }
 
+  // --- Gestion des touches pour pinch ---
+  if (e.pointerType === 'touch') {
+    activeTouches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    // Quand on a 2 doigts en mode pan → on démarre le pinch
+    if (activeTouches.size === 2 && state.tool === 'pan') {
+      const [id1, id2] = Array.from(activeTouches.keys());
+      const p1 = activeTouches.get(id1);
+      const p2 = activeTouches.get(id2);
+
+      pinchState.active = true;
+      pinchState.id1 = id1;
+      pinchState.id2 = id2;
+      pinchState.startDistance = distance(p1, p2);
+      pinchState.startScale = state.view.scale;
+      pinchState.startCenter = midpoint(p1, p2);
+      pinchState.startView = { x: state.view.x, y: state.view.y };
+
+      // On annule un éventuel pan qui aurait commencé avec le 1er doigt
+      panning = false;
+      panId = null;
+      return;
+    }
+  }
+
   // --- classic PAN ---
   e.preventDefault();
   if (e.target.closest && e.target.closest('.marker')) {
@@ -1263,6 +1308,48 @@ viewport.addEventListener('pointerdown', e => {
 });
 
   viewport.addEventListener('pointermove', e => {
+
+    if (e.pointerType === 'touch') {
+  activeTouches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    // Si on est en mode pinch, on gère le zoom ici
+    if (pinchState.active) {
+      const p1 = activeTouches.get(pinchState.id1);
+      const p2 = activeTouches.get(pinchState.id2);
+
+      if (p1 && p2 && pinchState.startDistance > 0) {
+        const newDist = distance(p1, p2);
+        const ratio = newDist / pinchState.startDistance;
+        const targetScale = clamp(
+          pinchState.startScale * ratio,
+          0.18,
+          1.28
+        );
+
+        const vb = viewport.getBoundingClientRect();
+        const centerNow = midpoint(p1, p2);
+        const ox = centerNow.x - vb.left;
+        const oy = centerNow.y - vb.top;
+
+        // On garde le centre du pinch “accroché” à la même zone de la map
+        const ix = (ox - pinchState.startView.x) / pinchState.startScale;
+        const iy = (oy - pinchState.startView.y) / pinchState.startScale;
+
+        state.view.x = ox - ix * targetScale;
+        state.view.y = oy - iy * targetScale;
+        state.view.scale = targetScale;
+
+        clampViewToMap();
+        applyView();
+        persistViewForCurrentProfile();
+      }
+
+      e.preventDefault();
+      return; // on ne fait pas le reste (pan/classic cursor) quand on pinche
+    }
+  }
+
+
     const { xp, yp } = viewToPct(e.clientX, e.clientY);
     if (!panning) {
       if (isFinite(xp) && isFinite(yp)) {
@@ -1299,13 +1386,27 @@ viewport.addEventListener('pointerdown', e => {
     applyView();
   });
 
-    function stopPan(){
+  function stopPan(e){
+    // Nettoyage des touches
+    if (e && e.pointerType === 'touch') {
+      activeTouches.delete(e.pointerId);
+
+      // Si un des deux doigts du pinch se lève → fin du pinch
+      if (pinchState.active &&
+          (e.pointerId === pinchState.id1 || e.pointerId === pinchState.id2)) {
+        pinchState.active = false;
+        pinchState.id1 = null;
+        pinchState.id2 = null;
+        pinchState.startDistance = 0;
+      }
+    }
+
     if (!panning) return;
     panning = false;
     panId = null;
-    // On mémorise la vue à la fin du drag
     persistViewForCurrentProfile();
   }
+
 
   viewport.addEventListener('pointerup', stopPan);
   viewport.addEventListener('pointerleave', stopPan);
@@ -1711,9 +1812,11 @@ if (newPathBtn) {
     const btn = document.getElementById('mobile-menu-toggle');
     const menu = document.getElementById('left-menu');
 
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('open');
-    });
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('open');
+      });
+    }
 
 
   // --- Expose global ---
