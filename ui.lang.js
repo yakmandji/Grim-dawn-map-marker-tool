@@ -69,6 +69,7 @@
       'ui.ShowHideDonjon': 'Show/Hide General',
       'ui.ShowHideNPC': 'Show/Hide General',
       'ui.ShowHideSharedMarker': 'Show/Hide General',
+      'ui.DoneMarker': 'Completed markers',
 
       'ui.ShowHideRegion' : 'Show/Hide Region names',
       'ui.ShowHideRift' : 'Show/Hide Rift',
@@ -144,6 +145,7 @@
       'toast.MarkerDeleted': 'Marqueur supprimé 🗑️',
       'toast.RouteDeleted': 'Tracé supprimé 🧹',
       'ui.ToolPan': 'Déplacer',
+      'ui.DoneMarker': "Marqueurs terminés",
 
 
      'ui.ShowHideGeneral': 'Afficher/Masquer Général',
@@ -223,6 +225,7 @@
       'ui.ToolPan': 'Mover',
       'ui.ShowHideRegion': 'Mostrar/Ocultar nombres de regiones',
       'ui.ShowHideRift': 'Mostrar/Ocultar grietas',
+      'ui.DoneMarker': "Marcadores completados",
 
 
       'toast.MarkerNameUpdated': 'Nombre del marcador actualizado 💾',
@@ -334,6 +337,7 @@
       "ui.ShowHideDonjon": "Dungeons ein/ausblenden",
       "ui.ShowHideNPC": "NPCs ein/ausblenden",
       "ui.ShowHideSharedMarker": "Geteilte Marker ein/ausblenden",
+      'ui.DoneMarker': "Abgeschlossene Markierungen",
 
       'ui.ShowHideRegion': 'Regionnamen ein-/ausblenden',
       'ui.ShowHideRift': 'Risse ein-/ausblenden',
@@ -403,6 +407,7 @@
     'ui.ShowHideSharedMarker': 'Mostrar/Ocultar Compartilhados',
     'ui.ShowHideRegion': 'Mostrar/Ocultar nomes das regiões',
     'ui.ShowHideRift': 'Mostrar/Ocultar fendas',
+    'ui.DoneMarker': "Marcadores concluídos",
 
 
     'toast.MarkerNameUpdated': 'Nome do marcador atualizado 💾',
@@ -492,6 +497,7 @@
     'ui.ToolPan': 'Перемещение',
     'ui.ShowHideRegion': 'Показать/скрыть названия регионов',
     'ui.ShowHideRift': 'Показать/скрыть разломы',
+    'ui.DoneMarker': "Завершённые метки",
 
 
     'toast.MarkerNameUpdated': 'Имя маркера обновлено 💾',
@@ -580,6 +586,7 @@
       'ui.ToolPan': 'Muovi',
       'ui.ShowHideRegion': 'Mostra/Nascondi nomi delle regioni',
       'ui.ShowHideRift': 'Mostra/Nascondi fenditure',
+      'ui.DoneMarker': "Marcatori completati",
 
 
       'ui.PathNamePlaceholder': 'Nome del percorso (facoltativo)',
@@ -670,6 +677,7 @@
       'ui.ToolPan': '移动',
       'ui.ShowHideRegion': '显示/隐藏区域名称',
       'ui.ShowHideRift': '显示/隐藏裂隙',
+      'ui.DoneMarker': "已完成的标记",
 
 
       'toast.MarkerNameUpdated': '标记名称已更新 💾',

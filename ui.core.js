@@ -340,15 +340,18 @@ function renderList() {
       renderMarkers();
     };
 
-    // ✅ Quand on coche "Done" :
+    // check done :
     done.onchange = e => {
       const isDone = !!e.target.checked;
+
       if (isDone) {
-        // petite anim dans la liste
+        if (sharedInput) {
+          sharedInput.checked = false;
+        }
         el.classList.add('fade-out');
         setTimeout(() => {
-          updateMarkerFromUI(m.id, { done: true }, true); // va le déplacer dans le panneau Done
-        }, 180); // cohérent avec la transition CSS
+          updateMarkerFromUI(m.id, { done: true, shared: false }, true);
+        }, 180);
       } else {
         updateMarkerFromUI(m.id, { done: false }, true);
       }
@@ -415,7 +418,7 @@ const host = $('#doneList');
 
     const centerBtn = document.createElement('button');
     centerBtn.type = 'button';
-    centerBtn.className = 'marker-center small';
+    centerBtn.className = 'marker-center';
     const centerKey = 'ui.CenterOnMap';
     const centerLabel = GDMMLang.t(centerKey);
     centerBtn.setAttribute('data-i18n-title', centerKey);
@@ -442,12 +445,11 @@ const host = $('#doneList');
     actions.appendChild(centerBtn);
     actions.appendChild(delBtn);
 
-    // 🧱 Ordre visuel : [icône] [label] [actions]
     row.appendChild(iconWrap);
     row.appendChild(lab);
     row.appendChild(actions);
 
-    host.appendChild(row);
+    host.prepend(row);
   });
 }
 //END list of done element
