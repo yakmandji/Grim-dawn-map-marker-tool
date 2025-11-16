@@ -415,13 +415,13 @@ function renderDoneList(doneMarkers) {
     iconWrap.className = 'doneIcon';
 
     const ic = iconFor(m.cat);
-    if (ic && m.cat !== 'General') {
+    if (ic) {
       const img = document.createElement('img');
       img.className = 'doneIcon-img';
       img.src = ic;
       iconWrap.appendChild(img);
     }
-
+    
     // --- label ---
     const lab = document.createElement('div');
     lab.className = 'doneLabel';
@@ -464,6 +464,11 @@ function initDonePanelToggle() {
   const toggle = $('#donePanelToggle');
   if (!panel || !toggle) return;
 
+  if (window.innerWidth < 768) {
+    hideDoneOnMap = true;
+    panel.classList.add('collapsed');
+  }
+
   toggle.addEventListener('click', () => {
     hideDoneOnMap = !hideDoneOnMap;
     panel.classList.toggle('collapsed', hideDoneOnMap);
@@ -471,7 +476,6 @@ function initDonePanelToggle() {
     renderList();
   });
 }
-
 
 
   function hexToRgba(hex, alpha = 1) {
@@ -482,6 +486,35 @@ function initDonePanelToggle() {
     const b = bigint & 255;
     return `rgba(${r},${g},${b},${alpha})`;
   }
+
+// Find best key for map size
+function resolveSizeKey(sizeMap) {
+  if (!sizeMap || !state.mapNatural) return null;
+
+  const exactKey = `${state.mapNatural.w}x${state.mapNatural.h}`;
+  if (sizeMap[exactKey]) {
+    return exactKey;
+  }
+  const targetRatio = state.mapNatural.w / (state.mapNatural.h || 1);
+  let bestKey = null;
+  let bestDiff = Infinity;
+
+  Object.keys(sizeMap).forEach(k => {
+    const [w, h] = k.split('x').map(Number);
+    const r = w / (h || 1);
+    const diff = Math.abs(r - targetRatio);
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      bestKey = k;
+    }
+  });
+
+  if (bestDiff < 0.02) {
+    return bestKey;
+  }
+  return null;
+}
+
 
 
 // RENDER MARKER----------------------------
@@ -679,13 +712,14 @@ function renderMarkers(options = {}) {
       `hue-rotate(${h}deg) saturate(${1 + s / 100}) brightness(${0.9 + (l / 200)})`;
 
     const ic = iconFor(m.cat);
-    if (ic && m.cat !== 'General') {
+    if (ic) {
       const iconImg = document.createElement('img');
       iconImg.className = 'pin-icon';
       iconImg.src = ic;
       iconImg.alt = m.cat || '';
       pin.appendChild(iconImg);
     }
+
 
     // Shared Badge
     if (m.shared) {
@@ -808,8 +842,10 @@ function renderMarkers(options = {}) {
 
   let riftData = [];
   if (window.RIFT_MARKERS_BY_SIZE && state.mapNatural) {
-    const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-    riftData = window.RIFT_MARKERS_BY_SIZE[key] || [];
+    const key = resolveSizeKey(window.RIFT_MARKERS_BY_SIZE);
+    if (key && window.RIFT_MARKERS_BY_SIZE[key]) {
+      riftData = window.RIFT_MARKERS_BY_SIZE[key];
+    }
   }
 
   riftData.forEach(m => {
@@ -842,8 +878,10 @@ function renderMarkers(options = {}) {
   // --- Regions statiques (admin) ---
   let regionData = [];
   if (window.REGION_MARKERS_BY_SIZE && state.mapNatural) {
-    const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-    regionData = window.REGION_MARKERS_BY_SIZE[key] || [];
+    const key = resolveSizeKey(window.REGION_MARKERS_BY_SIZE);
+    if (key && window.REGION_MARKERS_BY_SIZE[key]) {
+      regionData = window.REGION_MARKERS_BY_SIZE[key];
+    }
   }
 
   regionData.forEach(m => {
@@ -884,10 +922,9 @@ function renderMarkers(options = {}) {
     return finalText;
   }
 
-  if (window.NAV_MARKERS_BY_SIZE && state.mapNatural) {
-    const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-    const navData = window.NAV_MARKERS_BY_SIZE[key] || [];
-
+    if (window.NAV_MARKERS_BY_SIZE && state.mapNatural) {
+    const key = resolveSizeKey(window.NAV_MARKERS_BY_SIZE);
+    const navData = (key && window.NAV_MARKERS_BY_SIZE[key]) ? window.NAV_MARKERS_BY_SIZE[key] : [];
     navData.forEach(m => {
       const el = document.createElement('div');
       el.classList.add('marker-link', 'locked');
@@ -1669,6 +1706,15 @@ if (newPathBtn) {
     },
     true
   );
+
+  // MOBILE MENU
+    const btn = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('left-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
 
   // --- Expose global ---
   window.UiCore = {

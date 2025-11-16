@@ -462,6 +462,11 @@ textarea:focus {
   font-size: 11px;
   display: flex;
   opacity: .85;
+  align-items: center;
+}
+
+.lock-label span{
+  padding-left: 5px;
 }
 
 .floating { 
@@ -1413,7 +1418,7 @@ body.shared-only-view #mergeSharedBtn,
 .doneItem .doneLabel::after {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 58%;
   left: -26px;
   width: 110%;
   height: 1.5px;
@@ -1451,8 +1456,11 @@ body.shared-only-view #mergeSharedBtn,
   color: #ccc;
 }
 
+#mobile-menu-toggle{
+  display: none;
+}
 
-/*MOBILE VERSION*/
+/*MOBILE VERSION---------------------------------------------*/
 
 @media (min-width: 1120px) and (max-width: 1580px) {
   :root {
@@ -1461,28 +1469,62 @@ body.shared-only-view #mergeSharedBtn,
   header .right-panel{
     position: initial;
     margin-top: 12px;
+    max-width: 54%;
   }
 
 }
 
 @media (max-width: 1119px) {
 
+  #mobile-menu-toggle{
+    display: block;
+    position: absolute;
+    right: -49px;
+    padding: 11px;
+    top: 0;
+    background: var(--panel);
+    border-top-left-radius: 0;
+  } 
+
+/* #donePanel{
+  transform: translateX(251px);
+ }*/
+
+  #left-menu.open {
+    transform: translateX(0);
+  }
+
   #toastContainer{
     top: 10rem;
   }
 
   #mapLoader{
-    position: initial;
+    z-index: 2000;
+  }
+
+  header .sep{
+    display: none;
   }
 
   header{
+    transform: translateX(-100%);
     left: 11px;
     width: 96%;
+    flex-direction: column;
+    position: absolute;
+    z-index: 5000;
+    align-items: flex-start;
+    max-width: 55%;
+    border-top-right-radius: 0;
+    transition: transform 0.3s ease;
   }
 
   header .right-panel{
     position: initial;
     margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   .toolpanel{
@@ -1498,7 +1540,7 @@ body.shared-only-view #mergeSharedBtn,
 
   .sidebar{
     position: fixed;
-    height: 300px;
+    height: 216px;
     bottom: 0;
     z-index: 2;
     flex-direction: row;
@@ -1513,6 +1555,28 @@ body.shared-only-view #mergeSharedBtn,
   .mapWrap{
     width: 100%;
   }
+
+ #list .listItem{
+    padding: 5px 9px 4px 9px;
+ }
+
+ .sidebar .filterBar{
+    padding: 8px 18px 11px 18px;
+ }
+
+ .sidebar .tool-section{
+  display: flex;
+  flex-direction: column;
+  min-width: 263px;
+ }
+
+ .sidebar .tool-section .info{
+  display: none;
+ }
+
+.done-panel{
+  right: 1px;
+}
 
   .title{
     display: none;
@@ -1533,6 +1597,8 @@ body.shared-only-view #mergeSharedBtn,
     flex-direction: column;
     bottom: 320px;
     align-items: end;
+    right: 2px;
+    top: 155px;
   }
 
 }

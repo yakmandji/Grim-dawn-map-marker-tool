@@ -30,7 +30,7 @@
 
   // --- Icons by catégorie for UI ---
   const defaultIcons = {
-    General:  '', 
+    General:  'img/circle.svg',
     Quest:    'img/quest.svg',
     Boss:     'img/boss.svg',
     Loot:     'img/loot.svg',
