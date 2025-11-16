@@ -29,10 +29,20 @@ window.NAV_MARKERS_CAIRN = [
         yp: 60.25,
         tag: 'tagGoTo + tagMapPortValbury',
         icon: 'img/icon-link.png',
-        targetXp: 41.32,
-        targetYp: 28.12,
+        targetXp: 44.42,
+        targetYp: 34,
         targetScale: 1.2
       },
+      // Téléport Port Valbury
+      {
+        xp: 44.30,
+        yp: 34.29,
+        tag: 'tagGoTo + tagMapConflagration01',
+        icon: 'img/icon-link.png',
+        targetXp: 39.28,
+        targetYp: 59.99,
+        targetScale: 1.2
+      },      
       // Téléport Fort Ikon
       {
         xp: 15.13,
@@ -54,7 +64,7 @@ window.NAV_MARKERS_CAIRN = [
         targetXp: 63.17,
         targetYp: 94.86,
         targetScale: 1.2
-      }, 
+      },       
 
 ];
 
