@@ -346,10 +346,20 @@ function renderList() {
       const isDone = !!e.target.checked;
 
       if (isDone) {
+        // Si le panneau Done est replié, on le ré-ouvre automatiquement
+        if (hideDoneOnMap) {
+          hideDoneOnMap = false;
+          const panel = $('#donePanel');
+          if (panel) {
+            panel.classList.remove('collapsed');
+          }
+        }
         if (sharedInput) {
           sharedInput.checked = false;
         }
+
         el.classList.add('fade-out');
+
         setTimeout(() => {
           updateMarkerFromUI(m.id, { done: true, shared: false }, true);
         }, 180);
@@ -357,6 +367,7 @@ function renderList() {
         updateMarkerFromUI(m.id, { done: false }, true);
       }
     };
+
 
     el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
     el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);

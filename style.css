@@ -453,8 +453,7 @@ textarea:focus {
 .marker.completed .pin-icon{
     width: 15px;
     height: 19px;
-    margin-top: -16px;
-    margin-left: -4px;
+    margin-top: -4px;
 }
 
 .lock-label{
