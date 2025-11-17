@@ -29,26 +29,22 @@
       id: 'UG_devils_crossing_hidden_passage01',
       tag: 'tagUGDevilsCrossingHiddenPassage01',
       xp: 66.51,
-      yp: 89.82
+      yp: 89.82,
+      isDungeon: true
     },
-    {
-      id: 'UG_burial_cave',
-      tag: 'tagUGBurialCave',
-      xp: 74.91,
-      yp: 78.30
-    },
-    
     {
       id: 'world_map_witch_god_temple',
       tag: 'tagWorldMapWitchGodTemple',
       xp: 87.29,
-      yp: 62.23
+      yp: 62.23,
+      isDungeon: true
     },
     {
       id: 'UG_devils_crossing_aquifer',
       tag: 'tagUGDevilsCrossingAquifer',
       xp: 69.88,
-      yp: 93.61
+      yp: 93.61,
+      isDungeon: true
     },
     {
       id: 'map_old_grove',
@@ -89,32 +85,30 @@
     {
       id: 'GDX1UGU_gdenbog_cellar01',
       tag: 'tagGDX1UGUgdenbogCellar01',
-      xp: 67.43,
-      yp: 45.44
+      xp: 69.54,
+      yp: 43.33,
+      isDungeon: true
     },
     {
       id: 'map_flooded_passage01',
       tag: 'tagMapFloodedPassage01',
       xp: 60.00,
-      yp: 66.40
+      yp: 66.40,
+      isDungeon: true
     },
     {
       id: 'burrwitch_cellar02',
       tag: 'tagBurrwitchCellar02',
       xp: 75.48,
-      yp: 58.87
-    },
-    {
-      id: 'burrwitch_cellar03',
-      tag: 'tagBurrwitchCellar03',
-      xp: 61.63,
-      yp: 58.29
+      yp: 58.87,
+      isDungeon: true
     },
     {
       id: 'UG_cellar02',
       tag: 'tagUGCellar02',
       xp: 78.14,
-      yp: 74.24
+      yp: 74.24,
+      isDungeon: true
     },
     {
       id: 'map_foggy_bank',
@@ -168,7 +162,8 @@
     id: 'GDX1UG_ugdenbog_wendigo01',
     tag: 'tagGDX1UGUgdenbogWendigo01',
       xp: 76.26,
-      yp: 27.18
+      yp: 27.18,
+      isDungeon: true
   },
   {
     id: 'GDX2_map_side_areas_01',
@@ -234,43 +229,50 @@
     id: 'GDX1_UG_ancient_grove01a',
     tag: 'tagGDX1UGAncientGrove01A',
       xp: 91.28,
-      yp: 54.26
+      yp: 54.26,
+      isDungeon: true
   },
   {
     id: 'GDX1_UG_ancient_grove01b',
     tag: 'tagGDX1UGAncientGrove01B',
     xp: 97.84,
-    yp: 54.58
+    yp: 54.58,
+    isDungeon: true
   },
   {
     id: 'GDX1_UG_ancient_grove01',
     tag: 'tagGDX1UGAncientGrove01',
     xp: 96.82,
-    yp: 49.5
+    yp: 49.5,
+    isDungeon: true
   },
   {
     id: 'GDX1_UG_ugdenbog_mine01',
     tag: 'tagGDX1UGUgdenbogMine01',
     xp: 95.68,
-    yp: 29.69
+    yp: 29.69,
+    isDungeon: true
   },
   {
     id: 'GDX1_UG_ugdenbog_cave03',
     tag: 'tagGDX1UGUgdenbogCave03',
       xp: 95.94,
-      yp: 34.27
+      yp: 34.27,
+      isDungeon: true
   },
   {
     id: 'GDX1_UG_ugdenbog_wendigo02',
     tag: 'tagGDX1UGUgdenbogWendigo02',
       xp: 72.40,
-      yp: 26.97
+      yp: 26.97,
+      isDungeon: true
   },
   {
     id: 'GDX1_UG_ugdenbog_void_rift01',
     tag: 'tagGDX1UGUgdenbogVoidRift01',
     xp: 77.16,
-    yp: 21.88
+    yp: 21.88,
+    isDungeon: true
   },
   {
     id: 'GDX1_UG_ugdenbog_void_rift03',
@@ -468,7 +470,8 @@
   id: 'map_faction_fort',
   tag: 'tagMapFactionFort',
   xp: 29.35,
-  yp: 48.0
+  yp: 48.0,
+  isDungeon: true
 },
 {
   id: 'map_darkvale',
@@ -522,7 +525,8 @@
   id: 'UG_voidlands01c',
   tag: 'tagUGVoidlands01C',
       xp: 13.15,
-      yp: 1.37
+      yp: 1.37,
+      isDungeon: true
 },
 {
   id: 'UG_crypt_final01',
@@ -540,19 +544,22 @@
   id: 'UG_fort_ikon_prison',
   tag: 'tagUGFortIkon_Prison',
       xp: 3.01,
-      yp: 13.50
+      yp: 13.50,
+      isDungeon: true
 },
 {
   id: 'UG_crypt_faction_battle02',
   tag: 'tagUGCryptFactionBattle02',
-      xp: 2.07,
-      yp: 23.53
+      xp: 0.70,
+      yp: 22.04,
+      isDungeon: true
 },
 {
   id: 'UG_crypt_faction_battle01',
   tag: 'tagUGCryptFactionBattle01',
-      xp: 0.73,
-      yp: 26.90
+      xp: 4.04,
+      yp: 19.73,
+      isDungeon: true
 },
 {
   id: 'UG_crypt_zealot01',
@@ -564,25 +571,29 @@
   id: 'UG_fort_ikon_armory',
   tag: 'tagUGFortIkon_Armory',
       xp: 11.95,
-      yp: 12.27
+      yp: 12.27,
+      isDungeon: true
 },
 {
   id: 'map_voidlands03',
   tag: 'tagMapVoidlands03',
-  xp: 24.96,
-  yp: 23.12
+      xp: 22.44,
+      yp: 23.84,
+      isDungeon: true
 },
 {
   id: 'map_voidlands',
   tag: 'tagMapVoidlands',
-      xp: 28.57,
-      yp: 28.81
+      xp: 27.90,
+      yp: 27.02,
+      isDungeon: true
 },
 {
   id: 'map_darkvale_gate',
   tag: 'tagMapDarkvaleGate',
   xp: 25.21,
-  yp: 35.2
+  yp: 35.2,
+  isDungeon: true
 },
 {
   id: 'map_port_valbury_manor',
@@ -630,85 +641,99 @@
   id: 'UG_fort_faction01',
   tag: 'tagUGFortFaction01',
       xp: 32.19,
-      yp: 38.97
+      yp: 38.97,
+      isDungeon: true
 },
 {
   id: 'map_voidlands02',
   tag: 'tagMapVoidlands02',
       xp: 46.26,
-      yp: 48.34
+      yp: 48.34,
+      isDungeon: true
 },
 {
   id: 'map_jagged_waste_fort',
   tag: 'tagMapJaggedWasteFort',
   xp: 46.43,
-  yp: 61.65
+  yp: 61.65,
+  isDungeon: true
 },
 {
   id: 'UG_old_arkovia02',
   tag: 'tagUGOldArkovia02',
       xp: 50.86,
-      yp: 60.67
+      yp: 60.67,
+      isDungeon: true
 },
 {
   id: 'map_cronleys_hideout',
   tag: 'tagMapCronleysHideout',
     xp: 52.06,
-    yp: 67.24
+    yp: 67.24,
+    isDungeon: true
 },
 {
   id: 'UG_old_arkovia01',
   tag: 'tagUGOldArkovia01',
   xp: 56.97,
-  yp: 74.93
+  yp: 74.93,
+  isDungeon: true
 },
 {
   id: 'UG_slith_lab02',
   tag: 'tagUGSlithLab02',
       xp: 56.62,
-      yp: 76
+      yp: 76,
+      isDungeon: true
 },
 {
   id: 'tag_uG_slith_lab03',
   tag: 'tagUGSlithLab03',
       xp: 60.17,
-      yp: 76.38
+      yp: 76.38,
+      isDungeon: true
 },
 {
   id: 'UG_broken_hills01',
   tag: 'tagUGBrokenHills01',
   xp: 59.98,
-  yp: 83.8
+  yp: 83.8,
+  isDungeon: true
 },
 {
   id: 'UG_arkovian_foothills01',
   tag: 'tagUGArkovianFoothills01',
     xp: 55.87,
-    yp: 92.56
+    yp: 92.56,
+    isDungeon: true
 },
 {
   id: 'tag_UG_broken_hills02',
   tag: 'tagUGBrokenHills02',
       xp: 44.58,
-      yp: 90.42
+      yp: 90.42,
+      isDungeon: true
 },
 {
   id: 'tag_UGBroken_hills02A',
   tag: 'tagUGBrokenHills02A',
       xp: 48.55,
-      yp: 90.42
+      yp: 90.42,
+      isDungeon: true
 },
 {
   id: 'UG_broken_hills02c',
   tag: 'tagUGBrokenHills02C',
       xp: 46.35,
-      yp: 95.97
+      yp: 95.97,
+      isDungeon: true
 },
 {
   id: 'UG_broken_hills02b',
   tag: 'tagUGBrokenHills02B',
       xp: 51.83,
-      yp: 91.49
+      yp: 91.49,
+      isDungeon: true
 },
 {
   id: 'UG_broken_hills02d',
@@ -720,19 +745,22 @@
   id: 'GDX2_side_areas_02',
   tag: 'tagGDX2SideAreas_02',
       xp: 38.20,
-      yp: 92.63
+      yp: 92.63,
+      isDungeon: true
 },
 {
   id: 'UG_burrwitch_flooded_cellars',
   tag: 'tagUGBurrwitchFloodedCellars',
-  xp: 61.04,
-  yp: 62.88
+      xp: 60.57,
+      yp: 62.00,
+      isDungeon: true
 },
 {
   id: 'map_wardens_cellar01',
   tag: 'tagMapWardensCellar01',
   xp: 66.94,
-  yp: 52.84
+  yp: 52.84,
+  isDungeon: true
 },
 {
   id: 'map_wardens_labratory01',
@@ -744,67 +772,78 @@
   id: 'GDX1_UG_ugdenbog_cellar02',
   tag: 'tagGDX1UGUgdenbogCellar02',
   xp: 78.79,
-  yp: 56.76
+  yp: 56.76,
+  isDungeon: true
 },
 {
   id: 'GDX1_UG_ugdenbog_cave05',
   tag: 'tagGDX1UGUgdenbogCave05',
   xp: 77.05,
-  yp: 40.68
+  yp: 40.68,
+  isDungeon: true
 },
 {
   id: 'UG_voidlands01b',
   tag: 'tagUGVoidlands01B',
   xp: 45.58,
-  yp: 1.53
+  yp: 1.53,
+  isDungeon: true
 },
 {
   id: 'UG_voidlands01a',
   tag: 'tagUGVoidlands01A',
   xp: 40.21,
-  yp: 1.71
+  yp: 1.71,
+  isDungeon: true
 },
 {
   id: 'UG_crypt_necropolis01',
   tag: 'tagUGCryptNecropolis01',
-      xp: 31.89,
-      yp: 8.66
+      xp: 31.24,
+      yp: 8.14,
+      isDungeon: true
 },
 {
   id: 'UG_voidlands01',
   tag: 'tagUGVoidlands01',
   xp: 33.55,
-  yp: 1.71
+  yp: 1.71,
+  isDungeon: true
 },
 {
   id: 'map_smugglers_pass',
   tag: 'tagMapSmugglersPass',
       xp: 30.86,
-      yp: 90.59
+      yp: 90.59,
+      isDungeon: true
 },
 {
   id: 'map_mountain_deeps',
   tag: 'tagMapMountainDeeps',
   xp: 21.35,
-  yp: 71.05
+  yp: 71.05,
+  isDungeon: true
 },
 {
   id: 'UG_dermapteran03a',
   tag: 'tagUGDermapteran03A',
   xp: 18.16,
-  yp: 66.32
+  yp: 66.32,
+  isDungeon: true
 },
 {
   id: 'UG_crypt_necro01',
   tag: 'tagUGCryptNecro01',
   xp: 18.01,
-  yp: 58.1
+  yp: 58.1,
+  isDungeon: true
 },
 {
   id: 'UG_fort_zealot01',
   tag: 'tagUGFortZealot01',
   xp: 18.09,
-  yp: 57.25
+  yp: 57.25,
+  isDungeon: true
 },
 {
   id: 'map_deadmans_gulch',
@@ -822,52 +861,59 @@
   id: 'map_port_valbury_cellar',
   tag: 'tagMapPortValburyCellar',
     xp: 33,
-    yp: 28.71
+    yp: 28.71,
+    isDungeon: true
 },
 {
   id: 'map_port_valbury_aldritch_cellar',
   tag: 'tagMapPortValburyAldritchCellar',
-      xp: 35.95,
-      yp: 19.55
+      xp: 37.44,
+      yp: 17.84,
+      isDungeon: true
 },
 {
   id: 'GDX1UG_ugdenbog_cave02',
   tag: 'tagGDX1UGUgdenbogCave02',
       xp: 94.30,
-      yp: 42.52
+      yp: 42.52,
+      isDungeon: true
 },
 {
   id: 'GDX1UG_ugdenbog_cave02_b',
   tag: 'tagGDX1UGUgdenbogCave02',
       xp: 80.03,
-      yp: 35.11
+      yp: 35.11,
+      isDungeon: true
 },
 {
   id: 'tag_UG_cave_ghost01',
   tag: 'tagUGCaveGhost01',
       xp: 37.56,
-      yp: 49.80
+      yp: 49.80,
+      isDungeon: true
 },
 {
   id: 'tag_G_jagged_waste_cave02',
   tag: 'tagUGJaggedWasteCave02',
       xp: 23.56,
-      yp: 84.41
+      yp: 84.41,
+      isDungeon: true
 },
 {
   id: 'tag_GDX1UG_jgdenbog_cave04',
   tag: 'tagGDX1UGUgdenbogCave04',
       xp: 91.33,
-      yp: 31.95
+      yp: 31.95,
+      isDungeon: true
 },
 {
   id: 'tag_uG_secret01',
   tag: 'tagUGSecret01',
-      xp: 41.97,
-      yp: 12.13
+      xp: 29.87,
+      yp: 14.51,
+      isDungeon: true
 },
   ];
-
 
 
 
@@ -958,7 +1004,8 @@
   id: 'tag_gdx1_ug_malmouth_outskirts_cellar01',
   tag: 'tagGDX1UGMalmouthOutskirtsCellar01',
   xp: 46.48,
-  yp: 72.42
+  yp: 72.42,
+  isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_ugdenbog_void_rift02',

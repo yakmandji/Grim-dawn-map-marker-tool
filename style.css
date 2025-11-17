@@ -24,9 +24,14 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.2;
+  opacity: 0.15;
   transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
+
+.marker-region-dungeon {
+  opacity: 0.55;
+}
+
 
 .dungeon-wrapper.is-hovered .dungeon {
   opacity: 1;
@@ -1227,6 +1232,7 @@ body.shared-only-view #mergeSharedBtn,
   background: none;
   border: none;
   padding: 0;
+  opacity: 0.85;
 }
 
 .malmouthmap .region-label{
@@ -1250,7 +1256,7 @@ body.shared-only-view #mergeSharedBtn,
   transform: translate(-50%, -50%) scale(var(--mk, 1));
   pointer-events: auto;
   cursor: pointer;
-  z-index: 0;
+  z-index: 1;
 }
 
 .marker-link .link-icon {
