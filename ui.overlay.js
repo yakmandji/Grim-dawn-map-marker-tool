@@ -60,6 +60,11 @@ window.DUNGEON_OVERLAYS = [
   { id: 'decrepit_cellar', map: 'cairn',  img: 'decrepit-cellar.jpg', left: 6899, top: 4942 , width: 340, height: 340 },
   { id: 'dank_cellar', map: 'cairn',  img: 'dank-cellar.jpg', left: 6729, top: 5385 , width: 182, height: 182 },
   { id: 'den_carraxus', map: 'cairn',  img: 'den-carraxus.jpg', left: 6780, top: 3565 , width: 318, height: 318 },
+  { id: 'janaxias_den', map: 'cairn',  img: 'janaxias-den.jpg', left: 8370, top: 3865 , width: 242, height: 242 },
+
+
+
+
 
 ];
 

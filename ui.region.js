@@ -33,6 +33,13 @@
       isDungeon: true
     },
     {
+      id: 'tag_gDX1UG_ugdenbog_cave01',
+      tag: 'tagGDX1UGUgdenbogCave01',
+      xp: 93.92,
+      yp: 42.66,
+      isDungeon: true
+    },
+    {
       id: 'world_map_witch_god_temple',
       tag: 'tagWorldMapWitchGodTemple',
       xp: 87.29,
@@ -278,7 +285,8 @@
     id: 'GDX1_UG_ugdenbog_void_rift03',
     tag: 'tagGDX1UGUgdenbogVoidRift03',
     xp: 69.65,
-    yp: 17.4
+    yp: 17.4,
+    isDungeon: true
   },
   {
   id: 'map_kymons',
@@ -532,13 +540,15 @@
   id: 'UG_crypt_final01',
   tag: 'tagUGCryptFinal01',
   xp: 9.43,
-  yp: 6.83
+  yp: 6.83,
+  isDungeon: true
 },
 {
   id: 'UG_crypt_final02',
   tag: 'tagUGCryptFinal02',
       xp: 13.20,
-      yp: 10.77
+      yp: 10.77,
+      isDungeon: true
 },
 {
   id: 'UG_fort_ikon_prison',
@@ -565,7 +575,8 @@
   id: 'UG_crypt_zealot01',
   tag: 'tagUGCryptZealot01',
   xp: 2.83,
-  yp: 33.06
+  yp: 33.06,
+  isDungeon: true
 },
 {
   id: 'UG_fort_ikon_armory',
@@ -739,7 +750,8 @@
   id: 'UG_broken_hills02d',
   tag: 'tagUGBrokenHills02D',
       xp: 53.11,
-      yp: 95.67
+      yp: 95.67,
+      isDungeon: true
 },
 {
   id: 'GDX2_side_areas_02',
@@ -766,7 +778,8 @@
   id: 'map_wardens_labratory01',
   tag: 'tagMapWardensLabratory01',
   xp: 63.57,
-  yp: 51.1
+  yp: 51.1,
+  isDungeon: true
 },
 {
   id: 'GDX1_UG_ugdenbog_cellar02',
@@ -778,8 +791,8 @@
 {
   id: 'GDX1_UG_ugdenbog_cave05',
   tag: 'tagGDX1UGUgdenbogCave05',
-  xp: 77.05,
-  yp: 40.68,
+    xp: 76.24,
+    yp: 39.41,
   isDungeon: true
 },
 {
@@ -871,13 +884,7 @@
       yp: 17.84,
       isDungeon: true
 },
-{
-  id: 'GDX1UG_ugdenbog_cave02',
-  tag: 'tagGDX1UGUgdenbogCave02',
-      xp: 94.30,
-      yp: 42.52,
-      isDungeon: true
-},
+
 {
   id: 'GDX1UG_ugdenbog_cave02_b',
   tag: 'tagGDX1UGUgdenbogCave02',
@@ -1170,7 +1177,7 @@
   id: 'tag_gdx2_map_road_to_korvaak_temple',
   tag: 'tagGDX2MapRoadToKorvaakTemple',
       xp: 56.14,
-      yp: 16.44
+      yp: 16.44,
 },
 {
   id: 'tag_gdx2_map_raised_temple_a',
@@ -1254,7 +1261,7 @@
   id: 'tag_gdx2_korvaak_tomb01',
   tag: 'tagGDX2KorvaakTomb01',
       xp: 69.10,
-      yp: 10.79
+      yp: 10.79,
 },
 {
   id: 'tag_gdx2_map_hidden_oasis',

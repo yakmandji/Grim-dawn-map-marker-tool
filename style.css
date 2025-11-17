@@ -13,26 +13,6 @@
   --sidebar-width: 450px;
 }
 
-.dungeon-wrapper {
-  position: absolute;
-  pointer-events: none;   /* pour ne pas gêner le pan */
-  z-index: 0;
-}
-
-.dungeon {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.15;
-  transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.marker-region-dungeon {
-  opacity: 0.55;
-}
-
-
 .dungeon-wrapper.is-hovered .dungeon {
   opacity: 1;
 }
@@ -1504,6 +1484,26 @@ body.shared-only-view #mergeSharedBtn,
   pointer-events: none;
   opacity: 0.85;
 }
+
+.dungeon-wrapper {
+  position: absolute;
+  pointer-events: none;   /* pour ne pas gêner le pan */
+  z-index: 0;
+}
+
+.dungeon {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.marker-region.marker-region-dungeon .region-label {
+  opacity: 0.4;
+}
+
 
 
 /*MOBILE VERSION---------------------------------------------*/
