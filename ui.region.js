@@ -974,63 +974,72 @@
 {
   id: 'tag_gdx1_ug_malmouth_aetherial_factory01',
   tag: 'tagGDX1UGMalmouthAetherialFactory01',
-  xp: 26.04,
-  yp: 3.26
+      xp: 18.36,
+      yp: 2.54,
+      isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_aetherial_factory02',
   tag: 'tagGDX1UGMalmouthAetherialFactory02',
-  xp: 4.34,
-  yp: 6.22
+      xp: 7.72,
+      yp: 8.63,
+      isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_sewer02',
   tag: 'tagGDX1UGMalmouthSewer02',
       xp: 10.14,
-      yp: 35.60
+      yp: 35.60,
+      isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_lighthouse01',
   tag: 'tagGDX1UGMalmouthLighthouse01',
-  xp: 14.38,
-  yp: 52.75
+      xp: 13.01,
+      yp: 52.57,
+  isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_cathedral01',
   tag: 'tagGDX1UGMalmouthCathedral01',
-  xp: 24.77,
-  yp: 73.23
+      xp: 19.43,
+      yp: 68.71,
+     isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_hideout01',
   tag: 'tagGDX1UGMalmouthHideout01',
-  xp: 31.04,
-  yp: 60.35
+      xp: 38.46,
+      yp: 65.66,
+  isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_outskirts_cellar01',
   tag: 'tagGDX1UGMalmouthOutskirtsCellar01',
-  xp: 46.48,
-  yp: 72.42,
+      xp: 47.90,
+      yp: 71.79,
   isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_ugdenbog_void_rift02',
   tag: 'tagGDX1UGUgdenbogVoidRift02',
   xp: 88.42,
-  yp: 60.36
+  yp: 60.36,
+  isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_fort01',
   tag: 'tagGDX1UGMalmouthFort01',
-  xp: 89.10,
-  yp: 6.81
+      xp: 87.35,
+      yp: 5.39,
+    isDungeon: true
 },
 {
   id: 'tag_GDX2_ruined_DC',
   tag: 'tagGDX2RuinedDC',
       xp: 84.15,
-      yp: 33.59
+      yp: 33.59,
+      isDungeon: true
 },
     
   ];

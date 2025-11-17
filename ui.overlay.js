@@ -14,9 +14,7 @@ window.DUNGEON_OVERLAYS = [
   { id: 'hannefy_mine', map: 'cairn',  img: 'hannefy-mine.jpg', left: 5013, top: 6632, width: 265, height: 265 },
   { id: 'arkovian_undercity', map: 'cairn',  img: 'arkovian-undercity.jpg', left: 4357, top: 5475, width: 680, height: 578 },
   { id: 'tyrant_hold', map: 'cairn',  img: 'tyrant-hold.jpg', left: 3885, top: 5565, width: 458, height: 458 },
-
   { id: 'mountain_deep', map: 'cairn',  img: 'mountain-deep.jpg', left: 1584, top: 6415, width: 609, height: 609 },
-
   { id: 'royal_hive', map: 'cairn',  img: 'royal-hive.jpg', left: 1567, top: 5961, width: 381, height: 381 },
   { id: 'bastion_order', map: 'cairn',  img: 'bastion-order.jpg', left: 1583, top: 5272, width: 285, height: 285 },
   { id: 'kymons_sanctuary', map: 'cairn',  img: 'kymons-sanctuary.jpg', left: 1586, top: 5003, width: 245, height: 245 },
@@ -26,41 +24,47 @@ window.DUNGEON_OVERLAYS = [
   { id: 'the_bonepit', map: 'cairn',  img: 'the-bonepit.jpg', left: 3322, top: 4517, width: 185, height: 185 },
   { id: 'tomb_of_the_damned', map: 'cairn',  img: 'tomb-of-the-damned.jpg', left: 11, top: 1756, width: 693, height: 693 },
   { id: 'tom_of_korvaak', map: 'cairn',  img: 'tom-of-korvaak.jpg', left: -11, top: 2993, width: 487, height: 487 },
-
   { id: 'obsidian_throne', map: 'cairn',  img: 'obsidian-throne.jpg', left: 1949, top: 2128, width: 790, height: 790 },
-
   { id: 'port_valbury_fondation', map: 'cairn',  img: 'port-valbury-fondation.jpg', left: 2791, top:2579 , width: 426, height: 426 },
   { id: 'edge_of_reality', map: 'cairn',  img: 'edge-of-reality.jpg', left: 2591, top: 1239 , width: 700, height: 792 },
   { id: 'altritch_karters', map: 'cairn',  img: 'altritch-karters.jpg', left: 3321, top: 1657 , width: 222, height: 222 },
-
   { id: 'black_sepulcher', map: 'cairn',  img: 'black-sepulcher.jpg', left: 2728, top: 683 , width: 549, height: 549 },
   { id: 'discord_anarchy', map: 'cairn',  img: 'discord-anarchy.jpg', left: 2728, top: -28 , width: 1612, height: 667 },
   { id: 'fort_ikon_armory', map: 'cairn',  img: 'fort-ikon-armory.jpg', left: 811, top: 1086 , width: 476, height: 476 },
-
   { id: 'tom_of_the_watcher', map: 'cairn',  img: 'tom-of-the-watcher.jpg', left: 661, top: 560 , width: 744, height: 494 },
   { id: 'fort_ikon_prison', map: 'cairn',  img: 'fort-ikon-prison.jpg', left: -3, top: 1204 , width: 470, height: 470 },
   { id: 'entropy', map: 'cairn',  img: 'entropy.jpg', left: 854, top: 55 , width: 493, height: 493 },
   { id: 'desolate_waste', map: 'cairn',  img: 'desolate-waste.jpg', left: 5914, top: 1127 , width: 1206, height: 1206 },
-
   { id: 'den_of_wendigo', map: 'cairn',  img: 'den-of-wendigo.jpg', left: 6474, top: 2387 , width: 610, height: 610 },
-
   { id: 'barrow_holm', map: 'cairn',  img: 'barrow-holm.jpg', left: 8486, top: 2223 , width: 526, height: 526 },
   { id: 'tomb_ugdall', map: 'cairn',  img: 'tomb-ugdall.jpg', left: 8141, top: 2910 , width: 202, height: 202 },
   { id: 'undergrowth', map: 'cairn',  img: 'undergrowth.jpg', left: 8542, top: 3076 , width: 395, height: 395 },
   { id: 'larrias_den', map: 'cairn',  img: 'larrias-den.jpg', left: 7120, top: 3187 , width: 232, height: 232 },
-
   { id: 'temple_of_three', map: 'cairn',  img: 'temple-of-three.jpg', left: 7470, top: 5697 , width: 638, height: 638 },
-
   { id: 'ancient_groove', map: 'cairn',  img: 'ancient-groove.jpg', left: 7858, top: 4492 , width: 1080, height: 1080 },
-
   { id: 'underground_transit', map: 'cairn',  img: 'underground-transit.jpg', left: 5198, top: 4322 , width: 967, height: 967 },
   { id: 'overgrown_cellar', map: 'cairn',  img: 'overgrown-cellar.jpg', left: 6188, top: 3932 , width: 303, height: 303 },
   { id: 'flooded_cellar', map: 'cairn',  img: 'flooded-cellar.jpg', left: 5384, top: 5611 , width: 366, height: 366 },
-
   { id: 'decrepit_cellar', map: 'cairn',  img: 'decrepit-cellar.jpg', left: 6899, top: 4942 , width: 340, height: 340 },
   { id: 'dank_cellar', map: 'cairn',  img: 'dank-cellar.jpg', left: 6729, top: 5385 , width: 182, height: 182 },
   { id: 'den_carraxus', map: 'cairn',  img: 'den-carraxus.jpg', left: 6780, top: 3565 , width: 318, height: 318 },
   { id: 'janaxias_den', map: 'cairn',  img: 'janaxias-den.jpg', left: 8370, top: 3865 , width: 242, height: 242 },
+
+  { id: 'chamber_council', map: 'malmouth',  img: 'chamber-council.jpg', left: 4180, top: 100 , width: 743, height: 743 },
+  { id: 'edge_reality', map: 'malmouth',  img: 'edge-reality.jpg', left: 4180, top: 1064 , width: 954, height: 954 },
+  { id: 'cinder_waste', map: 'malmouth',  img: 'cinder-waste.jpg', left: 4403, top: 2117 , width: 810, height: 810 },
+  { id: 'burning_cellar', map: 'malmouth',  img: 'burning-cellar.jpg', left: 2381, top: 2507 , width: 572, height: 572 },
+  { id: 'sewer_hideout', map: 'malmouth',  img: 'sewer-hideout.jpg', left: 1301, top: 2167 , width: 1027, height: 1027 },
+
+  { id: 'herald_mathis', map: 'malmouth',  img: 'herald-mathis.jpg', left: 761, top: 2397 , width: 506, height: 506 },
+
+  { id: 'ransaked_lighthouse', map: 'malmouth',  img: 'ransaked-lighthouse.jpg', left: 475, top: 1826 , width: 485, height: 485 },
+  { id: 'swelling_depths', map: 'malmouth',  img: 'swelling-depths.jpg', left: 475, top: 1260 , width: 488, height: 488 },
+  { id: 'infestation', map: 'malmouth',  img: 'infestation.jpg', left: 239, top: -29 , width: 1277, height: 1107 },
+
+
+
+
 
 
 
@@ -76,7 +80,6 @@ function renderDungeonOverlays() {
   const inner = document.getElementById('mapInner');
   if (!inner || !window.DUNGEON_OVERLAYS) return;
 
-  // nettoyer les anciens
   inner.querySelectorAll('.dungeon-wrapper').forEach(e => e.remove());
   state.dungeonOverlays = [];
 
@@ -91,7 +94,7 @@ function renderDungeonOverlays() {
     '8948x9133': { folder: 'cairn' },
     '5142x3574': { folder: 'malmouth' },
     '5427x5553': { folder: 'korvan' },
-    // tu peux en rajouter ici si tu as d'autres maps
+    // Others maps
   };
 
   const currentFolder = MAP_INFO[key]?.folder || null;
