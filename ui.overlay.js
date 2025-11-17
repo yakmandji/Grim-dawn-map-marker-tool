@@ -80,21 +80,7 @@ window.DUNGEON_OVERLAYS = [
   { id: 'sunward_spire', map: 'korvan',  img: 'sunward-spire.jpg', left: 1625, top: 650 , width: 701, height: 835 },
   { id: 'sanctum_choosen', map: 'korvan',  img: 'sanctum-choosen.jpg', left: 335, top: 345 , width: 1129, height: 1129 },
 
-
-
-
-
-
-
-
-
-
-
-
-
 ];
-
-
 
 state.dungeonOverlays = [];
 
