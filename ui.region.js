@@ -1078,7 +1078,7 @@
     id: 'tag_gdx2_map_ruined_temple01',
     tag: 'tagGDX2MapRuinedTemple01',
       xp: 35.41,
-      yp: 76.30
+      yp: 76.30,
   },
   {
     id: 'tag_gdx2_map_area01_b',
@@ -1090,7 +1090,8 @@
   id: 'tag_gdx2_roguelike_area02',
   tag: 'tagGDX2Roguelike_Area02',
       xp: 6.68,
-      yp: 61.05
+      yp: 61.05,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_map_area02',
@@ -1180,7 +1181,8 @@
   id: 'tag_gdx2_map_area05',
   tag: 'tagGDX2MapArea05',
       xp: 44.13,
-      yp: 21.8
+      yp: 21.8,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_map_road_to_korvaak_temple',
@@ -1198,79 +1200,85 @@
   id: 'tag_gdx2_map_raised_temple_b',
   tag: 'tagGDX2MapRaisedTemple',
       xp: 33.18,
-      yp: 12.27
+      yp: 12.27,
+      isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_secret01',
   tag: 'tagGDX1UGSecret01',
-      xp: 16.97,
-      yp: 24.51
+      xp: 12.73,
+      yp: 21.32,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_cairan_ruins01',
   tag: 'tagGDX2CairanRuins01',
       xp: 2.28,
-      yp: 46.25
-},
-{
-  id: 'tag_gdx2_roguelike_area02_b',
-  tag: 'tagGDX2Roguelike_Area02',
-  xp: 7.30,
-  yp: 55.61
+      yp: 46.25,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_bysmiel_eldritch',
   tag: 'tagGDX2BysmielEldritch',
       xp: 1.64,
-      yp: 87.32
+      yp: 87.32,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_beetle01',
   tag: 'tagGDX2Beetle01',
       xp: 35.84,
-      yp: 92.03
+      yp: 92.03,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_ruined_temple01_b',
   tag: 'tagGDX2RuinedTemple01',
       xp: 50.43,
-      yp: 86.97
+      yp: 86.97,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_howling_chasm',
   tag: 'tagGDX2HowlingChasm',
       xp: 55.80,
-      yp: 58.52
+      yp: 58.52,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_ruined_dc',
   tag: 'tagGDX2RuinedDC',
       xp: 65.80,
-      yp: 58.63
+      yp: 58.63,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_ruined_temple02',
   tag: 'tagGDX2RuinedTemple02',
       xp: 79.74,
-      yp: 44.34
+      yp: 44.34,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_votc01',
   tag: 'tagGDX2VOTC01',
       xp: 84.46,
-      yp: 35.55
+      yp: 35.55,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_votc02',
   tag: 'tagGDX2VOTC02',
       xp: 71.99,
-      yp: 27.97
+      yp: 27.97,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_korvaak_tomb01',
   tag: 'tagGDX2KorvaakTomb01',
       xp: 69.10,
       yp: 10.79,
+      isDungeon: true
 },
 {
   id: 'tag_gdx2_map_hidden_oasis',
@@ -1282,67 +1290,78 @@
   id: 'tagGDX2_roguelike_01A',
   tag: 'tagGDX2Roguelike_01A',
       xp: 86.77,
-      yp: 31.09
+      yp: 31.09,
+      isDungeon: true
 },
 {
   id: 'tag_GDX2_sanctuary_ofHorran',
   tag: 'tagGDX2SanctuaryOfHorran',
       xp: 43.44,
-      yp: 37.50
+      yp: 37.50,
+      isDungeon: true
 },
 {
   id: 'tag_GDX2_roguelike_Area04',
   tag: 'tagGDX2Roguelike_Area04',
       xp: 79.72,
-      yp: 14.67
+      yp: 14.67,
+      isDungeon: true
 },
 {
   id: 'tagGDX2_roguelike_Area05',
   tag: 'tagGDX2Roguelike_Area05',
       xp: 94.55,
-      yp: 13.13
+      yp: 13.13,
+      isDungeon: true
 },
 {
   id: 'tag_GDX2_roguelike_01',
   tag: 'tagGDX2Roguelike_01',
-      xp: 79.75,
-      yp: 31.64
+      xp: 79.84,
+      yp: 31.40,
+      isDungeon: true
 },
 {
   id: 'tag_GDX2_roguelike_01B',
   tag: 'tagGDX2Roguelike_01B',
       xp: 94.07,
-      yp: 31.22
+      yp: 31.22,
+      isDungeon: true
 },
 {
   id: 'tag_GDX2_roguelike_01D',
   tag: 'tagGDX2Roguelike_01D',
       xp: 94.88,
-      yp: 22.04
+      yp: 22.04,
+      isDungeon: true
 },
 {
   id: 'tag_GDX2_roguelike_01C',
   tag: 'tagGDX2Roguelike_01C',
       xp: 91.8,
-      yp: 26.38
+      yp: 26.38,
+      isDungeon: true
 },
 {
   id: 'tag_GDX2_vOTC03',
   tag: 'tagGDX2VOTC03',
       xp: 41.47,
-      yp: 29.03
+      yp: 29.03,
+      isDungeon: true
 },
 {
   id: 'tag_gDX2_solael_void',
   tag: 'tagGDX2SolaelVoid',
       xp: 79.98,
-      yp: 54.72
+      yp: 54.72,
+      isDungeon: true
 },
 {
   id: 'tag_gDX2_roguelike_area01',
   tag: 'tagGDX2Roguelike_Area01',
       xp: 40.63,
-      yp: 60.57
+      yp: 60.57,
+      isDungeon: true
 },
 
 

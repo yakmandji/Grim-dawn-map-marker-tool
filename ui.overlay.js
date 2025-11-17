@@ -55,12 +55,34 @@ window.DUNGEON_OVERLAYS = [
   { id: 'cinder_waste', map: 'malmouth',  img: 'cinder-waste.jpg', left: 4403, top: 2117 , width: 810, height: 810 },
   { id: 'burning_cellar', map: 'malmouth',  img: 'burning-cellar.jpg', left: 2381, top: 2507 , width: 572, height: 572 },
   { id: 'sewer_hideout', map: 'malmouth',  img: 'sewer-hideout.jpg', left: 1301, top: 2167 , width: 1027, height: 1027 },
-
   { id: 'herald_mathis', map: 'malmouth',  img: 'herald-mathis.jpg', left: 761, top: 2397 , width: 506, height: 506 },
-
   { id: 'ransaked_lighthouse', map: 'malmouth',  img: 'ransaked-lighthouse.jpg', left: 475, top: 1826 , width: 485, height: 485 },
   { id: 'swelling_depths', map: 'malmouth',  img: 'swelling-depths.jpg', left: 475, top: 1260 , width: 488, height: 488 },
   { id: 'infestation', map: 'malmouth',  img: 'infestation.jpg', left: 239, top: -29 , width: 1277, height: 1107 },
+
+  { id: 'temple_osyr', map: 'korvan',  img: 'temple-osyr.jpg', left: 2222, top: 4750 , width: 827, height: 827 },
+  { id: 'crawling_nest', map: 'korvan',  img: 'crawling-nest.jpg', left: 1662, top: 5071 , width: 487, height: 478 },
+  { id: 'veiled_den', map: 'korvan',  img: 'veiled-den.jpg', left: 22, top: 4805 , width: 612, height: 612 },
+  { id: 'forlorn_bastion', map: 'korvan',  img: 'forlorn-bastion.jpg', left: 10, top: 3231 , width: 750, height: 750 },
+  { id: 'sandblown_ruin', map: 'korvan',  img: 'sandblown-ruin.jpg', left: 10, top: 2477 , width: 653, height: 653 },
+  { id: 'maw_of_enaht', map: 'korvan',  img: 'maw-of-enaht.jpg', left: 1996, top: 3335 , width: 713, height: 713 },
+  { id: 'howling_chasm', map: 'korvan',  img: 'howling-chasm.jpg', left: 2739, top: 3166 , width: 764, height: 764 },
+  { id: 'edge_reality_korv', map: 'korvan',  img: 'edge-reality.jpg', left: 3552, top: 3233 , width: 488, height: 488 },
+  { id: 'bloodied_waste', map: 'korvan',  img: 'bloodied-waste.jpg', left: 4192, top: 3000 , width: 454, height: 454 },
+  { id: 'temple_athep', map: 'korvan',  img: 'temple-athep.jpg', left: 4286, top: 2404 , width: 480, height: 480 },
+  { id: 'tomb_sethan', map: 'korvan',  img: 'tomb-sethan.jpg', left: 4289, top: 1901 , width: 466, height: 466 },
+  { id: 'tomb_nephos', map: 'korvan',  img: 'tomb-nephos.jpg', left: 3580, top: 1451 , width: 609, height: 609 },
+  { id: 'heretic_maggi', map: 'korvan',  img: 'heretic-maggi.jpg', left: 4240, top: 661 , width: 1124, height: 1124 },
+  { id: 'tomb_eldtrich_sun', map: 'korvan',  img: 'tomb-eldtrich-sun.jpg', left: 3291, top: 91 , width: 872, height: 998 },
+  { id: 'sanctuary_horan', map: 'korvan',  img: 'sanctuary-horan.jpg', left: 2302, top: 2016 , width: 522, height: 522 },
+  { id: 'tomb_ariath', map: 'korvan',  img: 'tomb-ariath.jpg', left: 2204, top: 1582 , width: 370, height: 370 },
+  { id: 'remnant_korvan_city', map: 'korvan',  img: 'remnant-korvan-city.jpg', left: 2380, top: 1192 , width: 287, height: 287 },
+  { id: 'sunward_spire', map: 'korvan',  img: 'sunward-spire.jpg', left: 1625, top: 650 , width: 701, height: 835 },
+  { id: 'sanctum_choosen', map: 'korvan',  img: 'sanctum-choosen.jpg', left: 335, top: 345 , width: 1129, height: 1129 },
+
+
+
+
 
 
 
