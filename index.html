@@ -206,7 +206,7 @@
 
       <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:200px;">
         <h3 class="mb0 pl-20"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
-        <div id="routesList"></div>
+        <div id="routesList" class="markers-scroll"></div>
       </section>
 
       <div class="section principal tool-section">
@@ -258,6 +258,9 @@
     <main class="mapWrap">
       <div id="mapViewport" class="mapViewport">
         <div id="mapInner" class="mapInner">
+          <div class="dungeon-wrapper">
+            
+          </div>
           <img id="mapImg" alt="Map" draggable="false" />
         </div>
       </div>
@@ -348,6 +351,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
   <script src="ui.tools.js?v=2.9"></script>
+  <script src="ui.overlay.js?v=2.91"></script>
   <script src="ui.filter.js?v=2.91"></script>
 
 </body>

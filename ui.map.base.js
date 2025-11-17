@@ -120,6 +120,10 @@
       if (typeof ui.renderRoutesPanel === 'function') ui.renderRoutesPanel();
     }
 
+    if (typeof window.renderDungeonOverlays === 'function') {
+      window.renderDungeonOverlays();
+    }
+
     hideLoader();
   });
 

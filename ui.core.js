@@ -369,7 +369,7 @@ function renderList() {
     };
 
 
-    el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
+    el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
     el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
 
     host.appendChild(el);
@@ -437,7 +437,7 @@ function renderDoneList(doneMarkers) {
     centerBtn.type = 'button';
     centerBtn.className = 'marker-center small';
     centerBtn.innerHTML = `<img src="img/center-icon.svg" width="16">`;
-    centerBtn.onclick = () => centerOn(m.xp, m.yp, 1.5, m.id);
+    centerBtn.onclick = () => centerOn(m.xp, m.yp, 1.2, m.id);
 
     // Delete button
     const delBtn = document.createElement('button');
@@ -1089,7 +1089,7 @@ function renderRoutesPanel() {
     centerBtn.addEventListener('click', () => {
       if (!path.points || !path.points.length) return;
       const first = path.points[0];
-      centerOn(first.xp, first.yp, 1.2);
+      centerOn(first.xp, first.yp, 0.8);
     });
     row.appendChild(centerBtn);
 
@@ -1307,7 +1307,36 @@ viewport.addEventListener('pointerdown', e => {
   viewStart = { ...state.view };
 });
 
+
+function updateDungeonHover(e) {
+  if (!state.dungeonOverlays || !state.dungeonOverlays.length) return;
+  const { xp, yp } = viewToPct(e.clientX, e.clientY);
+
+  if (!isFinite(xp) || !isFinite(yp) || xp < 0 || xp > 100 || yp < 0 || yp > 100) {
+    state.dungeonOverlays.forEach(d => d.el.classList.remove('is-hovered'));
+    return;
+  }
+
+  const mapW = state.mapNatural.w || 1;
+  const mapH = state.mapNatural.h || 1;
+  const mx = (xp / 100) * mapW;
+  const my = (yp / 100) * mapH;
+
+  state.dungeonOverlays.forEach(d => {
+    const inside =
+      mx >= d.left && mx <= d.left + d.width &&
+      my >= d.top  && my <= d.top  + d.height;
+
+    d.el.classList.toggle('is-hovered', inside);
+  });
+}
+
+
   viewport.addEventListener('pointermove', e => {
+
+    if (state.dungeonOverlays && state.dungeonOverlays.length) {
+      updateDungeonHover(e);
+    }
 
     if (e.pointerType === 'touch') {
   activeTouches.set(e.pointerId, { x: e.clientX, y: e.clientY });
@@ -1464,19 +1493,29 @@ viewport.addEventListener('pointerdown', e => {
   }
 
 
-  function clampViewToMap(){
-    if (!state.mapReady) return;
-    const vb = viewport.getBoundingClientRect();
-    const iw = state.mapNatural.w * state.view.scale;
-    const ih = state.mapNatural.h * state.view.scale;
-    const margin = 320;
-    const minX = vb.width  - iw - margin;
-    const maxX = margin;
-    const minY = vb.height - ih - margin;
-    const maxY = margin;
-    state.view.x = clamp(state.view.x, minX, maxX);
-    state.view.y = clamp(state.view.y, minY, maxY);
-  }
+function clampViewToMap() {
+  if (!state.mapReady) return;
+
+  const vb = viewport.getBoundingClientRect();
+  const iw = state.mapNatural.w * state.view.scale;
+  const ih = state.mapNatural.h * state.view.scale;
+
+  // marges autour de la map
+  const marginLeft   = 320;
+  const marginRight  = 320;
+  const marginTop    = 320;
+  const marginBottom = 450;
+
+  const minX = vb.width  - iw - marginRight;
+  const maxX = marginLeft;
+
+  const minY = vb.height - ih - marginBottom;
+  const maxY = marginTop;
+
+  state.view.x = clamp(state.view.x, minX, maxX);
+  state.view.y = clamp(state.view.y, minY, maxY);
+}
+
 
   // --- Drag & Drop image ---
   ;['dragenter','dragover'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.style.outline = '2px dashed #78f1c2'; }));

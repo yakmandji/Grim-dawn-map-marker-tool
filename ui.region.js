@@ -683,8 +683,8 @@
 {
   id: 'UG_arkovian_foothills01',
   tag: 'tagUGArkovianFoothills01',
-  xp: 53,
-  yp: 90.7
+    xp: 55.87,
+    yp: 92.56
 },
 {
   id: 'tag_UG_broken_hills02',
@@ -701,26 +701,26 @@
 {
   id: 'UG_broken_hills02c',
   tag: 'tagUGBrokenHills02C',
-      xp: 49.86,
-      yp: 95.04
+      xp: 46.35,
+      yp: 95.97
 },
 {
   id: 'UG_broken_hills02b',
   tag: 'tagUGBrokenHills02B',
-      xp: 45.22,
-      yp: 95.19
+      xp: 51.83,
+      yp: 91.49
 },
 {
   id: 'UG_broken_hills02d',
   tag: 'tagUGBrokenHills02D',
-      xp: 54.26,
-      yp: 94.87
+      xp: 53.11,
+      yp: 95.67
 },
 {
   id: 'GDX2_side_areas_02',
   tag: 'tagGDX2SideAreas_02',
-      xp: 38.58,
-      yp: 90.15
+      xp: 38.20,
+      yp: 92.63
 },
 {
   id: 'UG_burrwitch_flooded_cellars',
