@@ -1,6 +1,6 @@
 # Grim Dawn Map Marker Tool
 
-📍 Add, move, rename, and delete markers easily.
+📍 Add, move, rename, and delete markers easily
 - 100% client-side (no dependencies, no build)
 - Multiple marker types and route creation 
 - Map sharing system: share your markers/routes with a simple link and merge shared map with yours (only if you tag your markers as shared)
