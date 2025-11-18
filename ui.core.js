@@ -1752,13 +1752,8 @@ if (newPathBtn) {
   (async () => {
     let REMOTE_JSON_URL;
 
-      if (location.protocol === 'file:') {
-          // Version DEV
-          REMOTE_JSON_URL = 'https://raw.githubusercontent.com/yakmandji/Grim-dawn-map-marker-tool/main/dev-map/gdmm_all_profiles.json';
-      } else {
-          // Version PROD
-          REMOTE_JSON_URL = 'https://www.grimcustommarker.org/gdmm_all_profiles.json?v=3.30';
-      }
+    // Version PROD
+    REMOTE_JSON_URL = 'https://www.grimcustommarker.org/gdmm_all_profiles.json?v=3.30';
           // empty base
     state.profiles['Profil 1'] = {
      markers:[],
