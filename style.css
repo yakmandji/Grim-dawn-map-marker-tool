@@ -10,7 +10,7 @@
   --ok: #8be38b;
   --danger: #ff6b7a;
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
-  --sidebar-width: 450px;
+  --sidebar-width: 460px;
 }
 
 .dungeon-wrapper.is-hovered .dungeon {
@@ -50,8 +50,8 @@ body {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
   gap: 12px;
-  min-height: 100vh; 
-  padding: 0 12px 12px 12px;
+  max-height: 100vh; 
+  padding: 0 14px 12px 14px;
 }
 
 header {
@@ -67,9 +67,9 @@ header {
   flex-wrap: wrap;
   position: fixed;
   top: 15px;
-  left: calc(var(--sidebar-width) + 42px);
+  left: calc(var(--sidebar-width) + 28px);
   right: 28px;
-  width: auto;
+  width: calc(100% - var(--sidebar-width) - 41px);
   z-index: 2;
 }
 
@@ -295,12 +295,14 @@ textarea:focus {
     border: 1px solid #285259;
     border-radius: 14px;
     box-shadow: var(--shadow);
-    padding: 6px 12px;
+    padding: 6px 20px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 1rem;
-    height: 100%;
+    margin-top: 15px;
+    height: 97vh;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .section {
@@ -351,6 +353,7 @@ textarea:focus {
   border-radius: 14px;
   box-shadow: var(--shadow);
   overflow: hidden;
+  margin-top: 98px;
 }
 
 .mapViewport { 
@@ -431,7 +434,7 @@ textarea:focus {
   top: 50%;
   left: 100%;
   transform: translate(6px, -50%);
-  background: rgba(10,13,28,0.85);
+  background: rgba(10,13,28,0.75);
   border: 1px solid #2a315a;
   border-radius: 10px;
   padding: 4px 6px;
@@ -490,16 +493,15 @@ textarea:focus {
   flex: 1; 
   overflow: auto; 
   border-radius: 10px;
-  padding: 0px 9px 9px 9px;
+  padding: 0px 14px 9px 14px;
 }
 .listItem { 
-  padding: 16px 9px 16px 9px;
-  border-bottom: 1px solid #2a315a; 
+  padding: 16px 0px 16px 0px;
+  border-bottom: 1px solid #164245; 
   display: grid; 
   grid-template-columns: auto 1fr auto; 
   gap: 8px; 
   align-items: center;
-  border-radius: 6px;
 }
 
 .listItem > div {
@@ -703,7 +705,7 @@ button.marker-center,
 @keyframes fadeIn {
   from { opacity: 0; transform: translate(-50%, -10px); }
   to { opacity: 1; transform: translate(-50%, 0); }
-}&
+}
 
 #helpToggle{
     color: #78f1c2;
@@ -714,6 +716,7 @@ button.marker-center,
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 12px;
     cursor: pointer;
 }
 
@@ -1190,6 +1193,7 @@ body.shared-only-view #mergeSharedBtn,
 
 .marker-rift .rift-icon {
   display: block;
+  width: 17px;
 }
 
 
@@ -1439,14 +1443,14 @@ body.shared-only-view #mergeSharedBtn,
 .done-panel {
   position: fixed;
   top: 50%;
-  right: 29px;
+  right: 14px;
   z-index: 1200;
   font-size: 13px;
   transition: transform 0.2s ease-out;
 }
 
 .done-panel.collapsed {
-  transform: translateX(251px);
+  transform: translateX(235px);
 }
 
 /* Les chevrons tournent pour indiquer le sens inverse */
