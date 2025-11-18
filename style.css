@@ -1504,6 +1504,7 @@ body.shared-only-view #mergeSharedBtn,
   background-position: center;
   opacity: 0.15;
   transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  font-size: 1em;
 }
 
 .marker-region.marker-region-dungeon .region-label {
