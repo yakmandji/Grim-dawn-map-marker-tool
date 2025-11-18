@@ -78,7 +78,9 @@ header .right-panel{
     right: 24px;
     position: absolute;
     align-items: center;
+    gap: 12px;
 }
+
 
 .title {
  font-weight: 700;
@@ -1508,7 +1510,16 @@ body.shared-only-view #mergeSharedBtn,
 
 /*MOBILE VERSION---------------------------------------------*/
 
-@media (min-width: 1120px) and (max-width: 1580px) {
+
+
+@media (min-width: 1451px) and (max-width: 1580px) {
+
+  header button{
+    max-width: 150px;
+  }
+}
+
+@media (min-width: 1120px) and (max-width: 1450px) {
   :root {
    --sidebar-width: 420px;
     }
