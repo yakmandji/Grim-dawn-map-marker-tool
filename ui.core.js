@@ -1033,9 +1033,16 @@ function renderRoutesPanel() {
 
   const p = currentProfile();
   if (!p) return;
+
   wrap.innerHTML = '';
 
-  p.paths.forEach((path) => {
+  // 🔥 sécurise p.paths
+  const paths = Array.isArray(p.paths) ? p.paths : [];
+  if (!Array.isArray(p.paths)) {
+    p.paths = paths; // on fixe le profil une fois pour toutes
+  }
+
+  paths.forEach((path) => {
     const row = document.createElement('div');
     row.className = 'listItem route-item';
     row.dataset.pid = path.id;
@@ -1084,7 +1091,7 @@ function renderRoutesPanel() {
     });
     row.appendChild(saveBtn);
 
-    // --- Center button witdth SVG ---
+    // --- Center button ---
     const centerBtn = document.createElement('button');
     centerBtn.className = 'marker-center';
     centerBtn.setAttribute('data-i18n-title', 'ui.CenterOnMap');
@@ -1097,7 +1104,7 @@ function renderRoutesPanel() {
     });
     row.appendChild(centerBtn);
 
-    // --- Delete button---
+    // --- Delete button ---
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
     delBtn.className = 'marker-delete danger small';
@@ -1110,7 +1117,7 @@ function renderRoutesPanel() {
     delBtn.innerHTML = `<img src="img/bin-icon.svg" width="16" alt="${deleteLabel}">`;
 
     delBtn.addEventListener('click', () => {
-      p.paths = p.paths.filter(r => r.id !== path.id);
+      p.paths = paths.filter(r => r.id !== path.id);
       renderMarkers();
       renderRoutesPanel();
       markAsChanged();
@@ -1118,11 +1125,14 @@ function renderRoutesPanel() {
       showToast(GDMMLang.t('toast.RouteDeleted') || 'Route deleted', 'warning', 2500);
     });
     row.appendChild(delBtn);
+
     wrap.appendChild(row);
   });
+
   const countEl = document.getElementById('routesCount');
-  if (countEl) countEl.textContent = p.paths ? p.paths.length : 0;
+  if (countEl) countEl.textContent = paths.length;
 }
+
 
   // --- Center on marker ---
   function centerOn(xp, yp, targetScale = 1.5, markerId = null) {
@@ -1561,26 +1571,34 @@ if (newPathBtn) {
 }
 
   // --- Profils (buttons) ---
-  $('#profileSelect')?.addEventListener('change', e => {
+  $('#profileSelect')?.addEventListener('change', async (e) => {
     const name = e.target.value;
     setActiveProfile(name);
     rememberActiveProfile();
+
+    showLoader(GDMMLang.t('toast.LoadingMap'));
+
+    // Charge le JSON de cette map si besoin
+    await ensureMapLoadedForProfile(name);
+
     const p = currentProfile();
     if (p && p.map && p.map.embedData) {
-      showLoader(GDMMLang.t('toast.LoadingMap'));
       setMapSrc(p.map.embedData);
     } else if (p && p.map && p.map.sessionSrc) {
       setMapSrc(p.map.sessionSrc);
     } else {
       mapImg.removeAttribute('src');
       state.mapReady = false;
-      state.mapNatural = { w:0, h:0 };
+      state.mapNatural = { w: 0, h: 0 };
+      hideLoader();
     }
+
     renderList();
     renderMarkers();
     renderRoutesPanel();
     applyLockUI();
   });
+
 
   // --- Lock ---
   const lockEl = document.getElementById('lockAll');
@@ -1748,68 +1766,114 @@ if (newPathBtn) {
   }
 //---------------------------------------------------------------------------------------
 
+  // --- Map sources (One Json per map) ---
+  const MAP_SOURCES = {
+    'Cairn':        'https://www.grimcustommarker.org/maps/cairn_profile.json?v=1',
+    'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1',
+    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1',
+    'Asterkarn':    'https://www.grimcustommarker.org/maps/asterkarn_profile.json?v=1',
+
+    // ajoute ici tes autres maps si besoin
+  };
+
+  // Charge la map (partie "map") pour un profil si besoin
+  async function ensureMapLoadedForProfile(name) {
+    if (!name) return;
+
+    // si tu as bien destructuré ensureProfile en haut de ui.core.js :
+    const p = ensureProfile(name);
+
+    // si la map est déjà là (embedData ou sessionSrc), on ne refait rien
+    if (p.map && (p.map.embedData || p.map.sessionSrc)) {
+      return;
+    }
+
+    const url = MAP_SOURCES[name];
+    if (!url) {
+      console.warn('[GDMM] no MAP_SOURCES entry for', name);
+      return;
+    }
+
+    try {
+      const resp = await fetch(url, { cache: 'no-cache' });
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const json = await resp.json();
+
+      // Si ton JSON est { map: { ... } }
+      if (json.map) {
+        p.map = json.map;
+      } else {
+        // Si ton JSON ne contient QUE la map
+        p.map = json;
+      }
+    } catch (e) {
+      console.warn('[GDMM] Failed to load map JSON for', name, e);
+    }
+  }
+
+
   // --- Init on load ---
   (async () => {
-    let REMOTE_JSON_URL;
-    REMOTE_JSON_URL = 'https://www.grimcustommarker.org/gdmm_all_profiles.json?v=3.31';
-          // empty base
-    state.profiles['Profil 1'] = {
-     markers:[],
-     paths: [],
-     map:{}, 
-     created: new Date().toISOString(), 
-     updated: new Date().toISOString() 
-   };
-    setActiveProfile('Profil 1');
-    // Try remote
-    try {
-      const resp = await fetch(REMOTE_JSON_URL, { cache: 'no-cache' });
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const txt = await resp.text();
-      const obj = JSON.parse(txt);
-      if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
-        state.profiles = obj;
+    // 1) Crée la structure de base pour chaque map connue
+    Object.keys(MAP_SOURCES).forEach((name) => {
+      ensureProfile(name); // markers: [], map: {}, created/updated remplis par GDMMCore
+    });
 
-        const keys = Object.keys(state.profiles);
-        let initial = keys[0] || 'Profil 1';
-
-        try {
-          const last = localStorage.getItem(LAST_PROFILE_KEY);
-          if (last && keys.includes(last)) {
-            initial = last;
-          }
-        } catch (e) {
-          console.warn('[GDMM] cannot read last profile', e);
-        }
-
-        setActiveProfile(initial);
-        rememberActiveProfile();
-
-        const p = currentProfile();
-        if (p && p.map && p.map.embedData) {
-          showLoader('Loading map…');
-          setMapSrc(p.map.embedData);
-        } else if (p && p.map && p.map.sessionSrc) {
-          showLoader('Loading map…');
-          setMapSrc(p.map.sessionSrc);
-        }
-      }
-
-    } catch (err) {
-      console.warn('[GDMM] remote JSON not loaded, using local empty profile', err);
-    }
-    // local user data
+    // 2) Recharge les données utilisateur (markers / paths / view)
     loadUserDataFromLocal();
+
+    // 3) Choix du profil initial
+    const mapNames = Object.keys(MAP_SOURCES);
+    let initial = mapNames[0] || Object.keys(state.profiles)[0] || null;
+
+    try {
+      const last = localStorage.getItem(LAST_PROFILE_KEY);
+      if (last && state.profiles[last]) {
+        initial = last;
+      }
+    } catch (e) {
+      console.warn('[GDMM] cannot read last profile', e);
+    }
+
+    if (initial) {
+      setActiveProfile(initial);
+      rememberActiveProfile();
+    }
+
     refreshProfilesUI();
+
+    // 4) Charge la map du profil initial
+    if (initial) {
+      showLoader(GDMMLang.t('toast.LoadingMap'));
+
+      await ensureMapLoadedForProfile(initial);
+
+      const p = currentProfile();
+      if (p && p.map && p.map.embedData) {
+        setMapSrc(p.map.embedData);
+      } else if (p && p.map && p.map.sessionSrc) {
+        setMapSrc(p.map.sessionSrc);
+      } else {
+        // pas de map trouvée pour ce profil
+        hideLoader();
+      }
+    }
+
+    // 5) UI
     renderList();
     renderMarkers();
     renderRoutesPanel();
     initDonePanelToggle();
+
     // defaut lock
     state.locked = true;
     applyLockUI();
+
+    // routes partagées via ?share=
     loadSharedFromUrl();
   })();
+
+
 
 // === SPACE → PAN (global) ===
   let isSpaceDown = false;

@@ -171,46 +171,56 @@
 //ADMIN TOOLS
   if (DEV_MODE) {
 
-	  $('#exportMapsOnlyBtn')?.addEventListener('click', async () => {
-	    const snapshot = JSON.parse(JSON.stringify(state.profiles || {}));
+    $('#exportMapsOnlyBtn')?.addEventListener('click', async () => {
+      const profiles = state.profiles || {};
 
-	    for (const [name, p] of Object.entries(snapshot)) {
-	      // Remove marker
-	      p.markers = [];
-        p.paths   = [];
+      for (const [name, prof] of Object.entries(profiles)) {
+        if (!prof) continue;
 
-	      try {
-	        const live = state.profiles[name];
-	        const src = live?.map?.sessionSrc || live?.map?.embedData;
+        const out = { map: {} };
 
-	        if (src) {
-	          const data = await srcToDataURL(src, 'image/jpeg', 0.85);
-	          p.map = p.map || {};
-	          p.map.embedData = data;
-	        }
-	      } catch (e) {
-	        console.warn('[GDMM] export map failed for', name, e);
-	      }
+        // récupère la source de la map (sessionSrc ou embedData déjà présent)
+        const liveMap = prof.map || {};
+        let src = liveMap.sessionSrc || liveMap.embedData || null;
 
-	      if (p.map) {
-	        delete p.map.sessionSrc;
-	      }
-	    }
+        try {
+          // si c'est un File / Blob ou une URL classique, on la convertit en data URL
+          if (src && typeof src !== 'string') {
+            src = await srcToDataURL(src, 'image/jpeg', 0.85);
+          } else if (src && typeof src === 'string' && !src.startsWith('data:')) {
+            src = await srcToDataURL(src, 'image/jpeg', 0.85);
+          }
+        } catch (e) {
+          console.warn('[GDMM] export map failed for', name, e);
+        }
 
-	    // Download final JSON
-	    const data = JSON.stringify(snapshot, null, 2);
-	    const blob = new Blob([data], { type: 'application/json' });
-	    const a = document.createElement('a');
-	    a.href = URL.createObjectURL(blob);
-	    a.download = 'gdmm_all_profiles.json';
-	    a.click();
-	    setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+        if (src) {
+          out.map.embedData = src;
+        }
+        if (typeof liveMap.w === 'number') out.map.w = liveMap.w;
+        if (typeof liveMap.h === 'number') out.map.h = liveMap.h;
 
-	    // feedback
-	    if (typeof showToast === 'function') {
-	      showToast('Maps exported (without markers) ✅');
-	    }
-	  });
+        // nom de fichier propre : cairn_profile.json, malmouth_profile.json, etc.
+        const safeName = (name || 'map')
+          .toLowerCase()
+          .replace(/\s+/g, '_')
+          .replace(/[^a-z0-9_]/g, '');
+        const fileName = `${safeName}_profile.json`;
+
+        const blob = new Blob([JSON.stringify(out, null, 2)], {
+          type: 'application/json',
+        });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = fileName;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+      }
+
+      if (typeof showToast === 'function') {
+        showToast('Maps exported separately (without markers) ✅');
+      }
+    });
 
 
     $('#clearSession')?.addEventListener('click', () => {

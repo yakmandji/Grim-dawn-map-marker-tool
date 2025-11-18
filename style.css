@@ -534,7 +534,7 @@ textarea:focus {
 
 .marker-name {
   flex: 1;
-  padding-right: 60px; /* laisse la place au bouton cible à droite */
+  padding-right: 60px;
 }
 
 button.marker-center,
@@ -1188,6 +1188,9 @@ body.shared-only-view #mergeSharedBtn,
 .marker-rift .label {
   font-size: 0.85em;
   opacity: 0.9;
+  background: rgb(58 13 4 / 75%);
+  border: 1px solid #6d1a10;
+  color: #cebaaf;
 }
 
 
@@ -1209,7 +1212,7 @@ body.shared-only-view #mergeSharedBtn,
   font-size: 1.15em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #bba078;
+  color: #c6b091;
   text-shadow:0 0 3px rgba(0, 2, 2, 2),
     0 0px 4px rgba(0, 2, 2, 2),
     0 0 7px rgba(0, 2, 2, 2);

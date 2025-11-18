@@ -200,21 +200,25 @@ function getUserDataOnly() {
     }
   }
 
-  function loadUserDataFromLocal(){
-    try {
-      const raw = localStorage.getItem('gdmm_user_data');
-      if (!raw) return;
-      const userData = JSON.parse(raw);
-      for (const [name, uProfile] of Object.entries(userData)) {
-        if (!state.profiles[name]) continue;
-        state.profiles[name].markers = uProfile.markers || [];
-        if (uProfile.view) state.profiles[name].view = uProfile.view;
-        if (uProfile.paths) state.profiles[name].paths = uProfile.paths;
-      }
-    } catch (e) {
-      console.warn(GDMMLang.t('toast.CantLoadData'), e);
+function loadUserDataFromLocal() {
+  try {
+    const raw = localStorage.getItem('gdmm_user_data');
+    if (!raw) return;
+
+    const userData = JSON.parse(raw);
+    for (const [name, uProfile] of Object.entries(userData)) {
+      // ⬇ au lieu de "if (!state.profiles[name]) continue;"
+      const p = ensureProfile(name);
+
+      p.markers = uProfile.markers || [];
+      if (uProfile.view)  p.view  = uProfile.view;
+      if (uProfile.paths) p.paths = uProfile.paths;
     }
+  } catch (e) {
+    console.warn(GDMMLang.t('toast.CantLoadData'), e);
   }
+}
+
 
   // --- Import helpers ---
   function normalizeName(name){
