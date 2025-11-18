@@ -2,10 +2,37 @@
   window.REGION_MARKERS_CAIRN = [
     
     {
+      id: 'tag_UG_wightmire_cave01',
+      tag: 'tagUGWightmireCave01',
+      xp: 75.25,
+      yp: 72.66,
+      isDungeon: true
+    },    
+    {
+      id: 'tag_wightmire_cellar01',
+      tag: 'tagWightmireCellar01',
+      xp: 72.90,
+      yp: 77.69,
+      isDungeon: true
+    },    
+    {
+      id: 'ta_uG_burial_cave',
+      tag: 'tagUGBurialCave',
+      xp: 63.60,
+      yp: 78,
+      isDungeon: true
+    },
+    {
       id: 'tag_map_hidden_path01',
       tag: 'tagMapHiddenPath01',
       xp: 76.24,
       yp: 63.55
+    },
+    {
+      id: 'tag_uGSlith_lab01',
+      tag: 'tagUGSlithLab01',
+      xp: 60.02,
+      yp: 81.89
     },
     {
       id: 'tag_map_hidden_path02',
@@ -42,8 +69,8 @@
     {
       id: 'world_map_witch_god_temple',
       tag: 'tagWorldMapWitchGodTemple',
-      xp: 87.29,
-      yp: 62.23,
+      xp: 84.55,
+      yp: 63.28,
       isDungeon: true
     },
     {
@@ -199,8 +226,8 @@
   {
     id: 'GDX1_map_ugdenbog',
     tag: 'tagGDX1MapUgdenbog',
-    xp: 83.17,
-    yp: 47.34
+      xp: 83.17,
+      yp: 46.99
   },
   {
     id: 'GDX1_map_ugdenbog_coven',
@@ -884,7 +911,6 @@
       yp: 17.84,
       isDungeon: true
 },
-
 {
   id: 'GDX1UG_ugdenbog_cave02_b',
   tag: 'tagGDX1UGUgdenbogCave02',
@@ -895,8 +921,8 @@
 {
   id: 'tag_UG_cave_ghost01',
   tag: 'tagUGCaveGhost01',
-      xp: 37.56,
-      yp: 49.80,
+      xp: 37.37,
+      yp: 49.71,
       isDungeon: true
 },
 {

@@ -1246,8 +1246,8 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .marker-link .link-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
   user-select: none;
   opacity: 0.95;

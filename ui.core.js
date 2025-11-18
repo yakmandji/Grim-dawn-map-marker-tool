@@ -1751,9 +1751,7 @@ if (newPathBtn) {
   // --- Init on load ---
   (async () => {
     let REMOTE_JSON_URL;
-
-    // Version PROD
-    REMOTE_JSON_URL = 'https://www.grimcustommarker.org/gdmm_all_profiles.json?v=3.30';
+    REMOTE_JSON_URL = 'https://www.grimcustommarker.org/gdmm_all_profiles.json?v=3.31';
           // empty base
     state.profiles['Profil 1'] = {
      markers:[],

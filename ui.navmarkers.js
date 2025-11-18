@@ -3,6 +3,16 @@
 
 window.NAV_MARKERS_CAIRN = [
       {
+        xp: 84.15,
+        yp: 47.40,
+        icon: 'img/icon-link.png',
+        tag: 'tagGoTo + tagGDX2MapWitchGodBase',
+        targetProfile: 'Korvan Basin',
+        targetXp: 20.11,
+        targetYp: 95.22,
+        targetScale: 1.2
+      },  
+      {
         xp: 37.5,
         yp: 63.94,
         icon: 'img/icon-link.png',
@@ -64,8 +74,26 @@ window.NAV_MARKERS_CAIRN = [
         targetXp: 63.17,
         targetYp: 94.86,
         targetScale: 1.2
-      },       
-
+      },
+      // Lower Crossing To Hargate Isle
+      {
+        xp: 63.47,
+        yp: 87.40,
+        tag: 'tagGoTo + tagUGSlithLab01',
+        icon: 'img/icon-link.png',
+        targetXp: 61.47,
+        targetYp: 81.95,
+        targetScale: 1.2
+      },             
+      {
+        xp: 61.41,
+        yp: 82.44,
+        tag: 'tagGoTo + tagUGSlithLab01',
+        icon: 'img/icon-link.png',
+        targetXp: 64.97,
+        targetYp: 87.03,
+        targetScale: 1.2
+      },  
 ];
 
   window.NAV_MARKERS_MALMOUTH = [

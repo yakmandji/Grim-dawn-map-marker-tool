@@ -7,8 +7,8 @@ window.DUNGEON_OVERLAYS = [
   { id: 'forgotten_depths', map: 'cairn',  img: 'forgotten-depths.jpg', left: 1997, top: 7519, width: 630, height: 630 },
   { id: 'spined_cove', map: 'cairn',  img: 'spined-cove.jpg', left: 5327, top: 7599, width: 287, height: 287 },
   { id: 'convict_tunnel', map: 'cairn',  img: 'convict-tunnel.jpg', left: 5909, top: 8110, width: 541, height: 541 },
-  { id: 'hargate_laboratory', map: 'cairn',  img: 'hargate-laboratory.jpg', left: 5023, top: 6906, width: 615, height: 421 },
-  { id: 'depraved_sanctuary', map: 'cairn',  img: 'depraved-sanctuary.jpg', left: 6771, top: 6717, width: 344, height: 344 },
+  { id: 'hargate_laboratory', map: 'cairn',  img: 'hargate-laboratory.jpg', left: 5009, top: 6906, width: 615, height: 421 },
+  { id: 'depraved_sanctuary', map: 'cairn',  img: 'depraved-sanctuary.jpg', left: 6961, top: 6473, width: 344, height: 344 },
   { id: 'flooded_passage', map: 'cairn',  img: 'flooded-passage.jpg', left: 5315, top: 6046, width: 438, height: 438 },
   { id: 'cronleys_hideout', map: 'cairn',  img: 'cronleys-hideout.jpg', left: 4629, top: 6063, width: 553, height: 553 },
   { id: 'hannefy_mine', map: 'cairn',  img: 'hannefy-mine.jpg', left: 5013, top: 6632, width: 265, height: 265 },
@@ -49,6 +49,17 @@ window.DUNGEON_OVERLAYS = [
   { id: 'dank_cellar', map: 'cairn',  img: 'dank-cellar.jpg', left: 6729, top: 5385 , width: 182, height: 182 },
   { id: 'den_carraxus', map: 'cairn',  img: 'den-carraxus.jpg', left: 6780, top: 3565 , width: 318, height: 318 },
   { id: 'janaxias_den', map: 'cairn',  img: 'janaxias-den.jpg', left: 8370, top: 3865 , width: 242, height: 242 },
+  { id: 'burial_cave', map: 'cairn',  img: 'burial-cave.jpg', left: 5689, top: 7155 , width: 168, height: 168 },
+  { id: 'cultists_lair', map: 'cairn',  img: 'cultists-lair.jpg', left: 6504, top: 6935 , width: 185, height: 185 },
+  { id: 'cave', map: 'cairn',  img: 'cave.jpg', left: 6464, top: 7178 , width: 165, height: 165 },
+  { id: 'caverne_2', map: 'cairn',  img: 'caverne2.jpg', left: 6614, top: 6598 , width: 300, height: 309 },
+
+
+
+
+
+
+
 
   { id: 'chamber_council', map: 'malmouth',  img: 'chamber-council.jpg', left: 4180, top: 100 , width: 743, height: 743 },
   { id: 'edge_reality', map: 'malmouth',  img: 'edge-reality.jpg', left: 4180, top: 1064 , width: 954, height: 954 },
