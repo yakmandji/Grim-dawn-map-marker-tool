@@ -10,7 +10,7 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 20.11,
         targetYp: 95.22,
-        targetScale: 1.2
+        targetScale: 1
       },  
       {
         xp: 37.5,
@@ -20,7 +20,7 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 20.11,
         targetYp: 95.22,
-        targetScale: 1.2
+        targetScale: 1
       },
       // Téléport Devil Crossing
       {
@@ -31,7 +31,7 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 19.94,
         targetYp: 98.47,
-        targetScale: 1.2
+        targetScale: 1
       },
       // Téléport Conflagration
       {
@@ -41,7 +41,7 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 44.42,
         targetYp: 34,
-        targetScale: 1.2
+        targetScale: 1
       },
       // Téléport Port Valbury
       {
@@ -51,7 +51,7 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 39.28,
         targetYp: 59.99,
-        targetScale: 1.2
+        targetScale: 1
       },      
       // Téléport Fort Ikon
       {
@@ -62,7 +62,7 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 19.94,
         targetYp: 98.47,
-        targetScale: 1.2
+        targetScale: 1
       },
       // Téléport Void's Eige
       {
@@ -73,7 +73,7 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Malmouth',
         targetXp: 63.17,
         targetYp: 94.86,
-        targetScale: 1.2
+        targetScale: 1
       },
       // Lower Crossing To Hargate Isle
       {
@@ -83,7 +83,7 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 61.47,
         targetYp: 81.95,
-        targetScale: 1.2
+        targetScale: 1
       },             
       {
         xp: 61.41,
@@ -92,7 +92,7 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 64.97,
         targetYp: 87.03,
-        targetScale: 1.2
+        targetScale: 1
       },  
 ];
 
@@ -105,7 +105,7 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Cairn',
         targetXp: 74,
         targetYp: 15,
-        targetScale: 1.1
+        targetScale: 1
       },
   ];
 
@@ -119,7 +119,7 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Cairn',
         targetXp: 62.90,
         targetYp: 89.81,
-        targetScale: 1.2
+        targetScale: 1
       },
   ];
 
