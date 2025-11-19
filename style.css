@@ -1,9 +1,9 @@
 :root {
   --bg: #0f1220;
   --panel: #031714;
-  --p2: #122928;
+  --p2: #0e2522;
   --txt: #67999b;
-  --titlecolor: #6b9597;
+  --titlecolor: #4b9f93;
   --buttontxt : #4ec393;
   --placeholdertext : #2d6f72;
   --muted: #8cb9ac;
@@ -60,7 +60,7 @@ header {
   border: 1px solid #17373c;
   border-radius: 14px;
   box-shadow: var(--shadow);
-  padding: 17px 12px;
+  padding: 17px 22px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -75,7 +75,7 @@ header {
 
 header .right-panel{
     display: flex;
-    right: 24px;
+    right: 31px;
     position: absolute;
     align-items: center;
     gap: 12px;
@@ -113,13 +113,11 @@ button, select, .chip {
   background: linear-gradient(145deg, #0c3a30, #174d46);
   color: #ced3ec;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 500;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.3), 
-    0 4px 8px rgba(0, 0, 0, 0.2), 
-    0 1px 2px rgba(0, 0, 0, 0.7);
+  inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 2px rgb(4 13 6 / 70%);
   transition: all 0.15s ease-in-out;
   font-size: 12px;
 }
@@ -142,9 +140,9 @@ input[type="color"]{
   overflow: hidden;
   cursor: pointer;
   padding: 0;
-  width: 26px;
-  max-width: 26px;
-  height: 26px;
+  width: 24px;
+  max-width: 24px;
+  height: 24px;
   opacity: 0.7;
 }
 
@@ -202,7 +200,7 @@ button.small,
   align-items: center;
   justify-content: center;
   gap: 6px; 
-  padding: 7px 10px;
+  padding: 8px 10px;
   font-size: 12px;
   line-height: 1;
   vertical-align: middle;
@@ -225,7 +223,7 @@ button.danger {
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.05),
     0 4px 8px rgba(0,0,0,0.5);
-    padding: 7px 10px 7px 10px;
+    padding:5px 10px 4px 10px;
   color: #c0695a;
 }
 
@@ -262,24 +260,14 @@ textarea {
   background-color: rgba(0, 0, 0, 0.2);
   color: var(--placeholdertext);
   border-radius: 6px;
-  padding: 6px 10px;
+  padding: 5px 10px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input[type="text"]:focus,
-input[type="search"]:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--color-accent, #00ff96);
-  box-shadow: 0px 0px 2px 2px rgb(30 231 148 / 40%);
-  background-color: rgba(0, 0, 0, 0.3);
-}
 
 .done-input{
   flex: 0 0 auto;
-  background: #113029;
-  padding: 7px 10px 7px 5px;
+  padding: 4px 5px 4px 3px;
   border-radius: 6px;
   display: flex;
   align-self: center;
@@ -291,7 +279,7 @@ textarea:focus {
     border: 1px solid #285259;
     border-radius: 14px;
     box-shadow: var(--shadow);
-    padding: 6px 20px;
+    padding: 6px 7px 6px 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -339,7 +327,7 @@ textarea:focus {
 
 .section {
   background: var(--p2);
-  border: 1px dashed #354e59;
+  border: 1px dashed #366f63;
   border-radius: 12px;
   padding: 10px 0px 10px 0px;
 }
@@ -349,6 +337,8 @@ textarea:focus {
  }
   
 .section h3 {
+  display: flex;
+  gap:8px;
   margin: 0 0 8px;
   font-size: 13px;
   text-transform: uppercase;
@@ -508,6 +498,7 @@ textarea:focus {
 
 .lock-label span{
   padding-left: 5px;
+  padding-right: 5px;
 }
 
 .floating { 
@@ -528,12 +519,19 @@ textarea:focus {
   padding: 0px 14px 9px 14px;
 }
 .listItem { 
-  padding: 16px 0px 16px 0px;
-  border-bottom: 1px solid #164245; 
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 16px 8px 16px 8px;
   display: grid; 
   grid-template-columns: auto 1fr auto; 
-  gap: 8px; 
   align-items: center;
+  border-radius: 8px;
+}
+
+.listItem:nth-child(odd){
+  background: var(--p2);
 }
 
 .listItem > div {
@@ -557,13 +555,6 @@ textarea:focus {
   transition: all 0.2s ease;
 }
 
-.listItem {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
 .marker-name {
   flex: 1;
   padding-right: 60px;
@@ -571,7 +562,7 @@ textarea:focus {
 
 button.marker-center,
  button.marker-save{
-  padding: 7px 10px 7px 10px;
+  padding: 5px 7px 5px 7px;
   border: none;
   color: #78f1c2;
   font-size: 16px;
@@ -624,7 +615,7 @@ button.marker-center,
 }
 
 .listItem input[type="text"]{
-  min-width: 216px;
+  width: 100vh;
 }
 
 #list .listItem.highlight,
@@ -637,7 +628,7 @@ button.marker-center,
 
 #list select{
   font-size: 11px;
-  padding: 9px 0px;
+  padding: 6px 0px 5px 4px;
 }
 
 @keyframes highlightPulse {
@@ -966,7 +957,7 @@ button.marker-center,
 .filterBar {
   display: flex;
   gap: 10px;
-  padding: 16px 18px 16px 18px;
+  padding: 16px 18px 32px 18px;
   align-items: center;
 }
 
@@ -977,7 +968,7 @@ button.marker-center,
   border: none;
   padding: 0;
   border-radius: 10px;
-  background: linear-gradient(145deg, #16222a, #132632);
+  background: linear-gradient(145deg, #162a21, #081b14);
   box-shadow:
     0 4px 8px rgba(0,0,0,0.45),
     0 0 0 1px rgba(0,0,0,0.6);
@@ -1020,7 +1011,7 @@ button.marker-center,
   box-shadow:
     0 1px 3px rgba(0,0,0,0.8),
     0 0 0 1px rgba(120, 241, 194, 0.4);
-  background: linear-gradient(145deg, #111e29, #142634);
+  background: linear-gradient(145deg, #07211a, #0f3727);
 }
 
 .filterToggle.is-on::after {
@@ -1037,16 +1028,11 @@ button.marker-center,
 }
 
 .filterToggle:hover:not(.is-on) {
-  background: linear-gradient(145deg, #172b39, #0c2f3b);
+  background: linear-gradient(145deg, #173937, #092a20);
 }
 
 .filterToggle.is-on:hover {
   background: linear-gradient(145deg, #17444b, #092626);
-}
-
-
-.filterToggle {
-  position: relative; /* pour pouvoir placer le badge à l'intérieur */
 }
 
 /* Petit badge de compteur */
@@ -1510,7 +1496,7 @@ body.shared-only-view #mergeSharedBtn,
 #version {
   position: absolute;
   top: 10px;
-  right: 14px;
+  right: 4px;
   padding: 4px 10px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
@@ -1547,6 +1533,105 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 
+/*CHECK BOX*/
+/* --- Custom checkbox stylée green theme --- */
+.checkbox-green {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 2px solid #30af7d;
+  background: rgba(0,0,0,0.25);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Hover neon */
+.checkbox-green:hover {
+  box-shadow: 0 0 4px rgba(48, 175, 125, 0.6);
+  border-color: #26f0a0;
+}
+
+/* Checkmark */
+.checkbox-green:checked {
+  background: #26f0a0;
+  border-color: #26f0a0;
+  box-shadow: 0 0 6px rgba(38, 240, 160, 0.6);
+}
+
+.checkbox-green:checked::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  width: 2px;
+  height: 11px;
+  border: solid #083d2b;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.done-input span{
+    margin-top: 2px;
+    margin-left: 3px;
+    font-size: 11px;
+}
+
+
+/*Select Green*/
+
+/* ----- Custom Select (green emerald theme) ----- */
+
+.select-green {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #0d2b23;
+  border: 2px solid #1a624a;
+  border-radius: 8px;
+  color: #c3f0dd;
+  padding: 8px 32px 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+}
+
+/* Hover */
+.select-green:hover {
+  border-color: #30af7d;
+  box-shadow: 0 0 6px rgba(48,175,125,0.4), inset 0 0 6px rgba(0,0,0,0.4);
+}
+
+/* Focus */
+.select-green:focus {
+  border-color: #26f0a0;
+  outline: none;
+  box-shadow:
+    0 0 6px rgba(38,240,160,0.6),
+    inset 0 0 6px rgba(0,0,0,0.4);
+}
+
+/* ----- Custom arrow ----- */
+.select-green {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%2330af7d' height='20' width='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><polygon points='5,7 10,12 15,7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 14px;
+}
+
+/* When open in Firefox */
+.select-green:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #c3f0dd;
+}
+
+
+
 
 /*MOBILE VERSION---------------------------------------------*/
 
@@ -1578,10 +1663,6 @@ body.shared-only-view #mergeSharedBtn,
     top: 96vh;
     max-width: 55px;
     position: fixed;
-  }
-
-  #list select{
-
   }
 
   .app{

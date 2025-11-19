@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="style.css?3.28" />
+  <link rel="stylesheet" href="style.css?3.30" />
 </head>
 <body>
   <p aria-hidden="true" class="seo-summary">
@@ -45,7 +45,7 @@
       <button id="mobile-menu-toggle">
           <img src="img/hamburger.svg" width="28" alt="">
       </button>
-      <select id="langSelect">
+      <select id="langSelect" class="select-green">
       <option value="en">English</option>
       <option value="fr">Français</option>
       <option value="es">Español</option>
@@ -82,7 +82,7 @@
             <span data-i18n="ui.ToolPan">Pan</span>
         </button>
 
-        <select id="profileSelect" title="Profils" class="active">
+        <select id="profileSelect" title="Profils" class="active select-green">
           <option value="">(profil)</option>
         </select>
 
@@ -99,7 +99,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.3.75</span>
+        <span>V.3.8</span>
       </div>      
       <div class="title">
         <div class="app-logo">
@@ -108,9 +108,12 @@
       </div>
       <div class="section principal">
         <div class="row title-icon" style="padding-bottom: 8px;">
-          <h3 data-i18n="ui.NewMarkerTitle">New marker</h3>
+          <h3>
+            <img src="img/marker-pin.svg" width="17">
+            <span data-i18n="ui.NewMarkerTitle">New marker</span>
+          </h3>
             <label style="flex:0 0 auto" class="small done-input">
-              <input id="newShared" type="checkbox" />
+              <input id="newShared" type="checkbox" class="checkbox-green"/>
               <span data-i18n="ui.SharedMarker">Shared</span>
             </label>
         </div>
@@ -118,7 +121,7 @@
           <input id="newLabel" type="text" data-i18n-placeholder="ui.MarkerNamePlaceholder" placeholder="Name / note" />
         </div>
         <div class="row" style="margin-top: 6px;">
-          <select id="newCategory">
+          <select id="newCategory" class="select-green">
             <option value="General" data-i18n="ui.GeneralMarker">🔘 General</option>
             <option value="Quest" data-i18n="ui.QuestMarker">⭐ Quest</option>
             <option value="Boss" data-i18n="ui.BossMarker">💀 Boss</option>
@@ -136,7 +139,10 @@
 
       <div class="section principal">
           <div class="row title-icon">
-            <h3 data-i18n="ui.NewPathTitle">New Path</h3>
+            <h3>
+              <img src="img/route-icon.svg" width="17">
+                <span data-i18n="ui.NewPathTitle">New Path</span>
+            </h3>
           </div>        
           <div class="row">
               <p class="small" data-i18n="ui.PathHelper">Hold Space to drag the map while drawing a path</p>
@@ -164,7 +170,7 @@
               <span data-i18n="ui.LockMarker">
                   Lock markers
               </span>
-              <input id="lockAll" type="checkbox" />
+              <input id="lockAll" class="checkbox-green" type="checkbox" />
            </label>
         </div>
         <div class="row">
@@ -282,14 +288,14 @@
         <div class="row" style="gap:6px">
           <input data-label type="text" placeholder="marker name" />
           <button class="marker-save" data-i18n-title="ui.SaveTitle" title="Save">
-            <img src="img/save-icon.svg" width="16">
+            <img src="img/save-icon.svg" width="14">
           </button>
           <button data-center class="marker-center" data-i18n-title="ui.CenterOnMap" title="Center on map">
-            <img src="img/center-icon.svg" width="16" data-i18n-title="ui.CenterOnMap" >
+            <img src="img/center-icon.svg" width="14" data-i18n-title="ui.CenterOnMap" >
          </button>
         </div>
         <div class="row" style="gap:6px;margin-top:6px">
-          <select data-cat class="small">
+          <select data-cat class="small select-green">
             <option value="General" data-i18n="ui.GeneralMarker">🔘 General</option>
             <option value="Quest" data-i18n="ui.QuestMarker">⭐ Quest</option>
             <option value="Boss" data-i18n="ui.BossMarker">💀 Boss</option>
@@ -300,10 +306,10 @@
           </select>
           <input data-color type="color" />
           <label style="flex:0 0 auto" class="small done-input">
-            <input data-done type="checkbox" /> <span data-i18n="ui.Done">Done</span>
+            <input data-done type="checkbox" class="checkbox-green" /> <span data-i18n="ui.Done">Done</span>
           </label>
           <label style="flex:0 0 auto" class="small done-input">
-            <input data-shared type="checkbox" />
+            <input data-shared type="checkbox" class="checkbox-green" />
             <span data-i18n="ui.SharedMarker">Shared</span>
           </label>         
           <button data-delete class="danger" data-i18n-title="ui.DeleteButton" title="Delete">
