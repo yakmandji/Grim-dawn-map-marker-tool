@@ -227,6 +227,10 @@ button.danger {
   color: #c0695a;
 }
 
+.tool-section button.danger {
+  padding: 8px 10px;
+}
+
 #routesPanel button.danger,
 #list button.danger{
   max-width: 40px;
