@@ -301,6 +301,42 @@ textarea:focus {
     overflow-y: auto;
 }
 
+
+/* --- Main scroll bar--- */
+
+.sidebar.markers-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;  
+}
+
+.sidebar.markers-scroll:hover {
+  scrollbar-color: rgba(48,175,125,0.30) #082722;
+}
+
+/* ----- WebKit (Chrome / Edge / Brave) ----- */
+.sidebar.markers-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar.markers-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar.markers-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+
+.sidebar.markers-scroll:hover::-webkit-scrollbar-track {
+  background: #051414;
+}
+
+.sidebar.markers-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(48,175,125,0.30);
+  border-radius: 10px;
+}
+
+
 .section {
   background: var(--p2);
   border: 1px dashed #354e59;
@@ -1584,7 +1620,7 @@ body.shared-only-view #mergeSharedBtn,
 
   header{
     top:0;
-    transform: translateX(-100%);
+    transform: translateX(-105%);
     left: 11px;
     width: 96%;
     flex-direction: column;
