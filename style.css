@@ -109,10 +109,6 @@ header .sep {
     margin-top: 0;
 }
 
-#langSelect{
-  padding: 8px 16px;
-}
-
 button, select, .chip {
   background: linear-gradient(145deg, #0c3a30, #174d46);
   color: #ced3ec;
@@ -1541,6 +1537,17 @@ body.shared-only-view #mergeSharedBtn,
 
 @media (max-width: 1119px) {
 
+  #version{
+    left: 0;
+    top: 96vh;
+    max-width: 55px;
+    position: fixed;
+  }
+
+  #list select{
+
+  }
+
   .app{
     padding: 0 12px 12px 0px;
   }
@@ -1623,7 +1630,8 @@ body.shared-only-view #mergeSharedBtn,
   }
 
   .mapWrap{
-    width: 100%;
+    width: 103%;
+    margin-top: 8px;
   }
 
  #list .listItem{

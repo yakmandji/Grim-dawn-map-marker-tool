@@ -1373,8 +1373,6 @@ function updateDungeonHover(e) {
         const centerNow = midpoint(p1, p2);
         const ox = centerNow.x - vb.left;
         const oy = centerNow.y - vb.top;
-
-        // On garde le centre du pinch “accroché” à la même zone de la map
         const ix = (ox - pinchState.startView.x) / pinchState.startScale;
         const iy = (oy - pinchState.startView.y) / pinchState.startScale;
 
@@ -1388,7 +1386,7 @@ function updateDungeonHover(e) {
       }
 
       e.preventDefault();
-      return; // on ne fait pas le reste (pan/classic cursor) quand on pinche
+      return;
     }
   }
 
@@ -1399,7 +1397,7 @@ function updateDungeonHover(e) {
         const cr = $('#cursorReadout');
         if (cr) cr.textContent = `x: ${clamp(xp,0,100).toFixed(1)}%, y: ${clamp(yp,0,100).toFixed(1)}%`;
       }
-      // --- Preview de route en mode PATH ---
+      // --- Preview route mode PATH ---
       if (
         state.tool === 'path' &&
         pathMode.active &&
@@ -1772,18 +1770,12 @@ if (newPathBtn) {
     'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1',
     'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1',
     'Asterkarn':    'https://www.grimcustommarker.org/maps/asterkarn_profile.json?v=1',
-
-    // ajoute ici tes autres maps si besoin
   };
 
-  // Charge la map (partie "map") pour un profil si besoin
+  // Load map for profile if need
   async function ensureMapLoadedForProfile(name) {
     if (!name) return;
-
-    // si tu as bien destructuré ensureProfile en haut de ui.core.js :
     const p = ensureProfile(name);
-
-    // si la map est déjà là (embedData ou sessionSrc), on ne refait rien
     if (p.map && (p.map.embedData || p.map.sessionSrc)) {
       return;
     }
@@ -1803,7 +1795,7 @@ if (newPathBtn) {
       if (json.map) {
         p.map = json.map;
       } else {
-        // Si ton JSON ne contient QUE la map
+        // Si ton JSON has only map
         p.map = json;
       }
     } catch (e) {
@@ -1818,11 +1810,9 @@ if (newPathBtn) {
     Object.keys(MAP_SOURCES).forEach((name) => {
       ensureProfile(name); // markers: [], map: {}, created/updated remplis par GDMMCore
     });
-
-    // 2) Recharge les données utilisateur (markers / paths / view)
     loadUserDataFromLocal();
 
-    // 3) Choix du profil initial
+    // Profile choice
     const mapNames = Object.keys(MAP_SOURCES);
     let initial = mapNames[0] || Object.keys(state.profiles)[0] || null;
 
@@ -1842,7 +1832,7 @@ if (newPathBtn) {
 
     refreshProfilesUI();
 
-    // 4) Charge la map du profil initial
+    // 4) Load profil map
     if (initial) {
       showLoader(GDMMLang.t('toast.LoadingMap'));
 
@@ -1929,7 +1919,8 @@ if (newPathBtn) {
 
   // --- Expose global ---
   window.UiCore = {
-    $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,renderRoutesPanel,setMapSrc,showToast,updateSaveIndicator,
+    $,ensurePathsArray,mapImg,refreshProfilesUI,renderList,renderMarkers,renderRoutesPanel,
+    setMapSrc,showToast,updateSaveIndicator,resolveSizeKey,
   };
 
 })();

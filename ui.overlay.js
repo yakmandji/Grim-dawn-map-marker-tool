@@ -54,13 +54,6 @@ window.DUNGEON_OVERLAYS = [
   { id: 'cave', map: 'cairn',  img: 'cave.jpg', left: 6464, top: 7178 , width: 165, height: 165 },
   { id: 'caverne_2', map: 'cairn',  img: 'caverne2.jpg', left: 6614, top: 6598 , width: 300, height: 309 },
 
-
-
-
-
-
-
-
   { id: 'chamber_council', map: 'malmouth',  img: 'chamber-council.jpg', left: 4180, top: 100 , width: 743, height: 743 },
   { id: 'edge_reality', map: 'malmouth',  img: 'edge-reality.jpg', left: 4180, top: 1064 , width: 954, height: 954 },
   { id: 'cinder_waste', map: 'malmouth',  img: 'cinder-waste.jpg', left: 4403, top: 2117 , width: 810, height: 810 },
@@ -93,32 +86,40 @@ window.DUNGEON_OVERLAYS = [
 
 ];
 
-state.dungeonOverlays = [];
-
 function renderDungeonOverlays() {
   const inner = document.getElementById('mapInner');
   if (!inner || !window.DUNGEON_OVERLAYS) return;
 
-  inner.querySelectorAll('.dungeon-wrapper').forEach(e => e.remove());
+  const core = window.GDMMCore || {};
+  const state = core.state;
+  if (!state) return;
+
+  const uiCore = window.UiCore || {};
+  const resolveSizeKey = uiCore.resolveSizeKey;
+
+  // on initialise si besoin
   state.dungeonOverlays = [];
 
-  // clé de la map actuelle (ex: "8948x9133")
-  let key = null;
-  if (state.mapNatural?.w && state.mapNatural?.h) {
-    key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-  }
+  inner.querySelectorAll('.dungeon-wrapper').forEach(e => e.remove());
 
   // correspondances map -> dossier + clé
   const MAP_INFO = {
     '8948x9133': { folder: 'cairn' },
     '5142x3574': { folder: 'malmouth' },
     '5427x5553': { folder: 'korvan' },
-    // Others maps
   };
 
-  const currentFolder = MAP_INFO[key]?.folder || null;
+  let key = null;
+  if (typeof resolveSizeKey === 'function') {
+    key = resolveSizeKey(MAP_INFO);
+  } else if (state.mapNatural?.w && state.mapNatural?.h) {
+    key = `${state.mapNatural.w}x${state.mapNatural.h}`;
+  }
 
-  // filtrage : n'afficher que les overlays de la map active
+  const currentFolder = key && MAP_INFO[key]
+    ? MAP_INFO[key].folder
+    : null;
+
   const overlays = window.DUNGEON_OVERLAYS.filter(o => {
     if (!o.map) return true; // pas de map = affiché partout
     if (!currentFolder) return false;
@@ -136,7 +137,6 @@ function renderDungeonOverlays() {
     const over = document.createElement('div');
     over.className = 'dungeon';
 
-    // Construire automatiquement le chemin
     const path = `img/overlays/${currentFolder}/${d.img}`;
     over.style.backgroundImage = `url(${path})`;
 
@@ -153,6 +153,7 @@ function renderDungeonOverlays() {
     });
   });
 }
+
 
 window.renderDungeonOverlays = renderDungeonOverlays;
 
