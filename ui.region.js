@@ -1042,8 +1042,8 @@
 {
   id: 'tag_gdx1_ug_malmouth_outskirts_cellar01',
   tag: 'tagGDX1UGMalmouthOutskirtsCellar01',
-      xp: 47.90,
-      yp: 71.79,
+      xp: 47.70,
+      yp: 62.20,
   isDungeon: true
 },
 {

@@ -1769,9 +1769,9 @@ if (newPathBtn) {
 
   // --- Map sources (One Json per map) ---
   const MAP_SOURCES = {
-    'Cairn':        'https://www.grimcustommarker.org/maps/cairn_profile.json?v=1.11',
-    'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1.1',
-    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.11',
+    'Cairn':        'https://www.grimcustommarker.org/maps/cairn_profile.json?v=1.12',
+    'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1.11',
+    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.12',
     'Asterkarn':    'https://www.grimcustommarker.org/maps/asterkarn_profile.json?v=1',
   };
 
