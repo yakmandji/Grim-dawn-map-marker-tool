@@ -959,49 +959,55 @@ function renderMarkers(options = {}) {
         e.stopPropagation();
       });
 
-      el.addEventListener('click', (e) => {
+      el.addEventListener('click', async (e) => {
         e.stopPropagation();
 
-        // 1) Change profile
-        if (m.targetProfile) {
-          const name = m.targetProfile;
-
+        // --- 1) Nav dans la même map (pas de targetProfile) ---
+        if (!m.targetProfile) {
           if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
-            state.skipViewRestoreOnce = true;
-          }
-          setActiveProfile(name);
-          rememberActiveProfile();
-          const p2 = currentProfile();
-          if (!p2) return;
-          const sel = document.getElementById('profileSelect');
-
-          if (sel) sel.value = name;
-          if (p2.map && p2.map.embedData) {
-            showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
-            setMapSrc(p2.map.embedData);
-          } else if (p2.map && p2.map.sessionSrc) {
-            showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
-            setMapSrc(p2.map.sessionSrc);
-          }
-
-          if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
-            setTimeout(() => {
-              centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
-            }, 300);
-          }
-          renderList();
-
-          if (typeof renderRoutesPanel === 'function') {
-            renderRoutesPanel();
+            centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
           }
           return;
         }
-        // 2) Teleport on same map
+
+        // --- 2) Nav on other map ---
+        const name = m.targetProfile;
+
         if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
-          centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
+          state.skipViewRestoreOnce = true;
+        }
+
+        setActiveProfile(name);
+        rememberActiveProfile();
+
+        const sel = document.getElementById('profileSelect');
+        if (sel) sel.value = name;
+
+        showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
+        await ensureMapLoadedForProfile(name);
+
+        const p2 = currentProfile();
+        if (!p2 || !p2.map) {
+          hideLoader();
           return;
         }
+        if (p2.map.embedData) {
+          setMapSrc(p2.map.embedData);
+        } else if (p2.map.sessionSrc) {
+          setMapSrc(p2.map.sessionSrc);
+        } else {
+          hideLoader();
+        }
+        if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
+          setTimeout(() => {
+            centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
+          }, 300);
+        }
+
+        renderList();
       });
+
+
       inner.appendChild(el);
     });
   }
@@ -1765,7 +1771,7 @@ if (newPathBtn) {
   const MAP_SOURCES = {
     'Cairn':        'https://www.grimcustommarker.org/maps/cairn_profile.json?v=1',
     'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1',
-    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1',
+    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.1',
     'Asterkarn':    'https://www.grimcustommarker.org/maps/asterkarn_profile.json?v=1',
   };
 
