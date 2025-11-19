@@ -1324,26 +1324,23 @@ viewport.addEventListener('pointerdown', e => {
 
 function updateDungeonHover(e) {
   if (!state.dungeonOverlays || !state.dungeonOverlays.length) return;
-  const { xp, yp } = viewToPct(e.clientX, e.clientY);
 
-  if (!isFinite(xp) || !isFinite(yp) || xp < 0 || xp > 100 || yp < 0 || yp > 100) {
-    state.dungeonOverlays.forEach(d => d.el.classList.remove('is-hovered'));
-    return;
-  }
-
-  const mapW = state.mapNatural.w || 1;
-  const mapH = state.mapNatural.h || 1;
-  const mx = (xp / 100) * mapW;
-  const my = (yp / 100) * mapH;
+  const x = e.clientX;
+  const y = e.clientY;
 
   state.dungeonOverlays.forEach(d => {
+    if (!d.el) return;
+    const rect = d.el.getBoundingClientRect();
     const inside =
-      mx >= d.left && mx <= d.left + d.width &&
-      my >= d.top  && my <= d.top  + d.height;
+      x >= rect.left &&
+      x <= rect.right &&
+      y >= rect.top &&
+      y <= rect.bottom;
 
     d.el.classList.toggle('is-hovered', inside);
   });
 }
+
 
 
   viewport.addEventListener('pointermove', e => {
