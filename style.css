@@ -283,7 +283,7 @@ input[type="password"]:focus
     margin-top: 15px;
     height: 97vh;
     overflow: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 
@@ -974,15 +974,14 @@ button.marker-center,
 
 .filterBar {
   display: flex;
-  gap: 10px;
-  padding: 16px 18px 32px 18px;
+  gap: 0px;
   align-items: center;
 }
 
 .filterToggle {
   position: relative;
-  width: 40px;
-  height: 34px;
+  width: 37px;
+  height: 33px;
   border: none;
   padding: 0;
   border-radius: 10px;
@@ -998,6 +997,10 @@ button.marker-center,
     transform 0.12s ease,
     box-shadow 0.12s ease,
     background 0.15s ease;
+}
+
+.filterBar .filterToggle{
+    margin: 16px 0px 32px 14px;
 }
 
 .filterToggle img {
