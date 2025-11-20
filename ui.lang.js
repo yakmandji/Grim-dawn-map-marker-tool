@@ -89,6 +89,11 @@
       'toast.WarnDeleteAllMarkers': 'Do you really want to delete all markers from this map?',
       'toast.NothingToShare': 'There is nothing to share (no routes or shared markers)',
       'ui.ToolPan': 'Pan',
+      'ui.SearchLocationPlaceholder': 'Search region / rift / dungeon...',
+      "ui.region":  "Region",
+      "ui.rift":    "Rift",
+      "ui.dungeon": "Dungeon",
+
     },
     fr: {
       'ui.NewMarkerTitle': 'Nouveau marqueur',
@@ -179,7 +184,10 @@
       'ui.MarkerNamePlaceholder': 'Nom / note',
       'toast.WarnDeleteAllMarkers': 'Voulez-vous vraiment supprimer tous les marqueurs de cette carte ?',
       'toast.NothingToShare': 'Aucune route et aucun marqueur partagé. Cochez « Partagé » pour les inclure dans le lien !',
-
+      'ui.SearchLocationPlaceholder': 'Chercher une région / faille / donjon...',
+      "ui.region":  "Région",
+      "ui.rift":    "Faille",
+      "ui.dungeon": "Donjon",
 
     },
     es: {
@@ -270,7 +278,10 @@
       'ui.MarkerNamePlaceholder': 'Nombre / nota',
       'toast.WarnDeleteAllMarkers': '¿Realmente deseas eliminar todos los marcadores de este mapa?',
       'toast.NothingToShare': 'No hay rutas ni marcadores compartidos. Marca “Compartido” para incluirlos en tu enlace.',
-
+      'ui.SearchLocationPlaceholder': 'Buscar región / grieta / mazmorra...',
+      "ui.region":  "Región",
+      "ui.rift":    "Grieta",
+      "ui.dungeon": "Mazmorra",
 
     },
 
@@ -357,7 +368,12 @@
       "ui.MarkerNamePlaceholder": "Name / Notiz",
       "toast.WarnDeleteAllMarkers": "Möchtest du wirklich alle Marker von dieser Karte löschen?",
       "toast.NothingToShare": "Nichts zum Teilen vorhanden (keine Routen oder geteilte Marker)",
-      "ui.ToolPan": "Verschieben"
+      "ui.ToolPan": "Verschieben",
+      'ui.SearchLocationPlaceholder': 'Region / Riss / Dungeon suchen...',
+      "ui.region":  "Region",
+      "ui.rift":    "Riss",
+      "ui.dungeon": "Dungeon",
+
     },
 
 
@@ -449,11 +465,14 @@
     'ui.SharedMergeButton': 'Adicionar ao meu mapa',
     'ui.MergeRoutesButton': 'Adicionar compartilhado ao meu mapa',
 
-      'ui.PathNamePlaceholder': 'Nome do trajeto (opcional)',
-      'ui.MarkerNamePlaceholder': 'Nome / anotação',
-      'toast.WarnDeleteAllMarkers': 'Tem certeza de que deseja excluir todos os marcadores deste mapa?',
-      'toast.NothingToShare': 'Nenhuma rota ou marcador compartilhado. Marque “Compartilhado” para incluí-los no link!',
-
+     'ui.PathNamePlaceholder': 'Nome do trajeto (opcional)',
+     'ui.MarkerNamePlaceholder': 'Nome / anotação',
+     'toast.WarnDeleteAllMarkers': 'Tem certeza de que deseja excluir todos os marcadores deste mapa?',
+     'toast.NothingToShare': 'Nenhuma rota ou marcador compartilhado. Marque “Compartilhado” para incluí-los no link!',
+     'ui.SearchLocationPlaceholder': 'Buscar região / fenda / masmorra...',
+     "ui.region":  "Região",
+      "ui.rift":    "Fenda",
+      "ui.dungeon": "Masmorra",
 
   },
 
@@ -544,6 +563,10 @@
     'ui.MarkerNamePlaceholder': 'Имя / заметка',
     'toast.WarnDeleteAllMarkers': 'Вы действительно хотите удалить все маркеры с этой карты?',
     'toast.NothingToShare': 'Нет маршрутов или общих меток. Отметьте «Общий», чтобы добавить их в ссылку!',
+    'ui.SearchLocationPlaceholder': 'Искать регион / разлом / подземелье...',
+    "ui.region":  "Регион",
+    "ui.rift":    "Разлом",
+    "ui.dungeon": "Подземелье",
 
   },
 
@@ -636,6 +659,11 @@
       'ui.MarkerNamePlaceholder': 'Nome / nota',
       'toast.WarnDeleteAllMarkers': 'Vuoi davvero eliminare tutti i marcatori da questa mappa?',
       'toast.NothingToShare': 'Nessun percorso o marcatore condiviso. Seleziona “Condiviso” per includerli nel link!',
+      'ui.SearchLocationPlaceholder': 'Cerca regione / varco / dungeon...',
+      "ui.region":  "Regione",
+      "ui.rift":    "Varco",
+      "ui.dungeon": "Dungeon",
+
 
     },
 
@@ -726,7 +754,10 @@
       'ui.MarkerNamePlaceholder': '名称 / 备注',
       'toast.WarnDeleteAllMarkers': '确定要删除此地图上的所有标记吗？',
       'toast.NothingToShare': '没有路线或共享标记。勾选“共享”以将它们包含在链接中！',
-
+      'ui.SearchLocationPlaceholder': '搜索地区 / 裂隙 / 地下城...',
+      "ui.region":  "地区",
+      "ui.rift":    "裂隙",
+      "ui.dungeon": "地下城",
     },
 
   };

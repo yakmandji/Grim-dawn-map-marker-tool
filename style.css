@@ -251,8 +251,16 @@ textarea {
   border-radius: 6px;
   padding: 5px 10px;
   transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
 }
 
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="password"]:focus
+{
+  border-color: rgba(120, 241, 194, 0.8)!important;
+  box-shadow: 0 0 0 1px rgba(120, 241, 194, 0.3);
+}
 
 .done-input{
   flex: 0 0 auto;
@@ -592,6 +600,23 @@ button.marker-center,
   animation: markerRingPulse 0.7s ease-out 0s 2 forwards;
 }
 
+.marker-region.marker-highlight .region-label::after,
+.marker-region-dungeon.marker-highlight .region-label::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -8px;
+  right: -8px;
+  bottom: -4px;
+  border-radius: 12px;
+  border: 2px solid #78f1c2;
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  animation: markerRingPulse 0.7s ease-out 0s 2 forwards;
+}
+
+
 @keyframes markerRingPulse {
   0% {
     transform: scale(0.8);
@@ -626,19 +651,19 @@ button.marker-center,
 
 @keyframes highlightPulse {
   0% {
-    box-shadow: 0 0 0px 0 rgba(160,200,255,0);
+    box-shadow: 0 0 0px 0 rgba(26, 98, 74, 0);
     background: rgba(255,255,255,0.05);
   }
   25% {
-    box-shadow: 0 0 4px 2px rgba(160,200,255,0.5);
+    box-shadow: 0 0 4px 2px rgba(26, 98, 74, 0.5);
     background: rgba(255,255,255,0.1);
   }
   50% {
-    box-shadow: 0 0 7px 3px rgba(160,200,255,0.7);
+    box-shadow: 0 0 7px 3px rgba(26, 98, 74, 0.7);
     background: rgba(255,255,255,0.15);
   }
   100% {
-    box-shadow: 0 0 0px 0 rgba(160,200,255,0);
+    box-shadow: 0 0 0px 0 rgba(26, 98, 74, 0);
     background: rgba(255,255,255,0.05);
   }
 }
@@ -1194,6 +1219,7 @@ body.shared-only-view #mergeSharedBtn,
   align-items: center;
   gap: 4px; 
   pointer-events: none!important;
+  z-index: 3;
 }
 
 .marker-rift .label {
@@ -1209,6 +1235,23 @@ body.shared-only-view #mergeSharedBtn,
   display: block;
   width: 17px;
 }
+
+.marker-rift.marker-highlight::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 999px;
+  border: 2px solid #78f1c2;
+  box-shadow: 0 0 8px rgba(120, 241, 194, 0.7);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: markerRingPulse 0.7s ease-out 0s 2 forwards;
+}
+
 
 
 /*REGION MARKER*/
@@ -1623,6 +1666,127 @@ body.shared-only-view #mergeSharedBtn,
   text-shadow: 0 0 0 #c3f0dd;
 }
 
+
+/* --- Location search bar (bottom left) --- */
+
+.searchBar {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 23%;
+}
+
+.searchBar input#locationSearch {
+  padding: 10px 36px 10px 12px; /* 🟢 on ajoute du padding à droite pour l'icône */
+  border-radius: 999px;
+  border: 1px solid rgba(120, 241, 194, 0.35);
+  background-color: rgba(2, 16, 20, 0.9);
+  color: #e5f7f3;
+  font-size: 13px;
+  outline: none;
+
+  background-image: url('img/search-icon.svg'); /* 🔍 ton icône */
+  background-repeat: no-repeat;
+  background-position: right 12px center;       /* position à droite */
+  background-size: 16px 16px;                   /* taille de l'icône */
+}
+
+.searchBar input#locationSearch::placeholder {
+  color: rgba(229, 247, 243, 0.45);
+}
+
+/* Liste des résultats de recherche */
+.search-results {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);  /* juste au-dessus de l'input */
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: rgba(2, 16, 20, 0.96);
+  border-radius: 12px;
+  border: 1px solid rgba(120, 241, 194, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  font-size: 13px;
+  padding: 4px 0;
+  z-index: 40;
+
+  display: none; /* JS passera à block quand il y a des résultats */
+}
+
+.search-type-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0; 
+  opacity: 0.9;
+  filter: drop-shadow(0 0 3px #78f1c2);
+  margin-right: 6px;
+}
+
+.search-input-icon {
+  position: absolute;
+  right: 80px; /* ✨ dépend de ton bouton Markers */
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+  pointer-events: none;
+  filter: drop-shadow(0 0 3px #78f1c2);
+}
+
+.search-input-icon:hover {
+  opacity: 1;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.search-result span.search-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #e5f7f3;
+}
+
+.search-result.is-active,
+.search-result:hover {
+  background: rgba(120, 241, 194, 0.18);
+}
+
+/* Couleur spécifique pour les TYPES dans l’autocomplétion */
+.search-result.type-region .search-label {
+  color: #78f1c2; /* vert clair (région) */
+}
+
+.search-result.type-dungeon .search-label {
+  color: #b99963; 
+}
+
+.search-result.type-rift .search-label {
+  color: #ff6b6b; 
+}
+
+/* Icônes assorties */
+.search-result.type-region .search-type-icon {
+  filter: drop-shadow(0 0 3px #78f1c2);
+}
+
+.search-result.type-dungeon .search-type-icon {
+  filter: drop-shadow(0 0 4px #d8a8ff);
+}
+
+.search-result.type-rift .search-type-icon {
+  filter: drop-shadow(0 0 4px #ff6b6b);
+}
 
 
 

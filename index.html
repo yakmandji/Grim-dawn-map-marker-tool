@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="style.css?3.31" />
+  <link rel="stylesheet" href="style.css?3.32" />
 </head>
 <body>
   <p aria-hidden="true" class="seo-summary">
@@ -99,7 +99,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.3.8</span>
+        <span>V.4.0</span>
       </div>      
       <div class="title">
         <div class="app-logo">
@@ -266,8 +266,14 @@
           <img id="mapImg" alt="Map" draggable="false" />
         </div>
       </div>
-      <div class="floating">
 
+      <div class="searchBar">
+        <input id="locationSearch" type="text" placeholder="Search region / rift / dungeon..." data-i18n-placeholder="ui.SearchLocationPlaceholder"
+        />
+        <div id="locationSearchResults" class="search-results markers-scroll"></div>
+      </div>
+
+      <div class="floating">
         <div id="zoomControls">
           <button id="zoomOut">−</button>
           <span class="chip" id="zoomReadout">100%</span>
@@ -341,18 +347,19 @@
   </div>
 </div>
 
-  <script src="ui.lang.js?v=3.34"></script>
+  <script src="ui.lang.js?v=3.35"></script>
   <script src="core.js?v=3.06"></script>
   <script src="ui.rift.js?v=3.82"></script>
-  <script src="ui.region.js?v=3.84"></script>
+  <script src="ui.region.js?v=3.85"></script>
   <script src="ui.navmarkers.js?v=1.14"></script>
   <script src="ui.map.base.js?v=1.11"></script>
-  <script src="ui.core.js?v=3.45"></script>
+  <script src="ui.core.js?v=3.46"></script>
   <script src="libs/lz-string.min.js"></script>
   <script src="libs/pako.min.js"></script>
   <script src="ui.tools.js?v=2.9"></script>
   <script src="ui.overlay.js?v=2.98"></script>
-  <script src="ui.filter.js?v=2.92"></script>
+  <script src="ui.filter.js?v=2.93"></script>
+  <script src="ui.search.js"></script>
 
 </body>
 </html>

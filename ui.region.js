@@ -63,7 +63,7 @@
       id: 'tag_gDX1UG_ugdenbog_cave01',
       tag: 'tagGDX1UGUgdenbogCave01',
       xp: 93.92,
-      yp: 42.66,
+      yp: 42.45,
       isDungeon: true
     },
     {
@@ -177,8 +177,8 @@
     {
       id: 'map_hallowed_hill',
       tag: 'tagMapHallowedHill',
-      xp: 70.61,
-      yp: 64.37
+      xp: 69.94,
+      yp: 63.94
     },
     {
   id: 'map_east_marsh01',
@@ -195,8 +195,8 @@
   {
     id: 'GDX1UG_ugdenbog_wendigo01',
     tag: 'tagGDX1UGUgdenbogWendigo01',
-      xp: 76.26,
-      yp: 27.18,
+      xp: 76.57,
+      yp: 29.30,
       isDungeon: true
   },
   {
@@ -226,8 +226,8 @@
   {
     id: 'GDX1_map_ugdenbog',
     tag: 'tagGDX1MapUgdenbog',
-      xp: 83.17,
-      yp: 46.99
+      xp: 83.16,
+      yp: 46.38
   },
   {
     id: 'GDX1_map_ugdenbog_coven',
@@ -276,8 +276,8 @@
   {
     id: 'GDX1_UG_ancient_grove01',
     tag: 'tagGDX1UGAncientGrove01',
-    xp: 96.82,
-    yp: 49.5,
+      xp: 95.80,
+      yp: 51.39,
     isDungeon: true
   },
   {
@@ -297,15 +297,15 @@
   {
     id: 'GDX1_UG_ugdenbog_wendigo02',
     tag: 'tagGDX1UGUgdenbogWendigo02',
-      xp: 72.40,
-      yp: 26.97,
+      xp: 74.91,
+      yp: 26.80,
       isDungeon: true
   },
   {
     id: 'GDX1_UG_ugdenbog_void_rift01',
     tag: 'tagGDX1UGUgdenbogVoidRift01',
-    xp: 77.16,
-    yp: 21.88,
+      xp: 74.62,
+      yp: 23.96,
     isDungeon: true
   },
   {
@@ -804,15 +804,15 @@
 {
   id: 'map_wardens_labratory01',
   tag: 'tagMapWardensLabratory01',
-  xp: 63.57,
-  yp: 51.1,
+  xp: 61.49,
+  yp: 48.77,
   isDungeon: true
 },
 {
   id: 'GDX1_UG_ugdenbog_cellar02',
   tag: 'tagGDX1UGUgdenbogCellar02',
-  xp: 78.79,
-  yp: 56.76,
+    xp: 78.92,
+    yp: 57.40,
   isDungeon: true
 },
 {
@@ -1104,7 +1104,7 @@
     id: 'tag_gdx2_map_ruined_temple01',
     tag: 'tagGDX2MapRuinedTemple01',
       xp: 35.41,
-      yp: 76.30,
+      yp: 76.10,
   },
   {
     id: 'tag_gdx2_map_area01_b',

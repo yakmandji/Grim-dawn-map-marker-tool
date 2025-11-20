@@ -909,6 +909,7 @@ function renderMarkers(options = {}) {
     inner.appendChild(el);
   });
 
+  window.GDMMSearch?.refresh(regionData, riftData);
 
   // --- Nav admin markers (icon-only, clickable) ---
     function resolveCompositeTag(tag) {
@@ -1165,6 +1166,7 @@ function renderRoutesPanel() {
       }
     }
   }
+  window.centerOn = centerOn;
 
   // --- Pan & Zoom ---
   let panning = false, panId = null, panStart = {x:0,y:0}, viewStart = {x:0,y:0};
@@ -1316,6 +1318,13 @@ viewport.addEventListener('pointerdown', e => {
 
   // --- classic PAN ---
   e.preventDefault();
+
+  // If input focus go to blur
+  const ae = document.activeElement;
+  if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT')) {
+    ae.blur();
+  }
+
   if (e.target.closest && e.target.closest('.marker')) {
     return;
   }
@@ -1326,6 +1335,7 @@ viewport.addEventListener('pointerdown', e => {
   panStart = { x: e.clientX, y: e.clientY };
   viewStart = { ...state.view };
 });
+
 
 
 function updateDungeonHover(e) {
