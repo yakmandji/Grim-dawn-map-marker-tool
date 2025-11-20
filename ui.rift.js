@@ -202,8 +202,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'dark_vale',
     tag: 'tagRiftDarkvale',
-    xp: 28.88,
-    yp: 39.27
+      xp: 29.24,
+      yp: 39.23
   }  
 ];
 
@@ -311,8 +311,8 @@ window.RIFT_MARKERS_KORVAN = [
     {
     id: 'rift_lost_oasis',
     tag: 'tagGDX2RiftLostOasis',
-      xp: 88.35,
-      yp: 17.58
+      xp: 88.40,
+      yp: 17.72
   }  
 ]
 
