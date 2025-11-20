@@ -1344,8 +1344,14 @@ function updateDungeonHover(e) {
   const x = e.clientX;
   const y = e.clientY;
 
+  // On cible uniquement les labels de donjon
+  const dungeonMarkers = document.querySelectorAll('.marker-region-dungeon .region-label');
+
+  let insideAny = false;
+
   state.dungeonOverlays.forEach(d => {
     if (!d.el) return;
+
     const rect = d.el.getBoundingClientRect();
     const inside =
       x >= rect.left &&
@@ -1354,8 +1360,19 @@ function updateDungeonHover(e) {
       y <= rect.bottom;
 
     d.el.classList.toggle('is-hovered', inside);
+
+    if (inside) {
+      insideAny = true;
+    }
+  });
+
+  // Si on est au-dessus de AU MOINS un overlay,
+  // on applique la classe à tous les donjons.
+  dungeonMarkers.forEach(el => {
+    el.classList.toggle('opacity', insideAny);
   });
 }
+
 
 
 
