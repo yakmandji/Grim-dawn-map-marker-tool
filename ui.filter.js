@@ -20,7 +20,7 @@
     // --- Markers on map ---
     document.querySelectorAll('.marker').forEach(el => {
 
-      // 🔥 SI le marker est Done → il est TOUJOURS visible, ignore les filtres
+      // SI marke done ignore filter
       if (el.dataset.done === '1') {
         el.style.display = '';
         return;
@@ -159,17 +159,10 @@
     });
   });
 
-
-    const riftBtn = document.querySelector('.filterToggle[data-admin="rift"]');
-    if (riftBtn) {
-      riftBtn.classList.remove('is-on');
-    }
-
   // Apply initial state
   applyAdminVisibility();
 
-/*------------------------------------------------------------------------
-*/
+/*----------------------------------------------*/
 
   window.UiFilters = {
     applyCategoryFilters,
