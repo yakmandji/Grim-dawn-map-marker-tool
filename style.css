@@ -241,21 +241,6 @@ button.danger:hover {
   color: #cb939c;
 }
 
-button.ok {
-  background: linear-gradient(145deg, #1e3a2a, #15291e);
-  color: #b7ffd2;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.05),
-    0 4px 8px rgba(0,0,0,0.5);
-}
-button.ok:hover {
-  background: linear-gradient(145deg, #234931, #183424);
-  color: #d0ffe5;
-}
-
-.ok { background: #1e3a2a; border-color: #2e6143; }
-
-
 input[type="text"],
 input[type="search"],
 input[type="password"],
@@ -526,10 +511,8 @@ textarea {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
   padding: 16px 8px 16px 8px;
-  display: grid; 
-  grid-template-columns: auto 1fr auto; 
   align-items: center;
   border-radius: 8px;
 }
@@ -545,6 +528,12 @@ textarea {
 .listItem:last-child { 
   border-bottom: none; 
 }
+
+#routesList .listItem input[type="text"]{
+    max-width: 235px;
+}
+
+
 .chip { 
   font-size: 12px; 
   opacity: .85;
