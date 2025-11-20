@@ -81,10 +81,10 @@ window.DUNGEON_OVERLAYS = [
 { id: 'tomb_eldtrich_sun',      map: 'korvan', img: 'tomb-eldtrich-sun.jpg',    left: 60.6329, top: 1.6381,  width: 16.0630, height: 17.9762 },
 { id: 'sanctuary_horan',        map: 'korvan', img: 'sanctuary-horan.jpg',      left: 42.4004, top: 36.3038, width: 9.6211,  height: 9.3995 },
 { id: 'tomb_ariath',            map: 'korvan', img: 'tomb-ariath.jpg',          left: 40.5954, top: 28.4806, width: 6.8161,  height: 6.6616 },
-{ id: 'remnant_korvan_city',    map: 'korvan', img: 'remnant-korvan-city.jpg',  left: 43.8252, top: 21.4634, width: 5.2887,  height: 5.1648 },
+{ id: 'remnant_korvan_city',    map: 'korvan', img: 'remnant-korvan-city.jpg',  left: 43.2252, top: 16.4634, width: 5.2887,  height: 5.1648 },
 { id: 'sunward_spire',          map: 'korvan', img: 'sunward-spire.jpg',        left: 29.9444, top: 11.7027, width: 12.9225, height: 15.0396 },
 { id: 'sanctum_choosen',        map: 'korvan', img: 'sanctum-choosen.jpg',      left: 6.1701,  top: 6.2112,  width: 20.8001, height: 20.3174 },
-
+{ id: 'pit_atonement',        map: 'korvan', img: 'pit-atonement.jpg',      left: 49.1701,  top: 21.2112,  width: 2.51, height: 2.500 },
 
 ];
 

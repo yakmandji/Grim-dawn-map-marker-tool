@@ -14,7 +14,48 @@
       xp: 72.90,
       yp: 77.69,
       isDungeon: true
+    },
+    {
+      id: 'tag_map_ominous_lair',
+      tag: 'tagMapOminousLair',
+      xp: 60.6,
+      yp: 52.00,
+      isDungeon: true
+    },
+    {
+      id: 'tag_map_laboratory_storerooms',
+      tag: 'tagMapLaboratoryStorerooms',
+      xp: 59.19,
+      yp: 53.17,
+      isDungeon: true
     },    
+    {
+      id: 'tag_map_laboratory_living_quarters',
+      tag: 'tagMapLaboratoryLivingQuarters',
+      xp: 62.08,
+      yp: 50.76,
+      isDungeon: true
+    },
+    {
+      id: 'tag_map_laboratory_jail',
+      tag: 'tagMapLaboratoryJail',
+      xp: 59.12,
+      yp: 49.44,
+      isDungeon: true
+    },    
+    {
+      id: 'tag_map_laboratory_inner',
+      tag: 'tagMapLaboratoryInner',
+      xp: 60.41,
+      yp: 50.17,
+      isDungeon: true
+    },
+    {
+      id: 'tag_map_four_hills',
+      tag: 'tagMapFourHills',
+      xp: 52.79,
+      yp: 75.72
+    }, 
     {
       id: 'ta_uG_burial_cave',
       tag: 'tagUGBurialCave',
@@ -22,6 +63,13 @@
       yp: 78,
       isDungeon: true
     },
+    {
+      id: 'tag_gDX1UG_ancient_grove01D',
+      tag: 'tagGDX1UGAncientGrove01D',
+      xp: 89.43,
+      yp: 58,
+      isDungeon: true
+    },    
     {
       id: 'tag_map_hidden_path01',
       tag: 'tagMapHiddenPath01',
@@ -1082,6 +1130,13 @@
       xp: 22.86,
       yp: 98.96
   },
+    {
+  id: 'tag_gDX2_map_messengers_volcano',
+  tag: 'tagGDX2MapMessengersVolcano',
+      xp: 49,
+      yp: 23.65,
+      isDungeon: true
+  },
   {
     id: 'tag_gdx2_map_witch_god_base',
     tag: 'tagGDX2MapWitchGodBase',
@@ -1206,8 +1261,8 @@
 {
   id: 'tag_gdx2_map_area05',
   tag: 'tagGDX2MapArea05',
-      xp: 44.13,
-      yp: 21.8,
+      xp: 43.62,
+      yp: 16.86,
       isDungeon: true
 },
 {

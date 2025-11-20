@@ -52,14 +52,14 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_wardens_labratory01',
     tag: 'tagRiftWardensLabratory01',
-      xp: 64.09,
-      yp: 51.67
+      xp: 60.38,
+      yp: 54.75
   },
   {
     id: 'rift_wardens_labratory02',
     tag: 'tagRiftWardensLabratory02',
-      xp: 60.38,
-      yp: 54.75
+      xp: 64.09,
+      yp: 51.67
   },
   {
     id: 'rift_broken_hills',
