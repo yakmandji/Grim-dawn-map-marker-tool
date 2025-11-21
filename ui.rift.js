@@ -299,8 +299,8 @@ window.RIFT_MARKERS_KORVAN = [
     {
     id: 'rift_temple',
     tag: 'tagGDX2RiftTemple',
-      xp: 63.25,
-      yp: 16.83
+      xp: 58.11,
+      yp: 7.50
   },
     {
     id: 'rift_korvan_city',
@@ -313,7 +313,15 @@ window.RIFT_MARKERS_KORVAN = [
     tag: 'tagGDX2RiftLostOasis',
       xp: 88.40,
       yp: 17.72
+  },
+    {
+    id: 'tag_gDX2_rift_eldritch',
+    tag: 'tagGDX2RiftEldritch',
+      xp: 68.69,
+      yp: 8.43
   }  
+
+  
 ]
 
 // 2) Rift localization

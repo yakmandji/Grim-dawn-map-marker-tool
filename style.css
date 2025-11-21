@@ -367,7 +367,7 @@ input[type="password"]:focus
 
 .mapWrap {
   position: relative;
-  background: #070d12;
+  background: #0e0a06;
   border: 1px solid #244b51;
   border-radius: 14px;
   box-shadow: var(--shadow);
@@ -1285,7 +1285,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .korvanmap .region-label{
-  font-size: 1.2em;
+  font-size: 0.9em;
 }
 
 .marker-region-dungeon .region-label{

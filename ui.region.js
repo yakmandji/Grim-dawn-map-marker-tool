@@ -1372,9 +1372,8 @@
 {
   id: 'tag_gdx2_map_area05',
   tag: 'tagGDX2MapArea05',
-      xp: 43.62,
-      yp: 16.86,
-      isDungeon: true
+      xp: 52.14,
+      yp: 20.10
 },
 {
   id: 'tag_gdx2_map_road_to_korvaak_temple',
@@ -1468,8 +1467,8 @@
 {
   id: 'tag_gdx2_korvaak_tomb01',
   tag: 'tagGDX2KorvaakTomb01',
-      xp: 69.10,
-      yp: 10.79,
+      xp: 64.12,
+      yp: 1.53,
       isDungeon: true
 },
 {
@@ -1551,11 +1550,59 @@
 {
   id: 'tag_gDX2_roguelike_area01',
   tag: 'tagGDX2Roguelike_Area01',
-      xp: 40.63,
-      yp: 60.57,
+      xp: 38.17,
+      yp: 63.69,
       isDungeon: true
 },
-
+{
+  id: 'tag_gDX2_beet_le02',
+  tag: 'tagGDX2Beetle02',
+      xp: 36.71,
+      yp: 55.8,
+      isDungeon: true
+},
+{
+  id: 'tag_gDX2_map_room',
+  tag: 'tagGDX2MapRoom',
+      xp: 43.78,
+      yp: 17.09,
+      isDungeon: true
+},
+{
+  id: 'tag_gDX2_korvaak_tomb02',
+  tag: 'tagGDX2KorvaakTomb02',
+      xp: 67.80,
+      yp: 8.67,
+      isDungeon: true
+},
+{
+  id: 'tag_gDX2_eldritch_realm01',
+  tag: 'tagGDX2EldritchRealm01',
+      xp: 70.88,
+      yp: 0.41,
+      isDungeon: true
+},
+{
+  id: 'tag_gDX2_eldritch_realm02',
+  tag: 'tagGDX2EldritchRealm02',
+      xp: 75.77,
+      yp: -1.50,
+      isDungeon: true
+},
+{
+  id: 'tag_gDX2_cellar',
+  tag: 'tagGDX2Cellar',
+      xp: 14.57,
+      yp: 91.67,
+      isDungeon: true
+},
+{
+  id: 'tag_gDX2_roguelike_Area03',
+  tag: 'tagGDX2Roguelike_Area03',
+      xp: 51.92,
+      yp: 72.91,
+      isDungeon: true
+},
 
   ];
 
