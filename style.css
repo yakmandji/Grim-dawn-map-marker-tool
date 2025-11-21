@@ -1226,7 +1226,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .marker-rift .label {
-  font-size: 0.85em;
+  font-size: 0.90em;
   opacity: 0.9;
   background: rgb(58 13 4 / 75%);
   border: 1px solid #6d1a10;
@@ -1236,7 +1236,7 @@ body.shared-only-view #mergeSharedBtn,
 
 .marker-rift .rift-icon {
   display: block;
-  width: 17px;
+  width: 18px;
 }
 
 .marker-rift.marker-highlight::after {
@@ -1266,10 +1266,10 @@ body.shared-only-view #mergeSharedBtn,
 
 .region-label {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 1em;
+  font-size: 1.15em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #a2917c;
+  color: #b19f8a;
   text-shadow:0 0 3px rgba(0, 2, 2, 2),
     0 0px 4px rgba(0, 2, 2, 2),
     0 0 7px rgba(0, 2, 2, 2);
@@ -1278,7 +1278,6 @@ body.shared-only-view #mergeSharedBtn,
   background: none;
   border: none;
   padding: 0;
-  opacity: 0.95;
 }
 
 .malmouthmap .region-label{
@@ -1286,16 +1285,15 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .korvanmap .region-label{
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .marker-region-dungeon .region-label{
-  opacity: 0.3;
-
+  opacity: 0.4;
 }
 
 .marker-region-dungeon .region-label.opacity{
-  opacity: 0.85;
+  opacity: 0.90;
   color: #a4927a;
 }
 
