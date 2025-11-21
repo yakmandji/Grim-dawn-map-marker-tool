@@ -1148,7 +1148,7 @@ function renderRoutesPanel() {
     const vb = viewport.getBoundingClientRect();
     const pt = pctToPx(xp, yp);
 
-    const scale = clamp(targetScale || state.view.scale, 0.2, 4);
+    const scale = clamp(targetScale || state.view.scale, 0.25, 1.28);
     state.view.scale = scale;
 
     state.view.x = vb.width  / 2 - pt.x * scale;
@@ -1337,18 +1337,19 @@ viewport.addEventListener('pointerdown', e => {
 });
 
 
+/*Donjon highlight*/
 
 function updateDungeonHover(e) {
   if (!state.dungeonOverlays || !state.dungeonOverlays.length) return;
 
   const x = e.clientX;
   const y = e.clientY;
+  const labels = document.querySelectorAll('.marker-region-dungeon .region-label');
+  labels.forEach(l => l.classList.remove('opacity'));
 
-  // On cible uniquement les labels de donjon
-  const dungeonMarkers = document.querySelectorAll('.marker-region-dungeon .region-label');
+  let activeRect = null;
 
-  let insideAny = false;
-
+  // 1) Trouver l'overlay actuellement survolé
   state.dungeonOverlays.forEach(d => {
     if (!d.el) return;
 
@@ -1362,17 +1363,26 @@ function updateDungeonHover(e) {
     d.el.classList.toggle('is-hovered', inside);
 
     if (inside) {
-      insideAny = true;
+      activeRect = rect;
     }
   });
 
-  // Si on est au-dessus de AU MOINS un overlay,
-  // on applique la classe à tous les donjons.
-  dungeonMarkers.forEach(el => {
-    el.classList.toggle('opacity', insideAny);
+  if (!activeRect) return;
+
+  // 3) Highlight seulement les labels correspondants à ce donjon
+  labels.forEach(l => {
+    const r = l.getBoundingClientRect();
+    const intersect =
+      !(r.right  < activeRect.left ||
+        r.left   > activeRect.right ||
+        r.bottom < activeRect.top ||
+        r.top    > activeRect.bottom);
+
+    if (intersect) {
+      l.classList.add('opacity'); // éclairé
+    }
   });
 }
-
 
 
 
@@ -1395,7 +1405,7 @@ function updateDungeonHover(e) {
         const ratio = newDist / pinchState.startDistance;
         const targetScale = clamp(
           pinchState.startScale * ratio,
-          0.18,
+          0.25,
           1.28
         );
 
@@ -1488,7 +1498,7 @@ function updateDungeonHover(e) {
   //ZOOM FONCTION
     function zoomAt(clientX, clientY, step) {
       const old = state.view.scale;
-      const ns = clamp(old * (1 + step), 0.18, 1.28);
+      const ns = clamp(old * (1 + step), 0.25, 1.28);
       if (ns === old) return;
 
       const vb = viewport.getBoundingClientRect();
