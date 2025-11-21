@@ -1061,6 +1061,15 @@
       yp: 31.95,
       isDungeon: true
 },
+
+{
+  id: 'tag_gDX1UG_ancient_grove01C',
+  tag: 'tagGDX1UGAncientGrove01C',
+      xp: 95.77,
+      yp: 55.68,
+      isDungeon: true
+},
+
 {
   id: 'tag_uG_secret01',
   tag: 'tagUGSecret01',
@@ -1100,6 +1109,13 @@
   yp: 44.32
 },
 {
+  id: 'tag_gDX1UG_ugdenbog_void_rift_04',
+  tag: 'tagGDX1UGUgdenbogVoidRift04',
+    xp: 81.48,
+    yp: 58.97,
+    isDungeon: true
+},
+{
   id: 'tag_gdx1_map_malmouth_outskirts',
   tag: 'tagGDX1MapMalmouthOutskirts',
   xp: 67.78,
@@ -1125,12 +1141,27 @@
       isDungeon: true
 },
 {
-  id: 'tag_gdx1_ug_malmouth_aetherial_factory02',
-  tag: 'tagGDX1UGMalmouthAetherialFactory02',
-      xp: 7.72,
-      yp: 8.63,
+  id: 'tag_gDX1UG_malmouth_cathedral_01B',
+  tag: 'tagGDX1UGMalmouthCathedral01B',
+      xp: 11.39,
+      yp: 85.80,
       isDungeon: true
 },
+{
+  id: 'tag_gdx1_ug_malmouth_aetherial_factory02',
+  tag: 'tagGDX1UGMalmouthAetherialFactory02',
+      xp: 8.01,
+      yp: 27.14,
+      isDungeon: true
+},
+{
+  id: 'tag_gDX1UG_malmouth_aetherial_factory05',
+  tag: 'tagGDX1UGMalmouthAetherialFactory05',
+      xp: 6.27,
+      yp: 0.76,
+      isDungeon: true
+},
+
 {
   id: 'tag_gdx1_ug_malmouth_sewer02',
   tag: 'tagGDX1UGMalmouthSewer02',
@@ -1148,17 +1179,25 @@
 {
   id: 'tag_gdx1_ug_malmouth_cathedral01',
   tag: 'tagGDX1UGMalmouthCathedral01',
-      xp: 19.43,
-      yp: 68.71,
+      xp: 17.81,
+      yp: 68.66,
      isDungeon: true
 },
 {
   id: 'tag_gdx1_ug_malmouth_hideout01',
   tag: 'tagGDX1UGMalmouthHideout01',
-      xp: 38.46,
-      yp: 65.66,
+    xp: 34.68,
+    yp: 64.47,
   isDungeon: true
 },
+{
+  id: 'tag_gDX1UG_malmouth_sewer01',
+  tag: 'tagGDX1UGMalmouthSewer01',
+      xp: 33.42,
+      yp: 76.67,
+  isDungeon: true
+},
+
 {
   id: 'tag_gdx1_ug_malmouth_outskirts_cellar01',
   tag: 'tagGDX1UGMalmouthOutskirtsCellar01',
@@ -1169,8 +1208,8 @@
 {
   id: 'tag_gdx1_ug_ugdenbog_void_rift02',
   tag: 'tagGDX1UGUgdenbogVoidRift02',
-  xp: 88.42,
-  yp: 60.36,
+    xp: 91.31,
+    yp: 71.37,
   isDungeon: true
 },
 {
