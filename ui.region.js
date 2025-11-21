@@ -59,8 +59,8 @@
     {
       id: 'ta_uG_burial_cave',
       tag: 'tagUGBurialCave',
-      xp: 63.60,
-      yp: 78,
+      xp: 63.86,
+      yp: 78.59,
       isDungeon: true
     },
     {
