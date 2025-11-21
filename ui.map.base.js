@@ -106,7 +106,7 @@
       state.view.y     = p.view.y ?? 0;
       applyView();
     } else {
-      fitToScreen();
+      setDefaultViewForProfile();
     }
 
     if (skipRestore) {
@@ -140,13 +140,67 @@
     const ih = state.mapNatural.h || 1;
     const s = Math.min(vb.width / iw, vb.height / ih);
 
-    // Tu utilisais déjà une valeur fixe, je la garde telle quelle
     state.view.scale = 0.18;
     state.view.x = (vb.width  - iw * state.view.scale) / 2;
     state.view.y = (vb.height - ih * state.view.scale) / 2;
 
     applyView();
   }
+
+    function setDefaultViewForProfile() {
+      const p  = currentProfile && currentProfile();
+      const vp = viewport;
+      const iw = state.mapNatural.w || 1;
+      const ih = state.mapNatural.h || 1;
+
+      if (!vp || !iw || !ih) {
+        fitToScreen();
+        return;
+      }
+
+      // Nom du profil courant (Cairn / Malmouth / Korvan Basin…)
+      const name = p?.name || state.active;
+
+      // Coords par défaut (en % de la map) + zoom "confort"
+      let xp = null;
+      let yp = null;
+      let scale = 0.8; // tu peux ajuster
+
+      if (name === 'Cairn') {
+        // Devil's Crossing
+        xp = 62.2;
+        yp = 88.85;
+        scale = 0.8;
+      } else if (name === 'Malmouth') {
+        // Entrée de Malmouth
+        xp = 66.52;
+        yp = 87.07;
+        scale = 0.7;
+      } else if (name === 'Korvan Basin') {
+        // Conclave of the Three
+        xp = 20.83;
+        yp = 93.01;
+        scale = 0.7;
+      }
+
+      // Si on n'a rien de spécial pour ce profil → fallback
+      if (xp == null || yp == null) {
+        fitToScreen();
+        return;
+      }
+
+      const vb = viewport.getBoundingClientRect();
+      const mx = (xp / 100) * iw;
+      const my = (yp / 100) * ih;
+
+      state.view.scale = scale;
+      state.view.x = vb.width  / 2 - mx * scale;
+      state.view.y = vb.height / 2 - my * scale;
+
+      applyView();
+    }
+
+
 
   function applyView() {
     const { x, y, scale } = state.view;
