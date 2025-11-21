@@ -23,6 +23,13 @@
       isDungeon: true
     },
     {
+      id: 'tag_uGOld_arkovia03',
+      tag: 'tagUGOldArkovia03',
+      xp: 40.91,
+      yp: 84,
+      isDungeon: true
+    },
+    {
       id: 'tag_map_laboratory_storerooms',
       tag: 'tagMapLaboratoryStorerooms',
       xp: 59.19,
@@ -42,12 +49,26 @@
       xp: 59.12,
       yp: 49.44,
       isDungeon: true
-    },    
+    },
+    {
+      id: 'tag_U_gOld_arkovia_04',
+      tag: 'tagUGOldArkovia04',
+      xp: 55.72,
+      yp: 80.60,
+      isDungeon: true
+    },
     {
       id: 'tag_map_laboratory_inner',
       tag: 'tagMapLaboratoryInner',
       xp: 60.41,
       yp: 50.17,
+      isDungeon: true
+    },
+    {
+      id: 'tag_uG_flooded_passage_ruin',
+      tag: 'tagUGFloodedPassageRuin',
+      xp: 59.78,
+      yp: 67.44,
       isDungeon: true
     },
     {
@@ -129,6 +150,13 @@
       isDungeon: true
     },
     {
+      id: 'tag_UG_broken_hills02F',
+      tag: 'tagUGBrokenHills02F',
+      xp: 46.62,
+      yp: 99.05,
+      isDungeon: true
+    },
+    {
       id: 'map_old_grove',
       tag: 'tagMapOldGrove',
       xp: 62.27,
@@ -174,8 +202,8 @@
     {
       id: 'map_flooded_passage01',
       tag: 'tagMapFloodedPassage01',
-      xp: 60.00,
-      yp: 66.40,
+      xp: 61.35,
+      yp: 66.42,
       isDungeon: true
     },
     {
@@ -675,6 +703,14 @@
       isDungeon: true
 },
 {
+  id: 'tag_uGVoid_lands_01D',
+  tag: 'tagUGVoidlands01D',
+      xp: 41.52,
+      yp: 3.30,
+      isDungeon: true
+},
+
+{
   id: 'map_darkvale_gate',
   tag: 'tagMapDarkvaleGate',
   xp: 25.21,
@@ -873,15 +909,15 @@
 {
   id: 'UG_voidlands01b',
   tag: 'tagUGVoidlands01B',
-  xp: 45.58,
-  yp: 1.53,
+      xp: 44.51,
+      yp: 4.25,
   isDungeon: true
 },
 {
   id: 'UG_voidlands01a',
   tag: 'tagUGVoidlands01A',
-  xp: 40.21,
-  yp: 1.71,
+      xp: 38.59,
+      yp: 5.29,
   isDungeon: true
 },
 {
@@ -894,15 +930,15 @@
 {
   id: 'UG_voidlands01',
   tag: 'tagUGVoidlands01',
-  xp: 33.55,
-  yp: 1.71,
+      xp: 31.51,
+      yp: 5.35,
   isDungeon: true
 },
 {
   id: 'map_smugglers_pass',
   tag: 'tagMapSmugglersPass',
-      xp: 30.86,
-      yp: 90.59,
+      xp: 30.73,
+      yp: 84.54,
       isDungeon: true
 },
 {
@@ -915,10 +951,40 @@
 {
   id: 'UG_dermapteran03a',
   tag: 'tagUGDermapteran03A',
-  xp: 18.16,
-  yp: 66.32,
+      xp: 19.77,
+      yp: 68.35,
   isDungeon: true
 },
+{
+  id: 'tag_uG_dermapteran_02',
+  tag: 'tagUGDermapteran02',
+      xp: 15.12,
+      yp: 68.09,
+  isDungeon: true
+},
+{
+  id: 'tag_uG_dermapteran_01',
+  tag: 'tagUGDermapteran01',
+      xp: 17.50,
+      yp: 66.46,
+  isDungeon: true
+},
+{
+  id: 'tag_uGHomestead_cave01',
+  tag: 'tagUGHomesteadCave01',
+    xp: 15.34,
+    yp: 62.88,
+  isDungeon: true
+},
+{
+  id: 'tag_uG_dermapteran_03B',
+  tag: 'tagUGDermapteran03B',
+      xp: 19.40,
+      yp: 62.93,
+  isDungeon: true
+},
+
+
 {
   id: 'UG_crypt_necro01',
   tag: 'tagUGCryptNecro01',
@@ -976,10 +1042,18 @@
 {
   id: 'tag_G_jagged_waste_cave02',
   tag: 'tagUGJaggedWasteCave02',
-      xp: 23.56,
-      yp: 84.41,
+      xp: 25.46,
+      yp: 83.37,
       isDungeon: true
 },
+{
+  id: 'tag_UG_jagged_waste_cave01',
+  tag: 'tagUGJaggedWasteCave01',
+      xp: 21.97,
+      yp: 80.51,
+      isDungeon: true
+},
+
 {
   id: 'tag_GDX1UG_jgdenbog_cave04',
   tag: 'tagGDX1UGUgdenbogCave04',
@@ -995,8 +1069,6 @@
       isDungeon: true
 },
   ];
-
-
 
 
 
@@ -1687,6 +1759,7 @@ en: {
   tagGDX1UGUgdenbogVoidRift01: "Desolate Wastes",
   tagGDX1UGUgdenbogVoidRift02: "Cinder Wastes",
   tagGDX1UGUgdenbogVoidRift03: "Void's Edge",
+  
   tagGDX1UGUgdenbogVoidRift04: "Fringes of Sanity",
   tagGDX1UGMalmouthSewer01: "Malmouth Sewers",
   tagGDX1UGMalmouthSewer02: "Swelling Depths",
