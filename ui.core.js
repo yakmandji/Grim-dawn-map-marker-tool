@@ -528,6 +528,8 @@ function renderMarkers(options = {}) {
   document.querySelectorAll('#mapInner .path-endpoint').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .marker-region').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .marker-link').forEach(n => n.remove());
+  document.querySelectorAll('#mapInner .marker-entry-dungeon').forEach(n => n.remove());
+
 
   const oldSvg = document.getElementById('pathLayer');
   if (oldSvg) oldSvg.remove();
@@ -911,6 +913,63 @@ function renderMarkers(options = {}) {
 
   window.GDMMSearch?.refresh(regionData, riftData);
 
+
+
+// --- Dungeon entries (eyes) ---
+let entryMarkers = [];
+if (window.DUNGEON_ENTRY_MARKERS_BY_SIZE && state.mapNatural) {
+  const key = resolveSizeKey(window.DUNGEON_ENTRY_MARKERS_BY_SIZE);
+  if (key && window.DUNGEON_ENTRY_MARKERS_BY_SIZE[key]) {
+    entryMarkers = window.DUNGEON_ENTRY_MARKERS_BY_SIZE[key];
+  }
+}
+
+// on réinitialise à chaque render
+state.dungeonEntries = {};
+
+entryMarkers.forEach(m => {
+  const el = document.createElement("div");
+  el.classList.add("marker-entry-dungeon");
+  el.dataset.entryId = m.id;
+
+  const img = document.createElement("img");
+  img.src = m.icon || "img/eye-icon.png";
+  img.className = "entry-icon";
+  el.appendChild(img);
+
+
+
+  const pt = pctToPx(m.xp, m.yp);
+  el.style.left = pt.x + "px";
+  el.style.top  = pt.y + "px";
+
+  // Survol entrée → trait vers overlay
+  el.addEventListener("pointerenter", () => {
+    if (window.showDungeonLinksForEntry) {
+      window.showDungeonLinksForEntry(m.id);
+    }
+  });
+
+  el.addEventListener("pointerleave", () => {
+    if (window.clearDungeonLinks) {
+      window.clearDungeonLinks();
+    }
+
+    // on enlève le hover forcé sur les donjons
+    if (GDMMCore.state && GDMMCore.state.dungeonOverlays) {
+      GDMMCore.state.dungeonOverlays.forEach(ov => {
+        ov.el.classList.remove("is-hovered");
+      });
+    }
+  });
+
+  inner.appendChild(el);
+  state.dungeonEntries[m.id] = { cfg: m, el };
+});
+// --- Dungeon entries END ---
+
+
+
   // --- Nav admin markers (icon-only, clickable) ---
     function resolveCompositeTag(tag) {
     if (!tag) return '';
@@ -1148,7 +1207,7 @@ function renderRoutesPanel() {
     const vb = viewport.getBoundingClientRect();
     const pt = pctToPx(xp, yp);
 
-    const scale = clamp(targetScale || state.view.scale, 0.25, 1.28);
+    const scale = clamp(targetScale || state.view.scale, 0.25, 1.30);
     state.view.scale = scale;
 
     state.view.x = vb.width  / 2 - pt.x * scale;
@@ -1237,41 +1296,41 @@ function renderRoutesPanel() {
   }
 
 viewport.addEventListener('pointerdown', e => {
+
   // --- Copie rapide des coords (Alt+clic sur la carte) ---
-  if (e.altKey && state.mapReady) {
-    const { xp, yp } = viewToPct(e.clientX, e.clientY);
-    if (isFinite(xp) && isFinite(yp)) {
-      const cx = clamp(xp, 0, 100).toFixed(2);
-      const cy = clamp(yp, 0, 100).toFixed(2);
-      const text = `      xp: ${cx},\n      yp: ${cy}`;
+if (e.altKey && state.mapReady) {
+  const { xp, yp } = viewToPct(e.clientX, e.clientY);
+  if (isFinite(xp) && isFinite(yp)) {
+    const cx = clamp(xp, 0, 100).toFixed(2);
+    const cy = clamp(yp, 0, 100).toFixed(2);
 
-      const onDone = () => {
-        if (typeof showToast === 'function') {
-          showToast(`Coordonnées copiées : xp=${cx}, yp=${cy}`);
-        } else {
-          console.log('Coordonnées copiées :\n' + text);
-        }
-      };
+    const text = `xp: ${cx}, yp: ${cy},`;
 
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text)
-          .then(onDone)
-          .catch(err => {
-            console.warn('Clipboard error', err);
-            onDone();
-          });
+    const onDone = () => {
+      if (typeof showToast === 'function') {
+        showToast(`Coordonnées copiées : xp=${cx}, yp=${cy}`);
       } else {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); } catch (err) {}
-        document.body.removeChild(ta);
-        onDone();
+        console.log('Coordonnées copiées : ' + text);
       }
+    };
+
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(onDone)
+        .catch(err => { console.warn('Clipboard error', err); onDone(); });
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta);
+      onDone();
     }
-    return;
   }
+  return;
+}
+
 
   // --- MODE MARKER add ---
   if (state.tool === 'add') {
@@ -1342,6 +1401,10 @@ viewport.addEventListener('pointerdown', e => {
 function updateDungeonHover(e) {
   if (!state.dungeonOverlays || !state.dungeonOverlays.length) return;
 
+  if (state.dungeonForcedHover && state.dungeonForcedHover.length) {
+    return;
+  }
+
   const x = e.clientX;
   const y = e.clientY;
   const labels = document.querySelectorAll('.marker-region-dungeon .region-label');
@@ -1349,7 +1412,7 @@ function updateDungeonHover(e) {
 
   let activeRect = null;
 
-  // 1) Trouver l'overlay actuellement survolé
+  // 1) Trouver l'overlay actuellement survolé (suivi souris "libre")
   state.dungeonOverlays.forEach(d => {
     if (!d.el) return;
 
@@ -1384,8 +1447,6 @@ function updateDungeonHover(e) {
   });
 }
 
-
-
   viewport.addEventListener('pointermove', e => {
 
     if (state.dungeonOverlays && state.dungeonOverlays.length) {
@@ -1406,7 +1467,7 @@ function updateDungeonHover(e) {
         const targetScale = clamp(
           pinchState.startScale * ratio,
           0.25,
-          1.28
+          1.30
         );
 
         const vb = viewport.getBoundingClientRect();
@@ -1498,7 +1559,7 @@ function updateDungeonHover(e) {
   //ZOOM FONCTION
     function zoomAt(clientX, clientY, step) {
       const old = state.view.scale;
-      const ns = clamp(old * (1 + step), 0.25, 1.28);
+      const ns = clamp(old * (1 + step), 0.25, 1.30);
       if (ns === old) return;
 
       const vb = viewport.getBoundingClientRect();

@@ -52,7 +52,16 @@ window.NAV_MARKERS_CAIRN = [
         targetXp: 39.28,
         targetYp: 59.99,
         targetScale: 1
-      },      
+      }, 
+      {
+        xp: 41.11, 
+        yp: 20.96,
+        tag: 'tagGoTo + tagMapConflagration01',
+        icon: 'img/icon-link.png',
+        targetXp: 39.28,
+        targetYp: 59.99,
+        targetScale: 1
+      },            
       // Téléport Fort Ikon
       {
         xp: 15.13,
@@ -93,7 +102,7 @@ window.NAV_MARKERS_CAIRN = [
         targetXp: 64.97,
         targetYp: 87.03,
         targetScale: 1
-      },  
+      },
 ];
 
   window.NAV_MARKERS_MALMOUTH = [

@@ -28,8 +28,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_flooded_passage',
     tag: 'tagRiftFloodedPassage',
-      xp: 61.00,
-      yp: 70.42
+    xp: 61.24, 
+    yp: 70.42
   },
   {
     id: 'tag_rift_burrwitch_outskirts',
@@ -82,8 +82,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_cronleys_hideout',
     tag: 'tagRiftCronleysHideout',
-      xp: 52.61,
-      yp: 70.27
+    xp: 54.25, 
+    yp: 70.15
   },
   {
     id: 'rift_twin_falls',
@@ -94,8 +94,8 @@ window.RIFT_MARKERS_CAIRN = [
   {
     id: 'rift_smugglers_pass',
     tag: 'tagRiftSmugglersPass',
-      xp: 31.82,
-      yp: 89.30
+    xp: 31.83, 
+    yp: 87.13
   },
   {
     id: 'rift_smugglers_road',

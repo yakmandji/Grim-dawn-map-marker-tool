@@ -1228,7 +1228,7 @@ body.shared-only-view #mergeSharedBtn,
 .marker-rift .label {
   font-size: 0.90em;
   opacity: 0.9;
-  background: rgb(58 13 4 / 75%);
+  background: rgb(58 13 4 / 85%);
   border: 1px solid #6d1a10;
   color: #cebaaf;
 }
@@ -1289,7 +1289,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .marker-region-dungeon .region-label{
-  opacity: 0.4;
+  opacity: 0.25;
 }
 
 .marker-region-dungeon .region-label.opacity{
@@ -1561,7 +1561,6 @@ body.shared-only-view #mergeSharedBtn,
 
 .dungeon-wrapper {
   position: absolute;
-  pointer-events: none;   /* pour ne pas gêner le pan */
   z-index: 0;
 }
 
@@ -1794,6 +1793,23 @@ body.shared-only-view #mergeSharedBtn,
   filter: drop-shadow(0 0 4px #ff6b6b);
 }
 
+
+/* Entrées de donjons (yeux jaunes) */
+.marker-entry-dungeon {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(var(--mk, 1));
+  transform-origin: 50% 50%;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.marker-entry-dungeon .entry-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+}
 
 
 /*MOBILE VERSION---------------------------------------------*/

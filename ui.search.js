@@ -268,11 +268,23 @@ async function goTo(item) {
 
     buildGlobalIndex();
 
-    inputEl.addEventListener('input', () => {
-      const val = inputEl.value || '';
-      const list = search(val);
-      renderResults(list);
+    function debounce(fn, delay = 150) {
+      let t;
+      return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(() => fn.apply(null, args), delay);
+      };
+    }
+
+    const onSearchInput = debounce((term) => {
+      const results = search(term);
+      renderResults(results);
+    }, 180);
+
+    inputEl.addEventListener('input', (e) => {
+      onSearchInput(e.target.value);
     });
+
 
     inputEl.addEventListener('blur', () => {
       clearResultsLater();
