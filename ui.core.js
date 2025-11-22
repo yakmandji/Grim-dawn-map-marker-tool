@@ -1262,13 +1262,22 @@ function renderRoutesPanel() {
     viewport.classList.toggle('add',  t === 'add');
     viewport.classList.toggle('path', t === 'path');
 
-    const panBtn  = document.getElementById('toolPan');
     const addBtn  = document.getElementById('toolAdd');
     const pathBtn = document.getElementById('toolPath');
 
-    if (panBtn)  panBtn.classList.toggle('active', t === 'pan');
     if (addBtn)  addBtn.classList.toggle('active', t === 'add');
     if (pathBtn) pathBtn.classList.toggle('active', t === 'path');
+
+    if (addBtn) {
+      const labelEl = addBtn.querySelector('span') || addBtn;
+      if (t === 'add') {
+          labelEl.setAttribute('data-i18n', 'ui.CancelMarkerButton');
+          labelEl.textContent = GDMMLang.t('ui.CancelMarkerButton');
+      } else {
+          labelEl.setAttribute('data-i18n', 'ui.AddMarkerButton');
+          labelEl.textContent = GDMMLang.t('ui.AddMarkerButton');
+      }
+    }
 
     if (t !== 'path' && !skipFinalize) {
       finalizeCurrentPath();
@@ -1282,8 +1291,13 @@ function renderRoutesPanel() {
     if (lockEl) lockEl.checked = !!state.locked;
     viewport.classList.toggle('locked', !!state.locked);
   }
-  $('#toolPan')?.addEventListener('click', () => setTool('pan'));
-  $('#toolAdd')?.addEventListener('click', () => setTool('add'));
+  $('#toolAdd')?.addEventListener('click', () => {
+    if (state.tool === 'add') {
+      setTool('pan');
+    } else {
+      setTool('add');
+    }
+  });
   setTool('pan');
   const finishPathBtn = document.getElementById('toolFinishPath');
   if (finishPathBtn) {

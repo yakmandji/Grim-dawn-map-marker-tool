@@ -13,6 +13,102 @@
   --sidebar-width: 460px;
 }
 
+
+
+/* On cache le select natif, mais on le garde pour la logique */
+#langSelect {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* --- Dropdown custom --- */
+
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+}
+
+.lang-caret {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* Menu déroulant */
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  background: var(--panel);
+  border-radius: 10px;
+  border: 1px solid #27524b;
+  box-shadow: var(--shadow);
+  padding: 6px 0;
+  min-width: 110px;
+  z-index: 50;
+
+  /* État caché par défaut */
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.lang-dropdown.open .lang-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.lang-menu .lang-item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 6px 12px;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: left;
+  margin-bottom: 3px;
+}
+
+.lang-item:hover {
+  background: rgba(46, 109, 88, 0.6);
+}
+
+/* --- Sprite de drapeaux --- */
+.flag {
+  width: 18px;
+  height: 13px;
+  border-radius: 2px;
+  background-image: url('img/flags.png');
+  flex: 0 0 auto;
+}
+
+/* Exemple de positions (à adapter à ton sprite) */
+.flag-en { background-position: -22px 0; }
+.flag-fr { background-position: -2px 0; }
+.flag-es { background-position: -44px 0; }
+.flag-de { background-position: -65px 0; }
+.flag-pt { background-position: -87px -16px; }
+.flag-it { background-position: -108px -16px; }
+.flag-ru { background-position: -128px -16px; }
+.flag-zh { background-position: -150px -16px; }
+.flag-ja { background-position: -174px -32px; }
+
+
+
 .dungeon-wrapper.is-hovered .dungeon {
   opacity: 1;
 }

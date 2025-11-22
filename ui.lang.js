@@ -12,12 +12,12 @@
       'ui.WaypointMarker': '📍 Waypoint',
       'ui.DonjonMarker': '🏰 Donjon',
       'ui.NPCMarker': '💬 NPC',
-      'ui.SaveMarkerButton': 'Save markers',
       'ui.ToolsTitle': 'Tools',
       'ui.RoutesList': 'Routes list',
       'ui.MarkerList': 'Markers list',
       'ui.Done': 'Done',
       'ui.AddMarkerButton': 'Add',
+      "ui.CancelMarkerButton": "Cancel",
       'ui.NewPathTitle': 'New Path',
       'ui.PathHelper': 'Hold Space to drag the map while drawing a path',
       'ui.AddRouteButton': 'Add',
@@ -84,7 +84,6 @@
       'ui.MarkerNamePlaceholder': 'Name / note',
       'toast.WarnDeleteAllMarkers': 'Do you really want to delete all markers from this map?',
       'toast.NothingToShare': 'There is nothing to share (no routes or shared markers)',
-      'ui.ToolPan': 'Pan',
       'ui.SearchLocationPlaceholder': 'Search region / rift / dungeon...',
       "ui.region":  "Region",
       "ui.rift":    "Rift",
@@ -101,12 +100,12 @@
       'ui.WaypointMarker': '📍 Point de passage',
       'ui.DonjonMarker': '🏰 Donjon',
       'ui.NPCMarker': '💬 PNJ',
-      'ui.SaveMarkerButton': 'Sauvegarder les marqueurs',
       'ui.ToolsTitle': 'Outils',
       'ui.RoutesList': 'Liste des routes',
       'ui.MarkerList': 'Liste des marqueurs',
       'ui.Done': 'Terminé',
       'ui.AddMarkerButton': 'Ajouter',
+      "ui.CancelMarkerButton": "Annuler",
       'ui.NewPathTitle': 'Nouveau tracé',
       'ui.PathHelper': 'Maintenir Espace pour déplacer la carte pendant le tracé',
       'ui.AddRouteButton': 'Ajouter',
@@ -147,7 +146,6 @@
       'toast.SharedNoNewData': 'Aucune nouvelle donnée à ajouter depuis la carte partagée ✅',
       'toast.MarkerDeleted': 'Marqueur supprimé 🗑️',
       'toast.RouteDeleted': 'Tracé supprimé 🧹',
-      'ui.ToolPan': 'Déplacer',
       'ui.DoneMarkersTitle': "Marqueurs terminés",
       "ui.NothingDone": "Rien de terminé", 
      'ui.ShowHideGeneral': 'Afficher/Masquer Général',
@@ -190,12 +188,12 @@
       'ui.WaypointMarker': '📍 Punto de ruta',
       'ui.DonjonMarker': '🏰 Mazmorra',
       'ui.NPCMarker': '💬 NPC',
-      'ui.SaveMarkerButton': 'Guardar marcadores',
       'ui.ToolsTitle': 'Herramientas',
       'ui.RoutesList': 'Lista de rutas',
       'ui.MarkerList': 'Lista de marcadores',
       'ui.Done': 'Hecho',
       'ui.AddMarkerButton': 'Añadir',
+      "ui.CancelMarkerButton": "Cancelar",
       'ui.NewPathTitle': 'Nuevo recorrido',
       'ui.PathHelper': 'Mantén Espacio para mover el mapa mientras dibujas el recorrido',
       'ui.AddRouteButton': 'Añadir',
@@ -223,7 +221,6 @@
       'ui.ShowHideDonjon': 'Mostrar/Ocultar Mazmorras',
       'ui.ShowHideNPC': 'Mostrar/Ocultar NPC',
       'ui.ShowHideSharedMarker': 'Mostrar/Ocultar Compartidos',
-      'ui.ToolPan': 'Mover',
       'ui.ShowHideRegion': 'Mostrar/Ocultar nombres de regiones',
       'ui.ShowHideRift': 'Mostrar/Ocultar grietas',
       'ui.DoneMarkersTitle': "Marcadores completados",
@@ -279,12 +276,12 @@
       "ui.WaypointMarker": "📍 Wegpunkt",
       "ui.DonjonMarker": "🏰 Dungeon",
       "ui.NPCMarker": "💬 NPC",
-      "ui.SaveMarkerButton": "Marker speichern",
       "ui.ToolsTitle": "Werkzeuge",
       "ui.RoutesList": "Routenliste",
       "ui.MarkerList": "Markerliste",
       "ui.Done": "Fertig",
       "ui.AddMarkerButton": "Hinzufügen",
+      "ui.CancelMarkerButton": "Cancelar",
       "ui.NewPathTitle": "Neuer Pfad",
       "ui.PathHelper": "Halte die Leertaste gedrückt, um die Karte während des Zeichnens zu bewegen",
       "ui.AddRouteButton": "Hinzufügen",
@@ -351,7 +348,6 @@
       "ui.MarkerNamePlaceholder": "Name / Notiz",
       "toast.WarnDeleteAllMarkers": "Möchtest du wirklich alle Marker von dieser Karte löschen?",
       "toast.NothingToShare": "Nichts zum Teilen vorhanden (keine Routen oder geteilte Marker)",
-      "ui.ToolPan": "Verschieben",
       'ui.SearchLocationPlaceholder': 'Region / Riss / Dungeon suchen...',
       "ui.region":  "Region",
       "ui.rift":    "Riss",
@@ -369,12 +365,12 @@
     'ui.WaypointMarker': '📍 Marco',
     'ui.DonjonMarker': '🏰 Masmorra',
     'ui.NPCMarker': '💬 NPC',
-    'ui.SaveMarkerButton': 'Salvar marcadores',
     'ui.ToolsTitle': 'Ferramentas',
     'ui.RoutesList': 'Lista de rotas',
     'ui.MarkerList': 'Lista de marcadores',
     'ui.Done': 'Concluído',
     'ui.AddMarkerButton': 'Adicionar',
+    "ui.CancelMarkerButton": "Cancelar",
     'ui.NewPathTitle': 'Novo trajeto',
     'ui.PathHelper': 'Segure a barra de espaço para mover o mapa enquanto desenha o trajeto',
     'ui.AddRouteButton': 'Adicionar',
@@ -396,7 +392,6 @@
     'ui.CenterOnMap': 'Centralizar no mapa',
      'toast.ExportAll': 'Todos os dados foram salvos 💾',
      'toast.ShareUrlCopied': 'Link de compartilhamento copiado para a área de transferência 📋',
-     'ui.ToolPan': 'Mover',
     'ui.ShowHideGeneral': 'Mostrar/Ocultar Geral',
     'ui.ShowHideQuest': 'Mostrar/Ocultar Missões',
     'ui.ShowHideBoss': 'Mostrar/Ocultar Chefes',
@@ -460,12 +455,12 @@
     'ui.WaypointMarker': '📍 Путевая точка',
     'ui.DonjonMarker': '🏰 Подземелье',
     'ui.NPCMarker': '💬 NPC',
-    'ui.SaveMarkerButton': 'Сохранить маркеры',
     'ui.ToolsTitle': 'Инструменты',
     'ui.RoutesList': 'Список маршрутов',
     'ui.MarkerList': 'Список меток',
     'ui.Done': 'Готово',
     'ui.AddMarkerButton': 'Добавить',
+    "ui.CancelMarkerButton": "Отмена",
     'ui.NewPathTitle': 'Новый путь',
     'ui.PathHelper': 'Удерживайте пробел, чтобы двигать карту во время рисования пути',
     'ui.AddRouteButton': 'Добавить',
@@ -493,7 +488,6 @@
     'ui.ShowHideDonjon': 'Показать/скрыть Подземелья',
     'ui.ShowHideNPC': 'Показать/скрыть NPC',
     'ui.ShowHideSharedMarker': 'Показать/скрыть Общие метки',
-    'ui.ToolPan': 'Перемещение',
     'ui.ShowHideRegion': 'Показать/скрыть названия регионов',
     'ui.ShowHideRift': 'Показать/скрыть разломы',
     'ui.DoneMarkersTitle': "Завершённые метки",
@@ -549,12 +543,12 @@
       'ui.WaypointMarker': '📍 Punto di viaggio',
       'ui.DonjonMarker': '🏰 Sotterraneo',
       'ui.NPCMarker': '💬 NPC',
-      'ui.SaveMarkerButton': 'Salva marcatori',
       'ui.ToolsTitle': 'Strumenti',
       'ui.RoutesList': 'Elenco dei percorsi',
       'ui.MarkerList': 'Elenco dei marcatori',
       'ui.Done': 'Fatto',
       'ui.AddMarkerButton': 'Aggiungi',
+      "ui.CancelMarkerButton": "Annulla",
       'ui.NewPathTitle': 'Nuovo percorso',
       'ui.PathHelper': 'Tieni premuta la barra spaziatrice per spostare la mappa mentre disegni il percorso',
       'ui.AddRouteButton': 'Aggiungi',
@@ -582,7 +576,6 @@
       'ui.ShowHideDonjon': 'Mostra/Nascondi Sotterranei',
       'ui.ShowHideNPC': 'Mostra/Nascondi NPC',
       'ui.ShowHideSharedMarker': 'Mostra/Nascondi Condivisi',
-      'ui.ToolPan': 'Muovi',
       'ui.ShowHideRegion': 'Mostra/Nascondi nomi delle regioni',
       'ui.ShowHideRift': 'Mostra/Nascondi fenditure',
       'ui.DoneMarkersTitle': "Marcatori completati",
@@ -639,12 +632,12 @@
       'ui.WaypointMarker': '📍 传送点',
       'ui.DonjonMarker': '🏰 地下城',
       'ui.NPCMarker': '💬 NPC',
-      'ui.SaveMarkerButton': '保存标记',
       'ui.ToolsTitle': '工具',
       'ui.RoutesList': '路线列表',
       'ui.MarkerList': '标记列表',
       'ui.Done': '完成',
       'ui.AddMarkerButton': '添加',
+      "ui.CancelMarkerButton": "取消",
       'ui.NewPathTitle': '新路线',
       'ui.PathHelper': '在绘制路线时按住空格键可拖动地图',
       'ui.AddRouteButton': '添加',
@@ -672,7 +665,6 @@
       'ui.ShowHideDonjon': '显示/隐藏 地下城标记',
       'ui.ShowHideNPC': '显示/隐藏 NPC 标记',
       'ui.ShowHideSharedMarker': '显示/隐藏 共享标记',
-      'ui.ToolPan': '移动',
       'ui.ShowHideRegion': '显示/隐藏区域名称',
       'ui.ShowHideRift': '显示/隐藏裂隙',
       'ui.DoneMarkersTitle': "已完成的标记",
@@ -727,12 +719,12 @@
       'ui.WaypointMarker': '📍 ウェイポイント',
       'ui.DonjonMarker': '🏰 ダンジョン',
       'ui.NPCMarker': '💬 NPC',
-      'ui.SaveMarkerButton': 'マーカーを保存',
       'ui.ToolsTitle': 'ツール',
       'ui.RoutesList': 'ルート一覧',
       'ui.MarkerList': 'マーカー一覧',
       'ui.Done': '完了',
       'ui.AddMarkerButton': '追加',
+      "ui.CancelMarkerButton": "キャンセル",
       'ui.NewPathTitle': '新しいルート',
       'ui.PathHelper': 'ルート描画中にスペースキーを押し続けると、マップをドラッグできます',
       'ui.AddRouteButton': '追加',
@@ -799,7 +791,6 @@
       'ui.MarkerNamePlaceholder': '名前 / メモ',
       'toast.WarnDeleteAllMarkers': '本当にこのマップのすべてのマーカーを削除しますか？',
       'toast.NothingToShare': '共有できるものがありません（ルートまたは共有マーカーがありません）',
-      'ui.ToolPan': '移動',
       'ui.SearchLocationPlaceholder': '地域 / リフト / ダンジョンを検索…',
       'ui.region':  '地域',
       'ui.rift':    'リフト',
@@ -868,6 +859,63 @@
       });
     }
   });
+
+
+
+(function() {
+  const nativeSelect = document.getElementById('langSelect');
+  const dropdown = document.getElementById('langDropdown');
+  if (!nativeSelect || !dropdown) return;
+
+  const currentBtn = dropdown.querySelector('.lang-current');
+  const currentLabel = currentBtn.querySelector('.lang-label');
+  const currentFlag = currentBtn.querySelector('.flag');
+  const items = dropdown.querySelectorAll('.lang-item');
+
+  function syncFromSelect() {
+    const value = nativeSelect.value || 'en';
+    const item = dropdown.querySelector(`.lang-item[data-lang="${value}"]`);
+    if (!item) return;
+    const label = item.querySelector('span:last-child').textContent;
+    const flagClass = item.querySelector('.flag').className
+      .split(' ')
+      .find(c => c.startsWith('flag-') && c !== 'flag');
+
+    if (currentLabel) currentLabel.textContent = label;
+    if (currentFlag && flagClass) {
+      currentFlag.className = 'flag ' + flagClass;
+    }
+  }
+
+  // Toggle ouverture/fermeture du menu
+  currentBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+  });
+
+  // Choix d'une langue
+  items.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      if (!lang) return;
+
+      // On met à jour le <select> natif
+      nativeSelect.value = lang;
+      nativeSelect.dispatchEvent(new Event('change')); // ta logique GDMMLang
+
+      syncFromSelect();
+      dropdown.classList.remove('open');
+    });
+  });
+
+  // Fermer en cliquant dehors
+  document.addEventListener('click', () => {
+    dropdown.classList.remove('open');
+  });
+
+  // Init au chargement (si la langue est déjà stockée/localStorage)
+  syncFromSelect();
+})();
 
 
   function t(key) {
