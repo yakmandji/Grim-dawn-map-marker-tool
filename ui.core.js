@@ -738,7 +738,11 @@ function renderMarkers(options = {}) {
     // --- LABEL ---
     const lab = document.createElement('div');
     lab.className = 'label';
-    lab.textContent = m.label || '(no name)';
+
+    const p = document.createElement('p');
+    p.textContent = m.label || '(no name)'; 
+    lab.appendChild(p);
+
     el.appendChild(lab);
     // position initiale
     const pt = pctToPx(m.xp, m.yp);

@@ -300,6 +300,28 @@ async function goTo(item) {
 
   document.addEventListener('DOMContentLoaded', init);
 
+  // FORCE CTRL + F
+    window.addEventListener("keydown", (e) => {
+      const isFind = (e.key === "f" || e.key === "F") && (e.ctrlKey || e.metaKey);
+      if (!isFind) return;
+
+      // si on est déjà en train d'écrire dans un champ, on laisse le navigateur faire
+      const active = document.activeElement;
+      if (active && ["INPUT", "TEXTAREA", "SELECT"].includes(active.tagName)) {
+        return;
+      }
+
+      e.preventDefault();
+
+      const searchInput = document.getElementById("locationSearch"); // <-- IMPORTANT : bon ID
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.select();
+      }
+    });
+
+
+
   window.GDMMSearch = {
     refresh,
   };
