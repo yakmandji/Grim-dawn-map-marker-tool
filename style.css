@@ -1985,9 +1985,9 @@ body.shared-only-view #mergeSharedBtn,
   display: none;
  }
 
-.done-panel{
-  right: 1px;
-}
+  .done-panel{
+    right: 1px;
+  }
 
   .title{
     display: none;

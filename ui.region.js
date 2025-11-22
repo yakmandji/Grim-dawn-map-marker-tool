@@ -1,1618 +1,263 @@
   // --- CAIRN ---
   window.REGION_MARKERS_CAIRN = [
     
-    {
-      id: 'tag_UG_wightmire_cave01',
-      tag: 'tagUGWightmireCave01',
-      xp: 72.56, 
-      yp: 78.86,
-      isDungeon: true
-    },
-    {
-      id: 'tag_burrwitch_cellar03',
-      tag: 'tagBurrwitchCellar03',
-      xp: 60.68, 
-      yp: 58.57,
-      isDungeon: true
-    },
-    {
-      id: 'tag_UG_wightmire_cave02',
-      tag: 'tagUGWightmireCave01',
-      xp: 75.25,
-      yp: 72.66,
-      isDungeon: true
-    },      
-    {
-      id: 'tag_wightmire_cellar01',
-      tag: 'tagWightmireCellar01',
-      xp: 72.90,
-      yp: 77.69,
-      isDungeon: true
-    },
-    {
-      id: 'tag_map_ominous_lair',
-      tag: 'tagMapOminousLair',
-      xp: 60.6,
-      yp: 52.00,
-      isDungeon: true
-    },
-    {
-      id: 'tag_uGOld_arkovia03',
-      tag: 'tagUGOldArkovia03',
-      xp: 40.91,
-      yp: 84,
-      isDungeon: true
-    },
-    {
-      id: 'tag_map_laboratory_storerooms',
-      tag: 'tagMapLaboratoryStorerooms',
-      xp: 59.19,
-      yp: 53.17,
-      isDungeon: true
-    },    
-    {
-      id: 'tag_map_laboratory_living_quarters',
-      tag: 'tagMapLaboratoryLivingQuarters',
-      xp: 62.08,
-      yp: 50.76,
-      isDungeon: true
-    },
-    {
-      id: 'tag_map_laboratory_jail',
-      tag: 'tagMapLaboratoryJail',
-      xp: 59.12,
-      yp: 49.44,
-      isDungeon: true
-    },
-    {
-      id: 'tag_U_gOld_arkovia_04',
-      tag: 'tagUGOldArkovia04',
-      xp: 55.72,
-      yp: 80.60,
-      isDungeon: true
-    },
-    {
-      id: 'tag_map_laboratory_inner',
-      tag: 'tagMapLaboratoryInner',
-      xp: 60.41,
-      yp: 50.17,
-      isDungeon: true
-    },
-    {
-      id: 'tag_uG_flooded_passage_ruin',
-      tag: 'tagUGFloodedPassageRuin',
-      xp: 59.78,
-      yp: 67.44,
-      isDungeon: true
-    },
-    {
-      id: 'tag_map_four_hills',
-      tag: 'tagMapFourHills',
-      xp: 52.79,
-      yp: 75.72
-    }, 
-    {
-      id: 'ta_uG_burial_cave',
-      tag: 'tagUGBurialCave',
-      xp: 63.86,
-      yp: 78.59,
-      isDungeon: true
-    },
-    {
-      id: 'tag_gDX1UG_ancient_grove01D',
-      tag: 'tagGDX1UGAncientGrove01D',
-      xp: 89.43,
-      yp: 58,
-      isDungeon: true
-    },    
-    {
-      id: 'tag_map_hidden_path01',
-      tag: 'tagMapHiddenPath01',
-      xp: 76.24,
-      yp: 63.55
-    },
-    {
-      id: 'tag_uGSlith_lab01',
-      tag: 'tagUGSlithLab01',
-      xp: 60.02,
-      yp: 81.89
-    },
-    {
-      id: 'tag_map_hidden_path02',
-      tag: 'tagMapHiddenPath01',
-      xp: 46.82,
-      yp: 84.34
-    },  
-    {
-      id: 'tag_map_hidden_path03',
-      tag: 'tagMapHiddenPath01',
-      xp: 12.69,
-      yp: 33.90
-    },      
-    {
-      id: 'region_dc',
-      tag: 'tagMapDevilsCrossing01',
-      xp: 62.2,
-      yp: 88.85
-    },
-    {
-      id: 'UG_devils_crossing_hidden_passage01',
-      tag: 'tagUGDevilsCrossingHiddenPassage01',
-      xp: 66.51,
-      yp: 89.82,
-      isDungeon: true
-    },
-    {
-      id: 'tag_gDX1UG_ugdenbog_cave01',
-      tag: 'tagGDX1UGUgdenbogCave01',
-      xp: 93.92,
-      yp: 42.45,
-      isDungeon: true
-    },
-    {
-      id: 'world_map_witch_god_temple',
-      tag: 'tagWorldMapWitchGodTemple',
-      xp: 84.55,
-      yp: 63.28,
-      isDungeon: true
-    },
-    {
-      id: 'UG_devils_crossing_aquifer',
-      tag: 'tagUGDevilsCrossingAquifer',
-      xp: 69.88,
-      yp: 93.61,
-      isDungeon: true
-    },
-    {
-      id: 'tag_UG_broken_hills02F',
-      tag: 'tagUGBrokenHills02F',
-      xp: 46.62,
-      yp: 99.05,
-      isDungeon: true
-    },
-    {
-      id: 'map_old_grove',
-      tag: 'tagMapOldGrove',
-      xp: 62.27,
-      yp: 90.3
-    },
-    {
-      id: 'map_lower_crossing01',
-      tag: 'tagMapLowerCrossing01',
-      xp: 64.52,
-      yp: 85.9
-    },
-    {
-      id: 'map_burial_hill',
-      tag: 'tagMapBurialHill',
-      xp: 65.23,
-      yp: 82.79
-    },
-    {
-      id: 'map_old_dump',
-      tag: 'tagMapOldDump',
-      xp: 66.84,
-      yp: 81.79
-    },
-    {
-      id: 'map_wightmire01',
-      tag: 'tagMapWightmire01',
-      xp: 68.13,
-      yp: 78.61
-    },
-    {
-      id: 'map_sodden_hollow',
-      tag: 'tagMapSoddenHollow',
-      xp: 70.2,
-      yp: 77.05
-    },
-    {
-      id: 'GDX1UGU_gdenbog_cellar01',
-      tag: 'tagGDX1UGUgdenbogCellar01',
-      xp: 69.54,
-      yp: 43.33,
-      isDungeon: true
-    },
-    {
-      id: 'map_flooded_passage01',
-      tag: 'tagMapFloodedPassage01',
-      xp: 61.35,
-      yp: 66.42,
-      isDungeon: true
-    },
-    {
-      id: 'burrwitch_cellar02',
-      tag: 'tagBurrwitchCellar02',
-      xp: 75.48,
-      yp: 58.87,
-      isDungeon: true
-    },
-    {
-      id: 'UG_cellar02',
-      tag: 'tagUGCellar02',
-      xp: 78.14,
-      yp: 74.24,
-      isDungeon: true
-    },
-    {
-      id: 'map_foggy_bank',
-      tag: 'tagMapFoggyBank',
-      xp: 69.74,
-      yp: 74.12
-    },
-    {
-      id: 'map_burrwitch_outskirts01',
-      tag: 'tagMapBurrwitchOutskirts01',
-      xp: 68.64,
-      yp: 69.91
-    },
-    {
-      id: 'map_moldering_fields',
-      tag: 'tagMapMolderingFields',
-      xp: 66.13,
-      yp: 66.83
-    },
-    {
-      id: 'map_mud_row',
-      tag: 'tagMapMudRow',
-      xp: 69.21,
-      yp: 66.42
-    },
-    {
-      id: 'map_burrwitch_village01',
-      tag: 'tagMapBurrwitchVillage01',
-      xp: 67.65,
-      yp: 63.54
-    },
-    {
-      id: 'map_hallowed_hill',
-      tag: 'tagMapHallowedHill',
-      xp: 69.94,
-      yp: 63.94
-    },
-    {
-  id: 'map_east_marsh01',
-  tag: 'tagMapEastMarsh01',
-  xp: 74.61,
-  yp: 66.54
-  },
-  {
-    id: 'map_east_marsh03',
-    tag: 'tagMapEastMarsh03',
-    xp: 78.79,
-    yp: 65.76
-  },
-  {
-    id: 'GDX1UG_ugdenbog_wendigo01',
-    tag: 'tagGDX1UGUgdenbogWendigo01',
-      xp: 76.57,
-      yp: 29.30,
-      isDungeon: true
-  },
-  {
-    id: 'GDX2_map_side_areas_01',
-    tag: 'tagGDX2MapSideAreas_01',
-    xp: 72.06,
-    yp: 62.22
-  },
-  {
-    id: 'map_abandoned_waterfront',
-    tag: 'tagMapAbandonedWaterfront',
-    xp: 65.37,
-    yp: 61.08
-  },
-  {
-    id: 'map_burrwitch_estates',
-    tag: 'tagMapBurrwitchEstates',
-    xp: 68.89,
-    yp: 59.5
-  },
-  {
-    id: 'GDX1_map_dark_wood',
-    tag: 'tagGDX1MapDarkWood',
-    xp: 76.62,
-    yp: 50.9
-  },
-  {
-    id: 'GDX1_map_ugdenbog',
-    tag: 'tagGDX1MapUgdenbog',
-      xp: 83.16,
-      yp: 46.38
-  },
-  {
-    id: 'GDX1_map_ugdenbog_coven',
-    tag: 'tagGDX1MapUgdenbogCoven',
-    xp: 84.34,
-    yp: 47.65
-  },
-  {
-    id: 'GDX1_map_ugdenbog_ancient',
-    tag: 'tagGDX1MapUgdenbogAncient',
-    xp: 90.76,
-    yp: 39.6
-  },
-  {
-    id: 'GDX1_map_ugdenbog',
-    tag: 'tagGDX1MapUgdenbog',
-    xp: 88.2,
-    yp: 35.65
-  },
-  {
-    id: 'GDX1_map_ugdenbog_village',
-    tag: 'tagGDX1MapUgdenbogVillage',
-    xp: 86.6,
-    yp: 27.66
-  },
-  {
-    id: 'GDX1_map_ugdenbog_altar',
-    tag: 'tagGDX1MapUgdenbogAltar',
-    xp: 84.69,
-    yp: 23.81
-  },
-  {
-    id: 'GDX1_UG_ancient_grove01a',
-    tag: 'tagGDX1UGAncientGrove01A',
-      xp: 91.28,
-      yp: 54.26,
-      isDungeon: true
-  },
-  {
-    id: 'GDX1_UG_ancient_grove01b',
-    tag: 'tagGDX1UGAncientGrove01B',
-    xp: 97.84,
-    yp: 54.58,
-    isDungeon: true
-  },
-  {
-    id: 'GDX1_UG_ancient_grove01',
-    tag: 'tagGDX1UGAncientGrove01',
-      xp: 95.80,
-      yp: 51.39,
-    isDungeon: true
-  },
-  {
-    id: 'GDX1_UG_ugdenbog_mine01',
-    tag: 'tagGDX1UGUgdenbogMine01',
-    xp: 95.68,
-    yp: 29.69,
-    isDungeon: true
-  },
-  {
-    id: 'GDX1_UG_ugdenbog_cave03',
-    tag: 'tagGDX1UGUgdenbogCave03',
-      xp: 92.96, 
-      yp: 35.20,
-      isDungeon: true
-  },
-  {
-    id: 'GDX1_UG_ugdenbog_wendigo02',
-    tag: 'tagGDX1UGUgdenbogWendigo02',
-      xp: 74.91,
-      yp: 26.80,
-      isDungeon: true
-  },
-  {
-    id: 'GDX1_UG_ugdenbog_void_rift01',
-    tag: 'tagGDX1UGUgdenbogVoidRift01',
-      xp: 74.62,
-      yp: 23.96,
-    isDungeon: true
-  },
-  {
-    id: 'GDX1_UG_ugdenbog_void_rift03',
-    tag: 'tagGDX1UGUgdenbogVoidRift03',
-    xp: 69.65,
-    yp: 17.4,
-    isDungeon: true
-  },
-  {
-  id: 'map_kymons',
-  tag: 'tagMapKymons',
-  xp: 57.84,
-  yp: 90.0
-},
-{
-  id: 'map_arkovian_foothills',
-  tag: 'tagMapArkovianFoothills',
-  xp: 55.16,
-  yp: 86.34
-},
-{
-  id: 'map_crumbling_watch',
-  tag: 'tagMapCrumblingWatch',
-  xp: 57.44,
-  yp: 85.06
-},
-{
-  id: 'map_broken_hills',
-  tag: 'tagMapBrokenHills',
-  xp: 47.15,
-  yp: 83.36
-},
-{
-  id: 'map_rocky_coast',
-  tag: 'tagMapRockyCoast',
-  xp: 52.64,
-  yp: 81.46
-},
-{
-  id: 'map_new_harbor',
-  tag: 'tagMapNewHarbor',
-  xp: 53.08,
-  yp: 78.92
-},
-{
-  id: 'map_old_arkovia',
-  tag: 'tagMapOldArkovia',
-  xp: 50.13,
-  yp: 78.9
-},
-{
-  id: 'map_twin_falls',
-  tag: 'tagMapTwinFalls',
-  xp: 47.39,
-  yp: 78.26
-},
-{
-  id: 'GDX2_map_side_areas_03',
-  tag: 'tagGDX2MapSideAreas_03',
-  xp: 43.6,
-  yp: 77.9
-},
-{
-  id: 'map_jagged_waste_fort',
-  tag: 'tagMapJaggedWasteFort',
-  xp: 44.37,
-  yp: 73.44
-},
-{
-  id: 'map_shaded_basin',
-  tag: 'tagMapShadedBasin',
-  xp: 40.92,
-  yp: 74.39
-},
-{
-  id: 'map_jagged_waste',
-  tag: 'tagMapJaggedWaste',
-  xp: 37.59,
-  yp: 71.9
-},
-{
-  id: 'map_dusty_road',
-  tag: 'tagMapDustyRoad',
-  xp: 39.27,
-  yp: 68.48
-},
-{
-  id: 'map_withering_fields',
-  tag: 'tagMapWitheringFields',
-  xp: 38.88,
-  yp: 65.57
-},
-{
-  id: 'map_infested_field02',
-  tag: 'tagMapInfestedField02',
-  xp: 35.54,
-  yp: 66.17
-},
-{
-  id: 'map_infested_field01',
-  tag: 'tagMapInfestedField01',
-  xp: 34.64,
-  yp: 64.85
-},
-{
-  id: 'map_infested_farms',
-  tag: 'tagMapInfestedFarms',
-  xp: 32.41,
-  yp: 66.68
-},
-{
-  id: 'map_barren_highlands',
-  tag: 'tagMapBarrenHighlands',
-  xp: 40.52,
-  yp: 80.16
-},
-{
-  id: 'GDX2_map_side_areas_02',
-  tag: 'tagGDX2MapSideAreas_02',
-  xp: 46.81,
-  yp: 75.3
-},
-{
-  id: 'map_pine_barrens',
-  tag: 'tagMapPineBarrens',
-  xp: 40.99,
-  yp: 70.77
-},
-{
-  id: 'map_rotted_harvest',
-  tag: 'tagMapRottedHarvest',
-  xp: 27.35,
-  yp: 67.47
-},
-{
-  id: 'map_corrupted_pasture',
-  tag: 'tagMapCorruptedPasture',
-  xp: 29.04,
-  yp: 64.09
-},
-{
-  id: 'map_homestead',
-  tag: 'tagMapHomestead',
-  xp: 36.39,
-  yp: 63.43
-},
-{
-  id: 'map_conflagration01',
-  tag: 'tagMapConflagration01',
-  xp: 40.04,
-  yp: 60.44
-},
-{
-  id: 'map_sorrows_bastion_road',
-  tag: 'tagMapSorrowsBastionRoad',
-  xp: 35.24,
-  yp: 60.42
-},
-{
-  id: 'map_sorrows_bastion',
-  tag: 'tagMapSorrowsBastion',
-  xp: 32.9,
-  yp: 58.33
-},
-{
-  id: 'map_blood_grove_shrine',
-  tag: 'tagMapBloodGroveShrine',
-  xp: 28.79,
-  yp: 55.88
-},
-{
-  id: 'map_blood_grove',
-  tag: 'tagMapBloodGrove',
-  xp: 31.65,
-  yp: 53.04
-},
-{
-  id: 'map_blood_grove_mine',
-  tag: 'tagMapBloodGroveMine',
-  xp: 34.42,
-  yp: 52.17
-},
-{
-  id: 'map_blood_grove_aether_mine',
-  tag: 'tagMapBloodGroveAetherMine',
-  xp: 33.46,
-  yp: 48.22
-},
-{
-  id: 'map_darkvale_mill',
-  tag: 'tagMapDarkvaleMill',
-  xp: 27.45,
-  yp: 52.44
-},
-{
-  id: 'map_faction_fort',
-  tag: 'tagMapFactionFort',
-  xp: 31.10,
-  yp: 42.73,
-  isDungeon: true
-},
-{
-  id: 'map_darkvale',
-  tag: 'tagMapDarkvale',
-  xp: 25.05,
-  yp: 47.53
-},
-{
-  id: 'map_alpine_road_a',
-  tag: 'tagMapAlpineRoad',
-  xp: 16.1,
-  yp: 38.29
-},
-{
-  id: 'map_alpine_road_b',
-  tag: 'tagMapAlpineRoad',
-  xp: 12.47,
-  yp: 33.28
-},
-{
-  id: 'map_alpine_valley',
-  tag: 'tagMapAlpineValley',
-  xp: 8.93,
-  yp: 30.36
-},
-{
-  id: 'map_alpine_fort',
-  tag: 'tagMapAlpineFort',
-  xp: 12.95,
-  yp: 24.28
-},
-{
-  id: 'map_plains_of_strife',
-  tag: 'tagMapPlainsofStrife',
-  xp: 19.8,
-  yp: 19.25
-},
-{
-  id: 'map_necropolis_gate',
-  tag: 'tagMapNecropolisGate',
-  xp: 22.61,
-  yp: 10.53
-},
-{
-  id: 'map_necropolis_interior',
-  tag: 'tagMapNecropolisInterior',
-  xp: 22.53,
-  yp: 3.53
-},
-{
-  id: 'UG_voidlands01c',
-  tag: 'tagUGVoidlands01C',
-      xp: 13.15,
-      yp: 1.37,
-      isDungeon: true
-},
-{
-  id: 'UG_crypt_final01',
-  tag: 'tagUGCryptFinal01',
-  xp: 11.91, yp: 6.68,
-  isDungeon: true
-},
-{
-  id: 'UG_crypt_final02',
-  tag: 'tagUGCryptFinal02',
-    xp: 15.82, yp: 11.10,
-      isDungeon: true
-},
-{
-  id: 'UG_fort_ikon_prison',
-  tag: 'tagUGFortIkon_Prison',
-    xp: 8.11, 
-    yp: 13.74,
-      isDungeon: true
-},
-{
-  id: 'UG_crypt_faction_battle02',
-  tag: 'tagUGCryptFactionBattle02',
-      xp: 0.70,
-      yp: 22.04,
-      isDungeon: true
-},
-{
-  id: 'UG_crypt_faction_battle01',
-  tag: 'tagUGCryptFactionBattle01',
-      xp: 4.04,
-      yp: 19.73,
-      isDungeon: true
-},
-{
-  id: 'UG_crypt_zealot01',
-  tag: 'tagUGCryptZealot01',
-  xp: 5, 
-  yp: 33.45,
-  isDungeon: true
-},
-{
-  id: 'UG_fort_ikon_armory',
-  tag: 'tagUGFortIkon_Armory',
-    xp: 14.17, 
-    yp: 13.38,
-      isDungeon: true
-},
-{
-  id: 'map_voidlands03',
-  tag: 'tagMapVoidlands03',
-      xp: 22.44,
-      yp: 23.84,
-      isDungeon: true
-},
-{
-  id: 'map_voidlands',
-  tag: 'tagMapVoidlands',
-      xp: 27.90,
-      yp: 27.02,
-      isDungeon: true
-},
-{
-  id: 'tag_uGVoid_lands_01D',
-  tag: 'tagUGVoidlands01D',
-    xp: 39.39, yp: 3.32,
-      isDungeon: true
-},
+{ id: 'tag_UG_wightmire_cave01', tag: 'tagUGWightmireCave01', xp: 72.56, yp: 78.86, isDungeon: true },
+{ id: 'tag_burrwitch_cellar03', tag: 'tagBurrwitchCellar03', xp: 60.68, yp: 58.57, isDungeon: true },
+{ id: 'tag_UG_wightmire_cave02', tag: 'tagUGWightmireCave01', xp: 75.25, yp: 72.66, isDungeon: true },
+{ id: 'tag_wightmire_cellar01', tag: 'tagWightmireCellar01', xp: 72.90, yp: 77.69, isDungeon: true },
+{ id: 'tag_map_ominous_lair', tag: 'tagMapOminousLair', xp: 60.6, yp: 52.00, isDungeon: true },
+{ id: 'tag_uGOld_arkovia03', tag: 'tagUGOldArkovia03', xp: 40.91, yp: 84, isDungeon: true },
+{ id: 'tag_map_laboratory_storerooms', tag: 'tagMapLaboratoryStorerooms', xp: 59.19, yp: 53.17, isDungeon: true },
+{ id: 'tag_map_laboratory_living_quarters', tag: 'tagMapLaboratoryLivingQuarters', xp: 62.08, yp: 50.76, isDungeon: true },
+{ id: 'tag_map_laboratory_jail', tag: 'tagMapLaboratoryJail', xp: 59.12, yp: 49.44, isDungeon: true },
+{ id: 'tag_U_gOld_arkovia_04', tag: 'tagUGOldArkovia04', xp: 55.72, yp: 80.60, isDungeon: true },
+{ id: 'tag_map_laboratory_inner', tag: 'tagMapLaboratoryInner', xp: 60.41, yp: 50.17, isDungeon: true },
+{ id: 'tag_uG_flooded_passage_ruin', tag: 'tagUGFloodedPassageRuin', xp: 59.78, yp: 67.44, isDungeon: true },
+{ id: 'tag_map_four_hills', tag: 'tagMapFourHills', xp: 52.79, yp: 75.72 },
+{ id: 'ta_uG_burial_cave', tag: 'tagUGBurialCave', xp: 63.86, yp: 78.59, isDungeon: true },
+{ id: 'tag_gDX1UG_ancient_grove01D', tag: 'tagGDX1UGAncientGrove01D', xp: 89.43, yp: 58, isDungeon: true },
+{ id: 'tag_map_hidden_path01', tag: 'tagMapHiddenPath01', xp: 76.24, yp: 63.55 },
+{ id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89 },
+{ id: 'tag_map_hidden_path02', tag: 'tagMapHiddenPath01', xp: 46.82, yp: 84.34 },
+{ id: 'tag_map_hidden_path03', tag: 'tagMapHiddenPath01', xp: 12.69, yp: 33.90 },
+{ id: 'region_dc', tag: 'tagMapDevilsCrossing01', xp: 62.2, yp: 88.85 },
+{ id: 'UG_devils_crossing_hidden_passage01', tag: 'tagUGDevilsCrossingHiddenPassage01', xp: 66.51, yp: 89.82, isDungeon: true },
+{ id: 'tag_gDX1UG_ugdenbog_cave01', tag: 'tagGDX1UGUgdenbogCave01', xp: 93.92, yp: 42.45, isDungeon: true },
+{ id: 'world_map_witch_god_temple', tag: 'tagWorldMapWitchGodTemple', xp: 84.55, yp: 63.28, isDungeon: true },
+{ id: 'UG_devils_crossing_aquifer', tag: 'tagUGDevilsCrossingAquifer', xp: 69.88, yp: 93.61, isDungeon: true },
+{ id: 'tag_UG_broken_hills02F', tag: 'tagUGBrokenHills02F', xp: 46.62, yp: 99.05, isDungeon: true },
+{ id: 'map_old_grove', tag: 'tagMapOldGrove', xp: 62.27, yp: 90.3 },
+{ id: 'map_lower_crossing01', tag: 'tagMapLowerCrossing01', xp: 64.52, yp: 85.9 },
+{ id: 'map_burial_hill', tag: 'tagMapBurialHill', xp: 65.23, yp: 82.79 },
+{ id: 'map_old_dump', tag: 'tagMapOldDump', xp: 66.84, yp: 81.79 },
+{ id: 'map_wightmire01', tag: 'tagMapWightmire01', xp: 68.13, yp: 78.61 },
+{ id: 'map_sodden_hollow', tag: 'tagMapSoddenHollow', xp: 70.2, yp: 77.05 },
+{ id: 'GDX1UGU_gdenbog_cellar01', tag: 'tagGDX1UGUgdenbogCellar01', xp: 69.54, yp: 43.33, isDungeon: true },
+{ id: 'map_flooded_passage01', tag: 'tagMapFloodedPassage01', xp: 61.35, yp: 66.42, isDungeon: true },
+{ id: 'burrwitch_cellar02', tag: 'tagBurrwitchCellar02', xp: 75.48, yp: 58.87, isDungeon: true },
+{ id: 'UG_cellar02', tag: 'tagUGCellar02', xp: 78.14, yp: 74.24, isDungeon: true },
+{ id: 'map_foggy_bank', tag: 'tagMapFoggyBank', xp: 69.74, yp: 74.12 },
+{ id: 'map_burrwitch_outskirts01', tag: 'tagMapBurrwitchOutskirts01', xp: 68.64, yp: 69.91 },
+{ id: 'map_moldering_fields', tag: 'tagMapMolderingFields', xp: 66.13, yp: 66.83 },
+{ id: 'map_mud_row', tag: 'tagMapMudRow', xp: 69.21, yp: 66.42 },
+{ id: 'map_burrwitch_village01', tag: 'tagMapBurrwitchVillage01', xp: 67.65, yp: 63.54 },
+{ id: 'map_hallowed_hill', tag: 'tagMapHallowedHill', xp: 69.94, yp: 63.94 },
+{ id: 'map_east_marsh01', tag: 'tagMapEastMarsh01', xp: 74.61, yp: 66.54 },
+{ id: 'map_east_marsh03', tag: 'tagMapEastMarsh03', xp: 78.79, yp: 65.76 },
+{ id: 'GDX1UG_ugdenbog_wendigo01', tag: 'tagGDX1UGUgdenbogWendigo01', xp: 76.57, yp: 29.30, isDungeon: true },
+{ id: 'GDX2_map_side_areas_01', tag: 'tagGDX2MapSideAreas_01', xp: 72.06, yp: 62.22 },
+{ id: 'map_abandoned_waterfront', tag: 'tagMapAbandonedWaterfront', xp: 65.37, yp: 61.08 },
+{ id: 'map_burrwitch_estates', tag: 'tagMapBurrwitchEstates', xp: 68.89, yp: 59.5 },
+{ id: 'GDX1_map_dark_wood', tag: 'tagGDX1MapDarkWood', xp: 76.62, yp: 50.9 },
+{ id: 'GDX1_map_ugdenbog', tag: 'tagGDX1MapUgdenbog', xp: 83.16, yp: 46.38 },
+{ id: 'GDX1_map_ugdenbog_coven', tag: 'tagGDX1MapUgdenbogCoven', xp: 84.34, yp: 47.65 },
+{ id: 'GDX1_map_ugdenbog_ancient', tag: 'tagGDX1MapUgdenbogAncient', xp: 90.76, yp: 39.6 },
+{ id: 'GDX1_map_ugdenbog_north', tag: 'tagGDX1MapUgdenbog', xp: 88.2, yp: 35.65 },
+{ id: 'GDX1_map_ugdenbog_village', tag: 'tagGDX1MapUgdenbogVillage', xp: 86.6, yp: 27.66 },
+{ id: 'GDX1_map_ugdenbog_altar', tag: 'tagGDX1MapUgdenbogAltar', xp: 84.69, yp: 23.81 },
+{ id: 'GDX1_UG_ancient_grove01a', tag: 'tagGDX1UGAncientGrove01A', xp: 91.28, yp: 54.26, isDungeon: true },
+{ id: 'GDX1_UG_ancient_grove01b', tag: 'tagGDX1UGAncientGrove01B', xp: 97.84, yp: 54.58, isDungeon: true },
+{ id: 'GDX1_UG_ancient_grove01', tag: 'tagGDX1UGAncientGrove01', xp: 95.80, yp: 51.39, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_mine01', tag: 'tagGDX1UGUgdenbogMine01', xp: 95.68, yp: 29.69, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_cave03', tag: 'tagGDX1UGUgdenbogCave03', xp: 92.96, yp: 35.20, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_wendigo02', tag: 'tagGDX1UGUgdenbogWendigo02', xp: 74.91, yp: 26.80, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_void_rift01', tag: 'tagGDX1UGUgdenbogVoidRift01', xp: 74.62, yp: 23.96, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_void_rift03', tag: 'tagGDX1UGUgdenbogVoidRift03', xp: 69.65, yp: 17.4, isDungeon: true },
+{ id: 'map_kymons', tag: 'tagMapKymons', xp: 57.84, yp: 90.0 },
+{ id: 'map_arkovian_foothills', tag: 'tagMapArkovianFoothills', xp: 55.16, yp: 86.34 },
+{ id: 'map_crumbling_watch', tag: 'tagMapCrumblingWatch', xp: 57.44, yp: 85.06 },
+{ id: 'map_broken_hills', tag: 'tagMapBrokenHills', xp: 47.15, yp: 83.36 },
+{ id: 'map_rocky_coast', tag: 'tagMapRockyCoast', xp: 52.64, yp: 81.46 },
+{ id: 'map_new_harbor', tag: 'tagMapNewHarbor', xp: 53.08, yp: 78.92 },
+{ id: 'map_old_arkovia', tag: 'tagMapOldArkovia', xp: 50.13, yp: 78.9 },
+{ id: 'map_twin_falls', tag: 'tagMapTwinFalls', xp: 47.39, yp: 78.26 },
+{ id: 'GDX2_map_side_areas_03', tag: 'tagGDX2MapSideAreas_03', xp: 43.6, yp: 77.9 },
+{ id: 'map_jagged_waste_fort', tag: 'tagMapJaggedWasteFort', xp: 44.37, yp: 73.44 },
+{ id: 'map_shaded_basin', tag: 'tagMapShadedBasin', xp: 40.92, yp: 74.39 },
+{ id: 'map_jagged_waste', tag: 'tagMapJaggedWaste', xp: 37.59, yp: 71.9 },
+{ id: 'map_dusty_road', tag: 'tagMapDustyRoad', xp: 39.27, yp: 68.48 },
+{ id: 'map_withering_fields', tag: 'tagMapWitheringFields', xp: 38.88, yp: 65.57 },
+{ id: 'map_infested_field02', tag: 'tagMapInfestedField02', xp: 35.54, yp: 66.17 },
+{ id: 'map_infested_field01', tag: 'tagMapInfestedField01', xp: 34.64, yp: 64.85 },
+{ id: 'map_infested_farms', tag: 'tagMapInfestedFarms', xp: 32.41, yp: 66.68 },
+{ id: 'map_barren_highlands', tag: 'tagMapBarrenHighlands', xp: 40.52, yp: 80.16 },
+{ id: 'GDX2_map_side_areas_02', tag: 'tagGDX2MapSideAreas_02', xp: 46.81, yp: 75.3 },
+{ id: 'map_pine_barrens', tag: 'tagMapPineBarrens', xp: 40.99, yp: 70.77 },
+{ id: 'map_rotted_harvest', tag: 'tagMapRottedHarvest', xp: 27.35, yp: 67.47 },
+{ id: 'map_corrupted_pasture', tag: 'tagMapCorruptedPasture', xp: 29.04, yp: 64.09 },
+{ id: 'map_homestead', tag: 'tagMapHomestead', xp: 36.39, yp: 63.43 },
+{ id: 'map_conflagration01', tag: 'tagMapConflagration01', xp: 40.04, yp: 60.44 },
+{ id: 'map_sorrows_bastion_road', tag: 'tagMapSorrowsBastionRoad', xp: 35.24, yp: 60.42 },
+{ id: 'map_sorrows_bastion', tag: 'tagMapSorrowsBastion', xp: 32.9, yp: 58.33 },
+{ id: 'map_blood_grove_shrine', tag: 'tagMapBloodGroveShrine', xp: 28.79, yp: 55.88 },
+{ id: 'map_blood_grove', tag: 'tagMapBloodGrove', xp: 31.65, yp: 53.04 },
+{ id: 'map_blood_grove_mine', tag: 'tagMapBloodGroveMine', xp: 34.42, yp: 52.17 },
+{ id: 'map_blood_grove_aether_mine', tag: 'tagMapBloodGroveAetherMine', xp: 33.46, yp: 48.22 },
+{ id: 'map_darkvale_mill', tag: 'tagMapDarkvaleMill', xp: 27.45, yp: 52.44 },
+{ id: 'map_faction_fort', tag: 'tagMapFactionFort', xp: 31.10, yp: 42.73, isDungeon: true },
+{ id: 'map_darkvale', tag: 'tagMapDarkvale', xp: 25.05, yp: 47.53 },
+{ id: 'map_alpine_road_a', tag: 'tagMapAlpineRoad', xp: 16.1, yp: 38.29 },
+{ id: 'map_alpine_road_b', tag: 'tagMapAlpineRoad', xp: 12.47, yp: 33.28 },
+{ id: 'map_alpine_valley', tag: 'tagMapAlpineValley', xp: 8.93, yp: 30.36 },
+{ id: 'map_alpine_fort', tag: 'tagMapAlpineFort', xp: 12.95, yp: 24.28 },
+{ id: 'map_plains_of_strife', tag: 'tagMapPlainsofStrife', xp: 19.8, yp: 19.25 },
+{ id: 'map_necropolis_gate', tag: 'tagMapNecropolisGate', xp: 22.61, yp: 10.53 },
+{ id: 'map_necropolis_interior', tag: 'tagMapNecropolisInterior', xp: 22.53, yp: 3.53 },
+{ id: 'UG_voidlands01c', tag: 'tagUGVoidlands01C', xp: 13.15, yp: 1.37, isDungeon: true },
+{ id: 'UG_crypt_final01', tag: 'tagUGCryptFinal01', xp: 11.91, yp: 6.68, isDungeon: true },
+{ id: 'UG_crypt_final02', tag: 'tagUGCryptFinal02', xp: 15.82, yp: 11.10, isDungeon: true },
+{ id: 'UG_fort_ikon_prison', tag: 'tagUGFortIkon_Prison', xp: 8.11, yp: 13.74, isDungeon: true },
+{ id: 'UG_crypt_faction_battle02', tag: 'tagUGCryptFactionBattle02', xp: 0.70, yp: 22.04, isDungeon: true },
+{ id: 'UG_crypt_faction_battle01', tag: 'tagUGCryptFactionBattle01', xp: 4.04, yp: 19.73, isDungeon: true },
+{ id: 'UG_crypt_zealot01', tag: 'tagUGCryptZealot01', xp: 5, yp: 33.45, isDungeon: true },
+{ id: 'UG_fort_ikon_armory', tag: 'tagUGFortIkon_Armory', xp: 14.17, yp: 13.38, isDungeon: true },
+{ id: 'map_voidlands03', tag: 'tagMapVoidlands03', xp: 22.44, yp: 23.84, isDungeon: true },
+{ id: 'map_voidlands', tag: 'tagMapVoidlands', xp: 27.90, yp: 27.02, isDungeon: true },
+{ id: 'tag_uGVoid_lands_01D', tag: 'tagUGVoidlands01D', xp: 39.39, yp: 3.32, isDungeon: true },
+{ id: 'map_darkvale_gate', tag: 'tagMapDarkvaleGate', xp: 25.21, yp: 35.2, isDungeon: true },
+{ id: 'map_port_valbury_manor', tag: 'tagMapPortValburyManor', xp: 40.19, yp: 21.25 },
+{ id: 'map_port_valbury_district02', tag: 'tagMapPortValburyDistrict02', xp: 41.75, yp: 23.76 },
+{ id: 'map_port_valbury_gauntlet', tag: 'tagMapPortValburyGauntlet', xp: 40.27, yp: 27.32 },
+{ id: 'map_port_valbury_district01', tag: 'tagMapPortValburyDistrict01', xp: 38.96, yp: 27.56 },
+{ id: 'map_port_valbury_a', tag: 'tagMapPortValbury', xp: 40.8, yp: 30.02 },
+{ id: 'map_port_valbury_b', tag: 'tagMapPortValbury', xp: 42.54, yp: 30.64 },
+{ id: 'map_port_valbury_outskirts', tag: 'tagMapPortValburyOutskirts', xp: 44.68, yp: 31.87 },
+{ id: 'UG_fort_faction01', tag: 'tagUGFortFaction01', xp: 28.82, yp: 48.67 },
+{ id: 'map_voidlands02', tag: 'tagMapVoidlands02', xp: 42.96, yp: 48.75, isDungeon: true },
+{ id: 'map_jagged_waste_fort_dungeon', tag: 'tagMapJaggedWasteFort', xp: 46.43, yp: 61.65, isDungeon: true },
+{ id: 'UG_old_arkovia02', tag: 'tagUGOldArkovia02', xp: 48.76, yp: 67.13, isDungeon: true },
+{ id: 'map_cronleys_hideout', tag: 'tagMapCronleysHideout', xp: 54.39, yp: 67.08, isDungeon: true },
+{ id: 'UG_old_arkovia01', tag: 'tagUGOldArkovia01', xp: 56.97, yp: 74.93, isDungeon: true },
+{ id: 'UG_slith_lab02', tag: 'tagUGSlithLab02', xp: 56.62, yp: 76, isDungeon: true },
+{ id: 'tag_uG_slith_lab03', tag: 'tagUGSlithLab03', xp: 60.17, yp: 76.38, isDungeon: true },
+{ id: 'UG_broken_hills01', tag: 'tagUGBrokenHills01', xp: 59.98, yp: 83.8, isDungeon: true },
+{ id: 'UG_arkovian_foothills01', tag: 'tagUGArkovianFoothills01', xp: 55.87, yp: 92.56, isDungeon: true },
+{ id: 'tag_UG_broken_hills02', tag: 'tagUGBrokenHills02', xp: 44.58, yp: 90.42, isDungeon: true },
+{ id: 'tag_UGBroken_hills02A', tag: 'tagUGBrokenHills02A', xp: 48.55, yp: 90.42, isDungeon: true },
+{ id: 'UG_broken_hills02c', tag: 'tagUGBrokenHills02C', xp: 46.35, yp: 95.97, isDungeon: true },
+{ id: 'UG_broken_hills02b', tag: 'tagUGBrokenHills02B', xp: 51.83, yp: 91.49, isDungeon: true },
+{ id: 'UG_broken_hills02d', tag: 'tagUGBrokenHills02D', xp: 53.11, yp: 95.67, isDungeon: true },
+{ id: 'GDX2_side_areas_02', tag: 'tagGDX2SideAreas_02', xp: 38.22, yp: 89.76, isDungeon: true },
+{ id: 'UG_burrwitch_flooded_cellars', tag: 'tagUGBurrwitchFloodedCellars', xp: 60.57, yp: 62.00, isDungeon: true },
+{ id: 'map_wardens_cellar01', tag: 'tagMapWardensCellar01', xp: 65.73, yp: 53.36, isDungeon: true },
+{ id: 'map_wardens_labratory01', tag: 'tagMapWardensLabratory01', xp: 61.49, yp: 48.77, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_cellar02', tag: 'tagGDX1UGUgdenbogCellar02', xp: 78.92, yp: 57.40, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_cave05', tag: 'tagGDX1UGUgdenbogCave05', xp: 76.24, yp: 39.41, isDungeon: true },
+{ id: 'UG_voidlands01b', tag: 'tagUGVoidlands01B', xp: 44.51, yp: 4.25, isDungeon: true },
+{ id: 'UG_voidlands01a', tag: 'tagUGVoidlands01A', xp: 38.59, yp: 5.29, isDungeon: true },
+{ id: 'UG_crypt_necropolis01', tag: 'tagUGCryptNecropolis01', xp: 31.24, yp: 8.14, isDungeon: true },
+{ id: 'UG_voidlands01', tag: 'tagUGVoidlands01', xp: 31.51, yp: 5.35, isDungeon: true },
+{ id: 'map_smugglers_pass', tag: 'tagMapSmugglersPass', xp: 30.79, yp: 83.18, isDungeon: true },
+{ id: 'map_mountain_deeps', tag: 'tagMapMountainDeeps', xp: 23.79, yp: 71.53, isDungeon: true },
+{ id: 'UG_dermapteran03a', tag: 'tagUGDermapteran03A', xp: 19.77, yp: 68.35, isDungeon: true },
+{ id: 'tag_uG_dermapteran_02', tag: 'tagUGDermapteran02', xp: 15.12, yp: 68.09, isDungeon: true },
+{ id: 'tag_uG_dermapteran_01', tag: 'tagUGDermapteran01', xp: 17.50, yp: 66.46, isDungeon: true },
+{ id: 'tag_uGHomestead_cave01', tag: 'tagUGHomesteadCave01', xp: 15.34, yp: 62.88, isDungeon: true },
+{ id: 'tag_uG_dermapteran_03B', tag: 'tagUGDermapteran03B', xp: 19.40, yp: 62.93, isDungeon: true },
+{ id: 'UG_crypt_necro01', tag: 'tagUGCryptNecro01', xp: 26.03, yp: 59.31, isDungeon: true },
+{ id: 'UG_fort_zealot01', tag: 'tagUGFortZealot01', xp: 37.09, yp: 55.12, isDungeon: true },
+{ id: 'map_deadmans_gulch', tag: 'tagMapDeadmansGulch', xp: 31.52, yp: 76.75 },
+{ id: 'map_conflagration02', tag: 'tagMapConflagration02', xp: 32.38, yp: 73.42 },
+{ id: 'map_port_valbury_cellar', tag: 'tagMapPortValburyCellar', xp: 35.95, yp: 31.93, isDungeon: true },
+{ id: 'map_port_valbury_aldritch_cellar', tag: 'tagMapPortValburyAldritchCellar', xp: 37.26, yp: 18.28, isDungeon: true },
+{ id: 'GDX1UG_ugdenbog_cave02_b', tag: 'tagGDX1UGUgdenbogCave02', xp: 80.03, yp: 35.11, isDungeon: true },
+{ id: 'tag_UG_cave_ghost01', tag: 'tagUGCaveGhost01', xp: 36.41, yp: 49.69, isDungeon: true },
+{ id: 'tag_G_jagged_waste_cave02', tag: 'tagUGJaggedWasteCave02', xp: 25.46, yp: 83.37, isDungeon: true },
+{ id: 'tag_UG_jagged_waste_cave01', tag: 'tagUGJaggedWasteCave01', xp: 21.97, yp: 80.51, isDungeon: true },
+{ id: 'tag_GDX1UG_jgdenbog_cave04', tag: 'tagGDX1UGUgdenbogCave04', xp: 91.33, yp: 31.95, isDungeon: true },
+{ id: 'tag_gDX1UG_ancient_grove01C', tag: 'tagGDX1UGAncientGrove01C', xp: 95.77, yp: 55.68, isDungeon: true },
+{ id: 'tag_uG_secret01', tag: 'tagUGSecret01', xp: 31.11, yp: 17.55, isDungeon: true },
 
-{
-  id: 'map_darkvale_gate',
-  tag: 'tagMapDarkvaleGate',
-  xp: 25.21,
-  yp: 35.2,
-  isDungeon: true
-},
-{
-  id: 'map_port_valbury_manor',
-  tag: 'tagMapPortValburyManor',
-  xp: 40.19,
-  yp: 21.25
-},
-{
-  id: 'map_port_valbury_district02',
-  tag: 'tagMapPortValburyDistrict02',
-  xp: 41.75,
-  yp: 23.76
-},
-{
-  id: 'map_port_valbury_gauntlet',
-  tag: 'tagMapPortValburyGauntlet',
-  xp: 40.27,
-  yp: 27.32
-},
-{
-  id: 'map_port_valbury_district01',
-  tag: 'tagMapPortValburyDistrict01',
-  xp: 38.96,
-  yp: 27.56
-},
-{
-  id: 'map_port_valbury_a',
-  tag: 'tagMapPortValbury',
-  xp: 40.8,
-  yp: 30.02
-},
-{
-  id: 'map_port_valbury_b',
-  tag: 'tagMapPortValbury',
-  xp: 42.54,
-  yp: 30.64
-},
-{
-  id: 'map_port_valbury_outskirts',
-  tag: 'tagMapPortValburyOutskirts',
-  xp: 44.68,
-  yp: 31.87
-},
-{
-  id: 'UG_fort_faction01',
-  tag: 'tagUGFortFaction01',
-    xp: 28.82, 
-    yp: 48.67,
-},
-{
-  id: 'map_voidlands02',
-  tag: 'tagMapVoidlands02',
-    xp: 42.96, 
-    yp: 48.75,
-      isDungeon: true
-},
-{
-  id: 'map_jagged_waste_fort',
-  tag: 'tagMapJaggedWasteFort',
-  xp: 46.43,
-  yp: 61.65,
-  isDungeon: true
-},
-{
-  id: 'UG_old_arkovia02',
-  tag: 'tagUGOldArkovia02',
-      xp: 48.76, 
-      yp: 67.13,
-      isDungeon: true
-},
-{
-  id: 'map_cronleys_hideout',
-  tag: 'tagMapCronleysHideout',
-    xp: 54.39, 
-    yp: 67.08,
-    isDungeon: true
-},
-{
-  id: 'UG_old_arkovia01',
-  tag: 'tagUGOldArkovia01',
-  xp: 56.97,
-  yp: 74.93,
-  isDungeon: true
-},
-{
-  id: 'UG_slith_lab02',
-  tag: 'tagUGSlithLab02',
-      xp: 56.62,
-      yp: 76,
-      isDungeon: true
-},
-{
-  id: 'tag_uG_slith_lab03',
-  tag: 'tagUGSlithLab03',
-      xp: 60.17,
-      yp: 76.38,
-      isDungeon: true
-},
-{
-  id: 'UG_broken_hills01',
-  tag: 'tagUGBrokenHills01',
-  xp: 59.98,
-  yp: 83.8,
-  isDungeon: true
-},
-{
-  id: 'UG_arkovian_foothills01',
-  tag: 'tagUGArkovianFoothills01',
-    xp: 55.87,
-    yp: 92.56,
-    isDungeon: true
-},
-{
-  id: 'tag_UG_broken_hills02',
-  tag: 'tagUGBrokenHills02',
-      xp: 44.58,
-      yp: 90.42,
-      isDungeon: true
-},
-{
-  id: 'tag_UGBroken_hills02A',
-  tag: 'tagUGBrokenHills02A',
-      xp: 48.55,
-      yp: 90.42,
-      isDungeon: true
-},
-{
-  id: 'UG_broken_hills02c',
-  tag: 'tagUGBrokenHills02C',
-      xp: 46.35,
-      yp: 95.97,
-      isDungeon: true
-},
-{
-  id: 'UG_broken_hills02b',
-  tag: 'tagUGBrokenHills02B',
-      xp: 51.83,
-      yp: 91.49,
-      isDungeon: true
-},
-{
-  id: 'UG_broken_hills02d',
-  tag: 'tagUGBrokenHills02D',
-      xp: 53.11,
-      yp: 95.67,
-      isDungeon: true
-},
-{
-  id: 'GDX2_side_areas_02',
-  tag: 'tagGDX2SideAreas_02',
-      xp: 41.31, 
-      yp: 92.03,
-      isDungeon: true
-},
-{
-  id: 'UG_burrwitch_flooded_cellars',
-  tag: 'tagUGBurrwitchFloodedCellars',
-      xp: 60.57,
-      yp: 62.00,
-      isDungeon: true
-},
-{
-  id: 'map_wardens_cellar01',
-  tag: 'tagMapWardensCellar01',
-  xp: 65.73, 
-  yp: 53.36,
-  isDungeon: true
-},
-{
-  id: 'map_wardens_labratory01',
-  tag: 'tagMapWardensLabratory01',
-  xp: 61.49,
-  yp: 48.77,
-  isDungeon: true
-},
-{
-  id: 'GDX1_UG_ugdenbog_cellar02',
-  tag: 'tagGDX1UGUgdenbogCellar02',
-    xp: 78.92,
-    yp: 57.40,
-  isDungeon: true
-},
-{
-  id: 'GDX1_UG_ugdenbog_cave05',
-  tag: 'tagGDX1UGUgdenbogCave05',
-    xp: 76.24,
-    yp: 39.41,
-  isDungeon: true
-},
-{
-  id: 'UG_voidlands01b',
-  tag: 'tagUGVoidlands01B',
-      xp: 44.51,
-      yp: 4.25,
-  isDungeon: true
-},
-{
-  id: 'UG_voidlands01a',
-  tag: 'tagUGVoidlands01A',
-      xp: 38.59,
-      yp: 5.29,
-  isDungeon: true
-},
-{
-  id: 'UG_crypt_necropolis01',
-  tag: 'tagUGCryptNecropolis01',
-      xp: 31.24,
-      yp: 8.14,
-      isDungeon: true
-},
-{
-  id: 'UG_voidlands01',
-  tag: 'tagUGVoidlands01',
-      xp: 31.51,
-      yp: 5.35,
-  isDungeon: true
-},
-{
-  id: 'map_smugglers_pass',
-  tag: 'tagMapSmugglersPass',
-    xp: 30.79,
-     yp: 83.18,
-      isDungeon: true
-},
-{
-  id: 'map_mountain_deeps',
-  tag: 'tagMapMountainDeeps',
-  xp: 23.79, 
-  yp: 71.53,
-  isDungeon: true
-},
-{
-  id: 'UG_dermapteran03a',
-  tag: 'tagUGDermapteran03A',
-      xp: 19.77,
-      yp: 68.35,
-  isDungeon: true
-},
-{
-  id: 'tag_uG_dermapteran_02',
-  tag: 'tagUGDermapteran02',
-      xp: 15.12,
-      yp: 68.09,
-  isDungeon: true
-},
-{
-  id: 'tag_uG_dermapteran_01',
-  tag: 'tagUGDermapteran01',
-      xp: 17.50,
-      yp: 66.46,
-  isDungeon: true
-},
-{
-  id: 'tag_uGHomestead_cave01',
-  tag: 'tagUGHomesteadCave01',
-    xp: 15.34,
-    yp: 62.88,
-  isDungeon: true
-},
-{
-  id: 'tag_uG_dermapteran_03B',
-  tag: 'tagUGDermapteran03B',
-      xp: 19.40,
-      yp: 62.93,
-  isDungeon: true
-},
+];
 
 
-{
-  id: 'UG_crypt_necro01',
-  tag: 'tagUGCryptNecro01',
-  xp: 26.03, 
-  yp: 59.31,
-  isDungeon: true
-},
-{
-  id: 'UG_fort_zealot01',
-  tag: 'tagUGFortZealot01',
-  xp: 37.09,
-   yp: 55.12,
-  isDungeon: true
-},
-{
-  id: 'map_deadmans_gulch',
-  tag: 'tagMapDeadmansGulch',
-  xp: 31.52,
-  yp: 76.75
-},
-{
-  id: 'map_conflagration02',
-  tag: 'tagMapConflagration02',
-  xp: 32.38,
-  yp: 73.42
-},
-{
-  id: 'map_port_valbury_cellar',
-  tag: 'tagMapPortValburyCellar',
-    xp: 35.95, yp: 31.93,
-    isDungeon: true
-},
-{
-  id: 'map_port_valbury_aldritch_cellar',
-  tag: 'tagMapPortValburyAldritchCellar',
-      xp: 37.44,
-      yp: 17.84,
-      isDungeon: true
-},
-{
-  id: 'GDX1UG_ugdenbog_cave02_b',
-  tag: 'tagGDX1UGUgdenbogCave02',
-      xp: 80.03,
-      yp: 35.11,
-      isDungeon: true
-},
-{
-  id: 'tag_UG_cave_ghost01',
-  tag: 'tagUGCaveGhost01',
-    xp: 36.41, 
-    yp: 49.69,
-      isDungeon: true
-},
-{
-  id: 'tag_G_jagged_waste_cave02',
-  tag: 'tagUGJaggedWasteCave02',
-      xp: 25.46,
-      yp: 83.37,
-      isDungeon: true
-},
-{
-  id: 'tag_UG_jagged_waste_cave01',
-  tag: 'tagUGJaggedWasteCave01',
-      xp: 21.97,
-      yp: 80.51,
-      isDungeon: true
-},
+// --- MALMOUTH ---
+window.REGION_MARKERS_MALMOUTH = [
+{ id: 'tag_gdx1_map_malmouth_industrial', tag: 'tagGDX1MapMalmouthIndustrial', xp: 41.39, yp: 43.71 },
+{ id: 'tag_gdx1_map_malmouth_docks', tag: 'tagGDX1MapMalmouthDocks', xp: 32.49, yp: 35.06 },
+{ id: 'tag_gdx1_map_ugdenbog_slums', tag: 'tagGDX1MapUgdenbogSlums', xp: 52.57, yp: 30.06 },
+{ id: 'tag_gdx1_map_malmouth_outskirts_ruins', tag: 'tagGDX1MapMalmouthOutskirtsRuins', xp: 64.44, yp: 44.32 },
+{ id: 'tag_gDX1UG_ugdenbog_void_rift_04', tag: 'tagGDX1UGUgdenbogVoidRift04', xp: 81.48, yp: 58.97, isDungeon: true },
+{ id: 'tag_gdx1_map_malmouth_outskirts', tag: 'tagGDX1MapMalmouthOutskirts', xp: 67.78, yp: 69.30 },
+{ id: 'tag_gdx1_map_malmouth_entry', tag: 'tagGDX1MapMalmouthEntry', xp: 66.52, yp: 92.07 },
+{ id: 'tag_gdx1_map_malmouth_inner', tag: 'tagGDX1MapMalmouthInner', xp: 44.38, yp: 12.41 },
+{ id: 'tag_gdx1_ug_malmouth_aetherial_factory01', tag: 'tagGDX1UGMalmouthAetherialFactory01', xp: 18.36, yp: 2.54, isDungeon: true },
+{ id: 'tag_gDX1UG_malmouth_cathedral_01B', tag: 'tagGDX1UGMalmouthCathedral01B', xp: 11.39, yp: 85.80, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_aetherial_factory02', tag: 'tagGDX1UGMalmouthAetherialFactory02', xp: 8.01, yp: 27.14, isDungeon: true },
+{ id: 'tag_gDX1UG_malmouth_aetherial_factory05', tag: 'tagGDX1UGMalmouthAetherialFactory05', xp: 6.27, yp: 0.76, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_sewer02', tag: 'tagGDX1UGMalmouthSewer02', xp: 10.14, yp: 35.60, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_lighthouse01', tag: 'tagGDX1UGMalmouthLighthouse01', xp: 13.01, yp: 52.57, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_cathedral01', tag: 'tagGDX1UGMalmouthCathedral01', xp: 17.81, yp: 68.66, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_hideout01', tag: 'tagGDX1UGMalmouthHideout01', xp: 34.68, yp: 64.47, isDungeon: true },
+{ id: 'tag_gDX1UG_malmouth_sewer01', tag: 'tagGDX1UGMalmouthSewer01', xp: 33.42, yp: 76.67, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_outskirts_cellar01', tag: 'tagGDX1UGMalmouthOutskirtsCellar01', xp: 47.70, yp: 62.20, isDungeon: true },
+{ id: 'tag_gdx1_ug_ugdenbog_void_rift02', tag: 'tagGDX1UGUgdenbogVoidRift02', xp: 91.31, yp: 71.37, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_fort01', tag: 'tagGDX1UGMalmouthFort01', xp: 87.35, yp: 5.39, isDungeon: true },
+{ id: 'tag_GDX2_ruined_DC', tag: 'tagGDX2RuinedDC', xp: 84.15, yp: 33.59, isDungeon: true },
 
-{
-  id: 'tag_GDX1UG_jgdenbog_cave04',
-  tag: 'tagGDX1UGUgdenbogCave04',
-      xp: 91.33,
-      yp: 31.95,
-      isDungeon: true
-},
-
-{
-  id: 'tag_gDX1UG_ancient_grove01C',
-  tag: 'tagGDX1UGAncientGrove01C',
-      xp: 95.77,
-      yp: 55.68,
-      isDungeon: true
-},
-
-{
-  id: 'tag_uG_secret01',
-  tag: 'tagUGSecret01',
-xp: 31.11, yp: 17.55,
-      isDungeon: true
-},
-  ];
+];
 
 
-
-  // --- MALMOUTH ---
-  window.REGION_MARKERS_MALMOUTH = [
-
-    {
-  id: 'tag_gdx1_map_malmouth_industrial',
-  tag: 'tagGDX1MapMalmouthIndustrial',
-  xp: 41.39,
-  yp: 43.71
-},
-{
-  id: 'tag_gdx1_map_malmouth_docks',
-  tag: 'tagGDX1MapMalmouthDocks',
-  xp: 32.49,
-  yp: 35.06
-},
-{
-  id: 'tag_gdx1_map_ugdenbog_slums',
-  tag: 'tagGDX1MapUgdenbogSlums',
-  xp: 52.57,
-  yp: 30.06
-},
-{
-  id: 'tag_gdx1_map_malmouth_outskirts_ruins',
-  tag: 'tagGDX1MapMalmouthOutskirtsRuins',
-  xp: 64.44,
-  yp: 44.32
-},
-{
-  id: 'tag_gDX1UG_ugdenbog_void_rift_04',
-  tag: 'tagGDX1UGUgdenbogVoidRift04',
-    xp: 81.48,
-    yp: 58.97,
-    isDungeon: true
-},
-{
-  id: 'tag_gdx1_map_malmouth_outskirts',
-  tag: 'tagGDX1MapMalmouthOutskirts',
-  xp: 67.78,
-  yp: 69.30
-},
-{
-  id: 'tag_gdx1_map_malmouth_entry',
-  tag: 'tagGDX1MapMalmouthEntry',
-  xp: 66.52,
-  yp: 92.07
-},
-{
-  id: 'tag_gdx1_map_malmouth_inner',
-  tag: 'tagGDX1MapMalmouthInner',
-  xp: 44.38,
-  yp: 12.41
-},
-{
-  id: 'tag_gdx1_ug_malmouth_aetherial_factory01',
-  tag: 'tagGDX1UGMalmouthAetherialFactory01',
-      xp: 18.36,
-      yp: 2.54,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX1UG_malmouth_cathedral_01B',
-  tag: 'tagGDX1UGMalmouthCathedral01B',
-      xp: 11.39,
-      yp: 85.80,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx1_ug_malmouth_aetherial_factory02',
-  tag: 'tagGDX1UGMalmouthAetherialFactory02',
-      xp: 8.01,
-      yp: 27.14,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX1UG_malmouth_aetherial_factory05',
-  tag: 'tagGDX1UGMalmouthAetherialFactory05',
-      xp: 6.27,
-      yp: 0.76,
-      isDungeon: true
-},
-
-{
-  id: 'tag_gdx1_ug_malmouth_sewer02',
-  tag: 'tagGDX1UGMalmouthSewer02',
-      xp: 10.14,
-      yp: 35.60,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx1_ug_malmouth_lighthouse01',
-  tag: 'tagGDX1UGMalmouthLighthouse01',
-      xp: 13.01,
-      yp: 52.57,
-  isDungeon: true
-},
-{
-  id: 'tag_gdx1_ug_malmouth_cathedral01',
-  tag: 'tagGDX1UGMalmouthCathedral01',
-      xp: 17.81,
-      yp: 68.66,
-     isDungeon: true
-},
-{
-  id: 'tag_gdx1_ug_malmouth_hideout01',
-  tag: 'tagGDX1UGMalmouthHideout01',
-    xp: 34.68,
-    yp: 64.47,
-  isDungeon: true
-},
-{
-  id: 'tag_gDX1UG_malmouth_sewer01',
-  tag: 'tagGDX1UGMalmouthSewer01',
-      xp: 33.42,
-      yp: 76.67,
-  isDungeon: true
-},
-
-{
-  id: 'tag_gdx1_ug_malmouth_outskirts_cellar01',
-  tag: 'tagGDX1UGMalmouthOutskirtsCellar01',
-      xp: 47.70,
-      yp: 62.20,
-  isDungeon: true
-},
-{
-  id: 'tag_gdx1_ug_ugdenbog_void_rift02',
-  tag: 'tagGDX1UGUgdenbogVoidRift02',
-    xp: 91.31,
-    yp: 71.37,
-  isDungeon: true
-},
-{
-  id: 'tag_gdx1_ug_malmouth_fort01',
-  tag: 'tagGDX1UGMalmouthFort01',
-      xp: 87.35,
-      yp: 5.39,
-    isDungeon: true
-},
-{
-  id: 'tag_GDX2_ruined_DC',
-  tag: 'tagGDX2RuinedDC',
-      xp: 84.15,
-      yp: 33.59,
-      isDungeon: true
-},
-    
-  ];
-
-
-
-
-
-  // --- KORVAN ---
+// --- KORVAN ---
   window.REGION_MARKERS_KORVAN = [
-    {
-  id: 'tag_gdx2_map_secret_base_shrine',
-  tag: 'tagGDX2MapSecretBaseShrine',
-      xp: 22.86,
-      yp: 98.96
-  },
-    {
-  id: 'tag_gDX2_map_messengers_volcano',
-  tag: 'tagGDX2MapMessengersVolcano',
-    xp: 49.26, 
-    yp: 20.51,
-      isDungeon: true
-  },
-  {
-    id: 'tag_gdx2_map_witch_god_base',
-    tag: 'tagGDX2MapWitchGodBase',
-      xp: 20.83,
-      yp: 96.01
-  },
-  {
-    id: 'tag_gdx2_map_area01_a',
-    tag: 'tagGDX2MapArea01',
-      xp: 23.72,
-      yp: 87.54
-  },
-  {
-    id: 'tag_gdx2_map_ruined_temple_city',
-    tag: 'tagGDX2MapRuinedTempleCity',
-      xp: 25.54,
-      yp: 78.46
-  },
-  {
-    id: 'tag_gdx2_map_ruined_temple01',
-    tag: 'tagGDX2MapRuinedTemple01',
-      xp: 35.41,
-      yp: 76.10,
-  },
-  {
-    id: 'tag_gdx2_map_area01_b',
-    tag: 'tagGDX2MapArea01',
-      xp: 25.29,
-      yp: 59.98
-  },
-{
-  id: 'tag_gdx2_roguelike_area02',
-  tag: 'tagGDX2Roguelike_Area02',
-      xp: 6.68,
-      yp: 61.05,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_map_area02',
-  tag: 'tagGDX2MapArea02',
-  xp: 29.90,
-  yp: 54.39
-},
-{
-  id: 'tag_gdx2_map_ruined_city01',
-  tag: 'tagGDX2MapRuinedCity01',
-      xp: 31.71,
-      yp: 50.00
-},
-{
-  id: 'tag_gdx2_map_dead_lake',
-  tag: 'tagGDX2MapDeadLake',
-      xp: 23.56,
-      yp: 38.25
-},
-{
-  id: 'tag_gdx2_map_oasis',
-  tag: 'tagGDX2MapOasis',
-      xp: 46.78,
-      yp: 53.12
-},
-{
-  id: 'tag_gdx2_map_secret_desert_shrine',
-  tag: 'tagGDX2MapSecretDesertShrine',
-      xp: 55.20,
-      yp: 53.69
-},
-{
-  id: 'tag_gdx2_map_area03_a',
-  tag: 'tagGDX2MapArea03',
-      xp: 61.15,
-      yp: 49.12
-},
-{
-  id: 'tag_gdx2_map_vanguard_base',
-  tag: 'tagGDX2MapVanguardBase',
-  xp: 73.85,
-  yp: 42.77
-},
-{
-  id: 'tag_gdx2_map_ruined_city02',
-  tag: 'tagGDX2MapRuinedCity02',
-      xp: 70.30,
-      yp: 44.87
-},
-{
-  id: 'tag_gdx2_map_burning_spire',
-  tag: 'tagGDX2MapBurningSpire',
-      xp: 70.27,
-      yp: 45.46
-},
-{
-  id: 'tag_gdx2_map_area03_b',
-  tag: 'tagGDX2MapArea03',
-      xp: 60.00,
-      yp: 43.07
-},
-{
-  id: 'tag_gdx2_map_area04_a',
-  tag: 'tagGDX2MapArea04',
-      xp: 54.88,
-      yp: 37.61
-},
-{
-  id: 'tag_gdx2_map_area04_b',
-  tag: 'tagGDX2MapArea04',
-      xp: 59.47,
-      yp: 34.75
-},
-{
-  id: 'tag_gdx2_map_volcano01',
-  tag: 'tagGDX2MapVolcano01',
-      xp: 55.02,
-      yp: 38.7
-},
-{
-  id: 'tag_gdx2_map_tomb_valley',
-  tag: 'tagGDX2MapTombValley',
-      xp: 54.52,
-      yp: 21.66
-},
-{
-  id: 'tag_gdx2_map_area05',
-  tag: 'tagGDX2MapArea05',
-      xp: 52.14,
-      yp: 20.10
-},
-{
-  id: 'tag_gdx2_map_road_to_korvaak_temple',
-  tag: 'tagGDX2MapRoadToKorvaakTemple',
-      xp: 56.14,
-      yp: 16.44,
-},
-{
-  id: 'tag_gdx2_map_raised_temple_a',
-  tag: 'tagGDX2MapRaisedTemple',
-      xp: 47.54,
-      yp: 12.87
-},
-{
-  id: 'tag_gdx2_map_raised_temple_b',
-  tag: 'tagGDX2MapRaisedTemple',
-      xp: 33.18,
-      yp: 12.27,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx1_ug_secret01',
-  tag: 'tagGDX1UGSecret01',
-      xp: 12.73,
-      yp: 21.32,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_cairan_ruins01',
-  tag: 'tagGDX2CairanRuins01',
-    xp: 15.84, 
-    yp: 53.93,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_bysmiel_eldritch',
-  tag: 'tagGDX2BysmielEldritch',
-      xp: 1.64,
-      yp: 87.32,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_beetle01',
-  tag: 'tagGDX2Beetle01',
-      xp: 35.84,
-      yp: 92.03,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_ruined_temple01_b',
-  tag: 'tagGDX2RuinedTemple01',
-      xp: 50.43,
-      yp: 86.97,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_howling_chasm',
-  tag: 'tagGDX2HowlingChasm',
-      xp: 55.80,
-      yp: 58.52,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_ruined_dc',
-  tag: 'tagGDX2RuinedDC',
-      xp: 66.33, 
-      yp: 54.81,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_ruined_temple02',
-  tag: 'tagGDX2RuinedTemple02',
-      xp: 79.74,
-      yp: 44.34,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_votc01',
-  tag: 'tagGDX2VOTC01',
-    xp: 46.61, 
-    yp: 30.68,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_votc02',
-  tag: 'tagGDX2VOTC02',
-      xp: 71.39, 
-      yp: 30.27,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_korvaak_tomb01',
-  tag: 'tagGDX2KorvaakTomb01',
-      xp: 64.12,
-      yp: 1.53,
-      isDungeon: true
-},
-{
-  id: 'tag_gdx2_map_hidden_oasis',
-  tag: 'tagGDX2MapHiddenOasis',
-      xp: 32.09,
-      yp: 70.63
-},
-{
-  id: 'tagGDX2_roguelike_01A',
-  tag: 'tagGDX2Roguelike_01A',
-      xp: 86.77,
-      yp: 31.09,
-      isDungeon: true
-},
-{
-  id: 'tag_GDX2_sanctuary_ofHorran',
-  tag: 'tagGDX2SanctuaryOfHorran',
-    xp: 43.50, 
-    yp: 40.27,
-    isDungeon: true
-},
-{
-  id: 'tag_GDX2_roguelike_Area04',
-  tag: 'tagGDX2Roguelike_Area04',
-      xp: 79.72,
-      yp: 14.67,
-      isDungeon: true
-},
-{
-  id: 'tagGDX2_roguelike_Area05',
-  tag: 'tagGDX2Roguelike_Area05',
-      xp: 94.55,
-      yp: 13.13,
-      isDungeon: true
-},
-{
-  id: 'tag_GDX2_roguelike_01',
-  tag: 'tagGDX2Roguelike_01',
-      xp: 79.84,
-      yp: 31.40,
-      isDungeon: true
-},
-{
-  id: 'tag_GDX2_roguelike_01B',
-  tag: 'tagGDX2Roguelike_01B',
-      xp: 94.07,
-      yp: 31.22,
-      isDungeon: true
-},
-{
-  id: 'tag_GDX2_roguelike_01D',
-  tag: 'tagGDX2Roguelike_01D',
-      xp: 94.88,
-      yp: 22.04,
-      isDungeon: true
-},
-{
-  id: 'tag_GDX2_roguelike_01C',
-  tag: 'tagGDX2Roguelike_01C',
-      xp: 91.8,
-      yp: 26.38,
-      isDungeon: true
-},
-{
-  id: 'tag_GDX2_vOTC03',
-  tag: 'tagGDX2VOTC03',
-    xp: 45.76,
-    yp: 24.17,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_solael_void',
-  tag: 'tagGDX2SolaelVoid',
-      xp: 79.98,
-      yp: 54.72,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_roguelike_area01',
-  tag: 'tagGDX2Roguelike_Area01',
-    xp: 38.34, 
-    yp: 61.34,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_beet_le02',
-  tag: 'tagGDX2Beetle02',
-      xp: 36.71,
-      yp: 55.8,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_map_room',
-  tag: 'tagGDX2MapRoom',
-      xp: 43.78,
-      yp: 17.09,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_korvaak_tomb02',
-  tag: 'tagGDX2KorvaakTomb02',
-      xp: 67.80,
-      yp: 8.67,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_eldritch_realm01',
-  tag: 'tagGDX2EldritchRealm01',
-      xp: 70.88,
-      yp: 0.41,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_eldritch_realm02',
-  tag: 'tagGDX2EldritchRealm02',
-      xp: 75.77,
-      yp: -1.50,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_cellar',
-  tag: 'tagGDX2Cellar',
-      xp: 14.57,
-      yp: 91.67,
-      isDungeon: true
-},
-{
-  id: 'tag_gDX2_roguelike_Area03',
-  tag: 'tagGDX2Roguelike_Area03',
-      xp: 51.92,
-      yp: 72.91,
-      isDungeon: true
-},
+{ id: 'tag_gdx2_map_secret_base_shrine', tag: 'tagGDX2MapSecretBaseShrine', xp: 22.86, yp: 98.96 },
+{ id: 'tag_gDX2_map_messengers_volcano', tag: 'tagGDX2MapMessengersVolcano', xp: 49.26, yp: 20.51, isDungeon: true },
+{ id: 'tag_gdx2_map_witch_god_base', tag: 'tagGDX2MapWitchGodBase', xp: 20.83, yp: 96.01 },
+{ id: 'tag_gdx2_map_area01_a', tag: 'tagGDX2MapArea01', xp: 23.72, yp: 87.54 },
+{ id: 'tag_gdx2_map_ruined_temple_city', tag: 'tagGDX2MapRuinedTempleCity', xp: 25.54, yp: 78.46 },
+{ id: 'tag_gdx2_map_ruined_temple01', tag: 'tagGDX2MapRuinedTemple01', xp: 35.41, yp: 76.10 },
+{ id: 'tag_gdx2_map_area01_b', tag: 'tagGDX2MapArea01', xp: 25.29, yp: 59.98 },
+{ id: 'tag_gdx2_roguelike_area02', tag: 'tagGDX2Roguelike_Area02', xp: 6.68, yp: 61.05, isDungeon: true },
+{ id: 'tag_gdx2_map_area02', tag: 'tagGDX2MapArea02', xp: 29.90, yp: 54.39 },
+{ id: 'tag_gdx2_map_ruined_city01', tag: 'tagGDX2MapRuinedCity01', xp: 31.71, yp: 50.00 },
+{ id: 'tag_gdx2_map_dead_lake', tag: 'tagGDX2MapDeadLake', xp: 23.56, yp: 38.25 },
+{ id: 'tag_gdx2_map_oasis', tag: 'tagGDX2MapOasis', xp: 46.78, yp: 53.12 },
+{ id: 'tag_gdx2_map_secret_desert_shrine', tag: 'tagGDX2MapSecretDesertShrine', xp: 55.20, yp: 53.69 },
+{ id: 'tag_gdx2_map_area03_a', tag: 'tagGDX2MapArea03', xp: 61.15, yp: 49.12 },
+{ id: 'tag_gdx2_map_vanguard_base', tag: 'tagGDX2MapVanguardBase', xp: 73.85, yp: 42.77 },
+{ id: 'tag_gdx2_map_ruined_city02', tag: 'tagGDX2MapRuinedCity02', xp: 70.30, yp: 44.87 },
+{ id: 'tag_gdx2_map_burning_spire', tag: 'tagGDX2MapBurningSpire', xp: 70.27, yp: 45.46 },
+{ id: 'tag_gdx2_map_area03_b', tag: 'tagGDX2MapArea03', xp: 60.00, yp: 43.07 },
+{ id: 'tag_gdx2_map_area04_a', tag: 'tagGDX2MapArea04', xp: 54.88, yp: 37.61 },
+{ id: 'tag_gdx2_map_area04_b', tag: 'tagGDX2MapArea04', xp: 59.47, yp: 34.75 },
+{ id: 'tag_gdx2_map_volcano01', tag: 'tagGDX2MapVolcano01', xp: 55.02, yp: 38.7 },
+{ id: 'tag_gdx2_map_tomb_valley', tag: 'tagGDX2MapTombValley', xp: 54.52, yp: 21.66 },
+{ id: 'tag_gdx2_map_area05', tag: 'tagGDX2MapArea05', xp: 52.14, yp: 20.10 },
+{ id: 'tag_gdx2_map_road_to_korvaak_temple', tag: 'tagGDX2MapRoadToKorvaakTemple', xp: 56.14, yp: 16.44 },
+{ id: 'tag_gdx2_map_raised_temple_a', tag: 'tagGDX2MapRaisedTemple', xp: 47.54, yp: 12.87 },
+{ id: 'tag_gdx2_map_raised_temple_b', tag: 'tagGDX2MapRaisedTemple', xp: 33.18, yp: 12.27, isDungeon: true },
+{ id: 'tag_gdx1_ug_secret01', tag: 'tagGDX1UGSecret01', xp: 12.73, yp: 21.32, isDungeon: true },
+{ id: 'tag_gdx2_cairan_ruins01', tag: 'tagGDX2CairanRuins01', xp: 15.84, yp: 53.93, isDungeon: true },
+{ id: 'tag_gdx2_bysmiel_eldritch', tag: 'tagGDX2BysmielEldritch', xp: 1.64, yp: 87.32, isDungeon: true },
+{ id: 'tag_gdx2_beetle01', tag: 'tagGDX2Beetle01', xp: 35.84, yp: 92.03, isDungeon: true },
+{ id: 'tag_gdx2_ruined_temple01_b', tag: 'tagGDX2RuinedTemple01', xp: 50.43, yp: 86.97, isDungeon: true },
+{ id: 'tag_gdx2_howling_chasm', tag: 'tagGDX2HowlingChasm', xp: 55.80, yp: 58.52, isDungeon: true },
+{ id: 'tag_gdx2_ruined_dc', tag: 'tagGDX2RuinedDC', xp: 66.33, yp: 54.81, isDungeon: true },
+{ id: 'tag_gdx2_ruined_temple02', tag: 'tagGDX2RuinedTemple02', xp: 79.74, yp: 44.34, isDungeon: true },
+{ id: 'tag_gdx2_votc01', tag: 'tagGDX2VOTC01', xp: 46.61, yp: 30.68, isDungeon: true },
+{ id: 'tag_gdx2_votc02', tag: 'tagGDX2VOTC02', xp: 71.39, yp: 30.27, isDungeon: true },
+{ id: 'tag_gdx2_korvaak_tomb01', tag: 'tagGDX2KorvaakTomb01', xp: 64.12, yp: 1.53, isDungeon: true },
+{ id: 'tag_gdx2_map_hidden_oasis', tag: 'tagGDX2MapHiddenOasis', xp: 32.09, yp: 70.63 },
+{ id: 'tagGDX2_roguelike_01A', tag: 'tagGDX2Roguelike_01A', xp: 86.77, yp: 31.09, isDungeon: true },
+{ id: 'tag_GDX2_sanctuary_ofHorran', tag: 'tagGDX2SanctuaryOfHorran', xp: 43.50, yp: 40.27, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_Area04', tag: 'tagGDX2Roguelike_Area04', xp: 79.72, yp: 14.67, isDungeon: true },
+{ id: 'tagGDX2_roguelike_Area05', tag: 'tagGDX2Roguelike_Area05', xp: 94.55, yp: 13.13, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_01', tag: 'tagGDX2Roguelike_01', xp: 79.84, yp: 31.40, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_01B', tag: 'tagGDX2Roguelike_01B', xp: 94.07, yp: 31.22, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_01D', tag: 'tagGDX2Roguelike_01D', xp: 94.88, yp: 22.04, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_01C', tag: 'tagGDX2Roguelike_01C', xp: 91.80, yp: 26.38, isDungeon: true },
+{ id: 'tag_GDX2_vOTC03', tag: 'tagGDX2VOTC03', xp: 45.76, yp: 24.17, isDungeon: true },
+{ id: 'tag_gDX2_solael_void', tag: 'tagGDX2SolaelVoid', xp: 79.98, yp: 54.72, isDungeon: true },
+{ id: 'tag_gDX2_roguelike_area01', tag: 'tagGDX2Roguelike_Area01', xp: 38.34, yp: 61.34, isDungeon: true },
+{ id: 'tag_gDX2_beet_le02', tag: 'tagGDX2Beetle02', xp: 36.71, yp: 55.8, isDungeon: true },
+{ id: 'tag_gDX2_map_room', tag: 'tagGDX2MapRoom', xp: 43.78, yp: 17.09, isDungeon: true },
+{ id: 'tag_gDX2_korvaak_tomb02', tag: 'tagGDX2KorvaakTomb02', xp: 67.80, yp: 8.67, isDungeon: true },
+{ id: 'tag_gDX2_eldritch_realm01', tag: 'tagGDX2EldritchRealm01', xp: 70.88, yp: 0.41, isDungeon: true },
+{ id: 'tag_gDX2_eldritch_realm02', tag: 'tagGDX2EldritchRealm02', xp: 75.77, yp: -1.50, isDungeon: true },
+{ id: 'tag_gDX2_cellar', tag: 'tagGDX2Cellar', xp: 14.57, yp: 91.67, isDungeon: true },
+{ id: 'tag_gDX2_roguelike_Area03', tag: 'tagGDX2Roguelike_Area03', xp: 51.92, yp: 72.91, isDungeon: true },
 
-  ];
+];
 
 
 
@@ -4015,7 +2660,303 @@ ru: {
     tagGDX2Roguelike_01D:"永恒之夜的通道",
     tagGDX2SideAreas_01:"瘟疫陷坑",
     tagGDX2SideAreas_02:"腐坏的坟墓",
+  },
 
+  ja: {
+    tagMapDevilsCrossing01: "デビルズ クロッシング",
+    tagMapLowerCrossing01: "ローワー クロッシング",
+    tagMapBurialHill: "埋葬丘",
+    tagMapOldDump: "古いゴミ捨て場",
+    tagMapFoggyBank: "霧の土手",
+    tagMapBurrwitchRoad01: "霧の土手",
+    tagMapWightmire01: "ワイトマイア",
+    tagMapSoddenHollow: "ソドン ホロウ",
+    tagMapFloodedPassage01: "冠水通路",
+    tagMapBurrwitchOutskirts01: "バーウィッチ 郊外",
+    tagMapMolderingFields: "モルダリング フィールズ",
+    tagMapMudRow: "ぬかるみ街",
+    tagMapBurrwitchVillage01: "バーウィッチ村",
+    tagMapWardensCellar01: "ウォードンの地下室",
+    tagMapWardensLabratory01: "地下搬送施設",
+    tagMapWardensLabratory02: "隠された実験室",
+    tagMapLaboratoryStorerooms: "放棄された貯蔵室",
+    tagMapLaboratoryJail: "地下拘置所",
+    tagMapLaboratoryLivingQuarters: "居住区",
+    tagMapLaboratoryInner: "内部の実験室",
+    tagMapOminousLair: "不吉な巣",
+    tagMapLowerCrossing: "ローワー クロッシング",
+    tagMapHallowedHill: "霊丘",
+    tagMapBurrwitchSlums: "バーウィッチ スラム街",
+    tagMapDumpingGrounds: "ゴミ捨て場",
+    tagMapAbandonedWaterfront: "放棄された海岸通り",
+    tagMapMerchantsRow: "商人街",
+    tagMapBurrwitchCenter: "バーウィッチ センター",
+    tagMapBurrwitchEstates: "バーウィッチ エステート",
+    tagMapBrokenTeeth: "ブロークン ティース",
+    tagMapDevilsSpur: "デビルズ スパー",
+    tagMapNecropolis: "ネクロポリス",
+    tagMapOldGrove: "オールド グロウブ",
+    tagMapVoidlands: "オブシディアンの玉座",
+    tagMapVoidlands02: "灰の荒地",
+    tagMapVoidlands03: "見捨てられた荒地",
+    tagMapEastMarsh01: "イースト マーシュ",
+    tagMapEastMarsh02: "ノキシャス グレイド",
+    tagMapEastMarsh03: "クレイグの岩山",
+
+    tagMapBrokenHills: "ブロークン ヒルズ",
+    tagMapOldArkovia: "オールド アーコヴィア",
+    tagMapArkovianFoothills: "アーコヴィア丘陵",
+    tagMapKymons: "カイモンの避難所",
+    tagMapCoastRoad: "沿岸の道",
+    tagMapTwinFalls: "双子滝",
+    tagMapFourHills: "四つ丘",
+    tagMapRockyCoast: "ロッキー コースト",
+    tagMapNewHarbor: "ニュー ハーバー",
+    tagMapBarrenHighlands: "不毛高原",
+    tagMapCrumblingWatch: "崩れた監視塔",
+    tagMapCronleysHideout: "クロンリーの隠れ家",
+
+    tagMapSmugglersPass: "密輸人の道",
+    tagMapDeadmansGulch: "デッドマン峡谷",
+    tagMapMountainDeeps: "マウンテン ディープ",
+
+    tagMapDustyRoad: "探鉱者の道",
+    tagMapShadedBasin: "陰盆地",
+    tagMapPineBarrens: "松荒原",
+    tagMapJaggedWaste: "ギザギザ荒野",
+    tagMapJaggedWasteFort: "暴君の砦",
+
+    tagMapWitheringFields: "枯殺畑",
+    tagMapHomestead: "ホームステッド",
+    tagMapInfestedFarms: "荒れ農地",
+    tagMapRottedHarvest: "腐敗農地",
+    tagMapSorrowsBastionRoad: "休耕地",
+    tagMapCorruptedPasture: "グルーサム ハーベスト",
+    tagMapSorrowsBastion: "悲嘆の砦",
+    tagMapBloodGrove: "血の森",
+    tagMapDarkvaleMill: "グリヴァーの製材所",
+    tagMapBloodGroveMine: "モートンの払下げ請求地",
+    tagMapBloodGroveAetherMine: "ストーンレンド採石場",
+    tagMapBloodGroveShrine: "忘れられた神の祠",
+    tagMapDarkvale: "ダークヴェイル村",
+    tagMapDarkvaleGate: "ダークヴェイル ゲート",
+    tagMapFactionFort: "ハロン砦",
+    tagMapInfestedField01: "ソーンズバリー農場",
+    tagMapInfestedField02: "エルムズワース農場",
+    tagMapConflagration01: "大火",
+    tagMapConflagration02: "イモレーション",
+
+    tagMapAlpineGate: "アスターカーン山地",
+    tagMapLedgewood: "レッジウッド",
+    tagMapAlpineRoad: "アスターカーン街道",
+    tagMapAlpineValley: "アスターカーン渓谷",
+    tagMapAlpineFort: "アイコン砦",
+
+    tagMapFortIkon: "アイコン砦",
+    tagMapPlainsofStrife: "争いの平原",
+    tagMapNecropolisGate: "ネクロポリスの門",
+    tagMapNecropolisInterior: "ネクロポリス内部",
+
+    tagMapPortValbury: "ヴァルバリー港",
+    tagMapPortValburyOutskirts: "ヴァルバリー港 郊外",
+    tagMapPortValburyDistrict01: "ヴァルバリー港: 下町",
+    tagMapPortValburyDistrict02: "ヴァルバリー港: 高級住宅街",
+    tagMapPortValburyCellar: "ヴァルバリー港: 土台",
+    tagMapPortValburyManor: "ヴァン アルドリッチの玉座",
+    tagMapPortValburyGauntlet: "ヴァルバリーの炎",
+    tagMapPortValburyAldritchCellar: "アルドリッチの私有地",
+
+    tagGDX1MapDarkWood: "グルームヴァルト",
+    tagGDX1MapUgdenbog: "ウグデンボーグ",
+    tagGDX1MapUgdenbogVillage: "バロウホルム",
+    tagGDX1MapUgdenbogCoven: "魔女団の避難所",
+    tagGDX1MapUgdenbogAltar: "ラトッシュの祭壇",
+    tagGDX1MapUgdenbogAncient: "古老の棲み処",
+
+    tagGDX1MapMalmouthEntry: "ローン ウォッチ",
+    tagGDX1MapMalmouthOutskirts: "モーンデイル",
+    tagGDX1MapMalmouthOutskirtsRuins: "マルマス郊外",
+    tagGDX1MapMalmouthOutskirtsMine: "ジェレソン鉱山",
+    tagGDX1MapMalmouth: "マルマス",
+    tagGDX1MapUgdenbogSlums: "キャンドル地区",
+    tagGDX1MapMalmouthIndustrial: "スチールキャップ地区",
+    tagGDX1MapMalmouthInner: "クラウン ヒル",
+    tagGDX1MapMalmouthDocks: "マルマス港",
+
+    tagGDX2MapWitchGodBase: "三神の秘密会議所",
+    tagGDX2MapArea01: "コルヴァン高原",
+    tagGDX2MapRuinedTempleCity: "オシールの寺院都市",
+    tagGDX2MapRuinedTemple01: "オシール寺院",
+    tagGDX2MapHiddenOasis: "隠された避難所",
+    tagGDX2MapArea02: "コルヴァン砂漠",
+    tagGDX2MapRuinedCity01: "カイラン埠頭",
+    tagGDX2MapOasis: "炎陽オアシス",
+    tagGDX2MapDeadLake: "ドクロ盆地",
+    tagGDX2MapArea03: "玄武岩山",
+    tagGDX2MapRuinedCity02: "アビド遺跡",
+    tagGDX2MapBurningSpire: "燃える尖塔",
+    tagGDX2MapArea04: "地獄の荒地",
+    tagGDX2MapVolcano01: "ウルズインの目",
+    tagGDX2MapVolcano02: "アペシュの顎",
+    tagGDX2MapTombValley: "選民の谷",
+    tagGDX2MapArea05: "コルヴァン市の残骸",
+    tagGDX2MapRaisedTemple: "サンウォード尖塔",
+    tagGDX2MapMessengersVolcano: "贖罪の穴",
+    tagGDX2MapRoadToKorvaakTemple: "上昇の道",
+    tagGDX2MapVanguardBase: "三神の前衛",
+    tagGDX2MapSecretDesertShrine: "アザリオン寺院",
+    tagGDX2MapSecretBaseShrine: "ホラン寺院",
+
+    tagGDX2MapSideAreas_01: "バーウィッチ大聖堂",
+    tagGDX2MapSideAreas_02: "アーコヴィアの波止場",
+    tagGDX2MapSideAreas_03: "アーコヴィアン コロシアム",
+
+    /*DONGEON ET CAVE*/
+    tagUGLowerCrossingRatDen01: "腐敗した巣",
+    tagUGBurrwitchVillageRatDen01: "膿みし者の隠れ家",
+    tagUGCellar01: "忘れられた地下室",
+    tagUGCellar02: "堕落せし者の聖域",
+    tagBurrwitchCellar01: "荒らされた地下室",
+    tagBurrwitchCellar02: "湿っぽい地下室",
+    tagBurrwitchCellar03: "かび臭い地下室",
+    tagWightmireCellar01: "カルティストの隠れ家",
+    tagBurrwitchRiverCave: "川の通路",
+    tagUGBurialCave: "埋葬洞穴",
+    tagUGWightmireCave01: "大洞穴",
+    tagUGDevilsCrossingAquifer: "デビルの帯水層",
+    tagUGDevilsCrossingDungeon01: "刑務所地下牢",
+    tagUGDevilsCrossingHiddenPassage01: "受刑者のトンネル",
+    tagUGBurrwitchFloodedCellars: "冠水地下室",
+    tagUGBurrwitchOutskirtsBasin: "密輸人の窪地",
+    tagUGFloodedPassageRuin: "水底の舎利殿",
+    tagUGSlithLab01: "ハルゲイトの島",
+    tagUGSlithLab02: "ハルゲイトの研究所 - 一階",
+    tagUGSlithLab03: "ハルゲイトの研究所 - 二階",
+    tagUGArkovianFoothills01: "スタントン鉱山",
+    tagUGArkovianFoothills02: "山の背洞窟",
+    tagUGOldArkovia01: "ハネフィー鉱山",
+    tagUGOldArkovia02: "アーコヴィアの地下都市",
+    tagUGOldArkovia03: "雲集の蜂巣",
+    tagUGOldArkovia04: "喧噪の蜂巣",
+    tagUGOldArkovia05: "クロンリーの隠れ家",
+    tagUGBrokenHills01: "山の背洞窟",
+    tagUGBrokenHills02: "苦悶の階段",
+    tagUGBrokenHills02A: "苦痛",
+    tagUGBrokenHills02B: "苦難",
+    tagUGBrokenHills02C: "苦悩",
+    tagUGBrokenHills02D: "煩悶",
+    tagUGBrokenHills02E: "ウロボルークの拷問室",
+    tagUGBrokenHills02F: "魂たちの部屋",
+    tagUGBrokenHills03: "見捨てられた棲家",
+    tagUGBrokenHills04: "密輸人の道",
+    tagUGBrokenHills05: "絶叫の空洞",
+    tagUGJaggedWasteCave01: "ブラッドブライアの隠れ家",
+    tagUGJaggedWasteCave02: "忘れられた深部",
+    tagUGDermapteran01: "スキタリングの棲家",
+    tagUGDermapteran02: "群れの孵化場",
+    tagUGDermapteran03A: "女王の巣",
+    tagUGDermapteran03B: "女王の隠れ場",
+    tagUGHomesteadCave01: "隠れた者の棲家",
+    tagUGRottingCroplandsCrypt01: "埋もれた地下聖堂",
+    tagUGCaveGhost01: "骨の穴",
+    tagUGFortZealot01: "カイモンの聖域",
+    tagUGFortZealot02: "カイモンの書斎",
+    tagUGCryptNecro01: "修道会の砦",
+    tagUGCryptNecro02: "魂たちの部屋",
+    tagUGFortIkon_Prison: "アイコン砦 監獄",
+    tagUGFortIkon_Armory: "アイコン砦 兵器庫",
+    tagUGFortCultist01: "ダークヴェイル ゲート",
+    tagUGFortFaction01: "ハロン砦",
+    tagUGFortBlackLegion01: "アイコン砦",
+    tagUGCryptNecropolis01: "ブラック セパルカー",
+    tagUGCryptFactionBattle01: "アルコン バートホーレムの墓",
+    tagUGCryptFactionBattle02: "呪わしき者の失われた墓",
+    tagUGCryptZealot01: "コルヴァークの墓",
+    tagUGVoidlands01: "カオスの要塞",
+    tagUGVoidlands01A: "不調和",
+    tagUGVoidlands01B: "無秩序",
+    tagUGVoidlands01C: "崩壊",
+    tagUGVoidlands01D: "絶望の平原",
+    tagUGPassageNecropolis: "霊たちの間",
+    tagUGCryptFinal01: "監視者たちの墓",
+    tagUGCryptFinal02: "ログホリアンの封印",
+    tagUGCryptFinal03: "狂気の縁",
+    tagUGSecret01: "現実の縁",
+    tagUGSecret02: "不滅の聖所",
+    tagGDX1UGUgdenbogMine01: "バロウホルム鉱山",
+    tagGDX1UGUgdenbogCave01: "ジャナクシアのねぐら",
+    tagGDX1UGUgdenbogCave02: "ラーリアの住処",
+    tagGDX1UGUgdenbogCave03: "アンダーグロース",
+    tagGDX1UGUgdenbogCave04: "ウグダールの墓",
+    tagGDX1UGUgdenbogCave05: "キャラクサスのねぐら",
+    tagGDX1UGUgdenbogCellar01: "草に覆われた地下室",
+    tagGDX1UGUgdenbogCellar02: "老朽化した地下室",
+    tagGDX1UGUgdenbogWendigo01: "見捨てられた地下室",
+    tagGDX1UGUgdenbogWendigo02: "ウェンディゴのねぐら",
+    tagGDX1UGUgdenbogVoidRift01: "侘しい荒地",
+    tagGDX1UGUgdenbogVoidRift02: "燃え殻の荒地",
+    tagGDX1UGUgdenbogVoidRift03: "虚無の縁",
+    tagGDX1UGUgdenbogVoidRift04: "正気の縁",
+    tagGDX1UGMalmouthSewer01: "マルマス下水道",
+    tagGDX1UGMalmouthSewer02: "下水道深部",
+    tagGDX1UGMalmouthHideout01: "下水道の隠れ家",
+    tagGDX1UGMalmouthHideout02: "マルマス レジスタンスの避難所",
+    tagGDX1UGMalmouthOutskirtsCellar01: "燃焼室",
+    tagGDX1UGMalmouthAetherialFactory01: "侵襲の間",
+    tagGDX1UGMalmouthAetherialFactory02: "肉工場",
+    tagGDX1UGMalmouthAetherialFactory03: "肉の動物園",
+    tagGDX1UGMalmouthAetherialFactory04: "子宮",
+    tagGDX1UGMalmouthAetherialFactory05: "肉の聖所",
+    tagGDX1UGMalmouthCathedral01: "ヘラルド マティスの墓",
+    tagGDX1UGMalmouthCathedral01B: "イヴォンダの隠れ家",
+    tagGDX1UGMalmouthLighthouse01: "荒らされた灯台",
+    tagGDX1UGMalmouthFort01: "高等評議会会議所",
+    tagGDX1UGAncientGrove01: "古代の森",
+    tagGDX1UGAncientGrove01A: "野生の茂み",
+    tagGDX1UGAncientGrove01B: "汚染された森",
+    tagGDX1UGAncientGrove01C: "森の中心",
+    tagGDX1UGAncientGrove01D: "腐敗の試練",
+    tagGDX1UGSecret01: "選民の聖所",
+    tagGDX1UGSecret02: "死の坩堝",
+    tagGDX2RuinedTemple01: "オシール寺院",
+    tagGDX2CairanRuins01: "サンドブローン遺跡",
+    tagGDX2Beetle01: "クローリングの巣",
+    tagGDX2Beetle02: "ドゥルグのねぐら",
+    tagGDX2SanctuaryOfHorran: "ホランの至聖所",
+    tagGDX2HowlingChasm: "遠吠え亀裂",
+    tagGDX2RuinedTemple02: "アテフ寺院",
+    tagGDX2VOTC01: "セタンの墓",
+    tagGDX2VOTC02: "ネフォスの墓",
+    tagGDX2VOTC03: "エリアスの墓",
+    tagGDX2MapRoom: "ラーンの地図の間",
+    tagGDX2MessengerVolcano: "贖罪の穴",
+    tagGDX2KorvaakTomb01: "エルドリッチの太陽の墓",
+    tagGDX2KorvaakTomb02: "エルドリッチの門",
+    tagGDX2EldritchRealm01: "星域",
+    tagGDX2EldritchRealm02: "エルドリッチの玉座",
+    tagGDX2RuinedDC: "現実の縁",
+    tagGDX2BysmielEldritch: "隠されたねぐら",
+    tagGDX2SolaelVoid: "血みどろの荒地",
+    tagGDX2Cellar: "忘れられた地下室",
+    tagGDX2DesertUG01: "くぼんだ穴",
+    tagGDX2CairanRuins02: "カイラン浴場",
+    tagGDX2RuinedTemple04: "ラーン寺院",
+    tagGDX2RuinedTemple04A: "ラーンの地図の間",
+    tagGDX2RuinedPass01: "アビドの土台",
+    tagGDX2VOTC04: "イラーの墓",
+    tagGDX2Roguelike_Area01: "エナートのはらわた",
+    tagGDX2Roguelike_Area02: "見捨てられた要塞",
+    tagGDX2Roguelike_Area03: "遠吠えの深淵",
+    tagGDX2Roguelike_Area04: "ダムドの道",
+    tagGDX2Roguelike_Area05: "失われたオアシス",
+    tagGDX2Roguelike_01: "異端者の墓",
+    tagGDX2Roguelike_01A: "魔術師の宮廷",
+    tagGDX2Roguelike_01B: "モルゴネスの愚行",
+    tagGDX2Roguelike_01C: "飢餓の闇",
+    tagGDX2Roguelike_01D: "永遠の夜の導管",
+    tagGDX2SideAreas_01: "疫病のピット",
+    tagGDX2SideAreas_02: "腐敗した墓",
+    tagWorldMapWitchGodTemple:"三神寺院"
   }
 
 };

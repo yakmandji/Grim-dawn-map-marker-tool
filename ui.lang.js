@@ -71,19 +71,15 @@
       'ui.ShowHideSharedMarker': 'Show/Hide General',
       'ui.DoneMarkersTitle': 'Completed markers',
       "ui.NothingDone": "Nothing done",
-
       'ui.ShowHideRegion' : 'Show/Hide Region names',
       'ui.ShowHideRift' : 'Show/Hide Rift',
-
       'ui.CenterOnMap': 'Center on map',
-
       'ui.ShareMapButton': 'Share my map',
       'ui.SharedViewLabel': 'Shared map (read-only)',
       'ui.SharedTargetLabel': 'Add to map:',
       'ui.SharedMergeButton': 'Add to my map',
       'ui.MergeRoutesButton': 'Add shared to my map',
       'ui.SharedMarker' :'Shared',
-
       'ui.PathNamePlaceholder': 'Path name (optional)',
       'ui.MarkerNamePlaceholder': 'Name / note',
       'toast.WarnDeleteAllMarkers': 'Do you really want to delete all markers from this map?',
@@ -153,8 +149,6 @@
       'ui.ToolPan': 'Déplacer',
       'ui.DoneMarkersTitle': "Marqueurs terminés",
       "ui.NothingDone": "Rien de terminé", 
-
-
      'ui.ShowHideGeneral': 'Afficher/Masquer Général',
       'ui.ShowHideQuest': 'Afficher/Masquer Quêtes',
       'ui.ShowHideBoss': 'Afficher/Masquer Boss',
@@ -166,20 +160,15 @@
       'ui.CenterOnMap': 'Centrer sur la carte',
       'ui.ShowHideRegion': 'Afficher/Masquer les noms de régions',
       'ui.ShowHideRift': 'Afficher/Masquer les failles (Rifts)',
-
-
       'toast.ShareUrlCopied': 'Lien de partage copié dans le presse-papiers 📋',
       'toast.SharedMerged': 'Marqueurs et tracés partagés ajoutés à votre carte ✅',
       'toast.SharedTargetMissing': 'Carte d’origine introuvable. Elle a peut-être été renommée ou supprimée ❌',
       'ui.SharedMarker' :'Partagé',
-
       'ui.ShareMapButton': 'Partager ma carte',
       'ui.SharedViewLabel': 'Carte partagée (lecture seule)',
       'ui.SharedTargetLabel': 'Ajouter à la carte :',
       'ui.SharedMergeButton': 'Ajouter à ma carte',
      'ui.MergeRoutesButton': 'Ajouter le partage à ma carte',
-
-
       'ui.PathNamePlaceholder': 'Nom du trajet (optionnel)',
       'ui.MarkerNamePlaceholder': 'Nom / note',
       'toast.WarnDeleteAllMarkers': 'Voulez-vous vraiment supprimer tous les marqueurs de cette carte ?',
@@ -237,8 +226,6 @@
       'ui.ShowHideRift': 'Mostrar/Ocultar grietas',
       'ui.DoneMarkersTitle': "Marcadores completados",
       "ui.NothingDone": "Nada completado",
-
-
       'toast.MarkerNameUpdated': 'Nombre del marcador actualizado 💾',
       'toast.RouteNameSaved': 'Nombre de la ruta guardado 💾',
       'toast.PathFinished': 'Recorrido terminado ✅',
@@ -260,20 +247,15 @@
       'toast.ExportAll': 'Todos los datos se han guardado 💾',
       'toast.MarkerDeleted': 'Marcador eliminado 🗑️',
       'toast.RouteDeleted': 'Ruta eliminada 🧹',
-   
-
       'toast.ShareUrlCopied': 'Enlace de compartición copiado al portapapeles 📋',
       'toast.SharedMerged': 'Marcadores y rutas compartidos añadidos a tu mapa ✅',
       'ui.SharedMarker' :'Compartido',
       'toast.SharedTargetMissing': 'Mapa original no encontrado. Puede que se haya renombrado o eliminado ❌',
-
       'ui.ShareMapButton': 'Compartir mi mapa',
       'ui.SharedViewLabel': 'Mapa compartido (solo lectura)',
       'ui.SharedTargetLabel': 'Agregar al mapa:',
       'ui.SharedMergeButton': 'Agregar a mi mapa',
       'ui.MergeRoutesButton': 'Agregar el compartido a mi mapa',
-
-
       'ui.PathNamePlaceholder': 'Nombre del recorrido (opcional)',
       'ui.MarkerNamePlaceholder': 'Nombre / nota',
       'toast.WarnDeleteAllMarkers': '¿Realmente deseas eliminar todos los marcadores de este mapa?',
@@ -353,10 +335,8 @@
       "ui.ShowHideSharedMarker": "Geteilte Marker ein/ausblenden",
       'ui.DoneMarkersTitle': "Abgeschlossene Markierungen",
       "ui.NothingDone": "Nichts abgeschlossen",
-
       'ui.ShowHideRegion': 'Regionnamen ein-/ausblenden',
       'ui.ShowHideRift': 'Risse ein-/ausblenden',
-
       "ui.CenterOnMap": "Auf Karte zentrieren",
       "ui.ShareMapButton": "Meine Karte teilen",
       "ui.SharedViewLabel": "Geteilte Karte (nur Ansicht)",
@@ -373,11 +353,7 @@
       "ui.region":  "Region",
       "ui.rift":    "Riss",
       "ui.dungeon": "Dungeon",
-
     },
-
-
-
 
   pt: {
     'ui.NewMarkerTitle': 'Novo marcador',
@@ -416,7 +392,6 @@
      'toast.ExportAll': 'Todos os dados foram salvos 💾',
      'toast.ShareUrlCopied': 'Link de compartilhamento copiado para a área de transferência 📋',
      'ui.ToolPan': 'Mover',
-
     'ui.ShowHideGeneral': 'Mostrar/Ocultar Geral',
     'ui.ShowHideQuest': 'Mostrar/Ocultar Missões',
     'ui.ShowHideBoss': 'Mostrar/Ocultar Chefes',
@@ -429,8 +404,6 @@
     'ui.ShowHideRift': 'Mostrar/Ocultar fendas',
     'ui.DoneMarkersTitle': "Marcadores concluídos",
     "ui.NothingDone": "Nada concluído",  
-
-
     'toast.MarkerNameUpdated': 'Nome do marcador atualizado 💾',
     'toast.RouteNameSaved': 'Nome da rota salvo 💾',
     'toast.PathFinished': 'Trajeto finalizado ✅',
@@ -452,19 +425,15 @@
     'toast.ExportAll': 'Todos os dados foram salvos 💾',
     'toast.MarkerDeleted': 'Marcador excluído 🗑️',
     'toast.RouteDeleted': 'Rota excluída 🧹',
-
-
     'toast.ShareUrlCopied': 'Link de compartilhamento copiado para a área de transferência 📋',
     'toast.SharedMerged': 'Marcadores e rotas compartilhados adicionados ao seu mapa ✅',
     'toast.SharedTargetMissing': 'Mapa original não encontrado. Pode ter sido renomeado ou excluído ❌',
     'ui.SharedMarker' :'Compartilhado',
-
     'ui.ShareMapButton': 'Compartilhar meu mapa',
     'ui.SharedViewLabel': 'Mapa compartilhado (somente leitura)',
     'ui.SharedTargetLabel': 'Adicionar ao mapa:',
     'ui.SharedMergeButton': 'Adicionar ao meu mapa',
     'ui.MergeRoutesButton': 'Adicionar compartilhado ao meu mapa',
-
      'ui.PathNamePlaceholder': 'Nome do trajeto (opcional)',
      'ui.MarkerNamePlaceholder': 'Nome / anotação',
      'toast.WarnDeleteAllMarkers': 'Tem certeza de que deseja excluir todos os marcadores deste mapa?',
@@ -523,8 +492,6 @@
     'ui.ShowHideRift': 'Показать/скрыть разломы',
     'ui.DoneMarkersTitle': "Завершённые метки",
     "ui.NothingDone": "Ничего не завершено",
-
-
     'toast.MarkerNameUpdated': 'Имя маркера обновлено 💾',
     'toast.RouteNameSaved': 'Имя маршрута сохранено 💾',
     'toast.PathFinished': 'Путь завершён ✅',
@@ -546,19 +513,15 @@
     'toast.ExportAll': 'Все данные сохранены 💾',
     'toast.MarkerDeleted': 'Метка удалена 🗑️',
     'toast.RouteDeleted': 'Маршрут удалён 🧹',
-
-
     'toast.ShareUrlCopied': 'Ссылка для обмена скопирована в буфер обмена 📋',
     'toast.SharedMerged': 'Общие маркеры и маршруты добавлены на вашу карту ✅',
     'toast.SharedTargetMissing': 'Исходная карта не найдена. Возможно, она была переименована или удалена ❌',
     'ui.SharedMarker' :'Общий',
-
     'ui.ShareMapButton': 'Поделиться моей картой',
     'ui.SharedViewLabel': 'Общая карта (только просмотр)',
     'ui.SharedTargetLabel': 'Добавить на карту:',
     'ui.SharedMergeButton': 'Добавить на мою карту',
     'ui.MergeRoutesButton': 'Добавить общие данные на мою карту',
-
     'ui.PathNamePlaceholder': 'Название пути (необязательно)',
     'ui.MarkerNamePlaceholder': 'Имя / заметка',
     'toast.WarnDeleteAllMarkers': 'Вы действительно хотите удалить все маркеры с этой карты?',
@@ -617,11 +580,8 @@
       'ui.ShowHideRift': 'Mostra/Nascondi fenditure',
       'ui.DoneMarkersTitle': "Marcatori completati",
       "ui.NothingDone": "Niente completato", 
-
-
       'ui.PathNamePlaceholder': 'Nome del percorso (facoltativo)',
       'ui.MarkerNamePlaceholder': 'Nome / nota',
-
       'toast.MarkerNameUpdated': 'Nome del marcatore aggiornato 💾',
       'toast.RouteNameSaved': 'Nome del percorso salvato 💾',
       'toast.PathFinished': 'Percorso completato ✅',
@@ -643,18 +603,15 @@
       'toast.ExportAll': 'Tutti i dati sono stati salvati 💾',
       'toast.MarkerDeleted': 'Marcatore eliminato 🗑️',
       'toast.RouteDeleted': 'Percorso eliminato 🧹',
-
       'toast.ShareUrlCopied': 'Link di condivisione copiato negli appunti 📋',
       'toast.SharedMerged': 'Marcatori e percorsi condivisi aggiunti alla tua mappa ✅',
       'toast.SharedTargetMissing': 'Mappa originale non trovata. Potrebbe essere stata rinominata o eliminata ❌',
       'ui.MergeRoutesButton': 'Aggiungi la condivisione alla mia mappa',
-
       'ui.ShareMapButton': 'Condividi la mia mappa',
       'ui.SharedViewLabel': 'Mappa condivisa (solo lettura)',
       'ui.SharedTargetLabel': 'Aggiungi alla mappa:',
       'ui.SharedMergeButton': 'Aggiungi alla mia mappa',
       'ui.SharedMarker' :'Condiviso',
-
       'ui.PathNamePlaceholder': 'Nome del percorso (facoltativo)',
       'ui.MarkerNamePlaceholder': 'Nome / nota',
       'toast.WarnDeleteAllMarkers': 'Vuoi davvero eliminare tutti i marcatori da questa mappa?',
@@ -663,8 +620,6 @@
       "ui.region":  "Regione",
       "ui.rift":    "Varco",
       "ui.dungeon": "Dungeon",
-
-
     },
 
     zh: {
@@ -714,8 +669,6 @@
       'ui.ShowHideRift': '显示/隐藏裂隙',
       'ui.DoneMarkersTitle': "已完成的标记",
       "ui.NothingDone": "没有完成的标记",
-
-
       'toast.MarkerNameUpdated': '标记名称已更新 💾',
       'toast.RouteNameSaved': '路线名称已保存 💾',
       'toast.PathFinished': '路线已完成 ✅',
@@ -741,15 +694,12 @@
       'toast.SharedTargetMissing': '未找到原始地图，可能已被重命名或删除 ❌',
       'toast.MarkerDeleted': '标记已删除 🗑️',
       'toast.RouteDeleted': '路线已删除 🧹',
-
-
       'ui.ShareMapButton': '分享我的地图',
       'ui.SharedViewLabel': '共享地图（只读）',
       'ui.SharedTargetLabel': '添加到地图：',
       'ui.SharedMergeButton': '添加到我的地图',
       'ui.SharedMarker' :'共享',
       'ui.MergeRoutesButton': '添加共享路线到我的地图',
-
       'ui.PathNamePlaceholder': '路线名称（可选）',
       'ui.MarkerNamePlaceholder': '名称 / 备注',
       'toast.WarnDeleteAllMarkers': '确定要删除此地图上的所有标记吗？',
@@ -759,6 +709,93 @@
       "ui.rift":    "裂隙",
       "ui.dungeon": "地下城",
     },
+    ja: {
+        'ui.NewMarkerTitle': '新しいマーカー',
+      'ui.GeneralMarker': '🔘 一般',
+      'ui.QuestMarker': '⭐ クエスト',
+      'ui.BossMarker': '💀 ボス',
+      'ui.LootMarker': '🗝️ 戦利品',
+      'ui.WaypointMarker': '📍 ウェイポイント',
+      'ui.DonjonMarker': '🏰 ダンジョン',
+      'ui.NPCMarker': '💬 NPC',
+      'ui.SaveMarkerButton': 'マーカーを保存',
+      'ui.ToolsTitle': 'ツール',
+      'ui.RoutesList': 'ルート一覧',
+      'ui.MarkerList': 'マーカー一覧',
+      'ui.Done': '完了',
+      'ui.AddMarkerButton': '追加',
+      'ui.NewPathTitle': '新しいルート',
+      'ui.PathHelper': 'ルート描画中にスペースキーを押し続けると、マップをドラッグできます',
+      'ui.AddRouteButton': '追加',
+      'ui.FinishPath': '終了',
+      'ui.LockMarker': 'マーカーをロック',
+      'ui.ImportExportHelper': '別のブラウザや別のPCに移行する場合のみインポート / エクスポートが必要です。通常の保存にはヘッダーの保存ボタンを使ってください。',
+      'ui.ImportButton': 'セーブをインポート',
+      'ui.ExportButton': 'セーブをエクスポート',
+      'ui.SaveTitle': '保存',
+      'ui.DeleteMarkerButton': 'すべてのマーカーを削除',
+      'ui.DeletePathButton': 'すべてのルートを削除',
+      'ui.Help': '使い方',
+      'ui.HelpTitle': 'ヘルプ',
+      'ui.HelpLine1': 'ヘッダーのドロップダウンからマップを選択します（本編またはDLC）',
+      'ui.HelpLine2': 'マーカーを追加します 📍',
+      'ui.HelpLine3': 'マーカーは自動的に保存されます。必要に応じてヘッダーの「マーカーを保存」ボタンでも手動保存できます。',
+      'ui.HelpLine4': 'マップを他のユーザーと共有できます。「共有」としてチェックされたルートとマーカーだけが共有され、それ以外のマーカーは自分専用のままです。',
+      'ui.DeleteButton': '削除',
+      'toast.MarkerNameUpdated': 'マーカー名を保存しました 💾',
+      'toast.RouteNameSaved': 'ルート名を保存しました 💾',
+      'toast.PathFinished': 'ルートを完了しました ✅',
+      'toast.NoPath': '現在のルートはありません',
+      'toast.NoPathToDelete': '削除するルートがありません',
+      'toast.LoadingMap': 'マップを読み込み中…',
+      'toast.SaveState': '● 保存済み',
+      'toast.UnsaveState': '● 未保存',
+      'toast.SaveMarkerAndRoute': 'マーカーとルートをローカルに保存しました 💾',
+      'toast.FullMapDataImported': 'マップデータをすべてインポートしました ✅',
+      'toast.PathImported': 'ルートをインポートしました ✅',
+      'toast.MarkerImported': 'マーカーをインポートしました ✅',
+      'toast.WarnDeleteAllPath': '本当にこのマップのすべてのルートを削除しますか？',
+      'toast.AllPathDeleted': 'このマップのルートをすべて削除しました 🧹',
+      'toast.MarkerMapCleared': 'このマップのマーカーをすべて削除しました 🧹',
+      'toast.CantLoadData': 'ユーザーデータを読み込めませんでした：',
+      'toast.CantSaveData': 'ユーザーデータをローカルに保存できませんでした：',
+      'toast.PathInProgress': 'ルート作成中…',
+      'toast.ExportAll': 'すべてのデータを保存しました 💾',
+      'toast.SharedNoNewData': '共有マップから追加する新しいデータはありません ✅',
+      'toast.ShareUrlCopied': '共有リンクをクリップボードにコピーしました 📋',
+      'toast.SharedMerged': '共有されたマーカーとルートをマップに追加しました ✅',
+      'toast.SharedTargetMissing': '元のマップが見つかりません。名前が変更されたか削除された可能性があります ❌',
+      'toast.MarkerDeleted': 'マーカーを削除しました 🗑️',
+      'toast.RouteDeleted': 'ルートを削除しました 🧹',
+      'ui.ShowHideGeneral': '一般マーカーの表示 / 非表示',
+      'ui.ShowHideQuest': 'クエストマーカーの表示 / 非表示',
+      'ui.ShowHideBoss': 'ボスマーカーの表示 / 非表示',
+      'ui.ShowHideLoot': '戦利品マーカーの表示 / 非表示',
+      'ui.ShowHideWaypoint': 'ウェイポイントの表示 / 非表示',
+      'ui.ShowHideDonjon': 'ダンジョンマーカーの表示 / 非表示',
+      'ui.ShowHideNPC': 'NPCマーカーの表示 / 非表示',
+      'ui.ShowHideSharedMarker': '共有マーカーの表示 / 非表示',
+      'ui.DoneMarkersTitle': '完了したマーカー',
+      'ui.NothingDone': '完了したマーカーはありません',
+      'ui.ShowHideRegion': '地域名の表示 / 非表示',
+      'ui.ShowHideRift': 'リフトの表示 / 非表示',
+      'ui.CenterOnMap': 'マップの中心に移動',
+      'ui.ShareMapButton': 'マイマップを共有',
+      'ui.SharedViewLabel': '共有マップ（閲覧のみ）',
+      'ui.SharedTargetLabel': '追加先マップ：',
+      'ui.SharedMergeButton': 'マイマップに追加',
+      'ui.MergeRoutesButton': '共有ルートをマイマップに追加',
+      'ui.SharedMarker': '共有',
+      'ui.PathNamePlaceholder': 'ルート名（任意）',
+      'ui.MarkerNamePlaceholder': '名前 / メモ',
+      'toast.WarnDeleteAllMarkers': '本当にこのマップのすべてのマーカーを削除しますか？',
+      'toast.NothingToShare': '共有できるものがありません（ルートまたは共有マーカーがありません）',
+      'ui.ToolPan': '移動',
+      'ui.SearchLocationPlaceholder': '地域 / リフト / ダンジョンを検索…',
+      'ui.region':  '地域',
+      'ui.rift':    'リフト',
+      'ui.dungeon': 'ダンジョン',
+    }
 
   };
 
@@ -797,14 +834,11 @@
 
   window.GDMMLang = { setLang, getLang, applyLang };
   document.addEventListener('DOMContentLoaded', () => applyLang(getLang()));
-
   document.getElementById('langSelect')?.addEventListener('change', e => {
     const lang = e.target.value;
-
     // 1) on change la langue dans le système
     setLang(lang);
     applyLang(lang);
-
     // 2) on redessine la carte / les marqueurs
     if (window.UiCore && typeof UiCore.renderMarkers === 'function') {
       UiCore.renderMarkers({ skipRoutesPanel: true });
@@ -816,7 +850,6 @@
     document.addEventListener('DOMContentLoaded', () => {
     const current = GDMMLang.getLang();
     GDMMLang.applyLang(current);
-
     const sel = document.getElementById('langSelect');
     if (sel) {
       sel.value = current;
@@ -832,8 +865,6 @@
     const dict = translations[lang] || translations.en;
     return dict[key] || key;
   }
-
   window.GDMMLang = { setLang, getLang, applyLang, t };
-
 
 })();

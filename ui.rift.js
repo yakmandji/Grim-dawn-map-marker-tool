@@ -1,327 +1,68 @@
 // ui.rift.js
 
 window.RIFT_MARKERS_CAIRN = [
-  {
-    id: 'rift_devils_crossing',
-    tag: 'tagRiftDevilsCrossing',
-    xp: 63.55,
-    yp: 89.4
-  },
-  {
-    id: 'rift_cower_crossing',
-    tag: 'tagRiftLowerCrossing',
-    xp: 65.35,
-    yp: 83.7
-  },
-  {
-    id: 'rift_burrwitch_road',
-    tag: 'tagRiftBurrwitchRoad',
-    xp: 70.15,
-    yp: 74.83
-  },
-  {
-    id: 'rift_wightmire',
-    tag: 'tagRiftWightmire',
-    xp: 68.63,
-    yp: 78.32
-  },
-  {
-    id: 'rift_flooded_passage',
-    tag: 'tagRiftFloodedPassage',
-    xp: 61.24, 
-    yp: 70.42
-  },
-  {
-    id: 'tag_rift_burrwitch_outskirts',
-    tag: 'tagRiftBurrwitchOutskirts',
-    xp: 67.8,
-    yp: 71.3
-  },
-  {
-    id: 'rift_burrwitch_village',
-    tag: 'tagRiftBurrwitchVillage',
-    xp: 68.1,
-    yp: 64.7
-  },
-  {
-    id: 'tift_wardens_cellar',
-    tag: 'tagRiftWardensCellar',
-      xp: 63.78,
-      yp: 55.77
-  },
-  {
-    id: 'rift_wardens_labratory01',
-    tag: 'tagRiftWardensLabratory01',
-      xp: 60.38,
-      yp: 54.75
-  },
-  {
-    id: 'rift_wardens_labratory02',
-    tag: 'tagRiftWardensLabratory02',
-      xp: 64.09,
-      yp: 51.67
-  },
-  {
-    id: 'rift_broken_hills',
-    tag: 'tagRiftBrokenHills',
-    xp: 49.43,
-    yp: 82.6
-  },
-  {
-    id: 'rift_old_arkovia',
-    tag: 'tagRiftOldArkovia',
-    xp: 52.37,
-    yp: 78.4
-  },
-  {
-    id: 'rift_arkovian_foothills',
-    tag: 'tagRiftArkovianFoothills',
-    xp: 54.5,
-    yp: 85.9
-  },
-  {
-    id: 'rift_cronleys_hideout',
-    tag: 'tagRiftCronleysHideout',
-    xp: 54.25, 
-    yp: 70.15
-  },
-  {
-    id: 'rift_twin_falls',
-    tag: 'tagRiftTwinFalls',
-    xp: 48.6,
-    yp: 77.4
-  },
-  {
-    id: 'rift_smugglers_pass',
-    tag: 'tagRiftSmugglersPass',
-    xp: 31.83, 
-    yp: 87.13
-  },
-  {
-    id: 'rift_smugglers_road',
-    tag: 'tagRiftSmugglersRoad',
-    xp: 37.25,
-    yp: 68.9
-  },
-  {
-    id: 'tag_rift_jaggedWaste',
-    tag: 'tagRiftJaggedWaste',
-    xp: 41.29,
-    yp: 72.48
-  },
-  {
-    id: 'rift_deadmans_gulch',
-    tag: 'tagRiftDeadmansGulch',
-    xp: 31.9,
-    yp: 77.48
-  },
-  {
-    id: 'tag_rift_homestead',
-    tag: 'tagRiftHomestead',
-    xp: 37.4,
-    yp: 64.22
-  },
-  {
-    id: 'rift_rotted_croplands',
-    tag: 'tagRiftRottedCroplands',
-    xp: 30.3,
-    yp: 68.5
-  },
-  {
-    id: 'gloomwald_entrance',
-    tag: 'tagGDX1RiftGloomwaldEntrance',
-    xp: 73.2,
-    yp: 56.1
-  },
-  {
-    id: 'gloomwald_river_crossing',
-    tag: 'tagGDX1RiftGloomwaldRiverCrossing',
-    xp: 74.8,
-    yp: 47.78
-  },
-  {
-    id: 'rift_ugdenbog_coven',
-    tag: 'tagGDX1RiftUgdenbogCoven',
-    xp: 83.77,
-    yp: 47.1
-  },
-  {
-    id: 'ugdenbog_center',
-    tag: 'tagGDX1RiftUgdenbogCenter',
-    xp: 87.53,
-    yp: 38.1
-  },
-  {
-    id: 'ugdenbog_village',
-    tag: 'tagGDX1RiftUgdenbogVillage',
-    xp: 84.2,
-    yp: 29.9
-  },
-  {
-    id: 'alpine_gate',
-    tag: 'tagRiftAlpineGate',
-    xp: 18.95,
-    yp: 41.86
-  },
-  {
-    id: 'alpine_road',
-    tag: 'tagRiftAlpineRoad',
-    xp: 12.73,
-    yp: 36.3
-  },
-  {
-    id: 'alpine_valley',
-    tag: 'tagRiftAlpineValley',
-    xp: 8.08,
-    yp: 30.95
-  },
-  {
-    id: 'alpine_fort',
-    tag: 'tagRiftAlpineFort',
-    xp: 14.88,
-    yp: 22.9
-  },
-  {
-    id: 'necropolis_gate',
-    tag: 'tagRiftNecropolisGate',
-    xp: 22.5,
-    yp: 15.25
-  },
-  {
-    id: 'necropolis_interior',
-    tag: 'tagRiftNecropolisInterior',
-    xp: 23.55,
-    yp: 5.6
-  },
-  {
-    id: 'rift_blood_grove',
-    tag: 'tagRiftBloodGrove',
-    xp: 30.39,
-    yp: 51.52
-  },
-  {
-    id: 'dark_vale',
-    tag: 'tagRiftDarkvale',
-      xp: 29.24,
-      yp: 39.23
-  }  
+{ id: 'rift_devils_crossing', tag: 'tagRiftDevilsCrossing', xp: 63.55, yp: 89.4 },
+{ id: 'rift_cower_crossing', tag: 'tagRiftLowerCrossing', xp: 65.35, yp: 83.7 },
+{ id: 'rift_burrwitch_road', tag: 'tagRiftBurrwitchRoad', xp: 70.15, yp: 74.83 },
+{ id: 'rift_wightmire', tag: 'tagRiftWightmire', xp: 68.63, yp: 78.32 },
+{ id: 'rift_flooded_passage', tag: 'tagRiftFloodedPassage', xp: 61.24, yp: 70.42 },
+{ id: 'tag_rift_burrwitch_outskirts', tag: 'tagRiftBurrwitchOutskirts', xp: 67.8, yp: 71.3 },
+{ id: 'rift_burrwitch_village', tag: 'tagRiftBurrwitchVillage', xp: 68.1, yp: 64.7 },
+{ id: 'tift_wardens_cellar', tag: 'tagRiftWardensCellar', xp: 63.78, yp: 55.77 },
+{ id: 'rift_wardens_labratory01', tag: 'tagRiftWardensLabratory01', xp: 60.38, yp: 54.75 },
+{ id: 'rift_wardens_labratory02', tag: 'tagRiftWardensLabratory02', xp: 64.09, yp: 51.67 },
+{ id: 'rift_broken_hills', tag: 'tagRiftBrokenHills', xp: 49.43, yp: 82.6 },
+{ id: 'rift_old_arkovia', tag: 'tagRiftOldArkovia', xp: 52.37, yp: 78.4 },
+{ id: 'rift_arkovian_foothills', tag: 'tagRiftArkovianFoothills', xp: 54.5, yp: 85.9 },
+{ id: 'rift_cronleys_hideout', tag: 'tagRiftCronleysHideout', xp: 54.25, yp: 70.15 },
+{ id: 'rift_twin_falls', tag: 'tagRiftTwinFalls', xp: 48.6, yp: 77.4 },
+{ id: 'rift_smugglers_pass', tag: 'tagRiftSmugglersPass', xp: 31.83, yp: 87.13 },
+{ id: 'rift_smugglers_road', tag: 'tagRiftSmugglersRoad', xp: 37.25, yp: 68.9 },
+{ id: 'tag_rift_jaggedWaste', tag: 'tagRiftJaggedWaste', xp: 41.29, yp: 72.48 },
+{ id: 'rift_deadmans_gulch', tag: 'tagRiftDeadmansGulch', xp: 31.9, yp: 77.48 },
+{ id: 'tag_rift_homestead', tag: 'tagRiftHomestead', xp: 37.4, yp: 64.22 },
+{ id: 'rift_rotted_croplands', tag: 'tagRiftRottedCroplands', xp: 30.3, yp: 68.5 },
+{ id: 'gloomwald_entrance', tag: 'tagGDX1RiftGloomwaldEntrance', xp: 73.2, yp: 56.1 },
+{ id: 'gloomwald_river_crossing', tag: 'tagGDX1RiftGloomwaldRiverCrossing', xp: 74.8, yp: 47.78 },
+{ id: 'rift_ugdenbog_coven', tag: 'tagGDX1RiftUgdenbogCoven', xp: 83.77, yp: 47.1 },
+{ id: 'ugdenbog_center', tag: 'tagGDX1RiftUgdenbogCenter', xp: 87.53, yp: 38.1 },
+{ id: 'ugdenbog_village', tag: 'tagGDX1RiftUgdenbogVillage', xp: 84.2, yp: 29.9 },
+{ id: 'alpine_gate', tag: 'tagRiftAlpineGate', xp: 18.95, yp: 41.86 },
+{ id: 'alpine_road', tag: 'tagRiftAlpineRoad', xp: 12.73, yp: 36.3 },
+{ id: 'alpine_valley', tag: 'tagRiftAlpineValley', xp: 8.08, yp: 30.95 },
+{ id: 'alpine_fort', tag: 'tagRiftAlpineFort', xp: 14.88, yp: 22.9 },
+{ id: 'necropolis_gate', tag: 'tagRiftNecropolisGate', xp: 22.5, yp: 15.25 },
+{ id: 'necropolis_interior', tag: 'tagRiftNecropolisInterior', xp: 23.55, yp: 5.6 },
+{ id: 'rift_blood_grove', tag: 'tagRiftBloodGrove', xp: 30.39, yp: 51.52 },
+{ id: 'dark_vale', tag: 'tagRiftDarkvale', xp: 29.24, yp: 39.23 }
+
 ];
 
 
 window.RIFT_MARKERS_MALMOUTH = [
-    {
-    id: 'rift_malmouth_aetherfire',
-    tag: 'tagGDX1RiftMalmouthAetherfire',
-    xp: 64.0,
-    yp: 95.9
-  },
-    {
-    id: 'rift_malmouth_outskirts',
-    tag: 'tagGDX1RiftMalmouthOutskirts',
-    xp: 65.5,
-    yp: 38.50
-  },
-    {
-    id: 'rift_malmouth_industrial',
-    tag: 'tagGDX1RiftMalmouthIndustrial',
-    xp: 48.5,
-    yp: 44.47
-  },
-    {
-    id: 'rift_malmouth_inner',
-    tag: 'tagGDX1RiftMalmouthInner',
-    xp: 41.6,
-    yp: 17.28
-  },
-    {
-    id: 'malmouth_sewers',
-    tag: 'tagGDX1RiftMalmouthSewers',
-      xp: 32.48,
-      yp: 69.55
-  }      
+{ id: 'rift_malmouth_aetherfire', tag: 'tagGDX1RiftMalmouthAetherfire', xp: 64.0, yp: 95.9 },
+{ id: 'rift_malmouth_outskirts', tag: 'tagGDX1RiftMalmouthOutskirts', xp: 65.5, yp: 38.50 },
+{ id: 'rift_malmouth_industrial', tag: 'tagGDX1RiftMalmouthIndustrial', xp: 48.5, yp: 44.47 },
+{ id: 'rift_malmouth_inner', tag: 'tagGDX1RiftMalmouthInner', xp: 41.6, yp: 17.28 },
+{ id: 'malmouth_sewers', tag: 'tagGDX1RiftMalmouthSewers', xp: 32.48, yp: 69.55 }
+    
 ]
 
 window.RIFT_MARKERS_KORVAN = [
-    {
-    id: 'rift_witch_god_base',
-    tag: 'tagGDX2RiftWitchGodBase',
-      xp: 21.12,
-      yp: 98.06
-  },
-    {
-    id: 'rift_korvan_plateau',
-    tag: 'tagGDX2RiftKorvanPlateau',
-      xp: 25.92,
-      yp: 86.71
-  },
-    {
-    id: 'rift_temple_of_osyr',
-    tag: 'tagGDX2RiftTempleOfOsyr',
-      xp: 33.77,
-      yp: 77.46
-  },
-    {
-    id: 'rift_korvan_sands',
-    tag: 'tagGDX2RiftKorvanSands',
-      xp: 27.40,
-      yp: 57.09
-  },
-    {
-    id: 'rift_cairan_docks',
-    tag: 'tagGDX2RiftCairanDocks',
-      xp: 38.83,
-      yp: 51.50
-  },
-    {
-    id: 'rift_oasis',
-    tag: 'tagGDX2RiftOasis',
-      xp: 53.47,
-      yp: 52.56
-  },
-    {
-    id: 'rift_vanguard',
-    tag: 'tagGDX2RiftVanguard',
-      xp: 65.87,
-      yp: 48.11
-  },
-    {
-    id: 'rift_abyd',
-    tag: 'tagGDX2RiftAbyd',
-      xp: 68.64,
-      yp: 42.52
-  },
-    {
-    id: 'rift_infernal_wastes',
-    tag: 'tagGDX2RiftInfernalWastes',
-      xp: 60.82,
-      yp: 36.08
-  },
-    {
-    id: 'rift_temple',
-    tag: 'tagGDX2RiftTemple',
-      xp: 58.11,
-      yp: 7.50
-  },
-    {
-    id: 'rift_korvan_city',
-    tag: 'tagGDX2RiftKorvanCity',
-      xp: 53.59,
-      yp: 25.55
-  },
-    {
-    id: 'rift_lost_oasis',
-    tag: 'tagGDX2RiftLostOasis',
-      xp: 88.40,
-      yp: 17.72
-  },
-    {
-    id: 'tag_gDX2_rift_eldritch',
-    tag: 'tagGDX2RiftEldritch',
-      xp: 68.69,
-      yp: 8.43
-  }  
+{ id: 'rift_witch_god_base', tag: 'tagGDX2RiftWitchGodBase', xp: 21.12, yp: 98.06 },
+{ id: 'rift_korvan_plateau', tag: 'tagGDX2RiftKorvanPlateau', xp: 25.92, yp: 86.71 },
+{ id: 'rift_temple_of_osyr', tag: 'tagGDX2RiftTempleOfOsyr', xp: 33.77, yp: 77.46 },
+{ id: 'rift_korvan_sands', tag: 'tagGDX2RiftKorvanSands', xp: 27.40, yp: 57.09 },
+{ id: 'rift_cairan_docks', tag: 'tagGDX2RiftCairanDocks', xp: 38.83, yp: 51.50 },
+{ id: 'rift_oasis', tag: 'tagGDX2RiftOasis', xp: 53.47, yp: 52.56 },
+{ id: 'rift_vanguard', tag: 'tagGDX2RiftVanguard', xp: 65.87, yp: 48.11 },
+{ id: 'rift_abyd', tag: 'tagGDX2RiftAbyd', xp: 68.64, yp: 42.52 },
+{ id: 'rift_infernal_wastes', tag: 'tagGDX2RiftInfernalWastes', xp: 60.82, yp: 36.08 },
+{ id: 'rift_temple', tag: 'tagGDX2RiftTemple', xp: 58.11, yp: 7.50 },
+{ id: 'rift_korvan_city', tag: 'tagGDX2RiftKorvanCity', xp: 53.59, yp: 25.55 },
+{ id: 'rift_lost_oasis', tag: 'tagGDX2RiftLostOasis', xp: 88.40, yp: 17.72 },
+{ id: 'tag_gDX2_rift_eldritch', tag: 'tagGDX2RiftEldritch', xp: 68.69, yp: 8.43 }
 
-  
 ]
 
 // 2) Rift localization
@@ -764,6 +505,71 @@ window.RIFT_LABELS = {
     "tagGDX2RiftTemple": "Rift im Grab der Übernatürlichen Sonne",
     "tagGDX2RiftEldritch": "Rift am Übernatürlichen Tor",
     "tagGDX2RiftLostOasis": "Rift in der Verschollenen Oase"
+  },
+  ja:{
+    "tagRiftDevilsCrossing": "デビルズ クロッシング リフト",
+    "tagRiftLowerCrossing": "ローワー クロッシング リフト",
+    "tagRiftBurrwitchRoad": "霧の土手 リフト",
+    "tagRiftWightmire": "ワイトマイア リフト",
+    "tagRiftFloodedPassage": "冠水通路 リフト",
+    "tagRiftBurrwitchOutskirts": "バーウィッチ 郊外 リフト",
+    "tagRiftBurrwitchVillage": "バーウィッチ村 リフト",
+    "tagRiftWardensCellar": "ウォードンの地下室 リフト",
+    "tagRiftWardensLabratory01": "地下搬送施設 リフト",
+    "tagRiftWardensLabratory02": "ウォードンの実験室 リフト",
+
+    "tagRiftBrokenHills": "ブロークン ヒルズ リフト",
+    "tagRiftOldArkovia": "オールド アーコヴィア リフト",
+    "tagRiftArkovianFoothills": "アーコヴィア丘陵 リフト",
+    "tagRiftCronleysHideout": "クロンリーの隠れ家 リフト",
+    "tagRiftTwinFalls": "双子滝 リフト",
+    "tagRiftSmugglersPass": "密輸人の道 リフト",
+    "tagRiftSmugglersRoad": "探鉱者の道 リフト",
+    "tagRiftJaggedWaste": "松荒原 リフト",
+    "tagRiftDeadmansGulch": "デッドマン峡谷 リフト",
+
+    "tagRiftHomestead": "ホームステッド リフト",
+    "tagRiftWitheringFields": "枯殺畑 リフト",
+    "tagRiftRottedCroplands": "腐敗農地 リフト",
+    "tagRiftRottedHarvest": "退廃農場 リフト",
+    "tagRiftSorrowsBastion": "悲嘆の砦 リフト",
+    "tagRiftBloodGrove": "血の森 リフト",
+    "tagRiftDarkvale": "ダークヴェイル ゲート リフト",
+    "tagRiftAlpineGate": "アスターカーン山地 リフト",
+    "tagRiftAlpineRoad": "アスターカーン街道 リフト",
+    "tagRiftAlpineValley": "アスターカーン渓谷 リフト",
+    "tagRiftAlpineFort": "アイコン砦 リフト",
+    "tagRiftPlaintsofStrife": "争いの平原 リフト",
+    "tagRiftNecropolisGate": "ネクロポリスの門 リフト",
+    "tagRiftNecropolisInterior": "ネクロポリス内部 リフト",
+
+    "tagRiftRandom01": "クトーニック リフト",
+    "tagRiftRandomAetherial": "イセリアル リフト",
+
+    "tagGDX1RiftGloomwaldEntrance": "グルームヴァルト リフト",
+    "tagGDX1RiftGloomwaldRiverCrossing": "グルームヴァルト クロッシング リフト",
+    "tagGDX1RiftUgdenbogCoven": "魔女団の避難所 リフト",
+    "tagGDX1RiftUgdenbogCenter": "ウグデンボーグ リフト",
+    "tagGDX1RiftUgdenbogVillage": "バロウホルム リフト",
+    "tagGDX1RiftMalmouthAetherfire": "ローン ウォッチ リフト",
+    "tagGDX1RiftMalmouthOutskirts": "マルマス郊外 リフト",
+    "tagGDX1RiftMalmouthIndustrial": "マルマス スチールキャップ地区 リフト",
+    "tagGDX1RiftMalmouthInner": "マルマス クラウン ヒル リフト",
+    "tagGDX1RiftMalmouthSewers": "マルマス下水道 リフト",
+
+    "tagGDX2RiftWitchGodBase": "三神の秘密会議所 リフト",
+    "tagGDX2RiftKorvanPlateau": "コルヴァン高原 リフト",
+    "tagGDX2RiftTempleOfOsyr": "オシール寺院 リフト",
+    "tagGDX2RiftKorvanSands": "コルヴァン砂漠 リフト",
+    "tagGDX2RiftCairanDocks": "カイラン埠頭 リフト",
+    "tagGDX2RiftOasis": "炎陽オアシス リフト",
+    "tagGDX2RiftVanguard": "三神の前衛 リフト",
+    "tagGDX2RiftAbyd": "アビド遺跡 リフト",
+    "tagGDX2RiftInfernalWastes": "地獄の荒地 リフト",
+    "tagGDX2RiftKorvanCity": "コルヴァン市 リフト",
+    "tagGDX2RiftTemple": "エルドリッチの太陽の墓 リフト",
+    "tagGDX2RiftEldritch": "エルドリッチの門 リフト",
+    "tagGDX2RiftLostOasis": "失われたオアシス リフト"
   }
 };
 
