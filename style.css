@@ -487,10 +487,8 @@ input[type="password"]:focus
  { opacity: 0.6; }
 
 .marker.completed .label{ 
-  opacity: 0.7;
   background: rgb(39 39 39 / 85%);
   border: 1px solid #4b4b4b;
-  font-size: 0.8em;
  }
 
 .marker.completed .pin-bg{
