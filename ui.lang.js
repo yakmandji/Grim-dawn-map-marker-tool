@@ -32,7 +32,7 @@
       'ui.Help': 'How to use',
       'ui.HelpTitle': 'Help',
       'ui.HelpLine1': 'Select a map from the dropdown in the header (main or DLC)',
-      'ui.HelpLine2': 'Add your markers 📍',
+      'ui.HelpLine2': 'Add your markers 📍, or draw a route',
       'ui.HelpLine3': 'Your markers are saved automatically. Use the "Save markers" button in the header to save manually if needed',
       'ui.HelpLine4': 'You can share your map with other users. Only the routes and the markers checked as "shared" will be shared. Other markers will remain private to your map.',
       'ui.DeleteButton': 'Delete',
@@ -89,6 +89,7 @@
       "ui.region":  "Region",
       "ui.rift":    "Rift",
       "ui.dungeon": "Dungeon",
+      "ui.annouce": "Build your own experience",
 
     },
     fr: {
@@ -120,7 +121,7 @@
       'ui.Help': 'Guide d’utilisation',
       'ui.HelpTitle': 'Aide',
       'ui.HelpLine1': 'Choisissez une carte depuis le menu déroulant dans l’en-tête (principale ou DLC)',
-      'ui.HelpLine2': 'Ajoutez vos marqueurs 📍',
+      'ui.HelpLine2': 'Ajoutez vos marqueurs 📍, ou tracez une route',
       'ui.HelpLine3': 'Vos marqueurs sont sauvegardés automatiquement. Utilisez le bouton "Sauvegarder les marqueurs" si besoin.',
       'ui.HelpLine4' : 'Vous pouvez partager votre carte avec d\'autres utilisateurs. Seulement les routes et les marqueurs cochés "partagé" seront partagés. Les autres marqueurs seront privés à votre carte',
       'ui.DeleteButton': 'Supprimer',
@@ -177,6 +178,7 @@
       "ui.region":  "Région",
       "ui.rift":    "Faille",
       "ui.dungeon": "Donjon",
+      "ui.annouce": "Créez votre propre expérience",
 
     },
     es: {
@@ -208,7 +210,7 @@
       'ui.Help': 'Cómo usar',
       'ui.HelpTitle': 'Ayuda',
       'ui.HelpLine1': 'Selecciona un mapa desde el menú desplegable en el encabezado (principal o DLC)',
-      'ui.HelpLine2': 'Añade tus marcadores 📍',
+      'ui.HelpLine2': 'Añade tus marcadores 📍, o dibuja una ruta',
       'ui.HelpLine3': 'Tus marcadores se guardan automáticamente. Usa el botón "Guardar marcadores" en el encabezado si lo necesitas.',
       'ui.HelpLine4': 'Puedes compartir tu mapa con otros usuarios. Solo se compartirán las rutas y los marcadores marcados como "compartido". Los demás marcadores serán privados de tu mapa.',
       'ui.DeleteButton': 'Eliminar',
@@ -264,6 +266,7 @@
       "ui.region":  "Región",
       "ui.rift":    "Grieta",
       "ui.dungeon": "Mazmorra",
+      "ui.annouce": "Crea tu propia experiencia",
 
     },
 
@@ -296,7 +299,7 @@
       "ui.Help": "Anleitung",
       "ui.HelpTitle": "Hilfe",
       "ui.HelpLine1": "Wähle eine Karte im Dropdown-Menü oben (Hauptspiel oder DLC)",
-      "ui.HelpLine2": "Füge deine Marker hinzu 📍",
+      "ui.HelpLine2": "Füge deine Markierungen hinzu 📍 oder zeichne eine Route",
       "ui.HelpLine3": "Deine Marker werden automatisch gespeichert. Verwende die Schaltfläche 'Marker speichern' im Header, um manuell zu speichern, falls nötig.",
       "ui.HelpLine4": "Du kannst deine Karte mit anderen Benutzern teilen. Nur Routen und Marker mit dem Status 'geteilt' werden geteilt. Andere bleiben privat.",
       "ui.DeleteButton": "Löschen",
@@ -353,6 +356,8 @@
       "ui.region":  "Region",
       "ui.rift":    "Riss",
       "ui.dungeon": "Dungeon",
+      "ui.annouce": "Gestalte dein eigenes Erlebnis",
+
     },
 
   pt: {
@@ -384,7 +389,7 @@
     'ui.Help': 'Como usar',
     'ui.HelpTitle': 'Ajuda',
     'ui.HelpLine1': 'Selecione um mapa no menu suspenso do cabeçalho (principal ou DLC)',
-    'ui.HelpLine2': 'Adicione seus marcadores 📍',
+    'ui.HelpLine2': 'Adicione seus marcadores 📍 ou trace uma rota',
     'ui.HelpLine3': 'Seus marcadores são salvos automaticamente. Use o botão "Salvar marcadores" no cabeçalho se necessário.',
     'ui.HelpLine4': 'Você pode compartilhar seu mapa com outros usuários. Apenas as rotas e os marcadores marcados como "compartilhado" serão compartilhados. Os outros marcadores permanecerão privados no seu mapa.',
     'ui.DeleteButton': 'Excluir',
@@ -442,6 +447,7 @@
      "ui.region":  "Região",
       "ui.rift":    "Fenda",
       "ui.dungeon": "Masmorra",
+      "ui.annouce": "Crie sua própria experiência",
 
   },
 
@@ -474,7 +480,7 @@
     'ui.Help': 'Как использовать',
     'ui.HelpTitle': 'Помощь',
     'ui.HelpLine1': 'Выберите карту из выпадающего списка вверху (основная или DLC)',
-    'ui.HelpLine2': 'Добавляйте свои маркеры 📍',
+    'ui.HelpLine2': 'Добавьте свои метки 📍 или проложите маршрут',
     'ui.HelpLine3': 'Ваши маркеры сохраняются автоматически. При необходимости используйте кнопку "Сохранить маркеры" вверху.',
     'ui.HelpLine4': 'Вы можете поделиться своей картой с другими пользователями. Будут переданы только маршруты и метки, отмеченные как «общие». Остальные метки останутся приватными на вашей карте.',
     'ui.DeleteButton': 'Удалить',
@@ -530,6 +536,7 @@
     "ui.region":  "Регион",
     "ui.rift":    "Разлом",
     "ui.dungeon": "Подземелье",
+    "ui.annouce": "Создайте свой собственный опыт",
 
   },
 
@@ -562,7 +569,7 @@
       'ui.Help': 'Come usare',
       'ui.HelpTitle': 'Guida',
       'ui.HelpLine1': 'Seleziona una mappa dal menu a discesa in alto (principale o DLC)',
-      'ui.HelpLine2': 'Aggiungi i tuoi marcatori 📍',
+      'ui.HelpLine2': 'Aggiungi i tuoi segnalini 📍 o traccia un percorso',
       'ui.HelpLine3': 'I tuoi marcatori vengono salvati automaticamente. Usa il pulsante "Salva marcatori" nell’intestazione se necessario.',
       'ui.HelpLine4': 'Puoi condividere la tua mappa con altri utenti. Solo i percorsi e i marcatori contrassegnati come "condivisi" verranno condivisi. Gli altri marcatori rimarranno privati sulla tua mappa.',
       'ui.DeleteButton': 'Elimina',
@@ -620,6 +627,7 @@
       "ui.region":  "Regione",
       "ui.rift":    "Varco",
       "ui.dungeon": "Dungeon",
+      "ui.annouce": "Crea la tua esperienza personale",
     },
 
     zh: {
@@ -651,7 +659,7 @@
       'ui.Help': '使用说明',
       'ui.HelpTitle': '帮助',
       'ui.HelpLine1': '从标题栏的下拉菜单中选择地图（主线或DLC）',
-      'ui.HelpLine2': '添加您的标记 📍',
+      'ui.HelpLine2': '添加你的标记 📍，或绘制一条路线',
       'ui.HelpLine3': '标记会自动保存。如需手动保存，请使用标题栏中的“保存标记”按钮',
       'ui.HelpLine4': '您可以与其他用户共享您的地图。只有选中“共享”的路线和标记会被共享，其他标记将保留为您地图的私人内容。',
       'ui.DeleteButton': '删除',
@@ -708,6 +716,7 @@
       "ui.region":  "地区",
       "ui.rift":    "裂隙",
       "ui.dungeon": "地下城",
+      "ui.annouce": "打造属于你的独特体验",
     },
     ja: {
         'ui.NewMarkerTitle': '新しいマーカー',
@@ -738,7 +747,7 @@
       'ui.Help': '使い方',
       'ui.HelpTitle': 'ヘルプ',
       'ui.HelpLine1': 'ヘッダーのドロップダウンからマップを選択します（本編またはDLC）',
-      'ui.HelpLine2': 'マーカーを追加します 📍',
+      'ui.HelpLine2': 'マーカーを追加する 📍、またはルートを描く',
       'ui.HelpLine3': 'マーカーは自動的に保存されます。必要に応じてヘッダーの「マーカーを保存」ボタンでも手動保存できます。',
       'ui.HelpLine4': 'マップを他のユーザーと共有できます。「共有」としてチェックされたルートとマーカーだけが共有され、それ以外のマーカーは自分専用のままです。',
       'ui.DeleteButton': '削除',
@@ -795,6 +804,7 @@
       'ui.region':  '地域',
       'ui.rift':    'リフト',
       'ui.dungeon': 'ダンジョン',
+      "ui.annouce": "自分だけの体験を築こう",
     }
 
   };
