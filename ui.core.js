@@ -261,7 +261,6 @@ function renderList() {
   const tpl  = $('#tplItem');
   if (!host || !tpl) return;
 
-  // ➜ On sépare les marqueurs actifs et done
   const activeMarkers = markers.filter(m => !m.done);
   const doneMarkers   = markers.filter(m => !!m.done);
 
@@ -385,7 +384,7 @@ function renderList() {
     window.GDMMLang.applyLang(window.GDMMLang.getLang());
   }
 
-  // ➜ Met à jour le panneau des Done
+  // Met à jour le panneau des Done
   renderDoneList(doneMarkers);
 }
 
@@ -1867,9 +1866,9 @@ if (newPathBtn) {
 
   // --- Map sources (One Json per map) ---
   const MAP_SOURCES = {
-    'Cairn':        'https://www.grimcustommarker.org/maps/cairn_profile.json?v=1.12',
-    'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1.12',
-    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.13',
+    'Cairn':        'https://www.grimcustommarker.org/maps/cairn_profile.json?v=1.13',
+    'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1.13',
+    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.14',
     'Asterkarn':    'https://www.grimcustommarker.org/maps/asterkarn_profile.json?v=1',
   };
 

@@ -68,7 +68,6 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
   { id: "entry_royal_hive4", xp: 25.66, yp: 65.32, tag: "royal_hive4" },
   { id: "entry_bastion_order", xp: 31.89, yp: 58.89, tag: "bastion_order" },
   { id: "entry_kymons_sanctuary", xp: 34.36, yp: 57.63, tag: "kymons_sanctuary" },
-  
   { id: "entry_ashen_waste", xp: 32.86, yp: 52.96, tag: "ashen_waste" },
   { id: "entry_ashen_waste2", xp: 32.48, yp: 53.94, tag: "kymons_sanctuary2" },
   { id: "entry_ashen_waste3", xp: 31.50, yp: 54.10, tag: "kymons_sanctuary3" },
@@ -76,22 +75,17 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
   { id: "entry_ashen_waste5", xp: 30.43, yp: 54.89, tag: "kymons_sanctuary5" },
   { id: "entry_the_bonepit", xp: 34.93, yp: 51.89, tag: "the_bonepit" },
   { id: "entry_fort_haron", xp: 28.99, yp: 46.98, tag: "fort_haron" },
-
   { id: "entry_darkvale_gate", xp: 22.59, yp: 45.02, tag: "darkvale_gate" },
   { id: "entry_darkvale_gate2", xp: 21.09, yp: 40.68, tag: "darkvale_gate2" },
-
   { id: "entry_tomb_of_korvaak", xp: 10.05, yp: 31.72, tag: "tomb_of_korvaak" },
   { id: "entry_tomb_of_the_damned", xp: 9.79, yp: 25.52, tag: "tomb_of_the_damned" },
-
   { id: "entry_fort_ikon_prison", xp: 13.84, yp: 20.17, tag: "fort_ikon_prison" },
   { id: "entry_fort_ikon_prison2", xp: 14.47, yp: 22.36, tag: "fort_ikon_prison2" },
   { id: "entry_fort_ikon_armory", xp: 14.44, yp: 20.03, tag: "fort_ikon_armory" },
   { id: "entry_fort_ikon_armory2", xp: 16.29, yp: 21.43, tag: "fort_ikon_armory2" },
-
   { id: "entry_obsidian_throne", xp: 21.08, yp: 20.73, tag: "obsidian_throne" },
   { id: "entry_obsidian_throne2", xp: 21.54, yp: 19.14, tag: "obsidian_throne2" },
   { id: "entry_obsidian_throne3", xp: 20.06, yp: 18.90, tag: "obsidian_throne3" },
-
   { id: "entry_edge_of_reality", xp: 25.58, yp: 13.28, tag: "edge_of_reality" },
   { id: "entry_black_sepulcher", xp: 26.11, yp: 9.43, tag: "black_sepulcher" },
   { id: "entry_discord_anarchy", xp: 21.47, yp: 0.88, tag: "discord_anarchy" },
@@ -99,11 +93,7 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
   { id: "entry_entropy", xp: 21.49, yp: 1.32, tag: "entropy" },
   { id: "entry_port_valbury_fondation", xp: 41.93, yp: 30.63, tag: "port_valbury_fondation" },
   { id: "entry_port_valbury_fondation2", xp: 41.39, yp: 29.93, tag: "port_valbury_fondation2" },
-
   { id: "entry_altritch_karters", xp: 40.81, yp: 21.21, tag: "altritch_karters" }
-
-
-
 ];
 
 window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
@@ -121,9 +111,38 @@ window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
   { id: "entry_ransaked_lighthouse", xp: 38.11, yp: 41.07, tag: "Ransacked Lighthouse" },
   { id: "entry_swelling_depths", xp: 43.76, yp: 31.72, tag: "Swelling Depths" },
   { id: "entry_infestation", xp: 50.67, yp: 3.68, tag: "Infestaiton" },
-  { id: "entry_chamber_council", xp: 49.75, yp: 19.65, tag: "Chamber Council" }
+  { id: "entry_chamber_council", xp: 18.71, yp: 96.55, tag: "Chamber Council" }
 ];
 
+
+window.DUNGEON_ENTRY_MARKERS_KORVAN = [
+  { id: "entry_forgotten_cellar", xp: 19.27, yp: 95.47, tag: "forgotten_cellar" },
+  { id: "entry_veiled_den", xp: 18.72, yp: 96.56, tag: "veiled_den" },
+  { id: "entry_crawling_nest", xp: 21.56, yp: 86.78, tag: "crawling_nest" },
+  { id: "entry_temple_osyr", xp: 34.83, yp: 75.86, tag: "temple_osyr" },
+  { id: "entry_maw_of_enaht", xp: 31.57, yp: 56.48, tag: "maw_of_enaht" },
+  { id: "entry_forlorn_bastion", xp: 18.99, yp: 62.02, tag: "forlorn_bastion" },
+  { id: "entry_sandblown_ruin", xp: 32.97, yp: 52.27, tag: "sandblown_ruin" },
+  { id: "entry_durgs_den", xp: 37.88, yp: 53.45, tag: "durgs_den" },
+  { id: "entry_howling_chasm", xp: 55.09, yp: 48.37, tag: "howling_chasm" },
+  { id: "entry_howling_chasm2", xp: 58.55, yp: 47.54, tag: "howling_chasm2" },
+  { id: "entry_sanctuary_horan", xp: 48.98, yp: 51.75, tag: "sanctuary_horan" },
+  { id: "entry_edge_reality_korv", xp: 67.02, yp: 48.35, tag: "edge_reality_korv" },
+  { id: "entry_bloodied_waste", xp: 70.47, yp: 44.66, tag: "bloodied_waste" },
+  { id: "entry_temple_athep", xp: 73.22, yp: 42.55, tag: "temple_athep" },
+  { id: "entry_tomb_sethan", xp: 57.46, yp: 39.53, tag: "tomb_sethan" },
+  { id: "entry_tomb_sethan2", xp: 59.37, yp: 33.20, tag: "tomb_sethan2" },
+  { id: "entry_tomb_ariath", xp: 51.61, yp: 32.09, tag: "tomb_ariath" },
+  { id: "entry_tomb_nephos", xp: 56.43, yp: 29.84, tag: "tomb_nephos" },
+  { id: "entry_tomb_nephos2", xp: 57.14, yp: 28.36, tag: "tomb_nephos2" },
+  { id: "entry_tomb_nephos3", xp: 58.05, yp: 29.57, tag: "tomb_nephos3" },
+  { id: "entry_heretic_maggi", xp: 60.78, yp: 26.09, tag: "heretic_maggi" },
+  { id: "entry_pit_atonement", xp: 52.66, yp: 22.22, tag: "pit_atonement" },
+  { id: "entry_map_room_rahn", xp: 53.03, yp: 17.11, tag: "map_room_rahn" },
+  { id: "entry_sunward_spire", xp: 47.65, yp: 13.58, tag: "sunward_spire" },
+  { id: "entry_tomb_eldtrich_sun", xp: 57.86, yp: 15.17, tag: "tomb_eldtrich_sun" },
+  { id: "entry_sanctum_choosen", xp: 26.77, yp: 31.19, tag: "sanctum_choosen" },
+];
 
 window.DUNGEON_LINKS = {
   /*CAIRN*/
@@ -196,13 +215,37 @@ window.DUNGEON_LINKS = {
   "swelling_depths": ["entry_swelling_depths" ],
   "infestation": ["entry_infestation" ],
   "chamber_council": ["entry_chamber_council" ],
+
+  /*KORVAN*/
+  "forgotten_cellar": ["entry_forgotten_cellar" ],
+  "veiled_den": ["entry_veiled_den" ],
+  "crawling_nest": ["entry_crawling_nest" ],
+  "temple_osyr": ["entry_temple_osyr" ],
+  "maw_of_enaht": ["entry_maw_of_enaht" ],
+  "forlorn_bastion": ["entry_forlorn_bastion" ],
+  "sandblown_ruin": ["entry_sandblown_ruin" ],
+  "durgs_den": ["entry_durgs_den" ],
+  "howling_chasm": ["entry_howling_chasm","entry_howling_chasm2" ],
+  "sanctuary_horan": ["entry_sanctuary_horan"],
+  "edge_reality_korv": ["entry_edge_reality_korv"],
+  "bloodied_waste": ["entry_bloodied_waste"],
+  "temple_athep": ["entry_temple_athep"],
+  "tomb_sethan": ["entry_tomb_sethan", "entry_tomb_sethan2"],
+  "tomb_ariath": ["entry_tomb_ariath"],
+  "tomb_nephos": ["entry_tomb_nephos","entry_tomb_nephos2","entry_tomb_nephos3"],
+  "heretic_maggi": ["entry_heretic_maggi"],
+  "pit_atonement": ["entry_pit_atonement"],
+  "map_room_rahn": ["entry_map_room_rahn"],
+  "sunward_spire": ["entry_sunward_spire"],
+  "tomb_eldtrich_sun": ["entry_tomb_eldtrich_sun"],
+  "sanctum_choosen": ["entry_sanctum_choosen"],
 };
 
 
 window.DUNGEON_ENTRY_MARKERS_BY_SIZE = {
   "8948x9133": window.DUNGEON_ENTRY_MARKERS_CAIRN,
   "5142x3574": window.DUNGEON_ENTRY_MARKERS_MALMOUTH,
-  "5427x5553": [],
+  "5427x5553": window.DUNGEON_ENTRY_MARKERS_KORVAN,
 };
 
 
@@ -246,17 +289,13 @@ function clearDungeonLinks() {
   const core = window.GDMMCore || {};
   const state = core.state || {};
 
-  // on annule le hover forcé
   state.dungeonForcedHover = null;
 
-  // on enlève is-hovered sur tous les overlays
   if (state.dungeonOverlays) {
     state.dungeonOverlays.forEach(o => {
       if (o.el) o.el.classList.remove('is-hovered');
     });
   }
-
-  // on enlève aussi l'opacité des labels de région
   const labels = document.querySelectorAll('.marker-region-dungeon .region-label.opacity');
   labels.forEach(l => l.classList.remove('opacity'));
 
@@ -271,8 +310,6 @@ function highlightDungeonRegionLabelsForOverlay(overlayObj) {
   // tous les labels "d donjon"
   const labels = document.querySelectorAll('.marker-region-dungeon .region-label');
   if (!labels.length) return;
-
-  // on enlève d'abord toute highlight
   labels.forEach(l => l.classList.remove('opacity'));
 
   const rect = overlayObj.el.getBoundingClientRect();
@@ -290,7 +327,6 @@ function highlightDungeonRegionLabelsForOverlay(overlayObj) {
     }
   });
 }
-
 
 
 // --- helpers centres en coords "map" (0..mapNatural.w/h) ---
@@ -417,8 +453,6 @@ function drawDungeonLinesForOverlay(overlayObj) {
     line.style.filter = 'drop-shadow(0 0 3px #00ffb4) drop-shadow(0 0 6px #00ffb4aa)';
 
     svg.appendChild(line);
-
-
   });
 
 }
@@ -457,7 +491,6 @@ function showDungeonLinksForEntry(entryId) {
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
 }
-
 window.showDungeonLinksForEntry = showDungeonLinksForEntry;
 
 // --- survol d'un OVERLAY (layer donjon) ---

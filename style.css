@@ -1285,7 +1285,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .korvanmap .region-label{
-  font-size: 0.9em;
+  font-size: 1.2em;
 }
 
 .marker-region-dungeon .region-label{
@@ -1521,7 +1521,6 @@ body.shared-only-view #mergeSharedBtn,
   transform: translateX(235px);
 }
 
-/* Les chevrons tournent pour indiquer le sens inverse */
 .done-panel.collapsed .done-toggle img {
   transform: rotate(180deg);
   transition: transform 0.18s ease-out;
@@ -1686,7 +1685,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .searchBar input#locationSearch {
-  padding: 10px 36px 10px 12px; /* 🟢 on ajoute du padding à droite pour l'icône */
+  padding: 10px 36px 10px 12px;
   border-radius: 999px;
   border: 1px solid rgba(120, 241, 194, 0.35);
   background-color: rgba(2, 16, 20, 0.9);
@@ -1694,10 +1693,10 @@ body.shared-only-view #mergeSharedBtn,
   font-size: 13px;
   outline: none;
 
-  background-image: url('img/search-icon.svg'); /* 🔍 ton icône */
+  background-image: url('img/search-icon.svg');
   background-repeat: no-repeat;
-  background-position: right 12px center;       /* position à droite */
-  background-size: 16px 16px;                   /* taille de l'icône */
+  background-position: right 12px center;
+  background-size: 16px 16px;
 }
 
 .searchBar input#locationSearch::placeholder {
@@ -1708,7 +1707,7 @@ body.shared-only-view #mergeSharedBtn,
 .search-results {
   position: absolute;
   left: 0;
-  bottom: calc(100% + 6px);  /* juste au-dessus de l'input */
+  bottom: calc(100% + 6px);
   width: 100%;
   max-height: 220px;
   overflow-y: auto;
@@ -1720,8 +1719,7 @@ body.shared-only-view #mergeSharedBtn,
   font-size: 13px;
   padding: 4px 0;
   z-index: 40;
-
-  display: none; /* JS passera à block quand il y a des résultats */
+  display: none;
 }
 
 .search-type-icon {
@@ -1769,7 +1767,7 @@ body.shared-only-view #mergeSharedBtn,
 
 /* Couleur spécifique pour les TYPES dans l’autocomplétion */
 .search-result.type-region .search-label {
-  color: #78f1c2; /* vert clair (région) */
+  color: #78f1c2;
 }
 
 .search-result.type-dungeon .search-label {
@@ -1806,8 +1804,8 @@ body.shared-only-view #mergeSharedBtn,
 
 .marker-entry-dungeon .entry-icon {
   display: block;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   pointer-events: none;
 }
 

@@ -1252,8 +1252,8 @@ xp: 31.11, yp: 17.55,
     {
   id: 'tag_gDX2_map_messengers_volcano',
   tag: 'tagGDX2MapMessengersVolcano',
-      xp: 49,
-      yp: 23.65,
+    xp: 49.26, 
+    yp: 20.51,
       isDungeon: true
   },
   {
@@ -1369,7 +1369,7 @@ xp: 31.11, yp: 17.55,
   id: 'tag_gdx2_map_volcano01',
   tag: 'tagGDX2MapVolcano01',
       xp: 55.02,
-      yp: 39.12
+      yp: 38.7
 },
 {
   id: 'tag_gdx2_map_tomb_valley',
@@ -1412,8 +1412,8 @@ xp: 31.11, yp: 17.55,
 {
   id: 'tag_gdx2_cairan_ruins01',
   tag: 'tagGDX2CairanRuins01',
-      xp: 2.28,
-      yp: 46.25,
+    xp: 15.84, 
+    yp: 53.93,
       isDungeon: true
 },
 {
@@ -1447,8 +1447,8 @@ xp: 31.11, yp: 17.55,
 {
   id: 'tag_gdx2_ruined_dc',
   tag: 'tagGDX2RuinedDC',
-      xp: 65.80,
-      yp: 58.63,
+      xp: 66.33, 
+      yp: 54.81,
       isDungeon: true
 },
 {
@@ -1461,15 +1461,15 @@ xp: 31.11, yp: 17.55,
 {
   id: 'tag_gdx2_votc01',
   tag: 'tagGDX2VOTC01',
-      xp: 84.46,
-      yp: 35.55,
+    xp: 46.61, 
+    yp: 30.68,
       isDungeon: true
 },
 {
   id: 'tag_gdx2_votc02',
   tag: 'tagGDX2VOTC02',
-      xp: 71.99,
-      yp: 27.97,
+      xp: 71.39, 
+      yp: 30.27,
       isDungeon: true
 },
 {
@@ -1495,9 +1495,9 @@ xp: 31.11, yp: 17.55,
 {
   id: 'tag_GDX2_sanctuary_ofHorran',
   tag: 'tagGDX2SanctuaryOfHorran',
-      xp: 43.44,
-      yp: 37.50,
-      isDungeon: true
+    xp: 43.50, 
+    yp: 40.27,
+    isDungeon: true
 },
 {
   id: 'tag_GDX2_roguelike_Area04',
@@ -1544,8 +1544,8 @@ xp: 31.11, yp: 17.55,
 {
   id: 'tag_GDX2_vOTC03',
   tag: 'tagGDX2VOTC03',
-      xp: 41.47,
-      yp: 29.03,
+    xp: 45.76,
+    yp: 24.17,
       isDungeon: true
 },
 {
@@ -1558,8 +1558,8 @@ xp: 31.11, yp: 17.55,
 {
   id: 'tag_gDX2_roguelike_area01',
   tag: 'tagGDX2Roguelike_Area01',
-      xp: 38.17,
-      yp: 63.69,
+    xp: 38.34, 
+    yp: 61.34,
       isDungeon: true
 },
 {
