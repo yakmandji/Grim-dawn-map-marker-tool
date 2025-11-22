@@ -1389,10 +1389,20 @@ body.shared-only-view #mergeSharedBtn,
 /* Panneau flottant des Done */
 .done-panel {
   position: fixed;
-  top: 50%; 
-  right: 29px;
-  width: 260px;
+  top: 50vh;
+  right: 14px;
   z-index: 1200;
+  font-size: 13px;
+  transition: transform 0.2s ease-out;
+}
+
+.done-panel.collapsed {
+  transform: translateX(235px);
+}
+
+.done-panel.collapsed .done-toggle img {
+  transform: rotate(180deg);
+  transition: transform 0.18s ease-out;
 }
 
 .done-panel-inner {
@@ -1526,25 +1536,6 @@ body.shared-only-view #mergeSharedBtn,
   background: rgba(255, 255, 255, 0.35);
   transform: translateY(-50%);
   pointer-events: none;
-}
-
-/* Le conteneur complet (panneau + bouton) va slider */
-.done-panel {
-  position: fixed;
-  top: 50%;
-  right: 14px;
-  z-index: 1200;
-  font-size: 13px;
-  transition: transform 0.2s ease-out;
-}
-
-.done-panel.collapsed {
-  transform: translateX(235px);
-}
-
-.done-panel.collapsed .done-toggle img {
-  transform: rotate(180deg);
-  transition: transform 0.18s ease-out;
 }
 
 .done-empty {
@@ -1850,10 +1841,33 @@ body.shared-only-view #mergeSharedBtn,
   :root {
    --sidebar-width: 420px;
     }
+
+  .app{
+    padding: 0px 7px 12px 0px;
+    gap:0px;
+  } 
+  header{
+    left: calc(var(--sidebar-width) + -11px);
+    width: calc(100% - var(--sidebar-width) + 5px);
+  }
+
   header .right-panel{
     position: initial;
     margin-top: 12px;
-    max-width: 54%;
+    max-width: 98%;
+  }
+  .sidebar{
+    transform: scale(0.92, 1);
+    margin-left: -18px;
+  }
+
+  .mapWrap {
+    margin-top: 150px;
+    margin-left: -13px;
+  }
+  .done-panel {
+    top: 152px;
+    right: 7px;
   }
 
 }
