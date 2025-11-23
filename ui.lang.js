@@ -5,13 +5,13 @@
   const translations = {
     en: {
       'ui.NewMarkerTitle': 'New marker',
-      'ui.GeneralMarker': '🔘 General',
-      'ui.QuestMarker': '⭐ Quest',
-      'ui.BossMarker': '💀 Boss',
-      'ui.LootMarker': '🗝️ Loot',
-      'ui.WaypointMarker': '📍 Waypoint',
-      'ui.DonjonMarker': '🏰 Donjon',
-      'ui.NPCMarker': '💬 NPC',
+      'ui.GeneralMarker': 'General',
+      'ui.QuestMarker': 'Quest',
+      'ui.BossMarker': 'Boss',
+      'ui.LootMarker': 'Loot',
+      'ui.WaypointMarker': 'Waypoint',
+      'ui.DonjonMarker': 'Donjon',
+      'ui.NPCMarker': 'NPC',
       'ui.ToolsTitle': 'Tools',
       'ui.RoutesList': 'Routes list',
       'ui.MarkerList': 'Markers list',
@@ -93,13 +93,13 @@
     },
     fr: {
       'ui.NewMarkerTitle': 'Nouveau marqueur',
-      'ui.GeneralMarker': '🔘 Général',
-      'ui.QuestMarker': '⭐ Quête',
-      'ui.BossMarker': '💀 Boss',
-      'ui.LootMarker': '🗝️ Butin',
-      'ui.WaypointMarker': '📍 Point de passage',
-      'ui.DonjonMarker': '🏰 Donjon',
-      'ui.NPCMarker': '💬 PNJ',
+      'ui.GeneralMarker': 'Général',
+      'ui.QuestMarker': 'Quête',
+      'ui.BossMarker': 'Boss',
+      'ui.LootMarker': 'Butin',
+      'ui.WaypointMarker': 'Point de passage',
+      'ui.DonjonMarker': 'Donjon',
+      'ui.NPCMarker': 'PNJ',
       'ui.ToolsTitle': 'Outils',
       'ui.RoutesList': 'Liste des routes',
       'ui.MarkerList': 'Liste des marqueurs',
@@ -181,13 +181,13 @@
     },
     es: {
       'ui.NewMarkerTitle': 'Nuevo marcador',
-      'ui.GeneralMarker': '🔘 General',
-      'ui.QuestMarker': '⭐ Misión',
-      'ui.BossMarker': '💀 Jefe',
-      'ui.LootMarker': '🗝️ Botín',
-      'ui.WaypointMarker': '📍 Punto de ruta',
-      'ui.DonjonMarker': '🏰 Mazmorra',
-      'ui.NPCMarker': '💬 NPC',
+      'ui.GeneralMarker': 'General',
+      'ui.QuestMarker': 'Misión',
+      'ui.BossMarker': 'Jefe',
+      'ui.LootMarker': 'Botín',
+      'ui.WaypointMarker': 'Punto de ruta',
+      'ui.DonjonMarker': 'Mazmorra',
+      'ui.NPCMarker': 'NPC',
       'ui.ToolsTitle': 'Herramientas',
       'ui.RoutesList': 'Lista de rutas',
       'ui.MarkerList': 'Lista de marcadores',
@@ -269,13 +269,13 @@
 
     de: {
       "ui.NewMarkerTitle": "Neuer Marker",
-      "ui.GeneralMarker": "🔘 Allgemein",
-      "ui.QuestMarker": "⭐ Quest",
-      "ui.BossMarker": "💀 Boss",
-      "ui.LootMarker": "🗝️ Beute",
-      "ui.WaypointMarker": "📍 Wegpunkt",
-      "ui.DonjonMarker": "🏰 Dungeon",
-      "ui.NPCMarker": "💬 NPC",
+      "ui.GeneralMarker": "Allgemein",
+      "ui.QuestMarker": "Quest",
+      "ui.BossMarker": "Boss",
+      "ui.LootMarker": "Beute",
+      "ui.WaypointMarker": "Wegpunkt",
+      "ui.DonjonMarker": "Dungeon",
+      "ui.NPCMarker": "NPC",
       "ui.ToolsTitle": "Werkzeuge",
       "ui.RoutesList": "Routenliste",
       "ui.MarkerList": "Markerliste",
@@ -358,13 +358,13 @@
 
   pt: {
     'ui.NewMarkerTitle': 'Novo marcador',
-    'ui.GeneralMarker': '🔘 Geral',
-    'ui.QuestMarker': '⭐ Missão',
-    'ui.BossMarker': '💀 Chefe',
-    'ui.LootMarker': '🗝️ Tesouro',
-    'ui.WaypointMarker': '📍 Marco',
-    'ui.DonjonMarker': '🏰 Masmorra',
-    'ui.NPCMarker': '💬 NPC',
+    'ui.GeneralMarker': 'Geral',
+    'ui.QuestMarker': 'Missão',
+    'ui.BossMarker': 'Chefe',
+    'ui.LootMarker': 'Tesouro',
+    'ui.WaypointMarker': 'Marco',
+    'ui.DonjonMarker': 'Masmorra',
+    'ui.NPCMarker': 'NPC',
     'ui.ToolsTitle': 'Ferramentas',
     'ui.RoutesList': 'Lista de rotas',
     'ui.MarkerList': 'Lista de marcadores',
@@ -448,13 +448,13 @@
 
   ru: {
     'ui.NewMarkerTitle': 'Новый маркер',
-    'ui.GeneralMarker': '🔘 Общий',
-    'ui.QuestMarker': '⭐ Задание',
-    'ui.BossMarker': '💀 Босс',
-    'ui.LootMarker': '🗝️ Добыча',
-    'ui.WaypointMarker': '📍 Путевая точка',
-    'ui.DonjonMarker': '🏰 Подземелье',
-    'ui.NPCMarker': '💬 NPC',
+    'ui.GeneralMarker': 'Общий',
+    'ui.QuestMarker': 'Задание',
+    'ui.BossMarker': 'Босс',
+    'ui.LootMarker': 'Добыча',
+    'ui.WaypointMarker': 'Путевая точка',
+    'ui.DonjonMarker': 'Подземелье',
+    'ui.NPCMarker': 'NPC',
     'ui.ToolsTitle': 'Инструменты',
     'ui.RoutesList': 'Список маршрутов',
     'ui.MarkerList': 'Список меток',
@@ -536,13 +536,13 @@
 
     it: {
       'ui.NewMarkerTitle': 'Nuovo marcatore',
-      'ui.GeneralMarker': '🔘 Generale',
-      'ui.QuestMarker': '⭐ Missione',
-      'ui.BossMarker': '💀 Boss',
-      'ui.LootMarker': '🗝️ Bottino',
-      'ui.WaypointMarker': '📍 Punto di viaggio',
-      'ui.DonjonMarker': '🏰 Sotterraneo',
-      'ui.NPCMarker': '💬 NPC',
+      'ui.GeneralMarker': 'Generale',
+      'ui.QuestMarker': 'Missione',
+      'ui.BossMarker': 'Boss',
+      'ui.LootMarker': 'Bottino',
+      'ui.WaypointMarker': 'Punto di viaggio',
+      'ui.DonjonMarker': 'Sotterraneo',
+      'ui.NPCMarker': 'NPC',
       'ui.ToolsTitle': 'Strumenti',
       'ui.RoutesList': 'Elenco dei percorsi',
       'ui.MarkerList': 'Elenco dei marcatori',
@@ -625,13 +625,13 @@
 
     zh: {
       'ui.NewMarkerTitle': '新标记',
-      'ui.GeneralMarker': '🔘 通用',
-      'ui.QuestMarker': '⭐ 任务',
-      'ui.BossMarker': '💀 首领',
-      'ui.LootMarker': '🗝️ 战利品',
-      'ui.WaypointMarker': '📍 传送点',
-      'ui.DonjonMarker': '🏰 地下城',
-      'ui.NPCMarker': '💬 NPC',
+      'ui.GeneralMarker': '通用',
+      'ui.QuestMarker': '任务',
+      'ui.BossMarker': '首领',
+      'ui.LootMarker': '战利品',
+      'ui.WaypointMarker': '传送点',
+      'ui.DonjonMarker': '地下城',
+      'ui.NPCMarker': 'NPC',
       'ui.ToolsTitle': '工具',
       'ui.RoutesList': '路线列表',
       'ui.MarkerList': '标记列表',
@@ -712,13 +712,13 @@
     },
     ja: {
         'ui.NewMarkerTitle': '新しいマーカー',
-      'ui.GeneralMarker': '🔘 一般',
-      'ui.QuestMarker': '⭐ クエスト',
-      'ui.BossMarker': '💀 ボス',
-      'ui.LootMarker': '🗝️ 戦利品',
-      'ui.WaypointMarker': '📍 ウェイポイント',
-      'ui.DonjonMarker': '🏰 ダンジョン',
-      'ui.NPCMarker': '💬 NPC',
+      'ui.GeneralMarker': '一般',
+      'ui.QuestMarker': 'クエスト',
+      'ui.BossMarker': 'ボス',
+      'ui.LootMarker': '戦利品',
+      'ui.WaypointMarker': 'ウェイポイント',
+      'ui.DonjonMarker': 'ダンジョン',
+      'ui.NPCMarker': 'NPC',
       'ui.ToolsTitle': 'ツール',
       'ui.RoutesList': 'ルート一覧',
       'ui.MarkerList': 'マーカー一覧',
@@ -800,6 +800,8 @@
 
   };
 
+    // --- API i18n de base ----------------------------------
+
   function setLang(lang) {
     if (!translations[lang]) lang = 'en';
     localStorage.setItem(LANG_KEY, lang);
@@ -813,116 +815,184 @@
   function applyLang(lang) {
     const dict = translations[lang] || translations.en;
 
+    // texte
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (dict[key]) el.textContent = dict[key];
     });
 
-    // placeholders trad
+    // placeholder
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       if (dict[key]) el.setAttribute('placeholder', dict[key]);
     });
 
-    // title trad
+    // title
     document.querySelectorAll('[data-i18n-title]').forEach(el => {
       const key = el.getAttribute('data-i18n-title');
       if (dict[key]) el.setAttribute('title', dict[key]);
     });
-
   }
-
-
-  window.GDMMLang = { setLang, getLang, applyLang };
-  document.addEventListener('DOMContentLoaded', () => applyLang(getLang()));
-  document.getElementById('langSelect')?.addEventListener('change', e => {
-    const lang = e.target.value;
-    // 1) on change la langue dans le système
-    setLang(lang);
-    applyLang(lang);
-    // 2) on redessine la carte / les marqueurs
-    if (window.UiCore && typeof UiCore.renderMarkers === 'function') {
-      UiCore.renderMarkers({ skipRoutesPanel: true });
-    }
-  });
-
-  document.getElementById('langSelect').value = GDMMLang.getLang();
-
-    document.addEventListener('DOMContentLoaded', () => {
-    const current = GDMMLang.getLang();
-    GDMMLang.applyLang(current);
-    const sel = document.getElementById('langSelect');
-    if (sel) {
-      sel.value = current;
-      sel.addEventListener('change', (e) => {
-        GDMMLang.setLang(e.target.value);
-      });
-    }
-  });
-
-
-
-(function() {
-  const nativeSelect = document.getElementById('langSelect');
-  const dropdown = document.getElementById('langDropdown');
-  if (!nativeSelect || !dropdown) return;
-
-  const currentBtn = dropdown.querySelector('.lang-current');
-  const currentLabel = currentBtn.querySelector('.lang-label');
-  const currentFlag = currentBtn.querySelector('.flag');
-  const items = dropdown.querySelectorAll('.lang-item');
-
-  function syncFromSelect() {
-    const value = nativeSelect.value || 'en';
-    const item = dropdown.querySelector(`.lang-item[data-lang="${value}"]`);
-    if (!item) return;
-    const label = item.querySelector('span:last-child').textContent;
-    const flagClass = item.querySelector('.flag').className
-      .split(' ')
-      .find(c => c.startsWith('flag-') && c !== 'flag');
-
-    if (currentLabel) currentLabel.textContent = label;
-    if (currentFlag && flagClass) {
-      currentFlag.className = 'flag ' + flagClass;
-    }
-  }
-
-  // Toggle ouverture/fermeture du menu
-  currentBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dropdown.classList.toggle('open');
-  });
-
-  // Choix d'une langue
-  items.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      if (!lang) return;
-
-      // On met à jour le <select> natif
-      nativeSelect.value = lang;
-      nativeSelect.dispatchEvent(new Event('change')); // ta logique GDMMLang
-
-      syncFromSelect();
-      dropdown.classList.remove('open');
-    });
-  });
-
-  // Fermer en cliquant dehors
-  document.addEventListener('click', () => {
-    dropdown.classList.remove('open');
-  });
-
-  // Init au chargement (si la langue est déjà stockée/localStorage)
-  syncFromSelect();
-})();
-
 
   function t(key) {
     const lang = getLang();
     const dict = translations[lang] || translations.en;
     return dict[key] || key;
   }
+
+  // --- Helpers génériques pour les dropdowns custom ---------------------
+
+  function initCustomDropdown({
+    nativeId,
+    dropdownId,
+    itemSelector = '.option-item',
+    valueAttr = 'data-value',
+    currentButtonSelector = '.select-current',
+    currentLabelSelector = '.select-label',
+    defaultValue = '',
+    getLabel,
+    extraSync,
+  }) {
+    const nativeSelect = document.getElementById(nativeId);
+    const dropdown = document.getElementById(dropdownId);
+    if (!nativeSelect || !dropdown) return;
+
+    initCustomDropdownForElements({
+      nativeSelect,
+      dropdown,
+      itemSelector,
+      valueAttr,
+      currentButtonSelector,
+      currentLabelSelector,
+      defaultValue,
+      getLabel,
+      extraSync,
+    });
+  }
+
+  // Variante qui prend directement les éléments (pratique pour la liste des marqueurs)
+  function initCustomDropdownForElements({
+    nativeSelect,
+    dropdown,
+    itemSelector = '.option-item',
+    valueAttr = 'data-value',
+    currentButtonSelector = '.select-current',
+    currentLabelSelector = '.select-label',
+    defaultValue = '',
+    getLabel,
+    extraSync,
+  }) {
+    if (!nativeSelect || !dropdown) return;
+
+    const currentBtn = dropdown.querySelector(currentButtonSelector);
+    const currentLabel = currentLabelSelector
+      ? dropdown.querySelector(currentLabelSelector)
+      : null;
+    const items = dropdown.querySelectorAll(itemSelector);
+    if (!currentBtn || !items.length) return;
+
+    function syncFromSelect() {
+      const value = nativeSelect.value || defaultValue;
+      const item = dropdown.querySelector(`${itemSelector}[${valueAttr}="${value}"]`);
+      if (!item) return;
+
+      if (currentLabel) {
+        const labelText = getLabel
+          ? getLabel(item, value)
+          : (item.textContent || '').trim();
+        currentLabel.textContent = labelText;
+      }
+
+      if (typeof extraSync === 'function') {
+        extraSync({ currentBtn, item, value });
+      }
+    }
+
+    // Ouverture / fermeture
+    currentBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.remove('open');
+    });
+
+    // Clic sur une option
+    items.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const value = btn.getAttribute(valueAttr);
+        if (!value) return;
+
+        nativeSelect.value = value;
+        nativeSelect.dispatchEvent(new Event('change'));
+
+        syncFromSelect();
+        dropdown.classList.remove('open');
+      });
+    });
+
+    // Sync quand le <select> change (via code ou UI)
+    nativeSelect.addEventListener('change', syncFromSelect);
+
+    syncFromSelect();
+  }
+
+  // --- Exposition globale -----------------------------------------------
+
   window.GDMMLang = { setLang, getLang, applyLang, t };
+  window.initCustomDropdown = initCustomDropdown;
+  window.initCustomDropdownForElements = initCustomDropdownForElements;
+
+  // --- Initialisation langue + dropdown de langue -----------------------
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const current = getLang();
+    applyLang(current);
+
+    const nativeSelect = document.getElementById('langSelect');
+    if (!nativeSelect) return;
+
+    nativeSelect.value = current;
+
+    // Quand l'utilisateur change la langue
+    nativeSelect.addEventListener('change', (e) => {
+      const lang = e.target.value || 'en';
+      setLang(lang); // setLang refait applyLang
+
+      // Re-render des marqueurs pour les tooltips, etc.
+      if (window.UiCore && typeof UiCore.renderMarkers === 'function') {
+        UiCore.renderMarkers({ skipRoutesPanel: true });
+      }
+    });
+
+    // Dropdown custom "flags"
+    initCustomDropdown({
+      nativeId: 'langSelect',
+      dropdownId: 'langDropdown',
+      itemSelector: '.option-item',
+      valueAttr: 'data-lang',
+      currentButtonSelector: '.select-current',
+      currentLabelSelector: '.lang-label',
+      defaultValue: 'en',
+      getLabel: (item) => {
+        const span = item.querySelector('span:last-child');
+        return span ? span.textContent : (item.textContent || '').trim();
+      },
+      extraSync: ({ currentBtn, item }) => {
+        const currentFlag = currentBtn.querySelector('.flag');
+        const itemFlag    = item.querySelector('.flag');
+        if (!currentFlag || !itemFlag) return;
+
+        const flagClass = Array.from(itemFlag.classList)
+          .find(c => c.startsWith('flag-') && c !== 'flag');
+
+        if (flagClass) {
+          currentFlag.className = 'flag ' + flagClass;
+        }
+      }
+    });
+  });
 
 })();
+

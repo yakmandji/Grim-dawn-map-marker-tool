@@ -240,20 +240,177 @@ function ensurePathsArray() {
     }
 
   // --- UI renderers ---
-  function refreshProfilesUI(){
-    const sel = $('#profileSelect');
-    if (!sel) return;
-    const active = state.active;
-    const names = listProfiles();
-    sel.innerHTML = names.map(n => `<option ${n===active?'selected':''}>${n}</option>`).join('');
-    if (active) sel.value = active;
-  }
+    function refreshProfilesUI() {
+      const sel = $('#profileSelect');
+      if (!sel) return;
+      const active = state.active;
+      const names = listProfiles();
 
+      // 1) Met à jour le <select> natif (logique existante)
+      sel.innerHTML = names
+        .map(n => `<option ${n === active ? 'selected' : ''}>${n}</option>`)
+        .join('');
+      if (active) sel.value = active;
+
+      // 2) Met à jour le dropdown custom des profils
+      const dd = document.getElementById('profileDropdown');
+      if (!dd) return;
+
+      const labelEl = dd.querySelector('.select-label');
+      const menuEl  = dd.querySelector('.custom-dropdown-inner');
+      if (!menuEl || !labelEl) return;
+
+      const current = active || names[0] || '';
+      labelEl.textContent = current || '(profil)';
+
+      // On reconstruit la liste des options
+      menuEl.innerHTML = names
+        .map(name => `
+          <button type="button" class="option-item" data-profile="${name}">
+            ${name}
+          </button>
+        `)
+        .join('');
+
+      // 3) (Ré)initialise le dropdown custom avec le helper générique
+      if (window.initCustomDropdown) {
+        initCustomDropdown({
+          nativeId: 'profileSelect',
+          dropdownId: 'profileDropdown',
+          itemSelector: '.option-item',
+          valueAttr: 'data-profile',
+          currentButtonSelector: '.select-current',
+          currentLabelSelector: '.select-label',
+          getLabel: (item) => (item.textContent || '').trim()
+        });
+      }
+    }
+
+    // --- Dropdown Catégorie (nouveau marqueur) ---
+    (function(){
+      const sel = document.getElementById('newCategory');
+      const dd  = document.getElementById('categoryDropdown');
+      if (!sel || !dd) return;
+
+          const inner = dd.querySelector('.custom-dropdown-inner');
+          if (!inner) return;
+
+          const categoryIcons = {
+            General:  'img/general.svg',
+            Quest:    'img/quest.svg',
+            Boss:     'img/boss.svg',
+            Loot:     'img/loot.svg',
+            Waypoint: 'img/waypoint.svg',
+            Donjon:   'img/donjon.svg',
+            NPC:      'img/npc.svg',
+          };
+
+          inner.innerHTML = '';
+          Array.from(sel.options).forEach(opt => {
+            const iconSrc = categoryIcons[opt.value] || '';
+            const i18nKey = opt.getAttribute('data-i18n') || '';
+
+            inner.innerHTML += `
+              <button class="option-item" data-value="${opt.value}">
+                ${iconSrc ? `<img src="${iconSrc}" width="16" height="16" style="margin-right:4px;">` : ''}
+                <span ${i18nKey ? `data-i18n="${i18nKey}"` : ''}>${opt.textContent}</span>
+              </button>
+            `;
+          });
+
+        if (window.initCustomDropdown) {
+          initCustomDropdown({
+            nativeId: 'newCategory',
+            dropdownId: 'categoryDropdown',
+            itemSelector: '.option-item',
+            valueAttr: 'data-value',
+            currentButtonSelector: '.select-current',
+            currentLabelSelector: '.select-label',
+            getLabel: (item) => item.textContent.trim(),
+
+            // Pour mettre à jour l’icône sur le bouton courant
+            extraSync: ({ currentBtn, item }) => {
+              const btnIcon  = currentBtn.querySelector('.category-icon');
+              const itemIcon = item.querySelector('img');
+              if (btnIcon && itemIcon) {
+                btnIcon.src = itemIcon.src;
+              }
+            }
+          });
+        }
+        if (window.GDMMLang && typeof GDMMLang.applyLang === 'function' && typeof GDMMLang.getLang === 'function') {
+          GDMMLang.applyLang(GDMMLang.getLang());
+        }
+      })();
+    // --- END Dropdown Catégorie (nouveau marqueur) ---
+  
   function listFiltered(){
     const p = currentProfile();
     if (!p) return [];
     return [...(p.markers || [])];
   }
+
+
+    /*Marker Edition New Dropdown*/
+
+  function initMarkerCategoryDropdown(rowEl) {
+    const sel = rowEl.querySelector('[data-cat]');
+    const dd  = rowEl.querySelector('.marker-cat-dropdown');
+    if (!sel || !dd) return;
+
+    const inner = dd.querySelector('.custom-dropdown-inner');
+    if (!inner) return;
+
+    const categoryIcons = {
+      General:  'img/general.svg',
+      Quest:    'img/quest.svg',
+      Boss:     'img/boss.svg',
+      Loot:     'img/loot.svg',
+      Waypoint: 'img/waypoint.svg',
+      Donjon:   'img/donjon.svg',
+      NPC:      'img/npc.svg',
+    };
+
+    // Remplir les options avec SVG + traduction
+    inner.innerHTML = '';
+    Array.from(sel.options).forEach(opt => {
+      const iconSrc = categoryIcons[opt.value] || '';
+      const i18nKey = opt.getAttribute('data-i18n') || '';
+
+      inner.innerHTML += `
+        <button class="option-item" data-value="${opt.value}">
+          ${iconSrc ? `<img src="${iconSrc}" width="14" height="14" style="margin-right:6px;">` : ''}
+          <span ${i18nKey ? `data-i18n="${i18nKey}"` : ''}>${opt.textContent}</span>
+        </button>
+      `;
+    });
+
+    // Init du dropdown custom
+    initCustomDropdownForElements({
+      nativeSelect: sel,
+      dropdown: dd,
+      itemSelector: '.option-item',
+      valueAttr: 'data-value',
+      currentButtonSelector: '.select-current',
+      currentLabelSelector: '.select-label',
+      getLabel: (item) => item.textContent.trim(),
+
+      extraSync: ({ currentBtn, item }) => {
+        const btnIcon = currentBtn.querySelector('.marker-cat-icon');
+        const itemIcon = item.querySelector('img');
+        if (btnIcon && itemIcon) {
+          btnIcon.src = itemIcon.src;
+        }
+      }
+    });
+
+    // retraduction (car contenu créé après applyLang initial)
+    if (window.GDMMLang) {
+      GDMMLang.applyLang(GDMMLang.getLang());
+    }
+  }
+  /*END Marker Edition New Dropdown*/
+
 
 function renderList() {
   const markers = listFiltered();
@@ -372,6 +529,7 @@ function renderList() {
     el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
 
     host.appendChild(el);
+    initMarkerCategoryDropdown(el);
   });
 
   // Filtres existants sur la liste principale
@@ -387,6 +545,7 @@ function renderList() {
   // Met à jour le panneau des Done
   renderDoneList(doneMarkers);
 }
+
 
 // List of Done element
 function renderDoneList(doneMarkers) {
@@ -1033,50 +1192,30 @@ entryMarkers.forEach(m => {
           return;
         }
 
-        // --- 2) Nav on other map ---
         const name = m.targetProfile;
+        const sel  = document.getElementById('profileSelect');
+        if (!sel) return;
 
+        sel.value = name;
         if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
           state.skipViewRestoreOnce = true;
         }
 
-        setActiveProfile(name);
-        rememberActiveProfile();
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
 
-        const sel = document.getElementById('profileSelect');
-        if (sel) sel.value = name;
-
-        showLoader(GDMMLang?.t ? GDMMLang.t('toast.LoadingMap') : 'Loading map…');
-        await ensureMapLoadedForProfile(name);
-
-        const p2 = currentProfile();
-        if (!p2 || !p2.map) {
-          hideLoader();
-          return;
-        }
-        if (p2.map.embedData) {
-          setMapSrc(p2.map.embedData);
-        } else if (p2.map.sessionSrc) {
-          setMapSrc(p2.map.sessionSrc);
-        } else {
-          hideLoader();
-        }
+        // Après le chargement, on recentre sur la cible
         if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
           setTimeout(() => {
             centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
-          }, 300);
+          }, 400);
         }
-
-        renderList();
       });
-
-
       inner.appendChild(el);
     });
   }
 
-  // --- Navigation admin markers (icon-only, clickable) END---
 
+  // --- Navigation admin markers (icon-only, clickable) END---
 
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
@@ -2033,7 +2172,6 @@ if (newPathBtn) {
         menu.classList.toggle('open');
       });
     }
-
 
   // --- Expose global ---
   window.UiCore = {

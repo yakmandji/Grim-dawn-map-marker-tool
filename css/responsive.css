@@ -1,0 +1,184 @@
+/*MOBILE VERSION---------------------------------------------*/
+
+@media (min-width: 1451px) and (max-width: 1580px) {
+
+  header button{
+    max-width: 150px;
+  }
+}
+
+@media (min-width: 1120px) and (max-width: 1450px) {
+  :root {
+   --sidebar-width: 420px;
+    }
+
+  .app{
+    padding: 0px 7px 12px 0px;
+    gap:0px;
+  } 
+  header{
+    left: calc(var(--sidebar-width) + -11px);
+    width: calc(100% - var(--sidebar-width) + 5px);
+  }
+
+  header .right-panel{
+    position: initial;
+    margin-top: 12px;
+    max-width: 98%;
+  }
+  .sidebar{
+    transform: scale(0.92, 1);
+    margin-left: -18px;
+  }
+
+  .mapWrap {
+    margin-top: 150px;
+    margin-left: -13px;
+  }
+  .done-panel {
+    top: 152px;
+    right: 7px;
+  }
+
+}
+
+@media (max-width: 1119px) {
+
+  #version{
+    left: 0;
+    top: 96vh;
+    max-width: 55px;
+    position: fixed;
+  }
+
+  .app{
+    padding: 0 12px 12px 0px;
+  }
+
+  #cursorReadout{
+    display: none;
+  }
+
+  #mobile-menu-toggle{
+    display: block;
+    position: absolute;
+    right: -49px;
+    padding: 11px;
+    top: 0;
+    background: var(--panel);
+    border-top-left-radius: 0;
+  }
+
+  #left-menu.open {
+    transform: translateX(0);
+  }
+
+  #toastContainer{
+    top: 1rem;
+  }
+
+  #mapLoader{
+    z-index: 2000;
+  }
+
+  header .sep{
+    display: none;
+  }
+
+  header{
+    top:0;
+    transform: translateX(-105%);
+    left: 11px;
+    width: 96%;
+    flex-direction: column;
+    position: absolute;
+    z-index: 5000;
+    align-items: flex-start;
+    max-width: 55%;
+    border-top-right-radius: 0;
+    transition: transform 0.3s ease;
+  }
+
+  header .right-panel{
+    position: initial;
+    margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .toolpanel{
+    display: flex;
+    flex-direction: column;
+    min-width: 277px;
+  }
+
+  .app{
+    grid-template-columns: 1fr;
+    height: 70%;
+  }
+
+  .sidebar{
+    position: fixed;
+    height: 216px;
+    bottom: 0;
+    z-index: 2;
+    flex-direction: row;
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .sidebar .section{
+    margin-top: 0!important;
+  }
+
+  .mapWrap{
+    width: 103%;
+    margin-top: 8px;
+  }
+
+ #list .listItem{
+    padding: 5px 9px 4px 9px;
+ }
+
+ .sidebar .filterBar{
+    padding: 8px 18px 11px 18px;
+ }
+
+ .sidebar .tool-section{
+  display: flex;
+  flex-direction: column;
+  min-width: 263px;
+ }
+
+ .sidebar .tool-section .info{
+  display: none;
+ }
+
+  .done-panel{
+    right: 1px;
+  }
+
+  .title{
+    display: none;
+  }
+
+  .section.light{
+    min-width: 420px;
+    max-height: 400px!important;
+  }
+
+  #zoomControls{
+    position: initial;
+    flex-direction: column-reverse;
+    max-width: 70px;
+  }
+
+  .floating{
+    flex-direction: column;
+    align-items: end;
+    right: 2px;
+    top: 85px;
+  }
+
+}

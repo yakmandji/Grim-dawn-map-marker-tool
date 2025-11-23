@@ -26,7 +26,9 @@
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="style.css?3.45" />
+  <link rel="stylesheet" href="css/general.css?v1" />
+  <link rel="stylesheet" href="css/items.css?v1" />
+  <link rel="stylesheet" href="css/responsive.css?v1" />
 </head>
 <body>
   <p aria-hidden="true" class="seo-summary">
@@ -44,7 +46,17 @@
     <header id="left-menu">
       <select id="profileSelect" title="Profils" class="active select-green">
         <option value="">(profil)</option>
-      </select>      
+      </select>
+
+      <div id="profileDropdown" class="custom-dropdown">
+        <button class="select-current select-green">
+          <span class="select-label">Cairn</span>
+        </button>
+        <div class="custom-dropdown-inner">
+          <!-- rempli par refreshProfilesUI() -->
+        </div>
+      </div>
+
       <button id="mobile-menu-toggle">
           <img src="img/hamburger.svg" width="28" alt="">
       </button>
@@ -88,49 +100,48 @@
         <option value="ja">日本語</option>
         </select>
 
-<div id="langDropdown" class="lang-dropdown">
-  <button type="button" class="lang-current">
-    <span class="flag flag-fr"></span>
-    <span class="lang-label">Français</span>
-    <span class="lang-caret">▼</span>
-  </button>
-  <div class="lang-menu">
-    <button type="button" class="lang-item" data-lang="en">
-      <span class="flag flag-en"></span><span>English</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="fr">
-      <span class="flag flag-fr"></span><span>Français</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="es">
-      <span class="flag flag-es"></span><span>Español</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="de">
-      <span class="flag flag-de"></span><span>Deutsch</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="pt">
-      <span class="flag flag-pt"></span><span>Português</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="it">
-      <span class="flag flag-it"></span><span>Italiano</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="ru">
-      <span class="flag flag-ru"></span><span>Русский</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="zh">
-      <span class="flag flag-zh"></span><span>中文</span>
-    </button>
-    <button type="button" class="lang-item" data-lang="ja">
-      <span class="flag flag-ja"></span><span>日本語</span>
-    </button>
-  </div>
-</div>
+      <div id="langDropdown" class="custom-dropdown">
+        <button type="button" class="select-current select-green">
+          <span class="flag flag-fr"></span>
+          <span class="lang-label">Français</span>
+        </button>
+        <div class="custom-dropdown-inner">
+          <button type="button" class="option-item" data-lang="en">
+            <span class="flag flag-en"></span><span>English</span>
+          </button>
+          <button type="button" class="option-item" data-lang="fr">
+            <span class="flag flag-fr"></span><span>Français</span>
+          </button>
+          <button type="button" class="option-item" data-lang="es">
+            <span class="flag flag-es"></span><span>Español</span>
+          </button>
+          <button type="button" class="option-item" data-lang="de">
+            <span class="flag flag-de"></span><span>Deutsch</span>
+          </button>
+          <button type="button" class="option-item" data-lang="pt">
+            <span class="flag flag-pt"></span><span>Português</span>
+          </button>
+          <button type="button" class="option-item" data-lang="it">
+            <span class="flag flag-it"></span><span>Italiano</span>
+          </button>
+          <button type="button" class="option-item" data-lang="ru">
+            <span class="flag flag-ru"></span><span>Русский</span>
+          </button>
+          <button type="button" class="option-item" data-lang="zh">
+            <span class="flag flag-zh"></span><span>中文</span>
+          </button>
+          <button type="button" class="option-item" data-lang="ja">
+            <span class="flag flag-ja"></span><span>日本語</span>
+          </button>
+        </div>
+      </div>
 
       </div>
     </header>
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.4.2</span>
+        <span>V.4.3</span>
       </div>      
       <div class="title">
         <div class="app-logo">
@@ -154,14 +165,22 @@
         </div>
         <div class="row" style="margin-top: 6px;">
           <select id="newCategory" class="select-green">
-            <option value="General" data-i18n="ui.GeneralMarker">🔘 General</option>
-            <option value="Quest" data-i18n="ui.QuestMarker">⭐ Quest</option>
-            <option value="Boss" data-i18n="ui.BossMarker">💀 Boss</option>
-            <option value="Loot" data-i18n="ui.LootMarker">🗝️ Loot</option>
-            <option value="Waypoint" data-i18n="ui.WaypointMarker">📍 Waypoint</option>
-            <option value="Donjon" data-i18n="ui.DonjonMarker">🏰 Donjon</option>
-            <option value="NPC" data-i18n="ui.NPCMarker">💬 NPC</option>
+            <option value="General" data-i18n="ui.GeneralMarker">General</option>
+            <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
+            <option value="Boss" data-i18n="ui.BossMarker">Boss</option>
+            <option value="Loot" data-i18n="ui.LootMarker">Loot</option>
+            <option value="Waypoint" data-i18n="ui.WaypointMarker">Waypoint</option>
+            <option value="Donjon" data-i18n="ui.DonjonMarker">Donjon</option>
+            <option value="NPC" data-i18n="ui.NPCMarker">NPC</option>
           </select>
+          <div id="categoryDropdown" class="custom-dropdown">
+            <button class="select-current select-green">
+               <img class="category-icon" src="" width="16" height="16">
+              <span class="select-label"></span>
+            </button>
+            <div class="custom-dropdown-inner"></div>
+          </div>  
+
           <input id="newColor" type="color" value="#78f1c2" style="flex:0 0 auto" />
           <button id="toolAdd" class="small">
               <img src="img/add-circle.png?v2.2" width="16">
@@ -240,7 +259,7 @@
       </div>
 
       <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:200px;">
-        <h3 class="mb0 pl-20"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
+        <h3 class="mb3 pl-20"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
         <div id="routesList" class="markers-scroll"></div>
       </section>
 
@@ -335,14 +354,25 @@
         </div>
         <div class="row" style="gap:6px;margin-top:6px">
           <select data-cat class="small select-green">
-            <option value="General" data-i18n="ui.GeneralMarker">🔘 General</option>
-            <option value="Quest" data-i18n="ui.QuestMarker">⭐ Quest</option>
-            <option value="Boss" data-i18n="ui.BossMarker">💀 Boss</option>
-            <option value="Loot" data-i18n="ui.LootMarker">🗝️ Loot</option>
-            <option value="Waypoint" data-i18n="ui.WaypointMarker">📍 Waypoint</option>
-            <option value="Donjon" data-i18n="ui.DonjonMarker">🏰 Donjon</option>
-            <option value="NPC" data-i18n="ui.NPCMarker">💬 NPC</option>
+            <option value="General" data-i18n="ui.GeneralMarker">General</option>
+            <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
+            <option value="Boss" data-i18n="ui.BossMarker">Boss</option>
+            <option value="Loot" data-i18n="ui.LootMarker">Loot</option>
+            <option value="Waypoint" data-i18n="ui.WaypointMarker">Waypoint</option>
+            <option value="Donjon" data-i18n="ui.DonjonMarker">Donjon</option>
+            <option value="NPC" data-i18n="ui.NPCMarker">NPC</option>
           </select>
+
+          <!-- Dropdown new -->
+            <div class="custom-dropdown marker-cat-dropdown">
+              <button class="select-current select-green">
+                <img class="marker-cat-icon" src="" width="15" height="15" style="margin-right:6px;">
+                <span class="select-label"></span>
+              </button>
+              <div class="custom-dropdown-inner"></div>
+            </div>
+          <!-- Dropdown new -->
+
           <input data-color type="color" />
           <label style="flex:0 0 auto" class="small done-input">
             <input data-done type="checkbox" class="checkbox-green" /> <span data-i18n="ui.Done">Done</span>
@@ -380,13 +410,13 @@
   </div>
 </div>
 
-  <script src="ui.lang.js?v=3.39"></script>
+  <script src="ui.lang.js?v=3.40"></script>
   <script src="core.js?v=3.06"></script>
   <script src="ui.rift.js?v=3.86"></script>
   <script src="ui.region.js?v=3.92"></script>
   <script src="ui.navmarkers.js?v=1.16"></script>
   <script src="ui.map.base.js?v=1.12"></script>
-  <script src="ui.core.js?v=3.54"></script>
+  <script src="ui.core.js?v=3.55"></script>
   <script src="libs/lz-string.min.js"></script>
   <script src="libs/pako.min.js"></script>
   <script src="ui.tools.js?v=2.91"></script>
