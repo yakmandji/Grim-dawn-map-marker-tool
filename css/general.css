@@ -239,6 +239,10 @@ header .sep {
   border-bottom: none; 
 }
 
+#list .listItem div .row:nth-child(2){
+  align-items: flex-start;
+}
+
 .helpPopup{
   position: fixed;  
   top: 50%;  
@@ -518,7 +522,7 @@ body.shared-only-view #mergeSharedBtn,
   display: flex;
   flex-direction: column;
   font-size: 13px;
-  background-color: rgba(3, 22, 20, 0.4);
+  background-color: rgba(3, 22, 20, 0.6);
   border-top-left-radius: 0;
   overflow: hidden;
 }

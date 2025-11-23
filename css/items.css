@@ -52,6 +52,32 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  position: absolute;
+}
+
+#list .custom-dropdown .custom-dropdown-inner,
+#list .custom-dropdown .custom-dropdown-inner .option-item {
+  height: 1px;
+  position: absolute;
+  margin-top: 0;
+  padding: 0;
+}
+
+#list .custom-dropdown.open .custom-dropdown-inner{
+  height: inherit;
+  margin-top: 6px;
+  padding: 6px 0;
+}
+
+#list .custom-dropdown.open .custom-dropdown-inner .option-item {
+  height: inherit;
+  position: initial;
+  margin-top: 3px;
+  padding: 2px 6px;
+}
+
+#list .custom-dropdown.open .custom-dropdown-inner {
+  position: relative;
 }
 
 .custom-dropdown-inner .option-item{
@@ -113,7 +139,6 @@ button, select, .chip {
   font-weight: 500;
   box-shadow:
   inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 2px rgb(4 13 6 / 70%);
-  transition: all 0.15s ease-in-out;
   font-size: 12px;
 }
 
@@ -262,7 +287,6 @@ input[type="password"]:focus
   padding: 4px 5px 4px 3px;
   border-radius: 6px;
   display: flex;
-  align-self: center;
 }
 
 .marker {
@@ -506,21 +530,8 @@ button.marker-center,
   padding: 6px 0px 5px 4px;
 }
 
-#list .custom-dropdown-inner .option-item{
-  padding: 2px 12px;
-}
-
 #list .select-current{
-  padding: 4px 32px 5px 12px;
-}
-
-#list .listItem:last-child .custom-dropdown-inner,
-#list .listItem:nth-last-child(2) .custom-dropdown-inner{ 
-  top: -170px; 
-}
-
-#list .listItem:first-child .custom-dropdown-inner{
-  top: auto; 
+  padding: 4px 6px 5px 7px;
 }
 
 @keyframes highlightPulse {

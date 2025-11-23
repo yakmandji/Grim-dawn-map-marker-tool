@@ -393,7 +393,12 @@ function ensurePathsArray() {
       valueAttr: 'data-value',
       currentButtonSelector: '.select-current',
       currentLabelSelector: '.select-label',
-      getLabel: (item) => item.textContent.trim(),
+      getLabel: (item) => {
+        const span = item.querySelector('span[data-i18n]');
+        if (!span) return item.textContent.trim();
+        const key = span.getAttribute('data-i18n');
+        return GDMMLang.t(key);   // ← traduction dynamique !
+      },
 
       extraSync: ({ currentBtn, item }) => {
         const btnIcon = currentBtn.querySelector('.marker-cat-icon');
@@ -2119,8 +2124,6 @@ if (newPathBtn) {
     // routes partagées via ?share=
     loadSharedFromUrl();
   })();
-
-
 
 // === SPACE → PAN (global) ===
   let isSpaceDown = false;

@@ -956,15 +956,28 @@
     nativeSelect.value = current;
 
     // Quand l'utilisateur change la langue
-    nativeSelect.addEventListener('change', (e) => {
-      const lang = e.target.value || 'en';
-      setLang(lang); // setLang refait applyLang
+      nativeSelect.addEventListener('change', (e) => {
+        const lang = e.target.value || 'en';
+        setLang(lang); // setLang refait applyLang
 
-      // Re-render des marqueurs pour les tooltips, etc.
-      if (window.UiCore && typeof UiCore.renderMarkers === 'function') {
-        UiCore.renderMarkers({ skipRoutesPanel: true });
-      }
-    });
+        if (window.UiCore) {
+          // remet les markers sur la map
+          if (typeof UiCore.renderMarkers === 'function') {
+            UiCore.renderMarkers({ skipRoutesPanel: true });
+          }
+          // remet la liste des marqueurs avec la bonne langue
+          if (typeof UiCore.renderList === 'function') {
+            UiCore.renderList();
+          }
+        }
+
+        // resynchronise le dropdown "Nouveau marqueur"
+        const newCat = document.getElementById('newCategory');
+        if (newCat) {
+          newCat.dispatchEvent(new Event('change'));
+        }
+      });
+
 
     // Dropdown custom "flags"
     initCustomDropdown({
