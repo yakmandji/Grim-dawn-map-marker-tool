@@ -413,20 +413,22 @@ function initCharacterUI() {
   // -------------------------------------------------------------------
   characterManager.init({
     onCharacterChanged: (activeCharacter) => {
+      // Met à jour le menu des personnages
       renderDropdown();
 
-      // Recharger les données
+      // 1) Recharger les données du perso actif dans GDMMCore
       if (window.GDMMCore && typeof GDMMCore.loadUserDataFromLocal === 'function') {
         GDMMCore.loadUserDataFromLocal();
       }
 
-      // Gestion de la dernière map utilisée
       try {
         const core = window.GDMMCore || {};
         const st = core.state || {};
         const allProfiles = st.profiles || {};
         const lastProfile =
-          (activeCharacter && activeCharacter.state && activeCharacter.state.lastProfile) || null;
+          (activeCharacter &&
+           activeCharacter.state &&
+           activeCharacter.state.lastProfile) || null;
 
         let targetProfile = null;
 
@@ -440,19 +442,59 @@ function initCharacterUI() {
         }
 
         const sel = document.getElementById('profileSelect');
-        if (sel && targetProfile && sel.value !== targetProfile) {
+        const shouldChangeProfile =
+          sel && targetProfile && sel.value !== targetProfile;
+
+        if (shouldChangeProfile) {
+          // 🔹 Cas 1 : on change de profil de map (Cairn -> Malmouth, etc.)
+          // => l'event 'change' va appeler ensureMapLoadedForProfile + setMapSrc
+          // => et donc ton mapImg.addEventListener('load', ...) restaurera la vue.
           sel.value = targetProfile;
           sel.dispatchEvent(new Event('change', { bubbles: true }));
+        } else {
+          // 🔹 Cas 2 : même profil de map, perso différent
+          // Ici l'image ne se recharge pas, donc l'event 'load' ne se déclenche pas.
+          // On doit donc restaurer la vue à la main.
+
+          // Récupérer le profil courant (Cairn, etc.)
+          const currentProfileFn = core.currentProfile || function () { return null; };
+          const p = currentProfileFn();
+
+          if (p && p.view && typeof p.view.scale === 'number') {
+            // On replace la vue globale sur celle du perso
+            st.view = st.view || {};
+            st.view.scale = p.view.scale;
+            st.view.x     = p.view.x ?? 0;
+            st.view.y     = p.view.y ?? 0;
+
+            if (window.UiCore && typeof window.UiCore.applyView === 'function') {
+              window.UiCore.applyView();
+            }
+          }
+
+          // Et on rerend l'UI (liste / markers / routes) pour ce perso
+          if (typeof renderList === 'function') {
+            renderList();
+          }
+          if (typeof renderMarkers === 'function') {
+            renderMarkers();
+          }
+          if (typeof renderRoutesPanel === 'function') {
+            renderRoutesPanel();
+          }
         }
       } catch (e) {
         console.warn('Erreur changement map :', e);
       }
 
+      // Vue globale (UI annexe si tu en as une)
       if (window.UiMapBase?.renderView) {
         UiMapBase.renderView();
       }
     },
   });
+
+
 
   // -------------------------------------------------------------------
   // Dropdown open/close
