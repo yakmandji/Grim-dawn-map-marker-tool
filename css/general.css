@@ -398,7 +398,8 @@ body.shared-only-view #list select,
 body.shared-only-view #list label,
 body.shared-only-view #list button.danger,
 body.shared-only-view .section input[type="color"],
-body.shared-only-view .lock-label
+body.shared-only-view .lock-label,
+#routesList button.danger 
  {
   display: none;
 }
@@ -412,7 +413,9 @@ body.shared-only-view .sidebar {
 }
 
 body.shared-only-view #list input,
-body.shared-only-view #routesList input
+body.shared-only-view #routesList input,
+.shared-only-view #list .select-current,
+#profileDropdown button
 {
   pointer-events: none;
   opacity: 0.6;

@@ -1,0 +1,178 @@
+// ui.share.js
+// Gestion des cartes partagées via ?share=...
+
+(function () {
+  const core   = window.GDMMCore || {};
+  const state  = core.state || {};
+  const ensureProfile   = core.ensureProfile   || function () {};
+  const setActiveProfile = core.setActiveProfile || function () {};
+
+  // --- Decode share payload from URL (GZIP + Base64 + LZString) ---
+  function decodeSharePayload(str) {
+    if (!str) return null;
+
+    // 1) Nouveau format : GZIP (pako) + base64 + encodeURIComponent
+    if (window.pako) {
+      try {
+        const b64 = decodeURIComponent(str);
+        const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+        const out = pako.inflate(bin, { to: 'string' });
+        if (out) {
+          return JSON.parse(out);
+        }
+      } catch (e) {
+        console.warn('[GDMM] GZIP decode failed, fallback to LZString/base64', e);
+      }
+    }
+
+    // 2) Ancien format : LZString.compressToEncodedURIComponent
+    if (window.LZString && typeof LZString.decompressFromEncodedURIComponent === 'function') {
+      try {
+        const out = LZString.decompressFromEncodedURIComponent(str);
+        if (out) {
+          return JSON.parse(out);
+        }
+      } catch (e) {
+        console.warn('[GDMM] LZString decompress failed', e);
+      }
+    }
+
+    // 3) Base64 JSON brut
+    try {
+      const decoded = atob(str);
+      return JSON.parse(decoded);
+    } catch (e) {
+      // 4) Base64 JSON mais avec encodeURIComponent autour
+      try {
+        const decoded = atob(decodeURIComponent(str));
+        return JSON.parse(decoded);
+      } catch (e2) {
+        console.error('[GDMM] All decode methods failed', e2);
+      }
+    }
+    return null;
+  }
+
+  // --- Charge la carte partagée depuis ?share= dans l'URL ---
+  function loadSharedFromUrl() {
+    const params = new URLSearchParams(location.search);
+    const raw = params.get('share');
+    if (!raw) return;
+
+    let data;
+    try {
+      data = decodeSharePayload(raw);
+    } catch (e) {
+      console.warn('[GDMM] invalid share payload', e);
+      return;
+    }
+    if (!data) return;
+
+    let routes  = [];
+    let markers = [];
+    const mapName = data.map || null;
+
+    // --- Format compact v2 ({ v, map, r: [...], m: [...] }) ---
+    if (Array.isArray(data.r) || Array.isArray(data.m)) {
+      const compactRoutes = Array.isArray(data.r) ? data.r : [];
+
+      routes = compactRoutes.map(r => ({
+        id: r.i,
+        name: r.n || '',
+        color: r.c || '#ffcc00',
+        width: r.w || 4,
+        opacity: (typeof r.o === 'number') ? r.o : 0.85,
+        points: Array.isArray(r.pts)
+          ? r.pts.map(pt => ({ xp: pt[0], yp: pt[1] }))
+          : [],
+      }));
+
+      markers = (Array.isArray(data.m) ? data.m : []).map(m => ({
+        id: m.i || (window.GDMMCore && GDMMCore.uid
+          ? GDMMCore.uid()
+          : Math.random().toString(36).slice(2)),
+        xp: m.x,
+        yp: m.y,
+        label: m.l || '',
+        cat: m.k || 'General',
+        color: m.c || '#78f1c2',
+        done: false,
+        shared: true,
+      }));
+    }
+    // --- Ancien format : { routes: [...], markers: [...] } ---
+    else if (Array.isArray(data.routes)) {
+      routes = data.routes;
+      const incomingMarkers = Array.isArray(data.markers) ? data.markers : [];
+      markers = incomingMarkers.map(m => {
+        if (!m || typeof m !== 'object') return m;
+        return { ...m, shared: true };
+      });
+    } else {
+      // rien d'exploitable
+      return;
+    }
+
+    if (!routes.length && !markers.length) return;
+
+    // --- Crée un profil [Shared] xxx unique ---
+    const baseName = `[Shared] ${mapName || 'Route'}`;
+    let name = baseName;
+    let i = 2;
+    while (state.profiles && state.profiles[name]) {
+      name = `${baseName} #${i++}`;
+    }
+
+    const p = ensureProfile(name);
+    if (!p) return;
+
+    p.markers = markers;
+    p.paths   = routes;
+    p.isShared = true;
+    p.sharedSourceMap = mapName;
+
+    // Essaie de réutiliser la map originale si elle existe
+    const src = mapName && state.profiles && state.profiles[mapName];
+    if (src && src.map) {
+      p.map = src.map;
+    }
+
+    setActiveProfile(name);
+
+    // Si la map (originale ou pas) a déjà un embed / sessionSrc, on le réutilise
+    if (p.map && p.map.embedData) {
+      if (window.showLoader) {
+        showLoader(GDMMLang.t('toast.LoadingMap'));
+      }
+      if (typeof window.setMapSrc === 'function') {
+        setMapSrc(p.map.embedData);
+      }
+    } else if (p.map && p.map.sessionSrc) {
+      if (window.showLoader) {
+        showLoader(GDMMLang.t('toast.LoadingMap'));
+      }
+      if (typeof window.setMapSrc === 'function') {
+        setMapSrc(p.map.sessionSrc);
+      }
+    }
+
+    // Rafraîchit l’UI
+    if (typeof window.refreshProfilesUI === 'function') {
+      refreshProfilesUI();
+    }
+
+    const ui = window.UiCore;
+    if (ui) {
+      if (typeof ui.renderList === 'function') ui.renderList();
+      if (typeof ui.renderMarkers === 'function') ui.renderMarkers();
+      if (typeof ui.renderRoutesPanel === 'function') ui.renderRoutesPanel();
+    }
+
+    // Mode "carte partagée en lecture seule"
+    document.body.classList.add('shared-only-view');
+  }
+
+  window.UiShare = {
+    loadSharedFromUrl,
+  };
+})();
