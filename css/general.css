@@ -414,8 +414,8 @@ body.shared-only-view .sidebar {
 
 body.shared-only-view #list input,
 body.shared-only-view #routesList input,
-.shared-only-view #list .select-current,
-#profileDropdown button
+body.shared-only-view #list .select-current,
+body.shared-only-view #profileDropdown button
 {
   pointer-events: none;
   opacity: 0.6;
