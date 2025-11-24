@@ -118,7 +118,8 @@ const {
     const isCurrentPath = pm.active && pm.current && state.tool === 'path';
     btn.classList.toggle('pulse', !!isCurrentPath);
   }
-  /*END ------------------------------------------------------*/
+  
+/*END ------------------------------------------------------*/
 
   // --- UI renderers ---
     function refreshProfilesUI() {

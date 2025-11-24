@@ -399,7 +399,7 @@ body.shared-only-view #list label,
 body.shared-only-view #list button.danger,
 body.shared-only-view .section input[type="color"],
 body.shared-only-view .lock-label,
-#routesList button.danger 
+body.shared-only-view #routesList button.danger 
  {
   display: none;
 }

@@ -34,8 +34,8 @@ const { $, inner } = window.UiCore;
       window.UiCore.setTool('pan');
     }
     renderList();
-    renderMarkers();
-    renderRoutesPanel();
+    if (window.UiCore?.renderMarkers) window.UiCore.renderMarkers();
+    if (window.UiCore?.renderRoutesPanel) window.UiCore.renderRoutesPanel();
     markAsChanged();
     saveUserDataToLocal();
   }
@@ -46,8 +46,8 @@ const { $, inner } = window.UiCore;
     saveUserDataToLocal();
     if (rerender) {
       renderList();
-      renderMarkers();
-      renderRoutesPanel();
+    if (window.UiCore?.renderMarkers) window.UiCore.renderMarkers();
+    if (window.UiCore?.renderRoutesPanel) window.UiCore.renderRoutesPanel();
     }
     if (patch.label !== undefined) {
       showToast(GDMMLang.t('toast.MarkerNameUpdated'));
@@ -57,8 +57,8 @@ const { $, inner } = window.UiCore;
   function deleteMarkerFromUI(id){
     coreDeleteMarker(id);
     renderList();
-    renderMarkers();
-    renderRoutesPanel();
+    if (window.UiCore?.renderMarkers) window.UiCore.renderMarkers();
+    if (window.UiCore?.renderRoutesPanel) window.UiCore.renderRoutesPanel();
     markAsChanged();
     saveUserDataToLocal();
   }
@@ -200,7 +200,9 @@ const { $, inner } = window.UiCore;
     }
 
     // Met à jour le panneau des Done
-    renderDoneList(doneMarkers);
+    if (window.renderDoneList) {
+        window.renderDoneList(doneMarkers);
+    }
   }
 /* END -----------------------------------------------------------------------*/
 
