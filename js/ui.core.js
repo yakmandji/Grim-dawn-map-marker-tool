@@ -172,7 +172,6 @@ const {
       const sel = document.getElementById('newCategory');
       const dd  = document.getElementById('categoryDropdown');
       if (!sel || !dd) return;
-
           const inner = dd.querySelector('.custom-dropdown-inner');
           if (!inner) return;
 
@@ -226,7 +225,7 @@ const {
     // --- END Dropdown Catégorie (nouveau marqueur) ---
 
 
-  // List of Done element
+  // List of Done element ----------------------------------------
   window.renderDoneList = function renderDoneList(doneMarkers) {
     const host = $('#doneList');
     if (!host) return;
@@ -288,9 +287,7 @@ const {
       host.prepend(row);
     });
   };
-
-
-//END list of done element
+// END -----------------------------------------------
 
 window.initDonePanelToggle = function initDonePanelToggle() {
   const panel  = $('#donePanel');
@@ -364,7 +361,6 @@ function renderMarkers(options = {}) {
   document.querySelectorAll('#mapInner .marker-link').forEach(n => n.remove());
   document.querySelectorAll('#mapInner .marker-entry-dungeon').forEach(n => n.remove());
 
-
   const oldSvg = document.getElementById('pathLayer');
   if (oldSvg) oldSvg.remove();
 
@@ -387,12 +383,10 @@ function renderMarkers(options = {}) {
   if (window.UiMapRender?.renderRoutes) {
     UiMapRender.renderRoutes(svg, inner);
   }
-
   // --- USER MARKERS ---
   if (window.UiMapRender?.renderUserMarkers) {
     UiMapRender.renderUserMarkers(inner);
   }
-
   // --- ADMIN MARKERS ---
   if (window.UiMapRender?.renderAdminMarkers) {
     UiMapRender.renderAdminMarkers(inner);
@@ -411,7 +405,6 @@ function renderMarkers(options = {}) {
       window.UiFilters.updateFilterCounts();
     }
   }
-
 }
 
 // END RENDER MARKER ---------------------------------------------------------
@@ -426,7 +419,6 @@ function renderMarkers(options = {}) {
 
   // Compat global
   window.renderRoutesPanel = renderRoutesPanel;
-
 
   // --- Center on marker ---
   function centerOn(xp, yp, targetScale = 1.5, markerId = null) {
@@ -711,14 +703,12 @@ function updateDungeonHover(e) {
           0.25,
           1.30
         );
-
         const vb = viewport.getBoundingClientRect();
         const centerNow = midpoint(p1, p2);
         const ox = centerNow.x - vb.left;
         const oy = centerNow.y - vb.top;
         const ix = (ox - pinchState.startView.x) / pinchState.startScale;
         const iy = (oy - pinchState.startView.y) / pinchState.startScale;
-
         state.view.x = ox - ix * targetScale;
         state.view.y = oy - iy * targetScale;
         state.view.scale = targetScale;
@@ -727,7 +717,6 @@ function updateDungeonHover(e) {
         applyView();
         persistViewForCurrentProfile();
       }
-
       e.preventDefault();
       return;
     }
@@ -761,36 +750,35 @@ function updateDungeonHover(e) {
   }
 
   // PAN classique
-  e.preventDefault();
-  const dx = e.clientX - panStart.x;
-  const dy = e.clientY - panStart.y;
-  state.view.x = viewStart.x + dx;
-  state.view.y = viewStart.y + dy;
-  clampViewToMap();
-  applyView();
-});
+    e.preventDefault();
+    const dx = e.clientX - panStart.x;
+    const dy = e.clientY - panStart.y;
+    state.view.x = viewStart.x + dx;
+    state.view.y = viewStart.y + dy;
+    clampViewToMap();
+    applyView();
+  });
 
-function stopPan(e){
-  // Nettoyage des touches
-  if (e && e.pointerType === 'touch') {
-    activeTouches.delete(e.pointerId);
+  function stopPan(e){
+    // Nettoyage des touches
+    if (e && e.pointerType === 'touch') {
+      activeTouches.delete(e.pointerId);
 
-    // Si un des deux doigts du pinch se lève → fin du pinch
-    if (pinchState.active &&
-        (e.pointerId === pinchState.id1 || e.pointerId === pinchState.id2)) {
-      pinchState.active = false;
-      pinchState.id1 = null;
-      pinchState.id2 = null;
-      pinchState.startDistance = 0;
+      // Si un des deux doigts du pinch se lève → fin du pinch
+      if (pinchState.active &&
+          (e.pointerId === pinchState.id1 || e.pointerId === pinchState.id2)) {
+        pinchState.active = false;
+        pinchState.id1 = null;
+        pinchState.id2 = null;
+        pinchState.startDistance = 0;
+      }
     }
+
+    if (!panning) return;
+    panning = false;
+    panId = null;
+    persistViewForCurrentProfile();
   }
-
-  if (!panning) return;
-  panning = false;
-  panId = null;
-  persistViewForCurrentProfile();
-}
-
 
   viewport.addEventListener('pointerup', stopPan);
   viewport.addEventListener('pointerleave', stopPan);
@@ -803,13 +791,11 @@ function stopPan(e){
       const old = state.view.scale;
       const ns = clamp(old * (1 + step), 0.25, 1.30);
       if (ns === old) return;
-
       const vb = viewport.getBoundingClientRect();
       const ox = clientX - vb.left;
       const oy = clientY - vb.top;
       const ix = (ox - state.view.x) / old;
       const iy = (oy - state.view.y) / old;
-
       state.view.x = ox - ix * ns;
       state.view.y = oy - iy * ns;
       state.view.scale = ns;
@@ -824,7 +810,6 @@ function stopPan(e){
       const step = -Math.sign(e.deltaY) * 0.12;
       zoomAt(e.clientX, e.clientY, step);
     }, { passive: false });
-
 
   const zoomInBtn  = document.getElementById('zoomIn');
   const zoomOutBtn = document.getElementById('zoomOut');
@@ -847,7 +832,6 @@ function stopPan(e){
     });
   }
 
-
 function clampViewToMap() {
   if (!state.mapReady) return;
 
@@ -863,7 +847,6 @@ function clampViewToMap() {
 
   const minX = vb.width  - iw - marginRight;
   const maxX = marginLeft;
-
   const minY = vb.height - ih - marginBottom;
   const maxY = marginTop;
 
@@ -897,7 +880,6 @@ viewport.addEventListener('drop', e => { const f = e.dataTransfer.files?.[0]; if
     }, duration);
   }
 
-
 // === PATHS (ADD / EXPORT / IMPORT) ===
 const newPathBtn = document.getElementById('newPathBtn');
 if (newPathBtn) {
@@ -916,7 +898,6 @@ if (newPathBtn) {
     const name = e.target.value;
     setActiveProfile(name);
     rememberActiveProfile();
-
     showLoader(GDMMLang.t('toast.LoadingMap'));
 
     // Charge le JSON de cette map si besoin
@@ -933,7 +914,6 @@ if (newPathBtn) {
       state.mapNatural = { w: 0, h: 0 };
       hideLoader();
     }
-
     renderList();
     renderMarkers();
     renderRoutesPanel();
@@ -1002,64 +982,61 @@ if (newPathBtn) {
 
   // --- Init on load ---
   (async () => {
-    // 1) Crée la structure de base pour chaque map connue
-    Object.keys(MAP_SOURCES).forEach((name) => {
-      ensureProfile(name); // markers: [], map: {}, created/updated remplis par GDMMCore
-    });
-    loadUserDataFromLocal();
+      // 1) Crée la structure de base pour chaque map connue
+      Object.keys(MAP_SOURCES).forEach((name) => {
+        ensureProfile(name); // markers: [], map: {}, created/updated remplis par GDMMCore
+      });
+      loadUserDataFromLocal();
 
-    // Profile choice
-    const mapNames = Object.keys(MAP_SOURCES);
-    let initial = mapNames[0] || Object.keys(state.profiles)[0] || null;
+      // Profile choice
+      const mapNames = Object.keys(MAP_SOURCES);
+      let initial = mapNames[0] || Object.keys(state.profiles)[0] || null;
 
-    try {
-      const last = localStorage.getItem(LAST_PROFILE_KEY);
-      if (last && state.profiles[last]) {
-        initial = last;
+      try {
+        const last = localStorage.getItem(LAST_PROFILE_KEY);
+        if (last && state.profiles[last]) {
+          initial = last;
+        }
+      } catch (e) {
+        console.warn('[GDMM] cannot read last profile', e);
       }
-    } catch (e) {
-      console.warn('[GDMM] cannot read last profile', e);
-    }
 
-    if (initial) {
-      setActiveProfile(initial);
-      rememberActiveProfile();
-    }
-
-    refreshProfilesUI();
-
-    // 4) Load profil map
-    if (initial) {
-      showLoader(GDMMLang.t('toast.LoadingMap'));
-
-      await ensureMapLoadedForProfile(initial);
-
-      const p = currentProfile();
-      if (p && p.map && p.map.embedData) {
-        setMapSrc(p.map.embedData);
-      } else if (p && p.map && p.map.sessionSrc) {
-        setMapSrc(p.map.sessionSrc);
-      } else {
-        // pas de map trouvée pour ce profil
-        hideLoader();
+      if (initial) {
+        setActiveProfile(initial);
+        rememberActiveProfile();
       }
-    }
+      refreshProfilesUI();
 
-    // 5) UI
-    renderList();
-    renderMarkers();
-    renderRoutesPanel();
-    initDonePanelToggle();
+      // 4) Load profil map
+      if (initial) {
+        showLoader(GDMMLang.t('toast.LoadingMap'));
+        await ensureMapLoadedForProfile(initial);
 
-    // defaut lock
-    state.locked = true;
-    applyLockUI();
+        const p = currentProfile();
+        if (p && p.map && p.map.embedData) {
+          setMapSrc(p.map.embedData);
+        } else if (p && p.map && p.map.sessionSrc) {
+          setMapSrc(p.map.sessionSrc);
+        } else {
+          // pas de map trouvée pour ce profil
+          hideLoader();
+        }
+      }
 
-    // routes partagées via ?share= (module UiShare)
-    if (window.UiShare && typeof UiShare.loadSharedFromUrl === 'function') {
-        UiShare.loadSharedFromUrl();
-    }
+      // 5) UI
+      renderList();
+      renderMarkers();
+      renderRoutesPanel();
+      initDonePanelToggle();
 
+      // defaut lock
+      state.locked = true;
+      applyLockUI();
+
+      // routes partagées via ?share= (module UiShare)
+      if (window.UiShare && typeof UiShare.loadSharedFromUrl === 'function') {
+          UiShare.loadSharedFromUrl();
+      }
   })();
 
 // === SPACE → PAN (global) ===
@@ -1119,15 +1096,8 @@ if (newPathBtn) {
   }
 
   Object.assign(window.UiCore, {
-    ensurePathsArray,
-    refreshProfilesUI,
-    renderList,
-    renderMarkers,
-    renderRoutesPanel,
-    showToast,
-    updateSaveIndicator,
-    resolveSizeKey,
-    setTool,
+    ensurePathsArray,refreshProfilesUI,renderList,renderMarkers,
+    renderRoutesPanel,showToast,updateSaveIndicator,resolveSizeKey,setTool,
   });
 
 })();
