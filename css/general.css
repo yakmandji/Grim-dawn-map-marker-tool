@@ -243,7 +243,7 @@ header .sep {
   align-items: flex-start;
 }
 
-.helpPopup{
+.modal{
   position: fixed;  
   top: 50%;  
   left: 50%; 
@@ -269,7 +269,7 @@ header .sep {
   z-index: 40;
 }
 
-.helpPopup h3 {
+.modal h3 {
   margin-top: 0;
   font-size: 15px;
   text-transform: uppercase;
@@ -277,22 +277,22 @@ header .sep {
   color: var(--muted);
 }
 
-.helpPopup ul {
+.modal ul {
   margin: 0;
   padding-left: 18px;
   list-style: none;
 }
 
-.helpPopup ul li{
+.modal ul li{
   padding-bottom: 10px;
 }
 
-.helpPopup li::before {
+.modal li::before {
   content: "– ";
   color: var(--muted);
 }
 
-.helpPopup .closeHelp {
+.modal .closeHelp {
   position: absolute;
   top: 6px;
   right: 8px;
@@ -305,7 +305,7 @@ header .sep {
   opacity: 0.7;
 }
 
-.helpPopup .closeHelp:hover {
+.modal .closeHelp:hover {
   opacity: 1;
   color: #78f1c2;
 }
@@ -679,4 +679,114 @@ body.shared-only-view #mergeSharedBtn,
   z-index: 50;
   pointer-events: none;
   opacity: 0.85;
+}
+
+
+/*Character change*/
+
+.char-avatar {
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.js-character-dropdown .select-current .char-avatar-current{
+  width: 32px;
+  height: 32px;
+}
+
+.character-line {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.character-line:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Avatar */
+.char-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Zone clic (sélection) */
+.character-select-zone {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.character-name {
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* Actions (edit / delete) */
+.character-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: .8;
+  padding: 3px;
+}
+
+.character-action:hover {
+  opacity: 1;
+}
+
+.character-action.delete {
+  color: #ff6b6b;
+}
+
+.character-line.is-active {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Ajout du bloc add-new identique en largeur aux autres lignes */
+.character-line.add-new {
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  margin-top: 6px;
+}
+
+.character-line.add-new:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.add-icon {
+  font-size: 18px;
+  margin-right: 10px;
+  opacity: 0.85;
+  font-weight: 600;
+}
+
+.character-line.add-new .character-select-zone {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  padding: 8px 0;
+}
+
+.character-line .edit{
+  font-size: 14px;
+  padding: 3px 8px;
+}
+
+.character-line .delete-icon{
+  width: 14px;
+}
+
+.js-character-dropdown .custom-dropdown-inner{
+  padding: 0;
 }

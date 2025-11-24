@@ -191,28 +191,73 @@ function getUserDataOnly() {
   return out;
 }
 
-  function saveUserDataToLocal(){
-    try {
-      const data = getUserDataOnly();
+function saveUserDataToLocal() {
+  try {
+    const data = getUserDataOnly();
+
+    // Mode multi-perso : on stocke dans l'état du perso actif
+    if (window.characterManager && typeof characterManager.updateActiveState === 'function') {
+      characterManager.updateActiveState((prevState) => {
+        const next = Object.assign({}, prevState || {});
+
+        // Snapshot des markers/routes/vue pour ce perso
+        next.userData = data;
+
+        // On mémorise aussi la map (profil) actuellement sélectionnée
+        if (state && state.active) {
+          next.lastProfile = state.active; // ex: "Cairn", "Malmouth", etc.
+        }
+
+        return next;
+      });
+    } else {
+      // Fallback ancien comportement (un seul perso)
       localStorage.setItem('gdmm_user_data', JSON.stringify(data));
-    } catch (e) {
-      console.warn(GDMMLang.t('toast.CantSaveData'), e);
     }
+  } catch (e) {
+    console.warn(GDMMLang.t('toast.CantSaveData'), e);
   }
+}
+
 
 function loadUserDataFromLocal() {
   try {
-    const raw = localStorage.getItem('gdmm_user_data');
-    if (!raw) return;
+    let userData = null;
 
-    const userData = JSON.parse(raw);
+    // --- Mode multi-personnage ----------------------------------------
+    if (window.characterManager && typeof characterManager.getActiveState === 'function') {
+      const st = characterManager.getActiveState() || {};
+      userData = st.userData || null;
+    } else {
+      // --- Ancien mode (une seule save globale) -----------------------
+      const raw = localStorage.getItem('gdmm_user_data');
+      if (raw) {
+        userData = JSON.parse(raw);
+      }
+    }
+
+    // 🔹 1) On purge TOUT ce qu'on a en mémoire pour repartir propre
+    const profiles = state.profiles || {};
+    for (const [, p] of Object.entries(profiles)) {
+      if (!p) continue;
+      p.markers = [];
+      p.paths   = [];
+      if (p.view) delete p.view;
+    }
+
+    // 🔹 2) Si ce perso n'a encore jamais de save, on s'arrête là (map vide)
+    if (!userData) return;
+
+    // 🔹 3) On applique les données du perso sur les profils existants
     for (const [name, uProfile] of Object.entries(userData)) {
-      // ⬇ au lieu de "if (!state.profiles[name]) continue;"
       const p = ensureProfile(name);
 
-      p.markers = uProfile.markers || [];
-      if (uProfile.view)  p.view  = uProfile.view;
-      if (uProfile.paths) p.paths = uProfile.paths;
+      p.markers = Array.isArray(uProfile.markers) ? uProfile.markers : [];
+      p.paths   = Array.isArray(uProfile.paths)   ? uProfile.paths   : [];
+
+      if (uProfile.view) {
+        p.view = uProfile.view;
+      }
     }
   } catch (e) {
     console.warn(GDMMLang.t('toast.CantLoadData'), e);

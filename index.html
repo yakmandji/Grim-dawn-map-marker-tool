@@ -44,24 +44,42 @@
   </div>
   <div class="app">
     <header id="left-menu">
+
+<!--         Character selection ------------------------------------- -->
+
+    <div class="custom-dropdown js-character-dropdown" data-dropdown-id="character">
+      <button class="select-current select-green">
+        <span class="dropdown-selected-label">Personnage 1</span>
+        <span class="dropdown-arrow"></span>
+      </button>
+      <div class="custom-dropdown-inner">
+          <button type="button" class="option-item" >
+            <span>Character 1</span>
+          </button>
+      </div>
+    </div>
+<!--     END Character selection ------------------------------------- -->
+        <div class="sep"></div>
+
+<!--         Profil map------------------------------------- -->
       <select id="profileSelect" title="Profils" class="active select-green">
         <option value="">(profil)</option>
       </select>
-
       <div id="profileDropdown" class="custom-dropdown">
+
         <button class="select-current select-green">
           <span class="select-label">Cairn</span>
         </button>
         <div class="custom-dropdown-inner">
-          <!-- rempli par refreshProfilesUI() -->
         </div>
       </div>
+<!--         End Profil map------------------------------------- -->
 
       <button id="mobile-menu-toggle">
           <img src="img/hamburger.svg" width="28" alt="">
       </button>
 
-        <div class="sep"></div>
+
 
         <button class="filterToggle admin-btn is-on" data-admin="region" data-i18n-title="ui.ShowHideRegion" title="Show/Hide Region names">
             <img src="img/region.svg" alt="Region">
@@ -87,7 +105,10 @@
           <span data-i18n="ui.SaveTitle">Save</span>
         </button>
         <span id="saveStatus">● Saved</span>
-                 <div class="sep"></div>
+        
+        <div class="sep"></div>
+
+<!--         langue------------------------------------- -->
         <select id="langSelect" class="select-green">
         <option value="en">English</option>
         <option value="fr">Français</option>
@@ -100,42 +121,42 @@
         <option value="ja">日本語</option>
         </select>
 
-      <div id="langDropdown" class="custom-dropdown">
-        <button type="button" class="select-current select-green">
-          <span class="flag flag-fr"></span>
-          <span class="lang-label">Français</span>
-        </button>
-        <div class="custom-dropdown-inner">
-          <button type="button" class="option-item" data-lang="en">
-            <span class="flag flag-en"></span><span>English</span>
+        <div id="langDropdown" class="custom-dropdown">
+          <button type="button" class="select-current select-green">
+            <span class="flag flag-fr"></span>
+            <span class="lang-label">Français</span>
           </button>
-          <button type="button" class="option-item" data-lang="fr">
-            <span class="flag flag-fr"></span><span>Français</span>
-          </button>
-          <button type="button" class="option-item" data-lang="es">
-            <span class="flag flag-es"></span><span>Español</span>
-          </button>
-          <button type="button" class="option-item" data-lang="de">
-            <span class="flag flag-de"></span><span>Deutsch</span>
-          </button>
-          <button type="button" class="option-item" data-lang="pt">
-            <span class="flag flag-pt"></span><span>Português</span>
-          </button>
-          <button type="button" class="option-item" data-lang="it">
-            <span class="flag flag-it"></span><span>Italiano</span>
-          </button>
-          <button type="button" class="option-item" data-lang="ru">
-            <span class="flag flag-ru"></span><span>Русский</span>
-          </button>
-          <button type="button" class="option-item" data-lang="zh">
-            <span class="flag flag-zh"></span><span>中文</span>
-          </button>
-          <button type="button" class="option-item" data-lang="ja">
-            <span class="flag flag-ja"></span><span>日本語</span>
-          </button>
+          <div class="custom-dropdown-inner">
+            <button type="button" class="option-item" data-lang="en">
+              <span class="flag flag-en"></span><span>English</span>
+            </button>
+            <button type="button" class="option-item" data-lang="fr">
+              <span class="flag flag-fr"></span><span>Français</span>
+            </button>
+            <button type="button" class="option-item" data-lang="es">
+              <span class="flag flag-es"></span><span>Español</span>
+            </button>
+            <button type="button" class="option-item" data-lang="de">
+              <span class="flag flag-de"></span><span>Deutsch</span>
+            </button>
+            <button type="button" class="option-item" data-lang="pt">
+              <span class="flag flag-pt"></span><span>Português</span>
+            </button>
+            <button type="button" class="option-item" data-lang="it">
+              <span class="flag flag-it"></span><span>Italiano</span>
+            </button>
+            <button type="button" class="option-item" data-lang="ru">
+              <span class="flag flag-ru"></span><span>Русский</span>
+            </button>
+            <button type="button" class="option-item" data-lang="zh">
+              <span class="flag flag-zh"></span><span>中文</span>
+            </button>
+            <button type="button" class="option-item" data-lang="ja">
+              <span class="flag flag-ja"></span><span>日本語</span>
+            </button>
+          </div>
         </div>
-      </div>
-
+<!--      langue END------------------------------------- -->
       </div>
     </header>
 
@@ -297,7 +318,7 @@
 
     <div id="helpBackdrop" style="display:none"></div>
 
-    <div class="helpPopup" id="helpSection" style="display:none">
+    <div class="helpPopup modal" id="helpSection" style="display:none">
       <button class="closeHelp">×</button>
       <h3 data-i18n="ui.HelpTitle">Help</h3>
       <ul>
@@ -410,6 +431,32 @@
   </div>
 </div>
 
+<!-- MULTI CHARACTER MODAL --------------------------------------------------->
+<div class="modal js-modal-edit-character hidden" aria-hidden="true" style="display:none">
+  <div class="modal-content">
+    <h3>Renommer le personnage</h3>
+    <input type="text" class="js-edit-character-name" placeholder="Nom du personnage">
+    <div class="modal-actions">
+      <button class="modal-save js-save-character-edit">Enregistrer</button>
+      <button class="modal-cancel js-cancel-character-edit">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal : Nouveau personnage -->
+<div class=" modal js-modal-new-character hidden" aria-hidden="true" style="display:none">
+  <div class="modal-content">
+    <h3>Nouveau personnage</h3>
+    <input type="text" class="js-new-character-name" placeholder="Nom du personnage">
+    <div class="modal-actions">
+      <button class="modal-save js-save-character-new">Créer</button>
+      <button class="modal-cancel js-cancel-character-new">Annuler</button>
+    </div>
+  </div>
+</div>
+<!--END MULTI CHARACTER MODAL ------------------------------------------------------->
+
+
   <script src="js/ui.lang.js?v=3.40"></script>
   <script src="js/core.js?v=3.06"></script>
   <script src="js/ui.rift.js?v=3.86"></script>
@@ -431,6 +478,8 @@
   <script src="js/ui.dungeon.links.js?v=1"></script>
   <script src="js/ui.filter.js?v=2.93"></script>
   <script src="js/ui.search.js?v=1.1"></script>
+
+  <script src="js/characterManager.js"></script>
 
 </body>
 </html>

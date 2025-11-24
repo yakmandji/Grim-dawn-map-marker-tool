@@ -89,6 +89,7 @@
       "ui.rift":    "Rift",
       "ui.dungeon": "Dungeon",
       "ui.annouce": "Build your own experience",
+      "character.NewCharacter" : "Create new character",
 
     },
     fr: {
@@ -177,6 +178,7 @@
       "ui.rift":    "Faille",
       "ui.dungeon": "Donjon",
       "ui.annouce": "Créez votre propre expérience",
+      "character.NewCharacter": "Créer un nouveau personnage",
 
     },
     es: {
@@ -264,6 +266,7 @@
       "ui.rift":    "Grieta",
       "ui.dungeon": "Mazmorra",
       "ui.annouce": "Crea tu propia experiencia",
+      "character.NewCharacter": "Crear nuevo personaje",
 
     },
 
@@ -353,6 +356,8 @@
       "ui.rift":    "Riss",
       "ui.dungeon": "Dungeon",
       "ui.annouce": "Gestalte dein eigenes Erlebnis",
+      "character.NewCharacter": "Neuen Charakter erstellen",
+
 
     },
 
@@ -443,6 +448,8 @@
       "ui.rift":    "Fenda",
       "ui.dungeon": "Masmorra",
       "ui.annouce": "Crie sua própria experiência",
+      "character.NewCharacter": "Criar novo personagem",
+
 
   },
 
@@ -531,6 +538,8 @@
     "ui.rift":    "Разлом",
     "ui.dungeon": "Подземелье",
     "ui.annouce": "Создайте свой собственный опыт",
+    "character.NewCharacter": "Создать нового персонажа",
+
 
   },
 
@@ -621,6 +630,8 @@
       "ui.rift":    "Varco",
       "ui.dungeon": "Dungeon",
       "ui.annouce": "Crea la tua esperienza personale",
+      "character.NewCharacter": "Crea un nuovo personaggio",
+
     },
 
     zh: {
@@ -709,6 +720,8 @@
       "ui.rift":    "裂隙",
       "ui.dungeon": "地下城",
       "ui.annouce": "打造属于你的独特体验",
+      "character.NewCharacter": "创建新角色",
+
     },
     ja: {
         'ui.NewMarkerTitle': '新しいマーカー',
@@ -796,6 +809,8 @@
       'ui.rift':    'リフト',
       'ui.dungeon': 'ダンジョン',
       "ui.annouce": "自分だけの体験を築こう",
+      "character.NewCharacter": "新しいキャラクターを作成",
+
     }
 
   };
