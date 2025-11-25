@@ -45,21 +45,15 @@
     if (!el) return;
 
     if (saved) {
-      el.setAttribute('data-i18n', 'toast.SaveState');
       el.textContent = GDMMLang.t('toast.SaveState');
-      el.style.color = '#8be38b';
     } else {
-      el.setAttribute('data-i18n', 'toast.UnsaveState');
-      el.textContent = GDMMLang.t('toast.UnsaveState');
-      el.style.color = '#ff6b7a';
+      return;
     }
   }
 
   updateSaveIndicator(true);
 
-  function markAsChanged(){
-    updateSaveIndicator(false);
-  }
+  function markAsChanged(){}
   //------------------------
 
 
