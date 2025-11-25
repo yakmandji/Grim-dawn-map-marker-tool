@@ -389,7 +389,7 @@ function initCharacterUI() {
     const addLabel = document.createElement('span');
     addLabel.className = 'character-name';
     addLabel.setAttribute('data-i18n', 'character.NewCharacter');
-    addLabel.textContent = GDMMLang.t('character.NewCharacter') || 'Créer un nouveau personnage';
+    addLabel.textContent = GDMMLang.t('character.NewCharacter') || 'Add new character';
 
     addZone.appendChild(plus);
     addZone.appendChild(addLabel);

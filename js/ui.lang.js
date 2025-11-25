@@ -91,6 +91,9 @@
       "ui.annouce": "Build your own experience",
       "character.NewCharacter" : "Create new character",
       "character.Edit" : "Edit",
+      "confirmDeleteCharacter": "Delete character \"{name}\"?",
+      "KeepOneCharacter": "You must keep at least one character.",
+      "MaxLimitCharacter": "You cannot have more than 10 characters.",
 
     },
     fr: {
@@ -180,7 +183,10 @@
       "ui.dungeon": "Donjon",
       "ui.annouce": "Créez votre propre expérience",
       "character.NewCharacter": "Créer un nouveau personnage",
-      "character.Edit": "Renommer"
+      "character.Edit": "Renommer",
+      "confirmDeleteCharacter": "Supprimer le personnage « {name} » ?",
+      "KeepOneCharacter": "Vous devez garder au moins un personnage.",
+      "MaxLimitCharacter": "Vous ne pouvez pas avoir plus de 10 personnages.",
 
     },
     es: {
@@ -270,7 +276,9 @@
       "ui.annouce": "Crea tu propia experiencia",
       "character.NewCharacter": "Crear nuevo personaje",
       "character.Edit": "Editar",
-
+      "confirmDeleteCharacter": "¿Eliminar el personaje \"{name}\"?",
+      "KeepOneCharacter": "Debes mantener al menos un personaje.",
+      "MaxLimitCharacter": "No puedes tener más de 10 personajes.",
     },
 
     de: {
@@ -360,8 +368,10 @@
       "ui.dungeon": "Dungeon",
       "ui.annouce": "Gestalte dein eigenes Erlebnis",
       "character.NewCharacter": "Neuen Charakter erstellen",
-      "character.Edit": "Bearbeiten",      
-
+      "character.Edit": "Bearbeiten",
+      "confirmDeleteCharacter": "Charakter „{name}“ löschen?",
+      "KeepOneCharacter": "Du musst mindestens einen Charakter behalten.",
+      "MaxLimitCharacter": "Du kannst nicht mehr als 10 Charaktere haben.",
 
     },
 
@@ -454,8 +464,9 @@
       "ui.annouce": "Crie sua própria experiência",
       "character.NewCharacter": "Criar novo personagem",
       "character.Edit": "Editar",
-
-
+      "confirmDeleteCharacter": "Excluir o personagem \"{name}\"?",
+      "KeepOneCharacter": "Você deve manter pelo menos um personagem.",
+      "MaxLimitCharacter": "Você não pode ter mais de 10 personagens.",
   },
 
   ru: {
@@ -545,6 +556,9 @@
     "ui.annouce": "Создайте свой собственный опыт",
     "character.NewCharacter": "Создать нового персонажа",
     "character.Edit": "Редактировать",
+    "confirmDeleteCharacter": "Удалить персонажа «{name}»?",
+    "KeepOneCharacter": "Вы должны оставить как минимум одного персонажа.",
+    "MaxLimitCharacter": "Вы не можете иметь более 10 персонажей.",
 
   },
 
@@ -637,6 +651,9 @@
       "ui.annouce": "Crea la tua esperienza personale",
       "character.NewCharacter": "Crea un nuovo personaggio",
       "character.Edit": "Modifica",
+      "confirmDeleteCharacter": "Eliminare il personaggio \"{name}\"?",
+      "KeepOneCharacter": "Devi mantenere almeno un personaggio.",
+       "MaxLimitCharacter": "Non puoi avere più di 10 personaggi.",
 
     },
 
@@ -728,6 +745,10 @@
       "ui.annouce": "打造属于你的独特体验",
       "character.NewCharacter": "创建新角色",
       "character.Edit": "编辑",
+      "confirmDeleteCharacter": "删除角色“{name}”？",
+      "KeepOneCharacter": "您必须至少保留一个角色。",
+      "MaxLimitCharacter": "您最多只能拥有 10 个角色。",
+
 
     },
     ja: {
@@ -818,6 +839,9 @@
       "ui.annouce": "自分だけの体験を築こう",
       "character.NewCharacter": "新しいキャラクターを作成",
       "character.Edit": "編集",
+      "confirmDeleteCharacter": "キャラクター「{name}」を削除しますか？",
+      "KeepOneCharacter": "最低でも1人のキャラクターを残す必要があります。",
+      "MaxLimitCharacter": "キャラクターは10人までしか作成できません。",
 
     }
 
