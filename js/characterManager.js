@@ -328,11 +328,12 @@ function initCharacterUI() {
       row.appendChild(selectZone);
 
       // Bouton Éditer
+      const labelEdit = GDMMLang.t('character.Edit') || 'Edit';
       const editBtn = document.createElement('button');
       editBtn.type = 'button';
       editBtn.className = 'character-action edit';
       editBtn.textContent = '✎';
-      editBtn.title = 'Renommer';
+      editBtn.title = labelEdit;
 
       editBtn.addEventListener('click', () => {
         if (!modalEdit || !inputEdit) return;
@@ -345,16 +346,17 @@ function initCharacterUI() {
       row.appendChild(editBtn);
 
       // Bouton Supprimer
+      const labelDelete = GDMMLang.t('ui.DeleteButton') || 'Delete';
       const delBtn = document.createElement('button');
       delBtn.type = 'button';
       delBtn.className = 'character-action delete danger ';
       const binIcon = document.createElement('img');
       binIcon.src = 'img/bin-icon.svg';
-      binIcon.alt = 'Supprimer';
+      binIcon.alt = labelDelete;
       binIcon.className = 'char-icon delete-icon';
 
       delBtn.appendChild(binIcon);
-      delBtn.title = 'Supprimer';
+      delBtn.title = labelDelete;
 
       delBtn.addEventListener('click', () => {
         dropdownEl.classList.remove('open');
@@ -422,6 +424,7 @@ function initCharacterUI() {
       avatarCurrent.src = active.avatar || 'img/profile1.png';
     }
   }
+   window.refreshCharacterDropdown = renderDropdown;
 
   // -------------------------------------------------------------------
   // CALLBACK du manager (changement de personnage)

@@ -90,6 +90,7 @@
       "ui.dungeon": "Dungeon",
       "ui.annouce": "Build your own experience",
       "character.NewCharacter" : "Create new character",
+      "character.Edit" : "Edit",
 
     },
     fr: {
@@ -179,6 +180,7 @@
       "ui.dungeon": "Donjon",
       "ui.annouce": "Créez votre propre expérience",
       "character.NewCharacter": "Créer un nouveau personnage",
+      "character.Edit": "Renommer"
 
     },
     es: {
@@ -267,6 +269,7 @@
       "ui.dungeon": "Mazmorra",
       "ui.annouce": "Crea tu propia experiencia",
       "character.NewCharacter": "Crear nuevo personaje",
+      "character.Edit": "Editar",
 
     },
 
@@ -357,6 +360,7 @@
       "ui.dungeon": "Dungeon",
       "ui.annouce": "Gestalte dein eigenes Erlebnis",
       "character.NewCharacter": "Neuen Charakter erstellen",
+      "character.Edit": "Bearbeiten",      
 
 
     },
@@ -449,6 +453,7 @@
       "ui.dungeon": "Masmorra",
       "ui.annouce": "Crie sua própria experiência",
       "character.NewCharacter": "Criar novo personagem",
+      "character.Edit": "Editar",
 
 
   },
@@ -539,7 +544,7 @@
     "ui.dungeon": "Подземелье",
     "ui.annouce": "Создайте свой собственный опыт",
     "character.NewCharacter": "Создать нового персонажа",
-
+    "character.Edit": "Редактировать",
 
   },
 
@@ -631,6 +636,7 @@
       "ui.dungeon": "Dungeon",
       "ui.annouce": "Crea la tua esperienza personale",
       "character.NewCharacter": "Crea un nuovo personaggio",
+      "character.Edit": "Modifica",
 
     },
 
@@ -721,6 +727,7 @@
       "ui.dungeon": "地下城",
       "ui.annouce": "打造属于你的独特体验",
       "character.NewCharacter": "创建新角色",
+      "character.Edit": "编辑",
 
     },
     ja: {
@@ -810,6 +817,7 @@
       'ui.dungeon': 'ダンジョン',
       "ui.annouce": "自分だけの体験を築こう",
       "character.NewCharacter": "新しいキャラクターを作成",
+      "character.Edit": "編集",
 
     }
 
@@ -991,6 +999,9 @@
         if (newCat) {
           newCat.dispatchEvent(new Event('change'));
         }
+          if (typeof window.refreshCharacterDropdown === 'function') {
+            window.refreshCharacterDropdown();
+          }
       });
 
 
