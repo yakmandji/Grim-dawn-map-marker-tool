@@ -464,16 +464,9 @@ function initCharacterUI() {
           sel && targetProfile && sel.value !== targetProfile;
 
         if (shouldChangeProfile) {
-          // 🔹 Cas 1 : on change de profil de map (Cairn -> Malmouth, etc.)
-          // => l'event 'change' va appeler ensureMapLoadedForProfile + setMapSrc
-          // => et donc ton mapImg.addEventListener('load', ...) restaurera la vue.
           sel.value = targetProfile;
           sel.dispatchEvent(new Event('change', { bubbles: true }));
         } else {
-          // 🔹 Cas 2 : même profil de map, perso différent
-          // Ici l'image ne se recharge pas, donc l'event 'load' ne se déclenche pas.
-          // On doit donc restaurer la vue à la main.
-
           // Récupérer le profil courant (Cairn, etc.)
           const currentProfileFn = core.currentProfile || function () { return null; };
           const p = currentProfileFn();
