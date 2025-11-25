@@ -613,11 +613,26 @@ if (e.altKey && state.mapReady) {
   // --- classic PAN ---
   e.preventDefault();
 
-  // If input focus go to blur
+  // Blur inputs
   const ae = document.activeElement;
-  if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT')) {
+  if (
+    ae &&
+    (
+      ae.tagName === 'INPUT' ||
+      ae.tagName === 'TEXTAREA' ||
+      ae.tagName === 'SELECT' ||
+      ae.isContentEditable ||
+      ae.classList?.contains('select-green') // <- bouton de select custom
+    )
+  ) {
     ae.blur();
   }
+
+  // Fermer aussi les dropdowns custom si la map prend le focus
+  document.querySelectorAll('.custom-dropdown.open').forEach((el) => {
+    el.classList.remove('open');
+  });
+
 
   if (e.target.closest && e.target.closest('.marker')) {
     return;
