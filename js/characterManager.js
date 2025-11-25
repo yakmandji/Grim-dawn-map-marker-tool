@@ -122,7 +122,7 @@ const characterManager = (() => {
       characters: {
         'char-1': {
           id: 'char-1',
-          name: 'Personnage 1',
+          name: 'Default character',
           state: mergedState,
         },
       },
