@@ -3,6 +3,18 @@ let characterToEdit = null;
 const STORAGE_KEY_V2 = 'grimSave_v2';
 const STORAGE_KEY_OLD = 'grimSave'; // Ancienne clé
 
+// Nettoyage des anciennes sauvegardes après migration
+function cleanupLegacyStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY_OLD);       // ancienne grimSave
+    localStorage.removeItem('gdmm_user_data');      // ancien userDataOnly
+    console.log('[Migration] Anciennes clés supprimées (grimSave, gdmm_user_data).');
+  } catch (e) {
+    console.warn('[Migration] Impossible de supprimer les anciennes clés', e);
+  }
+}
+
+
 const characterManager = (() => {
   let data = null;
   let onCharacterChanged = null; // callback (activeCharacter) => { ... }
@@ -23,10 +35,9 @@ const characterManager = (() => {
   }
 
 
+ // --- MIGRATION -------------------------------------------
   function migrateIfNeeded() {
     const existing = loadMultiCharData();
-
-    // --- CAS 1 : multi-perso existe déjà (version 2 ou plus) -------------------
     if (existing && existing.version >= 2) {
       data = existing;
 
@@ -60,7 +71,7 @@ const characterManager = (() => {
       } catch (e) {
         console.warn('Safety migration from gdmm_user_data failed', e);
       }
-
+      cleanupLegacyStorage();
       return;
     }
 
@@ -107,7 +118,10 @@ const characterManager = (() => {
     };
 
     saveMultiCharData();
+    cleanupLegacyStorage();
   }
+  
+/*END -------------------------------------------------------------*/
 
 
   function getActiveCharacter() {
@@ -151,7 +165,7 @@ const characterManager = (() => {
   function createCharacter(name) {
       const count = Object.keys(data.characters || {}).length;
       if (count >= 10) {
-        alert('Vous ne pouvez pas avoir plus de 10 personnages (limite actuelle).');
+        alert(GDMMLang.t('ui.MaxLimitCharacter'));
         return;
       }
 
@@ -190,7 +204,7 @@ const characterManager = (() => {
   function deleteCharacter(id) {
     const charIds = Object.keys(data.characters);
     if (charIds.length === 1) {
-      alert('Vous devez garder au moins un personnage.');
+      alert(GDMMLang.t('KeepOneCharacter'));
       return;
     }
 
@@ -254,6 +268,7 @@ function initCharacterUI() {
 
   const modalEdit = document.querySelector('.js-modal-edit-character');
   const modalNew  = document.querySelector('.js-modal-new-character');
+  const modalBackdrop = document.getElementById('helpBackdrop');
 
   const inputEdit = modalEdit ? modalEdit.querySelector('.js-edit-character-name') : null;
   const inputNew  = modalNew  ? modalNew.querySelector('.js-new-character-name')  : null;
@@ -263,20 +278,6 @@ function initCharacterUI() {
 
   const btnNewSave    = modalNew ? modalNew.querySelector('.js-save-character-new')      : null;
   const btnNewCancel  = modalNew ? modalNew.querySelector('.js-cancel-character-new')    : null;
-
-  function openModal(modal) {
-    modal?.classList.remove('hidden');
-    modal?.classList.add('is-active');
-    modal?.setAttribute('aria-hidden', 'false');
-    modal.style.display = 'block';
-  }
-
-  function closeModal(modal) {
-    modal?.classList.remove('is-active');
-    modal?.classList.add('hidden');
-    modal?.setAttribute('aria-hidden', 'true');
-    modal.style.display = 'none';
-  }
 
   // -------------------------------------------------------------------
   // RENDU DU MENU PERSONNAGES
@@ -327,7 +328,7 @@ function initCharacterUI() {
         if (!modalEdit || !inputEdit) return;
         characterToEdit = c.id;
         inputEdit.value = c.name;
-        openModal(modalEdit);
+        openModal(modalEdit, modalBackdrop);
         dropdownEl.classList.remove('open');
       });
 
@@ -347,11 +348,15 @@ function initCharacterUI() {
 
       delBtn.addEventListener('click', () => {
         dropdownEl.classList.remove('open');
-        if (confirm(`Supprimer "${c.name}" ?`)) {
+        
+        const msg = GDMMLang.t('confirmDeleteCharacter').replace('{name}', c.name);
+
+        if (confirm(msg)) {
           characterManager.deleteCharacter(c.id);
           renderDropdown();
         }
       });
+
 
       row.appendChild(delBtn);
 
@@ -381,12 +386,12 @@ function initCharacterUI() {
 
     newRow.addEventListener('click', () => {
       inputNew.value = '';
-      openModal(modalNew);
+      openModal(modalNew, modalBackdrop);
       dropdownEl.classList.remove('open');
 
       btnNewSave.onclick = () => {
         characterManager.createCharacter(inputNew.value.trim());
-        closeModal(modalNew);
+        closeModal(modalNew, modalBackdrop);
         renderDropdown();
       };
     });
@@ -514,16 +519,17 @@ function initCharacterUI() {
   // -------------------------------------------------------------------
   // Modal buttons
   // -------------------------------------------------------------------
-  btnEditCancel?.addEventListener('click', () => closeModal(modalEdit));
-  btnNewCancel?.addEventListener('click', () => closeModal(modalNew));
+  btnEditCancel?.addEventListener('click', () => closeModal(modalEdit, modalBackdrop));
+  btnNewCancel?.addEventListener('click', () => closeModal(modalNew, modalBackdrop));
 
   btnEditSave?.addEventListener('click', () => {
     if (!characterToEdit) return;
     characterManager.renameCharacter(characterToEdit, inputEdit.value.trim());
-    closeModal(modalEdit);
+    closeModal(modalEdit, modalBackdrop);
     renderDropdown();
     characterToEdit = null;
   });
+
 
   // Premier rendu
   renderDropdown();
