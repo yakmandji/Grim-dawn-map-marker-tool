@@ -428,7 +428,7 @@ function renderMarkers(options = {}) {
     const vb = viewport.getBoundingClientRect();
     const pt = pctToPx(xp, yp);
 
-    const scale = clamp(targetScale || state.view.scale, 0.25, 1.30);
+    const scale = clamp(targetScale || state.view.scale, 0.25, 1.50);
     state.view.scale = scale;
 
     state.view.x = vb.width  / 2 - pt.x * scale;
@@ -717,7 +717,7 @@ function updateDungeonHover(e) {
         const targetScale = clamp(
           pinchState.startScale * ratio,
           0.25,
-          1.30
+          1.50
         );
         const vb = viewport.getBoundingClientRect();
         const centerNow = midpoint(p1, p2);
@@ -805,7 +805,7 @@ function updateDungeonHover(e) {
   //ZOOM FONCTION
     function zoomAt(clientX, clientY, step) {
       const old = state.view.scale;
-      const ns = clamp(old * (1 + step), 0.25, 1.30);
+      const ns = clamp(old * (1 + step), 0.25, 1.50);
       if (ns === old) return;
       const vb = viewport.getBoundingClientRect();
       const ox = clientX - vb.left;

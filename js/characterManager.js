@@ -6,13 +6,24 @@ const STORAGE_KEY_OLD = 'grimSave'; // Ancienne clé
 // Nettoyage des anciennes sauvegardes après migration
 function cleanupLegacyStorage() {
   try {
-    localStorage.removeItem(STORAGE_KEY_OLD);       // ancienne grimSave
-    localStorage.removeItem('gdmm_user_data');      // ancien userDataOnly
+    const hadOld =
+      localStorage.getItem(STORAGE_KEY_OLD) !== null ||
+      localStorage.getItem('gdmm_user_data') !== null;
+
+    // Si rien à nettoyer, on ne log pas
+    if (!hadOld) {
+      return;
+    }
+
+    localStorage.removeItem(STORAGE_KEY_OLD);  // ancienne grimSave
+    localStorage.removeItem('gdmm_user_data'); // ancien userDataOnly
+
     console.log('[Migration] Anciennes clés supprimées (grimSave, gdmm_user_data).');
   } catch (e) {
     console.warn('[Migration] Impossible de supprimer les anciennes clés', e);
   }
 }
+
 
 
 const characterManager = (() => {
@@ -311,7 +322,6 @@ function initCharacterUI() {
 
       selectZone.addEventListener('click', () => {
         characterManager.setActiveCharacter(c.id);
-        renderDropdown();
         dropdownEl.classList.remove('open');
       });
 
