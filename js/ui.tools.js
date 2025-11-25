@@ -269,7 +269,7 @@
     $('#mapFile')?.addEventListener('change', e => {
       const f = e.target.files?.[0]; if (!f) return;
       setMapSrc(f);
-      showToast('🗺️ Map image updated successfully');
+      showToast('🗺Map image updated successfully');
       markAsChanged();
     });
   } else {
@@ -304,7 +304,7 @@ if (shareBtn) {
     const sharedMarkers = allMarkers.filter(m => m && m.shared);
     const hasRoutes = Array.isArray(prof.paths) && prof.paths.length > 0;
 
-    // ✅ Check for both shared markers OR routes
+    // Check for both shared markers OR routes
     if (!hasRoutes && sharedMarkers.length === 0) {
       showToast(GDMMLang.t('toast.NothingToShare') || 'Nothing to share','warning', 7000);
       return;
@@ -368,32 +368,6 @@ if (shareBtn) {
 
 
 //------------------------------------------------------------------------------------
-
-  // --- Help ---
-  
-/*  document.getElementById('helpToggle')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    const sec = document.getElementById('helpSection');
-    const backdrop = document.getElementById('helpBackdrop');
-    if (!sec) return;
-    const show = sec.style.display === 'none' || sec.style.display === '';
-    sec.style.display = show ? 'block' : 'none';
-    if (backdrop) {
-      backdrop.style.display = show ? 'block' : 'none';
-    }
-    if (show) {
-      const handler = (e2) => {
-        // Clic en dehors de la popup ET du lien qui l'a ouverte
-        if (!sec.contains(e2.target) && e2.target !== e.target) {
-          sec.style.display = 'none';
-          if (backdrop) backdrop.style.display = 'none';
-          document.removeEventListener('click', handler);
-        }
-      };
-      document.addEventListener('click', handler);
-    }
-  });
-*/
 
   // Stock pour pouvoir supprimer le handler plus tard
   let activeModalHandler = null;

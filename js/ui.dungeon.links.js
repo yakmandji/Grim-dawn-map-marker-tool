@@ -147,7 +147,14 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
 
 ];
 
+window.DUNGEON_ENTRY_MARKERS_ROT = [
+  { id: "entry_Crystalline_passage", xp: 11.47, yp: 52.67, tag: "Crystalline_passage" },
+];
+
 window.DUNGEON_LINKS = {
+
+  "crystalline_passage": ["entry_Crystalline_passage"],
+
   /*CAIRN*/
   "convict_tunnel": ["entry_convict_tunnel"],
   "burial_cave": ["entry_burial_cave"],
@@ -242,6 +249,8 @@ window.DUNGEON_LINKS = {
   "sunward_spire": ["entry_sunward_spire"],
   "tomb_eldtrich_sun": ["entry_tomb_eldtrich_sun"],
   "sanctum_choosen": ["entry_sanctum_choosen"],
+
+
 };
 
 
@@ -249,6 +258,7 @@ window.DUNGEON_ENTRY_MARKERS_BY_SIZE = {
   "8948x9133": window.DUNGEON_ENTRY_MARKERS_CAIRN,
   "5142x3574": window.DUNGEON_ENTRY_MARKERS_MALMOUTH,
   "5427x5553": window.DUNGEON_ENTRY_MARKERS_KORVAN,
+  "11049x9398": window.DUNGEON_ENTRY_MARKERS_ROT,
 };
 
 

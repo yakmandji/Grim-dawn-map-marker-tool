@@ -92,6 +92,9 @@ window.DUNGEON_OVERLAYS = [
 { id: 'durgs_den',        map: 'korvan', img: 'durgs-den.jpg',      left: 36.1701,  top: 55.6112,  width: 3.51, height: 3.51 },
 { id: 'forgotten_cellar',        map: 'korvan', img: 'forgotten-cellar.jpg',      left: 14.1701,  top: 91.6112,  width: 2.51, height: 2.51 },
 
+{ id: "crystalline_passage", map: "rot", img: "Crystalline-Passage.jpg", left: 3.5, top: 56.2, width: 6.8, height: 6.8 },
+
+
 ];
 
 
@@ -118,6 +121,7 @@ function renderDungeonOverlays() {
     '8948x9133': { folder: 'cairn' },
     '5142x3574': { folder: 'malmouth' },
     '5427x5553': { folder: 'korvan' },
+    '11049x9398': { folder: 'rot' },
   };
 
   let key = null;

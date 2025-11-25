@@ -259,7 +259,10 @@ window.REGION_MARKERS_MALMOUTH = [
 
 ];
 
+window.REGION_MARKERS_ROT = [
+{ id: 'Crystalline_Passage', tag: 'Crystalline Passage', xp: 3.97, yp: 56.69,isDungeon: true},
 
+];
 
 window.REGION_LABELS = {
 en: {
@@ -2971,4 +2974,6 @@ window.REGION_MARKERS_BY_SIZE = {
   '8948x9133' : window.REGION_MARKERS_CAIRN,
   '5142x3574' : window.REGION_MARKERS_MALMOUTH,
   '5427x5553' : window.REGION_MARKERS_KORVAN,
+  '11049x9398' : window.REGION_MARKERS_ROT,
+
 };
