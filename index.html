@@ -88,11 +88,7 @@
         <button class="filterToggle admin-btn is-on" data-admin="rift" data-i18n-title="ui.ShowHideRift" title="Show/Hide Rifts">
           <img src="img/rift.png" alt="Rift">
         </button>
-              <div class="sep"></div>
-       <button id="shareRoutesBtn" class="small">
-          <img src="img/share-icon.svg" width="18" alt="Share">
-          <span data-i18n="ui.ShareMapButton">Share my map</span>
-        </button>
+        <div class="sep"></div>
 
        <button id="mergeSharedBtn" class="small" >
           <img src="img/merge.svg" width="18" alt="Merge"> 
@@ -100,11 +96,17 @@
         </button>
       <div class="right-panel">
 
-        <button id="exportAllBtn">
-          <img src="img/save-icon.svg" width="16">
-          <span data-i18n="ui.SaveTitle">Save</span>
+       <button id="shareRoutesBtn" class="small">
+          <img src="img/share-icon.svg" width="18" alt="Share">
+          <span data-i18n="ui.ShareMapButton">Share my map</span>
         </button>
-        <span id="saveStatus">● Saved</span>
+
+        <div class="save-block">
+          <button id="exportAllBtn">
+            <img src="img/save-icon.svg" width="16">
+            <span data-i18n="ui.SaveTitle">Save</span>
+          </button>
+        </div>
         
         <div class="sep"></div>
 
@@ -211,14 +213,11 @@
       </div>
 
       <div class="section principal">
-          <div class="row title-icon">
+          <div class="row title-icon" style="padding-bottom: 8px;">
             <h3>
               <img src="img/route-icon.svg" width="17">
-                <span data-i18n="ui.NewPathTitle">New Path</span>
+              <span data-i18n="ui.NewPathTitle">New Path</span>
             </h3>
-          </div>        
-          <div class="row">
-              <p class="small" data-i18n="ui.PathHelper">Hold Space to drag the map while drawing a path</p>
           </div>        
           <div id="currentPathName" class="path-badge"></div>
           <div class="row">
@@ -319,13 +318,14 @@
     <div id="helpBackdrop" style="display:none"></div>
 
     <div class="helpPopup modal" id="helpSection" style="display:none">
-      <button class="closeHelp">×</button>
+      <button class="closeModal">×</button>
       <h3 data-i18n="ui.HelpTitle">Help</h3>
       <ul>
         <li data-i18n="ui.HelpLine1">Select a map from the dropdown in the header (main or DLC)</li>
         <li data-i18n="ui.HelpLine2">Add your markers 📍</li>
         <li data-i18n="ui.HelpLine3"><b>Your markers are saved automatically. Use the "Save markers" button in the header to save manually if needed</b>
         <li data-i18n="ui.HelpLine4"><b>Vous p ouvez partager votre carte avec d'autres utilisateurs. Seulement les routes et les marqueurs avec l'option partagé seront partagés. Les autres marqueurs seront privés à votre carte</b>
+        <li data-i18n="ui.PathHelper">Hold Space to drag the map while drawing a path</li>
         </li>
       </ul>
     </div>
@@ -434,11 +434,14 @@
 <!-- MULTI CHARACTER MODAL --------------------------------------------------->
 <div class="modal js-modal-edit-character hidden" aria-hidden="true" style="display:none">
   <div class="modal-content">
-    <h3>Renommer le personnage</h3>
-    <input type="text" class="js-edit-character-name" placeholder="Nom du personnage">
-    <div class="modal-actions">
-      <button class="modal-save js-save-character-edit">Enregistrer</button>
-      <button class="modal-cancel js-cancel-character-edit">Annuler</button>
+    <button class="closeModal">×</button>
+    <div class="inner-modal">
+      <h3>Renommer le personnage</h3>
+      <input type="text" class="js-edit-character-name" placeholder="Nom du personnage">
+      <div class="modal-actions">
+        <button class="small modal-save js-save-character-edit">Enregistrer</button>
+        <button class="modal-cancel js-cancel-character-edit cancel">Annuler</button>
+      </div>
     </div>
   </div>
 </div>
@@ -446,11 +449,14 @@
 <!-- Modal : Nouveau personnage -->
 <div class=" modal js-modal-new-character hidden" aria-hidden="true" style="display:none">
   <div class="modal-content">
-    <h3>Nouveau personnage</h3>
-    <input type="text" class="js-new-character-name" placeholder="Nom du personnage">
-    <div class="modal-actions">
-      <button class="modal-save js-save-character-new">Créer</button>
-      <button class="modal-cancel js-cancel-character-new">Annuler</button>
+    <button class="closeModal">×</button>
+    <div class="inner-modal">
+      <h3>Nouveau personnage</h3>
+      <input type="text" class="js-new-character-name" placeholder="Nom du personnage">
+      <div class="modal-actions">
+        <button class="small modal-save js-save-character-new">Créer</button>
+        <button class="small modal-cancel js-cancel-character-new danger">Annuler</button>
+      </div>
     </div>
   </div>
 </div>
