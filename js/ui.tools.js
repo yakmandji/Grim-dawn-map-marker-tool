@@ -135,17 +135,22 @@
     input.click();
   });
 
-  // Export fichier JSON
-  $('#exportFileBtn')?.addEventListener('click', async () => {
-    const data = getUserDataOnly();
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'gdmm_user_markers.json';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 3000);
-    showToast(GDMMLang.t('toast.ExportAll'));
-  });
+    $('#exportFileBtn')?.addEventListener('click', () => {
+      const raw = localStorage.getItem('grimSave_v2');
+      const data = raw ? JSON.parse(raw) : null;
+      if (!data) {
+        alert('No save data found.');
+        return;
+      }
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'gdmm_save_multi.json';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+    });
+
 
       // --- Clear all paths for active profile ---
     $('#clearPaths')?.addEventListener('click', () => {
@@ -364,16 +369,9 @@ if (shareBtn) {
 
 //------------------------------------------------------------------------------------
 
-
   // --- Help ---
-  document.querySelector('.closeHelp')?.addEventListener('click', () => {
-    const sec = document.getElementById('helpSection');
-    const backdrop = document.getElementById('helpBackdrop');
-    if (sec) sec.style.display = 'none';
-    if (backdrop) backdrop.style.display = 'none';
-  });
   
-  document.getElementById('helpToggle')?.addEventListener('click', (e) => {
+/*  document.getElementById('helpToggle')?.addEventListener('click', (e) => {
     e.preventDefault();
     const sec = document.getElementById('helpSection');
     const backdrop = document.getElementById('helpBackdrop');
@@ -395,6 +393,89 @@ if (shareBtn) {
       document.addEventListener('click', handler);
     }
   });
+*/
+
+  // Stock pour pouvoir supprimer le handler plus tard
+  let activeModalHandler = null;
+
+  // Fonction générique popup
+  function openModal(modalEl, backdropEl) {
+    if (!modalEl) return;
+
+    // Afficher la popup
+    modalEl.classList?.remove('hidden');
+    modalEl.classList?.add('is-active');
+    modalEl.setAttribute?.('aria-hidden', 'false');
+    modalEl.style.display = 'block';
+
+    // Afficher le backdrop (flou)
+    if (backdropEl) {
+      backdropEl.style.display = 'block';
+    }
+
+    // Important: si un ancien handler existe encore → on le retire
+    if (activeModalHandler) {
+      document.removeEventListener('click', activeModalHandler);
+      activeModalHandler = null;
+    }
+
+    // Timeout pour éviter que le clic qui ouvre ne ferme immédiatement
+    setTimeout(() => {
+      activeModalHandler = (e) => {
+        if (!modalEl.contains(e.target)) {
+          closeModal(modalEl, backdropEl);
+        }
+      };
+      document.addEventListener('click', activeModalHandler);
+    });
+  }
+
+  // Fonction générique pour fermer une popup
+  function closeModal(modalEl, backdropEl) {
+    if (!modalEl) return;
+
+    modalEl.classList?.remove('is-active');
+    modalEl.classList?.add('hidden');
+    modalEl.setAttribute?.('aria-hidden', 'true');
+    modalEl.style.display = 'none';
+
+    if (backdropEl) {
+      backdropEl.style.display = 'none';
+    }
+
+    // Nettoyage du listener d'outside-click
+    if (activeModalHandler) {
+      document.removeEventListener('click', activeModalHandler);
+      activeModalHandler = null;
+    }
+  }
+
+// Gestion globale de toutes les croix "X"
+document.querySelectorAll('.closeModal').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const modal = btn.closest('.modal');
+    const backdrop = document.getElementById('helpBackdrop');
+    if (modal) {
+      closeModal(modal, backdrop);
+    }
+  });
+});
+
+
+document.getElementById('helpToggle')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  const sec = document.getElementById('helpSection');
+  const backdrop = document.getElementById('helpBackdrop');
+  openModal(sec, backdrop);
+});
+
+document.getElementById('helpCloseBtn')?.addEventListener('click', () => {
+  closeModal(
+    document.getElementById('helpSection'),
+    document.getElementById('helpBackdrop')
+  );
+});
 
 // Merge function
 
