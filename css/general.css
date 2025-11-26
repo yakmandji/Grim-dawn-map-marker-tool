@@ -167,7 +167,7 @@ header .sep {
 
 .mapInner { 
   position: absolute;
-  will-change: transform; 
+/*  will-change: transform; */
   left: 0; 
   top: 0; 
   transform-origin: 0 0; 
