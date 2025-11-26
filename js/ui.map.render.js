@@ -447,13 +447,17 @@
           el.style.left = pt.x + 'px';
           el.style.top  = pt.y + 'px';
 
-          el.addEventListener('pointerenter', () => {
+          // Hover souris seulement (desktop)
+          // --------------------------------
+          el.addEventListener('pointerenter', (e) => {
+            if (e.pointerType === 'touch') return; // pas de hover sur mobile
             if (window.showDungeonLinksForEntry) {
               window.showDungeonLinksForEntry(m.id);
             }
           });
 
-          el.addEventListener('pointerleave', () => {
+          el.addEventListener('pointerleave', (e) => {
+            if (e.pointerType === 'touch') return; // on ne touche pas au tap mobile ici
             if (window.clearDungeonLinks) {
               window.clearDungeonLinks();
             }
@@ -463,6 +467,19 @@
               });
             }
           });
+
+          // Tap mobile : affiche l’overlay du donjon
+          // ----------------------------------------
+          el.addEventListener('pointerup', (e) => {
+            if (e.pointerType !== 'touch') return;
+            e.preventDefault();
+            e.stopPropagation(); // très important pour que le "tap ailleurs pour fermer" ne s’active pas
+
+            if (window.showDungeonLinksForEntry) {
+              window.showDungeonLinksForEntry(m.id);
+            }
+          });
+
 
           inner.appendChild(el);
           state.dungeonEntries[m.id] = { cfg: m, el };
