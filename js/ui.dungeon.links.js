@@ -147,10 +147,6 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
 
 ];
 
-window.DUNGEON_ENTRY_MARKERS_ROT = [
-  { id: "entry_Crystalline_passage", xp: 11.47, yp: 52.67, tag: "Crystalline_passage" },
-];
-
 window.DUNGEON_LINKS = {
 
   "crystalline_passage": ["entry_Crystalline_passage"],
@@ -258,7 +254,6 @@ window.DUNGEON_ENTRY_MARKERS_BY_SIZE = {
   "8948x9133": window.DUNGEON_ENTRY_MARKERS_CAIRN,
   "5142x3574": window.DUNGEON_ENTRY_MARKERS_MALMOUTH,
   "5427x5553": window.DUNGEON_ENTRY_MARKERS_KORVAN,
-  "11049x9398": window.DUNGEON_ENTRY_MARKERS_ROT,
 };
 
 

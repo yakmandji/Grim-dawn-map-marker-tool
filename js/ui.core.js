@@ -962,7 +962,6 @@ if (newPathBtn) {
     'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1.13',
     'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.14',
     'Asterkarn':    'https://www.grimcustommarker.org/maps/asterkarn_profile.json?v=1',
-    'MOD Reign Of Terror': 'https://www.grimcustommarker.org/maps/mod_reign_of_terror_profile.json?v=1',
   };
 
   // Load map for profile if need

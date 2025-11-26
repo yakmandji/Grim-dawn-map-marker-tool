@@ -138,7 +138,6 @@ window.NAV_MARKERS_CAIRN = [
     '8948x9133': window.NAV_MARKERS_CAIRN,
     '5142x3574': window.NAV_MARKERS_MALMOUTH,
     '5427x5553': window.NAV_MARKERS_KORVAN,
-    '11049x9398' : window.NAV_MARKERS_ROT,
   };
 
 

@@ -86,8 +86,7 @@
         vp.classList.add('malmouthmap');
       } else if (key === '5427x5553') {
         vp.classList.add('korvanmap');
-      } else if (key === '11049x9398');
-        vp.classList.add('rotmap');
+      }
     }
 
     const p = currentProfile();
@@ -181,11 +180,6 @@
         // Conclave of the Three
         xp = 20.83;
         yp = 93.01;
-        scale = 0.7;
-      }else if (name === 'MOD Reign Of Terror') {
-        // Conclave of the Three
-        xp = 23.30;
-        yp = 11.47;
         scale = 0.7;
       }
       // Si on n'a rien de spécial pour ce profil → fallback
