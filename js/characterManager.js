@@ -443,36 +443,26 @@ function initCharacterUI() {
         const core = window.GDMMCore || {};
         const st = core.state || {};
         const allProfiles = st.profiles || {};
-        const lastProfile =
-          (activeCharacter &&
-           activeCharacter.state &&
-           activeCharacter.state.lastProfile) || null;
+        const lastProfile = activeCharacter?.state?.lastProfile || null;
 
-        let targetProfile = null;
-
-        if (lastProfile && allProfiles[lastProfile]) {
-          targetProfile = lastProfile;
-        } else if (st.active && allProfiles[st.active]) {
-          targetProfile = st.active;
-        } else {
-          const names = Object.keys(allProfiles);
-          targetProfile = names[0] || null;
-        }
+        // On ne force la map QUE si le perso a une lastProfile valide
+        const targetProfile =
+          lastProfile && allProfiles[lastProfile] ? lastProfile : null;
 
         const sel = document.getElementById('profileSelect');
         const shouldChangeProfile =
           sel && targetProfile && sel.value !== targetProfile;
 
         if (shouldChangeProfile) {
+          // Le perso a une map préférée → on bascule dessus
           sel.value = targetProfile;
           sel.dispatchEvent(new Event('change', { bubbles: true }));
         } else {
-          // Récupérer le profil courant (Cairn, etc.)
-          const currentProfileFn = core.currentProfile || function () { return null; };
+          // Sinon, on reste sur la map actuelle et on remet la vue & l’UI en accord
+          const currentProfileFn = core.currentProfile || (() => null);
           const p = currentProfileFn();
 
           if (p && p.view && typeof p.view.scale === 'number') {
-            // On replace la vue globale sur celle du perso
             st.view = st.view || {};
             st.view.scale = p.view.scale;
             st.view.x     = p.view.x ?? 0;
@@ -483,7 +473,6 @@ function initCharacterUI() {
             }
           }
 
-          // Et on rerend l'UI (liste / markers / routes) pour ce perso
           if (typeof renderList === 'function') {
             renderList();
           }
@@ -498,13 +487,12 @@ function initCharacterUI() {
         console.warn('Erreur changement map :', e);
       }
 
-      // Vue globale (UI annexe si tu en as une)
+      // Vue globale éventuelle
       if (window.UiMapBase?.renderView) {
         UiMapBase.renderView();
       }
     },
   });
-
 
 
   // -------------------------------------------------------------------

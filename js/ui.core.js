@@ -22,14 +22,31 @@ const {
   let hideDoneOnMap = false;
   window.hideDoneOnMap = hideDoneOnMap
 
-  function rememberActiveProfile() {
-    if (!state.active) return;
-    try {
-      localStorage.setItem(LAST_PROFILE_KEY, state.active);
-    } catch (e) {
-      console.warn('[GDMM] cannot store last profile', e);
-    }
+function rememberActiveProfile() {
+  if (!state.active) return;
+
+  // 1) Sauvegarde globale "legacy"
+  try {
+    localStorage.setItem(LAST_PROFILE_KEY, state.active);
+  } catch (e) {
+    console.warn('[GDMM] cannot store last profile', e);
   }
+
+  // 2) Synchronise aussi sur le perso actif du multi-character
+  try {
+    if (window.characterManager && typeof characterManager.updateActiveState === 'function') {
+      characterManager.updateActiveState((prev) => {
+        const next = { ...(prev || {}) };
+        next.lastProfile = state.active;
+        return next;
+      });
+    }
+  } catch (e) {
+    console.warn('[GDMM] failed to sync lastProfile to character', e);
+  }
+}
+
+
 
   // Save zoom / pan in profile
   function persistViewForCurrentProfile() {
@@ -960,7 +977,7 @@ if (newPathBtn) {
   const MAP_SOURCES = {
     'Cairn':        'https://www.grimcustommarker.org/maps/cairn_profile.json?v=1.13',
     'Malmouth':     'https://www.grimcustommarker.org/maps/malmouth_profile.json?v=1.13',
-    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.14',
+    'Korvan Basin': 'https://www.grimcustommarker.org/maps/korvan_basin_profile.json?v=1.15',
     'Asterkarn':    'https://www.grimcustommarker.org/maps/asterkarn_profile.json?v=1',
   };
 
@@ -997,17 +1014,20 @@ if (newPathBtn) {
 
 
   // --- Init on load ---
-  (async () => {
+    (async () => {
       // 1) Crée la structure de base pour chaque map connue
       Object.keys(MAP_SOURCES).forEach((name) => {
-        ensureProfile(name); // markers: [], map: {}, created/updated remplis par GDMMCore
+        ensureProfile(name); // markers: [], map: {}, etc.
       });
+
+      // 2) Charge les données utilisateur (markers, routes…)
       loadUserDataFromLocal();
 
-      // Profile choice
+      // 3) Choix du profil initial
       const mapNames = Object.keys(MAP_SOURCES);
       let initial = mapNames[0] || Object.keys(state.profiles)[0] || null;
 
+      // On essaie d'abord d'utiliser la dernière map connue *valide*
       try {
         const last = localStorage.getItem(LAST_PROFILE_KEY);
         if (last && state.profiles[last]) {
@@ -1017,13 +1037,15 @@ if (newPathBtn) {
         console.warn('[GDMM] cannot read last profile', e);
       }
 
+      // 4) Active le profil choisi (sans réécrire gdmm_last_profile ici)
       if (initial) {
         setActiveProfile(initial);
-        rememberActiveProfile();
       }
+
+      // Synchronise le <select> natif + dropdown custom
       refreshProfilesUI();
 
-      // 4) Load profil map
+      // 5) Charge l'image de map du profil
       if (initial) {
         showLoader(GDMMLang.t('toast.LoadingMap'));
         await ensureMapLoadedForProfile(initial);
@@ -1039,7 +1061,7 @@ if (newPathBtn) {
         }
       }
 
-      // 5) UI
+      // 6) UI
       renderList();
       renderMarkers();
       renderRoutesPanel();
@@ -1051,9 +1073,10 @@ if (newPathBtn) {
 
       // routes partagées via ?share= (module UiShare)
       if (window.UiShare && typeof UiShare.loadSharedFromUrl === 'function') {
-          UiShare.loadSharedFromUrl();
+        UiShare.loadSharedFromUrl();
       }
-  })();
+    })();
+
 
 // === SPACE → PAN (global) ===
   let isSpaceDown = false;

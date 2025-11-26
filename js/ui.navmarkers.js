@@ -75,8 +75,8 @@ window.NAV_MARKERS_CAIRN = [
       },
       // Téléport Void's Eige
       {
-        xp: 72.78,
-        yp: 13.00,
+        xp: 75.30, 
+        yp: 12.98,
         tag: 'tagGoTo + tagGDX1MapMalmouthEntry',
         icon: 'img/icon-link.png',
         targetProfile: 'Malmouth',

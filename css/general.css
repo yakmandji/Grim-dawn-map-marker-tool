@@ -166,7 +166,8 @@ header .sep {
 .mapViewport.add { cursor: crosshair; }
 
 .mapInner { 
-  position: absolute; 
+  position: absolute;
+  will-change: transform; 
   left: 0; 
   top: 0; 
   transform-origin: 0 0; 
