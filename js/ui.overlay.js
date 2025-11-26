@@ -29,7 +29,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "edge_of_reality", map: "cairn", img: "edge-of-reality.jpg", left: 26.9649, top: 13.5681, width: 7.8252, height: 8.6713 },
 { id: "altritch_karters", map: "cairn", img: "altritch-karters.jpg", left: 37.1109, top: 18.1491, width: 2.4817, height: 2.431 },
 { id: "black_sepulcher", map: "cairn", img: "black-sepulcher.jpg", left: 30.4948, top: 7.4776, width: 6.1359, height: 6.0083 },
-{ id: "discord_anarchy", map: "cairn", img: "discord-anarchy.jpg", left: 28.4948, top: -2.066, width: 25.5599, height: 8.6044 },
+{ id: "discord_anarchy", map: "cairn", img: "discord-anarchy-entropy.jpg", left: 28.4948, top: -2.066, width: 25.5599, height: 8.6044 },
 { id: "fort_ikon_armory", map: "cairn", img: "fort-ikon-armory.jpg", left: 11.0632, top: 12.896, width: 5.3206, height: 5.2126 },
 { id: "tom_of_the_watcher", map: "cairn", img: "tom-of-the-watcher.jpg", left: 10.8898, top: 6.1283, width: 8.3146, height: 5.4072 },
 { id: "fort_ikon_prison", map: "cairn", img: "fort-ikon-prison.jpg", left: 5.0335, top: 13.1897, width: 5.2523, height: 5.0953 },
@@ -55,11 +55,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "caverne_2", map: "cairn", img: "caverne-2.jpg", left: 73.916, top: 72.2435, width: 3.3527, height: 3.3833 },
 { id: "caverne_3", map: "cairn", img: "caverne-3.jpg", left: 63.416, top: 73.8435, width: 2.5527, height: 2.7833 },
 { id: "burial_cave2", map: "cairn", img: "burial-cave2.jpg", left: 61.416, top: 65.5435, width: 2.7527, height: 2.7833 },
-
 { id: "river_passage", map: "cairn", img: "river-passage.jpg", left: 75.162, top: 56.8204, width: 4.727, height: 4.6833 },
-
-
-
 { id: "swarming_hive", map: "cairn", img: "swarming-hive.jpg", left: 40.516, top: 83.8, width: 3.1, height: 3.1 },
 { id: "stirring_hive", map: "cairn", img: "stirring-hive.jpg", left: 55.3, top: 80.45, width: 2.8, height: 2.8 },
 { id: "musty_cellar", map: "cairn", img: "musty-cellar.jpg", left: 63.3, top: 56, width: 2.8, height: 2.8 },
