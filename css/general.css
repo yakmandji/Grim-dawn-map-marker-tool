@@ -717,6 +717,7 @@ body.shared-only-view #mergeSharedBtn,
   gap: 10px;
   background-color: transparent;
   border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0);
 }
 
 .js-character-dropdown .select-green:hover,
