@@ -58,16 +58,16 @@ window.DUNGEON_OVERLAYS = [
 { id: "musty_cellar", map: "cairn", img: "musty-cellar.jpg", left: 60.3, top: 58.2, width: 2.8, height: 2.8 },
 
 
-{ id: 'chamber_council',      map: 'malmouth', img: 'chamber-council.jpg',   left: 81.2913, top: 2.7980,  width: 14.4496, height: 20.7890 },
+{ id: 'chamber_council',      map: 'malmouth', img: 'chamber-council.jpg',   left: 65.2913, top: 1.7980,  width: 14.4496, height: 20.7890 },
 { id: 'edge_reality',         map: 'malmouth', img: 'edge-reality.jpg',      left: 81.2913, top: 29.7706, width: 18.5531, height: 26.6928 },
 { id: 'cinder_waste',         map: 'malmouth', img: 'cinder-waste.jpg',      left: 81.6282, top: 69.2334, width: 15.7526, height: 22.6637 },
 { id: 'burning_cellar',       map: 'malmouth', img: 'burning-cellar.jpg',    left: 46.3049, top: 60.3455, width: 11.1241, height: 16.0045 },
 { id: 'sewer_hideout',        map: 'malmouth', img: 'sewer-hideout.jpg',     left: 25.3014, top: 60.6323, width: 19.9728, height: 28.7353 },
 { id: 'herald_mathis',        map: 'malmouth', img: 'herald-mathis.jpg',     left: 9.7997, top: 67.0677, width: 13.8405,  height: 20.1578 },
 { id: 'ransaked_lighthouse',  map: 'malmouth', img: 'ransaked-lighthouse.jpg', left: 9.2377, top: 51.0912, width: 9.4321,  height: 13.5702 },
-{ id: 'swelling_depths',      map: 'malmouth', img: 'swelling-depths.jpg',   left: 9.2377, top: 35.2546, width: 9.4905,  height: 13.6542 },
+{ id: 'swelling_depths',      map: 'malmouth', img: 'swelling-depths.jpg',   left: 9.2377, top: 32.0546, width: 12.4905,  height: 17.942 },
 { id: 'infestation',          map: 'malmouth', img: 'infestation.jpg',       left: 4.6480, top: -0.8114, width: 24.8347, height: 30.9737 },
-{ id: 'fringes_of_sanity',    map: 'malmouth', img: 'fringes-of-sanity.jpg', left: 78.6480, top: 57.8114, width: 7, height: 10 },
+{ id: 'fringes_of_sanity',    map: 'malmouth', img: 'fringes-of-sanity.jpg', left: 78.6480, top: 57.8114, width: 7.5, height: 10.8 },
 
 { id: 'temple_osyr',            map: 'korvan', img: 'temple-osyr.jpg',          left: 40.9642, top: 77.5371, width: 15.2423, height: 14.8871 },
 { id: 'crawling_nest',          map: 'korvan', img: 'crawling-nest.jpg',        left: 30.6314, top: 91.3196, width: 8.9726,  height: 8.6092 },

@@ -185,18 +185,18 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gDX1UG_malmouth_cathedral_01B', tag: 'tagGDX1UGMalmouthCathedral01B', xp: 11.39, yp: 85.80, isDungeon: true },
 { id: 'tag_gdx1_ug_malmouth_aetherial_factory02', tag: 'tagGDX1UGMalmouthAetherialFactory02', xp: 8.01, yp: 27.14, isDungeon: true },
 { id: 'tag_gDX1UG_malmouth_aetherial_factory05', tag: 'tagGDX1UGMalmouthAetherialFactory05', xp: 6.27, yp: 0.76, isDungeon: true },
-{ id: 'tag_gdx1_ug_malmouth_sewer02', tag: 'tagGDX1UGMalmouthSewer02', xp: 10.14, yp: 35.60, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_sewer02', tag: 'tagGDX1UGMalmouthSewer02', xp: 10.14, yp: 33.40, isDungeon: true },
 { id: 'tag_gdx1_ug_malmouth_lighthouse01', tag: 'tagGDX1UGMalmouthLighthouse01', xp: 13.01, yp: 52.57, isDungeon: true },
 { id: 'tag_gdx1_ug_malmouth_cathedral01', tag: 'tagGDX1UGMalmouthCathedral01', xp: 17.81, yp: 68.66, isDungeon: true },
 { id: 'tag_gdx1_ug_malmouth_hideout01', tag: 'tagGDX1UGMalmouthHideout01', xp: 34.68, yp: 64.47, isDungeon: true },
 { id: 'tag_gDX1UG_malmouth_sewer01', tag: 'tagGDX1UGMalmouthSewer01', xp: 33.42, yp: 76.67, isDungeon: true },
 { id: 'tag_gdx1_ug_malmouth_outskirts_cellar01', tag: 'tagGDX1UGMalmouthOutskirtsCellar01', xp: 47.70, yp: 62.20, isDungeon: true },
 { id: 'tag_gdx1_ug_ugdenbog_void_rift02', tag: 'tagGDX1UGUgdenbogVoidRift02', xp: 91.31, yp: 71.37, isDungeon: true },
-{ id: 'tag_gdx1_ug_malmouth_fort01', tag: 'tagGDX1UGMalmouthFort01', xp: 87.35, yp: 5.39, isDungeon: true },
-{ id: 'tag_GDX2_ruined_DC', tag: 'tagGDX2RuinedDC', xp: 84.15, yp: 33.59, isDungeon: true },
+{ id: 'tag_gdx1_ug_malmouth_fort01', tag: 'tagGDX1UGMalmouthFort01', xp: 71.09, yp: 4.35, isDungeon: true },
+{ id: 'tag_GDX2_ruined_DC', tag: 'tagGDX2RuinedDC', xp: 89.15, yp: 50.55, isDungeon: true },
+{ id: 'tag_GDX1UG_secret02', tag: 'tagGDX1UGSecret02', xp: 82.96, yp: 32.27, isDungeon: true },
 
 ];
-
 
 // --- KORVAN ---
   window.REGION_MARKERS_KORVAN = [
