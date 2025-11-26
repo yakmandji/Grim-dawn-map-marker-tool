@@ -9,7 +9,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "convict_tunnel", map: "cairn", img: "convict-tunnel.jpg", left: 66.0394, top: 88.789, width: 6.0479, height: 5.924 },
 { id: "hargate_laboratory", map: "cairn", img: "hargate-laboratory.jpg", left: 56.0013, top: 75.5905, width: 6.8742, height: 4.6104 },
 { id: "depraved_sanctuary", map: "cairn", img: "depraved-sanctuary.jpg", left: 77.8031, top: 70.9049, width: 3.8444, height: 3.7678 },
-{ id: "flooded_passage", map: "cairn", img: "flooded-passage.jpg", left: 59.7262, top: 66.2089, width: 4.8966, height: 4.795 },
+{ id: "flooded_passage", map: "cairn", img: "flooded-passage.jpg", left: 60.4262, top: 68.7089, width: 4.8966, height: 4.795 },
 { id: "cronleys_hideout", map: "cairn", img: "cronleys-hideout.jpg", left: 53.4257, top: 65.3967, width: 6.1811, height: 6.0534 },
 { id: "hannefy_mine", map: "cairn", img: "hannefy-mine.jpg", left: 56.0286, top: 71.5493, width: 3.962, height: 3.9036 },
 { id: "arkovian_undercity", map: "cairn", img: "arkovian-undercity.jpg", left: 46.2992, top: 66.3647, width: 6.8017, height: 5.7196 },
@@ -42,20 +42,30 @@ window.DUNGEON_OVERLAYS = [
 { id: "larrias_den", map: "cairn", img: "larrias-den.jpg", left: 81.59, top: 34.8843, width: 2.5938, height: 2.5405 },
 { id: "temple_of_three", map: "cairn", img: "temple-of-three.jpg", left: 83.4927, top: 62.3972, width: 7.1275, height: 6.9965 },
 { id: "ancient_groove", map: "cairn", img: "ancient-groove.jpg", left: 87.8555, top: 49.206, width: 12.0789, height: 11.8274 },
-{ id: "underground_transit", map: "cairn", img: "underground-transit.jpg", left: 58.0988, top: 47.3385, width: 10.8094, height: 10.5934 },
+{ id: "underground_transit", map: "cairn", img: "underground-transit.jpg", left: 58.0988, top: 44.8385, width: 10.8094, height: 10.5934 },
 { id: "overgrown_cellar", map: "cairn", img: "overgrown-cellar.jpg", left: 69.1694, top: 43.0654, width: 3.3869, height: 3.3173 },
 { id: "flooded_cellar", map: "cairn", img: "flooded-cellar.jpg", left: 60.1724, top: 61.436, width: 4.0915, height: 4.0041 },
-{ id: "decrepit_cellar", map: "cairn", img: "decrepit-cellar.jpg", left: 77.1162, top: 54.1204, width: 3.8003, height: 3.7257 },
-{ id: "dank_cellar", map: "cairn", img: "dank-cellar.jpg", left: 75.1789, top: 58.9625, width: 2.0346, height: 1.9938 },
+{ id: "festering_lair", map: "cairn", img: "festering-lair.jpg", left: 61.8724, top: 59.036, width: 2.1915, height: 2.2041 },
+
+
+{ id: "decrepit_cellar", map: "cairn", img: "decrepit-cellar.jpg", left: 79.1162, top: 52.4204, width: 3.8003, height: 3.7257 },
+{ id: "dank_cellar", map: "cairn", img: "dank-cellar.jpg", left: 69.1789, top: 54.9625, width: 2.0346, height: 1.9938 },
 { id: "den_carraxus", map: "cairn", img: "den-carraxus.jpg", left: 75.7808, top: 40.5345, width: 3.5545, height: 3.4868 },
 { id: "janaxias_den", map: "cairn", img: "janaxias-den.jpg", left: 93.5294, top: 42.3167, width: 2.7051, height: 2.6506 },
-{ id: "burial_cave", map: "cairn", img: "burial-cave.jpg", left: 63.558, top: 78.3461, width: 1.8778, height: 1.8404 },
+{ id: "burial_cave", map: "cairn", img: "burial-cave.jpg", left: 68.858, top: 83.3461, width: 2.178, height: 2.1404 },
 { id: "cultists_lair", map: "cairn", img: "cultists-lair.jpg", left: 72.6966, top: 75.938, width: 2.0675, height: 2.0256 },
 { id: "cave", map: "cairn", img: "cave.jpg", left: 72.2396, top: 78.5941, width: 1.844, height: 1.8066 },
 { id: "caverne_2", map: "cairn", img: "caverne-2.jpg", left: 73.916, top: 72.2435, width: 3.3527, height: 3.3833 },
+{ id: "caverne_3", map: "cairn", img: "caverne-3.jpg", left: 63.416, top: 73.8435, width: 2.5527, height: 2.7833 },
+{ id: "burial_cave2", map: "cairn", img: "burial-cave2.jpg", left: 61.416, top: 65.5435, width: 2.7527, height: 2.7833 },
+
+{ id: "river_passage", map: "cairn", img: "river-passage.jpg", left: 75.162, top: 56.8204, width: 4.727, height: 4.6833 },
+
+
+
 { id: "swarming_hive", map: "cairn", img: "swarming-hive.jpg", left: 40.516, top: 83.8, width: 3.1, height: 3.1 },
 { id: "stirring_hive", map: "cairn", img: "stirring-hive.jpg", left: 55.3, top: 80.45, width: 2.8, height: 2.8 },
-{ id: "musty_cellar", map: "cairn", img: "musty-cellar.jpg", left: 60.3, top: 58.2, width: 2.8, height: 2.8 },
+{ id: "musty_cellar", map: "cairn", img: "musty-cellar.jpg", left: 63.3, top: 56, width: 2.8, height: 2.8 },
 
 
 { id: 'chamber_council',      map: 'malmouth', img: 'chamber-council.jpg',   left: 65.2913, top: 1.7980,  width: 14.4496, height: 20.7890 },

@@ -6,11 +6,29 @@
 
 window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_convict_tunnel", xp: 63.30, yp: 89.56, tag: "Convict Tunnel" },
-{ id: "entry_burial_cave", xp: 66.23, yp: 80.74, tag: "Burial Cave" },
+{ id: "entry_burial_cave", xp: 66.25, yp: 83.00, tag: "Burial Cave" },
+{ id: "entry_burial_cave_b", xp: 65.19, yp: 82.23, tag: "Burial Cave b" },
+
+
 { id: "entry_cave", xp: 70.60, yp: 78.42, tag: "Cave" },
 { id: "entry_cave2", xp: 70.47, yp: 79.60, tag: "Cave 2" },
 { id: "entry_cultists_lair", xp: 70.48, yp: 76.12, tag: "Cultists Lair" },
 { id: "entry_caverne_2", xp: 71.36, yp: 73.50, tag: "Caverne 2" },
+{ id: "entry_caverne_2b", xp: 69.33, yp: 72.90, tag: "Caverne 2" },
+
+{ id: "entry_caverne_3", xp: 69.09, yp: 74.72, tag: "Caverne 3" },
+{ id: "entry_caverne_3b", xp: 68.20, yp: 75.91, tag: "Caverne 3b" },
+
+{ id: "entry_burial_cave_2a", xp: 69.07, yp: 68.91, tag: "burial cave 2a" },
+{ id: "entry_burial_cave_2b", xp: 68.18, yp: 69.30, tag: "burial cave 2b" },
+
+{ id: "entry_river_passage", xp: 71.13, yp: 63.24, tag: "river passage" },
+{ id: "entry_river_passage2", xp: 70.40, yp: 62.10, tag: "river passage2" },
+
+{ id: "entry_festering_lair", xp: 65.86, yp: 62.66, tag: "festering lair" },
+
+
+
 { id: "entry_depraved_sanctuary", xp: 73.26, yp: 71.31, tag: "Depraved Sanctuary" },
 { id: "entry_flooded_passage", xp: 67.66, yp: 71.93, tag: "Flooded Passage" },
 { id: "entry_flooded_passage2", xp: 70.50, yp: 71.40, tag: "Flooded Passage 2" },
@@ -149,14 +167,19 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
 
 window.DUNGEON_LINKS = {
 
-  "crystalline_passage": ["entry_Crystalline_passage"],
-
   /*CAIRN*/
+  
+  "river_passage":["entry_river_passage", "entry_river_passage2"],
+  "festering_lair":["entry_festering_lair"],
+
+
+  "burial_cave2":["entry_burial_cave_2a", "entry_burial_cave_2b"],
+  "caverne_3": ["entry_caverne_3", "entry_caverne_3b"],
   "convict_tunnel": ["entry_convict_tunnel"],
-  "burial_cave": ["entry_burial_cave"],
+  "burial_cave": ["entry_burial_cave", "entry_burial_cave_b"],
   "cave": ["entry_cave", "entry_cave2"],
   "cultists_lair": ["entry_cultists_lair"],
-  "caverne_2": ["entry_caverne_2"],
+  "caverne_2": ["entry_caverne_2", "entry_caverne_2b"],
   "depraved_sanctuary": ["entry_depraved_sanctuary"],
   "flooded_passage": ["entry_flooded_passage", "entry_flooded_passage2"],
   "flooded_cellar": ["entry_flooded_cellar", "entry_flooded_cellar2", "entry_flooded_cellar3"],
