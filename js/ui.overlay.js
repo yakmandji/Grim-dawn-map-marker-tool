@@ -165,17 +165,41 @@ function renderDungeonOverlays() {
     wrap.appendChild(over);
     inner.appendChild(wrap);
 
-    wrap.addEventListener('pointerenter', () => {
+    // --- HOVER SOURIS / STYLET SEULEMENT ---
+    wrap.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'touch') return; // pas de hover sur mobile
       if (window.showDungeonLinksForOverlay) {
         window.showDungeonLinksForOverlay(d.id);
       }
     });
 
-    wrap.addEventListener('pointerleave', () => {
+    wrap.addEventListener('pointerleave', (e) => {
+      if (e.pointerType === 'touch') return; // on ne cache pas à chaque tap
       if (window.clearDungeonLinks) {
         window.clearDungeonLinks();
       }
     });
+
+    // --- TAP SUR MOBILE : TOGGLE D'UN OVERLAY ---
+    wrap.addEventListener('pointerup', (e) => {
+      if (e.pointerType !== 'touch') return;
+      e.preventDefault();
+
+      state.activeDungeonOverlayId = state.activeDungeonOverlayId || null;
+
+      if (state.activeDungeonOverlayId === d.id) {
+        if (window.clearDungeonLinks) {
+          window.clearDungeonLinks();
+        }
+        state.activeDungeonOverlayId = null;
+      } else {
+        if (window.showDungeonLinksForOverlay) {
+          window.showDungeonLinksForOverlay(d.id);
+        }
+        state.activeDungeonOverlayId = d.id;
+      }
+    });
+
 
     state.dungeonOverlays.push({
       cfg: d,
