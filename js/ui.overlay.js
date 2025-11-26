@@ -29,7 +29,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "edge_of_reality", map: "cairn", img: "edge-of-reality.jpg", left: 26.9649, top: 13.5681, width: 7.8252, height: 8.6713 },
 { id: "altritch_karters", map: "cairn", img: "altritch-karters.jpg", left: 37.1109, top: 18.1491, width: 2.4817, height: 2.431 },
 { id: "black_sepulcher", map: "cairn", img: "black-sepulcher.jpg", left: 30.4948, top: 7.4776, width: 6.1359, height: 6.0083 },
-{ id: "discord_anarchy", map: "cairn", img: "discord-anarchy-entropy.jpg", left: 28.4948, top: -2.066, width: 25.5599, height: 8.6044 },
+{ id: "discord_anarchy", map: "cairn", img: "discord-anarchy-entropy-rog.jpg", left: 28.4948, top: -2.066, width: 25.5599, height: 8.6044 },
 { id: "fort_ikon_armory", map: "cairn", img: "fort-ikon-armory.jpg", left: 11.0632, top: 12.896, width: 5.3206, height: 5.2126 },
 { id: "tom_of_the_watcher", map: "cairn", img: "tom-of-the-watcher.jpg", left: 10.8898, top: 6.1283, width: 8.3146, height: 5.4072 },
 { id: "fort_ikon_prison", map: "cairn", img: "fort-ikon-prison.jpg", left: 5.0335, top: 13.1897, width: 5.2523, height: 5.0953 },
