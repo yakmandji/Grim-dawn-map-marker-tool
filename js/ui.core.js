@@ -714,75 +714,80 @@ function updateDungeonHover(e) {
   });
 }
 
-  viewport.addEventListener('pointermove', e => {
+/*Pointer move------------------------------------------------*/
 
-    if (state.dungeonOverlays && state.dungeonOverlays.length) {
-      updateDungeonHover(e);
-    }
+viewport.addEventListener('pointermove', e => {
+  const isTouch = e.pointerType === 'touch';
 
-    if (e.pointerType === 'touch') {
-     activeTouches.set(e.pointerId, { x: e.clientX, y: e.clientY });
-
-    // Si on est en mode pinch, on gère le zoom ici
-    if (pinchState.active) {
-      const p1 = activeTouches.get(pinchState.id1);
-      const p2 = activeTouches.get(pinchState.id2);
-
-      if (p1 && p2 && pinchState.startDistance > 0) {
-        const newDist = distance(p1, p2);
-        const ratio = newDist / pinchState.startDistance;
-        const targetScale = clamp(
-          pinchState.startScale * ratio,
-          0.25,
-          1.50
-        );
-        const vb = viewport.getBoundingClientRect();
-        const centerNow = midpoint(p1, p2);
-        const ox = centerNow.x - vb.left;
-        const oy = centerNow.y - vb.top;
-        const ix = (ox - pinchState.startView.x) / pinchState.startScale;
-        const iy = (oy - pinchState.startView.y) / pinchState.startScale;
-        state.view.x = ox - ix * targetScale;
-        state.view.y = oy - iy * targetScale;
-        state.view.scale = targetScale;
-
-        clampViewToMap();
-        applyView();
-        persistViewForCurrentProfile();
-      }
-      e.preventDefault();
-      return;
-    }
+  // 1) Sur desktop (mouse / pen), on garde le hover donjon
+  if (!isTouch && state.dungeonOverlays && state.dungeonOverlays.length) {
+    updateDungeonHover(e);
   }
 
-  const { xp, yp } = viewToPct(e.clientX, e.clientY);
-  if (!panning) {
-    if (isFinite(xp) && isFinite(yp)) {
-      const cr = $('#cursorReadout');
-      if (cr) cr.textContent = `x: ${clamp(xp,0,100).toFixed(1)}%, y: ${clamp(yp,0,100).toFixed(1)}%`;
+    // 2) Sur mobile (touch) : on gère uniquement le pinch / pan,
+    if (isTouch) {
+      activeTouches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+      // Si on est en mode pinch, on gère le zoom ici
+      if (pinchState.active) {
+        const p1 = activeTouches.get(pinchState.id1);
+        const p2 = activeTouches.get(pinchState.id2);
+
+        if (p1 && p2 && pinchState.startDistance > 0) {
+          const newDist = distance(p1, p2);
+          const ratio = newDist / pinchState.startDistance;
+          const targetScale = clamp(
+            pinchState.startScale * ratio,
+            0.25,
+            1.30
+          );
+          const vb = viewport.getBoundingClientRect();
+          const centerNow = midpoint(p1, p2);
+          const ox = centerNow.x - vb.left;
+          const oy = centerNow.y - vb.top;
+          const ix = (ox - pinchState.startView.x) / pinchState.startScale;
+          const iy = (oy - pinchState.startView.y) / pinchState.startScale;
+          state.view.x = ox - ix * targetScale;
+          state.view.y = oy - iy * targetScale;
+          state.view.scale = targetScale;
+
+          clampViewToMap();
+          applyView();
+          persistViewForCurrentProfile();
+        }
+        e.preventDefault();
+        return;
+      }
     }
-    // --- Preview route mode PATH ---
-    const pm = getPathMode();
-    if (
-      state.tool === 'path' &&
-      pm.active &&
-      pm.current &&
-      pm.current.points &&
-      pm.current.points.length > 0 &&
-      state.mapReady
-    ) {
-      if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100) {
-        updatePathPreview(xp, yp);
+
+    const { xp, yp } = viewToPct(e.clientX, e.clientY);
+    if (!panning) {
+      if (isFinite(xp) && isFinite(yp)) {
+        const cr = $('#cursorReadout');
+        if (cr) cr.textContent = `x: ${clamp(xp,0,100).toFixed(1)}%, y: ${clamp(yp,0,100).toFixed(1)}%`;
+      }
+      // --- Preview route mode PATH ---
+      const pm = getPathMode();
+      if (
+        state.tool === 'path' &&
+        pm.active &&
+        pm.current &&
+        pm.current.points &&
+        pm.current.points.length > 0 &&
+        state.mapReady
+      ) {
+        if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100) {
+          updatePathPreview(xp, yp);
+        } else {
+          clearPathPreview();
+        }
       } else {
         clearPathPreview();
       }
-    } else {
-      clearPathPreview();
+      return;
     }
-    return;
-  }
 
-  // PAN classique
+    // PAN classique
     e.preventDefault();
     const dx = e.clientX - panStart.x;
     const dy = e.clientY - panStart.y;
@@ -791,6 +796,9 @@ function updateDungeonHover(e) {
     clampViewToMap();
     applyView();
   });
+/*END------------------------------------------*/
+
+
 
   function stopPan(e){
     // Nettoyage des touches
@@ -865,53 +873,53 @@ function updateDungeonHover(e) {
     });
   }
 
-function clampViewToMap() {
-  if (!state.mapReady) return;
+  function clampViewToMap() {
+    if (!state.mapReady) return;
 
-  const vb = viewport.getBoundingClientRect();
-  const iw = state.mapNatural.w * state.view.scale;
-  const ih = state.mapNatural.h * state.view.scale;
+    const vb = viewport.getBoundingClientRect();
+    const iw = state.mapNatural.w * state.view.scale;
+    const ih = state.mapNatural.h * state.view.scale;
 
-  // marges autour de la map
-  const marginLeft   = 320;
-  const marginRight  = 320;
-  const marginTop    = 320;
-  const marginBottom = 450;
+    // marges autour de la map
+    const marginLeft   = 320;
+    const marginRight  = 320;
+    const marginTop    = 320;
+    const marginBottom = 450;
 
-  const minX = vb.width  - iw - marginRight;
-  const maxX = marginLeft;
-  const minY = vb.height - ih - marginBottom;
-  const maxY = marginTop;
+    const minX = vb.width  - iw - marginRight;
+    const maxX = marginLeft;
+    const minY = vb.height - ih - marginBottom;
+    const maxY = marginTop;
 
-  state.view.x = clamp(state.view.x, minX, maxX);
-  state.view.y = clamp(state.view.y, minY, maxY);
-}
-
-
-// --- Drag & Drop image ---
-;['dragenter','dragover'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.style.outline = '2px dashed #78f1c2'; }));
-;['dragleave','drop'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.style.outline = 'none'; }));
-viewport.addEventListener('drop', e => { const f = e.dataTransfer.files?.[0]; if (!f) return; setMapSrc(f); });
-
-// --- Toast ---
-  function showToast(message, type = 'success', duration = 2500) {
-    const container = document.getElementById('toastContainer');
-    if (!container) {
-      console.warn('[GDMM] Missing #toastContainer element.');
-      return;
-    }
-
-    const el = document.createElement('div');
-    el.className = `toast ${type}`;
-    el.textContent = message;
-
-    container.appendChild(el);
-    requestAnimationFrame(() => el.classList.add('show'));
-    setTimeout(() => {
-      el.classList.remove('show');
-      setTimeout(() => el.remove(), 300);
-    }, duration);
+    state.view.x = clamp(state.view.x, minX, maxX);
+    state.view.y = clamp(state.view.y, minY, maxY);
   }
+
+
+  // --- Drag & Drop image ---
+  ;['dragenter','dragover'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.style.outline = '2px dashed #78f1c2'; }));
+  ;['dragleave','drop'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.style.outline = 'none'; }));
+  viewport.addEventListener('drop', e => { const f = e.dataTransfer.files?.[0]; if (!f) return; setMapSrc(f); });
+
+  // --- Toast ---
+    function showToast(message, type = 'success', duration = 2500) {
+      const container = document.getElementById('toastContainer');
+      if (!container) {
+        console.warn('[GDMM] Missing #toastContainer element.');
+        return;
+      }
+
+      const el = document.createElement('div');
+      el.className = `toast ${type}`;
+      el.textContent = message;
+
+      container.appendChild(el);
+      requestAnimationFrame(() => el.classList.add('show'));
+      setTimeout(() => {
+        el.classList.remove('show');
+        setTimeout(() => el.remove(), 300);
+      }, duration);
+    }
 
 // === PATHS (ADD / EXPORT / IMPORT) ===
 const newPathBtn = document.getElementById('newPathBtn');
