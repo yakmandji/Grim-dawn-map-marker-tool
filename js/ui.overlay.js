@@ -45,8 +45,6 @@ window.DUNGEON_OVERLAYS = [
 { id: "overgrown_cellar", map: "cairn", img: "overgrown-cellar.jpg", left: 69.1694, top: 43.0654, width: 3.3869, height: 3.3173 },
 { id: "flooded_cellar", map: "cairn", img: "flooded-cellar.jpg", left: 60.1724, top: 61.436, width: 4.0915, height: 4.0041 },
 { id: "festering_lair", map: "cairn", img: "festering-lair.jpg", left: 61.8724, top: 59.036, width: 2.1915, height: 2.2041 },
-
-
 { id: "decrepit_cellar", map: "cairn", img: "decrepit-cellar.jpg", left: 79.1162, top: 52.4204, width: 3.8003, height: 3.7257 },
 { id: "dank_cellar", map: "cairn", img: "dank-cellar.jpg", left: 69.1789, top: 54.9625, width: 2.0346, height: 1.9938 },
 { id: "den_carraxus", map: "cairn", img: "den-carraxus.jpg", left: 75.7808, top: 40.5345, width: 3.5545, height: 3.4868 },
