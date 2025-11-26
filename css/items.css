@@ -917,7 +917,7 @@ button.marker-center,
 
 .region-label {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
   text-transform: uppercase;
   font-weight: 600;
   color: #b19f8a;
@@ -932,11 +932,11 @@ button.marker-center,
 }
 
 .malmouthmap .region-label{
-  font-size: 1.7em;
+  font-size: 1.4em;
 }
 
 .korvanmap .region-label{
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .marker-region-dungeon .region-label{
