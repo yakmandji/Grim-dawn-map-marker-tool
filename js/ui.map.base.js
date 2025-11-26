@@ -78,7 +78,7 @@
     const vp = viewport;
     if (vp && state.mapNatural.w && state.mapNatural.h) {
       const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-      vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap', 'rotmap');
+      vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap');
 
       if (key === '8948x9133') {
         vp.classList.add('cairnmap');
