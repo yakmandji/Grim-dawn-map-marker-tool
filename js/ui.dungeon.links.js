@@ -108,7 +108,6 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_black_sepulcher", xp: 26.11, yp: 9.43, tag: "Black Sepulcher" },
 { id: "entry_discord_anarchy", xp: 21.47, yp: 0.88, tag: "Discord Anarchy" },
 { id: "entry_tom_of_the_watcher", xp: 23.23, yp: 4.59, tag: "Tom Of The Watcher" },
-{ id: "entry_entropy", xp: 21.49, yp: 1.32, tag: "Entropy" },
 { id: "entry_port_valbury_fondation", xp: 41.93, yp: 30.63, tag: "Port Valbury Fondation" },
 { id: "entry_port_valbury_fondation2", xp: 41.39, yp: 29.93, tag: "Port Valbury Fondation 2" },
 { id: "entry_altritch_karters", xp: 40.81, yp: 21.21, tag: "Altritch Karters" }
