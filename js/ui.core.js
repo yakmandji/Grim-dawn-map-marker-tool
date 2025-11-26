@@ -651,7 +651,11 @@ if (e.altKey && state.mapReady) {
   });
 
 
-  if (e.target.closest && e.target.closest('.marker')) {
+  if (e.target.closest && (
+        e.target.closest('.marker') ||
+        (e.pointerType === 'touch' && e.target.closest('.dungeon-wrapper'))
+  )) {
+    // on laisse l'élément gérer son pointerup / click.
     return;
   }
   if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -660,7 +664,7 @@ if (e.altKey && state.mapReady) {
   viewport.setPointerCapture?.(panId);
   panStart = { x: e.clientX, y: e.clientY };
   viewStart = { ...state.view };
-});
+  });
 
 
 /*Donjon highlight*/
