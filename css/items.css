@@ -340,6 +340,10 @@ input[type="password"]:focus
   transition: opacity 0.12s ease-out, transform 0.12s ease-out;
 }
 
+.marker .label p{
+  margin: 4px;
+}
+
 .marker:hover .label {
   opacity: 1;
   pointer-events: auto;

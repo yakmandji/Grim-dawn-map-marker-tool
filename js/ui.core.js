@@ -47,7 +47,6 @@ function rememberActiveProfile() {
 }
 
 
-
   // Save zoom / pan in profile
   function persistViewForCurrentProfile() {
     const p = currentProfile();
