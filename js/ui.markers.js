@@ -25,6 +25,32 @@ const { $, inner } = window.UiCore;
     const sharedCheckbox = document.getElementById('newShared');
     const shared = sharedCheckbox ? !!sharedCheckbox.checked : false;
     const marker = coreAddMarker({ xp, yp, label, cat, color, done, shared });
+
+
+    // === UX : avertir si le marker créé est caché par un filtre actif ===
+    const activeCatBtn = document.querySelector('.filterToggle.is-on[data-cat]');
+    const sharedBtn    = document.querySelector('.filterToggle.is-on[data-shared]');
+
+    // Déterminer si le marker sera invisible
+    let hidden = false;
+
+    // Cas 1 : un onglet catégorie est actif
+    if (activeCatBtn) {
+      const activeCat = activeCatBtn.getAttribute('data-cat');
+      if (cat !== activeCat) hidden = true;
+    }
+
+    // Cas 2 : onglet shared actif
+    if (sharedBtn && !shared) {
+      hidden = true;
+    }
+
+    if (hidden) {
+      showToast(
+        `Marqueur ajouté dans "${cat}" (actuellement filtré)`
+      );
+    }
+
     if (marker) {
       state.lastCreatedMarkerId = marker.id;
     }
@@ -70,7 +96,7 @@ const { $, inner } = window.UiCore;
   }
 
 
-/*Render list ------------------------------------------------------------------*/
+  /*Render list ------------------------------------------------------------------*/
 
   function renderList() {
     const markers = listFiltered();
@@ -92,118 +118,149 @@ const { $, inner } = window.UiCore;
     host.innerHTML = '';
 
     // === LISTE PRINCIPALE : uniquement les marqueurs NON done ===
+    const CAT_ORDER = [
+      'General',
+      'Quest',
+      'Boss',
+      'Loot',
+      'Waypoint',
+      'Donjon',
+      'NPC'
+    ];
+
+    // Regroupement par catégories
+    const grouped = {};
     activeMarkers.forEach(m => {
-      const el = tpl.content.firstElementChild.cloneNode(true);
-      el.dataset.mid = m.id;
+      const cat = m.cat || 'General';
+      if (!grouped[cat]) grouped[cat] = [];
+      grouped[cat].push(m);
+    });
 
-      if (m.cat) {
-        el.classList.add(m.cat.toLowerCase());
-      }
-      if (m.shared) {
-        el.classList.add('shared');
-      }
+    // Parcours dans l’ordre CAT_ORDER
+    CAT_ORDER.forEach(cat => {
+      if (!grouped[cat]) return;
 
-      // pin color
-      el.querySelector('[data-pin]').style.background = m.color || '#78f1c2';
+      const arr = grouped[cat];
 
-      // label
-      const label = el.querySelector('[data-label]');
-      label.value = m.label || '';
-      label.addEventListener('blur', e => {
-        updateMarkerFromUI(m.id, { label: e.target.value }, true);
-      });
+      // On parcourt du dernier au premier → le plus récent en haut
+      for (let i = arr.length - 1; i >= 0; i--) {
+        const m = arr[i];
 
-      // catégorie
-      const cat = el.querySelector('[data-cat]');
-      cat.value = m.cat || 'General';
+        const el = tpl.content.firstElementChild.cloneNode(true);
+        el.dataset.mid = m.id;
 
-      // color
-      const color = el.querySelector('[data-color]');
-      color.value = m.color || '#78f1c2';
+        if (m.cat) {
+          el.classList.add(m.cat.toLowerCase());
+        }
+        if (m.shared) {
+          el.classList.add('shared');
+        }
 
-      // état done (normalement false ici, mais on reste cohérent)
-      const done = el.querySelector('[data-done]');
-      done.checked = !!m.done;
+        // pin color
+        el.querySelector('[data-pin]').style.background = m.color || '#78f1c2';
 
-      // shared
-      const sharedInput = el.querySelector('[data-shared]');
-      if (sharedInput) {
-        sharedInput.checked = !!m.shared;
-        sharedInput.addEventListener('change', e => {
-          updateMarkerFromUI(m.id, { shared: !!e.target.checked }, false);
+        // label
+        const label = el.querySelector('[data-label]');
+        label.value = m.label || '';
+        label.addEventListener('blur', e => {
+          updateMarkerFromUI(m.id, { label: e.target.value }, true);
+        });
+
+        // catégorie
+        const catSel = el.querySelector('[data-cat]');
+        catSel.value = m.cat || 'General';
+
+        // color
+        const color = el.querySelector('[data-color]');
+        color.value = m.color || '#78f1c2';
+
+        const syncColorVis = (c) => {
+          const allow = isColorAllowed(c);
+          color.style.display = allow ? '' : 'none';
+        };
+        syncColorVis(catSel.value);
+
+        catSel.onchange = e => {
+          const v = e.target.value;
+          updateMarkerFromUI(m.id, { cat: v }, false);
+          syncColorVis(v);
           renderMarkers();
           renderList();
-        });
-      }
+        };
 
-      // visibilité du color picker selon la catégorie
-      const syncColorVis = (c) => {
-        const allow = isColorAllowed(c);
-        color.style.display = allow ? '' : 'none';
-      };
-      syncColorVis(cat.value);
+        color.oninput = e => {
+          el.querySelector('[data-pin]').style.background = e.target.value;
+          updateMarkerFromUI(m.id, { color: e.target.value }, false);
+          renderMarkers();
+        };
 
-      cat.onchange = e => {
-        const v = e.target.value;
-        updateMarkerFromUI(m.id, { cat: v }, false);
-        syncColorVis(v);
-        renderMarkers();
-        renderList();
-      };
-      
-      color.oninput = e => {
-        el.querySelector('[data-pin]').style.background = e.target.value;
-        updateMarkerFromUI(m.id, { color: e.target.value }, false);
-        renderMarkers();
-      };
-
-      // check done :
-      done.onchange = e => {
-        const isDone = !!e.target.checked;
-
-        if (isDone) {
-          // Si le panneau Done est replié, on le ré-ouvre automatiquement
-          if (hideDoneOnMap) {
-            hideDoneOnMap = false;
-            const panel = $('#donePanel');
-            if (panel) {
-              panel.classList.remove('collapsed');
-            }
-          }
-          if (sharedInput) {
-            sharedInput.checked = false;
-          }
-          el.classList.add('fade-out');
-
-          setTimeout(() => {
-            updateMarkerFromUI(m.id, { done: true, shared: false }, true);
-          }, 180);
-        } else {
-          updateMarkerFromUI(m.id, { done: false }, true);
+        // shared
+        const sharedInput = el.querySelector('[data-shared]');
+        if (sharedInput) {
+          sharedInput.checked = !!m.shared;
+          sharedInput.onchange = (e) => {
+            const isShared = !!e.target.checked;
+            updateMarkerFromUI(m.id, { shared: isShared }, true);
+          };
         }
-      };
 
+        // done
+        const done = el.querySelector('[data-done]');
+        done.checked = !!m.done;
 
-      el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
-      el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
+        done.onchange = e => {
+          const isDone = !!e.target.checked;
 
-      host.appendChild(el);
-      initMarkerCategoryDropdown(el);
+          if (isDone) {
+            const sharedInput = el.querySelector('[data-shared]');
+            if (sharedInput) {
+              sharedInput.checked = false;
+            }
+
+            if (hideDoneOnMap) {
+              hideDoneOnMap = false;
+              const panel = $('#donePanel');
+              if (panel) {
+                panel.classList.remove('collapsed');
+              }
+            }
+
+            el.classList.add('fade-out');
+
+            setTimeout(() => {
+              updateMarkerFromUI(m.id, { done: true, shared: false }, true);
+            }, 180);
+          } else {
+            updateMarkerFromUI(m.id, { done: false }, true);
+          }
+        };
+
+        el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
+        el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
+
+        host.appendChild(el);
+        initMarkerCategoryDropdown(el);
+      }
     });
-    // Filtres existants sur la liste principale
-    if (window.UiFilters && typeof window.UiFilters.applyCategoryFilters === 'function') {
-      window.UiFilters.applyCategoryFilters();
-    }
+
+
     // i18n
     if (window.GDMMLang && typeof window.GDMMLang.applyLang === 'function') {
       window.GDMMLang.applyLang(window.GDMMLang.getLang());
     }
 
-    // Met à jour le panneau des Done
+    // panneau des Done
     if (window.renderDoneList) {
-        window.renderDoneList(doneMarkers);
+      window.renderDoneList(doneMarkers);
     }
+
+    //Ré-applique les filtres sur la liste APRÈS rebuild,
+    if (window.UiFilters && typeof window.UiFilters.applyCategoryFilters === 'function') {
+      window.UiFilters.applyCategoryFilters();
+    }
+
   }
+
 /* END -----------------------------------------------------------------------*/
 
 

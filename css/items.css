@@ -726,8 +726,133 @@ button.marker-center,
 }
 
 .filterBar .filterToggle{
-    margin: 16px 0px 32px 14px;
+    margin: 16px 0px 32px 9px;
 }
+
+.filterToggle.is-on:hover {
+  background: linear-gradient(145deg, #17444b, #092626);
+}
+
+.filterToggle:hover:not(.is-on) {
+  background: linear-gradient(145deg, #173937, #092a20);
+}
+
+.filterToggle.is-on:hover {
+  background: linear-gradient(145deg, #17444b, #092626);
+}
+
+.filterToggle[data-cat="General"]{
+    background: linear-gradient(145deg, #13613e, #052a1c);
+}
+.filterToggle[data-cat="General"]:hover:not(.is-on){
+    background: linear-gradient(145deg, #0b7533, #092f13);
+}
+.filterToggle.is-on[data-cat="General"] {
+    background: linear-gradient(145deg, #09401e, #0a602a);
+    box-shadow: 0 1px 3px rgb(11 39 23 / 80%), 0 0 0 1px rgb(59 255 113 / 63%);
+}
+.filterToggle.is-on[data-cat="General"]::after{
+  background: background: linear-gradient(90deg, #95c06c, #53ff35);
+}
+
+
+.filterToggle[data-cat="Quest"]{
+    background: linear-gradient(145deg, #503061, #261030);
+}
+.filterToggle[data-cat="Quest"]:hover:not(.is-on){
+    background: linear-gradient(145deg, #622482, #2b1538);
+}
+.filterToggle.is-on[data-cat="Quest"] {
+  background: linear-gradient(145deg, #311043, #73219e);
+  box-shadow: 0 1px 3px rgb(17 8 22 / 80%), 0 0 0 1px rgb(245 160 255 / 70%);
+}
+.filterToggle.is-on[data-cat="Quest"]::after{
+  background: linear-gradient(90deg, #bc6cc0, #ff35fc);
+}
+
+
+.filterToggle[data-cat="Boss"]{
+    background: linear-gradient(145deg, #5f1414, #360909);
+}
+.filterToggle[data-cat="Boss"]:hover:not(.is-on){
+    background: linear-gradient(145deg, #701b1b, #410f0f);
+}
+.filterToggle.is-on[data-cat="Boss"] {
+  background: linear-gradient(145deg, #431010, #691919);
+  box-shadow: 0 1px 3px rgb(69 13 13 / 80%), 0 0 0 1px rgb(255 30 30 / 70%);
+}
+.filterToggle.is-on[data-cat="Boss"]::after{
+  background: linear-gradient(90deg, #b34646, #ff3a3a);
+}
+
+
+.filterToggle[data-cat="Loot"]{
+    background: linear-gradient(145deg, #3a4111, #2a2f0c);
+}
+.filterToggle[data-cat="Loot"]:hover:not(.is-on){
+    background: linear-gradient(145deg, #596519, #343a10);
+}
+.filterToggle.is-on[data-cat="Loot"] {
+      background: linear-gradient(145deg, #2a2f0c, #5e6a1b);
+    box-shadow: 0 1px 3px rgb(63 69 13 / 80%), 0 0 0 1px rgb(199 255 30 / 70%);
+}
+.filterToggle.is-on[data-cat="Loot"]::after{
+  background: linear-gradient(90deg, #b39646, #ffe53a);
+}
+
+
+.filterToggle[data-cat="Waypoint"]{
+    background: linear-gradient(145deg, #175459, #0d2c2f);
+}
+.filterToggle[data-cat="Waypoint"]:hover:not(.is-on){
+    background: linear-gradient(145deg, #1e656a, #0d2c2f);
+}
+.filterToggle.is-on[data-cat="Waypoint"] {
+    background: linear-gradient(145deg, #0e2f31, #175459);
+    box-shadow: 0 1px 3px rgb(13 65 69 / 80%), 0 0 0 1px rgb(30 197 255 / 70%);
+}
+.filterToggle.is-on[data-cat="Waypoint"]::after{
+      background: linear-gradient(90deg, #4699b3, #2ec2c3);
+}
+
+
+.filterToggle[data-cat="Donjon"]{
+    background: linear-gradient(145deg, #4f4f4f, #1b1b1b);
+}
+.filterToggle[data-cat="Donjon"]:hover:not(.is-on){
+    background: linear-gradient(145deg, #5e5e5e, #1f1f1f);
+}
+.filterToggle.is-on[data-cat="Donjon"] {
+    background: linear-gradient(145deg, #2c2c2c, #595959);
+    box-shadow: 0 1px 3px rgb(60 60 60 / 80%), 0 0 0 1px rgb(233 233 233 / 70%);
+}
+.filterToggle.is-on[data-cat="Donjon"]::after{
+  background: linear-gradient(90deg, #adadad, #dddddd);
+}
+
+
+.filterToggle[data-cat="NPC"]{
+    background: linear-gradient(145deg, #683e1d, #301d0d);
+}
+.filterToggle[data-cat="NPC"]:hover:not(.is-on){
+    background: linear-gradient(145deg, #7a4a23, #3e2410);
+}
+.filterToggle.is-on[data-cat="NPC"] {
+    background: linear-gradient(145deg, #513015, #704624);
+    box-shadow: 0 1px 3px rgb(94 51 31 / 80%), 0 0 0 1px rgb(255 199 140 / 70%);
+}
+.filterToggle.is-on[data-cat="NPC"]::after{
+  background: linear-gradient(90deg, #adadad, #dddddd);
+}
+
+
+.listItem.general  { border-left: 4px solid #23843b; }
+.listItem.quest    { border-left: 4px solid #712d95; }
+.listItem.boss     { border-left: 4px solid #882a2a; }
+.listItem.loot     { border-left: 4px solid #889730; }
+.listItem.waypoint { border-left: 4px solid #4a9ab2; }
+.listItem.donjon   { border-left: 4px solid #8c8c8c; }
+.listItem.npc      { border-left: 4px solid #9c7848; }
 
 .filterToggle img {
   width: 18px;
@@ -773,14 +898,6 @@ button.marker-center,
     0 0 0 1px rgba(0,0,0,0.7);
 }
 
-.filterToggle:hover:not(.is-on) {
-  background: linear-gradient(145deg, #173937, #092a20);
-}
-
-.filterToggle.is-on:hover {
-  background: linear-gradient(145deg, #17444b, #092626);
-}
-
 /* Petit badge de compteur */
 .filterCount {
   position: absolute;
@@ -801,6 +918,7 @@ button.marker-center,
   box-shadow: 0 0 6px rgba(120, 241, 194, 0.5);
   pointer-events: none;
 }
+
 
 /* Optionnel : un peu plus discret quand le bouton est off */
 .filterToggle:not(.is-on) .filterCount {

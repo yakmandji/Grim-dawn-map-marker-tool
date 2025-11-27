@@ -218,7 +218,6 @@ header .sep {
   gap: 6px;
   padding: 19px 8px 19px 8px;
   align-items: center;
-  border-radius: 8px;
 }
 
 .listItem:nth-child(odd){
