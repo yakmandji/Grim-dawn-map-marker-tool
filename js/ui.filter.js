@@ -63,22 +63,36 @@
      ************************************************************/
     document.querySelectorAll('.marker').forEach(el => {
 
+      // DONE markers are always visible
       if (el.dataset.done === "1") {
         el.style.display = "";
         return;
       }
 
       const cl = el.classList;
+
+      // Marker user category (general / quest / boss / loot / waypoint / donjon / npc)
       const markerCat = [...cl].find(c =>
         ['general','quest','boss','loot','waypoint','donjon','npc'].includes(c)
       );
 
+      // ADMIN markers (rift, region, dungeon-entry, overlays...)
+      // They have NO category → always visible
+      if (!markerCat) {
+        el.style.display = "";
+        return;
+      }
+
+      // Apply category filter only to user markers
       const visible = (!activeCategory || markerCat === activeCategory);
       el.style.display = visible ? "" : "none";
     });
 
     document.querySelectorAll('#list .listItem').forEach(el => {
+
       const cl = el.classList;
+
+      // Only user markers exist in the list -> no admin markers here
       const markerCat = [...cl].find(c =>
         ['general','quest','boss','loot','waypoint','donjon','npc'].includes(c)
       );
@@ -86,6 +100,7 @@
       const visible = (!activeCategory || markerCat === activeCategory);
       el.style.display = visible ? "" : "none";
     });
+
   }
 
 

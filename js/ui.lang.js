@@ -93,7 +93,7 @@
       "character.Edit" : "Edit",
       "confirmDeleteCharacter": "Delete character \"{name}\"?",
       "KeepOneCharacter": "You must keep at least one character.",
-      "MaxLimitCharacter": "You cannot have more than 10 characters.",
+      "ui.MaxLimitCharacter": "You cannot have more than 10 characters.",
       "ui.ShowAllMarker": "Show all",
       "toast.MarkerFiltered": "Marker added to \"{cat}\" (currently filtered)",
 
@@ -188,7 +188,7 @@
       "character.Edit": "Renommer",
       "confirmDeleteCharacter": "Supprimer le personnage « {name} » ?",
       "KeepOneCharacter": "Vous devez garder au moins un personnage.",
-      "MaxLimitCharacter": "Vous ne pouvez pas avoir plus de 10 personnages.",
+      "ui.MaxLimitCharacter": "Vous ne pouvez pas avoir plus de 10 personnages.",
       "ui.ShowAllMarker": "Tout afficher",
       "toast.MarkerFiltered": "Marqueur ajouté dans « {cat} » (actuellement filtré)",
 
@@ -283,7 +283,7 @@
       "character.Edit": "Editar",
       "confirmDeleteCharacter": "¿Eliminar el personaje \"{name}\"?",
       "KeepOneCharacter": "Debes mantener al menos un personaje.",
-      "MaxLimitCharacter": "No puedes tener más de 10 personajes.",
+      "ui.MaxLimitCharacter": "No puedes tener más de 10 personajes.",
       "ui.ShowAllMarker": "Mostrar todo",
       "toast.MarkerFiltered": "Marcador añadido a \"{cat}\" (actualmente filtrado)",
 
@@ -380,7 +380,7 @@
       "character.Edit": "Bearbeiten",
       "confirmDeleteCharacter": "Charakter „{name}“ löschen?",
       "KeepOneCharacter": "Du musst mindestens einen Charakter behalten.",
-      "MaxLimitCharacter": "Du kannst nicht mehr als 10 Charaktere haben.",
+      "ui.MaxLimitCharacter": "Du kannst nicht mehr als 10 Charaktere haben.",
       "ui.ShowAllMarker": "Alles anzeigen",
       "toast.MarkerFiltered": "Marker zu \"{cat}\" hinzugefügt (derzeit gefiltert)",
 
@@ -477,7 +477,7 @@
       "character.Edit": "Editar",
       "confirmDeleteCharacter": "Excluir o personagem \"{name}\"?",
       "KeepOneCharacter": "Você deve manter pelo menos um personagem.",
-      "MaxLimitCharacter": "Você não pode ter mais de 10 personagens.",
+      "ui.MaxLimitCharacter": "Você não pode ter mais de 10 personagens.",
       "ui.ShowAllMarker": "Mostrar tudo",
       "toast.MarkerFiltered": "Marcador adicionado a \"{cat}\" (atualmente filtrado)",
 
@@ -572,7 +572,7 @@
     "character.Edit": "Редактировать",
     "confirmDeleteCharacter": "Удалить персонажа «{name}»?",
     "KeepOneCharacter": "Вы должны оставить как минимум одного персонажа.",
-    "MaxLimitCharacter": "Вы не можете иметь более 10 персонажей.",
+    "ui.MaxLimitCharacter": "Вы не можете иметь более 10 персонажей.",
     "ui.ShowAllMarker": "Показать всё",
     "toast.MarkerFiltered": "Метка добавлена в «{cat}» (сейчас отфильтрована)",
 
@@ -670,7 +670,7 @@
       "character.Edit": "Modifica",
       "confirmDeleteCharacter": "Eliminare il personaggio \"{name}\"?",
       "KeepOneCharacter": "Devi mantenere almeno un personaggio.",
-       "MaxLimitCharacter": "Non puoi avere più di 10 personaggi.",
+       "ui.MaxLimitCharacter": "Non puoi avere più di 10 personaggi.",
        "ui.ShowAllMarker": "Mostrare tutto",
        "toast.MarkerFiltered": "Indicatore aggiunto a \"{cat}\" (attualmente filtrato)",
 
@@ -766,7 +766,7 @@
       "character.Edit": "编辑",
       "confirmDeleteCharacter": "删除角色“{name}”？",
       "KeepOneCharacter": "您必须至少保留一个角色。",
-      "MaxLimitCharacter": "您最多只能拥有 10 个角色。",
+      "ui.MaxLimitCharacter": "您最多只能拥有 10 个角色。",
       "ui.ShowAllMarker": "显示全部",
       "toast.MarkerFiltered": "标记已添加到“{cat}”（当前被过滤）",
 
@@ -861,7 +861,7 @@
       "character.Edit": "編集",
       "confirmDeleteCharacter": "キャラクター「{name}」を削除しますか？",
       "KeepOneCharacter": "最低でも1人のキャラクターを残す必要があります。",
-      "MaxLimitCharacter": "キャラクターは10人までしか作成できません。",
+      "ui.MaxLimitCharacter": "キャラクターは10人までしか作成できません。",
       "ui.ShowAllMarker": "すべて表示",
       "toast.MarkerFiltered": "「{cat}」にマーカーを追加しました（現在フィルター中）",
 
