@@ -46,9 +46,7 @@ const { $, inner } = window.UiCore;
     }
 
     if (hidden) {
-      showToast(
-        `Marqueur ajouté dans "${cat}" (actuellement filtré)`
-      );
+showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
     }
 
     if (marker) {

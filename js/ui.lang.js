@@ -95,6 +95,7 @@
       "KeepOneCharacter": "You must keep at least one character.",
       "MaxLimitCharacter": "You cannot have more than 10 characters.",
       "ui.ShowAllMarker": "Show all",
+      "toast.MarkerFiltered": "Marker added to \"{cat}\" (currently filtered)",
 
     },
     fr: {
@@ -189,6 +190,7 @@
       "KeepOneCharacter": "Vous devez garder au moins un personnage.",
       "MaxLimitCharacter": "Vous ne pouvez pas avoir plus de 10 personnages.",
       "ui.ShowAllMarker": "Tout afficher",
+      "toast.MarkerFiltered": "Marqueur ajouté dans « {cat} » (actuellement filtré)",
 
 
     },
@@ -283,6 +285,8 @@
       "KeepOneCharacter": "Debes mantener al menos un personaje.",
       "MaxLimitCharacter": "No puedes tener más de 10 personajes.",
       "ui.ShowAllMarker": "Mostrar todo",
+      "toast.MarkerFiltered": "Marcador añadido a \"{cat}\" (actualmente filtrado)",
+
 
     },
 
@@ -378,6 +382,7 @@
       "KeepOneCharacter": "Du musst mindestens einen Charakter behalten.",
       "MaxLimitCharacter": "Du kannst nicht mehr als 10 Charaktere haben.",
       "ui.ShowAllMarker": "Alles anzeigen",
+      "toast.MarkerFiltered": "Marker zu \"{cat}\" hinzugefügt (derzeit gefiltert)",
 
     },
 
@@ -474,6 +479,8 @@
       "KeepOneCharacter": "Você deve manter pelo menos um personagem.",
       "MaxLimitCharacter": "Você não pode ter mais de 10 personagens.",
       "ui.ShowAllMarker": "Mostrar tudo",
+      "toast.MarkerFiltered": "Marcador adicionado a \"{cat}\" (atualmente filtrado)",
+
   },
 
   ru: {
@@ -567,6 +574,8 @@
     "KeepOneCharacter": "Вы должны оставить как минимум одного персонажа.",
     "MaxLimitCharacter": "Вы не можете иметь более 10 персонажей.",
     "ui.ShowAllMarker": "Показать всё",
+    "toast.MarkerFiltered": "Метка добавлена в «{cat}» (сейчас отфильтрована)",
+
 
   },
 
@@ -663,6 +672,7 @@
       "KeepOneCharacter": "Devi mantenere almeno un personaggio.",
        "MaxLimitCharacter": "Non puoi avere più di 10 personaggi.",
        "ui.ShowAllMarker": "Mostrare tutto",
+       "toast.MarkerFiltered": "Indicatore aggiunto a \"{cat}\" (attualmente filtrato)",
 
     },
 
@@ -758,6 +768,7 @@
       "KeepOneCharacter": "您必须至少保留一个角色。",
       "MaxLimitCharacter": "您最多只能拥有 10 个角色。",
       "ui.ShowAllMarker": "显示全部",
+      "toast.MarkerFiltered": "标记已添加到“{cat}”（当前被过滤）",
 
     },
     ja: {
@@ -852,6 +863,8 @@
       "KeepOneCharacter": "最低でも1人のキャラクターを残す必要があります。",
       "MaxLimitCharacter": "キャラクターは10人までしか作成できません。",
       "ui.ShowAllMarker": "すべて表示",
+      "toast.MarkerFiltered": "「{cat}」にマーカーを追加しました（現在フィルター中）",
+
     }
 
   };
@@ -890,10 +903,18 @@
     });
   }
 
-  function t(key) {
+  function t(key, params = {}) {
     const lang = getLang();
     const dict = translations[lang] || translations.en;
-    return dict[key] || key;
+    let text = dict[key] || key;
+
+    // Interpolation {variable}
+    for (const p in params) {
+      const reg = new RegExp(`{${p}}`, 'g');
+      text = text.replace(reg, params[p]);
+    }
+
+    return text;
   }
 
   // --- Helpers génériques pour les dropdowns custom ---------------------
