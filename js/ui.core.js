@@ -1,6 +1,6 @@
 (function(){
 const {
-  state,DEV_MODE,clamp,iconFor,isColorAllowed,currentProfile,markAsChanged,updateSaveIndicator,
+  state,DEV_MODE,clamp,iconFor,currentProfile,markAsChanged,updateSaveIndicator,
   setActiveProfile,renameProfile,deleteProfile,listProfiles,
   addMarker: coreAddMarker,
   updateMarker: coreUpdateMarker,
@@ -974,14 +974,6 @@ if (newPathBtn) {
   });
   applyLockUI();
 
-  // --- New marker category → toggle color visibility ---
-  const newCatEl = document.getElementById('newCategory');
-  const newColorEl = document.getElementById('newColor');
-  if (newCatEl && newColorEl) {
-    const syncNewColor = () => { newColorEl.style.display = isColorAllowed(newCatEl.value) ? '' : 'none'; };
-    newCatEl.addEventListener('change', syncNewColor);
-    syncNewColor();
-  }
 //----------------------------------------------------------------------------------------
 
 

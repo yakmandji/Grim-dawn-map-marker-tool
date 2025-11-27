@@ -7,6 +7,7 @@
   const core = window.GDMMCore || {};
   const state = core.state || {};
   const currentProfile = core.currentProfile || function(){ return null; };
+  const iconFor = core.iconFor || function () { return ''; };
   const getPathMode = window.UiRoutes?.getPathMode || function(){ return { active:false, current:null }; };
 
   // Helpers venant de UiCore / GDMMCore
@@ -169,56 +170,16 @@
               const pin = document.createElement('div');
               pin.className = 'pin';
 
-              // image de fond (goutte)
               const bg = document.createElement('img');
               bg.className = 'pin-bg';
-              bg.src = 'img/pin_fill.svg';
+
+              // on prend directement l'icône de la catégorie
+              const iconSrc = iconFor(m.cat) || 'img/pin-general.svg';
+              bg.src = iconSrc;
               bg.alt = '';
+
               pin.appendChild(bg);
-
-              // couleur du pin (pour tous les types)
-              const color = m.color || '#78f1c2';
-
-              function hexToHSL(hex) {
-                let r = 0, g = 0, b = 0;
-                if (hex.length === 4) {
-                  r = "0x" + hex[1] + hex[1];
-                  g = "0x" + hex[2] + hex[2];
-                  b = "0x" + hex[3] + hex[3];
-                } else if (hex.length === 7) {
-                  r = "0x" + hex[1] + hex[2];
-                  g = "0x" + hex[3] + hex[4];
-                  b = "0x" + hex[5] + hex[6];
-                }
-                r /= 255; g /= 255; b /= 255;
-                const max = Math.max(r, g, b), min = Math.min(r, g, b);
-                let h = 0, s = 0, l = (max + min) / 2;
-                if (max !== min) {
-                  const d = max - min;
-                  s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-                  switch (max) {
-                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                    case g: h = (b - r) / d + 2; break;
-                    case b: h = (r - g) / d + 4; break;
-                  }
-                  h /= 6;
-                }
-                return { h: h * 360, s: s * 100, l: l * 100 };
-              }
-
-              const { h, s, l } = hexToHSL(color);
-              bg.style.filter =
-                `drop-shadow(0 2px 6px rgba(0,0,0,0.4)) ` +
-                `hue-rotate(${h}deg) saturate(${1 + s / 100}) brightness(${0.9 + (l / 200)})`;
-
-              const ic = core.iconFor ? core.iconFor(m.cat) : '';
-              if (ic) {
-                const iconImg = document.createElement('img');
-                iconImg.className = 'pin-icon';
-                iconImg.src = ic;
-                iconImg.alt = m.cat || '';
-                pin.appendChild(iconImg);
-              }
+              el.appendChild(pin);
 
               // Shared Badge
               if (m.shared) {

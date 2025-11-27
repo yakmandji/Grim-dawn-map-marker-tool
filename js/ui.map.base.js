@@ -5,7 +5,6 @@
     DEV_MODE,
     clamp,
     iconFor,
-    isColorAllowed,
     currentProfile,
     markAsChanged,
     updateSaveIndicator,

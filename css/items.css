@@ -70,7 +70,7 @@
   height: inherit;
   position: initial;
   margin-top: 3px;
-  padding: 2px 6px;
+  padding: 2px 12px;
 }
 
 #list .custom-dropdown.open .custom-dropdown-inner {
@@ -149,34 +149,6 @@ button, select{
   color:var(--buttontxt);
 }
 
-input[type="color"]{
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  max-width: 24px;
-  height: 24px;
-  opacity: 0.7;
-}
-
-input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-input[type="color"]::-webkit-color-swatch {
-  border: none;
-  border-radius: 8px;
-}
-
-input[type="color"]::-moz-color-swatch {
-  border: none;
-  border-radius: 8px;
-}
-
 select option {
   background-color: #256b6c;
   color: #e7ebff;
@@ -209,6 +181,10 @@ button:active:not(.select-current) {
 .mapViewport.locked .marker {
   pointer-events: auto;
   cursor: pointer;
+}
+
+.marker:hover{
+  z-index: 7;
 }
 
 button.small,
@@ -370,10 +346,6 @@ input[type="password"]:focus
   transform: translate(12px, -50%);
 }
 
-#mapInner .marker:hover .pin {
-  filter: drop-shadow(0 0 6px rgba(80, 160, 255, 0.55));
-}
-
 .marker.completed .pin
  { opacity: 0.6; }
 
@@ -488,7 +460,6 @@ button.marker-center,
   left: -8px;
   right: -8px;
   bottom: -4px;
-  border-radius: 12px;
   border: 2px solid #78f1c2;
   opacity: 0;
   transform: scale(0.8);
@@ -520,7 +491,6 @@ button.marker-center,
 #routesList .listItem.highlight {
   position: relative;
   overflow: visible;
-  border-radius: 10px;
   animation: highlightPulse 1.2s ease;
 }
 
@@ -536,20 +506,48 @@ button.marker-center,
 @keyframes highlightPulse {
   0% {
     box-shadow: 0 0 0px 0 rgba(26, 98, 74, 0);
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.02);
   }
   25% {
     box-shadow: 0 0 4px 2px rgba(26, 98, 74, 0.5);
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
   }
   50% {
-    box-shadow: 0 0 7px 3px rgba(26, 98, 74, 0.7);
-    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 7px 3px rgba(26, 98, 74, 0.8);
+    background: rgba(255,255,255,0.05);
   }
   100% {
     box-shadow: 0 0 0px 0 rgba(26, 98, 74, 0);
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.02);
   }
+}
+
+input[type="color"]{
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  max-width: 24px;
+  height: 24px;
+  opacity: 0.7;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 8px;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 8px;
 }
 
 

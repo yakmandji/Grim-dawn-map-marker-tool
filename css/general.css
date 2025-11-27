@@ -411,7 +411,6 @@ body.shared-only-view #shareRoutesBtn,
 body.shared-only-view #list select,
 body.shared-only-view #list label,
 body.shared-only-view #list button.danger,
-body.shared-only-view .section input[type="color"],
 body.shared-only-view .lock-label,
 body.shared-only-view #routesList button.danger 
  {
@@ -548,7 +547,7 @@ body.shared-only-view #mergeSharedBtn,
   padding: 5px 8px;  
 }
 
-.done-panel #doneList img{
+.done-panel #doneList button img{
   width: 14px;
 }
 
@@ -610,8 +609,8 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .doneIcon-img {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   display: block;
   pointer-events: none;
   user-select: none;

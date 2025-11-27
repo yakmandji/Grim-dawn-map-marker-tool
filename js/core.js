@@ -30,13 +30,13 @@
 
   // --- Icons by catégorie for UI ---
   const defaultIcons = {
-    General:  'img/circle.svg',
-    Quest:    'img/quest.svg',
-    Boss:     'img/boss.svg',
-    Loot:     'img/loot.svg',
-    Waypoint: 'img/waypoint.svg',
-    Donjon:   'img/donjon.svg',
-    NPC:      'img/npc.svg'
+    General:  'img/pin-general.svg',
+    Quest:    'img/pin-quest.svg',
+    Boss:     'img/pin-boss.svg',
+    Loot:     'img/pin-loot.svg',
+    Waypoint: 'img/pin-waypoint.svg',
+    Donjon:   'img/pin-donjon.svg',
+    NPC:      'img/pin-npc.svg'
   };
 
   // --- Save indicator ---
@@ -65,8 +65,6 @@
     );
     return key ? defaultIcons[key] : '';
   };
-  const isColorAllowed = () => true;
-
 
   // --- Profils ---
   function currentProfile(){
@@ -129,7 +127,6 @@
       yp: raw.yp,
       label: raw.label || '',
       cat: raw.cat || 'General',
-      color: raw.color || '#78f1c2',
       done: !!raw.done,
       shared: !!raw.shared,
     };
@@ -297,7 +294,6 @@ function loadUserDataFromLocal() {
     uid,
     defaultIcons,
     iconFor,
-    isColorAllowed,
     currentProfile,
     setActiveProfile,
     ensureProfile,

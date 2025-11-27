@@ -5,7 +5,6 @@ const {
   state,
   currentProfile,
   markAsChanged,
-  isColorAllowed,
   saveUserDataToLocal,
   addMarker: coreAddMarker,
   updateMarker: coreUpdateMarker,
@@ -20,11 +19,11 @@ const { $, inner } = window.UiCore;
     if (!state.mapReady) { alert('You need first to load a map'); return; }
     const label = $('#newLabel').value.trim();
     const cat   = $('#newCategory').value;
-    const color = $('#newColor').value;
     const done  = false;
     const sharedCheckbox = document.getElementById('newShared');
     const shared = sharedCheckbox ? !!sharedCheckbox.checked : false;
-    const marker = coreAddMarker({ xp, yp, label, cat, color, done, shared });
+
+    const marker = coreAddMarker({ xp, yp, label, cat, done, shared });
 
 
     // === UX : avertir si le marker créé est caché par un filtre actif ===
@@ -46,7 +45,7 @@ const { $, inner } = window.UiCore;
     }
 
     if (hidden) {
-showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
+      showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
     }
 
     if (marker) {
@@ -63,6 +62,7 @@ showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
     markAsChanged();
     saveUserDataToLocal();
   }
+
 
     function updateMarkerFromUI(id, patch, rerender = true){
     coreUpdateMarker(id, patch);
@@ -154,9 +154,6 @@ showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
           el.classList.add('shared');
         }
 
-        // pin color
-        el.querySelector('[data-pin]').style.background = m.color || '#78f1c2';
-
         // label
         const label = el.querySelector('[data-label]');
         label.value = m.label || '';
@@ -168,39 +165,63 @@ showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
         const catSel = el.querySelector('[data-cat]');
         catSel.value = m.cat || 'General';
 
-        // color
-        const color = el.querySelector('[data-color]');
-        color.value = m.color || '#78f1c2';
-
-        const syncColorVis = (c) => {
-          const allow = isColorAllowed(c);
-          color.style.display = allow ? '' : 'none';
-        };
-        syncColorVis(catSel.value);
-
         catSel.onchange = e => {
           const v = e.target.value;
-          updateMarkerFromUI(m.id, { cat: v }, false);
-          syncColorVis(v);
-          renderMarkers();
-          renderList();
+          // on laisse updateMarkerFromUI gérer le re-render complet
+          updateMarkerFromUI(m.id, { cat: v }, true);
         };
 
-        color.oninput = e => {
-          el.querySelector('[data-pin]').style.background = e.target.value;
-          updateMarkerFromUI(m.id, { color: e.target.value }, false);
-          renderMarkers();
-        };
+          // shared
+          const sharedInput = el.querySelector('[data-shared]');
+          if (sharedInput) {
+            sharedInput.checked = !!m.shared;
+            sharedInput.onchange = (e) => {
+              const isShared = !!e.target.checked;
 
-        // shared
-        const sharedInput = el.querySelector('[data-shared]');
-        if (sharedInput) {
-          sharedInput.checked = !!m.shared;
-          sharedInput.onchange = (e) => {
-            const isShared = !!e.target.checked;
-            updateMarkerFromUI(m.id, { shared: isShared }, true);
-          };
-        }
+              // 1) MAJ des données
+              coreUpdateMarker(m.id, { shared: isShared });
+              markAsChanged();
+              saveUserDataToLocal();
+
+              // 2) MAJ de la ligne dans la liste
+              el.classList.toggle('shared', isShared);
+
+              // 3) MAJ du marker sur la map (classe + badge)
+              const markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
+              if (markerEl) {
+                markerEl.classList.toggle('shared', isShared);
+
+                const pin = markerEl.querySelector('.pin');
+                if (pin) {
+                  let badge = pin.querySelector('.shared-badge');
+
+                  if (isShared) {
+                    if (!badge) {
+                      badge = document.createElement('img');
+                      badge.className = 'shared-badge';
+                      badge.src = 'img/share-icon.svg';
+                      badge.alt = (window.GDMMLang && GDMMLang.t)
+                        ? GDMMLang.t('ui.SharedMarker')
+                        : 'Shared';
+                      pin.appendChild(badge);
+                    }
+                  } else if (badge) {
+                    badge.remove();
+                  }
+                }
+              }
+
+              // 4) MAJ des compteurs / filtres (sans re-render massif)
+              if (window.UiFilters) {
+                if (typeof UiFilters.updateFilterCounts === 'function') {
+                  UiFilters.updateFilterCounts();
+                }
+                if (typeof UiFilters.applyCategoryFilters === 'function') {
+                  UiFilters.applyCategoryFilters();
+                }
+              }
+            };
+          }
 
         // done
         const done = el.querySelector('[data-done]');

@@ -293,10 +293,27 @@
       color.type = 'color';
       color.value = path.color || '#ffcc00';
       color.className = 'routeColor';
-      color.addEventListener('input', e => {
-        updateRoute(path.id, { color: e.target.value });
+
+      // Debounce léger pour ne pas spammer updateRoute + saveUserDataToLocal
+      let colorTimer = null;
+
+      color.addEventListener('input', (e) => {
+        const val = e.target.value;
+        clearTimeout(colorTimer);
+
+        colorTimer = setTimeout(() => {
+          // Met à jour la route + sauvegarde
+          updateRoute(path.id, { color: val });
+
+          // Re-render de la carte pour voir la nouvelle couleur de suite
+          if (window.UiCore?.renderMarkers) {
+            window.UiCore.renderMarkers({ skipRoutesPanel: true });
+          }
+        }, 120); // 120ms = assez rapide pour paraître "en live"
       });
+
       row.appendChild(color);
+
 
       // --- Nom ---
       const nameInput = document.createElement('input');
