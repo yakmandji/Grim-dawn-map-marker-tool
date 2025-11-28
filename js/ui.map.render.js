@@ -100,7 +100,7 @@
         });
       }
 
-      // --- Bouton delete (sans confirm) ---
+      // --- Bouton delete  ---
       const deleteBtn = row.querySelector('.note-delete-btn');
       if (deleteBtn) {
         deleteBtn.addEventListener('click', () => {
@@ -115,8 +115,14 @@
 
           // 3) Rafraîchir la liste
           buildNoteList();
+
+          // 4) Toast
+          if (typeof showToast === 'function') {
+            showToast(GDMMLang.t('toast.NoteDeleted'));
+          }
         });
       }
+
 
       listEl.appendChild(row);
     });
@@ -915,8 +921,11 @@
           if (currentRegionIdForPanel) {
             // 1) Sauvegarde globale
             setRegionNote(currentRegionIdForPanel, txt);
+
+            // 2) Rebuild la liste
             buildNoteList();
-            // 2) Mise à jour visuelle via le helper
+
+            // 3) Mise à jour visuelle via le helper
             const regionEl = document.querySelector(
               `.marker-region[data-region-id="${currentRegionIdForPanel}"]`
             );
@@ -925,8 +934,15 @@
             }
           }
 
+          // 4) Fermer le panel
           panel.style.display = 'none';
+
+          // 5) Toast "Note enregistrée"
+          if (typeof showToast === 'function' && window.GDMMLang && typeof GDMMLang.t === 'function') {
+            showToast(GDMMLang.t('toast.NoteSaved'));
+          }
         });
+
       } else {
         // Panel déjà créé : mettre à jour le texte du bouton avec la langue actuelle
         const btn = panel.querySelector('.region-note-save');
