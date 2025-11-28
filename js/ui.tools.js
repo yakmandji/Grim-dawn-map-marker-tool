@@ -57,99 +57,94 @@
 //USER TOOLS
 
   // IMPORT funtion
-    $('#importInput')?.addEventListener('change', async (e) => {
-      const file = e.target.files?.[0];
+    $('#importInput')?.addEventListener('change', (e) => {
+      const file = e.target.files[0];
       if (!file) return;
 
-      try {
-        const text = await file.text();
-        const imported = JSON.parse(text);
-
-        const values = Object.values(imported);
-
-        const isFullExport = values.some(p => p && (p.map || p.embedData));
-        const isPathsOnly  = values.some(p => p && p.paths && !p.markers);
-
-        if (isFullExport && !isPathsOnly) {
-          state.profiles = imported;
-          const first = Object.keys(state.profiles)[0] || null;
-          state.active = first;
-          refreshProfilesUI();
-          renderList();
-          renderMarkers();
-          renderRoutesPanel();
-          updateSaveIndicator(true);
-          showToast(GDMMLang.t('toast.FullMapDataImported'));
+      const reader = new FileReader();
+      reader.onload = function() {
+        let imported;
+        try {
+          imported = JSON.parse(reader.result);
+        } catch (e) {
+          alert('Invalid JSON');
           return;
         }
 
-        if (isPathsOnly) {
-          for (const [name, incoming] of Object.entries(imported)) {
-            const prof = state.profiles[name];
-            if (!prof) continue;
-            if (!incoming.paths) continue;
+        // --- FORMAT NOUVEAU ---
+        // { v: 2, save: { ... }, regionNotes: { ... } }
+        if (imported.save && typeof imported.regionNotes === 'object') {
 
-            if (!prof.paths) prof.paths = [];
-            prof.paths = prof.paths.concat(incoming.paths);
-          }
+          // Restaurer la save perso
+          localStorage.setItem('grimSave_v2', JSON.stringify(imported.save));
 
-          renderMarkers();
-          updateSaveIndicator(false);
-          showToast(GDMMLang.t('toast.PathImported'));
+          // Restaurer les notes
+          localStorage.setItem('gdmm_region_notes_v1', JSON.stringify(imported.regionNotes));
+
+          alert('Save (characters + region notes) imported successfully!');
+          location.reload();
           return;
         }
 
-        mergeUserMarkers(imported);
-
-        // check if path
-        const profiles = state.profiles || {};
-        for (const [name, incoming] of Object.entries(imported)) {
-          if (!incoming) continue;
-          if (!incoming.paths) continue;
-          if (!profiles[name]) continue;
-
-          const target = profiles[name];
-          if (!target.paths) target.paths = [];
-          target.paths = incoming.paths;
+        // --- FORMAT ANCIEN ---
+        // Uniquement grimSave_v2
+        if (imported.characters) {
+          localStorage.setItem('grimSave_v2', JSON.stringify(imported));
+          alert('Legacy save imported successfully!\n(Region notes were not included in this file)');
+          location.reload();
+          return;
         }
 
-        refreshProfilesUI();
-        renderList();
-        renderMarkers();
-        renderRoutesPanel();
-        saveUserDataToLocal();
-        updateSaveIndicator(true);
-        showToast(GDMMLang.t('toast.MarkerImported'));
+        alert('File format not recognized.');
+      };
 
-      } catch (err) {
-        console.error('[GDMM] import failed:', err);
-        showToast('Import failed (invalid JSON) ❌', 'error');
-      }
+      reader.readAsText(file);
     });
 
 
-// Import fichier JSON
-  $('#importReplaceBtn')?.addEventListener('click', () => {
-    const input = $('#importInput');
-    input.value = '';
-    input.click();
+
+  // Import fichier JSON
+    $('#importReplaceBtn')?.addEventListener('click', () => {
+      const input = $('#importInput');
+      input.value = '';
+      input.click();
+    });
+
+  $('#exportFileBtn')?.addEventListener('click', () => {
+    // Charger la sauvegarde des personnages
+    const rawSave = localStorage.getItem('grimSave_v2');
+    const saveData = rawSave ? JSON.parse(rawSave) : null;
+
+    if (!saveData) {
+      alert('No save data found.');
+      return;
+    }
+
+    // Charger les notes globales
+    let regionNotes = {};
+    try {
+      const rnRaw = localStorage.getItem('gdmm_region_notes_v1');
+      regionNotes = rnRaw ? JSON.parse(rnRaw) : {};
+    } catch (e) {
+      console.warn('[GDMM] Failed to read region notes for export', e);
+    }
+
+    // Construire un seul objet exporté
+    const exportObj = {
+      v: 2,
+      save: saveData,
+      regionNotes: regionNotes
+    };
+
+    // Exporter fichier JSON
+    const blob = new Blob([JSON.stringify(exportObj, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'gdmm_save_multi.json';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 3000);
   });
 
-    $('#exportFileBtn')?.addEventListener('click', () => {
-      const raw = localStorage.getItem('grimSave_v2');
-      const data = raw ? JSON.parse(raw) : null;
-      if (!data) {
-        alert('No save data found.');
-        return;
-      }
-
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'gdmm_save_multi.json';
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 3000);
-    });
 
 
       // --- Clear all paths for active profile ---
@@ -171,6 +166,30 @@
       markAsChanged();
       showToast(GDMMLang.t('toast.AllPathDeleted'));
     });
+
+
+    // --- Clear all region notes ---
+    $('#clearNotes')?.addEventListener('click', () => {
+
+      const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
+        ? GDMMLang.t.bind(GDMMLang)
+        : null;
+
+      const msg = t
+        ? t('ui.DeleteNoteConfirm')
+        : 'Delete all region notes? This cannot be undone.';
+
+      if (!confirm(msg)) {
+        return;
+      }
+
+      // Supprime toutes les notes globales
+      localStorage.removeItem('gdmm_region_notes_v1');
+
+      // Recharge pour enlever les "i" et tooltips
+      location.reload();
+    });
+
 
 
 //ADMIN TOOLS

@@ -35,6 +35,7 @@
       'ui.HelpLine2': 'Add your markers 📍, or draw a route',
       'ui.HelpLine3': 'Your markers are saved automatically. Use the "Save markers" button in the header to save manually if needed',
       'ui.HelpLine4': 'You can share your map with other users. Only the routes and the markers checked as "shared" will be shared. Other markers will remain private to your map.',
+      "ui.RegionHelper": "You can add global region notes by hovering over region names. These notes are shared across all your characters.",
       'ui.DeleteButton': 'Delete',
       'toast.MarkerNameUpdated' : 'Marker name updated 💾',
       'toast.RouteNameSaved' : 'Route name saved 💾',
@@ -96,6 +97,9 @@
       "ui.MaxLimitCharacter": "You cannot have more than 10 characters.",
       "ui.ShowAllMarker": "Show all",
       "toast.MarkerFiltered": "Marker added to \"{cat}\" (currently filtered)",
+      "ui.DeleteNoteButton": "Delete all notes",
+      "ui.DeleteNoteConfirm": "Delete all region notes? This cannot be undone.",
+      "ui.NoteList": "Note list",
 
     },
     fr: {
@@ -130,6 +134,7 @@
       'ui.HelpLine2': 'Ajoutez vos marqueurs 📍, ou tracez une route',
       'ui.HelpLine3': 'Vos marqueurs sont sauvegardés automatiquement. Utilisez le bouton "Sauvegarder les marqueurs" si besoin.',
       'ui.HelpLine4' : 'Vous pouvez partager votre carte avec d\'autres utilisateurs. Seulement les routes et les marqueurs cochés "partagé" seront partagés. Les autres marqueurs seront privés à votre carte',
+      "ui.RegionHelper": "Vous pouvez ajouter des notes globales par région en survolant le nom des régions. Ces notes sont partagées par tous vos personnages.", 
       'ui.DeleteButton': 'Supprimer',
       'toast.MarkerNameUpdated' : 'Nom du marqueur mis à jour 💾',
       'toast.RouteNameSaved' : 'Nom de la route sauvegardé 💾',
@@ -191,6 +196,9 @@
       "ui.MaxLimitCharacter": "Vous ne pouvez pas avoir plus de 10 personnages.",
       "ui.ShowAllMarker": "Tout afficher",
       "toast.MarkerFiltered": "Marqueur ajouté dans « {cat} » (actuellement filtré)",
+      "ui.DeleteNoteButton": "Supprimer toutes les notes",
+      "ui.DeleteNoteConfirm": "Supprimer toutes les notes de région ? Cette action est définitive.",
+      "ui.NoteList": "Liste des notes",
 
 
     },
@@ -226,6 +234,7 @@
       'ui.HelpLine2': 'Añade tus marcadores 📍, o dibuja una ruta',
       'ui.HelpLine3': 'Tus marcadores se guardan automáticamente. Usa el botón "Guardar marcadores" en el encabezado si lo necesitas.',
       'ui.HelpLine4': 'Puedes compartir tu mapa con otros usuarios. Solo se compartirán las rutas y los marcadores marcados como "compartido". Los demás marcadores serán privados de tu mapa.',
+      "ui.RegionHelper": "Puedes añadir notas globales por región pasando el ratón sobre los nombres de las regiones. Estas notas se comparten entre todos tus personajes.",
       'ui.DeleteButton': 'Eliminar',
       'ui.CenterOnMap': 'Centrar en el mapa',
       'ui.ShowHideGeneral': 'Mostrar General',
@@ -286,7 +295,9 @@
       "ui.MaxLimitCharacter": "No puedes tener más de 10 personajes.",
       "ui.ShowAllMarker": "Mostrar todo",
       "toast.MarkerFiltered": "Marcador añadido a \"{cat}\" (actualmente filtrado)",
-
+      "ui.DeleteNoteButton": "Eliminar todas las notas",
+      "ui.DeleteNoteConfirm": "¿Eliminar todas las notas de región? Esta acción no se puede deshacer.",
+      "ui.NoteList": "Lista de notas",
 
     },
 
@@ -322,6 +333,7 @@
       "ui.HelpLine2": "Füge deine Markierungen hinzu 📍 oder zeichne eine Route",
       "ui.HelpLine3": "Deine Marker werden automatisch gespeichert. Verwende die Schaltfläche 'Marker speichern' im Header, um manuell zu speichern, falls nötig.",
       "ui.HelpLine4": "Du kannst deine Karte mit anderen Benutzern teilen. Nur Routen und Marker mit dem Status 'geteilt' werden geteilt. Andere bleiben privat.",
+      "ui.RegionHelper": "Sie können globale Regionsnotizen hinzufügen, indem Sie mit der Maus über die Regionsnamen fahren. Diese Notizen werden mit all Ihren Charakteren geteilt.",
       "ui.DeleteButton": "Löschen",
       "toast.MarkerNameUpdated": "Markername aktualisiert 💾",
       "toast.RouteNameSaved": "Routenname gespeichert 💾",
@@ -383,6 +395,10 @@
       "ui.MaxLimitCharacter": "Du kannst nicht mehr als 10 Charaktere haben.",
       "ui.ShowAllMarker": "Alles anzeigen",
       "toast.MarkerFiltered": "Marker zu \"{cat}\" hinzugefügt (derzeit gefiltert)",
+      "ui.DeleteNoteButton": "Alle Notizen löschen",
+      "ui.DeleteNoteConfirm": "Alle Regionsnotizen löschen? Dies kann nicht rückgängig gemacht werden.",
+      "ui.NoteList": "Notizliste",
+
 
     },
 
@@ -418,6 +434,7 @@
     'ui.HelpLine2': 'Adicione seus marcadores 📍 ou trace uma rota',
     'ui.HelpLine3': 'Seus marcadores são salvos automaticamente. Use o botão "Salvar marcadores" no cabeçalho se necessário.',
     'ui.HelpLine4': 'Você pode compartilhar seu mapa com outros usuários. Apenas as rotas e os marcadores marcados como "compartilhado" serão compartilhados. Os outros marcadores permanecerão privados no seu mapa.',
+    "ui.RegionHelper": "Pode adicionar notas globais por região ao passar o cursor sobre os nomes das regiões. Estas notas são partilhadas por todas as suas personagens.",
     'ui.DeleteButton': 'Excluir',
     'ui.CenterOnMap': 'Centralizar no mapa',
      'toast.ExportAll': 'Todos os dados foram salvos 💾',
@@ -480,6 +497,10 @@
       "ui.MaxLimitCharacter": "Você não pode ter mais de 10 personagens.",
       "ui.ShowAllMarker": "Mostrar tudo",
       "toast.MarkerFiltered": "Marcador adicionado a \"{cat}\" (atualmente filtrado)",
+      "ui.DeleteNoteButton": "Apagar todas as notas",
+      "ui.DeleteNoteConfirm": "Apagar todas as notas da região? Esta ação não pode ser revertida.",
+      "ui.NoteList": "Lista de notas",      
+
 
   },
 
@@ -514,6 +535,7 @@
     'ui.HelpLine1': 'Выберите карту из выпадающего списка вверху (основная или DLC)',
     'ui.HelpLine2': 'Добавьте свои метки 📍 или проложите маршрут',
     'ui.HelpLine3': 'Ваши маркеры сохраняются автоматически. При необходимости используйте кнопку "Сохранить маркеры" вверху.',
+     "ui.RegionHelper": "Вы можете добавлять глобальные заметки для регионов, наведя курсор на их названия. Эти заметки доступны для всех ваших персонажей.",
     'ui.HelpLine4': 'Вы можете поделиться своей картой с другими пользователями. Будут переданы только маршруты и метки, отмеченные как «общие». Остальные метки останутся приватными на вашей карте.',
     'ui.DeleteButton': 'Удалить',
     'ui.CenterOnMap': 'Центрировать на карте',
@@ -575,7 +597,9 @@
     "ui.MaxLimitCharacter": "Вы не можете иметь более 10 персонажей.",
     "ui.ShowAllMarker": "Показать всё",
     "toast.MarkerFiltered": "Метка добавлена в «{cat}» (сейчас отфильтрована)",
-
+    "ui.DeleteNoteButton": "Удалить все заметки",
+    "ui.DeleteNoteConfirm": "Удалить все региональные заметки? Это действие необратимо.",
+    "ui.NoteList": "Список заметок",
 
   },
 
@@ -611,6 +635,7 @@
       'ui.HelpLine2': 'Aggiungi i tuoi segnalini 📍 o traccia un percorso',
       'ui.HelpLine3': 'I tuoi marcatori vengono salvati automaticamente. Usa il pulsante "Salva marcatori" nell’intestazione se necessario.',
       'ui.HelpLine4': 'Puoi condividere la tua mappa con altri utenti. Solo i percorsi e i marcatori contrassegnati come "condivisi" verranno condivisi. Gli altri marcatori rimarranno privati sulla tua mappa.',
+      "ui.RegionHelper": "Puoi aggiungere note globali per regione passando il mouse sui nomi delle regioni. Queste note sono condivise tra tutti i tuoi personaggi.",
       'ui.DeleteButton': 'Elimina',
       'ui.CenterOnMap': 'Centra sulla mappa',
       'ui.ShowHideGeneral': 'Mostra Generale',
@@ -673,6 +698,9 @@
        "ui.MaxLimitCharacter": "Non puoi avere più di 10 personaggi.",
        "ui.ShowAllMarker": "Mostrare tutto",
        "toast.MarkerFiltered": "Indicatore aggiunto a \"{cat}\" (attualmente filtrato)",
+       "ui.DeleteNoteButton": "Elimina tutte le note",
+      "ui.DeleteNoteConfirm": "Eliminare tutte le note della regione? Questa azione è irreversibile.",
+      "ui.NoteList": "Elenco delle note",
 
     },
 
@@ -708,6 +736,7 @@
       'ui.HelpLine2': '添加你的标记 📍，或绘制一条路线',
       'ui.HelpLine3': '标记会自动保存。如需手动保存，请使用标题栏中的“保存标记”按钮',
       'ui.HelpLine4': '您可以与其他用户共享您的地图。只有选中“共享”的路线和标记会被共享，其他标记将保留为您地图的私人内容。',
+      "ui.RegionHelper": "将鼠标悬停在区域名称上即可添加区域的全局备注。这些备注会在您的所有角色之间共享。",
       'ui.DeleteButton': '删除',
       'ui.CenterOnMap': '居中显示地图',
       'ui.ShowHideGeneral': '显示 通用标记',
@@ -769,6 +798,10 @@
       "ui.MaxLimitCharacter": "您最多只能拥有 10 个角色。",
       "ui.ShowAllMarker": "显示全部",
       "toast.MarkerFiltered": "标记已添加到“{cat}”（当前被过滤）",
+      "ui.DeleteNoteButton": "删除所有笔记",
+      "ui.DeleteNoteConfirm": "确定要删除所有地区笔记吗？此操作无法撤销。",
+      "ui.NoteList": "笔记列表",
+
 
     },
     ja: {
@@ -803,6 +836,7 @@
       'ui.HelpLine2': 'マーカーを追加する 📍、またはルートを描く',
       'ui.HelpLine3': 'マーカーは自動的に保存されます。必要に応じてヘッダーの「マーカーを保存」ボタンでも手動保存できます。',
       'ui.HelpLine4': 'マップを他のユーザーと共有できます。「共有」としてチェックされたルートとマーカーだけが共有され、それ以外のマーカーは自分専用のままです。',
+      "ui.RegionHelper": "地域名にカーソルを合わせることで、その地域にグローバルノートを追加できます。これらのノートは全てのキャラクター間で共有されます。",
       'ui.DeleteButton': '削除',
       'toast.MarkerNameUpdated': 'マーカー名を保存しました 💾',
       'toast.RouteNameSaved': 'ルート名を保存しました 💾',
@@ -864,6 +898,9 @@
       "ui.MaxLimitCharacter": "キャラクターは10人までしか作成できません。",
       "ui.ShowAllMarker": "すべて表示",
       "toast.MarkerFiltered": "「{cat}」にマーカーを追加しました（現在フィルター中）",
+      "ui.DeleteNoteButton": "すべてのメモを削除",
+      "ui.DeleteNoteConfirm": "すべての地域メモを削除しますか？ この操作は元に戻せません。",
+      "ui.NoteList": "ノート一覧",
 
     }
 

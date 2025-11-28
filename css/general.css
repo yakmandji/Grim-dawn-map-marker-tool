@@ -64,6 +64,8 @@ textarea, [contenteditable="true"] {
   overflow: hidden;
 }
 
+.mt-1{margin-top: 5px;}
+
 .m0{margin: 0!important;}
 
 .mb0{margin-bottom: 0!important;}
@@ -204,20 +206,22 @@ header .sep {
   background: none;
 }
 
-.list,#routesList { 
+.list,#routesList,#noteList { 
   min-height: 0; 
   flex: 1; 
   overflow: auto; 
   border-radius: 10px;
-  padding: 0px 14px 16px 14px;
+  padding: 3px 14px 16px 14px;
 }
 .listItem { 
   position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 19px 8px 19px 8px;
+  padding: 9px 8px 9px 8px;
   align-items: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .listItem:nth-child(odd){

@@ -26,8 +26,8 @@
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.18" />
-  <link rel="stylesheet" href="css/items.css?v1.15" />
+  <link rel="stylesheet" href="css/general.css?v1.19" />
+  <link rel="stylesheet" href="css/items.css?v1.16" />
   <link rel="stylesheet" href="css/responsive.css?v1.12" />
 </head>
 <body>
@@ -164,7 +164,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.4.6</span>
+        <span>V.4.7</span>
       </div>      
       <div class="title">
         <div class="app-logo">
@@ -285,6 +285,15 @@
         <div id="routesList" class="markers-scroll"></div>
       </section>
 
+      <section class="section light side-block" id="notePanel" style="display:flex;flex-direction:column;gap:0;max-height:200px;">
+        <h3 class="mb3 pl-20">
+          <span data-i18n="ui.NoteList">Notes list</span>
+          (<span id="noteCount">0</span>)
+        </h3>
+        <div id="noteList" class="markers-scroll"></div>
+      </section>
+
+
       <div class="section principal tool-section">
         <h3 data-i18n="ui.ToolsTitle">Tools</h3>
         <div class="row">
@@ -297,6 +306,8 @@
         <div class="row" style="margin-top:10px;">
             <button id="clearProfile" class="small danger" data-i18n="ui.DeleteMarkerButton">Delete all markers</button>
             <button id="clearPaths" class="small danger" data-i18n="ui.DeletePathButton">Delete all paths</button>
+            <button id="clearNotes" class="small danger" data-i18n="ui.DeleteNoteButton">Delete all Notes</button>
+
         </div>   
       </div> 
 
@@ -329,6 +340,7 @@
         <li data-i18n="ui.HelpLine4"><b>Vous p ouvez partager votre carte avec d'autres utilisateurs. Seulement les routes et les marqueurs avec l'option partagé seront partagés. Les autres marqueurs seront privés à votre carte</b>
         <li data-i18n="ui.PathHelper">Hold Space to drag the map while drawing a path</li>
         </li>
+        <li data-i18n="ui.RegionHelper">You can add global region notes by hovering over region names. These notes are shared across all your characters</li>
       </ul>
     </div>
 
@@ -404,7 +416,7 @@
             <span data-i18n="ui.SharedMarker">Shared</span>
           </label>         
           <button data-delete class="danger" data-i18n-title="ui.DeleteButton" title="Delete">
-            <img src="img/bin-icon.svg" width="16" >
+            <img src="img/bin-icon.svg" width="14" >
           </button>
         </div>
       </div>
@@ -464,23 +476,23 @@
 <!--END MULTI CHARACTER MODAL ------------------------------------------------------->
 
 
-  <script src="js/ui.lang.js?v=3.42"></script>
+  <script src="js/ui.lang.js?v=3.43"></script>
   <script src="js/core.js?v=3.09"></script>
   <script src="js/ui.rift.js?v=3.87"></script>
   <script src="js/ui.region.js?v=3.94"></script>
   <script src="js/ui.navmarkers.js?v=1.17"></script>
-  <script src="js/ui.map.base.js?v=1.14"></script>
+  <script src="js/ui.map.base.js?v=1.15"></script>
 
-  <script src="js/ui.markers.js?v=12"></script>
-  <script src="js/ui.routes.js?v=11"></script>
+  <script src="js/ui.markers.js?v=16"></script>
+  <script src="js/ui.routes.js?v=15"></script>
 
   <script src="js/ui.core.js?v=3.62"></script>
-  <script src="js/ui.map.render.js?v=13"></script>
+  <script src="js/ui.map.render.js?v=14"></script>
   <script src="js/ui.share.js"></script>
 
   <script src="libs/lz-string.min.js"></script>
   <script src="libs/pako.min.js"></script>
-  <script src="js/ui.tools.js?v=2.93"></script>
+  <script src="js/ui.tools.js?v=2.94"></script>
   <script src="js/ui.overlay.js?v=3.10"></script>
   <script src="js/ui.dungeon.links.js?v=1.1"></script>
   <script src="js/ui.filter.js?v=2.95"></script>

@@ -335,7 +335,7 @@
       centerBtn.title =
         (window.GDMMLang?.t && GDMMLang.t('ui.CenterOnMap')) ||
         'Center on map';
-      centerBtn.innerHTML = '<img src="img/center-icon.svg" width="16">';
+      centerBtn.innerHTML = '<img src="img/center-icon.svg" width="14">';
       centerBtn.addEventListener('click', () => centerRouteOnMap(path));
       row.appendChild(centerBtn);
 
@@ -346,7 +346,7 @@
       deleteBtn.title =
         (window.GDMMLang?.t && GDMMLang.t('ui.DeleteButton')) ||
         'Delete';
-      deleteBtn.innerHTML = '<img src="img/bin-icon.svg" width="16">';
+      deleteBtn.innerHTML = '<img src="img/bin-icon.svg" width="14">';
       deleteBtn.addEventListener('click', () => deleteRoute(path.id));
       row.appendChild(deleteBtn);
 

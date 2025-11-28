@@ -1,11 +1,242 @@
 // ui.map.render.js
 // Module de rendu des éléments sur la carte (routes, markers, admin...)
+//21.51 28/11
 
 (function () {
 
-  /*ROUTE RENDER*/
-  const core = window.GDMMCore || {};
+  const core  = window.GDMMCore || {};
   const state = core.state || {};
+
+  let currentRegionIdForPanel = null;
+
+/* NOTE LIST ------------------------------------------------------*/
+  function getAllRegionNotes() {
+    const raw = localStorage.getItem(REGION_NOTES_KEY);
+    if (!raw) return {};
+
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch (e) {
+      console.warn('[GDMM] Failed to parse region notes store', e);
+      return {};
+    }
+
+    const profile = getActiveProfileName();
+    if (!profile) return {};
+
+    return data[profile] || {};
+  }
+
+
+  function buildNoteList() {
+    const listEl  = document.getElementById('noteList');
+    const countEl = document.getElementById('noteCount');
+    if (!listEl || !countEl) return;
+
+    const notes     = getAllRegionNotes();
+    const regionIds = Object.keys(notes);
+
+    // MAJ compteur
+    countEl.textContent = regionIds.length;
+
+    if (regionIds.length === 0) {
+      listEl.innerHTML = `<div class="empty-list" data-i18n="ui.NoNotes">(Aucune note)</div>`;
+      return;
+    }
+
+    listEl.innerHTML = '';
+
+    regionIds.forEach(regionId => {
+
+      // Nom localisé depuis le DOM
+      let regionName = regionId;
+      const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+      if (regionEl) {
+        const labelEl = regionEl.querySelector('.region-label');
+        if (labelEl && labelEl.textContent.trim()) {
+          regionName = labelEl.textContent.trim();
+        }
+      }
+
+      // Ligne
+      const row = document.createElement('div');
+      row.className = 'listItem';
+      row.dataset.regionId = regionId;
+
+      row.innerHTML = `
+        <img src="img/info-icon.svg" class="icon-16" width="20"/>
+        <span class="note-region-name">${regionName}</span>
+
+        <button type="button"
+                class="marker-center small"
+                title="${GDMMLang.t('ui.CenterOnMap')}">
+          <img src="img/center-icon.svg" width="14">
+        </button>
+
+        <button type="button"
+                class="danger small note-delete-btn"
+                title="${GDMMLang.t('ui.DeleteButton')}">
+          <img src="img/bin-icon.svg" width="14">
+        </button>
+      `;
+
+      // --- Bouton center ---
+      const centerBtn = row.querySelector('.marker-center');
+      if (centerBtn) {
+        centerBtn.addEventListener('click', () => {
+          const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+          if (!regionEl) return;
+
+          const xp = parseFloat(regionEl.dataset.xp);
+          const yp = parseFloat(regionEl.dataset.yp);
+          if (isNaN(xp) || isNaN(yp)) return;
+
+          window.centerOn(xp, yp, 1.0);
+
+          // Pulse animation
+          regionEl.classList.add('marker-highlight');
+          setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
+        });
+      }
+
+      // --- Bouton delete (sans confirm) ---
+      const deleteBtn = row.querySelector('.note-delete-btn');
+      if (deleteBtn) {
+        deleteBtn.addEventListener('click', () => {
+          // 1) Efface du store
+          setRegionNote(regionId, '');
+
+          // 2) Met à jour l’icône info sur la map
+          const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+          if (regionEl) {
+            refreshRegionNoteIndicator(regionEl, regionId);
+          }
+
+          // 3) Rafraîchir la liste
+          buildNoteList();
+        });
+      }
+
+      listEl.appendChild(row);
+    });
+  }
+
+
+
+/*END -Note list-----------------------------------------------------------------*/
+
+
+  // --- NOTES DE REGION : stockage global, partagé entre tous les personnages ---
+  // localStorage: { [profileName]: { [regionId]: "note" } }
+  const REGION_NOTES_KEY = 'gdmm_region_notes_v1';
+  let regionNotesStore = null;
+
+  function getActiveProfileName() {
+    return state && state.active ? state.active : null;
+  }
+
+  function loadRegionNotesStore() {
+    if (regionNotesStore) return regionNotesStore;
+    try {
+      const raw = localStorage.getItem(REGION_NOTES_KEY);
+      regionNotesStore = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      console.warn('[GDMM] Failed to parse region notes store', e);
+      regionNotesStore = {};
+    }
+    return regionNotesStore;
+  }
+
+  function saveRegionNotesStore() {
+    if (!regionNotesStore) return;
+    try {
+      localStorage.setItem(REGION_NOTES_KEY, JSON.stringify(regionNotesStore));
+    } catch (e) {
+      console.warn('[GDMM] Failed to save region notes store', e);
+    }
+  }
+
+  function getRegionNote(regionId) {
+    const store   = loadRegionNotesStore();
+    const profile = getActiveProfileName();
+    if (!profile || !regionId) return '';
+    const byProfile = store[profile] || {};
+    return byProfile[regionId] || '';
+  }
+
+  function setRegionNote(regionId, text) {
+    const store   = loadRegionNotesStore();
+    const profile = getActiveProfileName();
+    if (!profile || !regionId) return;
+
+    if (!store[profile]) store[profile] = {};
+
+    if (text && text.trim()) {
+      store[profile][regionId] = text.trim();
+    } else {
+      delete store[profile][regionId];
+    }
+
+    saveRegionNotesStore();
+  }
+
+    function refreshRegionNoteIndicator(regionEl, regionId) {
+      if (!regionEl || !regionId) return;
+
+      // nettoyer l'ancien éventuel indicateur
+      const oldIcon = regionEl.querySelector('.region-note-indicator');
+      if (oldIcon) oldIcon.remove();
+
+      const note = getRegionNote(regionId);
+      const trimmed = note ? note.trim() : '';
+
+      if (!trimmed) {
+        regionEl.classList.remove('has-region-note');
+        return;
+      }
+
+      regionEl.classList.add('has-region-note');
+
+      const infoIcon = document.createElement('img');
+      infoIcon.className = 'region-note-indicator';
+      infoIcon.src = 'img/info-icon.svg';
+      infoIcon.alt = 'Note';
+
+      // éviter de démarrer un pan quand on clique sur le i
+      infoIcon.addEventListener('pointerdown', (e) => {
+        e.stopPropagation();
+      });
+
+      // Tooltip lecture seule
+      infoIcon.addEventListener('mouseenter', (ev) => {
+        const txt = getRegionNote(regionId);
+        if (!txt) return;
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'region-note-tooltip';
+        tooltip.textContent = txt;
+
+        document.body.appendChild(tooltip);
+
+        const r = ev.target.getBoundingClientRect();
+        tooltip.style.left = `${r.left}px`;
+        tooltip.style.top  = `${r.bottom + 6}px`;
+
+        ev.target._noteTooltip = tooltip;
+      });
+
+      infoIcon.addEventListener('mouseleave', (ev) => {
+        const tip = ev.target._noteTooltip;
+        if (tip) tip.remove();
+        ev.target._noteTooltip = null;
+      });
+
+      regionEl.appendChild(infoIcon);
+    }
+
+
+
   const currentProfile = core.currentProfile || function(){ return null; };
   const iconFor = core.iconFor || function () { return ''; };
   const getPathMode = window.UiRoutes?.getPathMode || function(){ return { active:false, current:null }; };
@@ -115,7 +346,7 @@
               if (row) {
                 row.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 row.classList.add('highlight');
-                setTimeout(() => row.classList.remove('highlight'), 1500);
+                setTimeout(() => row.classList.remove('highlight'), 2200);
               }
             });
           }
@@ -192,8 +423,6 @@
                 pin.appendChild(sharedBadge);
               }
 
-              el.appendChild(pin);
-
               // --- LABEL ---
               const lab = document.createElement('div');
               lab.className = 'label';
@@ -258,7 +487,7 @@
                       if (row) {
                         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         row.classList.add('highlight');
-                        setTimeout(() => row.classList.remove('highlight'), 1500);
+                        setTimeout(() => row.classList.remove('highlight'), 2200);
                       }
                     }
                     state.lastCreatedMarkerId = null; 
@@ -356,6 +585,9 @@
         regionData.forEach(m => {
           const el = document.createElement('div');
           el.classList.add('marker-region', 'locked');
+          el.dataset.regionId = m.id;
+          el.dataset.xp = m.xp;
+          el.dataset.yp = m.yp;
 
           if (m.isDungeon) {
             el.classList.add('marker-region-dungeon');
@@ -370,12 +602,98 @@
           lab.textContent = labelText;
           el.appendChild(lab);
 
+          // --- Tooltip lecture seule sur tout le label ---
+          lab.addEventListener('mouseenter', (ev) => {
+              const txt = getRegionNote(m.id);
+              if (!txt) return;
+
+              const tooltip = document.createElement('div');
+              tooltip.className = 'region-note-tooltip';
+              tooltip.textContent = txt;
+
+              document.body.appendChild(tooltip);
+
+              const r = ev.target.getBoundingClientRect();
+              tooltip.style.left = `${r.left + (r.width / 2)}px`;
+              tooltip.style.transform = "translateX(-50%)";
+              tooltip.style.top  = `${r.bottom + 6}px`;
+
+              ev.target._noteTooltip = tooltip;
+          });
+
+          lab.addEventListener('mouseleave', (ev) => {
+              const tip = ev.target._noteTooltip;
+              if (tip) tip.remove();
+              ev.target._noteTooltip = null;
+          });
+
+          // Bloquer le pan SI une note existe pour cette région
+          lab.addEventListener('pointerdown', (e) => {
+            const note = getRegionNote(m.id);
+            if (note && note.trim()) {
+              // il y a une note → on ne laisse pas le viewport capter le pointer
+              e.stopPropagation();
+            }
+          });
+
+          // --- Indicateur si une note existe déjà pour cette région ---
+
+          try {
+            refreshRegionNoteIndicator(el, m.id);
+          } catch (e) {
+            console.warn('[GDMM] Failed to refresh region note for', m.id, e);
+          }
+
+
+          // --- Icône crayon pour futur système de notes ---
+          const editIcon = document.createElement('button');
+          editIcon.className = 'region-note-edit';
+          editIcon.type = 'button';
+
+          const editImg = document.createElement('img');
+          editImg.src = 'img/edit-icon.svg';
+          editImg.alt = (window.GDMMLang && GDMMLang.t)
+            ? GDMMLang.t('ui.EditRegionNote')
+            : 'Edit note';
+
+          editIcon.appendChild(editImg);
+
+          editIcon.addEventListener('pointerdown', (e) => {
+            // On bloque le pan quand on clique sur l'icône
+            e.stopPropagation();
+          });
+
+          editIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            const regionId = m.id;
+            openRegionNotePanel(regionId, labelText, el);
+          });
+
+          el.appendChild(editIcon);
+
           const pt = pctToPx(m.xp, m.yp);
           el.style.left = pt.x + 'px';
           el.style.top  = pt.y + 'px';
 
           el.classList.add('is-static');
           inner.appendChild(el);
+
+          lab.addEventListener('click', (e) => {
+            // on évite de marcher sur le clic du crayon
+            if (e.target.closest('.region-note-edit')) return;
+
+            const noteList = document.getElementById('noteList');
+            if (!noteList) return;
+
+            const row = noteList.querySelector(`.listItem[data-region-id="${m.id}"]`);
+            if (!row) return;
+
+            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            row.classList.add('highlight');
+            setTimeout(() => row.classList.remove('highlight'), 2200);
+          });
+
         });
 
         // 2b) Search index (regions + rifts)
@@ -530,8 +848,123 @@
             inner.appendChild(el);
           });
         }
+        buildNoteList();
       }
 
+    /* ---------------------------------------------------------------NOTE PANNER*/
+
+    function openRegionNotePanel(regionId, labelText, anchorEl) {
+      // Traduction actuelle pour le bouton Save
+      const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
+        ? GDMMLang.t.bind(GDMMLang)
+        : null;
+      const saveLabel = t ? t('ui.SaveTitle') : 'Save';
+
+      // créer le panel s’il n’existe pas
+      let panel = document.getElementById('regionNotePanel');
+      if (!panel) {
+        panel = document.createElement('div');
+        panel.id = 'regionNotePanel';
+        panel.className = 'region-note-panel';
+
+        panel.innerHTML = `
+          <div class="region-note-header">
+            <span class="region-note-title"></span>
+            <button type="button" class="region-note-close">✕</button>
+          </div>
+          <textarea class="region-note-text markers-scroll" rows="5" spellcheck="false"></textarea>
+          <div class="region-note-actions">
+            <button type="button" class="mt-1 region-note-save">${saveLabel}</button>
+          </div>
+        `;
+
+        document.body.appendChild(panel);
+
+        // close on X
+        panel.querySelector('.region-note-close').addEventListener('click', () => {
+          panel.style.display = 'none';
+        });
+
+        // FERMETURE EN CLIQUANT DEHORS
+        document.addEventListener(
+          'pointerdown',
+          function handleOutsideClick(e) {
+            const p = document.getElementById('regionNotePanel');
+            if (!p || p.style.display === 'none') return;
+
+            // si on clique dans la fenêtre -> ne rien faire
+            if (p.contains(e.target)) return;
+
+            // si on clique sur le bouton crayon -> ne rien faire (ça rouvre le panneau)
+            if (e.target.closest('.region-note-edit')) return;
+
+            // si on clique sur une région -> ne pas fermer (pan doit fonctionner)
+            if (e.target.closest('.marker-region')) return;
+
+            // on ferme proprement
+            p.style.display = 'none';
+          },
+          true
+        );
+
+        // SAVE → enregistre dans le store global + met à jour l’icône
+        panel.querySelector('.region-note-save').addEventListener('click', () => {
+          const txt = panel.querySelector('.region-note-text').value || '';
+          const trimmed = txt.trim();
+
+          if (currentRegionIdForPanel) {
+            // 1) Sauvegarde globale
+            setRegionNote(currentRegionIdForPanel, txt);
+            buildNoteList();
+            // 2) Mise à jour visuelle via le helper
+            const regionEl = document.querySelector(
+              `.marker-region[data-region-id="${currentRegionIdForPanel}"]`
+            );
+            if (regionEl && typeof refreshRegionNoteIndicator === 'function') {
+              refreshRegionNoteIndicator(regionEl, currentRegionIdForPanel);
+            }
+          }
+
+          panel.style.display = 'none';
+        });
+      } else {
+        // Panel déjà créé : mettre à jour le texte du bouton avec la langue actuelle
+        const btn = panel.querySelector('.region-note-save');
+        if (btn) btn.textContent = saveLabel;
+      }
+
+      // ==== À partir d’ici, c’est exécuté à CHAQUE ouverture du panel ====
+
+      // garder l’ID courant en mémoire
+      currentRegionIdForPanel = regionId;
+      window.currentRegionIdForPanel = regionId; // debug optionnel
+
+      // set du titre (le label de région est déjà localisé)
+      const titleEl = panel.querySelector('.region-note-title');
+      if (titleEl) {
+        titleEl.textContent = labelText || 'Region note';
+      }
+
+      // set du contenu existant (lecture dans le store global)
+      const txtEl = panel.querySelector('.region-note-text');
+      if (txtEl) {
+        txtEl.value = getRegionNote(regionId) || '';
+        txtEl.maxLength = 500;
+      }
+
+      // positionner le panel par rapport au marker
+      const rect = anchorEl.getBoundingClientRect();
+      panel.style.position = 'fixed';
+      panel.style.left = `${rect.left + 10}px`;
+      panel.style.top  = `${rect.bottom + 8}px`;
+      panel.style.display = 'block';
+
+      if (txtEl) {
+        txtEl.focus();
+      }
+    }
+
+    /* ----------------------------------------------------------------END NOTE PANEL*/
 
 
   // Export public
