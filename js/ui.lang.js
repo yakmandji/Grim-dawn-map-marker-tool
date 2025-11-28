@@ -99,7 +99,7 @@
       "toast.MarkerFiltered": "Marker added to \"{cat}\" (currently filtered)",
       "ui.DeleteNoteButton": "Delete all notes",
       "ui.DeleteNoteConfirm": "Delete all region notes? This cannot be undone.",
-      "ui.NoteList": "Note list",
+      "ui.NoteList": "Notes list",
       "ui.NoNotes": "No notes",
       "toast.NoteDeleted": "Note deleted 🗑️",
       "toast.NoteSaved": "Note saved 💾",
