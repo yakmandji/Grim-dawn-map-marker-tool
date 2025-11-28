@@ -100,7 +100,6 @@
       "ui.DeleteNoteButton": "Delete all notes",
       "ui.DeleteNoteConfirm": "Delete all region notes? This cannot be undone.",
       "ui.NoteList": "Notes list",
-      "ui.NoNotes": "No notes",
       "toast.NoteDeleted": "Note deleted 🗑️",
       "toast.NoteSaved": "Note saved 💾",
 
@@ -202,7 +201,6 @@
       "ui.DeleteNoteButton": "Supprimer toutes les notes",
       "ui.DeleteNoteConfirm": "Supprimer toutes les notes de région ? Cette action est définitive.",
       "ui.NoteList": "Liste des notes",
-      "ui.NoNotes": "Aucune note",
       "toast.NoteDeleted": "Note supprimée 🗑️",
       "toast.NoteSaved": "Note enregistrée 💾",      
 
@@ -304,7 +302,6 @@
       "ui.DeleteNoteButton": "Eliminar todas las notas",
       "ui.DeleteNoteConfirm": "¿Eliminar todas las notas de región? Esta acción no se puede deshacer.",
       "ui.NoteList": "Lista de notas",
-      "ui.NoNotes": "Sin notas",
       "toast.NoteDeleted": "Nota eliminada 🗑️",
       "toast.NoteSaved": "Nota guardada 💾",
 
@@ -407,7 +404,6 @@
       "ui.DeleteNoteButton": "Alle Notizen löschen",
       "ui.DeleteNoteConfirm": "Alle Regionsnotizen löschen? Dies kann nicht rückgängig gemacht werden.",
       "ui.NoteList": "Notizliste",
-      "ui.NoNotes": "Keine Notizen",
       "toast.NoteDeleted": "Notiz gelöscht 🗑️",
       "toast.NoteSaved": "Notiz gespeichert 💾",
 
@@ -510,8 +506,7 @@
       "toast.MarkerFiltered": "Marcador adicionado a \"{cat}\" (atualmente filtrado)",
       "ui.DeleteNoteButton": "Apagar todas as notas",
       "ui.DeleteNoteConfirm": "Apagar todas as notas da região? Esta ação não pode ser revertida.",
-      "ui.NoteList": "Lista de notas",      
-      "ui.NoNotes": "Nenhuma nota",
+      "ui.NoteList": "Lista de notas",
       "toast.NoteDeleted": "Nota apagada 🗑️",
        "toast.NoteSaved": "Nota salvata 💾",
 
@@ -613,7 +608,6 @@
     "ui.DeleteNoteButton": "Удалить все заметки",
     "ui.DeleteNoteConfirm": "Удалить все региональные заметки? Это действие необратимо.",
     "ui.NoteList": "Список заметок",
-    "ui.NoNotes": "Нет заметок",
     "toast.NoteDeleted": "Заметка удалена 🗑️",
     "toast.NoteSaved": "Заметка сохранена 💾",
 
@@ -717,7 +711,6 @@
        "ui.DeleteNoteButton": "Elimina tutte le note",
       "ui.DeleteNoteConfirm": "Eliminare tutte le note della regione? Questa azione è irreversibile.",
       "ui.NoteList": "Elenco delle note",
-      "ui.NoNotes": "Nessuna nota",
       "toast.NoteDeleted": "Nota eliminata 🗑️",
       "toast.NoteSaved": "Nota salvata 💾",
 
@@ -820,7 +813,6 @@
       "ui.DeleteNoteButton": "删除所有笔记",
       "ui.DeleteNoteConfirm": "确定要删除所有地区笔记吗？此操作无法撤销。",
       "ui.NoteList": "笔记列表",
-      "ui.NoNotes": "没有笔记",
       "toast.NoteDeleted": "笔记已删除 🗑️",
       "toast.NoteSaved": "笔记已保存 💾",
 
@@ -922,7 +914,6 @@
       "ui.DeleteNoteButton": "すべてのメモを削除",
       "ui.DeleteNoteConfirm": "すべての地域メモを削除しますか？ この操作は元に戻せません。",
       "ui.NoteList": "ノート一覧",
-      "ui.NoNotes": "ノートなし",
       "toast.NoteDeleted": "ノートを削除しました 🗑️",
       "toast.NoteSaved": "ノートを保存しました 💾",
 

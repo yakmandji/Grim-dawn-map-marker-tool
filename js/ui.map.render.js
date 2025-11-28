@@ -41,7 +41,7 @@
     countEl.textContent = regionIds.length;
 
     if (regionIds.length === 0) {
-      listEl.innerHTML = `<div class="empty-list" data-i18n="ui.NoNotes">(Aucune note)</div>`;
+      listEl.innerHTML = `<div class="empty-list" ></div>`;
       return;
     }
 
