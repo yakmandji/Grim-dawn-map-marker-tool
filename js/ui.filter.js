@@ -28,12 +28,27 @@
 
       // MAP
       document.querySelectorAll('.marker').forEach(el => {
+        const cl = el.classList;
+
+        // Catégorie user (general / quest / boss / loot / waypoint / donjon / npc)
+        // → même logique que plus bas dans "MODE CATEGORIE EXCLUSIVE"
+        const markerCat = [...cl].find(c =>
+          ['general','quest','boss','loot','waypoint','donjon','npc'].includes(c)
+        );
+
+        // Pas de catégorie = marker admin (rift, etc.) → toujours visible
+        if (!markerCat) {
+          el.style.display = "";
+          return;
+        }
+
+        // Filtre "Shared only" appliqué UNIQUEMENT aux user markers
         const isDone   = el.dataset.done === "1";
-        const isShared = el.classList.contains('shared');
+        const isShared = cl.contains('shared');
         el.style.display = (isShared || isDone) ? "" : "none";
       });
 
-      // LISTE
+      // LISTE → uniquement les markers user, donc on garde la logique simple
       document.querySelectorAll('#list .listItem').forEach(el => {
         const isShared = el.classList.contains('shared');
         el.style.display = isShared ? "" : "none";
@@ -41,6 +56,7 @@
 
       return;
     }
+
 
     /************************************************************
      * 2) MODE ALL
