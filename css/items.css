@@ -1167,6 +1167,7 @@ input[type="color"]::-moz-color-swatch {
   font-size: 12px;
 }
 
+
 /*------------------------------------*/
 
 
@@ -1211,6 +1212,15 @@ input[type="color"]::-moz-color-swatch {
 .marker-region-dungeon .region-label.opacity{
   opacity: 0.90;
   color: #a4927a;
+}
+
+.marker-region-dungeon .region-note-indicator {
+  opacity: 0.35; 
+  transition: opacity 0.25s ease;
+}
+
+.marker-region-dungeon .region-label.opacity + .region-note-indicator {
+  opacity: 1;
 }
 
 /*ADMIN MARKERS TOOGLE*/
