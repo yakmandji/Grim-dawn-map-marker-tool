@@ -188,11 +188,11 @@
         </div>
         <div class="row" style="margin-top: 6px;">
           <select id="newCategory" class="select-green">
-            <option value="General" data-i18n="ui.GeneralMarker">General</option>
+            <option value="General" data-i18n="ui.GeneralMarker">Personal marker</option>
             <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
             <option value="Boss" data-i18n="ui.BossMarker">Boss</option>
             <option value="Loot" data-i18n="ui.LootMarker">Loot</option>
-            <option value="Waypoint" data-i18n="ui.WaypointMarker">Waypoint</option>
+            <option value="Waypoint" data-i18n="ui.WaypointMarker">Passage</option>
             <option value="Donjon" data-i18n="ui.DonjonMarker">Donjon</option>
             <option value="NPC" data-i18n="ui.NPCMarker">NPC</option>
           </select>
@@ -251,7 +251,7 @@
                     <img src="img/all-icon.svg" alt="All" >
                 </div>
                 <button class="filterToggle" data-cat="General" data-i18n-title="ui.ShowHideGeneral" title="Show General">
-                  <img src="img/general.svg" alt="General">
+                  <img src="img/waypoint.svg" alt="General">
                 </button>
                 <button class="filterToggle" data-cat="Quest" data-i18n-title="ui.ShowHideQuest" title="Show Quests">
                   <img src="img/quest2.svg" alt="Quest">
@@ -263,7 +263,7 @@
                   <img src="img/loot2.svg" alt="Loot">
                 </button>
                 <button class="filterToggle" data-cat="Waypoint" data-i18n-title="ui.ShowHideWaypoint" title="Show Waypoint">
-                  <img src="img/waypoint.svg" alt="Loot">
+                  <img src="img/passage.svg" alt="Loot">
                 </button>
                 <button class="filterToggle" data-cat="Donjon" data-i18n-title="ui.ShowHideDonjon" title="Show Donjon">
                   <img src="img/donjon2.svg" alt="Loot">
@@ -387,9 +387,9 @@
             <img src="img/center-icon.svg" width="14" data-i18n-title="ui.CenterOnMap" >
          </button>
         </div>
-        <div class="row" style="gap:6px;margin-top:6px">
+        <div class="row" style="justify-content: space-between; margin-top:6px">
           <select data-cat class="small select-green">
-            <option value="General" data-i18n="ui.GeneralMarker">General</option>
+            <option value="General" data-i18n="ui.GeneralMarker">Personal marker</option>
             <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
             <option value="Boss" data-i18n="ui.BossMarker">Boss</option>
             <option value="Loot" data-i18n="ui.LootMarker">Loot</option>
@@ -401,7 +401,7 @@
           <!-- Dropdown new -->
             <div class="custom-dropdown marker-cat-dropdown">
               <button class="select-current select-green">
-                <img class="marker-cat-icon" src="" width="15" height="15" style="margin-right:6px;">
+                <img class="marker-cat-icon" src="" width="15" height="15" style="margin-right:2px;">
                 <span class="select-label"></span>
               </button>
               <div class="custom-dropdown-inner"></div>

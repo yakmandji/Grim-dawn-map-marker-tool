@@ -294,11 +294,11 @@ const { $, inner } = window.UiCore;
     if (!inner) return;
 
     const categoryIcons = {
-      General:  'img/general.svg',
+      General:  'img/waypoint.svg',
       Quest:    'img/quest.svg',
       Boss:     'img/boss.svg',
       Loot:     'img/loot.svg',
-      Waypoint: 'img/waypoint.svg',
+      Waypoint: 'img/passage.svg',
       Donjon:   'img/donjon.svg',
       NPC:      'img/npc.svg',
     };

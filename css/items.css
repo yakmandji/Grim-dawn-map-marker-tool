@@ -18,10 +18,14 @@
   display: inline-block;
 }
 
+#list .custom-dropdown{
+  max-width: 170px;
+}
+
 .select-current {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 2px;
   padding: 8px 10px;
 }
 
@@ -71,10 +75,7 @@
   position: initial;
   margin-top: 3px;
   padding: 2px 12px;
-}
-
-#list .custom-dropdown.open .custom-dropdown-inner {
-  position: relative;
+  font-size: 11px;
 }
 
 .custom-dropdown-inner .option-item{
@@ -221,7 +222,7 @@ button.cancel{
 
 #routesPanel button.danger,
 #list button.danger{
-  max-width: 40px;
+  max-width: 32px;
 }
 
 button.danger:hover {
@@ -252,7 +253,7 @@ input[type="password"]:focus
 
 .done-input{
   flex: 0 0 auto;
-  padding: 4px 5px 4px 3px;
+  padding: 4px 1px 4px 1px;
   border-radius: 6px;
   display: flex;
 }
@@ -496,7 +497,7 @@ button.marker-center,
 }
 
 #list .select-current{
-  padding: 4px 6px 5px 7px;
+  padding: 4px 5px 5px 5px;
 }
 
 @keyframes highlightPulse {
@@ -613,8 +614,8 @@ input[type="color"]::-moz-color-swatch {
 
 .path-badge {
   font-size: .75rem;
-  background: rgba(255,204,0,.15);
-  border: 1px solid rgba(255,204,0,.6);
+  background: rgb(55 36 12);
+  border: 1px solid rgb(145 121 99);
   padding: 2px 8px;
   border-radius: 999px;
   display: none;
@@ -1348,6 +1349,9 @@ input[type="color"]::-moz-color-swatch {
   text-shadow: 0 0 0 #c3f0dd;
 }
 
+#list .select-green{
+  font-size: 11px;
+}
 
 /* --- Location search bar (bottom left) --- */
 

@@ -133,13 +133,15 @@
       let sharedCount = 0;
 
       for (const m of p.markers) {
+        // On ne compte que les marqueurs NON terminés pour les filtres
         if (m.done) continue;
+
         const cat = m.cat || 'General';
         counts[cat] = (counts[cat] || 0) + 1;
         if (m.shared) sharedCount++;
       }
 
-      // --- MAJ des compteurs sur chaque bouton de catégorie ---
+      // --- MAJ des compteurs + visibilité des onglets de catégorie ---
       document.querySelectorAll('.filterToggle[data-cat]').forEach(btn => {
         const cat = btn.getAttribute('data-cat') || 'General';
         const count = counts[cat] || 0;
@@ -152,15 +154,29 @@
         }
 
         if (count > 0) {
+          // Il y a des marqueurs dans cette catégorie → on affiche le bouton
           badge.textContent = count;
           badge.style.display = '';
+          btn.style.display = '';           // bouton visible
         } else {
+          // Aucun marqueur → on cache complètement l’onglet
           badge.textContent = '';
           badge.style.display = 'none';
+
+          // Si ce filtre était actif, on le désactive et on repasse sur "All"
+          if (btn.classList.contains('is-on')) {
+            btn.classList.remove('is-on');
+            const allBtn = document.querySelector('.filterToggle[data-all]');
+            if (allBtn) {
+              allBtn.classList.add('is-on');
+            }
+          }
+
+          btn.style.display = 'none';       // bouton masqué
         }
       });
 
-      // --- MAJ du compteur pour SHARED ---
+      // --- MAJ du compteur / visibilité pour SHARED ---
       const sharedBtn = document.querySelector('.filterToggle[data-shared]');
       if (sharedBtn) {
         let badge = sharedBtn.querySelector('.filterCount');
@@ -173,12 +189,27 @@
         if (sharedCount > 0) {
           badge.textContent = sharedCount;
           badge.style.display = '';
+          sharedBtn.style.display = '';
         } else {
           badge.textContent = '';
           badge.style.display = 'none';
+
+          if (sharedBtn.classList.contains('is-on')) {
+            sharedBtn.classList.remove('is-on');
+            const allBtn = document.querySelector('.filterToggle[data-all]');
+            if (allBtn) {
+              allBtn.classList.add('is-on');
+            }
+          }
+
+          sharedBtn.style.display = 'none';
         }
       }
+
+      // On ré-applique les filtres au cas où on vient de changer l’onglet actif
+      applyCategoryFilters();
     }
+
 
 
 
