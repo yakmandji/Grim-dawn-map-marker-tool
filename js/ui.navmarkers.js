@@ -2,6 +2,27 @@
 (function () {
 
 window.NAV_MARKERS_CAIRN = [
+
+    /*Mountain deep*/
+        {
+        xp: 32.22, 
+        yp: 76.04,
+        icon: 'img/icon-link.png',
+        tag: 'tagGoTo + tagMapConflagration02',
+        targetXp: 31.96,
+        targetYp: 74.79,
+        targetScale: 1.2
+      },  
+      {
+        xp: 31.96,
+        yp: 74.79,
+        icon: 'img/icon-link.png',
+        tag: 'tagGoTo + tagMapConflagration02',
+        targetXp: 32.22,
+        targetYp: 76.04,
+        targetScale: 1.2
+      },  
+      /*------------Mountain deep*/
       {
         xp: 84.15,
         yp: 47.40,

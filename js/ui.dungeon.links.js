@@ -8,27 +8,18 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_convict_tunnel", xp: 63.30, yp: 89.56, tag: "Convict Tunnel" },
 { id: "entry_burial_cave", xp: 66.25, yp: 83.00, tag: "Burial Cave" },
 { id: "entry_burial_cave_b", xp: 65.19, yp: 82.23, tag: "Burial Cave b" },
-
-
 { id: "entry_cave", xp: 70.60, yp: 78.42, tag: "Cave" },
 { id: "entry_cave2", xp: 70.47, yp: 79.60, tag: "Cave 2" },
 { id: "entry_cultists_lair", xp: 70.48, yp: 76.12, tag: "Cultists Lair" },
 { id: "entry_caverne_2", xp: 71.36, yp: 73.50, tag: "Caverne 2" },
 { id: "entry_caverne_2b", xp: 69.33, yp: 72.90, tag: "Caverne 2" },
-
 { id: "entry_caverne_3", xp: 69.09, yp: 74.72, tag: "Caverne 3" },
 { id: "entry_caverne_3b", xp: 68.20, yp: 75.91, tag: "Caverne 3b" },
-
 { id: "entry_burial_cave_2a", xp: 69.07, yp: 68.91, tag: "burial cave 2a" },
 { id: "entry_burial_cave_2b", xp: 68.18, yp: 69.30, tag: "burial cave 2b" },
-
 { id: "entry_river_passage", xp: 71.13, yp: 63.24, tag: "river passage" },
 { id: "entry_river_passage2", xp: 70.40, yp: 62.10, tag: "river passage2" },
-
 { id: "entry_festering_lair", xp: 65.86, yp: 62.66, tag: "festering lair" },
-
-
-
 { id: "entry_depraved_sanctuary", xp: 73.26, yp: 71.31, tag: "Depraved Sanctuary" },
 { id: "entry_flooded_passage", xp: 67.66, yp: 71.93, tag: "Flooded Passage" },
 { id: "entry_flooded_passage2", xp: 70.50, yp: 71.40, tag: "Flooded Passage 2" },
@@ -73,11 +64,13 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_arkovian_undercity", xp: 49.16, yp: 79.23, tag: "Arkovian Undercity" },
 { id: "entry_arkovian_undercity2", xp: 50.29, yp: 81.46, tag: "Arkovian Undercity 2" },
 { id: "entry_smuggler_pass", xp: 39.41, yp: 77.83, tag: "Smuggler Pass" },
+{ id: "entry_smuggler_pass2", xp: 29.37, yp: 77.95, tag: "Smuggler Pass2" },
+
+
 { id: "entry_forgotten_depths", xp: 41.45, yp: 75.93, tag: "Forgotten Depths" },
 { id: "entry_forgotten_depths2", xp: 40.97, yp: 75.01, tag: "Forgotten Depths 2" },
 { id: "entry_forgotten_depths3", xp: 41.88, yp: 73.90, tag: "Forgotten Depths 3" },
 { id: "entry_mountain_deep", xp: 31.21, yp: 76.26, tag: "Mountain Deep" },
-{ id: "entry_mountain_deep2", xp: 31.96, yp: 74.78, tag: "Mountain Deep 2" },
 { id: "entry_mountain_deep3", xp: 36.53, yp: 69.71, tag: "Mountain Deep 3" },
 { id: "entry_tyrant_hold", xp: 44.60, yp: 71.64, tag: "Tyrant Hold" },
 { id: "entry_royal_hive", xp: 25.62, yp: 66.38, tag: "Royal Hive" },
@@ -207,7 +200,7 @@ window.DUNGEON_LINKS = {
   "hannefy_mine": ["entry_hannefy_mine","entry_hannefy_mine2"],
   "cronleys_hideout": ["entry_cronleys_hideout","entry_cronleys_hideout2"],
   "arkovian_undercity": ["entry_arkovian_undercity","entry_arkovian_undercity2"],
-  "smuggler_pass": ["entry_smuggler_pass"],
+  "smuggler_pass": ["entry_smuggler_pass", "entry_smuggler_pass2"],
   "forgotten_depths": ["entry_forgotten_depths","entry_forgotten_depths2","entry_forgotten_depths3"],
   "mountain_deep": ["entry_mountain_deep","entry_mountain_deep2","entry_mountain_deep3"],
   "tyrant_hold": ["entry_tyrant_hold"],
