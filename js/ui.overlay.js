@@ -174,10 +174,8 @@ function renderDungeonOverlays() {
     });
 
     wrap.addEventListener('pointerleave', (e) => {
-      if (e.pointerType === 'touch') return; // on ne cache pas à chaque tap
-      if (window.clearDungeonLinks) {
-        window.clearDungeonLinks();
-      }
+      if (e.pointerType === 'touch') return;
+      // Ne rien faire : on laisse le layer + traits visibles
     });
 
     // --- TAP SUR MOBILE : TOGGLE D'UN OVERLAY ---

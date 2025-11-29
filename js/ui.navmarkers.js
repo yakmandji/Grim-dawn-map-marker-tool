@@ -11,18 +11,50 @@ window.NAV_MARKERS_CAIRN = [
         tag: 'tagGoTo + tagMapConflagration02',
         targetXp: 31.96,
         targetYp: 74.79,
-        targetScale: 1.2
+        targetScale: 1,
+        id: 'MountainDeepGo',
+        targetId: 'DeadMansGulch' 
+
       },  
       {
         xp: 31.96,
         yp: 74.79,
         icon: 'img/icon-link.png',
-        tag: 'tagGoTo + tagMapConflagration02',
+        tag: 'tagGoTo + tagMapDeadmansGulch',
         targetXp: 32.22,
         targetYp: 76.04,
-        targetScale: 1.2
+        targetScale: 1,
+        id: 'DeadMansGulch',
+        targetId: 'MountainDeepGo' 
       },  
       /*------------Mountain deep*/
+
+    /*Port Valbury Middle teleport -----------------------------------------------*/
+
+      {
+        xp: 40.17, 
+        yp: 25.72,
+        icon: 'img/icon-link.png',
+        tag: 'tagGoTo + tagMapDeadmansGulch',
+        targetXp: 41.16,
+        targetYp: 24.68,
+        targetScale: 1,
+        id: 'ValburyOldTwon',
+        targetId: 'ValburyHightTwon' 
+      }, 
+      {
+        xp: 41.16, 
+        yp: 24.68,
+        icon: 'img/icon-link.png',
+        tag: 'tagGoTo + tagMapDeadmansGulch',
+        targetXp: 40.17,
+        targetYp: 25.72,
+        targetScale: 1,
+        id: 'ValburyHightTwon',
+        targetId: 'ValburyOldTwon' 
+      },       
+/*---------------------------------------------------------Port Valbury Middle teleport*/
+
       {
         xp: 84.15,
         yp: 47.40,
@@ -31,7 +63,9 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 20.11,
         targetYp: 95.22,
-        targetScale: 1
+        targetScale: 1,
+        id: 'CovensRefugeGo',
+        targetId: 'ConclaveOfThree'
       },  
       {
         xp: 37.5,
@@ -41,7 +75,9 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 20.11,
         targetYp: 95.22,
-        targetScale: 1
+        targetScale: 1,
+        id: 'HomeSteadGo',
+        targetId: 'ConclaveOfThree'
       },
       // Téléport Devil Crossing
       {
@@ -52,7 +88,10 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 19.94,
         targetYp: 98.47,
-        targetScale: 1
+        targetScale: 1,
+        id: 'DevilCrossingGo',
+        targetId: 'ConclaveOfThree'
+
       },
       // Téléport Conflagration
       {
@@ -62,7 +101,9 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 44.42,
         targetYp: 34,
-        targetScale: 1
+        targetScale: 1,
+        id: 'ConflagationGo',
+        targetId: 'ValburySouth'
       },
       // Téléport Port Valbury
       {
@@ -72,7 +113,9 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 39.28,
         targetYp: 59.99,
-        targetScale: 1
+        targetScale: 1,
+        id: 'ValburySouth',
+        targetId: 'ConflagationGo'
       }, 
       {
         xp: 41.11, 
@@ -81,7 +124,9 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 39.28,
         targetYp: 59.99,
-        targetScale: 1
+        targetScale: 1,
+        id: 'ValburyNorth',
+        targetId: 'ConflagationGo'
       },            
       // Téléport Fort Ikon
       {
@@ -92,7 +137,9 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 19.94,
         targetYp: 98.47,
-        targetScale: 1
+        targetScale: 1,
+        id: 'Fort Ikon',
+        targetId: 'ConclaveOfThree'
       },
       // Téléport Void's Eige
       {
@@ -103,7 +150,9 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Malmouth',
         targetXp: 63.17,
         targetYp: 94.86,
-        targetScale: 1
+        targetScale: 1,
+        id: 'EidgeCairn',
+        targetId: 'LoneWatch'
       },
       // Lower Crossing To Hargate Isle
       {
@@ -113,16 +162,20 @@ window.NAV_MARKERS_CAIRN = [
         icon: 'img/icon-link.png',
         targetXp: 61.47,
         targetYp: 81.95,
-        targetScale: 1
+        targetScale: 1,
+        id: 'LowerCrossing',
+        targetId: 'HargatesIsle'
       },             
       {
         xp: 61.41,
         yp: 82.44,
-        tag: 'tagGoTo + tagUGSlithLab01',
+        tag: 'tagGoTo + tagMapLowerCrossing',
         icon: 'img/icon-link.png',
         targetXp: 64.97,
         targetYp: 87.03,
-        targetScale: 1
+        targetScale: 1,
+        id: 'HargatesIsle',
+        targetId: 'LowerCrossing'
       },
 ];
 
@@ -135,7 +188,9 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Cairn',
         targetXp: 74,
         targetYp: 15,
-        targetScale: 1
+        targetScale: 1,
+        id: 'LoneWatch',
+        targetId: 'EidgeCairn'
       },
       {
         xp: 33.48, 
@@ -145,7 +200,9 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Korvan Basin',
         targetXp: 20.11,
         targetYp: 95.22,
-        targetScale: 1
+        targetScale: 1,
+        id: 'SewerMalmouth',
+        targetId: 'ConclaveOfThree'
       },      
   ];
 
@@ -159,7 +216,9 @@ window.NAV_MARKERS_CAIRN = [
         targetProfile: 'Cairn',
         targetXp: 62.90,
         targetYp: 89.81,
-        targetScale: 1
+        targetScale: 1,
+        id: 'ConclaveOfThree',
+        targetId: 'DevilCrossingGo'
       },
   ];
 

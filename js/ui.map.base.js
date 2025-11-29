@@ -95,18 +95,44 @@
       p.map.sessionSrc = mapImg.src;
     }
     
-    const skipRestore = !!state.skipViewRestoreOnce;
+      const skipRestore = !!state.skipViewRestoreOnce;
 
-    if (skipRestore) {
-    } else if (p && p.view && typeof p.view.scale === 'number') {
-      // Cas normal : vue mémorisée pour ce profil
-      state.view.scale = p.view.scale;
-      state.view.x     = p.view.x ?? 0;
-      state.view.y     = p.view.y ?? 0;
-      applyView();
-    } else {
-      setDefaultViewForProfile();
-    }
+      if (skipRestore) {
+        // On consomme le flag "une fois"
+        state.skipViewRestoreOnce = false;
+
+        // Si une nav inter-map a préparé une vue, on l'applique tout de suite
+        const cfg = window._gdmmPendingNavCenter;
+        if (cfg) {
+          window._gdmmPendingNavCenter = null;
+
+          if (typeof window.centerOn === 'function') {
+            // Utilise le centerOn standard (maintenant que mapReady est true)
+            window.centerOn(cfg.xp, cfg.yp, cfg.scale);
+          } else {
+            // Fallback au cas où (normalement pas nécessaire)
+            const vb = viewport.getBoundingClientRect();
+            const pt = pctToPx(cfg.xp, cfg.yp);
+
+            const scale = clamp(cfg.scale || state.view.scale, 0.25, 1.50);
+            state.view.scale = scale;
+
+            state.view.x = vb.width  / 2 - pt.x * scale;
+            state.view.y = vb.height / 2 - pt.y * scale;
+
+            applyView();
+          }
+        }
+      } else if (p && p.view && typeof p.view.scale === 'number') {
+        // Cas normal : vue mémorisée pour ce profil
+        state.view.scale = p.view.scale;
+        state.view.x     = p.view.x ?? 0;
+        state.view.y     = p.view.y ?? 0;
+        applyView();
+      } else {
+        setDefaultViewForProfile();
+      }
+
 
     if (skipRestore) {
       state.skipViewRestoreOnce = false;

@@ -741,17 +741,11 @@
             }
           });
 
-          el.addEventListener('pointerleave', (e) => {
-            if (e.pointerType === 'touch') return; // on ne touche pas au tap mobile ici
-            if (window.clearDungeonLinks) {
-              window.clearDungeonLinks();
-            }
-            if (core.state && core.state.dungeonOverlays) {
-              core.state.dungeonOverlays.forEach(ov => {
-                ov.el.classList.remove('is-hovered');
-              });
-            }
-          });
+el.addEventListener('pointerleave', (e) => {
+  if (e.pointerType === 'touch') return; 
+  // On ne clear plus ici : le donjon reste allumé
+});
+
 
           // Tap mobile : affiche l’overlay du donjon
           // ----------------------------------------
@@ -794,6 +788,9 @@
           navData.forEach(m => {
             const el = document.createElement('div');
             el.classList.add('marker-link', 'locked');
+            if (m.id) {
+              el.dataset.navId = m.id;
+            }
 
             const iconImg = document.createElement('img');
             iconImg.className = 'link-icon';
@@ -824,36 +821,69 @@
             el.addEventListener('click', async e => {
               e.stopPropagation();
 
+
               // 1) Nav dans la même map
               if (!m.targetProfile) {
                 if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
                   centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
+
+                  const navId = m.targetId || m.id;   // <- compat : targetId si défini, sinon id
+
+                  if (navId) {
+                    const destNav = document.querySelector(`.marker-link[data-nav-id="${navId}"]`);
+                    if (destNav) {
+                      destNav.classList.add('marker-highlight');
+                      setTimeout(() => destNav.classList.remove('marker-highlight'), 1500);
+                    }
+                  }
                 }
                 return;
               }
 
-              // 2) Nav vers un autre profil
-              const name = m.targetProfile;
-              const sel  = document.getElementById('profileSelect');
-              if (!sel) return;
+                // 2) Nav vers un autre profil
+                const targetProfile = m.targetProfile;
+                const sel = document.getElementById('profileSelect');
+                if (!sel || !targetProfile) return;
 
-              sel.value = name;
-              if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
-                state.skipViewRestoreOnce = true;
-              }
+                sel.value = targetProfile;
 
-              sel.dispatchEvent(new Event('change', { bubbles: true }));
+                const hasCoords = (typeof m.targetXp === 'number' && typeof m.targetYp === 'number');
 
-              if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
-                setTimeout(() => {
-                  centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
-                }, 400);
-              }
+                if (hasCoords) {
+                  state.skipViewRestoreOnce = true;
+
+                  // On mémorise ce qu'on veut faire une fois la nouvelle map chargée
+                  window._gdmmPendingNavCenter = {
+                    xp: m.targetXp,
+                    yp: m.targetYp,
+                    scale: m.targetScale || 1.2,
+                    targetId: m.targetId || null,
+                  };
+                }
+
+                sel.dispatchEvent(new Event('change', { bubbles: true }));
+
+                // ⚠️ IMPORTANT : on supprime le setTimeout(centerOn(...))
+                // Le centrage sera fait dans le onload de la map.
+                    
+                // On garde juste éventuellement le pulse après coup :
+                if (hasCoords && m.targetId) {
+                  // Petit délai pour laisser les navlinks se rendre sur la nouvelle map
+                  setTimeout(() => {
+                    const destNav = document.querySelector(`.marker-link[data-nav-id="${m.targetId}"]`);
+                    if (destNav) {
+                      destNav.classList.add('marker-highlight');
+                      setTimeout(() => destNav.classList.remove('marker-highlight'), 1500);
+                    }
+                  }, 450);
+                }
+
             });
 
             inner.appendChild(el);
           });
         }
+
         buildNoteList();
       }
 

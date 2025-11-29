@@ -549,38 +549,38 @@ function renderMarkers(options = {}) {
 viewport.addEventListener('pointerdown', e => {
 
   // --- Copie rapide des coords (Alt+clic sur la carte) ---
-if (e.altKey && state.mapReady) {
-  const { xp, yp } = viewToPct(e.clientX, e.clientY);
-  if (isFinite(xp) && isFinite(yp)) {
-    const cx = clamp(xp, 0, 100).toFixed(2);
-    const cy = clamp(yp, 0, 100).toFixed(2);
+    if (e.altKey && state.mapReady) {
+      const { xp, yp } = viewToPct(e.clientX, e.clientY);
+      if (isFinite(xp) && isFinite(yp)) {
+        const cx = clamp(xp, 0, 100).toFixed(2);
+        const cy = clamp(yp, 0, 100).toFixed(2);
 
-    const text = `xp: ${cx}, yp: ${cy},`;
+        const text = `xp: ${cx}, yp: ${cy},`;
 
-    const onDone = () => {
-      if (typeof showToast === 'function') {
-        showToast(`Coordonnées copiées : xp=${cx}, yp=${cy}`);
-      } else {
-        console.log('Coordonnées copiées : ' + text);
+        const onDone = () => {
+          if (typeof showToast === 'function') {
+            showToast(`Coordonnées copiées : xp=${cx}, yp=${cy}`);
+          } else {
+            console.log('Coordonnées copiées : ' + text);
+          }
+        };
+
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(text)
+            .then(onDone)
+            .catch(err => { console.warn('Clipboard error', err); onDone(); });
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch (err) {}
+          document.body.removeChild(ta);
+          onDone();
+        }
       }
-    };
-
-    if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(text)
-        .then(onDone)
-        .catch(err => { console.warn('Clipboard error', err); onDone(); });
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); } catch (err) {}
-      document.body.removeChild(ta);
-      onDone();
+      return;
     }
-  }
-  return;
-}
 
 
   // --- MODE MARKER add ---
@@ -658,6 +658,11 @@ if (e.altKey && state.mapReady) {
     return;
   }
   if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+  if (window.clearDungeonLinks) {
+    window.clearDungeonLinks();
+  }
+    
   panning = true;
   panId = e.pointerId;
   viewport.setPointerCapture?.(panId);

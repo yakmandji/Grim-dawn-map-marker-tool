@@ -447,7 +447,9 @@ button.marker-center,
 }
 
 .marker-region.marker-highlight .region-label::after,
-.marker-region-dungeon.marker-highlight .region-label::after {
+.marker-region-dungeon.marker-highlight .region-label::after,
+.marker-link.marker-highlight::after
+{
   content: "";
   position: absolute;
   top: -4px;
@@ -1494,3 +1496,5 @@ input[type="color"]::-moz-color-swatch {
   height: 24px;
   pointer-events: none;
 }
+
+
