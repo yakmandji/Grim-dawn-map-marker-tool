@@ -66,6 +66,9 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_smuggler_pass", xp: 39.41, yp: 77.83, tag: "Smuggler Pass" },
 { id: "entry_smuggler_pass2", xp: 29.37, yp: 77.95, tag: "Smuggler Pass2" },
 
+{ id: "entry_Burried_crypt", xp: 29.69, yp: 69.94, tag: "Burried Crypt" },
+
+
 
 { id: "entry_forgotten_depths", xp: 41.45, yp: 75.93, tag: "Forgotten Depths" },
 { id: "entry_forgotten_depths2", xp: 40.97, yp: 75.01, tag: "Forgotten Depths 2" },
@@ -163,6 +166,8 @@ window.DUNGEON_LINKS = {
   
   "river_passage":["entry_river_passage", "entry_river_passage2"],
   "festering_lair":["entry_festering_lair"],
+  "buried_crypt":["entry_Burried_crypt"],
+
 
 
   "burial_cave2":["entry_burial_cave_2a", "entry_burial_cave_2b"],

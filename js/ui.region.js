@@ -3,7 +3,7 @@
     
 { id: 'tag_UG_wightmire_cave01', tag: 'tagUGWightmireCave01', xp: 72.56, yp: 78.86, isDungeon: true },
 { id: 'tag_UG_wightmire_cave03', tag: 'tagUGWightmireCave01', xp: 63.68, yp: 74.06, isDungeon: true },
-
+{ id: 'tagU_rRotting_croplands_crypt01', tag: 'tagUGRottingCroplandsCrypt01', xp: 29, yp: 72.53, isDungeon: true },
 
 { id: 'tag_burrwitch_cellar03', tag: 'tagBurrwitchCellar03', xp: 63.60, yp: 58.52, isDungeon: true },
 { id: 'tag_UG_wightmire_cave02', tag: 'tagUGWightmireCave01', xp: 75.25, yp: 72.66, isDungeon: true },
@@ -18,15 +18,9 @@
 { id: 'tag_uG_flooded_passage_ruin', tag: 'tagUGFloodedPassageRuin',xp: 60.66, yp: 69.62, isDungeon: true },
 { id: 'tag_map_four_hills', tag: 'tagMapFourHills', xp: 52.79, yp: 75.72 },
 { id: 'ta_uG_burial_cave', tag: 'tagUGBurialCave', xp: 69.13, yp: 83.39, isDungeon: true },
-
 { id: 'ta_uG_burial_cave2', tag: 'tagUGBurialCave', xp: 61.77, yp: 65.87, isDungeon: true },
 { id: 'tag_burrwitch_river_cave', tag: 'tagBurrwitchRiverCave', xp: 77.27, yp: 61.05, isDungeon: true },
-
 { id: 'tag_UGBurrwitch_village_ratDen01', tag: 'tagUGBurrwitchVillageRatDen01', xp: 62.14, yp: 59.30, isDungeon: true },
-
-
-
-
 { id: 'tag_gDX1UG_ancient_grove01D', tag: 'tagGDX1UGAncientGrove01D', xp: 89.43, yp: 58, isDungeon: true },
 { id: 'tag_map_hidden_path01', tag: 'tagMapHiddenPath01', xp: 76.24, yp: 63.55 },
 { id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89 },

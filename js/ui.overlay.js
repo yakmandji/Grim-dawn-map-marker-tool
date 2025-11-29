@@ -50,6 +50,9 @@ window.DUNGEON_OVERLAYS = [
 { id: "den_carraxus", map: "cairn", img: "den-carraxus.jpg", left: 75.7808, top: 40.5345, width: 3.5545, height: 3.4868 },
 { id: "janaxias_den", map: "cairn", img: "janaxias-den.jpg", left: 93.5294, top: 42.3167, width: 2.7051, height: 2.6506 },
 { id: "burial_cave", map: "cairn", img: "burial-cave.jpg", left: 68.858, top: 83.3461, width: 2.178, height: 2.1404 },
+{ id: "buried_crypt", map: "cairn", img: "buried-crypt.jpg", left: 28.858, top: 70.8461, width: 2, height: 2 },
+
+
 { id: "cultists_lair", map: "cairn", img: "cultists-lair.jpg", left: 72.6966, top: 75.938, width: 2.0675, height: 2.0256 },
 { id: "cave", map: "cairn", img: "cave.jpg", left: 72.2396, top: 78.5941, width: 1.844, height: 1.8066 },
 { id: "caverne_2", map: "cairn", img: "caverne-2.jpg", left: 73.916, top: 72.2435, width: 3.3527, height: 3.3833 },
