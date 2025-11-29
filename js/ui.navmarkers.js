@@ -143,8 +143,8 @@ window.NAV_MARKERS_CAIRN = [
       },
       // Téléport Void's Eige
       {
-        xp: 75.30, 
-        yp: 12.98,
+        xp: 74.04, 
+        yp: 12.40,
         tag: 'tagGoTo + tagGDX1MapMalmouthEntry',
         icon: 'img/icon-link.png',
         targetProfile: 'Malmouth',
@@ -154,6 +154,33 @@ window.NAV_MARKERS_CAIRN = [
         id: 'EidgeCairn',
         targetId: 'LoneWatch'
       },
+
+       // Téléport Void's Eige Inside ------------------------------------------
+      {
+        xp: 72.13, 
+        yp: 20.03,
+        tag: 'tagGoTo + tagGDX1MapUgdenbogAltar',
+        icon: 'img/icon-link.png',
+        targetXp: 85.14,
+        targetYp: 23.82,
+        targetScale: 1,
+        id: 'EidgeCairnInside',
+        targetId: 'AltarRattosh'
+      },
+      {
+        xp: 85.14, 
+        yp: 23.82,
+        tag: 'tagGoTo + tagGDX1UGUgdenbogVoidRift03',
+        icon: 'img/icon-link.png',
+        targetXp: 72.13,
+        targetYp: 20.03,
+        targetScale: 1,
+        id: 'AltarRattosh',
+        targetId: 'EidgeCairnInside'
+      },
+       // --------------------------------------------------Téléport Void's Eige Inside -
+
+
       // Lower Crossing To Hargate Isle
       {
         xp: 63.47,

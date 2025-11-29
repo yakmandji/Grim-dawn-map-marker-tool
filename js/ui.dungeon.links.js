@@ -65,8 +65,10 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_arkovian_undercity2", xp: 50.29, yp: 81.46, tag: "Arkovian Undercity 2" },
 { id: "entry_smuggler_pass", xp: 39.41, yp: 77.83, tag: "Smuggler Pass" },
 { id: "entry_smuggler_pass2", xp: 29.37, yp: 77.95, tag: "Smuggler Pass2" },
-
 { id: "entry_Burried_crypt", xp: 29.69, yp: 69.94, tag: "Burried Crypt" },
+
+{ id: "entry_the_hidden_path", xp: 13.10, yp: 34.28, tag: "The Hidden Path" },
+
 
 
 
@@ -167,7 +169,7 @@ window.DUNGEON_LINKS = {
   "river_passage":["entry_river_passage", "entry_river_passage2"],
   "festering_lair":["entry_festering_lair"],
   "buried_crypt":["entry_Burried_crypt"],
-
+  "the_hidden_path":["entry_the_hidden_path"],
 
 
   "burial_cave2":["entry_burial_cave_2a", "entry_burial_cave_2b"],
