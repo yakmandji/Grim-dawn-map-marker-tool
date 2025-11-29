@@ -732,25 +732,15 @@
           el.style.left = pt.x + 'px';
           el.style.top  = pt.y + 'px';
 
-          // Hover souris seulement (desktop)
-          // --------------------------------
-          el.addEventListener('pointerenter', (e) => {
-            if (e.pointerType === 'touch') return; // pas de hover sur mobile
-            if (window.showDungeonLinksForEntry) {
-              window.showDungeonLinksForEntry(m.id);
-            }
+          el.addEventListener('pointerleave', (e) => {
+            if (e.pointerType === 'touch') return; 
+            // On ne clear plus ici : le donjon reste allumé
           });
-
-el.addEventListener('pointerleave', (e) => {
-  if (e.pointerType === 'touch') return; 
-  // On ne clear plus ici : le donjon reste allumé
-});
 
 
           // Tap mobile : affiche l’overlay du donjon
           // ----------------------------------------
           el.addEventListener('pointerup', (e) => {
-            if (e.pointerType !== 'touch') return;
             e.preventDefault();
             e.stopPropagation(); // très important pour que le "tap ailleurs pour fermer" ne s’active pas
 

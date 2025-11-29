@@ -652,16 +652,12 @@ viewport.addEventListener('pointerdown', e => {
 
   if (e.target.closest && (
         e.target.closest('.marker') ||
-        (e.pointerType === 'touch' && e.target.closest('.dungeon-wrapper'))
+        e.target.closest('.marker-entry-dungeon')
   )) {
     // on laisse l'élément gérer son pointerup / click.
     return;
   }
   if (e.pointerType === 'mouse' && e.button !== 0) return;
-
-  if (window.clearDungeonLinks) {
-    window.clearDungeonLinks();
-  }
     
   panning = true;
   panId = e.pointerId;
