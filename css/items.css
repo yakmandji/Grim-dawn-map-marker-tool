@@ -1215,7 +1215,7 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .marker-region-dungeon .region-note-indicator {
-  opacity: 0.35; 
+  opacity: 0.25; 
   transition: opacity 0.25s ease;
 }
 
