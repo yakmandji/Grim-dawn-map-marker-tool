@@ -867,23 +867,24 @@ body.shared-only-view #mergeSharedBtn,
     color: var(--color-text, #d8e0e3);
     position: absolute;
     flex-direction: column-reverse;
-    right: 1px;
+    right: -3px;
     top: 120px;
     z-index: 1;
 }
 
 #zoomReadout{
-  right: 87px;
+  right: 42%;
   position: absolute;
-  top: 50px;
+  top: 178px;
   color: #dfbd96;
   font-size: 13px;
+  z-index: 1;
 }
 
 #zoomOut{
     position: absolute;
-    top: 32px;
-    right: 21px;
+    top: 36px;
+    right: 22px;
 }
 
 .miniMap-inner {
