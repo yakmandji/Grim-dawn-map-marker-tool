@@ -102,6 +102,7 @@
       "ui.NoteList": "Notes list",
       "toast.NoteDeleted": "Note deleted 🗑️",
       "toast.NoteSaved": "Note saved 💾",
+      "KeyboardPan": " ← → ↑ ↓  to move map",
 
     },
     fr: {
@@ -202,7 +203,8 @@
       "ui.DeleteNoteConfirm": "Supprimer toutes les notes de région ? Cette action est définitive.",
       "ui.NoteList": "Liste des notes",
       "toast.NoteDeleted": "Note supprimée 🗑️",
-      "toast.NoteSaved": "Note enregistrée 💾",      
+      "toast.NoteSaved": "Note enregistrée 💾",     
+      "KeyboardPan": "← → ↑ ↓  pour déplacer la carte"
 
 
     },
@@ -304,6 +306,7 @@
       "ui.NoteList": "Lista de notas",
       "toast.NoteDeleted": "Nota eliminada 🗑️",
       "toast.NoteSaved": "Nota guardada 💾",
+      "KeyboardPan": "← → ↑ ↓  para mover el mapa"
 
     },
 
@@ -406,6 +409,7 @@
       "ui.NoteList": "Notizliste",
       "toast.NoteDeleted": "Notiz gelöscht 🗑️",
       "toast.NoteSaved": "Notiz gespeichert 💾",
+      "KeyboardPan": "← → ↑ ↓  um die Karte zu bewegen"
 
     },
 
@@ -509,6 +513,8 @@
       "ui.NoteList": "Lista de notas",
       "toast.NoteDeleted": "Nota apagada 🗑️",
        "toast.NoteSaved": "Nota salvata 💾",
+      "KeyboardPan": "← → ↑ ↓  para mover o mapa"
+
 
   },
 
@@ -610,6 +616,7 @@
     "ui.NoteList": "Список заметок",
     "toast.NoteDeleted": "Заметка удалена 🗑️",
     "toast.NoteSaved": "Заметка сохранена 💾",
+    "KeyboardPan": "← → ↑ ↓  чтобы перемещать карту"
 
   },
 
@@ -713,7 +720,7 @@
       "ui.NoteList": "Elenco delle note",
       "toast.NoteDeleted": "Nota eliminata 🗑️",
       "toast.NoteSaved": "Nota salvata 💾",
-
+      "KeyboardPan": "← → ↑ ↓  per muovere la mappa"
     },
 
     zh: {
@@ -815,6 +822,7 @@
       "ui.NoteList": "笔记列表",
       "toast.NoteDeleted": "笔记已删除 🗑️",
       "toast.NoteSaved": "笔记已保存 💾",
+      "KeyboardPan": "← → ↑ ↓  移动地图",
 
     },
     ja: {
@@ -916,7 +924,7 @@
       "ui.NoteList": "ノート一覧",
       "toast.NoteDeleted": "ノートを削除しました 🗑️",
       "toast.NoteSaved": "ノートを保存しました 💾",
-
+      "KeyboardPan": "← → ↑ ↓  でマップを移動します",
 
     }
 

@@ -33,6 +33,14 @@ textarea, [contenteditable="true"] {
   cursor: text;
 }
 
+.map-hint {
+    font-size: 12px;
+    opacity: 0.8;
+    position: absolute;
+    bottom: 23px;
+    right: 314px;
+}
+
 .title {
  font-weight: 700;
  margin-right: auto;
