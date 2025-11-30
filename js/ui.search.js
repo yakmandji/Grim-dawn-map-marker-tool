@@ -296,7 +296,10 @@
 
 async function goTo(item) {
   clearResultsLater();
-  if (inputEl) inputEl.blur();
+    if (inputEl) {
+    inputEl.value = '';
+    inputEl.blur();
+  }
 
   const zoom =
     item.type === 'region' ? 0.8 :
@@ -409,8 +412,6 @@ async function goTo(item) {
         searchInput.select();
       }
     });
-
-
 
   window.GDMMSearch = {
     refresh,
