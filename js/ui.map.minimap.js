@@ -56,17 +56,16 @@
     inner.style.backgroundPosition = 'center center';
   }
 
- let _mmFrame = 0;
+let _mmFrame = 0;
 
-function updateMiniMap() {
-  //    et on reset le compteur pour que la "vraie" première frame passe.
+function updateMiniMap(force = false) {
   if (!state.mapReady || !state.mapNatural || !state.mapNatural.w || !state.mapNatural.h) {
     _mmFrame = 0;
     return;
   }
 
-  // 2) Throttle 15 FPS (1 frame sur 4)
-  if ((_mmFrame++ % 4) !== 0) return;
+  // 2) Throttle 15 FPS (1 frame sur 4), SAUF si force = true
+  if (!force && (_mmFrame++ % 4) !== 0) return;
 
   updateBackground();
 
@@ -106,6 +105,7 @@ function updateMiniMap() {
 }
 
 
+
 function centerFromLocal(localX, localY) {
   if (!state.mapNatural || !state.mapNatural.w || !state.mapNatural.h) return;
   if (typeof window.centerOn !== 'function') return;
@@ -127,6 +127,8 @@ function centerFromLocal(localX, localY) {
 
   const currentScale = (state.view && state.view.scale) || 1;
   window.centerOn(xp, yp, currentScale);
+
+  updateMiniMap(true);
 }
 
 
@@ -185,14 +187,17 @@ function centerFromLocal(localX, localY) {
   window.addEventListener('pointerup', endDrag);
   window.addEventListener('pointercancel', endDrag);
 
-  // Mise à jour quand la fenêtre change (responsive)
-  window.addEventListener('resize', updateMiniMap);
+  window.addEventListener('resize', () => updateMiniMap(true));
 
   // Namespace global simple
   window.UiMiniMap = {
-    update: updateMiniMap,
-    refresh: updateMiniMap,
+    // appel normal : throttle actif
+    update: () => updateMiniMap(false),
+    refresh: () => updateMiniMap(false),
+    force: () => updateMiniMap(true),
   };
 
-  setTimeout(updateMiniMap, 0);
+  setTimeout(() => updateMiniMap(true), 0);
+
+
 })();

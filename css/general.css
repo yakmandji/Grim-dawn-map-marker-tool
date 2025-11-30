@@ -804,7 +804,7 @@ body.shared-only-view #mergeSharedBtn,
 .floating { 
   position: absolute;
   right: 12px;
-  top: 40px;
+  top: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -830,8 +830,8 @@ body.shared-only-view #mergeSharedBtn,
 
 .miniMap-inner {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 165px;
+  height: 170px;
   background-color: #050c0a;
   background-size: cover;
   background-position: top left;
