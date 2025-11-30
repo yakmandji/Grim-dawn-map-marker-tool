@@ -53,54 +53,57 @@
 
     inner.style.backgroundImage    = `url(${mapImg.src})`;
     inner.style.backgroundSize     = `${scaledW}px ${scaledH}px`;
-    inner.style.backgroundPosition = 'center center'; // 👈 comme tu as fait
+    inner.style.backgroundPosition = 'center center';
   }
 
-  let _mmFrame = 0;
+ let _mmFrame = 0;
 
-  function updateMiniMap() {
-    if ((_mmFrame++ % 4) !== 0) return; 
-    if (!state.mapReady) return;
-    if (!state.mapNatural || !state.mapNatural.w || !state.mapNatural.h) return;
-
-    updateBackground();
-
-    const layout = computeLayout();
-    if (!layout) return;
-
-    const { f, iw, ih, bw, bh, scaledW, scaledH, offsetX, offsetY } = layout;
-
-    const vb = viewport.getBoundingClientRect();
-    const { x, y, scale } = state.view || { x: 0, y: 0, scale: 1 };
-
-    // zone visible en coordonnées "map" (pixels de la grosse map)
-    const visibleW = vb.width  / scale;
-    const visibleH = vb.height / scale;
-    const visibleX = -x / scale;
-    const visibleY = -y / scale;
-
-    // conversion en coords minimap, en tenant compte des offsets
-    let rx = offsetX + visibleX * f;
-    let ry = offsetY + visibleY * f;
-    let rw = visibleW * f;
-    let rh = visibleH * f;
-
-    rw = Math.max(10, rw);
-    rh = Math.max(10, rh);
-
-    const minX = offsetX;
-    const maxX = offsetX + scaledW - rw;
-    const minY = offsetY;
-    const maxY = offsetY + scaledH - rh;
-
-    rx = clamp(rx, minX, maxX);
-    ry = clamp(ry, minY, maxY);
-
-    viewRect.style.left   = rx + 'px';
-    viewRect.style.top    = ry + 'px';
-    viewRect.style.width  = rw + 'px';
-    viewRect.style.height = rh + 'px';
+function updateMiniMap() {
+  //    et on reset le compteur pour que la "vraie" première frame passe.
+  if (!state.mapReady || !state.mapNatural || !state.mapNatural.w || !state.mapNatural.h) {
+    _mmFrame = 0;
+    return;
   }
+
+  // 2) Throttle 15 FPS (1 frame sur 4)
+  if ((_mmFrame++ % 4) !== 0) return;
+
+  updateBackground();
+
+  const layout = computeLayout();
+  if (!layout) return;
+
+  const { f, iw, ih, bw, bh, scaledW, scaledH, offsetX, offsetY } = layout;
+
+  const vb = viewport.getBoundingClientRect();
+  const { x, y, scale } = state.view || { x: 0, y: 0, scale: 1 };
+
+  const visibleW = vb.width  / scale;
+  const visibleH = vb.height / scale;
+  const visibleX = -x / scale;
+  const visibleY = -y / scale;
+
+  let rx = offsetX + visibleX * f;
+  let ry = offsetY + visibleY * f;
+  let rw = visibleW * f;
+  let rh = visibleH * f;
+
+  rw = Math.max(10, rw);
+  rh = Math.max(10, rh);
+
+  const minX = offsetX;
+  const maxX = offsetX + scaledW - rw;
+  const minY = offsetY;
+  const maxY = offsetY + scaledH - rh;
+
+  rx = clamp(rx, minX, maxX);
+  ry = clamp(ry, minY, maxY);
+
+  viewRect.style.left   = rx + 'px';
+  viewRect.style.top    = ry + 'px';
+  viewRect.style.width  = rw + 'px';
+  viewRect.style.height = rh + 'px';
+}
 
 
 function centerFromLocal(localX, localY) {
