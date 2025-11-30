@@ -41,7 +41,6 @@ textarea, [contenteditable="true"] {
 }
 
 .app-logo {position: relative;}
-.app-logo img{opacity: 0.8;}
 
 .announce{
   position: absolute;
@@ -49,9 +48,7 @@ textarea, [contenteditable="true"] {
   font-size: 13px;
   bottom: 22px;
   font-weight: 400;
-  opacity: 0.72;
-  color:#d9a066;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  color:#a57a4e;
   width: 300px;
   text-align: center;
 }
@@ -87,7 +84,6 @@ header {
   background: var(--panel);
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  box-shadow: var(--shadow);
   padding: 10px 22px;
   display: flex;
   align-items: center;
@@ -118,7 +114,6 @@ header .sep {
 
 .small{
     font-size: 12px;
-    opacity: .85;
     margin-top: 0;
 }
 
@@ -127,7 +122,6 @@ header .sep {
     background: var(--panel);
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    box-shadow: var(--shadow);
     padding: 6px 7px 6px 16px;
     display: flex;
     flex-direction: column;
@@ -153,7 +147,6 @@ header .sep {
   background: #0e0a06;
   border: 1px solid #244b51;
   border-radius: 14px;
-  box-shadow: var(--shadow);
   overflow: hidden;
   margin-top: 98px;
 }
@@ -288,7 +281,6 @@ header .sep {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
   z-index: 40;
 }
 
@@ -374,7 +366,6 @@ header .sep {
   background: linear-gradient(135deg, rgba(64, 192, 208, 0.15), rgba(26, 130, 176, 0.25));
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(120, 200, 255, 0.3);
-  backdrop-filter: blur(6px);
 }
 
 #mapLoader .loader-spinner {
@@ -391,7 +382,7 @@ header .sep {
   letter-spacing: 0.08em;
   font-size: 11px;
   font-weight: 600;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 @keyframes loaderSpin {
@@ -500,18 +491,10 @@ body.shared-only-view #mergeSharedBtn,
 .markers-scroll::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #12c47b, #26f0a0);
   border-radius: 10px;
-
-  /* Glow cyber vert */
-  box-shadow:
-    0 0 4px #26f0a0,
-    0 0 6px #26f0a0;
 }
 
 .markers-scroll::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #1dea8d, #4dffbd);
-  box-shadow:
-    0 0 6px #26f0a0,
-    0 0 10px #26f0a0;
 }
 
 /* Panneau flottant des Done */
@@ -537,7 +520,6 @@ body.shared-only-view #mergeSharedBtn,
   width: 260px;
   max-height: 60vh;
   border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
   border: 1px solid #17373c;
   display: flex;
   flex-direction: column;
@@ -687,15 +669,12 @@ body.shared-only-view #mergeSharedBtn,
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(120, 241, 194, 0.18); 
-  color: #78f1c2;
+  color: #239367;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.6px;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   z-index: 50;
   pointer-events: none;
-  opacity: 0.85;
 }
 
 
@@ -718,7 +697,6 @@ body.shared-only-view #mergeSharedBtn,
   gap: 10px;
   background-color: transparent;
   border: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0);
 }
 
 .js-character-dropdown .select-green:hover,
@@ -796,7 +774,6 @@ body.shared-only-view #mergeSharedBtn,
 .add-icon {
   font-size: 18px;
   margin-right: 10px;
-  opacity: 0.85;
   font-weight: 600;
 }
 
@@ -867,7 +844,6 @@ body.shared-only-view #mergeSharedBtn,
 .miniMap-viewport {
   position: absolute;
   border: 1px solid #38998a;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8);
   background-color: rgba(156, 232, 107, 0.10);
   pointer-events: none;
   border-radius: 15%;
@@ -875,9 +851,7 @@ body.shared-only-view #mergeSharedBtn,
 
 .map-hint {
     font-size: 12px;
-    opacity: 0.8;
-    bottom: 23px;
-    right: 314px;
+    color: #436f70;
 }
 
 /*ZOOM BUTTON*/
