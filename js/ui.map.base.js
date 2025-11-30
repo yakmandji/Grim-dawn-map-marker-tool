@@ -225,6 +225,7 @@
     }
 
 
+  let lastZoomPct = null;
 
   function applyView() {
     const { x, y, scale } = state.view;
@@ -234,7 +235,13 @@
     inner.style.setProperty('--mk', mk);
 
     const zr = $('#zoomReadout');
-    if (zr) zr.textContent = Math.round(scale * 100) + '%';
+      if (zr) {
+         const pct = Math.round(scale * 100);
+        if (pct !== lastZoomPct) {
+            zr.textContent = pct + '%';
+            lastZoomPct = pct;
+        }
+      }
 
     // Notifie la minimap qu'il y a eu un changement de vue
     if (window.UiMiniMap && typeof window.UiMiniMap.update === 'function') {

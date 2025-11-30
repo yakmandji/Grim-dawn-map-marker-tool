@@ -873,11 +873,11 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 #zoomReadout{
-  right: 81px;
+  right: 87px;
   position: absolute;
-  top: 45px;
+  top: 50px;
   color: #dfbd96;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  font-size: 13px;
 }
 
 #zoomOut{
