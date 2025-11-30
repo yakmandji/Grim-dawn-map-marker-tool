@@ -672,66 +672,10 @@ viewport.addEventListener('pointerdown', e => {
   });
 
 
-/*Donjon highlight*/
-
-/*function updateDungeonHover(e) {
-  if (!state.dungeonOverlays || !state.dungeonOverlays.length) return;
-
-  if (state.dungeonForcedHover && state.dungeonForcedHover.length) {
-    return;
-  }
-
-  const x = e.clientX;
-  const y = e.clientY;
-  const labels = document.querySelectorAll('.marker-region-dungeon .region-label');
-  labels.forEach(l => l.classList.remove('opacity'));
-
-  let activeRect = null;
-
-  // 1) Trouver l'overlay actuellement survolé (suivi souris "libre")
-  state.dungeonOverlays.forEach(d => {
-    if (!d.el) return;
-
-    const rect = d.el.getBoundingClientRect();
-    const inside =
-      x >= rect.left &&
-      x <= rect.right &&
-      y >= rect.top &&
-      y <= rect.bottom;
-
-    d.el.classList.toggle('is-hovered', inside);
-
-    if (inside) {
-      activeRect = rect;
-    }
-  });
-
-  if (!activeRect) return;
-
-  // 3) Highlight seulement les labels correspondants à ce donjon
-  labels.forEach(l => {
-    const r = l.getBoundingClientRect();
-    const intersect =
-      !(r.right  < activeRect.left ||
-        r.left   > activeRect.right ||
-        r.bottom < activeRect.top ||
-        r.top    > activeRect.bottom);
-
-    if (intersect) {
-      l.classList.add('opacity'); // éclairé
-    }
-  });
-}*/
-
 /*Pointer move------------------------------------------------*/
 
 viewport.addEventListener('pointermove', e => {
   const isTouch = e.pointerType === 'touch';
-
-  // 1) Sur desktop (mouse / pen), on garde le hover donjon
-/*  if (!isTouch && state.dungeonOverlays && state.dungeonOverlays.length) {
-    updateDungeonHover(e);
-  }*/
 
     // 2) Sur mobile (touch) : on gère uniquement le pinch / pan,
     if (isTouch) {
