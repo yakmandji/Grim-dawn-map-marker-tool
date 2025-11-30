@@ -974,9 +974,10 @@ if (newPathBtn) {
   const keys = {};
   let keyboardPanInterval = null;
 
-  const SPEED = 22;       // vitesse normale du pan
-  const SPEED_FAST = 42;  // avec SHIFT
-  const SPEED_SLOW = 10;  // avec CTRL
+  const SPEED       = 20;  // vitesse normale du pan
+  const SPEED_FAST  = 42;  // avec SHIFT
+  const SPEED_SLOW  = 10;  // avec CTRL
+  const MIN_PAN_SCALE = 1; // en dessous de ça, on ne "boost" plus
 
   function startKeyboardPan() {
     if (keyboardPanInterval) return;
@@ -1001,8 +1002,10 @@ if (newPathBtn) {
         keys["Control"] ? SPEED_SLOW :
         SPEED;
 
-      const scale = state.view.scale || 1;
-      const real = speed / scale;
+      const rawScale = state.view.scale || 1;
+      // Empêche la vitesse d'exploser quand on est très dézoommé
+      const effectiveScale = Math.max(rawScale, MIN_PAN_SCALE);
+      const real = speed / effectiveScale;
 
       state.view.x -= dx * real;
       state.view.y -= dy * real;
@@ -1035,6 +1038,7 @@ if (newPathBtn) {
     }
   });
 })();
+
 
 
 
