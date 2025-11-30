@@ -500,7 +500,17 @@ function showDungeonLinksForEntry(entryId) {
     const arr = mapping[ovId] || [];
     return arr.includes(entryId);
   });
+
   if (!overlayId) {
+    clearDungeonLinks();
+    return;
+  }
+
+  // TOGGLE : si ce donjon est déjà forcé -> on éteint
+  if (Array.isArray(state.dungeonForcedHover)
+      && state.dungeonForcedHover.length === 1
+      && state.dungeonForcedHover[0] === overlayId) {
+
     clearDungeonLinks();
     return;
   }
@@ -521,6 +531,10 @@ function showDungeonLinksForEntry(entryId) {
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
 }
+window.showDungeonLinksForEntry = showDungeonLinksForEntry;
+
+
+
 window.showDungeonLinksForEntry = showDungeonLinksForEntry;
 
 // --- survol d'un OVERLAY (layer donjon) ---

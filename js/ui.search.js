@@ -117,6 +117,44 @@
     return results.slice(0, 30);
   }
 
+
+  function searchMarkers(term) {
+    const q = normalize(term);
+    if (!q) return [];
+
+    const core = window.GDMMCore || {};
+    const getCurrentProfile = core.currentProfile || function () { return null; };
+    const state = core.state || {};
+
+    const p = getCurrentProfile();
+    if (!p || !Array.isArray(p.markers)) return [];
+
+    const profileName = state.active || '';
+
+    const results = [];
+
+    p.markers.forEach((m) => {
+      const label = m.label || '';
+      const nLabel = normalize(label);
+
+      if (!nLabel.includes(q)) return;
+
+      results.push({
+        profile: profileName,
+        type: 'marker',    // 👈 nouveau type
+        id: m.id,
+        xp: m.xp,
+        yp: m.yp,
+        label,
+        cat: m.cat || 'General',
+      });
+    });
+
+    // On limite un peu quand même
+    return results.slice(0, 50);
+  }
+
+
   // --- UI ------------------------------------
 
   function renderResults(list) {
@@ -133,6 +171,10 @@
       row.className = 'search-result';
       row.classList.add(`type-${item.type}`);
 
+      if (item.type === 'marker' && item.cat) {
+        row.classList.add(`cat-${item.cat.toLowerCase()}`);
+      }
+
       // Icône SVG
       const icon = document.createElement('img');
       icon.className = 'search-type-icon';
@@ -143,10 +185,32 @@
       span.className = 'search-label';
 
       const t = window.GDMMLang?.t;
-      const typeLabel = t ? t(`ui.${item.type}`) : item.type;
+      let typeLabel;
 
-      // Exemple : "Région - Collines Brisées (Cairn)"
+      // MARKER USER → utiliser la catégorie réelle
+      if (item.type === 'marker') {
+          const cat = item.cat || 'General';
+          typeLabel = t ? t(`ui.${cat}Marker`) : cat;
+      } 
+      // ADMIN TYPES → Rift / Region / Dungeon
+      else {
+          typeLabel = t ? t(`ui.${item.type}`) : item.type;
+      }
+
       span.textContent = `${typeLabel} - ${item.label} (${item.profile})`;
+
+      // --- Icône personnalisée pour les markers utilisateurs ---
+      if (item.type === 'marker') {
+          // On récupère l’icône du marker utilisateur (déjà utilisée en map)
+          if (window.GDMMCore && typeof GDMMCore.iconFor === 'function') {
+              icon.src = GDMMCore.iconFor(item.cat) || 'img/pin-general.svg';
+          } else {
+              icon.src = 'img/pin-general.svg';
+          }
+      } else {
+          // Icônes admin pour region / rift / dungeon
+          icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
+      }
 
       row.appendChild(icon);
       row.appendChild(span);
@@ -171,51 +235,64 @@
   }
 
 
-function highlightAtCenter(item) {
-  const viewport = document.getElementById('mapViewport');
-  if (!viewport) return;
+  function highlightAtCenter(item) {
+    // Cas spécial : marker utilisateur (on le connaît par son id)
+    if (item && item.type === 'marker' && item.id) {
+      const markerEl = document.querySelector(`.marker[data-mid="${item.id}"]`);
+      if (markerEl) {
+        markerEl.classList.add('marker-highlight');
+        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+      }
+      return;
+    }
 
-  const vb = viewport.getBoundingClientRect();
-  const cx = vb.left + vb.width / 2;
-  const cy = vb.top + vb.height / 2;
+    const viewport = document.getElementById('mapViewport');
+    if (!viewport) return;
 
-  let selector;
-  if (item && item.type === 'rift') {
-    // Only Rift
-    selector = '.marker-rift';
-  } else {
-    // Only dongeon
-    selector = '.marker-region .region-label, .marker-region-dungeon .region-label';
+    const vb = viewport.getBoundingClientRect();
+    const cx = vb.left + vb.width / 2;
+    const cy = vb.top + vb.height / 2;
+
+    let selector;
+    if (item && item.type === 'rift') {
+      // Only Rift
+      selector = '.marker-rift';
+    } else {
+      // Only dungeon / region
+      selector = '.marker-region .region-label, .marker-region-dungeon .region-label';
+    }
+
+    const candidates = document.querySelectorAll(selector);
+    if (!candidates.length) return;
+
+    let bestEl = null;
+    let bestDist = Infinity;
+
+    candidates.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const mx = r.left + r.width / 2;
+      const my = r.top + r.height / 2;
+      const dx = mx - cx;
+      const dy = my - cy;
+      const d2 = dx * dx + dy * dy;
+
+      if (d2 < bestDist) {
+        bestDist = d2;
+        bestEl = el;
+      }
+    });
+
+    if (!bestEl) return;
+
+    const markerEl =
+      bestEl.closest('.marker-rift, .marker-region, .marker-region-dungeon') || bestEl;
+
+    markerEl.classList.add('marker-highlight');
+    setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
   }
 
-  const candidates = document.querySelectorAll(selector);
-  if (!candidates.length) return;
 
-  let bestEl = null;
-  let bestDist = Infinity;
 
-  candidates.forEach(el => {
-    const r = el.getBoundingClientRect();
-    const mx = r.left + r.width / 2;
-    const my = r.top + r.height / 2;
-    const dx = mx - cx;
-    const dy = my - cy;
-    const d2 = dx * dx + dy * dy;
-
-    if (d2 < bestDist) {
-      bestDist = d2;
-      bestEl = el;
-    }
-  });
-
-  if (!bestEl) return;
-
-  const markerEl =
-    bestEl.closest('.marker-rift, .marker-region, .marker-region-dungeon') || bestEl;
-
-  markerEl.classList.add('marker-highlight');
-  setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
-}
 
 async function goTo(item) {
   clearResultsLater();
@@ -276,19 +353,32 @@ async function goTo(item) {
       };
     }
 
-    const onSearchInput = debounce((term) => {
+    const onSearchInput = debounce((rawTerm) => {
+      const term = rawTerm || '';
+      const trimmed = term.trim();
+
+      // Mode "marker only" si le terme commence par "/"
+      if (trimmed.startsWith('/')) {
+        const markerTerm = trimmed.slice(1).trim(); // on vire le "/" et les espaces
+        const results = searchMarkers(markerTerm);
+        renderResults(results);
+        return;
+      }
+
+      // Mode normal : lieux (régions / donjons / rifts)
       const results = search(term);
       renderResults(results);
     }, 180);
+
 
     inputEl.addEventListener('input', (e) => {
       onSearchInput(e.target.value);
     });
 
 
-    inputEl.addEventListener('blur', () => {
+/*    inputEl.addEventListener('blur', () => {
       clearResultsLater();
-    });
+    });*/
 
     inputEl.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {

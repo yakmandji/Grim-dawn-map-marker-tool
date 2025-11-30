@@ -1032,8 +1032,8 @@ input[type="color"]::-moz-color-swatch {
     padding-top: 20px;
     margin-top: -20px;
     padding-right: 20px;
-    padding-left: 20px;
-    margin-left: -20px;
+    padding-left: 10px;
+    margin-left: -10px;
     padding-bottom: 10px;
 }
 
@@ -1063,8 +1063,8 @@ input[type="color"]::-moz-color-swatch {
   position: absolute;
   top: -6px;
   right: -14%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
   background: rgba(4, 12, 10, 0.95);
   border: 1px solid #78f1c2;
@@ -1081,8 +1081,8 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .region-note-edit img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: block;
 }
 
@@ -1378,12 +1378,12 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .searchBar input#locationSearch {
-  padding: 10px 36px 10px 12px;
+  padding: 12px 36px 12px 12px;
   border-radius: 999px;
   border: 1px solid rgba(120, 241, 194, 0.35);
   background-color: rgba(2, 16, 20, 0.9);
   color: #e5f7f3;
-  font-size: 13px;
+  font-size: 12px;
   outline: none;
   background-image: url('../img/search-icon.svg');
   background-repeat: no-repeat;
@@ -1456,6 +1456,7 @@ input[type="color"]::-moz-color-swatch {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #e5f7f3;
+  font-size: 12px;
 }
 
 .search-result.is-active,
@@ -1487,6 +1488,47 @@ input[type="color"]::-moz-color-swatch {
 
 .search-result.type-rift .search-type-icon {
   filter: drop-shadow(0 0 4px #ff6b6b);
+}
+
+.search-result.type-marker .search-type-icon {
+  height: 32px;
+  width: 32px;
+  margin-left: 2px;
+}
+
+/* General */
+.search-result.cat-general .search-type-icon {
+  filter: drop-shadow(0 0 5px rgb(183 255 186 / 26%));
+}
+
+/* Quest */
+.search-result.cat-quest .search-type-icon {
+  filter: drop-shadow(0 0 6px rgb(211 118 238 / 29%));
+}
+
+/* Boss */
+.search-result.cat-boss .search-type-icon {
+  filter: drop-shadow(0 0 7px rgb(239 22 22 / 43%));
+}
+
+/* Loot */
+.search-result.cat-loot .search-type-icon {
+  filter: drop-shadow(0 0 5px rgb(226 226 131 / 39%));
+}
+
+/* Waypoint */
+.search-result.cat-waypoint .search-type-icon {
+  filter: drop-shadow(0 0 5px rgb(159 244 219 / 35%));
+}
+
+/* Donjon */
+.search-result.cat-donjon .search-type-icon {
+  filter: drop-shadow(0 0 6px rgb(230 230 230 / 30%));
+}
+
+/* NPC */
+.search-result.cat-npc .search-type-icon {
+  filter: drop-shadow(0 0 5px rgb(217 193 76 / 44%));
 }
 
 
