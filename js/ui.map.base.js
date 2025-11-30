@@ -235,7 +235,13 @@
 
     const zr = $('#zoomReadout');
     if (zr) zr.textContent = Math.round(scale * 100) + '%';
+
+    // Notifie la minimap qu'il y a eu un changement de vue
+    if (window.UiMiniMap && typeof window.UiMiniMap.update === 'function') {
+      window.UiMiniMap.update();
+    }
   }
+
 
   function viewToPct(cx, cy) {
     const vb = viewport.getBoundingClientRect();
@@ -270,4 +276,6 @@
     pctToPx,
     setMapSrc,
   });
+
+  
 })();

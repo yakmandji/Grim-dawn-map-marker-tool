@@ -385,16 +385,6 @@ input[type="password"]:focus
   padding-right: 5px;
 }
 
-.floating { 
-  position: fixed;
-  right: 34px;
-  bottom: 32px;
-  display: flex;
-  gap: 8px;
-  z-index: 20;
-  pointer-events: none;
-}
-
 .chip { 
   font-size: 12px; 
   opacity: .85;
@@ -562,7 +552,7 @@ input[type="color"]::-moz-color-swatch {
 
 #toastContainer {
   position: fixed;
-  top: 7rem;
+  top: 6.5rem;
   right: 1rem;
   display: flex;
   flex-direction: column;
@@ -929,50 +919,6 @@ input[type="color"]::-moz-color-swatch {
 .filterToggle:not(.is-on) .filterCount {
   opacity: 0.6;
   box-shadow: none;
-}
-
-/*ZOOM BUTTON*/
-
-#zoomControls {
-  position: absolute;
-  bottom: -7px;
-  right: 138px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 6px 10px;
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
-  font-size: 14px;
-  color: var(--color-text, #d8e0e3);
-}
-
-#zoomControls button {
-  border: 1px solid var(--color-border, #1d2326);
-  color: var(--color-text, #d8e0e3);
-  padding: 7px 11px;
-  width: 34px;
-  height: 29px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-
-#zoomControls button:hover {
-  background: var(--color-accent-soft, #00c47a);
-  transform: scale(1.1);
-}
-
-#zoomDisplay {
-  min-width: 40px;
-  text-align: center;
-  font-weight: bold;
-}
-
-#zoomControls,
-#zoomControls * {
-  pointer-events: auto;
 }
 
 /* Shared pin position */

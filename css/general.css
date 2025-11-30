@@ -33,14 +33,6 @@ textarea, [contenteditable="true"] {
   cursor: text;
 }
 
-.map-hint {
-    font-size: 12px;
-    opacity: 0.8;
-    position: absolute;
-    bottom: 23px;
-    right: 314px;
-}
-
 .title {
  font-weight: 700;
  margin-right: auto;
@@ -525,7 +517,7 @@ body.shared-only-view #mergeSharedBtn,
 /* Panneau flottant des Done */
 .done-panel {
   position: fixed;
-  top: 50vh;
+  bottom: 3.5vh;
   right: 14px;
   z-index: 1200;
   font-size: 13px;
@@ -830,4 +822,149 @@ body.shared-only-view #mergeSharedBtn,
 
 .js-character-dropdown .select-current .dropdown-selected-label{
   color: #c6803f;
+}
+
+.floating { 
+  position: absolute;
+  right: 12px;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none; 
+}
+
+.floating > * {
+  pointer-events: auto;
+}
+
+/*MINI MAP*/
+
+.miniMap {
+  margin-top: 8px;
+  border-radius: 200px;
+  padding: 19px;
+  pointer-events: auto;
+  background-image: url(../img/map-border.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.miniMap-inner {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  background-color: #050c0a;
+  background-size: cover;
+  background-position: top left;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 200px;
+  cursor: pointer;
+}
+
+.miniMap-viewport {
+  position: absolute;
+  border: 1px solid #38998a;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8);
+  background-color: rgba(156, 232, 107, 0.10);
+  pointer-events: none;
+  border-radius: 15%;
+}
+
+.map-hint {
+    font-size: 12px;
+    opacity: 0.8;
+    bottom: 23px;
+    right: 314px;
+}
+
+/*ZOOM BUTTON*/
+
+#zoomControls {
+    right: 138px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--color-text, #d8e0e3);
+    position: absolute;
+    flex-direction: column-reverse;
+    right: 1px;
+    top: 120px;
+    z-index: 1;
+}
+
+#zoomReadout{
+  right: 81px;
+  position: absolute;
+  top: 45px;
+  color: #dfbd96;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+}
+
+#zoomOut{
+    position: absolute;
+    top: 32px;
+    right: 21px;
+}
+
+.miniMap-inner {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden; /* garde le cercle parfait */
+}
+
+/* Inner shadow circulaire */
+.miniMap-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  /* 🔥 Le secret : un radial-gradient en fading */
+  background: radial-gradient(
+    circle,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.25) 75%,
+    rgba(0,0,0,0.45) 100%
+  );
+}
+
+#zoomControls button {
+  border: 1px solid var(--color-border, #1d2326);
+  color: var(--color-text, #d8e0e3);
+  padding: 7px 11px;
+  width: 26px;
+  height: 21px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  font-size: 16px;
+}
+
+#zoomControls button:hover {
+  background: var(--color-accent-soft, #00c47a);
+  transform: scale(1.1);
+}
+
+#zoomDisplay {
+  min-width: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#zoomControls,
+#zoomControls * {
+  pointer-events: auto;
+}
+
+#cursorReadout {
+  align-self: stretch; 
+  text-align: center;
+  margin-top: 2px;
+  font-weight: 500;
 }
