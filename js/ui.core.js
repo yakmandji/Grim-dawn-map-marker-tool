@@ -966,6 +966,78 @@ if (newPathBtn) {
   }
 
 
+
+// =============================
+// PAN AU CLAVIER
+// =============================
+(function(){
+  const keys = {};
+  let keyboardPanInterval = null;
+
+  const SPEED = 22;       // vitesse normale du pan
+  const SPEED_FAST = 42;  // avec SHIFT
+  const SPEED_SLOW = 10;  // avec CTRL
+
+  function startKeyboardPan() {
+    if (keyboardPanInterval) return;
+
+    keyboardPanInterval = setInterval(() => {
+      const core = window.GDMMCore || {};
+      const state = core.state || {};
+      if (!state.view) return;
+
+      let dx = 0;
+      let dy = 0;
+
+      if (keys["ArrowLeft"])  dx -= 1;
+      if (keys["ArrowRight"]) dx += 1;
+      if (keys["ArrowUp"])    dy -= 1;
+      if (keys["ArrowDown"])  dy += 1;
+
+      if (dx === 0 && dy === 0) return;
+
+      const speed =
+        keys["Shift"] ? SPEED_FAST :
+        keys["Control"] ? SPEED_SLOW :
+        SPEED;
+
+      const scale = state.view.scale || 1;
+      const real = speed / scale;
+
+      state.view.x -= dx * real;
+      state.view.y -= dy * real;
+
+      if (typeof clampViewToMap === "function") clampViewToMap();
+      if (typeof applyView === "function") applyView();
+
+    }, 16); // ~60fps
+  }
+
+  function stopKeyboardPan() {
+    if (keyboardPanInterval) {
+      clearInterval(keyboardPanInterval);
+      keyboardPanInterval = null;
+    }
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Shift","Control"].includes(e.key)) {
+      keys[e.key] = true;
+      e.preventDefault();
+      startKeyboardPan();
+    }
+  });
+
+  window.addEventListener("keyup", (e) => {
+    if (keys[e.key]) {
+      delete keys[e.key];
+      if (Object.keys(keys).length === 0) stopKeyboardPan();
+    }
+  });
+})();
+
+
+
   // --- Init on load ---
     (async () => {
       // 1) Crée la structure de base pour chaque map connue
