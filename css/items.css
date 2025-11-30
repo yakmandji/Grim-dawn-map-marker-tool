@@ -184,6 +184,13 @@ button:active:not(.select-current) {
   cursor: pointer;
 }
 
+/* En mode pan, ne pas afficher la main sur les overlays de donjons */
+.mapViewport.pan .dungeon-wrapper,
+.mapViewport.pan .dungeon-wrapper * {
+  cursor: pointer;  /* ou 'default' si tu préfères juste le curseur normal */
+}
+
+
 .marker:hover{
   z-index: 7;
 }
@@ -1222,6 +1229,11 @@ input[type="color"]::-moz-color-swatch {
 .marker-region-dungeon .region-label.opacity + .region-note-indicator {
   opacity: 1;
 }
+
+.marker-region-dungeon .region-label.opacity ~ .region-note-indicator {
+    opacity: 1 !important;
+}
+
 
 /*ADMIN MARKERS TOOGLE*/
 

@@ -650,13 +650,18 @@ viewport.addEventListener('pointerdown', e => {
   });
 
 
-  if (e.target.closest && (
-        e.target.closest('.marker') ||
-        e.target.closest('.marker-entry-dungeon')
-  )) {
+  if (
+    e.target.closest &&
+    (
+      e.target.closest('.marker') ||
+      e.target.closest('.marker-entry-dungeon') ||
+      e.target.closest('.dungeon-wrapper') 
+    )
+  ) {
     // on laisse l'élément gérer son pointerup / click.
     return;
   }
+
   if (e.pointerType === 'mouse' && e.button !== 0) return;
     
   panning = true;
@@ -669,7 +674,7 @@ viewport.addEventListener('pointerdown', e => {
 
 /*Donjon highlight*/
 
-function updateDungeonHover(e) {
+/*function updateDungeonHover(e) {
   if (!state.dungeonOverlays || !state.dungeonOverlays.length) return;
 
   if (state.dungeonForcedHover && state.dungeonForcedHover.length) {
@@ -716,7 +721,7 @@ function updateDungeonHover(e) {
       l.classList.add('opacity'); // éclairé
     }
   });
-}
+}*/
 
 /*Pointer move------------------------------------------------*/
 
@@ -724,9 +729,9 @@ viewport.addEventListener('pointermove', e => {
   const isTouch = e.pointerType === 'touch';
 
   // 1) Sur desktop (mouse / pen), on garde le hover donjon
-  if (!isTouch && state.dungeonOverlays && state.dungeonOverlays.length) {
+/*  if (!isTouch && state.dungeonOverlays && state.dungeonOverlays.length) {
     updateDungeonHover(e);
-  }
+  }*/
 
     // 2) Sur mobile (touch) : on gère uniquement le pinch / pan,
     if (isTouch) {

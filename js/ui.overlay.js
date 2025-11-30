@@ -149,6 +149,7 @@ function renderDungeonOverlays() {
   overlays.forEach(d => {
     const wrap = document.createElement('div');
     wrap.className = 'dungeon-wrapper';
+
     const nw = state.mapNatural.w;
     const nh = state.mapNatural.h;
 
@@ -171,23 +172,20 @@ function renderDungeonOverlays() {
     wrap.appendChild(over);
     inner.appendChild(wrap);
 
-    // --- HOVER SOURIS / STYLET SEULEMENT ---
-    wrap.addEventListener('pointerenter', (e) => {
-      if (e.pointerType === 'touch') return; // pas de hover sur mobile
-      if (window.showDungeonLinksForOverlay) {
-        window.showDungeonLinksForOverlay(d.id);
+    // --- Activation uniquement au clic/tap ---
+    wrap.addEventListener('click', (e) => {
+      const core = window.GDMMCore || {};
+      const coreState = core.state || {};
+
+      // Mode ajout de marqueur :
+      // on laisse le clic remonter pour que le viewport crée le marker
+      if (coreState.tool === 'add') {
+        return;
       }
-    });
 
-    wrap.addEventListener('pointerleave', (e) => {
-      if (e.pointerType === 'touch') return;
-      // Ne rien faire : on laisse le layer + traits visibles
-    });
-
-    // --- TAP SUR MOBILE : TOGGLE D'UN OVERLAY ---
-    wrap.addEventListener('pointerup', (e) => {
-      if (e.pointerType !== 'touch') return;
+      // Pour tous les autres modes : comportement donjon
       e.preventDefault();
+      e.stopPropagation();
 
       state.activeDungeonOverlayId = state.activeDungeonOverlayId || null;
 
@@ -215,8 +213,8 @@ function renderDungeonOverlays() {
     });
   });
 
-}
 
+}
 
 window.renderDungeonOverlays = renderDungeonOverlays;
 
