@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.27" />
+  <link rel="stylesheet" href="css/general.css?v1.28" />
   <link rel="stylesheet" href="css/items.css?v1.28" />
   <link rel="stylesheet" href="css/responsive.css?v1.14" />
 </head>
@@ -61,19 +61,7 @@
 <!--     END Character selection ------------------------------------- -->
         <div class="sep"></div>
 
-<!--         Profil map------------------------------------- -->
-      <select id="profileSelect" title="Profils" class="active select-green">
-        <option value="">(profil)</option>
-      </select>
-      <div id="profileDropdown" class="custom-dropdown">
 
-        <button class="select-current select-green">
-          <span class="select-label">Cairn</span>
-        </button>
-        <div class="custom-dropdown-inner">
-        </div>
-      </div>
-<!--         End Profil map------------------------------------- -->
 
       <button id="mobile-menu-toggle">
           <img src="img/hamburger.svg" width="28" alt="">
@@ -377,9 +365,26 @@
         </div>
       </div>
 
-      <span id="cursorReadout">x: –, y: –</span>
-      <div class="map-hint" data-i18n="KeyboardPan" >
-          ← → ↑ ↓  pour déplacer la carte
+      <div class="map-info-container">
+            <!--         Profil map------------------------------------- -->
+          <select id="profileSelect" title="Profils" class="active select-green">
+            <option value="">(profil)</option>
+          </select>
+          <div id="profileDropdown" class="custom-dropdown">
+
+            <button class="select-current select-green">
+              <span class="select-label">Cairn</span>
+            </button>
+            <div class="custom-dropdown-inner">
+            </div>
+          </div>
+          <!--         End Profil map------------------------------------- -->
+
+          <span id="cursorReadout">x: –, y: –</span>
+          <div class="map-hint" data-i18n="KeyboardPan" >
+              ← → ↑ ↓  pour déplacer la carte
+          </div>
+
       </div>
     </div>
 

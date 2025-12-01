@@ -826,6 +826,7 @@ body.shared-only-view #mergeSharedBtn,
   background-image: url(../img/map-border.png);
   background-repeat: no-repeat;
   background-size: contain;
+  z-index: 1;
 }
 
 .miniMap-inner {
@@ -852,6 +853,7 @@ body.shared-only-view #mergeSharedBtn,
 .map-hint {
     font-size: 12px;
     color: #436f70;
+    margin-top: 4px;
 }
 
 /*ZOOM BUTTON*/
@@ -869,7 +871,7 @@ body.shared-only-view #mergeSharedBtn,
     flex-direction: column-reverse;
     right: 0px;
     top: 148px;
-    z-index: 1;
+    z-index: 2;
 }
 
 #zoomReadout{
@@ -886,6 +888,21 @@ body.shared-only-view #mergeSharedBtn,
     top: 40px;
     right: 28px;
 }
+
+.map-info-container{
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  padding: 14px 14px;
+  border-radius: 12px;
+  margin-top: -22px;  
+  border: 2px solid #523b1b;
+}
+
+.map-info-container .select-green{
+  padding: 6px 20px 6px 12px;
+}
+
 
 .miniMap-inner {
   position: relative;
@@ -940,6 +957,7 @@ body.shared-only-view #mergeSharedBtn,
 #cursorReadout {
   align-self: stretch; 
   text-align: center;
-  margin-top: 2px;
+  margin-top: 7px;
   font-weight: 500;
+  font-size: 12px;
 }
