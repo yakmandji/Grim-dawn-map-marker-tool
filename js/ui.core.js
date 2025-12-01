@@ -185,60 +185,63 @@ function rememberActiveProfile() {
     }
 
     // --- Dropdown Catégorie (nouveau marqueur) ---
-    (function(){
+    (function () {
       const sel = document.getElementById('newCategory');
       const dd  = document.getElementById('categoryDropdown');
       if (!sel || !dd) return;
-          const inner = dd.querySelector('.custom-dropdown-inner');
-          if (!inner) return;
 
-          const categoryIcons = {
-            General:  'img/waypoint.svg',
-            Quest:    'img/quest.svg',
-            Boss:     'img/boss.svg',
-            Loot:     'img/loot.svg',
-            Waypoint: 'img/passage.svg',
-            Donjon:   'img/donjon.svg',
-            NPC:      'img/npc.svg',
-          };
+      const inner = dd.querySelector('.custom-dropdown-inner');
+      if (!inner) return;
 
-          inner.innerHTML = '';
-          Array.from(sel.options).forEach(opt => {
-            const iconSrc = categoryIcons[opt.value] || '';
-            const i18nKey = opt.getAttribute('data-i18n') || '';
+      const categoryIcons = {
+        General:  'img/waypoint.svg',
+        Quest:    'img/quest.svg',
+        Boss:     'img/boss.svg',
+        Loot:     'img/loot.svg',
+        Waypoint: 'img/passage.svg',
+        Donjon:   'img/donjon.svg',
+        NPC:      'img/npc.svg',
+      };
 
-            inner.innerHTML += `
-              <button class="option-item" data-value="${opt.value}">
-                ${iconSrc ? `<img src="${iconSrc}" width="16" height="16" style="margin-right:4px;">` : ''}
-                <span ${i18nKey ? `data-i18n="${i18nKey}"` : ''}>${opt.textContent}</span>
-              </button>
-            `;
-          });
+      inner.innerHTML = '';
 
-        if (window.initCustomDropdown) {
-          initCustomDropdown({
-            nativeId: 'newCategory',
-            dropdownId: 'categoryDropdown',
-            itemSelector: '.option-item',
-            valueAttr: 'data-value',
-            currentButtonSelector: '.select-current',
-            currentLabelSelector: '.select-label',
-            getLabel: (item) => item.textContent.trim(),
+      Array.from(sel.options).forEach(opt => {
+        const iconSrc = categoryIcons[opt.value] || '';
+        const i18nKey = opt.getAttribute('data-i18n') || '';
 
-            // Pour mettre à jour l’icône sur le bouton courant
-            extraSync: ({ currentBtn, item }) => {
-              const btnIcon  = currentBtn.querySelector('.category-icon');
-              const itemIcon = item.querySelector('img');
-              if (btnIcon && itemIcon) {
-                btnIcon.src = itemIcon.src;
-              }
+        const labelText =
+          i18nKey && window.GDMMLang && typeof GDMMLang.t === 'function'
+            ? GDMMLang.t(i18nKey)
+            : opt.textContent;
+
+        inner.innerHTML += `
+          <button class="option-item" data-value="${opt.value}">
+            ${iconSrc ? `<img src="${iconSrc}" width="16" height="16" style="margin-right:4px;">` : ''}
+            <span ${i18nKey ? `data-i18n="${i18nKey}"` : ''}>${labelText}</span>
+          </button>
+        `;
+      });
+
+      if (window.initCustomDropdown) {
+        initCustomDropdown({
+          nativeId: 'newCategory',
+          dropdownId: 'categoryDropdown',
+          itemSelector: '.option-item',
+          valueAttr: 'data-value',
+          currentButtonSelector: '.select-current',
+          currentLabelSelector: '.select-label',
+          getLabel: (item) => item.textContent.trim(),
+          extraSync: ({ currentBtn, item }) => {
+            const btnIcon  = currentBtn.querySelector('.category-icon');
+            const itemIcon = item.querySelector('img');
+            if (btnIcon && itemIcon) {
+              btnIcon.src = itemIcon.src;
             }
-          });
-        }
-        if (window.GDMMLang && typeof GDMMLang.applyLang === 'function' && typeof GDMMLang.getLang === 'function') {
-          GDMMLang.applyLang(GDMMLang.getLang());
-        }
-      })();
+          }
+        });
+      }
+    })();
+
     // --- END Dropdown Catégorie (nouveau marqueur) ---
 
 
