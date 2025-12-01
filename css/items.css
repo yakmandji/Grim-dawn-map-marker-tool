@@ -99,24 +99,31 @@
 }
 
 /* --- Sprite de drapeaux --- */
+
+#langDropdown button,
+#langDropdown span{
+  font-size: 11px;
+}
+
 .flag {
-  width: 18px;
-  height: 13px;
+  width: 15px;
+  height: 12px;
   border-radius: 2px;
   background-image: url('../img/flags.png');
   flex: 0 0 auto;
+  background-size: 76px;
 }
 
 /* Exemple de positions (à adapter à ton sprite) */
-.flag-en { background-position: -22px 0; }
-.flag-fr { background-position: -2px 0; }
-.flag-es { background-position: -44px 0; }
-.flag-de { background-position: -65px 0; }
-.flag-pt { background-position: -87px -16px; }
-.flag-it { background-position: -108px -16px; }
-.flag-ru { background-position: -128px -16px; }
-.flag-zh { background-position: -150px -16px; }
-.flag-ja { background-position: -174px -32px; }
+.flag-en { background-position: -20px 0; }
+.flag-fr { background-position: -3px 0; }
+.flag-es { background-position: -38px 0px }
+.flag-de { background-position: -58px 0; }
+.flag-pt { background-position: -96px -14px; }
+.flag-it { background-position: -108px -14px; }
+.flag-ru { background-position: -113px -14px; }
+.flag-zh { background-position: -133px -14px; }
+.flag-ja { background-position: -154px -69px; }
 
 
 .dungeon-wrapper.is-hovered .dungeon {
