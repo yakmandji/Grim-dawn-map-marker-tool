@@ -149,6 +149,11 @@
       window.renderDungeonOverlays();
     }
 
+    //Appeler la minimap au changement
+    if (window.UiMiniMap && typeof window.UiMiniMap.force === 'function') {
+      window.UiMiniMap.force();   // force un redraw immédiat avec la nouvelle map
+    }
+
     hideLoader();
   });
 

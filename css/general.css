@@ -693,6 +693,12 @@ body.shared-only-view #mergeSharedBtn,
   margin-right: auto;
 }
 
+.js-character-dropdown .custom-dropdown-inner{
+  left: -50%;
+  top: 34px;
+  box-shadow: var(--shadow);
+}
+
 .js-character-dropdown .select-current .char-avatar-current{
   width: 36px;
   height: 36px;
@@ -702,6 +708,7 @@ body.shared-only-view #mergeSharedBtn,
   gap: 10px;
   background-color: transparent;
   border: none;
+  padding: 0px 32px 0px 12px;
 }
 
 .js-character-dropdown .select-green:hover,
@@ -715,7 +722,6 @@ body.shared-only-view #mergeSharedBtn,
   padding: 8px 12px;
   gap: 10px;
   cursor: pointer;
-  border-radius: 8px;
 }
 
 .character-line:hover {
@@ -769,7 +775,6 @@ body.shared-only-view #mergeSharedBtn,
 .character-line.add-new {
   cursor: pointer;
   background: rgba(255,255,255,0.05);
-  margin-top: 6px;
 }
 
 .character-line.add-new:hover {
@@ -786,7 +791,6 @@ body.shared-only-view #mergeSharedBtn,
   display: flex;
   align-items: center;
   flex-grow: 1;
-  padding: 8px 0;
 }
 
 .character-line .edit{

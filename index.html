@@ -26,7 +26,7 @@
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.29" />
+  <link rel="stylesheet" href="css/general.css?v1.30" />
   <link rel="stylesheet" href="css/items.css?v1.29" />
   <link rel="stylesheet" href="css/responsive.css?v1.15" />
 </head>
@@ -233,7 +233,7 @@
     </div>
 <!--     END Character selection ------------------------------------- -->  
 
-      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:528px;margin-top: 0.5rem;">
+      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:590px;margin-top: 0.5rem;">
         <div class="row">
           <h3 class="m0 pl-20" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
           </h3>
@@ -488,11 +488,11 @@
   <div class="modal-content">
     <button class="closeModal">×</button>
     <div class="inner-modal">
-      <h3>Renommer le personnage</h3>
+      <h3 data-i18n="ui.RenamoeCharacter">Renommer le personnage</h3>
       <input type="text" class="js-edit-character-name" placeholder="Nom du personnage">
       <div class="modal-actions">
-        <button class="small modal-save js-save-character-edit">Enregistrer</button>
-        <button class="modal-cancel js-cancel-character-edit cancel">Annuler</button>
+        <button data-i18n="ui.SaveTitle" class="small modal-save js-save-character-edit">Enregistrer</button>
+        <button data-i18n="ui.CancelMarkerButton" class="modal-cancel js-cancel-character-edit cancel">Annuler</button>
       </div>
     </div>
   </div>
@@ -503,11 +503,11 @@
   <div class="modal-content">
     <button class="closeModal">×</button>
     <div class="inner-modal">
-      <h3>Nouveau personnage</h3>
-      <input type="text" class="js-new-character-name" placeholder="Nom du personnage">
+      <h3 data-i18n="ui.NewCharacter">Nouveau personnage</h3>
+      <input type="text" class="js-new-character-name" data-i18n-placeholder="ui.CharacterNamePlaceHolder" placeholder="Character name">
       <div class="modal-actions">
-        <button class="small modal-save js-save-character-new">Créer</button>
-        <button class="small modal-cancel js-cancel-character-new danger">Annuler</button>
+        <button data-i18n="character.CreateButton" class="small modal-save js-save-character-new">Créer</button>
+        <button data-i18n="ui.CancelMarkerButton" class="small modal-cancel js-cancel-character-new danger">Annuler</button>
       </div>
     </div>
   </div>
@@ -515,12 +515,12 @@
 <!--END MULTI CHARACTER MODAL ------------------------------------------------------->
 
 
-  <script src="js/ui.lang.js?v=3.47"></script>
+  <script src="js/ui.lang.js?v=3.48"></script>
   <script src="js/core.js?v=3.10"></script>
   <script src="js/ui.rift.js?v=3.87"></script>
   <script src="js/ui.region.js?v=3.98"></script>
   <script src="js/ui.navmarkers.js?v=1.20"></script>
-  <script src="js/ui.map.base.js?v=1.19"></script>
+  <script src="js/ui.map.base.js?v=1.20"></script>
   <script src="js/ui.map.minimap.js?v=1.11"></script>
 
   <script src="js/ui.markers.js?v=17"></script>
