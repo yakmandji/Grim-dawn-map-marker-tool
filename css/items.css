@@ -901,7 +901,7 @@ input[type="color"]::-moz-color-swatch {
   font-size: 0.90em;
   background: #3d0f0f;
   border: none;
-  color: #cebaaf;
+  color: #bb9595;
   padding: 4px 7px;
   max-width: inherit;
   opacity: 1;
@@ -1055,8 +1055,8 @@ input[type="color"]::-moz-color-swatch {
   top: 39%;
   left: -18px;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   opacity: 1;
   transform: translateY(0) scale(var(--mk, 1));
 }
@@ -1167,7 +1167,6 @@ input[type="color"]::-moz-color-swatch {
   background-position: center;
   opacity: 0.15;
   transition: opacity 0.15s ease, transform 0.15s ease;
-  font-size: 1em;
 }
 
 /* --- Custom checkbox green theme --- */

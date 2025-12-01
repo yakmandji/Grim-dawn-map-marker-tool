@@ -821,7 +821,7 @@ body.shared-only-view #mergeSharedBtn,
 .miniMap {
   margin-top: 8px;
   border-radius: 200px;
-  padding: 19px;
+  padding: 24px 20px;
   pointer-events: auto;
   background-image: url(../img/map-border.png);
   background-repeat: no-repeat;
@@ -830,8 +830,8 @@ body.shared-only-view #mergeSharedBtn,
 
 .miniMap-inner {
   position: relative;
-  width: 165px;
-  height: 170px;
+  width: 200px;
+  height: 200px;
   background-color: #050c0a;
   background-size: cover;
   background-position: top left;
@@ -867,15 +867,15 @@ body.shared-only-view #mergeSharedBtn,
     color: var(--color-text, #d8e0e3);
     position: absolute;
     flex-direction: column-reverse;
-    right: -3px;
-    top: 120px;
+    right: 0px;
+    top: 148px;
     z-index: 1;
 }
 
 #zoomReadout{
-  right: 42%;
+  right: 43%;
   position: absolute;
-  top: 178px;
+  top: 213px;
   color: #dfbd96;
   font-size: 13px;
   z-index: 1;
@@ -883,8 +883,8 @@ body.shared-only-view #mergeSharedBtn,
 
 #zoomOut{
     position: absolute;
-    top: 36px;
-    right: 22px;
+    top: 40px;
+    right: 28px;
 }
 
 .miniMap-inner {
