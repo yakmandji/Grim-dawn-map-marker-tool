@@ -206,6 +206,15 @@ header .sep {
   border-radius: 10px;
   padding: 3px 14px 16px 14px;
 }
+
+#noteList .listItem{
+  padding: 4px 8px 4px 8px;
+}
+
+#routesList .listItem{
+  padding: 5px 8px 5px 8px;
+}
+
 .listItem { 
   position: relative;
   display: flex;
@@ -213,8 +222,8 @@ header .sep {
   gap: 6px;
   padding: 9px 8px 9px 8px;
   align-items: center;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .listItem:nth-child(odd){
