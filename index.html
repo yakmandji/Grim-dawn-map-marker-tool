@@ -26,9 +26,9 @@
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.28" />
-  <link rel="stylesheet" href="css/items.css?v1.28" />
-  <link rel="stylesheet" href="css/responsive.css?v1.14" />
+  <link rel="stylesheet" href="css/general.css?v1.29" />
+  <link rel="stylesheet" href="css/items.css?v1.29" />
+  <link rel="stylesheet" href="css/responsive.css?v1.15" />
 </head>
 <body>
   <p aria-hidden="true" class="seo-summary">
@@ -44,39 +44,96 @@
   </div>
   <div class="app">
     <header id="left-menu">
-
-<!--         Character selection ------------------------------------- -->
-
-    <div class="custom-dropdown js-character-dropdown" data-dropdown-id="character">
-      <button class="select-current select-green">
-        <span class="dropdown-selected-label">Default character</span>
-        <span class="dropdown-arrow"></span>
-      </button>
-      <div class="custom-dropdown-inner">
-          <button type="button" class="option-item" >
-            <span>Character 1</span>
+      <div class="header-actions" id="header-add-group">
+          <button id="btn-new-marker" class="gd-btn gd-btn--header">
+              <img src="img/marker-pin.svg" width="17">
+              <span data-i18n="ui.NewMarkerTitle">New marker</span>
+          </button>
+        <div class="sep"></div>
+          <button id="btn-new-route" class="gd-btn gd-btn--header">
+              <img src="img/route-icon.svg" width="17">
+              <span data-i18n="ui.NewPathTitle">New Path</span>
           </button>
       </div>
-    </div>
-<!--     END Character selection ------------------------------------- -->
-        <div class="sep"></div>
+        <!--         POPUP ADD MARKER AND ROUTE ------------------------------------- -->
 
+        <div class="gd-popup gd-popup--marker" data-popup="marker">
+            <div class="gd-popup__card">
+                <button class="gd-popup__close" data-popup-close>×</button>
 
+                  <div class="section principal">
+                    <div class="row title-icon" style="padding-bottom: 8px;">
+                      <h3>
+                        <img src="img/marker-pin.svg" width="17">
+                        <span data-i18n="ui.NewMarkerTitle">New marker</span>
+                      </h3>
+                        <label style="flex:0 0 auto" class="small done-input">
+                          <input id="newShared" type="checkbox" class="checkbox-green"/>
+                          <span data-i18n="ui.SharedMarker">Shared</span>
+                        </label>
+                    </div>
+                    <div class="row">
+                      <input id="newLabel" type="text" data-i18n-placeholder="ui.MarkerNamePlaceholder" placeholder="Name / note" />
+                    </div>
+                    <div class="row" style="margin-top: 6px;">
+                      <select id="newCategory" class="select-green">
+                        <option value="General" data-i18n="ui.GeneralMarker">Personal marker</option>
+                        <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
+                        <option value="Boss" data-i18n="ui.BossMarker">Boss</option>
+                        <option value="Loot" data-i18n="ui.LootMarker">Loot</option>
+                        <option value="Waypoint" data-i18n="ui.WaypointMarker">Passage</option>
+                        <option value="Donjon" data-i18n="ui.DonjonMarker">Donjon</option>
+                        <option value="NPC" data-i18n="ui.NPCMarker">NPC</option>
+                      </select>
+                      <div id="categoryDropdown" class="custom-dropdown">
+                        <button class="select-current select-green">
+                           <img class="category-icon" src="" width="16" height="16">
+                          <span class="select-label"></span>
+                        </button>
+                        <div class="custom-dropdown-inner"></div>
+                      </div>  
+
+                      <button id="toolAdd" class="small">
+                          <img src="img/add-circle.png?v2.2" width="16">
+                          <span data-i18n="ui.AddMarkerButton">Add</span>
+                      </button>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <!-- Popup Nouveau tracé -->
+        <div class="gd-popup gd-popup--route" data-popup="route">
+            <div class="gd-popup__card">
+                <button class="gd-popup__close" data-popup-close>×</button>
+
+                  <div class="section principal">
+                      <div class="row title-icon" style="padding-bottom: 8px;">
+                        <h3>
+                          <img src="img/route-icon.svg" width="17">
+                          <span data-i18n="ui.NewPathTitle">New Path</span>
+                        </h3>
+                      </div>        
+                      <div id="currentPathName" class="path-badge"></div>
+                      <div class="row">
+                        <input id="newPathName" type="text" data-i18n-placeholder="ui.PathNamePlaceholder" placeholder="Path name (optional)">
+                      </div>        
+                      <div class="row" style="margin-top: 6px;">
+                        <button id="newPathBtn" class="small" type="button">
+                          <img src="img/add-circle.png?v2.2" width="16"><span data-i18n="ui.AddRouteButton">Add</span>
+                        </button>
+                        <button id="toolFinishPath" class="toolBtn small">
+                          <img src="img/check.svg" width="20"><span data-i18n="ui.FinishPath">Finish</span>
+                        </button>
+                      </div>
+                  </div>  
+            </div>
+        </div>
+          <!---------------------------------------- POPUP ADD MARKER AND ROUTE --------->
 
       <button id="mobile-menu-toggle">
           <img src="img/hamburger.svg" width="28" alt="">
       </button>
-
-
-
-        <button class="filterToggle admin-btn is-on" data-admin="region" data-i18n-title="ui.ShowHideRegion" title="Show/Hide Region names">
-            <img src="img/region.svg" alt="Region">
-        </button>
-
-        <button class="filterToggle admin-btn is-on" data-admin="rift" data-i18n-title="ui.ShowHideRift" title="Show/Hide Rifts">
-          <img src="img/rift.png" alt="Rift">
-        </button>
-        <div class="sep"></div>
 
        <button id="mergeSharedBtn" class="small" >
           <img src="img/merge.svg" width="18" alt="Merge"> 
@@ -160,67 +217,23 @@
           <p class="announce" data-i18n="ui.annouce">Build your own experience</p>
         </div>
       </div>
-      <div class="section principal">
-        <div class="row title-icon" style="padding-bottom: 8px;">
-          <h3>
-            <img src="img/marker-pin.svg" width="17">
-            <span data-i18n="ui.NewMarkerTitle">New marker</span>
-          </h3>
-            <label style="flex:0 0 auto" class="small done-input">
-              <input id="newShared" type="checkbox" class="checkbox-green"/>
-              <span data-i18n="ui.SharedMarker">Shared</span>
-            </label>
-        </div>
-        <div class="row">
-          <input id="newLabel" type="text" data-i18n-placeholder="ui.MarkerNamePlaceholder" placeholder="Name / note" />
-        </div>
-        <div class="row" style="margin-top: 6px;">
-          <select id="newCategory" class="select-green">
-            <option value="General" data-i18n="ui.GeneralMarker">Personal marker</option>
-            <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
-            <option value="Boss" data-i18n="ui.BossMarker">Boss</option>
-            <option value="Loot" data-i18n="ui.LootMarker">Loot</option>
-            <option value="Waypoint" data-i18n="ui.WaypointMarker">Passage</option>
-            <option value="Donjon" data-i18n="ui.DonjonMarker">Donjon</option>
-            <option value="NPC" data-i18n="ui.NPCMarker">NPC</option>
-          </select>
-          <div id="categoryDropdown" class="custom-dropdown">
-            <button class="select-current select-green">
-               <img class="category-icon" src="" width="16" height="16">
-              <span class="select-label"></span>
-            </button>
-            <div class="custom-dropdown-inner"></div>
-          </div>  
 
-          <button id="toolAdd" class="small">
-              <img src="img/add-circle.png?v2.2" width="16">
-              <span data-i18n="ui.AddMarkerButton">Add</span>
+<!--         Character selection ------------------------------------- -->
+
+    <div class="custom-dropdown js-character-dropdown" data-dropdown-id="character">
+      <button class="select-current select-green">
+        <span class="dropdown-selected-label">Default character</span>
+        <span class="dropdown-arrow"></span>
+      </button>
+      <div class="custom-dropdown-inner">
+          <button type="button" class="option-item" >
+            <span>Character 1</span>
           </button>
-        </div>
       </div>
+    </div>
+<!--     END Character selection ------------------------------------- -->  
 
-      <div class="section principal">
-          <div class="row title-icon" style="padding-bottom: 8px;">
-            <h3>
-              <img src="img/route-icon.svg" width="17">
-              <span data-i18n="ui.NewPathTitle">New Path</span>
-            </h3>
-          </div>        
-          <div id="currentPathName" class="path-badge"></div>
-          <div class="row">
-            <input id="newPathName" type="text" data-i18n-placeholder="ui.PathNamePlaceholder" placeholder="Path name (optional)">
-          </div>        
-          <div class="row" style="margin-top: 6px;">
-            <button id="newPathBtn" class="small" type="button">
-              <img src="img/add-circle.png?v2.2" width="16"><span data-i18n="ui.AddRouteButton">Add</span>
-            </button>
-            <button id="toolFinishPath" class="toolBtn small">
-              <img src="img/check.svg" width="20"><span data-i18n="ui.FinishPath">Finish</span>
-            </button>
-          </div>
-      </div>      
-
-      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:400px;margin-top: 2rem;">
+      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:528px;margin-top: 0.5rem;">
         <div class="row">
           <h3 class="m0 pl-20" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
           </h3>
@@ -348,9 +361,6 @@
         <div id="locationSearchResults" class="search-results markers-scroll"></div>
       </div>
 
-
-
-
     <div class="floating">
       <span class="" id="zoomReadout">100%</span>
       <div id="zoomControls">
@@ -366,6 +376,15 @@
       </div>
 
       <div class="map-info-container">
+        <div class="filter-minimap">
+              <button class="filterToggle admin-btn is-on" data-admin="region" data-i18n-title="ui.ShowHideRegion" title="Show/Hide Region names">
+                  <img src="img/region.svg" alt="Region">
+              </button>
+
+              <button class="filterToggle admin-btn is-on" data-admin="rift" data-i18n-title="ui.ShowHideRift" title="Show/Hide Rifts">
+                <img src="img/rift.png" alt="Rift">
+              </button> 
+          </div>
             <!--         Profil map------------------------------------- -->
           <select id="profileSelect" title="Profils" class="active select-green">
             <option value="">(profil)</option>
@@ -507,7 +526,7 @@
   <script src="js/ui.markers.js?v=17"></script>
   <script src="js/ui.routes.js?v=1.15"></script>
 
-  <script src="js/ui.core.js?v=3.67"></script>
+  <script src="js/ui.core.js?v=3.68"></script>
   <script src="js/ui.map.render.js?v=1.58"></script>
   <script src="js/ui.share.js"></script>
 

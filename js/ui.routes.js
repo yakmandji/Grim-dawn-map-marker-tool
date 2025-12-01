@@ -99,7 +99,6 @@
       points: [],
       color: '#ffcc00',
       width: 4,
-      opacity: 0.85,
     };
     paths.push(path);
     pathMode.active = true;

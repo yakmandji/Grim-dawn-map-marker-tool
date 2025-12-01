@@ -4,7 +4,7 @@
   --p2: #0e2522;
   --txt: #67999b;
   --titlecolor: #4b9f93;
-  --buttontxt : #4ec393;
+  --buttontxt : #5ccc9e;
   --placeholdertext : #2d6f72;
   --muted: #8cb9ac;
   --ok: #8be38b;
@@ -46,7 +46,7 @@ textarea, [contenteditable="true"] {
   position: absolute;
   left: 30px;
   font-size: 13px;
-  bottom: 22px;
+  bottom: 5px;
   font-weight: 400;
   color:#a57a4e;
   width: 300px;
@@ -84,7 +84,7 @@ header {
   background: var(--panel);
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 10px 22px;
+  padding: 16px 22px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -688,6 +688,11 @@ body.shared-only-view #mergeSharedBtn,
   object-fit: cover;
 }
 
+.js-character-dropdown{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .js-character-dropdown .select-current .char-avatar-current{
   width: 36px;
   height: 36px;
@@ -850,6 +855,13 @@ body.shared-only-view #mergeSharedBtn,
   border-radius: 15%;
 }
 
+.filter-minimap{
+  display: flex;
+  height: 54px;
+  gap: 10px;
+  justify-content: center;
+}
+
 .map-hint {
     font-size: 12px;
     color: #436f70;
@@ -943,6 +955,10 @@ body.shared-only-view #mergeSharedBtn,
   transform: scale(1.1);
 }
 
+button:focus {
+    outline: none;
+}
+
 #zoomDisplay {
   min-width: 40px;
   text-align: center;
@@ -960,4 +976,66 @@ body.shared-only-view #mergeSharedBtn,
   margin-top: 7px;
   font-weight: 500;
   font-size: 12px;
+}
+
+.header-actions{
+  width: 350px;
+  display: flex;
+  align-items: center;
+}
+
+.gd-popup {
+    position: fixed;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    display: none;
+    z-index: 1200;
+}
+
+.gd-popup__close {
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 2px 6px;
+}
+
+.gd-popup__card {
+    min-width: 520px;
+    max-width: calc(100vw - 32px);
+    background: #051b16; /* même style que tes panneaux */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    padding: 22px 22px;
+    position: relative;
+    animation: gd-popup-enter 0.15s ease-out;
+}
+
+.gd-popup.is-open {
+    display: block;
+}
+
+@keyframes gd-popup-enter {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.gd-popup {
+    display: none; /* popup caché par défaut */
+}
+.gd-popup.is-open {
+    display: flex; /* affiché seulement quand on ajoute la classe is-open */
 }

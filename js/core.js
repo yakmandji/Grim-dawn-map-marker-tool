@@ -132,6 +132,9 @@
     };
     p.markers.push(marker);
     p.updated = now();
+    const popup = document.querySelector('.gd-popup--marker');
+    if (popup) popup.classList.remove('is-open');
+    
     return marker;
   }
 

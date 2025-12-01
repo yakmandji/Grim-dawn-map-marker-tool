@@ -332,7 +332,7 @@
           tag.style.top  = ey + 'px';
 
           if (path.color) {
-            tag.style.background  = hexToRgba(path.color, 0.9);
+            tag.style.background  = path.color;;
             tag.style.borderColor = path.color;
 
             const c = path.color.replace('#', '');
@@ -853,7 +853,7 @@
 
                 sel.dispatchEvent(new Event('change', { bubbles: true }));
 
-                // ⚠️ IMPORTANT : on supprime le setTimeout(centerOn(...))
+                // on supprime le setTimeout(centerOn(...))
                 // Le centrage sera fait dans le onload de la map.
                     
                 // On garde juste éventuellement le pulse après coup :

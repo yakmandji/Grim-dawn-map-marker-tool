@@ -540,6 +540,8 @@ function renderMarkers(options = {}) {
         finalizeCurrentPath();
         setTool('pan');
         showToast(GDMMLang.t('toast.PathFinished'));
+        const popup = document.querySelector('.gd-popup--route');
+        if (popup) popup.classList.remove('is-open');
       } else {
         showToast(GDMMLang.t('toast.NoPath'));
       }
@@ -1162,6 +1164,103 @@ if (newPathBtn) {
   if (!window.UiCore) {
     window.UiCore = {};
   }
+
+  /*POPUP ADD MARKER AND ROUTE*/
+
+function setupPopup(triggerSelector, popupAttr) {
+
+    const trigger = document.querySelector(triggerSelector);
+    const popup   = document.querySelector(`.gd-popup[data-popup="${popupAttr}"]`);
+    const group   = document.getElementById('header-add-group'); // <-- conteneur des 2 boutons
+
+    if (!trigger || !popup || !group) return;
+
+    const closeButtons = popup.querySelectorAll('[data-popup-close]');
+
+    function closePopup() {
+        popup.classList.remove('is-open');
+    }
+
+    function openPopup() {
+
+        // Fermer autres popups
+        document.querySelectorAll('.gd-popup.is-open').forEach(p => {
+            if (p !== popup) p.classList.remove('is-open');
+        });
+
+        // Positionner sous le groupe de boutons
+        const rect     = group.getBoundingClientRect();
+        const margin   = 8;
+        const card     = popup.querySelector('.gd-popup__card');
+        const width    = card.offsetWidth;
+
+        // Centrer : milieu du groupe - moitié popup
+        const POPUP_ALIGN_OFFSET = 62;
+        let left = rect.left + (rect.width / 2) - (width / 2) + POPUP_ALIGN_OFFSET;
+
+        // Ne pas sortir de l'écran
+        if (left < margin) left = margin;
+        if (left + width > window.innerWidth - margin) {
+            left = window.innerWidth - width - margin;
+        }
+
+        popup.style.top  = `${rect.bottom + margin + 15}px`;
+        popup.style.left = `${left}px`;
+
+        popup.classList.add('is-open');
+    }
+
+    function togglePopup() {
+        popup.classList.contains('is-open')
+            ? closePopup()
+            : openPopup();
+    }
+
+    // Ouvrir / fermer en cliquant sur le bouton
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePopup();
+    });
+
+    // Boutons internes (X)
+    closeButtons.forEach(btn =>
+        btn.addEventListener('click', closePopup)
+    );
+
+    // Fermer en cliquant dehors
+    document.addEventListener('click', (e) => {
+
+        // Ne pas fermer popup route pendant un tracé
+        if (state.tool === 'path' && popupAttr === 'route') return;
+
+        if (
+            popup.classList.contains('is-open') &&
+            !popup.contains(e.target) &&
+            !trigger.contains(e.target)
+        ) {
+            closePopup();
+        }
+    });
+
+    // Fermer avec ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+
+        // Si on est sur la popup "route" ET en train de tracer, ESC termine la route
+        if (popupAttr === 'route' && state.tool === 'path') {
+            finalizeCurrentPath();
+            setTool('pan');
+            showToast(GDMMLang.t('toast.PathFinished'));
+        }
+        // Dans tous les cas, on ferme la popup associée
+        closePopup();
+    });
+
+}
+
+// Init
+setupPopup('#btn-new-marker', 'marker');
+setupPopup('#btn-new-route',  'route');
 
   Object.assign(window.UiCore, {
     ensurePathsArray,refreshProfilesUI,renderList,renderMarkers,
