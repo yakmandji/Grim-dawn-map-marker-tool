@@ -827,7 +827,8 @@ body.shared-only-view #mergeSharedBtn,
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  pointer-events: none; 
+  pointer-events: none;
+  z-index: 1; 
 }
 
 .floating > * {
