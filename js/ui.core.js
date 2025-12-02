@@ -977,6 +977,14 @@ if (newPathBtn) {
 // =============================
 (function(){
   const keys = {};
+
+  // Touches qui font bouger la map (flèches + ZQSD + WASD)
+  const PAN_KEYS = [
+    "ArrowLeft","ArrowRight","ArrowUp","ArrowDown",
+    "a","A","d","D","w","W","s","S", // WASD
+    "z","Z","q","Q"                  // ZQSD
+  ];
+  
   let keyboardPanInterval = null;
 
   const SPEED       = 20;  // vitesse normale du pan
@@ -995,10 +1003,25 @@ if (newPathBtn) {
       let dx = 0;
       let dy = 0;
 
-      if (keys["ArrowLeft"])  dx -= 1;
-      if (keys["ArrowRight"]) dx += 1;
-      if (keys["ArrowUp"])    dy -= 1;
-      if (keys["ArrowDown"])  dy += 1;
+      // GAUCHE : flèche gauche, A (qwerty), Q (azerty)
+      if (keys["ArrowLeft"] || keys["a"] || keys["A"] || keys["q"] || keys["Q"]) {
+        dx -= 1;
+      }
+
+      // DROITE : flèche droite, D
+      if (keys["ArrowRight"] || keys["d"] || keys["D"]) {
+        dx += 1;
+      }
+
+      // HAUT : flèche haut, W (qwerty), Z (azerty)
+      if (keys["ArrowUp"] || keys["w"] || keys["W"] || keys["z"] || keys["Z"]) {
+        dy -= 1;
+      }
+
+      // BAS : flèche bas, S
+      if (keys["ArrowDown"] || keys["s"] || keys["S"]) {
+        dy += 1;
+      }
 
       if (dx === 0 && dy === 0) return;
 
@@ -1008,7 +1031,6 @@ if (newPathBtn) {
         SPEED;
 
       const rawScale = state.view.scale || 1;
-      // Empêche la vitesse d'exploser quand on est très dézoommé
       const effectiveScale = Math.max(rawScale, MIN_PAN_SCALE);
       const real = speed / effectiveScale;
 
@@ -1021,6 +1043,7 @@ if (newPathBtn) {
     }, 16); // ~60fps
   }
 
+
   function stopKeyboardPan() {
     if (keyboardPanInterval) {
       clearInterval(keyboardPanInterval);
@@ -1029,18 +1052,18 @@ if (newPathBtn) {
   }
 
   window.addEventListener("keydown", (e) => {
-    // Empêche la navigation de la map si on est dans un champ de saisie
+    // Ne rien faire si on est dans un champ de saisie
     const el = e.target;
     if (
-      el.tagName === "INPUT" ||
-      el.tagName === "TEXTAREA" ||
-      el.isContentEditable
+      el &&
+      (el.tagName === "INPUT" ||
+       el.tagName === "TEXTAREA" ||
+       el.isContentEditable)
     ) {
       return;
     }
 
-    // Gestion normale du pan clavier
-    if (["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Shift","Control"].includes(e.key)) {
+    if (PAN_KEYS.includes(e.key) || e.key === "Shift" || e.key === "Control") {
       keys[e.key] = true;
       e.preventDefault();
       startKeyboardPan();
