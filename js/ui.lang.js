@@ -108,7 +108,7 @@
       "ui.NoteList": "Notes list",
       "toast.NoteDeleted": "Note deleted 🗑️",
       "toast.NoteSaved": "Note saved 💾",
-      "KeyboardPan": " ← → ↑ ↓  to move map",
+      "KeyboardPan": "WASD to move map",
 
     },
     fr: {
@@ -142,7 +142,7 @@
       'ui.HelpLine1': 'Choisissez une carte depuis le menu déroulant dans l’en-tête (principale ou DLC)',
       'ui.HelpLine2': 'Ajoutez vos marqueurs 📍, ou tracez une route',
       'ui.HelpLine3': 'Vos marqueurs sont sauvegardés automatiquement. Utilisez le bouton "Sauvegarder les marqueurs" si besoin.',
-      'ui.HelpLine4' : 'Vous pouvez partager votre carte avec d\'autres utilisateurs. Seulement les routes et les marqueurs cochés "partagé" seront partagés. Les autres marqueurs seront privés à votre carte',
+      'ui.HelpLine4' : 'Vous pouvez partager votre carte avec d\'autres utilisateurs. Seulement les routes et les marqueurs cochés « partagé » seront partagés. Les autres marqueurs seront privés à votre carte',
       "ui.RegionHelper": "Vous pouvez ajouter des notes globales par région en survolant le nom des régions. Ces notes sont partagées entre tous vos personnages.", 
       'ui.DeleteButton': 'Supprimer',
       'toast.MarkerNameUpdated' : 'Nom du marqueur mis à jour 💾',
@@ -214,7 +214,7 @@
       "ui.NoteList": "Liste des notes",
       "toast.NoteDeleted": "Note supprimée 🗑️",
       "toast.NoteSaved": "Note enregistrée 💾",     
-      "KeyboardPan": "← → ↑ ↓  pour déplacer la carte"
+      "KeyboardPan": "QZSD pour déplacer la carte"
 
 
     },
@@ -320,7 +320,7 @@
       "ui.NoteList": "Lista de notas",
       "toast.NoteDeleted": "Nota eliminada 🗑️",
       "toast.NoteSaved": "Nota guardada 💾",
-      "KeyboardPan": "← → ↑ ↓  para mover el mapa"
+      "KeyboardPan": "WASD para mover el mapa"
 
     },
 
@@ -338,7 +338,7 @@
       "ui.MarkerList": "Markerliste",
       "ui.Done": "Fertig",
       "ui.AddMarkerButton": "Hinzufügen",
-      "ui.CancelMarkerButton": "Cancelar",
+      "ui.CancelMarkerButton": "Abbrechen",
       "ui.NewPathTitle": "Neuer Pfad",
       "ui.PathHelper": "Halte die Leertaste gedrückt, um die Karte während des Zeichnens zu bewegen",
       "ui.AddRouteButton": "Hinzufügen",
@@ -384,13 +384,13 @@
       "toast.MarkerDeleted": "Marker gelöscht 🗑️",
       "toast.RouteDeleted": "Route gelöscht 🧹",
       "ui.ShowHideGeneral": "Persönliche Marker anzeigen",
-      "ui.ShowHideQuest": "Quests ein",
-      "ui.ShowHideBoss": "Bosse ein",
-      "ui.ShowHideLoot": "Beute ein",
-      "ui.ShowHideWaypoint": "Durchgang ein",
-      "ui.ShowHideDonjon": "Dungeons ein",
-      "ui.ShowHideNPC": "NPCs ein",
-      "ui.ShowHideSharedMarker": "Geteilte Marker ein",
+      "ui.ShowHideQuest": "Quests anzeigen",
+      "ui.ShowHideBoss": "Bosse anzeigen",
+      "ui.ShowHideLoot": "Beute anzeigen",
+      "ui.ShowHideWaypoint": "Durchgänge anzeigen",
+      "ui.ShowHideDonjon": "Dungeon anzeigen",
+      "ui.ShowHideNPC": "NPCs anzeigen",
+      "ui.ShowHideSharedMarker": "Geteilte Marker anzeigen",
       'ui.DoneMarkersTitle': "Abgeschlossene Markierungen",
       "ui.NothingDone": "Nichts abgeschlossen",
       'ui.ShowHideRegion': 'Regionnamen ein-/ausblenden',
@@ -427,7 +427,7 @@
       "ui.NoteList": "Notizliste",
       "toast.NoteDeleted": "Notiz gelöscht 🗑️",
       "toast.NoteSaved": "Notiz gespeichert 💾",
-      "KeyboardPan": "← → ↑ ↓  um die Karte zu bewegen"
+      "KeyboardPan": "WASD zum Bewegen der Karte",
 
     },
 
@@ -535,7 +535,7 @@
       "ui.NoteList": "Lista de notas",
       "toast.NoteDeleted": "Nota apagada 🗑️",
        "toast.NoteSaved": "Nota salva 💾",
-      "KeyboardPan": "← → ↑ ↓  para mover o mapa"
+      "KeyboardPan": "WASD para mover o mapa"
 
 
   },
@@ -577,9 +577,9 @@
     'ui.CenterOnMap': 'Центрировать на карте',
     'ui.ShowHideGeneral': 'Показать личные отметки',
     'ui.ShowHideQuest': 'Показать Квесты',
-    'ui.ShowHideBoss': 'Показать Боссов',
+    'ui.ShowHideBoss': 'Показать боссов',
     'ui.ShowHideLoot': 'Показать Добычу',
-    "ui.ShowHideWaypoint": "Показать проход",
+    "ui.ShowHideWaypoint": "Показать проходы",
     'ui.ShowHideDonjon': 'Показать Подземелья',
     'ui.ShowHideNPC': 'Показать NPC',
     'ui.ShowHideSharedMarker': 'Показать Общие метки',
@@ -642,7 +642,7 @@
     "ui.NoteList": "Список заметок",
     "toast.NoteDeleted": "Заметка удалена 🗑️",
     "toast.NoteSaved": "Заметка сохранена 💾",
-    "KeyboardPan": "← → ↑ ↓  чтобы перемещать карту"
+    "KeyboardPan": "WASD для перемещения карты"
 
   },
 
@@ -689,7 +689,7 @@
       'ui.ShowHideDonjon': 'Mostra Sotterranei',
       'ui.ShowHideNPC': 'Mostra NPC',
       'ui.ShowHideSharedMarker': 'Mostra Condivisi',
-      'ui.ShowHideRegion': 'Mostra nomi delle regioni',
+      'ui.ShowHideRegion': 'Mostra nomi regione',
       'ui.ShowHideRift': 'Mostra fenditure',
       'ui.DoneMarkersTitle': "Marcatori completati",
       "ui.NothingDone": "Niente completato", 
@@ -743,14 +743,14 @@
       "ui.CharacterNamePlaceHolder": "Nome del personaggio",
       "KeepOneCharacter": "Devi mantenere almeno un personaggio.",
        "ui.MaxLimitCharacter": "Non puoi avere più di 10 personaggi.",
-       "ui.ShowAllMarker": "Mostrare tutto",
+       "ui.ShowAllMarker": "Mostra tutto",
        "toast.MarkerFiltered": "Indicatore aggiunto a \"{cat}\" (attualmente filtrato)",
        "ui.DeleteNoteButton": "Elimina tutte le note",
       "ui.DeleteNoteConfirm": "Eliminare tutte le note della regione? Questa azione è irreversibile.",
       "ui.NoteList": "Elenco delle note",
       "toast.NoteDeleted": "Nota eliminata 🗑️",
       "toast.NoteSaved": "Nota salvata 💾",
-      "KeyboardPan": "← → ↑ ↓  per muovere la mappa"
+      "KeyboardPan": "WASD per muovere la mappa"
     },
 
     zh: {
@@ -856,7 +856,7 @@
       "ui.NoteList": "笔记列表",
       "toast.NoteDeleted": "笔记已删除 🗑️",
       "toast.NoteSaved": "笔记已保存 💾",
-      "KeyboardPan": "← → ↑ ↓  移动地图",
+      "KeyboardPan": "按 W、A、S、D 移动地图",
 
     },
     ja: {
@@ -962,7 +962,7 @@
       "ui.NoteList": "ノート一覧",
       "toast.NoteDeleted": "ノートを削除しました 🗑️",
       "toast.NoteSaved": "ノートを保存しました 💾",
-      "KeyboardPan": "← → ↑ ↓  でマップを移動します",
+      "KeyboardPan": "WASD でマップを移動",
 
     }
 
