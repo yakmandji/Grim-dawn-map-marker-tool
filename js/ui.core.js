@@ -1029,6 +1029,17 @@ if (newPathBtn) {
   }
 
   window.addEventListener("keydown", (e) => {
+    // Empêche la navigation de la map si on est dans un champ de saisie
+    const el = e.target;
+    if (
+      el.tagName === "INPUT" ||
+      el.tagName === "TEXTAREA" ||
+      el.isContentEditable
+    ) {
+      return;
+    }
+
+    // Gestion normale du pan clavier
     if (["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Shift","Control"].includes(e.key)) {
       keys[e.key] = true;
       e.preventDefault();
@@ -1036,12 +1047,14 @@ if (newPathBtn) {
     }
   });
 
+
   window.addEventListener("keyup", (e) => {
     if (keys[e.key]) {
       delete keys[e.key];
       if (Object.keys(keys).length === 0) stopKeyboardPan();
     }
   });
+
 })();
 
 
