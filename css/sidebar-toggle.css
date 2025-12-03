@@ -81,6 +81,7 @@ body.sidebar-collapsed .section h3{
 	font-size: 11px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 
 body.sidebar-collapsed .section.light .row{
