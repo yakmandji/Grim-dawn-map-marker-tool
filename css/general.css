@@ -703,7 +703,8 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .js-character-dropdown .custom-dropdown-inner{
-  left: -50%;
+  left: 50%;
+  transform: translateX(-50%) !important;
   top: 34px;
   box-shadow: var(--shadow);
 }

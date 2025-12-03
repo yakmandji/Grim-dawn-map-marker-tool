@@ -378,17 +378,22 @@ async function goTo(item) {
       onSearchInput(e.target.value);
     });
 
+    // Quand on clique ailleurs que sur la zone de recherche,
+    // on cache les résultats
 
-/*    inputEl.addEventListener('blur', () => {
-      clearResultsLater();
-    });*/
 
+    inputEl.addEventListener('blur', () => {
+      clearResultsLater(150); // petit délai pour laisser passer un éventuel clic sur un résultat
+    });
+
+    // Échap dans l’input
     inputEl.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         inputEl.blur();
         clearResultsLater();
       }
     });
+
   }
 
   document.addEventListener('DOMContentLoaded', init);
