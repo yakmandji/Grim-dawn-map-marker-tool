@@ -156,10 +156,20 @@ const { $, inner } = window.UiCore;
 
         // label
         const label = el.querySelector('[data-label]');
-        label.value = m.label || '';
-        label.addEventListener('blur', e => {
-          updateMarkerFromUI(m.id, { label: e.target.value }, true);
+        const originalLabel = m.label || '';
+
+        label.value = originalLabel;
+
+        label.addEventListener('blur', (e) => {
+          const newVal = e.target.value;
+
+          // Si rien n'a changé, on ne fait rien
+          if (newVal === originalLabel) return;
+
+          // Sinon on met à jour + toast
+          updateMarkerFromUI(m.id, { label: newVal }, true);
         });
+
 
         // catégorie
         const catSel = el.querySelector('[data-cat]');

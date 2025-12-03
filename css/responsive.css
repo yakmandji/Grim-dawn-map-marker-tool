@@ -13,32 +13,22 @@
     }
 
   .app{
-    padding: 0px 7px 12px 0px;
+    padding: 2px 7px 12px 12px;
     gap:0px;
   } 
   header{
-    left: calc(var(--sidebar-width) + -11px);
-    width: calc(100% - var(--sidebar-width) + 5px);
+      left: calc(var(--sidebar-width) + 18px);
+      width: calc(100% - var(--sidebar-width) + -26px);
   }
-/*
-  header .right-panel{
-    position: initial;
-    max-width: 98%;
-  }*/
 
   header #shareRoutesBtn span,
   header .save-block span{
     display: none;
   }
 
-  .sidebar{
-    transform: scale(0.92, 1);
-    margin-left: -18px;
-  }
-
   .mapWrap {
     margin-top: 95px;
-    margin-left: -13px;
+    margin-left: 6px;
   }
   .done-panel {
     right: 7px;

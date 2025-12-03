@@ -109,6 +109,7 @@
       "toast.NoteDeleted": "Note deleted 🗑️",
       "toast.NoteSaved": "Note saved 💾",
       "KeyboardPan": "WASD to move map",
+      "ui.ToggleSidebar": "Toggle sidebar",
 
     },
     fr: {
@@ -214,7 +215,8 @@
       "ui.NoteList": "Liste des notes",
       "toast.NoteDeleted": "Note supprimée 🗑️",
       "toast.NoteSaved": "Note enregistrée 💾",     
-      "KeyboardPan": "QZSD pour déplacer la carte"
+      "KeyboardPan": "QZSD pour déplacer la carte",
+      "ui.ToggleSidebar": "Replier la barre latérale",
 
 
     },
@@ -320,7 +322,8 @@
       "ui.NoteList": "Lista de notas",
       "toast.NoteDeleted": "Nota eliminada 🗑️",
       "toast.NoteSaved": "Nota guardada 💾",
-      "KeyboardPan": "WASD para mover el mapa"
+      "KeyboardPan": "WASD para mover el mapa",
+      "ui.ToggleSidebar": "Alternar barra lateral",
 
     },
 
@@ -428,6 +431,7 @@
       "toast.NoteDeleted": "Notiz gelöscht 🗑️",
       "toast.NoteSaved": "Notiz gespeichert 💾",
       "KeyboardPan": "WASD zum Bewegen der Karte",
+      "ui.ToggleSidebar": "Seitenleiste umschalten",
 
     },
 
@@ -535,8 +539,8 @@
       "ui.NoteList": "Lista de notas",
       "toast.NoteDeleted": "Nota apagada 🗑️",
        "toast.NoteSaved": "Nota salva 💾",
-      "KeyboardPan": "WASD para mover o mapa"
-
+      "KeyboardPan": "WASD para mover o mapa",
+      "ui.ToggleSidebar": "Alternar barra lateral",
 
   },
 
@@ -642,7 +646,8 @@
     "ui.NoteList": "Список заметок",
     "toast.NoteDeleted": "Заметка удалена 🗑️",
     "toast.NoteSaved": "Заметка сохранена 💾",
-    "KeyboardPan": "WASD для перемещения карты"
+    "KeyboardPan": "WASD для перемещения карты",
+    "ui.ToggleSidebar": "Переключить боковую панель",
 
   },
 
@@ -750,7 +755,8 @@
       "ui.NoteList": "Elenco delle note",
       "toast.NoteDeleted": "Nota eliminata 🗑️",
       "toast.NoteSaved": "Nota salvata 💾",
-      "KeyboardPan": "WASD per muovere la mappa"
+      "KeyboardPan": "WASD per muovere la mappa",
+      "ui.ToggleSidebar": "Attiva/disattiva barra laterale",
     },
 
     zh: {
@@ -857,6 +863,7 @@
       "toast.NoteDeleted": "笔记已删除 🗑️",
       "toast.NoteSaved": "笔记已保存 💾",
       "KeyboardPan": "按 W、A、S、D 移动地图",
+      "ui.ToggleSidebar": "切换侧边栏",
 
     },
     ja: {
@@ -963,6 +970,7 @@
       "toast.NoteDeleted": "ノートを削除しました 🗑️",
       "toast.NoteSaved": "ノートを保存しました 💾",
       "KeyboardPan": "WASD でマップを移動",
+      "ui.ToggleSidebar": "サイドバーを切り替え",
 
     }
 

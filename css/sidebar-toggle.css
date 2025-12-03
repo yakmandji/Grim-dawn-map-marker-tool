@@ -1,0 +1,153 @@
+body.sidebar-collapsed{
+	--sidebar-width: 208px;
+}
+
+
+body.sidebar-collapsed .sidebar .marker-save,
+body.sidebar-collapsed #list .marker-cat-dropdown,
+body.sidebar-collapsed #list .row .shared-input,
+body.sidebar-collapsed #list .danger,
+body.sidebar-collapsed #notePanel .danger,
+body.sidebar-collapsed .announce{
+	display: none;
+}
+
+body.sidebar-collapsed header{
+	left: calc(var(--sidebar-width) + 21px);
+	width: calc(100% - var(--sidebar-width) - 33px);
+}
+
+body.sidebar-collapsed .listItem div .row:last-child{
+	margin-top: 0!important;
+}
+
+body.sidebar-collapsed .app-logo img{
+	width: 185px;
+}
+
+body.sidebar-collapsed .app{
+   padding: 0 13px 12px 8px;
+}
+
+body.sidebar-collapsed .sidebar{
+	padding: 6px 0px 6px 8px;
+}
+
+body.sidebar-collapsed .lock-label{
+	padding-left: 9px;
+}
+
+body.sidebar-collapsed .filterBar{
+	flex-direction: column;
+}
+
+body.sidebar-collapsed .filterBar .filterToggle{
+    margin: 2px 2px 14px 3px;
+    width: 31px;
+    height: 27px;
+}
+
+body.sidebar-collapsed #list{
+	padding: 3px 2px 15px 3px;
+    max-height: 375px;
+}
+
+body.sidebar-collapsed #routesPanel,
+body.sidebar-collapsed #notePanel{
+	max-height: 287px !important;
+    min-height: 287px;
+}
+
+body.sidebar-collapsed #routesList{
+	max-height: 300px;
+	padding: 3px 0px 6px 0px;
+}
+
+body.sidebar-collapsed #routesList .listItem{
+    padding: 5px 5px 5px 7px;
+}
+
+body.sidebar-collapsed .section.light{
+	flex-direction: row!important;
+	flex-wrap: wrap;
+	align-items: baseline;
+	min-height: 435px;
+    align-content: baseline;
+}
+
+body.sidebar-collapsed .section h3{
+	justify-content: center;
+	padding-left: 0;
+	font-size: 11px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.sidebar-collapsed .section.light .row{
+	
+}
+
+body.sidebar-collapsed .sidebar .section.light button{
+    padding: 4px 4px 4px 4px;
+    max-width: 27px;
+}
+
+body.sidebar-collapsed .listItem input{
+	max-width: 97px;
+	font-size: 11px;
+}
+
+body.sidebar-collapsed #routesList .listItem input{
+	max-width: 84px;
+}
+
+body.sidebar-collapsed .listItem{
+	border-left:0;
+	padding: 5px 0px 0px 3px;
+}
+
+#sidebarToggle{
+	width: 50px;
+    left: calc(var(--sidebar-width) - 12px);
+    top: 100px;
+    height: 23px;
+    background: none;
+    border: 2px solid #279a7b;
+}
+
+#sidebarToggle img{
+  transform: scaleX(-1);
+  transition: transform 0.6s;
+}
+
+body.sidebar-collapsed #sidebarToggle img{
+  transform: inherit;
+  transition: transform 0.6s;
+}
+
+
+body.sidebar-collapsed #routesPanel,
+body.sidebar-collapsed #notePanel{
+	flex-direction: column !important;
+}
+
+body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner{
+    max-width: 189px;
+}
+
+body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner button{
+    padding: 5px 4px;
+}
+
+body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-name {
+ font-size: 12px;
+}
+
+body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-line{
+ padding: 4px 1px;
+ gap: 3px;
+}
+
+body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-select-zone{
+	margin-right: 0px;
+}

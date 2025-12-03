@@ -128,7 +128,6 @@ header .sep {
     gap: 12px;
     margin-top: 15px;
     height: 97vh;
-    overflow: hidden;
     overflow-y: scroll;
 }
 

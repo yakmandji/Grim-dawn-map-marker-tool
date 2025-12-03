@@ -260,7 +260,7 @@ input[type="password"]:focus
   border-color: rgba(120, 241, 194, 0.8)!important;
 }
 
-.done-input{
+.list-input{
   flex: 0 0 auto;
   padding: 4px 1px 4px 1px;
   border-radius: 6px;
@@ -1206,7 +1206,7 @@ input[type="color"]::-moz-color-swatch {
   transform: rotate(45deg);
 }
 
-.done-input span{
+.list-input span{
     margin-top: 2px;
     margin-left: 3px;
     font-size: 11px;

@@ -1297,6 +1297,38 @@ function setupPopup(triggerSelector, popupAttr) {
 
 }
 
+
+//TOGGLE SIDE BAR
+
+// --- Sidebar collapse toggle -------------------------------------
+(function () {
+  const TOGGLE_KEY = 'gdmm_sidebar_collapsed';
+  const toggleBtn = document.getElementById('sidebarToggle');
+  if (!toggleBtn) return;
+
+  // Restaure l'état depuis localStorage
+  try {
+    const saved = localStorage.getItem(TOGGLE_KEY);
+    if (saved === '1') {
+      document.body.classList.add('sidebar-collapsed');
+    }
+  } catch (e) {
+    console.warn('[GDMM] sidebar toggle restore failed', e);
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const body = document.body;
+    const isCollapsed = body.classList.toggle('sidebar-collapsed');
+
+    try {
+      localStorage.setItem(TOGGLE_KEY, isCollapsed ? '1' : '0');
+    } catch (e) {
+      console.warn('[GDMM] sidebar toggle save failed', e);
+    }
+  });
+})();
+
+
 // Init
 setupPopup('#btn-new-marker', 'marker');
 setupPopup('#btn-new-route',  'route');

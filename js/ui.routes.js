@@ -308,7 +308,7 @@
           if (window.UiCore?.renderMarkers) {
             window.UiCore.renderMarkers({ skipRoutesPanel: true });
           }
-        }, 120); // 120ms = assez rapide pour paraître "en live"
+        }, 160); // Rafraichissment de la couleur
       });
 
       row.appendChild(color);
@@ -322,10 +322,47 @@
       nameInput.placeholder =
         (window.GDMMLang?.t && GDMMLang.t('ui.PathNamePlaceholder')) ||
         'Route name';
-      nameInput.addEventListener('blur', e => {
-        updateRoute(path.id, { name: e.target.value || '' });
+
+      // Helper commun : sauvegarde seulement si le nom a changé
+      const saveNameIfChanged = () => {
+        const newName = (nameInput.value || '').trim();
+        const oldName = path.name || '';
+
+        if (newName === oldName) {
+          return; // rien changé → rien à faire
+        }
+
+        updateRoute(path.id, { name: newName });
+
+        if (typeof showToast === 'function' && window.GDMMLang?.t) {
+          showToast(GDMMLang.t('toast.RouteNameSaved'));
+        }
+      };
+
+      // Blur : autosave seulement si modifié
+      nameInput.addEventListener('blur', () => {
+        saveNameIfChanged();
       });
+
       row.appendChild(nameInput);
+
+      // --- Bouton Save ---
+      const saveBtn = document.createElement('button');
+      saveBtn.type = 'button';
+      saveBtn.className = 'marker-save small';
+      saveBtn.setAttribute('data-i18n-title', 'ui.SaveTitle');
+      saveBtn.title =
+        (window.GDMMLang?.t && GDMMLang.t('ui.SaveTitle')) || 'Save';
+      saveBtn.innerHTML = '<img src="img/save-icon.svg" width="14">';
+
+      // Clic sur le bouton : même logique, avec toast, et sans double-save
+      saveBtn.addEventListener('click', () => {
+        saveNameIfChanged();
+        nameInput.blur(); // pour sortir proprement du champ
+      });
+
+      row.appendChild(saveBtn);
+
 
       // --- Bouton Center ---
       const centerBtn = document.createElement('button');
