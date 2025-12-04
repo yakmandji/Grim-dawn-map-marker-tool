@@ -2,6 +2,10 @@ body.sidebar-collapsed{
 	--sidebar-width: 208px;
 }
 
+body.sidebar-collapsed #version{
+	padding: 2px 6px;
+    font-size: 10px;
+}
 
 body.sidebar-collapsed .sidebar .marker-save,
 body.sidebar-collapsed #list .marker-cat-dropdown,
