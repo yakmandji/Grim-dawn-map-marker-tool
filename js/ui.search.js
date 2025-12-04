@@ -21,7 +21,8 @@
   const TYPE_ICON_PATHS = {
     region:  'img/region.svg',
     rift:    'img/rift.png',
-    dungeon: 'img/donjon-yellow.svg'
+    dungeon: 'img/donjon-yellow.svg',
+    note:    'img/info-icon.svg',
   };
 
 
@@ -155,6 +156,66 @@
   }
 
 
+function searchRegionNotes(term) {
+  const q = normalize(term);
+  if (!q) return [];
+
+  const core  = window.GDMMCore || {};
+  const state = core.state || {};
+  const activeProfile = state.active || null;
+  if (!activeProfile) return [];
+
+  const REGION_NOTES_KEY = 'gdmm_region_notes_v1';
+  let store = {};
+  try {
+    const raw = localStorage.getItem(REGION_NOTES_KEY);
+    store = raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    console.warn('[GDMM] Failed to parse region notes store in search', e);
+    return [];
+  }
+
+  const byProfile = store[activeProfile] || {};
+  const results = [];
+
+  Object.keys(byProfile).forEach(regionId => {
+    const noteText = byProfile[regionId] || '';
+
+    // 1) On récupère le DOM de la région
+    const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+    if (!regionEl) return;
+
+    const labelEl = regionEl.querySelector('.region-label');
+    const regionName = (labelEl && labelEl.textContent.trim()) || regionId;
+
+    // 2) Normalisation pour la recherche
+    const nNote       = normalize(noteText);
+    const nRegionName = normalize(regionName);
+
+    // 3) Match si le terme est dans la note OU dans le nom de région
+    if (!nNote.includes(q) && !nRegionName.includes(q)) {
+      return;
+    }
+
+    const xp = parseFloat(regionEl.dataset.xp);
+    const yp = parseFloat(regionEl.dataset.yp);
+    if (isNaN(xp) || isNaN(yp)) return;
+
+    results.push({
+      profile: activeProfile,
+      type: 'note',
+      regionId,
+      xp,
+      yp,
+      label: regionName,
+      note: noteText,
+    });
+  });
+
+  return results.slice(0, 50);
+}
+
+
   // --- UI ------------------------------------
 
   function renderResults(list) {
@@ -191,7 +252,13 @@
       if (item.type === 'marker') {
           const cat = item.cat || 'General';
           typeLabel = t ? t(`ui.${cat}Marker`) : cat;
-      } 
+      }
+
+      // NOTE DE REGION
+      else if (item.type === 'note') {
+        typeLabel = t ? t('ui.NoteList') : 'Note';
+      }
+
       // ADMIN TYPES → Rift / Region / Dungeon
       else {
           typeLabel = t ? t(`ui.${item.type}`) : item.type;
@@ -226,13 +293,20 @@
     resultsEl.style.display = 'block';
   }
 
-  function clearResultsLater() {
-    if (!resultsEl) return;
-    setTimeout(() => {
-      resultsEl.style.display = 'none';
-      resultsEl.innerHTML = '';
-    }, 150);
+function clearResultsLater(delay = 150) {
+  if (!resultsEl) return;
+
+  // On évite plusieurs timers en parallèle
+  if (clearResultsLater._timer) {
+    clearTimeout(clearResultsLater._timer);
   }
+
+  clearResultsLater._timer = setTimeout(() => {
+    resultsEl.style.display = 'none';
+    resultsEl.innerHTML = '';
+  }, delay);
+}
+
 
 
   function highlightAtCenter(item) {
@@ -360,13 +434,19 @@ async function goTo(item) {
       const term = rawTerm || '';
       const trimmed = term.trim();
 
-      // Mode "marker only" si le terme commence par "/"
+      // Mode "perso" si le terme commence par "/"
+      // Markers perso + notes de région
       if (trimmed.startsWith('/')) {
-        const markerTerm = trimmed.slice(1).trim(); // on vire le "/" et les espaces
-        const results = searchMarkers(markerTerm);
+        const markerTerm = trimmed.slice(1).trim();
+
+        const markerResults = searchMarkers(markerTerm);
+        const noteResults   = searchRegionNotes(markerTerm);
+
+        const results = [...markerResults, ...noteResults];
         renderResults(results);
         return;
       }
+
 
       // Mode normal : lieux (régions / donjons / rifts)
       const results = search(term);
@@ -383,7 +463,7 @@ async function goTo(item) {
 
 
     inputEl.addEventListener('blur', () => {
-      clearResultsLater(150); // petit délai pour laisser passer un éventuel clic sur un résultat
+      clearResultsLater(1500); // petit délai pour laisser passer un éventuel clic sur un résultat
     });
 
     // Échap dans l’input

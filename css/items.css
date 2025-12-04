@@ -1371,8 +1371,8 @@ input[type="color"]::-moz-color-swatch {
 /* Icônes assorties */
 
 .search-result.type-marker .search-type-icon {
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 18px;
   margin-left: 2px;
 }
 
