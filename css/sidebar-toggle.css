@@ -42,14 +42,43 @@ body.sidebar-collapsed .filterBar{
 }
 
 body.sidebar-collapsed .filterBar .filterToggle{
-    margin: 2px 2px 14px 3px;
+    margin: 2px 3px 14px 4px;
     width: 31px;
     height: 27px;
 }
 
+body.sidebar-collapsed .filterBar .filterToggle img{
+    width: 15px;
+	height: 15px;
+}
+
+body.sidebar-collapsed button.marker-center, 
+body.sidebar-collapsed button.marker-save,
+body.sidebar-collapsed button.danger{
+	padding: 4px 3px 4px 3px;
+}
+
+body.sidebar-collapsed button.marker-center img, 
+body.sidebar-collapsed button.marker-save img,
+body.sidebar-collapsed button.danger img{
+	width: 12px;
+}
+
+
+body.sidebar-collapsed .filterBar .filterToggle.is-on::after,
+body.sidebar-collapsed .filterBar .filterToggle::after{
+    transform: rotate(90deg);
+    left: -49%;
+    bottom: 12px;
+}
+
 body.sidebar-collapsed #list{
-	padding: 3px 2px 15px 3px;
+	padding: 3px 2px 15px 8px;
     max-height: 375px;
+}
+
+body.sidebar-collapsed #list .list-input{
+	padding: 1px 1px 0px 1px;
 }
 
 body.sidebar-collapsed #routesPanel,
@@ -89,7 +118,7 @@ body.sidebar-collapsed .section.light .row{
 	
 }
 
-body.sidebar-collapsed .sidebar .section.light button{
+body.sidebar-collapsed .sidebar .section.light .filterToggle{
     padding: 4px 4px 4px 4px;
     max-width: 27px;
 }
@@ -105,7 +134,8 @@ body.sidebar-collapsed #routesList .listItem input{
 
 body.sidebar-collapsed .listItem{
 	border-left:0;
-	padding: 5px 0px 0px 3px!important;
+	gap: 4px;
+	padding: 5px 4px 3px 3px!important;
 }
 
 #sidebarToggle{
