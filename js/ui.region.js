@@ -2670,6 +2670,8 @@ ru: {
   },
 
   ja: {
+    tagGoTo: "移動",
+    tagMapHiddenPath01: "隠された道",
     tagMapDevilsCrossing01: "デビルズ クロッシング",
     tagMapLowerCrossing01: "ローワー クロッシング",
     tagMapBurialHill: "埋葬丘",
