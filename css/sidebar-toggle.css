@@ -56,9 +56,9 @@ body.sidebar-collapsed .filterBar .filterToggle img{
 	height: 15px;
 }
 
-body.sidebar-collapsed button.marker-center, 
-body.sidebar-collapsed button.marker-save,
-body.sidebar-collapsed button.danger{
+body.sidebar-collapsed .section:not(.tool-section) button.marker-center, 
+body.sidebar-collapsed .section:not(.tool-section) button.marker-save,
+body.sidebar-collapsed .section:not(.tool-section) button.danger{
 	padding: 4px 3px 4px 3px;
 }
 
@@ -118,8 +118,9 @@ body.sidebar-collapsed .section h3{
     width: 100%;
 }
 
-body.sidebar-collapsed .section.light .row{
-	
+body.sidebar-collapsed .section.light > .row:first-child{
+	flex-direction: column;
+	width: 100%;
 }
 
 body.sidebar-collapsed .sidebar .section.light .filterToggle{
@@ -186,4 +187,8 @@ body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-
 
 body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-select-zone{
 	margin-right: 0px;
+}
+
+body.sidebar-collapsed .tool-section .row{
+	flex-direction: column;
 }
