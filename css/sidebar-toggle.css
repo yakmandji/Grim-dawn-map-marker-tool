@@ -7,7 +7,7 @@ body.sidebar-collapsed .sidebar .marker-save,
 body.sidebar-collapsed #list .marker-cat-dropdown,
 body.sidebar-collapsed #list .row .shared-input,
 body.sidebar-collapsed #list .danger,
-body.sidebar-collapsed #notePanel .danger,
+body.sidebar-collapsed .info,
 body.sidebar-collapsed .announce{
 	display: none;
 }
@@ -54,12 +54,13 @@ body.sidebar-collapsed #list{
 
 body.sidebar-collapsed #routesPanel,
 body.sidebar-collapsed #notePanel{
-	max-height: 287px !important;
-    min-height: 287px;
+	max-height: 290px !important;
+	min-height: inherit !important;
 }
 
-body.sidebar-collapsed #routesList{
-	max-height: 300px;
+body.sidebar-collapsed #routesList,
+body.sidebar-collapsed #noteList
+{
 	padding: 3px 0px 6px 0px;
 }
 
@@ -104,7 +105,7 @@ body.sidebar-collapsed #routesList .listItem input{
 
 body.sidebar-collapsed .listItem{
 	border-left:0;
-	padding: 5px 0px 0px 3px;
+	padding: 5px 0px 0px 3px!important;
 }
 
 #sidebarToggle{

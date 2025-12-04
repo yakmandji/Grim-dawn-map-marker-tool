@@ -1022,6 +1022,11 @@ input[type="color"]::-moz-color-swatch {
   font-weight: 600;
 }
 
+.note-region-name {
+  font-style: italic;
+  opacity: 0.9;
+}
+
 .region-note-close {
   border: none;
   background: transparent;
@@ -1074,9 +1079,10 @@ input[type="color"]::-moz-color-swatch {
   position: fixed;
   max-width: 280px;
   padding: 16px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.8);
   white-space: pre-line;
   color: #8a9c81;
+  font-style: italic;
   border-radius: 6px;
   border: 1px solid rgba(120,241,194,0.5);
   font-size: 13px;

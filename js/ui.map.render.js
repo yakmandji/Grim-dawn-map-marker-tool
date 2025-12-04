@@ -29,104 +29,135 @@
   }
 
 
-  function buildNoteList() {
-    const listEl  = document.getElementById('noteList');
-    const countEl = document.getElementById('noteCount');
-    if (!listEl || !countEl) return;
+function buildNoteList() {
+  const listEl  = document.getElementById('noteList');
+  const countEl = document.getElementById('noteCount');
+  if (!listEl || !countEl) return;
 
-    const notes     = getAllRegionNotes();
-    const regionIds = Object.keys(notes);
+  const notes     = getAllRegionNotes();
+  const regionIds = Object.keys(notes);
 
-    // MAJ compteur
-    countEl.textContent = regionIds.length;
+  countEl.textContent = regionIds.length;
 
-    if (regionIds.length === 0) {
-      listEl.innerHTML = `<div class="empty-list" ></div>`;
-      return;
+  if (regionIds.length === 0) {
+    listEl.innerHTML = `<div class="empty-list"></div>`;
+    return;
+  }
+
+  listEl.innerHTML = '';
+
+  function truncate(text, max = 40) {
+    if (!text) return '';
+    return text.length > max ? text.slice(0, max) + '…' : text;
+  }
+
+  // Choix dynamique selon l’état de la sidebar
+  const isCollapsed = document.body.classList.contains("sidebar-collapsed");
+  const maxLen = isCollapsed ? 22 : 85;
+
+  regionIds.forEach(regionId => {
+
+    const noteText = notes[regionId] || "";
+    const preview = truncate(noteText.trim(), maxLen);
+
+    // Nom localisé depuis le DOM
+    let regionName = regionId;
+    const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+    if (regionEl) {
+      const labelEl = regionEl.querySelector('.region-label');
+      if (labelEl && labelEl.textContent.trim()) {
+        regionName = labelEl.textContent.trim();
+      }
     }
 
-    listEl.innerHTML = '';
+    const row = document.createElement('div');
+    row.className = 'listItem';
+    row.dataset.regionId = regionId;
 
-    regionIds.forEach(regionId => {
+    row.innerHTML = `
+      <img src="img/info-icon.svg" class="icon-16" width="20"/>
+      <span class="note-region-name"></span>
 
-      // Nom localisé depuis le DOM
-      let regionName = regionId;
-      const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
-      if (regionEl) {
-        const labelEl = regionEl.querySelector('.region-label');
-        if (labelEl && labelEl.textContent.trim()) {
-          regionName = labelEl.textContent.trim();
+      <button type="button"
+              class="marker-center small"
+              title="${GDMMLang.t('ui.CenterOnMap')}">
+        <img src="img/center-icon.svg" width="14">
+      </button>
+
+      <button type="button"
+              class="danger small note-delete-btn"
+              title="${GDMMLang.t('ui.DeleteButton')}">
+        <img src="img/bin-icon.svg" width="14">
+      </button>
+    `;
+
+    const labelSpan = row.querySelector('.note-region-name');
+    if (labelSpan) {
+      labelSpan.textContent = preview || regionName;
+    }
+
+    // --- Bouton center ---
+    const centerBtn = row.querySelector('.marker-center');
+    if (centerBtn) {
+      centerBtn.addEventListener('click', () => {
+        const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+        if (!regionEl) return;
+
+        const xp = parseFloat(regionEl.dataset.xp);
+        const yp = parseFloat(regionEl.dataset.yp);
+        if (isNaN(xp) || isNaN(yp)) return;
+
+        window.centerOn(xp, yp, 1.0);
+
+        // Pulse animation
+        regionEl.classList.add('marker-highlight');
+        setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
+      });
+    }
+
+    // --- Bouton delete  ---
+    const deleteBtn = row.querySelector('.note-delete-btn');
+    if (deleteBtn) {
+      deleteBtn.addEventListener('click', () => {
+        // 1) Efface du store
+        setRegionNote(regionId, '');
+
+        // 2) Met à jour l’icône info sur la map
+        const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+        if (regionEl) {
+          refreshRegionNoteIndicator(regionEl, regionId);
+        }
+
+        // 3) Rafraîchir la liste
+        buildNoteList();
+
+        // 4) Toast
+        if (typeof showToast === 'function') {
+          showToast(GDMMLang.t('toast.NoteDeleted'));
+        }
+      });
+    }
+
+    listEl.appendChild(row);
+  });
+}
+
+// Rebuild note list automatically when sidebar size changes
+(function() {
+  const body = document.body;
+
+  const observer = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.attributeName === "class") {
+        if (typeof buildNoteList === "function") {
+          buildNoteList();
         }
       }
+    }
+  });
 
-      // Ligne
-      const row = document.createElement('div');
-      row.className = 'listItem';
-      row.dataset.regionId = regionId;
-
-      row.innerHTML = `
-        <img src="img/info-icon.svg" class="icon-16" width="20"/>
-        <span class="note-region-name">${regionName}</span>
-
-        <button type="button"
-                class="marker-center small"
-                title="${GDMMLang.t('ui.CenterOnMap')}">
-          <img src="img/center-icon.svg" width="14">
-        </button>
-
-        <button type="button"
-                class="danger small note-delete-btn"
-                title="${GDMMLang.t('ui.DeleteButton')}">
-          <img src="img/bin-icon.svg" width="14">
-        </button>
-      `;
-
-      // --- Bouton center ---
-      const centerBtn = row.querySelector('.marker-center');
-      if (centerBtn) {
-        centerBtn.addEventListener('click', () => {
-          const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
-          if (!regionEl) return;
-
-          const xp = parseFloat(regionEl.dataset.xp);
-          const yp = parseFloat(regionEl.dataset.yp);
-          if (isNaN(xp) || isNaN(yp)) return;
-
-          window.centerOn(xp, yp, 1.0);
-
-          // Pulse animation
-          regionEl.classList.add('marker-highlight');
-          setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
-        });
-      }
-
-      // --- Bouton delete  ---
-      const deleteBtn = row.querySelector('.note-delete-btn');
-      if (deleteBtn) {
-        deleteBtn.addEventListener('click', () => {
-          // 1) Efface du store
-          setRegionNote(regionId, '');
-
-          // 2) Met à jour l’icône info sur la map
-          const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
-          if (regionEl) {
-            refreshRegionNoteIndicator(regionEl, regionId);
-          }
-
-          // 3) Rafraîchir la liste
-          buildNoteList();
-
-          // 4) Toast
-          if (typeof showToast === 'function') {
-            showToast(GDMMLang.t('toast.NoteDeleted'));
-          }
-        });
-      }
-
-
-      listEl.appendChild(row);
-    });
-  }
+  observer.observe(body, { attributes: true });
+})();
 
 
 

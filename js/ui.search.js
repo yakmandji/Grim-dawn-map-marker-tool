@@ -461,7 +461,6 @@ async function goTo(item) {
     // Quand on clique ailleurs que sur la zone de recherche,
     // on cache les résultats
 
-
     inputEl.addEventListener('blur', () => {
       clearResultsLater(1500); // petit délai pour laisser passer un éventuel clic sur un résultat
     });
