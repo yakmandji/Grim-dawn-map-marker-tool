@@ -37,6 +37,14 @@ function buildNoteList() {
   const notes     = getAllRegionNotes();
   const regionIds = Object.keys(notes);
 
+  regionIds.sort((a, b) => {
+    const na = notes[a];
+    const nb = notes[b];
+    const ta = na && typeof na === "object" ? na.ts : 0;
+    const tb = nb && typeof nb === "object" ? nb.ts : 0;
+    return tb - ta; // plus récent en premier
+  });
+
   countEl.textContent = regionIds.length;
 
   if (regionIds.length === 0) {
@@ -57,7 +65,9 @@ function buildNoteList() {
 
   regionIds.forEach(regionId => {
 
-    const noteText = notes[regionId] || "";
+    const raw = notes[regionId];
+    const noteText = raw && typeof raw === "object" ? raw.text : raw || "";
+
     const preview = truncate(noteText.trim(), maxLen);
 
     // Nom localisé depuis le DOM
@@ -199,7 +209,9 @@ function buildNoteList() {
     const profile = getActiveProfileName();
     if (!profile || !regionId) return '';
     const byProfile = store[profile] || {};
-    return byProfile[regionId] || '';
+    const v = byProfile[regionId];
+    return v && typeof v === "object" ? v.text : v || "";
+
   }
 
   function setRegionNote(regionId, text) {
@@ -209,14 +221,32 @@ function buildNoteList() {
 
     if (!store[profile]) store[profile] = {};
 
+    const existing = store[profile][regionId];
+
     if (text && text.trim()) {
-      store[profile][regionId] = text.trim();
+      const trimmed = text.trim();
+
+      if (!existing || typeof existing === 'string') {
+        // nouvelle note OU ancien format string → on crée un objet
+        store[profile][regionId] = {
+          text: trimmed,
+          ts: Date.now(),
+        };
+      } else {
+        // déjà au nouveau format { text, ts }
+        existing.text = trimmed;
+        existing.ts   = Date.now();
+      }
     } else {
-      delete store[profile][regionId];
+      // texte vide → on supprime la note
+      if (existing !== undefined) {
+        delete store[profile][regionId];
+      }
     }
 
     saveRegionNotesStore();
   }
+
 
     function refreshRegionNoteIndicator(regionEl, regionId) {
       if (!regionEl || !regionId) return;
