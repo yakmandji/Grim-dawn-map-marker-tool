@@ -7,7 +7,7 @@
   }
 }
 
-@media (min-width: 1051px) and (max-width: 1350px) {
+@media (min-width: 770px) and (max-width: 1400px) {
   :root {
    --sidebar-width: 420px;
     }
@@ -36,7 +36,7 @@
 
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 770px) {
 
   .sidebar{
     position: fixed;
@@ -122,27 +122,40 @@
   }
 
   .done-panel{
-    bottom: 31.5vh;
+    bottom: 43.5vh;
   }
 
-  .floating{display: none;}
+  .floating #miniMap{
+    display: none;
+  }
 
 }
 
-@media (min-width: 781px) and (max-width: 1050px) {
+@media (min-width: 770px) and (max-width: 1179px) {
 
-  header{
-    width: 100%;
+  header,
+  body.sidebar-collapsed header{
+    width: 98.2% !important;
+    left: 8px !important;
     left: inherit;
     right: inherit;
   }
 
+  .sidebar{
+    margin-top: 94px;
+  }
+
 }
 
-@media (max-width: 780px) {
+@media (max-width: 770px) {
 
-  header .sep{
+  header .sep,
+  #sidebarToggle{
     display: none;
+  }
+
+  .searchBar{
+      bottom: 60px;
   }
 
   .header-actions{
@@ -163,8 +176,8 @@
   header{
     top:0;
     transform: translateX(-105%);
-    left: 11px;
-    width: 96%;
+    left: 11px!important;
+    width: 84%;
     flex-direction: column;
     position: absolute;
     z-index: 5000;
