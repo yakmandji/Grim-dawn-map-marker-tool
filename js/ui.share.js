@@ -29,18 +29,6 @@
       }
     }
 
-    // 2) Ancien format : LZString.compressToEncodedURIComponent
-    if (window.LZString && typeof LZString.decompressFromEncodedURIComponent === 'function') {
-      try {
-        const out = LZString.decompressFromEncodedURIComponent(str);
-        if (out) {
-          return JSON.parse(out);
-        }
-      } catch (e) {
-        console.warn('[GDMM] LZString decompress failed', e);
-      }
-    }
-
     // 3) Base64 JSON brut
     try {
       const decoded = atob(str);
