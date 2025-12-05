@@ -11,39 +11,41 @@
     window.GDMM_SHARE_WORKER_URL ||
     'https://share.grimcustommarker.org';
 
-  // --- Decode share payload from URL (GZIP + Base64 + LZString) ---
-  function decodeSharePayload(str) {
-    if (!str) return null;
+    // --- Decode legacy share payload from URL (GZIP + Base64) ---
+    function decodeSharePayload(str) {
+      if (!str) return null;
 
-    // 1) Nouveau format : GZIP (pako) + base64 + encodeURIComponent
-    if (window.pako) {
-      try {
-        const b64 = decodeURIComponent(str);
-        const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
-        const out = pako.inflate(bin, { to: 'string' });
-        if (out) {
-          return JSON.parse(out);
+      // 1) GZIP (pako) + base64 + encodeURIComponent
+      if (window.pako && typeof pako.inflate === 'function') {
+        try {
+          const b64 = decodeURIComponent(str);
+          const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+          const out = pako.inflate(bin, { to: 'string' });
+          if (out) {
+            return JSON.parse(out);
+          }
+        } catch (e) {
+          console.warn('[GDMM] GZIP decode failed, fallback to base64 JSON', e);
         }
-      } catch (e) {
-        console.warn('[GDMM] GZIP decode failed, fallback to LZString/base64', e);
       }
+
+      // 2) Base64 JSON brut
+      try {
+        const decoded = atob(str);
+        return JSON.parse(decoded);
+      } catch (e) {
+        // 3) Base64 JSON mais avec encodeURIComponent autour
+        try {
+          const decoded = atob(decodeURIComponent(str));
+          return JSON.parse(decoded);
+        } catch (e2) {
+          console.error('[GDMM] All decode methods failed', e2);
+        }
+      }
+
+      return null;
     }
 
-    // 3) Base64 JSON brut
-    try {
-      const decoded = atob(str);
-      return JSON.parse(decoded);
-    } catch (e) {
-      // 4) Base64 JSON mais avec encodeURIComponent autour
-      try {
-        const decoded = atob(decodeURIComponent(str));
-        return JSON.parse(decoded);
-      } catch (e2) {
-        console.error('[GDMM] All decode methods failed', e2);
-      }
-    }
-    return null;
-  }
 
   // --- Charge la carte partagée depuis l'URL (?s=... ou ?share=...) ---
   async function loadSharedFromUrl() {
