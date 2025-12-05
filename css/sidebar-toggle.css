@@ -105,7 +105,6 @@ body.sidebar-collapsed .section.light{
 	flex-direction: row!important;
 	flex-wrap: wrap;
 	align-items: baseline;
-	min-height: 435px;
     align-content: baseline;
 }
 
