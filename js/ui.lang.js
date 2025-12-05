@@ -110,6 +110,7 @@
       "toast.NoteSaved": "Note saved 💾",
       "KeyboardPan": "WASD to move map",
       "ui.ToggleSidebar": "Toggle sidebar",
+      "toast.ShareCooldown" : "Please wait {wait}s before sharing again",
 
     },
     fr: {
@@ -217,7 +218,7 @@
       "toast.NoteSaved": "Note enregistrée 💾",     
       "KeyboardPan": "QZSD pour déplacer la carte",
       "ui.ToggleSidebar": "Replier la barre latérale",
-
+      "toast.ShareCooldown": "Veuillez attendre {wait}s avant de partager à nouveau."
 
     },
     es: {
@@ -324,6 +325,7 @@
       "toast.NoteSaved": "Nota guardada 💾",
       "KeyboardPan": "WASD para mover el mapa",
       "ui.ToggleSidebar": "Alternar barra lateral",
+      "toast.ShareCooldown": "Por favor espera {wait}s antes de compartir de nuevo."
 
     },
 
@@ -432,6 +434,7 @@
       "toast.NoteSaved": "Notiz gespeichert 💾",
       "KeyboardPan": "WASD zum Bewegen der Karte",
       "ui.ToggleSidebar": "Seitenleiste umschalten",
+      "toast.ShareCooldown": "Bitte warten Sie {wait}s, bevor Sie erneut teilen."
 
     },
 
@@ -541,6 +544,7 @@
        "toast.NoteSaved": "Nota salva 💾",
       "KeyboardPan": "WASD para mover o mapa",
       "ui.ToggleSidebar": "Alternar barra lateral",
+      "toast.ShareCooldown": "Aguarde {wait}s antes de compartilhar novamente."
 
   },
 
@@ -648,6 +652,8 @@
     "toast.NoteSaved": "Заметка сохранена 💾",
     "KeyboardPan": "WASD для перемещения карты",
     "ui.ToggleSidebar": "Переключить боковую панель",
+    "toast.ShareCooldown": "Пожалуйста, подождите {wait} сек перед повторным поделиться."
+
 
   },
 
@@ -757,6 +763,8 @@
       "toast.NoteSaved": "Nota salvata 💾",
       "KeyboardPan": "WASD per muovere la mappa",
       "ui.ToggleSidebar": "Attiva/disattiva barra laterale",
+      "toast.ShareCooldown": "Attendi {wait}s prima di condividere di nuovo."
+
     },
 
     zh: {
@@ -864,6 +872,7 @@
       "toast.NoteSaved": "笔记已保存 💾",
       "KeyboardPan": "按 W、A、S、D 移动地图",
       "ui.ToggleSidebar": "切换侧边栏",
+      "toast.ShareCooldown": "请等待 {wait} 秒后再分享。",
 
     },
     ja: {
@@ -971,6 +980,7 @@
       "toast.NoteSaved": "ノートを保存しました 💾",
       "KeyboardPan": "WASD でマップを移動",
       "ui.ToggleSidebar": "サイドバーを切り替え",
+      "toast.ShareCooldown": "{wait}秒待ってから再度共有してください。",
 
     }
 

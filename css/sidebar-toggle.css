@@ -7,10 +7,17 @@ body.sidebar-collapsed #version{
     font-size: 10px;
 }
 
+.show-collapsed,
+body.sidebar-collapsed .hide-collapsed{
+	display: none;
+}
+
+body.sidebar-collapsed .show-collapsed{
+	display: block;
+}
+
 body.sidebar-collapsed .sidebar .marker-save,
 body.sidebar-collapsed #list .marker-cat-dropdown,
-body.sidebar-collapsed #list .row .shared-input,
-/*body.sidebar-collapsed #list .danger,*/
 body.sidebar-collapsed .info,
 body.sidebar-collapsed .announce{
 	display: none;

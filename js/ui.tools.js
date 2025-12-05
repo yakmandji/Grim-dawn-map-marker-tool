@@ -312,10 +312,38 @@
 // --- Advanced compression toggle ---
 const ADVANCED_COMPRESSION = true;
 
-// Share current routes as URL
+// Cloudflare Worker pour les liens de partage
+const SHARE_WORKER_BASE =
+  window.GDMM_SHARE_WORKER_URL ||
+  'https://share.grimcustommarker.org';
+
+// Anti-spam share : délai minimum entre deux partages
+const SHARE_COOLDOWN_MS = 10_000; // 10 secondes
+let lastShareClickTs = 0;
+
+
+
+// Share current routes via Cloudflare Worker (with legacy fallback)
 const shareBtn = document.getElementById('shareRoutesBtn');
 if (shareBtn) {
   shareBtn.addEventListener('click', async () => {
+
+  const now = Date.now();
+  if (now - lastShareClickTs < SHARE_COOLDOWN_MS) {
+    const wait = Math.ceil((SHARE_COOLDOWN_MS - (now - lastShareClickTs)) / 1000);
+
+    showToast(
+      GDMMLang.t('toast.ShareCooldown', { wait }) ||
+        `Please wait ${wait}s before sharing again.`,
+      'warning',
+      4000
+    );
+
+    return;
+  }
+
+      lastShareClickTs = now;
+    
     const prof = currentProfile();
     if (!prof) return;
 
@@ -325,7 +353,11 @@ if (shareBtn) {
 
     // Check for both shared markers OR routes
     if (!hasRoutes && sharedMarkers.length === 0) {
-      showToast(GDMMLang.t('toast.NothingToShare') || 'Nothing to share','warning', 7000);
+      showToast(
+        GDMMLang.t('toast.NothingToShare') || 'Nothing to share',
+        'warning',
+        7000
+      );
       return;
     }
 
@@ -356,7 +388,7 @@ if (shareBtn) {
       m: compactMarkers,
     };
 
-    // --- Compression phase ---
+    // --- Compression (pour compatibilité avec les vieux liens ?share=) ---
     let compressed;
     try {
       const json = JSON.stringify(payload);
@@ -365,8 +397,11 @@ if (shareBtn) {
         const gzipped = pako.deflate(json, { level: 9 });
         const b64 = btoa(String.fromCharCode.apply(null, gzipped));
         compressed = encodeURIComponent(b64);
-      } else {
+      } else if (window.LZString && LZString.compressToEncodedURIComponent) {
         compressed = LZString.compressToEncodedURIComponent(json);
+      } else {
+        // Pas de lib → on stocke en base64 brut
+        compressed = btoa(json);
       }
     } catch (e) {
       console.error('[GDMM] compression failed', e);
@@ -374,16 +409,50 @@ if (shareBtn) {
       return;
     }
 
-    const url = `${location.origin}${location.pathname}?share=${compressed}`;
+    // --- 1) Tentative moderne : Cloudflare Worker + Gist ---
+    let finalUrl = null;
 
     try {
-      await navigator.clipboard.writeText(url);
-      showToast(GDMMLang.t('toast.ShareUrlCopied'),'success', 3800);
+      if (SHARE_WORKER_BASE) {
+        const res = await fetch(`${SHARE_WORKER_BASE}/create`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: payload }),
+        });
+
+        const out = await res.json();
+
+        if (out && out.ok && out.id) {
+          // On construit TOUJOURS l'URL à partir de l'origine courante
+          finalUrl = `${location.origin}${location.pathname}?s=${encodeURIComponent(
+            out.id
+          )}`;
+        }
+
+      }
     } catch (e) {
-      window.prompt('Share this link:', url);
+      console.warn('[GDMM] share via Worker failed, falling back to ?share=', e);
+    }
+
+    // --- 2) Fallback : ancien système ?share=... ---
+    if (!finalUrl) {
+      finalUrl = `${location.origin}${location.pathname}?share=${compressed}`;
+    }
+
+    // --- Copie dans le presse-papier + feedback utilisateur ---
+    try {
+      await navigator.clipboard.writeText(finalUrl);
+      showToast(GDMMLang.t('toast.ShareUrlCopied'), 'success', 3800);
+    } catch (e) {
+      console.warn('[GDMM] Clipboard API failed, using prompt fallback', e);
+      window.prompt('Share this link:', finalUrl);
+      showToast(GDMMLang.t('toast.ShareUrlCopied'), 'success', 3800);
     }
   });
 }
+
+
+
 
 
 //------------------------------------------------------------------------------------

@@ -1,11 +1,15 @@
 // ui.share.js
-// Gestion des cartes partagées via ?share=...
+// Gestion des cartes partagées via ?s=... (Cloudflare Worker) ou ?share=... (legacy)
 
 (function () {
   const core   = window.GDMMCore || {};
   const state  = core.state || {};
-  const ensureProfile   = core.ensureProfile   || function () {};
+  const ensureProfile    = core.ensureProfile    || function () {};
   const setActiveProfile = core.setActiveProfile || function () {};
+
+  const SHARE_WORKER_BASE =
+    window.GDMM_SHARE_WORKER_URL ||
+    'https://share.grimcustommarker.org';
 
   // --- Decode share payload from URL (GZIP + Base64 + LZString) ---
   function decodeSharePayload(str) {
@@ -53,19 +57,57 @@
     return null;
   }
 
-  // --- Charge la carte partagée depuis ?share= dans l'URL ---
-  function loadSharedFromUrl() {
+  // --- Charge la carte partagée depuis l'URL (?s=... ou ?share=...) ---
+  async function loadSharedFromUrl() {
     const params = new URLSearchParams(location.search);
-    const raw = params.get('share');
-    if (!raw) return;
+    const shortId = params.get('s');
+    const rawLegacy = params.get('share');
 
-    let data;
-    try {
-      data = decodeSharePayload(raw);
-    } catch (e) {
-      console.warn('[GDMM] invalid share payload', e);
+    let data = null;
+
+    // 1) Nouveau système : ?s=ID → Cloudflare Worker
+    if (shortId) {
+      if (!SHARE_WORKER_BASE) {
+        console.warn('[GDMM] SHARE_WORKER_BASE not configured');
+        return;
+      }
+
+      try {
+        const res = await fetch(
+          `${SHARE_WORKER_BASE}/load/${encodeURIComponent(shortId)}`
+        );
+        const json = await res.json();
+
+        if (!res.ok || !json || !json.ok || !json.data) {
+          console.warn('[GDMM] failed to load shared map from worker', json);
+          if (window.showToast) {
+            showToast('Failed to load shared map ❌', 'error', 6000);
+          }
+          return;
+        }
+
+        data = json.data;
+      } catch (e) {
+        console.error('[GDMM] worker /load failed', e);
+        if (window.showToast) {
+          showToast('Failed to load shared map ❌', 'error', 6000);
+        }
+        return;
+      }
+    }
+    // 2) Ancien système : ?share=... (tout en URL)
+    else if (rawLegacy) {
+      try {
+        data = decodeSharePayload(rawLegacy);
+      } catch (e) {
+        console.warn('[GDMM] invalid share payload', e);
+        return;
+      }
+    } else {
+      // Aucun paramètre de partage
       return;
     }
+
     if (!data) return;
 
     let routes  = [];
@@ -81,28 +123,32 @@
         name: r.n || '',
         color: r.c || '#ffcc00',
         width: r.w || 4,
-        opacity: (typeof r.o === 'number') ? r.o : 0.85,
-        points: Array.isArray(r.pts)
-          ? r.pts.map(pt => ({ xp: pt[0], yp: pt[1] }))
-          : [],
+        opacity: typeof r.o === 'number' ? r.o : 0.85,
+        points: (r.pts || []).map(([xp, yp]) => ({
+          xp: xp,
+          yp: yp,
+        })),
       }));
 
-      markers = (Array.isArray(data.m) ? data.m : []).map(m => ({
-        id: m.i || (window.GDMMCore && GDMMCore.uid
-          ? GDMMCore.uid()
-          : Math.random().toString(36).slice(2)),
+      const compactMarkers = Array.isArray(data.m) ? data.m : [];
+      markers = compactMarkers.map(m => ({
+        id: m.i,
         xp: m.x,
         yp: m.y,
         label: m.l || '',
         cat: m.k || 'General',
         color: m.c || '#78f1c2',
-        done: false,
         shared: true,
       }));
     }
-    // --- Ancien format : { routes: [...], markers: [...] } ---
-    else if (Array.isArray(data.routes)) {
-      routes = data.routes;
+    // --- Ancien format (routes / markers en clair) ---
+    else if (Array.isArray(data.routes) || Array.isArray(data.markers)) {
+      const incomingRoutes = Array.isArray(data.routes) ? data.routes : [];
+      routes = incomingRoutes.map(r => {
+        if (!r || typeof r !== 'object') return r;
+        return { ...r, shared: true };
+      });
+
       const incomingMarkers = Array.isArray(data.markers) ? data.markers : [];
       markers = incomingMarkers.map(m => {
         if (!m || typeof m !== 'object') return m;
