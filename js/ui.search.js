@@ -179,23 +179,28 @@ function searchRegionNotes(term) {
   const results = [];
 
   Object.keys(byProfile).forEach(regionId => {
-    const noteText = byProfile[regionId] || '';
+    const rawNote = byProfile[regionId];
 
-    // 1) On récupère le DOM de la région
+    // --- compatibilité ancien / nouveau format ---
+    let noteText = "";
+    if (typeof rawNote === "string") {
+      noteText = rawNote;
+    } else if (rawNote && typeof rawNote === "object") {
+      noteText = rawNote.text || "";
+    }
+
+    const nNote = normalize(noteText);
+
+    // Chercher aussi dans le nom de la région
     const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
     if (!regionEl) return;
 
     const labelEl = regionEl.querySelector('.region-label');
     const regionName = (labelEl && labelEl.textContent.trim()) || regionId;
-
-    // 2) Normalisation pour la recherche
-    const nNote       = normalize(noteText);
     const nRegionName = normalize(regionName);
 
-    // 3) Match si le terme est dans la note OU dans le nom de région
-    if (!nNote.includes(q) && !nRegionName.includes(q)) {
-      return;
-    }
+    // Match note OU nom de région
+    if (!nNote.includes(q) && !nRegionName.includes(q)) return;
 
     const xp = parseFloat(regionEl.dataset.xp);
     const yp = parseFloat(regionEl.dataset.yp);
@@ -208,7 +213,7 @@ function searchRegionNotes(term) {
       xp,
       yp,
       label: regionName,
-      note: noteText,
+      note: noteText
     });
   });
 
@@ -216,82 +221,94 @@ function searchRegionNotes(term) {
 }
 
 
+
   // --- UI ------------------------------------
 
-  function renderResults(list) {
-    if (!resultsEl) return;
+    function renderResults(list) {
+      if (!resultsEl) return;
 
-    resultsEl.innerHTML = '';
-    if (!list.length) {
-      resultsEl.style.display = 'none';
-      return;
-    }
-
-    list.forEach(item => {
-      const row = document.createElement('div');
-      row.className = 'search-result';
-      row.classList.add(`type-${item.type}`);
-
-      if (item.type === 'marker' && item.cat) {
-        row.classList.add(`cat-${item.cat.toLowerCase()}`);
+      resultsEl.innerHTML = '';
+      if (!list.length) {
+        resultsEl.style.display = 'none';
+        return;
       }
 
-      // Icône SVG
-      const icon = document.createElement('img');
-      icon.className = 'search-type-icon';
-      icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
-      icon.draggable = false;
+      list.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'search-result';
+        row.classList.add(`type-${item.type}`);
 
-      const span = document.createElement('span');
-      span.className = 'search-label';
+        if (item.type === 'marker' && item.cat) {
+          row.classList.add(`cat-${item.cat.toLowerCase()}`);
+        }
 
-      const t = window.GDMMLang?.t;
-      let typeLabel;
+        // Icône SVG
+        const icon = document.createElement('img');
+        icon.className = 'search-type-icon';
+        icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
+        icon.draggable = false;
 
-      // MARKER USER → utiliser la catégorie réelle
-      if (item.type === 'marker') {
+        const span = document.createElement('span');
+        span.className = 'search-label';
+
+        const t = window.GDMMLang?.t;
+        let typeLabel;
+
+        // MARKER USER → utiliser la catégorie réelle
+        if (item.type === 'marker') {
           const cat = item.cat || 'General';
           typeLabel = t ? t(`ui.${cat}Marker`) : cat;
-      }
-
-      // NOTE DE REGION
-      else if (item.type === 'note') {
-        typeLabel = t ? t('ui.NoteList') : 'Note';
-      }
-
-      // ADMIN TYPES → Rift / Region / Dungeon
-      else {
+        }
+        // ADMIN TYPES → Rift / Region / Dungeon
+        else if (item.type !== 'note') {
           typeLabel = t ? t(`ui.${item.type}`) : item.type;
-      }
+        }
 
-      span.textContent = `${typeLabel} - ${item.label} (${item.profile})`;
+        // --- Texte affiché ---
+        if (item.type === 'note') {
+          // Note de région : "Nom de région - début de la note…"
+          let preview = '';
+          if (item.note) {
+            const trimmed = item.note.trim();
+            preview = trimmed.length > 40 ? trimmed.slice(0, 40) + '…' : trimmed;
+          }
 
-      // --- Icône personnalisée pour les markers utilisateurs ---
-      if (item.type === 'marker') {
+          span.textContent = preview
+            ? `${item.label} - ${preview}`
+            : item.label; // fallback si jamais la note est vide
+        } else {
+          // Comportement classique pour les autres types
+          span.textContent = `${typeLabel} - ${item.label} (${item.profile})`;
+        }
+
+        // --- Icône personnalisée pour les markers utilisateurs ---
+        if (item.type === 'marker') {
           // On récupère l’icône du marker utilisateur (déjà utilisée en map)
           if (window.GDMMCore && typeof GDMMCore.iconFor === 'function') {
-              icon.src = GDMMCore.iconFor(item.cat) || 'img/pin-general.svg';
+            icon.src = GDMMCore.iconFor(item.cat) || 'img/pin-general.svg';
           } else {
-              icon.src = 'img/pin-general.svg';
+            icon.src = 'img/pin-general.svg';
           }
-      } else {
-          // Icônes admin pour region / rift / dungeon
+        } else {
+          // Icônes admin / notes (region / rift / dungeon / note)
           icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
-      }
+        }
 
-      row.appendChild(icon);
-      row.appendChild(span);
+        row.appendChild(icon);
+        row.appendChild(span);
 
-      row.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        goTo(item);
+        row.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          goTo(item);
+        });
+
+        resultsEl.appendChild(row);
       });
 
-      resultsEl.appendChild(row);
-    });
+      resultsEl.style.display = 'block';
+    }
 
-    resultsEl.style.display = 'block';
-  }
+
 
 function clearResultsLater(delay = 150) {
   if (!resultsEl) return;
