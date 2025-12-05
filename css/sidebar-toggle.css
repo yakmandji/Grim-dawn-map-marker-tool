@@ -10,7 +10,7 @@ body.sidebar-collapsed #version{
 body.sidebar-collapsed .sidebar .marker-save,
 body.sidebar-collapsed #list .marker-cat-dropdown,
 body.sidebar-collapsed #list .row .shared-input,
-body.sidebar-collapsed #list .danger,
+/*body.sidebar-collapsed #list .danger,*/
 body.sidebar-collapsed .info,
 body.sidebar-collapsed .announce{
 	display: none;
@@ -59,7 +59,8 @@ body.sidebar-collapsed .filterBar .filterToggle img{
 body.sidebar-collapsed .section:not(.tool-section) button.marker-center, 
 body.sidebar-collapsed .section:not(.tool-section) button.marker-save,
 body.sidebar-collapsed .section:not(.tool-section) button.danger{
-	padding: 4px 3px 4px 3px;
+	padding: 4px 5px 4px 5px;
+	max-width: 23px!important;
 }
 
 body.sidebar-collapsed button.marker-center img, 
@@ -99,6 +100,12 @@ body.sidebar-collapsed #noteList
 
 body.sidebar-collapsed #routesList .listItem{
     padding: 5px 5px 5px 7px;
+}
+
+body.sidebar-collapsed #routesList .listItem .markerLabel{
+    width: 100%;
+    max-width: inherit;
+    font-size: 11px;
 }
 
 body.sidebar-collapsed .section.light{
