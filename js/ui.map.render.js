@@ -139,8 +139,8 @@ function buildNoteList() {
     const deleteBtn = row.querySelector('.note-delete-btn');
     if (deleteBtn) {
       deleteBtn.addEventListener('click', () => {
-        // 1) Efface du store
-        setRegionNote(regionId, '');
+        // 1) Efface du store (perso + global)
+        clearRegionNote(regionId);
 
         // 2) Met à jour l’icône info sur la map
         const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
@@ -157,6 +157,7 @@ function buildNoteList() {
         }
       });
     }
+
 
     listEl.appendChild(row);
   });
@@ -187,135 +188,169 @@ function buildNoteList() {
   // --- NOTES DE REGION : stockage par personnages ---
   // localStorage: { [profileName]: { [regionId]: "note" } }
 
-                                          const REGION_NOTES_KEY = 'gdmm_region_notes_v1';
-                                          let regionNotesStore = null;
+  const REGION_NOTES_KEY = 'gdmm_region_notes_v1';
+  let regionNotesStore = null;
 
-                                          function getActiveProfileName() {
-                                            return state && state.active ? state.active : null;
-                                          }
+  function getActiveProfileName() {
+    return state && state.active ? state.active : null;
+  }
 
-                                          // 🔹 Helper perso actif
-                                          function getActiveCharacterKey() {
-                                            try {
-                                              if (window.characterManager && typeof characterManager.getActiveCharacter === 'function') {
-                                                const c = characterManager.getActiveCharacter();
-                                                if (c && c.id) return c.id;
-                                              }
-                                            } catch (e) {
-                                              console.warn('[GDMM] Failed to read active character for notes', e);
-                                            }
-                                            return '_global';
-                                          }
+  // 🔹 Helper perso actif
+  function getActiveCharacterKey() {
+    try {
+      if (window.characterManager && typeof characterManager.getActiveCharacter === 'function') {
+        const c = characterManager.getActiveCharacter();
+        if (c && c.id) return c.id;
+      }
+    } catch (e) {
+      console.warn('[GDMM] Failed to read active character for notes', e);
+    }
+    return '_global';
+  }
 
-                                          function loadRegionNotesStore() {
-                                            if (regionNotesStore) return regionNotesStore;
+  function loadRegionNotesStore() {
+    if (regionNotesStore) return regionNotesStore;
 
-                                            let store = null;
-                                            try {
-                                              const raw = localStorage.getItem(REGION_NOTES_KEY);
-                                              store = raw ? JSON.parse(raw) : null;
-                                            } catch (e) {
-                                              console.warn('[GDMM] Failed to parse region notes store', e);
-                                              store = null;
-                                            }
+    let store = null;
+    try {
+      const raw = localStorage.getItem(REGION_NOTES_KEY);
+      store = raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      console.warn('[GDMM] Failed to parse region notes store', e);
+      store = null;
+    }
 
-                                            if (!store || typeof store !== 'object') {
-                                              // Rien en storage → on crée un store v2 vide
-                                              store = {
-                                                __schema: 2,
-                                                global: {},
-                                                byCharacter: {},
-                                              };
-                                            }
+    if (!store || typeof store !== 'object') {
+      // Rien en storage → on crée un store v2 vide
+      store = {
+        __schema: 2,
+        global: {},
+        byCharacter: {},
+      };
+    }
 
-                                            // Migration v1 → v2 si __schema absent
-                                            if (!store.__schema) {
-                                              // Ancien format = tout l'objet => on le considère comme global
-                                              store = {
-                                                __schema: 2,
-                                                global: store,
-                                                byCharacter: {},
-                                              };
-                                            } else {
-                                              // Par sécurité, on s'assure que les clés existent
-                                              store.global      = store.global      || {};
-                                              store.byCharacter = store.byCharacter || {};
-                                            }
+    // Migration v1 → v2 si __schema absent
+    if (!store.__schema) {
+      // Ancien format = tout l'objet => on le considère comme global
+      store = {
+        __schema: 2,
+        global: store,
+        byCharacter: {},
+      };
+    } else {
+      // Par sécurité, on s'assure que les clés existent
+      store.global      = store.global      || {};
+      store.byCharacter = store.byCharacter || {};
+    }
 
-                                            regionNotesStore = store;
-                                            return regionNotesStore;
-                                          }
+    regionNotesStore = store;
+    return regionNotesStore;
+  }
 
-                                          function saveRegionNotesStore() {
-                                            if (!regionNotesStore) return;
-                                            try {
-                                              localStorage.setItem(REGION_NOTES_KEY, JSON.stringify(regionNotesStore));
-                                            } catch (e) {
-                                              console.warn('[GDMM] Failed to save region notes store', e);
-                                            }
-                                          }
+  function saveRegionNotesStore() {
+    if (!regionNotesStore) return;
+    try {
+      localStorage.setItem(REGION_NOTES_KEY, JSON.stringify(regionNotesStore));
+    } catch (e) {
+      console.warn('[GDMM] Failed to save region notes store', e);
+    }
+  }
 
-                                          // Lecture : perso -> fallback global
-                                          function getRegionNote(regionId) {
-                                            const store   = loadRegionNotesStore();
-                                            const profile = getActiveProfileName();
-                                            if (!profile || !regionId) return '';
 
-                                            const charKey = getActiveCharacterKey();
+  function clearRegionNote(regionId) {
+    const store   = loadRegionNotesStore();
+    const profile = getActiveProfileName();
+    if (!profile || !regionId) return;
 
-                                            // 1) Notes par personnage
-                                            const byChar      = store.byCharacter && store.byCharacter[charKey];
-                                            const byProfileCh = byChar && byChar[profile];
-                                            const vCh         = byProfileCh && byProfileCh[regionId];
+    const charKey = typeof getActiveCharacterKey === 'function'
+      ? getActiveCharacterKey()
+      : '_global';
 
-                                            if (vCh !== undefined) {
-                                              return (vCh && typeof vCh === 'object') ? (vCh.text || '') : (vCh || '');
-                                            }
+    // 1) Supprime la note "par personnage"
+    if (
+      store.byCharacter &&
+      store.byCharacter[charKey] &&
+      store.byCharacter[charKey][profile] &&
+      store.byCharacter[charKey][profile][regionId] !== undefined
+    ) {
+      delete store.byCharacter[charKey][profile][regionId];
+    }
 
-                                            // 2) Fallback sur les anciennes notes globales
-                                            const byProfile = store.global && store.global[profile];
-                                            const v         = byProfile && byProfile[regionId];
+    // 2) Supprime aussi la note globale héritée de l'ancien système
+    if (
+      store.global &&
+      store.global[profile] &&
+      store.global[profile][regionId] !== undefined
+    ) {
+      delete store.global[profile][regionId];
+    }
 
-                                            return (v && typeof v === 'object') ? (v.text || '') : (v || '');
-                                          }
+    saveRegionNotesStore();
+  }
 
-                                          // Écriture : toujours en "par personnage"
-                                          function setRegionNote(regionId, text) {
-                                            const store   = loadRegionNotesStore();
-                                            const profile = getActiveProfileName();
-                                            if (!profile || !regionId) return;
 
-                                            const charKey = getActiveCharacterKey();
 
-                                            if (!store.byCharacter) store.byCharacter = {};
-                                            if (!store.byCharacter[charKey]) store.byCharacter[charKey] = {};
-                                            if (!store.byCharacter[charKey][profile]) {
-                                              store.byCharacter[charKey][profile] = {};
-                                            }
+  // Lecture : perso -> fallback global
+  function getRegionNote(regionId) {
+    const store   = loadRegionNotesStore();
+    const profile = getActiveProfileName();
+    if (!profile || !regionId) return '';
 
-                                            const byProfile = store.byCharacter[charKey][profile];
-                                            const existing  = byProfile[regionId];
+    const charKey = getActiveCharacterKey();
 
-                                            const trimmed = (text || '').trim();
+    // 1) Notes par personnage
+    const byChar      = store.byCharacter && store.byCharacter[charKey];
+    const byProfileCh = byChar && byChar[profile];
+    const vCh         = byProfileCh && byProfileCh[regionId];
 
-                                            if (trimmed) {
-                                              if (!existing || typeof existing === 'string') {
-                                                byProfile[regionId] = {
-                                                  text: trimmed,
-                                                  ts: Date.now(),
-                                                };
-                                              } else {
-                                                existing.text = trimmed;
-                                                existing.ts   = Date.now();
-                                              }
-                                            } else {
-                                              if (existing !== undefined) {
-                                                delete byProfile[regionId];
-                                              }
-                                            }
+    if (vCh !== undefined) {
+      return (vCh && typeof vCh === 'object') ? (vCh.text || '') : (vCh || '');
+    }
 
-                                            saveRegionNotesStore();
-                                          }
+    // 2) Fallback sur les anciennes notes globales
+    const byProfile = store.global && store.global[profile];
+    const v         = byProfile && byProfile[regionId];
+
+    return (v && typeof v === 'object') ? (v.text || '') : (v || '');
+  }
+
+  // Écriture : toujours en "par personnage"
+  function setRegionNote(regionId, text) {
+    const store   = loadRegionNotesStore();
+    const profile = getActiveProfileName();
+    if (!profile || !regionId) return;
+
+    const charKey = getActiveCharacterKey();
+
+    if (!store.byCharacter) store.byCharacter = {};
+    if (!store.byCharacter[charKey]) store.byCharacter[charKey] = {};
+    if (!store.byCharacter[charKey][profile]) {
+      store.byCharacter[charKey][profile] = {};
+    }
+
+    const byProfile = store.byCharacter[charKey][profile];
+    const existing  = byProfile[regionId];
+
+    const trimmed = (text || '').trim();
+
+    if (trimmed) {
+      if (!existing || typeof existing === 'string') {
+        byProfile[regionId] = {
+          text: trimmed,
+          ts: Date.now(),
+        };
+      } else {
+        existing.text = trimmed;
+        existing.ts   = Date.now();
+      }
+    } else {
+      if (existing !== undefined) {
+        delete byProfile[regionId];
+      }
+    }
+
+    saveRegionNotesStore();
+  }
 
 
 
