@@ -144,15 +144,48 @@
         if (!m || typeof m !== 'object') return m;
         return { ...m, shared: true };
       });
-    } else {
+      } else {
       // rien d'exploitable
       return;
     }
 
     if (!routes.length && !markers.length) return;
 
+    // --- Prépare un centrage auto pour la carte partagée ---
+    (function () {
+      let focus = null;
+
+      // 1) Priorité : première route avec au moins un point
+      const firstRoute = routes.find(r => Array.isArray(r.points) && r.points.length > 0);
+      if (firstRoute) {
+        const pt = firstRoute.points[0];
+        focus = { xp: pt.xp, yp: pt.yp };
+      }
+
+      // 2) Sinon : premier marker partagé
+      if (!focus && markers.length) {
+        const m0 = markers[0];
+        if (typeof m0.xp === 'number' && typeof m0.yp === 'number') {
+          focus = { xp: m0.xp, yp: m0.yp };
+        }
+      }
+
+      if (focus) {
+        // On dit au core : "ne restaure pas l’ancienne vue, applique la mienne"
+        state.skipViewRestoreOnce = true;
+
+        // Le core consommera ça au mapImg.onload (ui.map.base.js)
+        window._gdmmPendingNavCenter = {
+          xp: focus.xp,
+          yp: focus.yp,
+          scale: 1.1, // tu peux mettre 1.0 / 1.2 si tu veux
+        };
+      }
+    })();
+
     // --- Crée un profil [Shared] xxx unique ---
     const baseName = `[Shared] ${mapName || 'Route'}`;
+
     let name = baseName;
     let i = 2;
     while (state.profiles && state.profiles[name]) {
@@ -211,4 +244,5 @@
   window.UiShare = {
     loadSharedFromUrl,
   };
+
 })();
