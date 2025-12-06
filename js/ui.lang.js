@@ -111,6 +111,7 @@
       "KeyboardPan": "WASD to move map",
       "ui.ToggleSidebar": "Toggle sidebar",
       "toast.ShareCooldown" : "Please wait {wait}s before sharing again",
+      "share.tooltip": "Sharing your map creates a link with your markers and routes. No account required."
 
     },
     fr: {
@@ -218,7 +219,8 @@
       "toast.NoteSaved": "Note enregistrée 💾",     
       "KeyboardPan": "QZSD pour déplacer la carte",
       "ui.ToggleSidebar": "Replier la barre latérale",
-      "toast.ShareCooldown": "Veuillez attendre {wait}s avant de partager à nouveau."
+      "toast.ShareCooldown": "Veuillez attendre {wait}s avant de partager à nouveau.",
+      "share.tooltip": "Partager votre carte crée un lien avec vos marqueurs et vos routes. Aucun compte requis."
 
     },
     es: {
@@ -325,7 +327,8 @@
       "toast.NoteSaved": "Nota guardada 💾",
       "KeyboardPan": "WASD para mover el mapa",
       "ui.ToggleSidebar": "Alternar barra lateral",
-      "toast.ShareCooldown": "Por favor espera {wait}s antes de compartir de nuevo."
+      "toast.ShareCooldown": "Por favor espera {wait}s antes de compartir de nuevo.",
+      "share.tooltip": "分享地图会生成包含你的标记和路线的链接。不需要账户。"
 
     },
 
@@ -434,7 +437,8 @@
       "toast.NoteSaved": "Notiz gespeichert 💾",
       "KeyboardPan": "WASD zum Bewegen der Karte",
       "ui.ToggleSidebar": "Seitenleiste umschalten",
-      "toast.ShareCooldown": "Bitte warten Sie {wait}s, bevor Sie erneut teilen."
+      "toast.ShareCooldown": "Bitte warten Sie {wait}s, bevor Sie erneut teilen.",
+      "share.tooltip": "Karten teilen → Link mit Markierungen und Routen. Kein Konto nötig."
 
     },
 
@@ -544,7 +548,8 @@
        "toast.NoteSaved": "Nota salva 💾",
       "KeyboardPan": "WASD para mover o mapa",
       "ui.ToggleSidebar": "Alternar barra lateral",
-      "toast.ShareCooldown": "Aguarde {wait}s antes de compartilhar novamente."
+      "toast.ShareCooldown": "Aguarde {wait}s antes de compartilhar novamente.",
+      "share.tooltip": "Compartilhar seu mapa cria um link com seus marcadores e rotas. Nenhuma conta é necessária."
 
   },
 
@@ -652,7 +657,8 @@
     "toast.NoteSaved": "Заметка сохранена 💾",
     "KeyboardPan": "WASD для перемещения карты",
     "ui.ToggleSidebar": "Переключить боковую панель",
-    "toast.ShareCooldown": "Пожалуйста, подождите {wait} сек перед повторным поделиться."
+    "toast.ShareCooldown": "Пожалуйста, подождите {wait} сек перед повторным поделиться.",
+    "share.tooltip": "При обмене вашей картой создается ссылка с вашими метками и маршрутами. Аккаунт не требуется."
 
 
   },
@@ -763,7 +769,8 @@
       "toast.NoteSaved": "Nota salvata 💾",
       "KeyboardPan": "WASD per muovere la mappa",
       "ui.ToggleSidebar": "Attiva/disattiva barra laterale",
-      "toast.ShareCooldown": "Attendi {wait}s prima di condividere di nuovo."
+      "toast.ShareCooldown": "Attendi {wait}s prima di condividere di nuovo.",
+      "share.tooltip": "Condividere la tua mappa crea un link con i tuoi segnalini e percorsi. Nessun account richiesto.",
 
     },
 
@@ -873,6 +880,7 @@
       "KeyboardPan": "按 W、A、S、D 移动地图",
       "ui.ToggleSidebar": "切换侧边栏",
       "toast.ShareCooldown": "请等待 {wait} 秒后再分享。",
+      "share.tooltip": "分享地图会生成包含你的标记和路线的链接。不需要账户。"
 
     },
     ja: {
@@ -981,10 +989,12 @@
       "KeyboardPan": "WASD でマップを移動",
       "ui.ToggleSidebar": "サイドバーを切り替え",
       "toast.ShareCooldown": "{wait}秒待ってから再度共有してください。",
+      "share.tooltip": "マップを共有すると、マーカーとルートを含むリンクが作成されます。アカウントは必要ありません。",
 
     }
 
   };
+
 
     // --- API i18n de base ----------------------------------
 
@@ -1018,7 +1028,14 @@
       const key = el.getAttribute('data-i18n-title');
       if (dict[key]) el.setAttribute('title', dict[key]);
     });
+
+    // tooltip
+    document.querySelectorAll('[data-i18n-tooltip]').forEach(el => {
+      const key = el.getAttribute('data-i18n-tooltip');
+      if (dict[key]) el.setAttribute('data-tooltip', dict[key]);
+    });
   }
+
 
   function t(key, params = {}) {
     const lang = getLang();

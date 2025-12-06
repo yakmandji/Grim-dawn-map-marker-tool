@@ -36,11 +36,19 @@
   const loaderOverlay = document.getElementById('mapLoader');
   const loaderMessage = loaderOverlay?.querySelector('.loader-message');
 
-  function showLoader(msg = 'Loading map…') {
+  function showLoader(msg) {
     if (!loaderOverlay) return;
-    loaderMessage.textContent = msg;
+
+    const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
+      ? GDMMLang.t.bind(GDMMLang)
+      : null;
+
+    const finalMsg = msg || (t ? t('toast.LoadingMap') : 'Loading map…');
+
+    loaderMessage.textContent = finalMsg;
     loaderOverlay.classList.remove('hidden');
   }
+
 
   function hideLoader() {
     if (!loaderOverlay) return;
@@ -65,8 +73,9 @@
       p.map.sessionSrc = mapImg.src;
     }
 
-    showLoader('Loading map…');
+    showLoader();
   }
+
 
   mapImg.addEventListener('load', () => {
     if (Number(mapImg.dataset.token || 0) !== loadToken) return;

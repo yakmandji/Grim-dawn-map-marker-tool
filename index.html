@@ -25,11 +25,13 @@
   <meta name="twitter:description" content="Interactive map tool with custom markers & route planning for Grim Dawn." />
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
+
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.35" />
-  <link rel="stylesheet" href="css/items.css?v1.33" />
+  <link rel="stylesheet" href="css/general.css?v1.36" />
+  <link rel="stylesheet" href="css/items.css?v1.34" />
   <link rel="stylesheet" href="css/responsive.css?v1.19" />
-  <link rel="stylesheet" href="css/sidebar-toggle.css?v1.17" />
+  <link rel="stylesheet" href="css/sidebar-toggle.css?v1.18" />
   
 </head>
 <body>
@@ -41,7 +43,7 @@
   <div id="mapLoader">
     <div class="loader-panel">
       <div class="loader-spinner"></div>
-      <div class="loader-message">Loading map…</div>
+      <div class="loader-message" data-i18n="toast.LoadingMap">Loading map…</div>
     </div>
   </div>
   <div class="app">
@@ -147,7 +149,7 @@
         </button>
       <div class="right-panel">
 
-       <button id="shareRoutesBtn" class="small">
+       <button data-i18n-tooltip="share.tooltip" id="shareRoutesBtn" class="small header-btn">
           <img src="img/share-icon.svg" width="18" alt="Share">
           <span data-i18n="ui.ShareMapButton">Share my map</span>
         </button>
@@ -215,9 +217,9 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.5.10</span>
+        <span>V.5.12</span>
       </div>      
-      <div class="title">
+      <div class="title-banner">
         <div class="app-logo">
           <img src="img/grim_dawn_icon3.jpg?v2.2" width="280">
           <p class="announce" data-i18n="ui.annouce">Build your own experience</p>
@@ -228,7 +230,7 @@
 
     <div class="custom-dropdown js-character-dropdown" data-dropdown-id="character">
       <button class="select-current select-green">
-        <span class="dropdown-selected-label">Default character</span>
+        <span class="dropdown-selected-label title">Default character</span>
         <span class="dropdown-arrow"></span>
       </button>
       <div class="custom-dropdown-inner">
@@ -241,7 +243,7 @@
 
       <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:60vh;margin-top: 0.5rem;">
         <div class="row">
-          <h3 class="m0 pl-20" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
+          <h3 class="m0 pl-20 title" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
           </h3>
           <label class="lock-label">
               <img src="img/lock.svg" alt="Lock" width="17" >
@@ -288,7 +290,7 @@
       </div>
 
       <section class="section light side-block" id="notePanel" style="display:flex;flex-direction:column;gap:0;max-height:25vh;">
-        <h3 class="mb3 pl-20">
+        <h3 class="mb3 pl-20 title">
           <span data-i18n="ui.NoteList">Notes list</span>
           (<span id="noteCount">0</span>)
         </h3>
@@ -296,12 +298,12 @@
       </section>
 
       <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:25vh;">
-        <h3 class="mb3 pl-20"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
+        <h3 class="mb3 pl-20 title"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
         <div id="routesList" class="markers-scroll"></div>
       </section>
 
       <div class="section principal tool-section">
-        <h3 data-i18n="ui.ToolsTitle">Tools</h3>
+        <h3 class="title" data-i18n="ui.ToolsTitle">Tools</h3>
         <div class="row">
           <p class="small mb0 info" data-i18n="ui.ImportExportHelper">Import and Export are only needed if you switch browser or computer. For normal save use the header button.</p> 
         </div>
@@ -397,9 +399,9 @@
           <div id="profileDropdown" class="custom-dropdown">
 
             <button class="select-current select-green">
-              <span class="select-label">Cairn</span>
+              <span class="select-label title">Cairn</span>
             </button>
-            <div class="custom-dropdown-inner">
+            <div class="custom-dropdown-inner title">
             </div>
           </div>
           <!--         End Profil map------------------------------------- -->
@@ -478,7 +480,7 @@
 
   <div class="done-panel-inner">
     <div class="done-panel-header">
-      <span data-i18n="ui.DoneMarkersTitle">Completed markers</span>
+      <h3 class="title m0" data-i18n="ui.DoneMarkersTitle">Completed markers</h3>
       <span class="done-count">( <span id="doneCount">0</span> )</span>
     </div>
 
@@ -520,12 +522,12 @@
 <!--END MULTI CHARACTER MODAL ------------------------------------------------------->
 
 
-  <script src="js/ui.lang.js?v=3.52"></script>
+  <script src="js/ui.lang.js?v=3.53"></script>
   <script src="js/core.js?v=3.10"></script>
   <script src="js/ui.rift.js?v=3.88"></script>
   <script src="js/ui.region.js?v=4.00"></script>
   <script src="js/ui.navmarkers.js?v=1.20"></script>
-  <script src="js/ui.map.base.js?v=1.20"></script>
+  <script src="js/ui.map.base.js?v=1.21"></script>
   <script src="js/ui.map.minimap.js?v=1.12"></script>
 
   <script src="js/ui.markers.js?v=18"></script>

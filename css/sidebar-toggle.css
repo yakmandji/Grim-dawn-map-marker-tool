@@ -32,6 +32,10 @@ body.sidebar-collapsed .listItem div .row:last-child{
 	margin-top: 0!important;
 }
 
+body.sidebar-collapsed .listItem div > .row{
+	justify-content: space-between;
+}
+
 body.sidebar-collapsed .app-logo img{
 	width: 185px;
 }
@@ -142,7 +146,7 @@ body.sidebar-collapsed .sidebar .section.light .filterToggle{
 }
 
 body.sidebar-collapsed .listItem input{
-	max-width: 97px;
+	max-width: 104px;
 	font-size: 11px;
 }
 
@@ -162,7 +166,7 @@ body.sidebar-collapsed .listItem{
     top: 100px;
     height: 23px;
     background: none;
-    border: 2px solid #279a7b;
+    border: 1px solid var(--border-color);
 }
 
 #sidebarToggle img{
@@ -189,8 +193,12 @@ body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner button{
     padding: 5px 4px;
 }
 
-body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-name {
- font-size: 12px;
+body.sidebar-collapsed .js-character-dropdown .select-current {
+     padding: 0px 12px 0px 0px;
+}
+
+body.sidebar-collapsed .js-character-dropdown .dropdown-selected-label{
+     font-size: 15px!important;
 }
 
 body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-line{

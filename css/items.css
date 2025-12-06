@@ -11,6 +11,11 @@
   height: 0;
 }
 
+#profileDropdown button{
+  font-size: 14px;
+}
+
+
 /* --- Dropdown custom --- */
 
 .custom-dropdown {
@@ -135,7 +140,7 @@
 }
 
 button, select, .chip {
-  background: linear-gradient(145deg, #0c3a30, #174d46);
+  background: linear-gradient(145deg, #17363b, #1b4447);
   color: #ced3ec;
   border: none;
   border-radius: 8px;
@@ -168,7 +173,7 @@ select option:checked {
 }
 
 button:hover:not(.select-current) {
-  background:linear-gradient(145deg, #165238, #1f6642);
+  background:linear-gradient(145deg, #113e3d, #195855);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 5px 10px rgba(0,0,0,0.45),
@@ -217,9 +222,9 @@ select.active {
 }
 
 button.danger {
-  background: linear-gradient(145deg, #491c14, #65110b);
+  background: linear-gradient(145deg, #37150f, #4b0f0b);
     padding:7px 9px 6px 9px;
-  color: #c0695a;
+  color: #985d53;
 }
 
 button.cancel{
@@ -257,7 +262,8 @@ input[type="text"]:focus,
 input[type="search"]:focus,
 input[type="password"]:focus
 {
-  border-color: rgba(120, 241, 194, 0.8)!important;
+  box-shadow: var(--select-focus);
+  border-color: rgb(120 241 231 / 80%)!important;
 }
 
 .list-input{
@@ -943,17 +949,18 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .region-label {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: var(--font-title);
   font-size: 1.1em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #b19f8a;
-  text-shadow: 0 0 6px rgba(0,0,0,1);
+  color: #cab398;
+  text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.75),  0 0 3px rgba(0, 0, 0, 0.9);
   white-space: nowrap;
   user-select: none;
   background: none;
   border: none;
   padding: 0;
+  letter-spacing: 0.05em;
 }
 
 .has-region-note .region-label{
@@ -1196,8 +1203,8 @@ input[type="color"]::-moz-color-swatch {
 
 /* Checkmark */
 .checkbox-green:checked {
-  background: #26f0a0;
-  border-color: #26f0a0;
+    background: #26f0e3;
+    border-color: #2bf3b6;
 }
 
 .checkbox-green:checked::after {
@@ -1216,6 +1223,7 @@ input[type="color"]::-moz-color-swatch {
     margin-top: 2px;
     margin-left: 3px;
     font-size: 11px;
+    color: var(--muted);
 }
 
 /* ----- Custom Select (green emerald theme) ----- */
@@ -1225,9 +1233,9 @@ input[type="color"]::-moz-color-swatch {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: #0d2b23;
-  border: 2px solid #1a624a;
+  border: 2px solid #1a5f62;
   border-radius: 8px;
-  color: #6de3b1;
+  color: #6de3d8;
   padding: 8px 32px 8px 12px;
   font-size: 12px;
   cursor: pointer;
@@ -1244,17 +1252,15 @@ input[type="color"]::-moz-color-swatch {
 
 /* Hover */
 .select-green:hover {
-  border-color: #30af7d;
-  box-shadow: 0 0 6px rgba(48,175,125,0.4), inset 0 0 6px rgba(0,0,0,0.4);
+  border-color: #25abaa;
+  box-shadow: var(--select-focus);
 }
 
 /* Focus */
 .select-green:focus {
-  border-color: #26f0a0;
+  border-color: #25abaa;
   outline: none;
-  box-shadow:
-    0 0 6px rgba(38,240,160,0.6),
-    inset 0 0 6px rgba(0,0,0,0.4);
+  box-shadow: var(--select-focus);
 }
 
 /* When open in Firefox */
