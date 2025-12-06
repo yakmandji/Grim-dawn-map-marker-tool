@@ -146,7 +146,7 @@ body.sidebar-collapsed .sidebar .section.light .filterToggle{
 }
 
 body.sidebar-collapsed .listItem input{
-	max-width: 104px;
+	max-width: 102px;
 	font-size: 11px;
 }
 
@@ -155,7 +155,7 @@ body.sidebar-collapsed #routesList .listItem input{
 }
 
 body.sidebar-collapsed .listItem{
-	border-left:0;
+	border-width:3px;
 	gap: 4px;
 	padding: 5px 4px 3px 3px!important;
 }
