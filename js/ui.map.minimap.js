@@ -1,6 +1,13 @@
 // ui.map.minimap.js
 // Minimap : montre la vue courante et permet de déplacer la map
 (function () {
+
+
+  const isMobile = window.matchMedia('(max-width: 770px)').matches;
+  if (isMobile) {
+    return; // on n'initialise pas la minimap du tout
+  }
+  
   const core  = window.GDMMCore || {};
   const state = core.state || {};
 

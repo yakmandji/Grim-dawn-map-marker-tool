@@ -7,6 +7,12 @@
   const ensureProfile    = core.ensureProfile    || function () {};
   const setActiveProfile = core.setActiveProfile || function () {};
 
+  let sharedFocus = null;
+
+  const ensureMapLoadedForProfile =
+    (window.UiCore && window.UiCore.ensureMapLoadedForProfile) ||
+    (async () => {}); // no-op si jamais non dispo
+
   const SHARE_WORKER_BASE =
     window.GDMM_SHARE_WORKER_URL ||
     'https://share.grimcustommarker.org';
@@ -151,7 +157,16 @@
 
     if (!routes.length && !markers.length) return;
 
-    // --- Prépare un centrage auto pour la carte partagée ---
+    if (mapName && typeof ensureMapLoadedForProfile === 'function') {
+      try {
+        await ensureMapLoadedForProfile(mapName);
+      } catch (e) {
+        console.warn('[GDMM] Failed to preload map for shared view', mapName, e);
+      }
+    }
+
+
+    // --- Centrage auto pour la carte partagée ---
     (function () {
       let focus = null;
 
@@ -171,17 +186,25 @@
       }
 
       if (focus) {
-        // On dit au core : "ne restaure pas l’ancienne vue, applique la mienne"
+        // On mémorise le focus pour un fallback ultérieur
+        sharedFocus = {
+          xp: focus.xp,
+          yp: focus.yp,
+          scale: 1.1,
+        };
+
+        // Ne pas restaurer l'ancienne vue
         state.skipViewRestoreOnce = true;
 
         // Le core consommera ça au mapImg.onload (ui.map.base.js)
         window._gdmmPendingNavCenter = {
-          xp: focus.xp,
-          yp: focus.yp,
-          scale: 1.1, // tu peux mettre 1.0 / 1.2 si tu veux
+          xp: sharedFocus.xp,
+          yp: sharedFocus.yp,
+          scale: sharedFocus.scale,
         };
       }
     })();
+
 
     // --- Crée un profil [Shared] xxx unique ---
     const baseName = `[Shared] ${mapName || 'Route'}`;
@@ -224,6 +247,30 @@
         setMapSrc(p.map.sessionSrc);
       }
     }
+
+    // --- Fallback de centrage au cas où _gdmmPendingNavCenter ne serait pas consommé ---
+    if (sharedFocus && typeof window.centerOn === 'function') {
+      let tries = 0;
+      const maxTries = 15; // ~3s max si 200ms d'intervalle
+
+      const timer = setInterval(() => {
+        tries += 1;
+
+        // On attend que la map soit prête
+        if (!state.mapReady) {
+          if (tries >= maxTries) {
+            clearInterval(timer);
+          }
+          return;
+        }
+
+        // Une fois prête, on force un centrage unique
+        window.centerOn(sharedFocus.xp, sharedFocus.yp, sharedFocus.scale || 1.1);
+        clearInterval(timer);
+      }, 200);
+    }
+
+
 
     // Rafraîchit l’UI
     if (typeof window.refreshProfilesUI === 'function') {

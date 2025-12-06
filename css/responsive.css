@@ -49,6 +49,8 @@
   }
 
   header #shareRoutesBtn span,
+  #zoomReadout,
+  #zoomControls,
   header .save-block span{
     display: none;
   }

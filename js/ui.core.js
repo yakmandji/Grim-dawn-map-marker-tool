@@ -1335,7 +1335,7 @@ setupPopup('#btn-new-route',  'route');
 
   Object.assign(window.UiCore, {
     ensurePathsArray,refreshProfilesUI,renderList,renderMarkers,
-    renderRoutesPanel,showToast,updateSaveIndicator,resolveSizeKey,setTool,
+    renderRoutesPanel,showToast,updateSaveIndicator,resolveSizeKey,setTool,ensureMapLoadedForProfile
   });
 
 })();
