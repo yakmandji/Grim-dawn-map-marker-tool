@@ -73,8 +73,8 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 
 
 { id: "entry_forgotten_depths", xp: 41.45, yp: 75.93, tag: "Forgotten Depths" },
-{ id: "entry_forgotten_depths2", xp: 40.97, yp: 75.01, tag: "Forgotten Depths 2" },
-{ id: "entry_forgotten_depths3", xp: 41.88, yp: 73.90, tag: "Forgotten Depths 3" },
+{ id: "entry_forgotten_depths2", xp: 41.88, yp: 73.90, tag: "Forgotten Depths 3" },
+{ id: "entry_bloodbriars_lair", xp: 41.88, yp: 74.83, tag: "Bloodbriars Lair" },
 { id: "entry_mountain_deep", xp: 31.21, yp: 76.26, tag: "Mountain Deep" },
 { id: "entry_mountain_deep3", xp: 36.53, yp: 69.71, tag: "Mountain Deep 3" },
 { id: "entry_tyrant_hold", xp: 44.60, yp: 71.64, tag: "Tyrant Hold" },
@@ -208,7 +208,11 @@ window.DUNGEON_LINKS = {
   "cronleys_hideout": ["entry_cronleys_hideout","entry_cronleys_hideout2"],
   "arkovian_undercity": ["entry_arkovian_undercity","entry_arkovian_undercity2"],
   "smuggler_pass": ["entry_smuggler_pass", "entry_smuggler_pass2"],
-  "forgotten_depths": ["entry_forgotten_depths","entry_forgotten_depths2","entry_forgotten_depths3"],
+  "forgotten_depths": ["entry_forgotten_depths","entry_forgotten_depths2"],
+
+  "bloodbriars_lair": ["entry_bloodbriars_lair"],
+
+
   "mountain_deep": ["entry_mountain_deep","entry_mountain_deep2","entry_mountain_deep3"],
   "tyrant_hold": ["entry_tyrant_hold"],
   "royal_hive": ["entry_royal_hive","entry_royal_hive2","entry_royal_hive3","entry_royal_hive4"],

@@ -4,7 +4,12 @@ window.DUNGEON_OVERLAYS = [
 { id: "corrupted_tomb", map: "cairn", img: "corrupted-tomb.jpg", left: 37.8938, top: 87.1456, width: 5.3531, height: 5.9455 },
 { id: "suffering_angish", map: "cairn", img: "suffering-angish.jpg", left: 43.7098, top: 90.0681, width: 11.4045, height: 11.1742 },
 { id: "staunton_mine", map: "cairn", img: "staunton-mine.jpg", left: 55.3475, top: 91.9166, width: 4.4269, height: 4.1056 },
-{ id: "forgotten_depths", map: "cairn", img: "forgotten-depths.jpg", left: 31.9228, top: 78.58493, width: 6.2, height: 6.1 },
+{ id: "forgotten_depths", map: "cairn", img: "forgotten-depths.jpg", left: 32.9228, top: 80.78493, width: 5.2, height: 5.1 },
+
+{ id: "bloodbriars_lair", map: "cairn", img: "bloodbriars-lair.jpg", left: 34.2228, top: 76.08493, width: 3.5, height: 4 },
+
+
+
 { id: "spined_cove", map: "cairn", img: "spined-cove.jpg", left: 59.54, top: 83.19, width: 3.2074, height: 3.1428 },
 { id: "convict_tunnel", map: "cairn", img: "convict-tunnel.jpg", left: 66.0394, top: 88.789, width: 6.0479, height: 5.924 },
 { id: "hargate_laboratory", map: "cairn", img: "hargate-laboratory.jpg", left: 56.0013, top: 75.5905, width: 6.8742, height: 4.6104 },
