@@ -11,21 +11,31 @@
 
 /* NOTE LIST ------------------------------------------------------*/
   function getAllRegionNotes() {
-    const raw = localStorage.getItem(REGION_NOTES_KEY);
-    if (!raw) return {};
-
-    let data;
-    try {
-      data = JSON.parse(raw);
-    } catch (e) {
-      console.warn('[GDMM] Failed to parse region notes store', e);
-      return {};
-    }
-
+    const store   = loadRegionNotesStore();   // utilise le nouveau format v2
     const profile = getActiveProfileName();
     if (!profile) return {};
 
-    return data[profile] || {};
+    const charKey = typeof getActiveCharacterKey === 'function'
+      ? getActiveCharacterKey()
+      : '_global';
+
+    const result = {};
+
+    // 1) Anciennes notes globales (v1 migrées dans store.global)
+    if (store.global && store.global[profile]) {
+      Object.assign(result, store.global[profile]);
+    }
+
+    // 2) Notes du personnage actif → priment sur les globales
+    if (
+      store.byCharacter &&
+      store.byCharacter[charKey] &&
+      store.byCharacter[charKey][profile]
+    ) {
+      Object.assign(result, store.byCharacter[charKey][profile]);
+    }
+
+    return result;
   }
 
 
@@ -174,78 +184,139 @@ function buildNoteList() {
 /*END -Note list-----------------------------------------------------------------*/
 
 
-  // --- NOTES DE REGION : stockage global, partagé entre tous les personnages ---
+  // --- NOTES DE REGION : stockage par personnages ---
   // localStorage: { [profileName]: { [regionId]: "note" } }
-  const REGION_NOTES_KEY = 'gdmm_region_notes_v1';
-  let regionNotesStore = null;
 
-  function getActiveProfileName() {
-    return state && state.active ? state.active : null;
-  }
+                                          const REGION_NOTES_KEY = 'gdmm_region_notes_v1';
+                                          let regionNotesStore = null;
 
-  function loadRegionNotesStore() {
-    if (regionNotesStore) return regionNotesStore;
-    try {
-      const raw = localStorage.getItem(REGION_NOTES_KEY);
-      regionNotesStore = raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      console.warn('[GDMM] Failed to parse region notes store', e);
-      regionNotesStore = {};
-    }
-    return regionNotesStore;
-  }
+                                          function getActiveProfileName() {
+                                            return state && state.active ? state.active : null;
+                                          }
 
-  function saveRegionNotesStore() {
-    if (!regionNotesStore) return;
-    try {
-      localStorage.setItem(REGION_NOTES_KEY, JSON.stringify(regionNotesStore));
-    } catch (e) {
-      console.warn('[GDMM] Failed to save region notes store', e);
-    }
-  }
+                                          // 🔹 Helper perso actif
+                                          function getActiveCharacterKey() {
+                                            try {
+                                              if (window.characterManager && typeof characterManager.getActiveCharacter === 'function') {
+                                                const c = characterManager.getActiveCharacter();
+                                                if (c && c.id) return c.id;
+                                              }
+                                            } catch (e) {
+                                              console.warn('[GDMM] Failed to read active character for notes', e);
+                                            }
+                                            return '_global';
+                                          }
 
-  function getRegionNote(regionId) {
-    const store   = loadRegionNotesStore();
-    const profile = getActiveProfileName();
-    if (!profile || !regionId) return '';
-    const byProfile = store[profile] || {};
-    const v = byProfile[regionId];
-    return v && typeof v === "object" ? v.text : v || "";
+                                          function loadRegionNotesStore() {
+                                            if (regionNotesStore) return regionNotesStore;
 
-  }
+                                            let store = null;
+                                            try {
+                                              const raw = localStorage.getItem(REGION_NOTES_KEY);
+                                              store = raw ? JSON.parse(raw) : null;
+                                            } catch (e) {
+                                              console.warn('[GDMM] Failed to parse region notes store', e);
+                                              store = null;
+                                            }
 
-  function setRegionNote(regionId, text) {
-    const store   = loadRegionNotesStore();
-    const profile = getActiveProfileName();
-    if (!profile || !regionId) return;
+                                            if (!store || typeof store !== 'object') {
+                                              // Rien en storage → on crée un store v2 vide
+                                              store = {
+                                                __schema: 2,
+                                                global: {},
+                                                byCharacter: {},
+                                              };
+                                            }
 
-    if (!store[profile]) store[profile] = {};
+                                            // Migration v1 → v2 si __schema absent
+                                            if (!store.__schema) {
+                                              // Ancien format = tout l'objet => on le considère comme global
+                                              store = {
+                                                __schema: 2,
+                                                global: store,
+                                                byCharacter: {},
+                                              };
+                                            } else {
+                                              // Par sécurité, on s'assure que les clés existent
+                                              store.global      = store.global      || {};
+                                              store.byCharacter = store.byCharacter || {};
+                                            }
 
-    const existing = store[profile][regionId];
+                                            regionNotesStore = store;
+                                            return regionNotesStore;
+                                          }
 
-    if (text && text.trim()) {
-      const trimmed = text.trim();
+                                          function saveRegionNotesStore() {
+                                            if (!regionNotesStore) return;
+                                            try {
+                                              localStorage.setItem(REGION_NOTES_KEY, JSON.stringify(regionNotesStore));
+                                            } catch (e) {
+                                              console.warn('[GDMM] Failed to save region notes store', e);
+                                            }
+                                          }
 
-      if (!existing || typeof existing === 'string') {
-        // nouvelle note OU ancien format string → on crée un objet
-        store[profile][regionId] = {
-          text: trimmed,
-          ts: Date.now(),
-        };
-      } else {
-        // déjà au nouveau format { text, ts }
-        existing.text = trimmed;
-        existing.ts   = Date.now();
-      }
-    } else {
-      // texte vide → on supprime la note
-      if (existing !== undefined) {
-        delete store[profile][regionId];
-      }
-    }
+                                          // Lecture : perso -> fallback global
+                                          function getRegionNote(regionId) {
+                                            const store   = loadRegionNotesStore();
+                                            const profile = getActiveProfileName();
+                                            if (!profile || !regionId) return '';
 
-    saveRegionNotesStore();
-  }
+                                            const charKey = getActiveCharacterKey();
+
+                                            // 1) Notes par personnage
+                                            const byChar      = store.byCharacter && store.byCharacter[charKey];
+                                            const byProfileCh = byChar && byChar[profile];
+                                            const vCh         = byProfileCh && byProfileCh[regionId];
+
+                                            if (vCh !== undefined) {
+                                              return (vCh && typeof vCh === 'object') ? (vCh.text || '') : (vCh || '');
+                                            }
+
+                                            // 2) Fallback sur les anciennes notes globales
+                                            const byProfile = store.global && store.global[profile];
+                                            const v         = byProfile && byProfile[regionId];
+
+                                            return (v && typeof v === 'object') ? (v.text || '') : (v || '');
+                                          }
+
+                                          // Écriture : toujours en "par personnage"
+                                          function setRegionNote(regionId, text) {
+                                            const store   = loadRegionNotesStore();
+                                            const profile = getActiveProfileName();
+                                            if (!profile || !regionId) return;
+
+                                            const charKey = getActiveCharacterKey();
+
+                                            if (!store.byCharacter) store.byCharacter = {};
+                                            if (!store.byCharacter[charKey]) store.byCharacter[charKey] = {};
+                                            if (!store.byCharacter[charKey][profile]) {
+                                              store.byCharacter[charKey][profile] = {};
+                                            }
+
+                                            const byProfile = store.byCharacter[charKey][profile];
+                                            const existing  = byProfile[regionId];
+
+                                            const trimmed = (text || '').trim();
+
+                                            if (trimmed) {
+                                              if (!existing || typeof existing === 'string') {
+                                                byProfile[regionId] = {
+                                                  text: trimmed,
+                                                  ts: Date.now(),
+                                                };
+                                              } else {
+                                                existing.text = trimmed;
+                                                existing.ts   = Date.now();
+                                              }
+                                            } else {
+                                              if (existing !== undefined) {
+                                                delete byProfile[regionId];
+                                              }
+                                            }
+
+                                            saveRegionNotesStore();
+                                          }
+
 
 
     function refreshRegionNoteIndicator(regionEl, regionId) {

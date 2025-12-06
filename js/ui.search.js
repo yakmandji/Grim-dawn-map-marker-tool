@@ -142,12 +142,13 @@
 
       results.push({
         profile: profileName,
-        type: 'marker',    // 👈 nouveau type
+        type: 'marker', 
         id: m.id,
         xp: m.xp,
         yp: m.yp,
         label,
         cat: m.cat || 'General',
+        done: m.done || false,
       });
     });
 
@@ -240,6 +241,10 @@ function searchRegionNotes(term) {
 
         if (item.type === 'marker' && item.cat) {
           row.classList.add(`cat-${item.cat.toLowerCase()}`);
+        }
+
+        if (item.type === 'marker' && item.done) {
+          row.classList.add('completed');
         }
 
         // Icône SVG

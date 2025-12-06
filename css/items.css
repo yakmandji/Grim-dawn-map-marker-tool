@@ -1380,6 +1380,16 @@ input[type="color"]::-moz-color-swatch {
   color: #ff6b6b; 
 }
 
+.search-result.completed {
+    opacity: 0.55;
+    filter: grayscale(70%);
+}
+
+.search-result.completed .search-label {
+    text-decoration: line-through;
+    color: #888;
+}
+
 /* Icônes assorties */
 
 .search-result.type-marker .search-type-icon {
