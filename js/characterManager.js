@@ -377,10 +377,10 @@ function initCharacterUI() {
 
   // Avatars disponibles (juste les noms de fichiers)
   const AVAILABLE_AVATARS = [
-    'profile1.png',
-    'profile2.png',
-    'profile3.png',
-    'profile4.png',
+    'profile1.png?v0.1',
+    'profile2.png?v0.1',
+    'profile3.png?v0.1',
+    'profile4.png?v0.1',
     'profile5.png',
     'profile6.png',
     'profile7.png',
