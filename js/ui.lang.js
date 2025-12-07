@@ -129,7 +129,7 @@
       "ui.HelpLineShare3": "Notes are not shared",
       "ui.HelpLineTools": "Deleting all markers, routes, or notes in the Tools section only affects the active character",
       "character.AvatarLabel": "Choose an Avatar",
-
+      "search.CustomLocalOnly": "Only custom markers and notes from the current map",
 
     },
     fr: {
@@ -254,6 +254,7 @@
       "ui.HelpLineShare3": "Les notes ne sont jamais partagées",
       "ui.HelpLineTools": "Supprimer tous les marqueurs, tracés ou notes dans la section Outils n'affecte que le personnage actif",
       "character.AvatarLabel": "Choisir un Avatar",
+      "search.CustomLocalOnly": "Uniquement les marqueurs et notes personnalisés de la carte actuelle",
 
 
     },
@@ -378,7 +379,7 @@
       "ui.HelpLineShare3": "Las notas no se comparten",
       "ui.HelpLineTools": "Eliminar marcadores, rutas o notas desde la sección de herramientas solo afecta al personaje activo",
       "character.AvatarLabel": "Elegir un avatar",
-
+      "search.CustomLocalOnly": "Solo marcadores y notas personalizadas del mapa actual",
 
     },
 
@@ -504,6 +505,7 @@
       "ui.HelpLineShare3": "Notizen werden nicht geteilt",
       "ui.HelpLineTools": "Das Löschen aller Marker, Routen oder Notizen betrifft nur den aktiven Charakter",
       "character.AvatarLabel": "Avatar auswählen",
+      "search.CustomLocalOnly": "Nur eigene Markierungen und Notizen der aktuellen Karte",
 
     },
 
@@ -630,6 +632,7 @@
       "ui.HelpLineShare3": "Notas não são compartilhadas",
       "ui.HelpLineTools": "Excluir marcadores, rotas ou notas na seção Ferramentas afeta apenas o personagem ativo",
       "character.AvatarLabel": "Escolher um avatar",
+      "search.CustomLocalOnly": "Apenas marcadores e notas personalizadas do mapa atual",
 
 
   },
@@ -755,7 +758,7 @@
     "ui.HelpLineShare3": "Заметки не передаются",
     "ui.HelpLineTools": "Удаление маркеров, маршрутов или заметок влияет только на активного персонажа",
     "character.AvatarLabel": "Выбрать аватар",
-
+    "search.CustomLocalOnly": "Только пользовательские метки и заметки текущей карты",
 
   },
 
@@ -881,6 +884,7 @@
       "ui.HelpLineShare3": "Le note non vengono condivise",
       "ui.HelpLineTools": "La cancellazione di segnalini, percorsi o note influisce solo sul personaggio attivo",
       "character.AvatarLabel": "Scegli un avatar",
+      "search.CustomLocalOnly": "Solo marcatori e note personalizzati della mappa attuale",
 
 
     },
@@ -1007,6 +1011,7 @@
       "ui.HelpLineShare3": "备注不会共享",
       "ui.HelpLineTools": "在工具栏中删除标记、路线或备注只会影响当前角色",
       "character.AvatarLabel": "选择头像",
+      "search.CustomLocalOnly": "仅显示当前地图的自定义标记和备注",
 
     },
     ja: {
@@ -1131,6 +1136,7 @@
       "ui.HelpLineShare3": "ノートは共有されません",
       "ui.HelpLineTools": "ツールでマーカー・ルート・ノートを削除しても、影響するのはアクティブキャラクターのみです",
       "character.AvatarLabel": "アバターを選択",
+      "search.CustomLocalOnly": "現在のマップのカスタムマーカーとノートのみを表示",
 
     }
 

@@ -16,6 +16,14 @@
 }
 
 
+.search-info {
+  font-size: 11px;
+  opacity: 0.65;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+}
+
+
 .helpPopup .help-section-title{
   display: flex;
   gap: 10px;

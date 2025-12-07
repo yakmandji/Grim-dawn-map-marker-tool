@@ -11,6 +11,25 @@
       .replace(/[\u0300-\u036f]/g, ''); // remove accents
   }
 
+// Helper i18n local pour ce module
+const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
+  ? GDMMLang.t.bind(GDMMLang)
+  : (s) => s;
+
+  // Perso actif pour les notes (fallback global si multi-char pas dispo)
+  function getActiveCharacterIdOrFallback() {
+    try {
+      if (window.characterManager && typeof characterManager.getActiveCharacter === 'function') {
+        const c = characterManager.getActiveCharacter();
+        if (c && c.id) return c.id;
+      }
+    } catch (e) {
+      console.warn('[GDMM] Failed to read active character for search notes', e);
+    }
+    return '_global';
+  }
+
+
   // Chaque entrée de l'index = un lieu unique (toutes maps confondues)
   // { profile, type, tag, xp, yp }
   let rawIndex = [];
@@ -176,8 +195,16 @@ function searchRegionNotes(term) {
     return [];
   }
 
-  const byProfile = store[activeProfile] || {};
-  const results = [];
+    const charKey = getActiveCharacterIdOrFallback();
+
+    const byProfile =
+      (store.byCharacter &&
+        store.byCharacter[charKey] &&
+        store.byCharacter[charKey][activeProfile]) ||
+      (store.global && store.global[activeProfile]) ||
+      {};
+
+    const results = [];
 
   Object.keys(byProfile).forEach(regionId => {
     const rawNote = byProfile[regionId];
@@ -465,15 +492,31 @@ async function goTo(item) {
         const noteResults   = searchRegionNotes(markerTerm);
 
         const results = [...markerResults, ...noteResults];
+
+        // On rend d'abord les résultats
         renderResults(results);
+
+        // Puis on injecte le petit message d'info en haut de la liste
+        if (resultsEl) {
+          const info = document.createElement('div');
+          info.className = 'search-info';
+          info.textContent = t('search.CustomLocalOnly');
+
+          if (resultsEl.firstChild) {
+            resultsEl.insertBefore(info, resultsEl.firstChild);
+          } else {
+            resultsEl.appendChild(info);
+          }
+        }
+
         return;
       }
-
 
       // Mode normal : lieux (régions / donjons / rifts)
       const results = search(term);
       renderResults(results);
     }, 180);
+
 
 
     inputEl.addEventListener('input', (e) => {
