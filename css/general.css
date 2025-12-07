@@ -84,6 +84,7 @@ textarea, [contenteditable="true"] {
 }
 
 .mt-1{margin-top: 5px;}
+.mt-2{margin-top: 10px;}
 
 .m0{margin: 0!important;}
 
@@ -668,6 +669,11 @@ body.shared-only-view #mergeSharedBtn,
   cursor: help;
 }
 
+label.checkbox{
+  display: flex;
+  gap: 6px;
+}
+
 .doneActions {
   flex: 0 0 auto;
   display: flex;
@@ -1091,6 +1097,10 @@ button:focus {
     display: flex; /* affiché seulement quand on ajoute la classe is-open */
 }
 
+.js-modal-new-character label span{
+  font-size: 13px;
+}
+
 /*TOOLTIP SHARED*/
 
 .header-btn  {
@@ -1142,10 +1152,6 @@ button:focus {
 .header-btn:hover::after,
 .header-btn:hover::before {
     opacity: 1;
-}
-
-#duplicateCharacterSelect{
-  display: none;
 }
 
 .is-hidden

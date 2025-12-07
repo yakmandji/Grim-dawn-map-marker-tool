@@ -25,7 +25,6 @@ function cleanupLegacyStorage() {
 }
 
 
-
 const characterManager = (() => {
   let data = null;
   let onCharacterChanged = null; // callback (activeCharacter) => { ... }
@@ -132,7 +131,7 @@ const characterManager = (() => {
     cleanupLegacyStorage();
   }
   
-/*END -------------------------------------------------------------*/
+  /*END -------------------------------------------------------------*/
 
 
   function getActiveCharacter() {
@@ -196,7 +195,6 @@ const characterManager = (() => {
       };
 
       setActiveCharacter(id);
-      saveMultiCharData();
 
       return data.characters[id];
   }
@@ -250,11 +248,7 @@ const characterManager = (() => {
       }
 
       setActiveCharacter(id);
-      saveMultiCharData();
-
       return data.characters[id];
-
-
     }
 
 
@@ -633,12 +627,6 @@ function initCharacterUI() {
           console.warn('Error while refresh note :', e);
         }
       }
-
-        // Vue globale éventuelle
-        if (window.UiMapBase?.renderView) {
-          UiMapBase.renderView();
-        }
-
 
       // Vue globale éventuelle
       if (window.UiMapBase?.renderView) {

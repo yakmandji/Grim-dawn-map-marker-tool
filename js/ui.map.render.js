@@ -284,7 +284,7 @@ function buildNoteList() {
       delete store.global[profile][regionId];
     }
 
-    saveRegionNotesStore();
+    saveRegionNotesStore(store);
   }
 
 
@@ -312,6 +312,8 @@ function buildNoteList() {
 
     return (v && typeof v === 'object') ? (v.text || '') : (v || '');
   }
+
+
 
   // Écriture : toujours en "par personnage"
   function setRegionNote(regionId, text) {
@@ -348,7 +350,7 @@ function buildNoteList() {
       }
     }
 
-    saveRegionNotesStore();
+    saveRegionNotesStore(store);
   }
 
 

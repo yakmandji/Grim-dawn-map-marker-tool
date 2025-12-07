@@ -16,6 +16,20 @@
 }
 
 
+.helpPopup .help-section-title{
+  display: flex;
+  gap: 10px;
+}
+
+.helpPopup .help-section-title h4{
+  margin: 10px 0px;
+}
+
+.helpPopup ul li {
+    padding-bottom: 2px;
+    font-size: 13px;
+}
+
 /* --- Dropdown custom --- */
 
 .custom-dropdown {
@@ -160,16 +174,16 @@ button, select{
 }
 
 select option {
-  background-color: #256b6c;
-  color: #e7ebff;
+  background-color: #163e3f;
+  color: #90a7b1;
   border: none;
 }
 
 select option:hover,
 select option:enabled:hover,
 select option:checked {
-  background-color: #256b6c;
-  color: #e7ebff;
+  background-color: #19464c;
+  color: #90a7b1;
 }
 
 button:hover:not(.select-current) {
@@ -214,6 +228,7 @@ button.small, button,
   line-height: 1;
   vertical-align: middle;
   cursor: pointer; 
+  outline: none;
 }
 
 button.active,
