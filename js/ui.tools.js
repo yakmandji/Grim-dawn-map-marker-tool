@@ -467,7 +467,6 @@ if (shareBtn) {
     // Afficher la popup
     modalEl.classList?.remove('hidden');
     modalEl.classList?.add('is-active');
-    modalEl.setAttribute?.('aria-hidden', 'false');
     modalEl.style.display = 'block';
 
     // Afficher le backdrop (flou)
@@ -498,7 +497,6 @@ if (shareBtn) {
 
     modalEl.classList?.remove('is-active');
     modalEl.classList?.add('hidden');
-    modalEl.setAttribute?.('aria-hidden', 'true');
     modalEl.style.display = 'none';
 
     if (backdropEl) {

@@ -480,7 +480,7 @@ function drawDungeonLinesForOverlay(overlayObj) {
     line.setAttribute('y2', edge.y);
 
     // Style vert éther simple
-    line.setAttribute('stroke', 'rgba(0,255,180,0.8)');
+    line.setAttribute('stroke', 'rgba(33,216,207,0.8)');
     line.setAttribute('stroke-width', '1');
     line.setAttribute('stroke-linecap', 'round');
 /*    line.setAttribute('stroke-dasharray', '2 6');*/

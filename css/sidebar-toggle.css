@@ -67,6 +67,11 @@ body.sidebar-collapsed .filterBar .filterToggle img{
 	height: 15px;
 }
 
+body.sidebar-collapsed .js-character-dropdown .select-current .char-avatar-current{
+    width: 38px;
+    height: 38px;
+}
+
 body.sidebar-collapsed .section:not(.tool-section) button.marker-center, 
 body.sidebar-collapsed .section:not(.tool-section) button.marker-save,
 body.sidebar-collapsed .section:not(.tool-section) button.danger{

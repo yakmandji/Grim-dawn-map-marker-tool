@@ -168,39 +168,43 @@ const characterManager = (() => {
     }
   }
 
-  const defaultState = {
-    userData: null,
-  };
-
-  function createCharacter(name) {
-      const count = Object.keys(data.characters || {}).length;
-      if (count >= 10) {
-        alert(GDMMLang.t('ui.MaxLimitCharacter'));
-        return;
-      }
-
-      const id = `char-${Date.now()}`;
-      const trimmedName = name?.trim() || `Personnage ${count + 1}`;
-
-      // ---- AJOUT AVATAR ICI ----
-      // Exemple simple : avatar basé sur l'index du perso
-      const avatarIndex = (count % 4) + 1; // 1 → 4
-      const avatarFile = `img/profile${avatarIndex}.png`;
-
-      data.characters[id] = {
-        id,
-        name: trimmedName,
-        avatar: avatarFile, // on stocke l'avatar
-        state: JSON.parse(JSON.stringify(defaultState)),
+      const defaultState = {
+        userData: null,
       };
 
-      setActiveCharacter(id);
+      function createCharacter(name, avatarName) {
+        const count = Object.keys(data.characters || {}).length;
+        if (count >= 10) {
+          alert(GDMMLang.t('ui.MaxLimitCharacter'));
+          return;
+        }
 
-      return data.characters[id];
-  }
+        const id = `char-${Date.now()}`;
+        const trimmedName = name?.trim() || `Personnage ${count + 1}`;
+
+        let avatarFile;
+        if (avatarName && avatarName.trim()) {
+          // On stocke uniquement le nom du fichier (ex: "sorcier.png")
+          avatarFile = avatarName.trim();
+        } else {
+          // fallback : ancien comportement, profils 1→4
+          const avatarIndex = (count % 4) + 1;
+          avatarFile = `profile${avatarIndex}.png`;
+        }
+
+        data.characters[id] = {
+          id,
+          name: trimmedName,
+          avatar: avatarFile,
+          state: JSON.parse(JSON.stringify(defaultState)),
+        };
+
+        setActiveCharacter(id);
+        return data.characters[id];
+      }
 
 
-    function cloneCharacter(sourceId, newName) {
+    function cloneCharacter(sourceId, newName, newAvatarName) {
       const source = data.characters[sourceId];
       if (!source) return null;
 
@@ -214,12 +218,17 @@ const characterManager = (() => {
       const trimmedName =
         (newName && newName.trim()) || (source.name + ' (copy)');
 
-      const avatarFile = source.avatar || 'img/profile1.png';
+      // Avatar : soit celui choisi, soit celui de la source
+      let avatarFile;
+      if (newAvatarName && newAvatarName.trim()) {
+        avatarFile = newAvatarName.trim();
+      } else {
+        avatarFile = source.avatar || 'profile1.png';
+      }
 
-      // Clone profond du state pour ne pas partager les références
       const clonedState = JSON.parse(JSON.stringify(source.state || {}));
 
-       data.characters[id] = {
+      data.characters[id] = {
         id,
         name: trimmedName,
         avatar: avatarFile,
@@ -233,7 +242,6 @@ const characterManager = (() => {
           const notesStore = JSON.parse(rawNotes);
 
           if (notesStore && notesStore.byCharacter && notesStore.byCharacter[sourceId]) {
-            // on s'assure que la branche existe
             if (!notesStore.byCharacter[id]) {
               notesStore.byCharacter[id] = JSON.parse(
                 JSON.stringify(notesStore.byCharacter[sourceId])
@@ -252,17 +260,26 @@ const characterManager = (() => {
     }
 
 
-  function renameCharacter(id, newName) {
-    const char = data.characters[id];
-    if (!char) return;
-    const trimmedName = newName.trim();
-    if (!trimmedName) return;
-    char.name = trimmedName;
-    saveMultiCharData();
-    if (onCharacterChanged) {
-      onCharacterChanged(getActiveCharacter());
+
+    function renameCharacter(id, newName, newAvatarName) {
+      const char = data.characters[id];
+      if (!char) return;
+
+      const trimmedName = (newName || '').trim();
+      if (!trimmedName) return;
+
+      char.name = trimmedName;
+
+      if (newAvatarName && newAvatarName.trim()) {
+        char.avatar = newAvatarName.trim();
+      }
+
+      saveMultiCharData();
+      if (onCharacterChanged) {
+        onCharacterChanged(getActiveCharacter());
+      }
     }
-  }
+
 
   function deleteCharacter(id) {
     const charIds = Object.keys(data.characters);
@@ -349,49 +366,113 @@ function initCharacterUI() {
     ? modalNew.querySelector('.js-duplicate-character-select')
     : null;
 
-
   const btnEditSave   = modalEdit ? modalEdit.querySelector('.js-save-character-edit')   : null;
   const btnEditCancel = modalEdit ? modalEdit.querySelector('.js-cancel-character-edit') : null;
 
   const btnNewSave    = modalNew ? modalNew.querySelector('.js-save-character-new')      : null;
   const btnNewCancel  = modalNew ? modalNew.querySelector('.js-cancel-character-new')    : null;
 
+  const avatarGridNew  = modalNew  ? modalNew.querySelector('.js-avatar-grid-new')  : null;
+  const avatarGridEdit = modalEdit ? modalEdit.querySelector('.js-avatar-grid-edit') : null;
+
+  // Avatars disponibles (juste les noms de fichiers)
+  const AVAILABLE_AVATARS = [
+    'profile1.png',
+    'profile2.png',
+    'profile3.png',
+    'profile4.png',
+    'profile5.png',
+    'profile6.png',
+    'profile7.png',
+    'profile8.png',
+    'profile9.png',
+    'profile10.png',
+    'profile11.png',
+    'profile12.png',
+  ];
+
+  function buildAvatarGrid(container, selectedName) {
+    if (!container) return;
+    container.innerHTML = '';
+
+    AVAILABLE_AVATARS.forEach((fileName) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'character-avatar-option';
+      btn.dataset.avatar = fileName;
+
+      const img = document.createElement('img');
+      img.src = 'img/' + fileName;
+      img.alt = '';
+      btn.appendChild(img);
+
+      if (selectedName && selectedName === fileName) {
+        btn.classList.add('is-selected');
+      }
+
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.character-avatar-option').forEach(b => {
+          b.classList.remove('is-selected');
+        });
+        btn.classList.add('is-selected');
+      });
+
+      container.appendChild(btn);
+    });
+
+    const anySelected = container.querySelector('.character-avatar-option.is-selected');
+    if (!anySelected) {
+      const first = container.querySelector('.character-avatar-option');
+      if (first) first.classList.add('is-selected');
+    }
+  }
+
+  function getSelectedAvatar(container) {
+    if (!container) return null;
+    const btn = container.querySelector('.character-avatar-option.is-selected');
+    return btn ? btn.dataset.avatar : null;
+  }
+
+  // construit le src de l’avatar à partir du nom stocké
+  function getAvatarSrc(char) {
+    const raw = char && char.avatar ? char.avatar : 'profile1.png';
+    if (raw.startsWith('img/')) return raw;
+    return 'img/' + raw;
+  }
+
+  function fillDuplicateSelect() {
+    if (!dupSelect) return;
+
+    const chars = characterManager.getCharactersArray();
+    const active = characterManager.getActiveCharacter();
+
+    dupSelect.innerHTML = '';
+
+    chars.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.name;
+      if (active && c.id === active.id) {
+        opt.selected = true;
+      }
+      dupSelect.appendChild(opt);
+    });
+  }
+
+  if (dupToggle && dupRow) {
+    dupToggle.addEventListener('change', () => {
+      if (dupToggle.checked) {
+        dupRow.classList.remove('is-hidden');
+        fillDuplicateSelect();
+      } else {
+        dupRow.classList.add('is-hidden');
+      }
+    });
+  }
+
   // -------------------------------------------------------------------
   // RENDU DU MENU PERSONNAGES
   // -------------------------------------------------------------------
-
-
-    function fillDuplicateSelect() {
-      if (!dupSelect) return;
-
-      const chars = characterManager.getCharactersArray();
-      const active = characterManager.getActiveCharacter();
-
-      dupSelect.innerHTML = '';
-
-      chars.forEach(c => {
-        const opt = document.createElement('option');
-        opt.value = c.id;
-        opt.textContent = c.name;
-        if (active && c.id === active.id) {
-          opt.selected = true;
-        }
-        dupSelect.appendChild(opt);
-      });
-    }
-
-    if (dupToggle && dupRow) {
-      dupToggle.addEventListener('change', () => {
-        if (dupToggle.checked) {
-          dupRow.classList.remove('is-hidden');
-          fillDuplicateSelect();
-        } else {
-          dupRow.classList.add('is-hidden');
-        }
-      });
-    }
-
-
   function renderDropdown() {
     const chars = characterManager.getCharactersArray();
     const active = characterManager.getActiveCharacter();
@@ -403,14 +484,12 @@ function initCharacterUI() {
       row.className = 'character-line' + (c.id === active.id ? ' is-active' : '');
       row.dataset.id = c.id;
 
-      // Avatar
       const avatar = document.createElement('img');
       avatar.className = 'char-avatar';
-      avatar.src = c.avatar || 'img/profile1.png';
+      avatar.src = getAvatarSrc(c);
       avatar.alt = '';
       row.appendChild(avatar);
 
-      // Zone sélection (clic sur toute la zone)
       const selectZone = document.createElement('div');
       selectZone.className = 'character-select-zone';
 
@@ -426,7 +505,6 @@ function initCharacterUI() {
 
       row.appendChild(selectZone);
 
-      // Bouton Éditer
       const labelEdit = GDMMLang.t('character.Edit') || 'Edit';
       const editBtn = document.createElement('button');
       editBtn.type = 'button';
@@ -438,13 +516,29 @@ function initCharacterUI() {
         if (!modalEdit || !inputEdit) return;
         characterToEdit = c.id;
         inputEdit.value = c.name;
+
+        if (avatarGridEdit) {
+          const currentAvatar = (c.avatar || '').replace(/^img\//, '');
+          buildAvatarGrid(avatarGridEdit, currentAvatar || null);
+        }
+
         openModal(modalEdit, modalBackdrop);
         dropdownEl.classList.remove('open');
+
+        if (btnEditSave) {
+          btnEditSave.onclick = () => {
+            const newName = inputEdit.value.trim();
+            const avatarName = getSelectedAvatar(avatarGridEdit);
+            characterManager.renameCharacter(characterToEdit, newName, avatarName);
+            closeModal(modalEdit, modalBackdrop);
+            renderDropdown();
+            characterToEdit = null;
+          };
+        }
       });
 
       row.appendChild(editBtn);
 
-      // Bouton Supprimer
       const labelDelete = GDMMLang.t('ui.DeleteButton') || 'Delete';
       const delBtn = document.createElement('button');
       delBtn.type = 'button';
@@ -459,18 +553,14 @@ function initCharacterUI() {
 
       delBtn.addEventListener('click', () => {
         dropdownEl.classList.remove('open');
-        
         const msg = GDMMLang.t('confirmDeleteCharacter').replace('{name}', c.name);
-
         if (confirm(msg)) {
           characterManager.deleteCharacter(c.id);
           renderDropdown();
         }
       });
 
-
       row.appendChild(delBtn);
-
       menuEl.appendChild(row);
     });
 
@@ -492,31 +582,29 @@ function initCharacterUI() {
 
     addZone.appendChild(plus);
     addZone.appendChild(addLabel);
-
     newRow.appendChild(addZone);
 
     newRow.addEventListener('click', () => {
       if (!modalNew || !inputNew) return;
 
-      // Reset du champ nom
       inputNew.value = '';
 
-      // Reset du toggle duplication
       if (dupToggle && dupRow) {
         dupToggle.checked = false;
         dupRow.classList.add('is-hidden');
       }
 
-      // On prépare la liste des persos pour le select
       if (typeof fillDuplicateSelect === 'function') {
         fillDuplicateSelect();
       }
 
-      // Ouvrir la modal
+      if (avatarGridNew) {
+        buildAvatarGrid(avatarGridNew, null);
+      }
+
       openModal(modalNew, modalBackdrop);
       dropdownEl.classList.remove('open');
 
-      // Handler du bouton "Create"
       if (!btnNewSave) return;
 
       btnNewSave.onclick = () => {
@@ -525,11 +613,11 @@ function initCharacterUI() {
         let created = null;
 
         if (useDuplicate && dupSelect && dupSelect.value) {
-          // Mode DUPLICATION
-          created = characterManager.cloneCharacter(dupSelect.value, rawName);
+          const avatarName = getSelectedAvatar(avatarGridNew);
+          created = characterManager.cloneCharacter(dupSelect.value, rawName, avatarName);
         } else {
-          // Mode NORMAL (comme avant)
-          created = characterManager.createCharacter(rawName);
+          const avatarName = getSelectedAvatar(avatarGridNew);
+          created = characterManager.createCharacter(rawName, avatarName);
         }
 
         if (!created) return;
@@ -538,7 +626,6 @@ function initCharacterUI() {
         renderDropdown();
       };
     });
-    
 
     menuEl.appendChild(newRow);
 
@@ -553,20 +640,19 @@ function initCharacterUI() {
         avatarCurrent.className = 'char-avatar-current';
         currentBtn.insertBefore(avatarCurrent, currentBtn.firstChild);
       }
-      avatarCurrent.src = active.avatar || 'img/profile1.png';
+      avatarCurrent.src = getAvatarSrc(active);
     }
   }
-   window.refreshCharacterDropdown = renderDropdown;
+
+  window.refreshCharacterDropdown = renderDropdown;
 
   // -------------------------------------------------------------------
-  // CALLBACK du manager (changement de personnage)
+  // CALLBACK du manager
   // -------------------------------------------------------------------
   characterManager.init({
     onCharacterChanged: (activeCharacter) => {
-      // Met à jour le menu des personnages
       renderDropdown();
 
-      // 1) Recharger les données du perso actif dans GDMMCore
       if (window.GDMMCore && typeof GDMMCore.loadUserDataFromLocal === 'function') {
         GDMMCore.loadUserDataFromLocal();
       }
@@ -577,7 +663,6 @@ function initCharacterUI() {
         const allProfiles = st.profiles || {};
         const lastProfile = activeCharacter?.state?.lastProfile || null;
 
-        // On ne force la map QUE si le perso a une lastProfile valide
         const targetProfile =
           lastProfile && allProfiles[lastProfile] ? lastProfile : null;
 
@@ -586,11 +671,9 @@ function initCharacterUI() {
           sel && targetProfile && sel.value !== targetProfile;
 
         if (shouldChangeProfile) {
-          // Le perso a une map préférée → on bascule dessus
           sel.value = targetProfile;
           sel.dispatchEvent(new Event('change', { bubbles: true }));
         } else {
-          // Sinon, on reste sur la map actuelle et on remet la vue & l’UI en accord
           const currentProfileFn = core.currentProfile || (() => null);
           const p = currentProfileFn();
 
@@ -619,7 +702,6 @@ function initCharacterUI() {
         console.warn('Erreur changement map :', e);
       }
 
-      // Rafraîchir aussi la liste des notes de région pour le perso actif
       if (typeof buildNoteList === 'function') {
         try {
           buildNoteList();
@@ -628,13 +710,11 @@ function initCharacterUI() {
         }
       }
 
-      // Vue globale éventuelle
       if (window.UiMapBase?.renderView) {
         UiMapBase.renderView();
       }
     },
   });
-
 
   // -------------------------------------------------------------------
   // Dropdown open/close
@@ -652,23 +732,12 @@ function initCharacterUI() {
   }
 
   // -------------------------------------------------------------------
-  // Modal buttons
+  // Modal buttons (cancel)
   // -------------------------------------------------------------------
   btnEditCancel?.addEventListener('click', () => closeModal(modalEdit, modalBackdrop));
   btnNewCancel?.addEventListener('click', () => closeModal(modalNew, modalBackdrop));
-
-  btnEditSave?.addEventListener('click', () => {
-    if (!characterToEdit) return;
-    characterManager.renameCharacter(characterToEdit, inputEdit.value.trim());
-    closeModal(modalEdit, modalBackdrop);
-    renderDropdown();
-    characterToEdit = null;
-  });
-
-
-  // Premier rendu
-  renderDropdown();
 }
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

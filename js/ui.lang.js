@@ -128,9 +128,7 @@
       "ui.HelpLineShare2": "All routes are shared, but only markers with the Shared option checked will be included",
       "ui.HelpLineShare3": "Notes are not shared",
       "ui.HelpLineTools": "Deleting all markers, routes, or notes in the Tools section only affects the active character",
-
-
-
+      "character.AvatarLabel": "Choose an Avatar",
 
 
     },
@@ -255,6 +253,7 @@
       "ui.HelpLineShare2": "Tous les tracés sont partagés, mais seuls les marqueurs cochés « Partagé » sont inclus",
       "ui.HelpLineShare3": "Les notes ne sont jamais partagées",
       "ui.HelpLineTools": "Supprimer tous les marqueurs, tracés ou notes dans la section Outils n'affecte que le personnage actif",
+      "character.AvatarLabel": "Choisir un Avatar",
 
 
     },
@@ -378,6 +377,7 @@
       "ui.HelpLineShare2": "Todas las rutas se comparten, pero solo los marcadores con la opción Compartido se incluyen",
       "ui.HelpLineShare3": "Las notas no se comparten",
       "ui.HelpLineTools": "Eliminar marcadores, rutas o notas desde la sección de herramientas solo afecta al personaje activo",
+      "character.AvatarLabel": "Elegir un avatar",
 
 
     },
@@ -503,7 +503,7 @@
       "ui.HelpLineShare2": "Alle Routen werden geteilt, aber nur Marker mit aktivierter Geteilt-Option werden einbezogen",
       "ui.HelpLineShare3": "Notizen werden nicht geteilt",
       "ui.HelpLineTools": "Das Löschen aller Marker, Routen oder Notizen betrifft nur den aktiven Charakter",
-
+      "character.AvatarLabel": "Avatar auswählen",
 
     },
 
@@ -629,7 +629,7 @@
       "ui.HelpLineShare2": "Todas as rotas são compartilhadas, mas somente marcadores marcados como Compartilhados serão incluídos",
       "ui.HelpLineShare3": "Notas não são compartilhadas",
       "ui.HelpLineTools": "Excluir marcadores, rotas ou notas na seção Ferramentas afeta apenas o personagem ativo",
-
+      "character.AvatarLabel": "Escolher um avatar",
 
 
   },
@@ -754,7 +754,7 @@
     "ui.HelpLineShare2": "Все маршруты передаются, но только отмеченные маркеры включаются в ссылку",
     "ui.HelpLineShare3": "Заметки не передаются",
     "ui.HelpLineTools": "Удаление маркеров, маршрутов или заметок влияет только на активного персонажа",
-
+    "character.AvatarLabel": "Выбрать аватар",
 
 
   },
@@ -880,7 +880,7 @@
       "ui.HelpLineShare2": "Tutti i percorsi sono condivisi, ma solo i segnalini contrassegnati come Condivisi vengono inclusi",
       "ui.HelpLineShare3": "Le note non vengono condivise",
       "ui.HelpLineTools": "La cancellazione di segnalini, percorsi o note influisce solo sul personaggio attivo",
-
+      "character.AvatarLabel": "Scegli un avatar",
 
 
     },
@@ -1006,7 +1006,7 @@
       "ui.HelpLineShare2": "所有路线都会共享，但只有勾选了“共享”的标记会被包含",
       "ui.HelpLineShare3": "备注不会共享",
       "ui.HelpLineTools": "在工具栏中删除标记、路线或备注只会影响当前角色",
-
+      "character.AvatarLabel": "选择头像",
 
     },
     ja: {
@@ -1130,6 +1130,7 @@
       "ui.HelpLineShare2": "すべてのルートは共有されますが、共有にチェックしたマーカーのみ含まれます",
       "ui.HelpLineShare3": "ノートは共有されません",
       "ui.HelpLineTools": "ツールでマーカー・ルート・ノートを削除しても、影響するのはアクティブキャラクターのみです",
+      "character.AvatarLabel": "アバターを選択",
 
     }
 

@@ -67,8 +67,8 @@ textarea, [contenteditable="true"] {
 .announce{
   position: absolute;
   left: 30px;
-  font-size: 13px;
-  bottom: 5px;
+  font-size: 12px;
+  bottom: 6px;
   font-weight: 400;
   color:#358c7d;
   width: 300px;
@@ -85,6 +85,7 @@ textarea, [contenteditable="true"] {
 
 .mt-1{margin-top: 5px;}
 .mt-2{margin-top: 10px;}
+.mt-3{margin-top: 16px;}
 
 .m0{margin: 0!important;}
 
@@ -751,8 +752,8 @@ label.checkbox{
 }
 
 .js-character-dropdown .select-current .char-avatar-current{
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
 }
 
 .js-character-dropdown .select-current{

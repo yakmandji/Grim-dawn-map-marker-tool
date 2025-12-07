@@ -60,7 +60,7 @@
       svg.appendChild(pathPreviewLine);
     }
     const color = pathMode.current.color || '#ffcc00';
-    const width = pathMode.current.width || 4;
+    const width = pathMode.current.width || 3;
     pathPreviewLine.setAttribute('x1', x1);
     pathPreviewLine.setAttribute('y1', y1);
     pathPreviewLine.setAttribute('x2', x2);
@@ -97,8 +97,8 @@
       id,
       name,
       points: [],
-      color: '#ffcc00',
-      width: 4,
+      color: '#26a68c',
+      width: 3,
     };
     paths.push(path);
     pathMode.active = true;

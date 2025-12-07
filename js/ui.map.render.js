@@ -374,7 +374,7 @@ function buildNoteList() {
 
       const infoIcon = document.createElement('img');
       infoIcon.className = 'region-note-indicator';
-      infoIcon.src = 'img/info-icon.svg';
+      infoIcon.src = 'img/info2-icon.svg';
       infoIcon.alt = 'Note';
 
       // éviter de démarrer un pan quand on clique sur le i
@@ -491,9 +491,14 @@ function buildNoteList() {
             (type === 'start' ? 'path-start' : 'path-end');
 
           if (type === 'start') {
-            tag.textContent = '👣 ' + (path.name || '(route)');
+            tag.innerHTML = `
+              <img src="img/foot-icon.svg" class="route-icon" width="14" height="14" alt="">
+              <span>${path.name || '(route)'}</span>
+            `;
           } else {
-            tag.textContent = '🚩';
+            tag.innerHTML = `
+              <img src="img/flag-icon.svg" class="route-icon" width="14" height="14" alt="">
+            `;
           }
 
           tag.style.left = ex + 'px';
@@ -790,7 +795,7 @@ function buildNoteList() {
               const r = ev.target.getBoundingClientRect();
               tooltip.style.left = `${r.left + (r.width / 2)}px`;
               tooltip.style.transform = "translateX(-50%)";
-              tooltip.style.top  = `${r.bottom + 6}px`;
+              tooltip.style.top  = `${r.bottom + 10}px`;
 
               ev.target._noteTooltip = tooltip;
           });
