@@ -28,7 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.36" />
+  <link rel="stylesheet" href="css/general.css?v1.37" />
   <link rel="stylesheet" href="css/items.css?v1.35" />
   <link rel="stylesheet" href="css/responsive.css?v1.19" />
   <link rel="stylesheet" href="css/sidebar-toggle.css?v1.19" />
@@ -512,6 +512,26 @@
     <div class="inner-modal">
       <h3 data-i18n="ui.NewCharacter">Nouveau personnage</h3>
       <input type="text" class="js-new-character-name" data-i18n-placeholder="ui.CharacterNamePlaceHolder" placeholder="Character name">
+
+      <div class="row">
+        <label class="checkbox">
+          <input type="checkbox"
+                 class="js-duplicate-character-toggle checkbox-green">
+          <span data-i18n="character.DuplicateToggle">
+            Dupliquer un personnage existant
+          </span>
+        </label>
+      </div>
+
+      <div class="row js-duplicate-character-row is-hidden">
+        <label>
+          <span data-i18n="character.DuplicateSourceLabel">
+            Personnage à dupliquer
+          </span>
+          <select class="js-duplicate-character-select"></select>
+        </label>
+      </div>
+      
       <div class="modal-actions">
         <button data-i18n="character.CreateButton" class="small modal-save js-save-character-new">Créer</button>
         <button data-i18n="ui.CancelMarkerButton" class="small modal-cancel js-cancel-character-new danger">Annuler</button>
@@ -522,7 +542,7 @@
 <!--END MULTI CHARACTER MODAL ------------------------------------------------------->
 
 
-  <script src="js/ui.lang.js?v=3.53"></script>
+  <script src="js/ui.lang.js?v=3.54"></script>
   <script src="js/core.js?v=3.10"></script>
   <script src="js/ui.rift.js?v=3.88"></script>
   <script src="js/ui.region.js?v=4.01"></script>
@@ -534,7 +554,7 @@
   <script src="js/ui.routes.js?v=1.16"></script>
 
   <script src="js/ui.core.js?v=3.73"></script>
-  <script src="js/ui.map.render.js?v=1.62"></script>
+  <script src="js/ui.map.render.js?v=1.63"></script>
   <script src="js/ui.share.js?v=1.04"></script>
 
   <script src="libs/pako.min.js"></script>
@@ -544,7 +564,7 @@
   <script src="js/ui.filter.js?v=2.97"></script>
   <script src="js/ui.search.js?v=1.16"></script>
 
-  <script src="js/characterManager.js?v=1"></script>
+  <script src="js/characterManager.js?v=1.01"></script>
 
 </body>
 </html>

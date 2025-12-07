@@ -111,7 +111,7 @@
       "KeyboardPan": "WASD to move map",
       "ui.ToggleSidebar": "Toggle sidebar",
       "toast.ShareCooldown" : "Please wait {wait}s before sharing again",
-      "share.tooltip": "Sharing your map creates a link with your markers and routes. No account required."
+      "share.tooltip": "Sharing your map creates a link with your markers and routes. No account required.",
 
     },
     fr: {
@@ -220,7 +220,9 @@
       "KeyboardPan": "QZSD pour déplacer la carte",
       "ui.ToggleSidebar": "Replier la barre latérale",
       "toast.ShareCooldown": "Veuillez attendre {wait}s avant de partager à nouveau.",
-      "share.tooltip": "Partager votre carte crée un lien avec vos marqueurs et vos routes. Aucun compte requis."
+      "share.tooltip": "Partager votre carte crée un lien avec vos marqueurs et vos routes. Aucun compte requis.",
+      "character.DuplicateToggle": "Dupliquer un personnage existant",
+      "character.DuplicateSourceLabel": "Personnage à dupliquer",
 
     },
     es: {

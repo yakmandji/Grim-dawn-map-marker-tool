@@ -209,8 +209,6 @@ function buildNoteList() {
   }
 
   function loadRegionNotesStore() {
-    if (regionNotesStore) return regionNotesStore;
-
     let store = null;
     try {
       const raw = localStorage.getItem(REGION_NOTES_KEY);
@@ -243,18 +241,19 @@ function buildNoteList() {
       store.byCharacter = store.byCharacter || {};
     }
 
-    regionNotesStore = store;
-    return regionNotesStore;
+    return store;
   }
 
-  function saveRegionNotesStore() {
-    if (!regionNotesStore) return;
+
+  function saveRegionNotesStore(store) {
+    if (!store) return;
     try {
-      localStorage.setItem(REGION_NOTES_KEY, JSON.stringify(regionNotesStore));
+      localStorage.setItem(REGION_NOTES_KEY, JSON.stringify(store));
     } catch (e) {
       console.warn('[GDMM] Failed to save region notes store', e);
     }
   }
+
 
 
   function clearRegionNote(regionId) {

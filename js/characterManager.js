@@ -191,13 +191,71 @@ const characterManager = (() => {
       data.characters[id] = {
         id,
         name: trimmedName,
-        avatar: avatarFile, // 👈 on stocke l'avatar
+        avatar: avatarFile, // on stocke l'avatar
         state: JSON.parse(JSON.stringify(defaultState)),
       };
 
       setActiveCharacter(id);
       saveMultiCharData();
+
+      return data.characters[id];
   }
+
+
+    function cloneCharacter(sourceId, newName) {
+      const source = data.characters[sourceId];
+      if (!source) return null;
+
+      const count = Object.keys(data.characters || {}).length;
+      if (count >= 10) {
+        alert(GDMMLang.t('ui.MaxLimitCharacter'));
+        return null;
+      }
+
+      const id = `char-${Date.now()}`;
+      const trimmedName =
+        (newName && newName.trim()) || (source.name + ' (copy)');
+
+      const avatarFile = source.avatar || 'img/profile1.png';
+
+      // Clone profond du state pour ne pas partager les références
+      const clonedState = JSON.parse(JSON.stringify(source.state || {}));
+
+       data.characters[id] = {
+        id,
+        name: trimmedName,
+        avatar: avatarFile,
+        state: clonedState,
+      };
+
+      // Dupliquer aussi les notes de région pour ce personnage
+      try {
+        const rawNotes = localStorage.getItem('gdmm_region_notes_v1');
+        if (rawNotes) {
+          const notesStore = JSON.parse(rawNotes);
+
+          if (notesStore && notesStore.byCharacter && notesStore.byCharacter[sourceId]) {
+            // on s'assure que la branche existe
+            if (!notesStore.byCharacter[id]) {
+              notesStore.byCharacter[id] = JSON.parse(
+                JSON.stringify(notesStore.byCharacter[sourceId])
+              );
+            }
+
+            localStorage.setItem('gdmm_region_notes_v1', JSON.stringify(notesStore));
+          }
+        }
+      } catch (e) {
+        console.warn('[GDMM] Failed to clone region notes for character', e);
+      }
+
+      setActiveCharacter(id);
+      saveMultiCharData();
+
+      return data.characters[id];
+
+
+    }
 
 
   function renameCharacter(id, newName) {
@@ -262,6 +320,7 @@ const characterManager = (() => {
     renameCharacter,
     deleteCharacter,
     getCharactersArray,
+    cloneCharacter,
   };
 })();
 
@@ -284,6 +343,19 @@ function initCharacterUI() {
   const inputEdit = modalEdit ? modalEdit.querySelector('.js-edit-character-name') : null;
   const inputNew  = modalNew  ? modalNew.querySelector('.js-new-character-name')  : null;
 
+  const dupToggle = modalNew
+    ? modalNew.querySelector('.js-duplicate-character-toggle')
+    : null;
+
+  const dupRow = modalNew
+    ? modalNew.querySelector('.js-duplicate-character-row')
+    : null;
+
+  const dupSelect = modalNew
+    ? modalNew.querySelector('.js-duplicate-character-select')
+    : null;
+
+
   const btnEditSave   = modalEdit ? modalEdit.querySelector('.js-save-character-edit')   : null;
   const btnEditCancel = modalEdit ? modalEdit.querySelector('.js-cancel-character-edit') : null;
 
@@ -293,6 +365,39 @@ function initCharacterUI() {
   // -------------------------------------------------------------------
   // RENDU DU MENU PERSONNAGES
   // -------------------------------------------------------------------
+
+
+    function fillDuplicateSelect() {
+      if (!dupSelect) return;
+
+      const chars = characterManager.getCharactersArray();
+      const active = characterManager.getActiveCharacter();
+
+      dupSelect.innerHTML = '';
+
+      chars.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c.id;
+        opt.textContent = c.name;
+        if (active && c.id === active.id) {
+          opt.selected = true;
+        }
+        dupSelect.appendChild(opt);
+      });
+    }
+
+    if (dupToggle && dupRow) {
+      dupToggle.addEventListener('change', () => {
+        if (dupToggle.checked) {
+          dupRow.classList.remove('is-hidden');
+          fillDuplicateSelect();
+        } else {
+          dupRow.classList.add('is-hidden');
+        }
+      });
+    }
+
+
   function renderDropdown() {
     const chars = characterManager.getCharactersArray();
     const active = characterManager.getActiveCharacter();
@@ -397,16 +502,49 @@ function initCharacterUI() {
     newRow.appendChild(addZone);
 
     newRow.addEventListener('click', () => {
+      if (!modalNew || !inputNew) return;
+
+      // Reset du champ nom
       inputNew.value = '';
+
+      // Reset du toggle duplication
+      if (dupToggle && dupRow) {
+        dupToggle.checked = false;
+        dupRow.classList.add('is-hidden');
+      }
+
+      // On prépare la liste des persos pour le select
+      if (typeof fillDuplicateSelect === 'function') {
+        fillDuplicateSelect();
+      }
+
+      // Ouvrir la modal
       openModal(modalNew, modalBackdrop);
       dropdownEl.classList.remove('open');
 
+      // Handler du bouton "Create"
+      if (!btnNewSave) return;
+
       btnNewSave.onclick = () => {
-        characterManager.createCharacter(inputNew.value.trim());
+        const rawName = inputNew.value.trim();
+        const useDuplicate = dupToggle && dupToggle.checked;
+        let created = null;
+
+        if (useDuplicate && dupSelect && dupSelect.value) {
+          // Mode DUPLICATION
+          created = characterManager.cloneCharacter(dupSelect.value, rawName);
+        } else {
+          // Mode NORMAL (comme avant)
+          created = characterManager.createCharacter(rawName);
+        }
+
+        if (!created) return;
+
         closeModal(modalNew, modalBackdrop);
         renderDropdown();
       };
     });
+    
 
     menuEl.appendChild(newRow);
 
@@ -486,6 +624,21 @@ function initCharacterUI() {
       } catch (e) {
         console.warn('Erreur changement map :', e);
       }
+
+      // Rafraîchir aussi la liste des notes de région pour le perso actif
+      if (typeof buildNoteList === 'function') {
+        try {
+          buildNoteList();
+        } catch (e) {
+          console.warn('Error while refresh note :', e);
+        }
+      }
+
+        // Vue globale éventuelle
+        if (window.UiMapBase?.renderView) {
+          UiMapBase.renderView();
+        }
+
 
       // Vue globale éventuelle
       if (window.UiMapBase?.renderView) {
