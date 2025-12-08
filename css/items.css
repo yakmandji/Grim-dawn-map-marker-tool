@@ -1515,6 +1515,11 @@ input[type="color"]::-moz-color-swatch {
   height: 20px;
 }
 
+.malmouthmap .shrine-icon{
+    width: 24px;
+    height: 24px;
+}
+
 .label-shrine{
   display: flex;
   gap: 3px;
