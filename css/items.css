@@ -1496,3 +1496,26 @@ input[type="color"]::-moz-color-swatch {
   border-color: #26f0df;
   box-shadow: 0 0 0 1px rgba(38,240,223,0.6);
 }
+
+/*SRINE*/
+
+.marker-shrine {
+  pointer-events: auto;
+}
+
+.shrine-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Pour debug visuel des tiers (tu rafineras plus tard) */
+.shrine-normal   .shrine-icon { filter: hue-rotate(50deg); }    /* jaune-ish */
+.shrine-elite    .shrine-icon { filter: hue-rotate(20deg); }    /* orange-ish */
+.shrine-ultimate .shrine-icon { filter: hue-rotate(-20deg); }   /* rouge-ish */
+
+.shrine-label .shrine-difficulty {
+  display: block;
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 2px;
+}

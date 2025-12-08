@@ -130,6 +130,10 @@
       "ui.HelpLineTools": "Deleting all markers, routes, or notes in the Tools section only affects the active character",
       "character.AvatarLabel": "Choose an Avatar",
       "search.CustomLocalOnly": "Only custom markers and notes from the current map",
+      "ui.Shrine" : "Shrine",
+      "ui.ShrineTierNormal": "Normal mode",
+      "ui.ShrineTierElite": "Elite mode",
+      "ui.ShrineTierUltimate": "Ultimate mode",
 
     },
     fr: {
@@ -255,7 +259,10 @@
       "ui.HelpLineTools": "Supprimer tous les marqueurs, tracés ou notes dans la section Outils n'affecte que le personnage actif",
       "character.AvatarLabel": "Choisir un Avatar",
       "search.CustomLocalOnly": "Uniquement les marqueurs et notes personnalisés de la carte actuelle",
-
+      "ui.Shrine": "Sanctuaire",
+      "ui.ShrineTierNormal": "Mode Normal",
+      "ui.ShrineTierElite": "Mode Difficile",
+      "ui.ShrineTierUltimate": "Mode Ultime",
 
     },
     es: {
@@ -380,6 +387,7 @@
       "ui.HelpLineTools": "Eliminar marcadores, rutas o notas desde la sección de herramientas solo afecta al personaje activo",
       "character.AvatarLabel": "Elegir un avatar",
       "search.CustomLocalOnly": "Solo marcadores y notas personalizadas del mapa actual",
+      "ui.Shrine" : "Shrine",
 
     },
 

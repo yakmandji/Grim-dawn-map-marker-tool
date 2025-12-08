@@ -9,6 +9,10 @@
 
   let currentRegionIdForPanel = null;
 
+  const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
+    ? GDMMLang.t.bind(GDMMLang)
+    : (s) => s;
+
 /* NOTE LIST ------------------------------------------------------*/
   function getAllRegionNotes() {
     const store   = loadRegionNotesStore();   // utilise le nouveau format v2
@@ -875,6 +879,92 @@ function buildNoteList() {
 
         });
 
+        // 2c) SHRINES -------------------------------------------------
+        if (window.SHRINE_MARKERS_BY_SIZE) {
+          const key = resolveSizeKey(window.SHRINE_MARKERS_BY_SIZE);
+          const shrineData = (key && window.SHRINE_MARKERS_BY_SIZE[key])
+            ? window.SHRINE_MARKERS_BY_SIZE[key]
+            : [];
+
+          shrineData.forEach(m => {
+            const el = document.createElement('div');
+            el.classList.add('marker', 'marker-shrine', 'locked');
+            el.dataset.shrineId = m.id;
+            el.dataset.xp = m.xp;
+            el.dataset.yp = m.yp;
+
+            // Classe CSS selon la difficulté
+            if (m.difficulty === 'elite') {
+              el.classList.add('shrine-elite');
+            } else if (m.difficulty === 'ultimate') {
+              el.classList.add('shrine-ultimate');
+            } else {
+              el.classList.add('shrine-normal');
+            }
+
+            // Icône
+            const iconImg = document.createElement('img');
+            iconImg.className = 'shrine-icon';
+
+            let iconPath = 'img/icon-shrine.png'; // normal
+            if (m.difficulty === 'elite') {
+              iconPath = 'img/icon-shrine-e.png';
+            } else if (m.difficulty === 'ultimate') {
+              iconPath = 'img/icon-shrine-u.png';
+            }
+            iconImg.src = iconPath;
+
+            // LABEL (avec 2ᵉ ligne difficulté)
+            const lab = document.createElement('div');
+            lab.className = 'label shrine-label';
+
+            // Nom de région via helper existant
+            const regionName =
+              (window.getRegionLabel && m.regionTag)
+                ? getRegionLabel(m.regionTag, m.regionTag)
+                : (m.label || m.tag || m.regionTag || '');
+
+            const shrineWord = t('ui.Shrine') || 'Shrine';
+
+            // Texte de difficulté (i18n)
+            let difficultyKey = 'ui.ShrineTierNormal';
+            if (m.difficulty === 'elite') {
+              difficultyKey = 'ui.ShrineTierElite';
+            } else if (m.difficulty === 'ultimate') {
+              difficultyKey = 'ui.ShrineTierUltimate';
+            }
+            const difficultyText = t(difficultyKey) || '';
+
+            const mainText = `${shrineWord} – ${regionName}`;
+            const tooltipText = difficultyText
+              ? `${mainText} - ${difficultyText}`
+              : mainText;
+
+            // 1ʳᵉ ligne = texte principal, 2ᵉ = difficulté en petit
+            if (difficultyText) {
+              lab.innerHTML = `${mainText}<br><span class="shrine-difficulty">${difficultyText}</span>`;
+            } else {
+              lab.textContent = mainText;
+            }
+
+            // Tooltip natif
+            iconImg.alt = tooltipText;
+
+            el.appendChild(iconImg);
+            el.appendChild(lab);
+
+            // Position
+            const pt = pctToPx(m.xp, m.yp);
+            el.style.left = pt.x + 'px';
+            el.style.top  = pt.y + 'px';
+
+            el.classList.add('is-static');
+            inner.appendChild(el);
+          });
+        }
+
+
+
         // 2b) Search index (regions + rifts)
         if (window.GDMMSearch && typeof GDMMSearch.refresh === 'function') {
           GDMMSearch.refresh(regionData, riftData);
@@ -1054,9 +1144,7 @@ function buildNoteList() {
 
     function openRegionNotePanel(regionId, labelText, anchorEl) {
       // Traduction actuelle pour le bouton Save
-      const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
-        ? GDMMLang.t.bind(GDMMLang)
-        : null;
+
       const saveLabel = t ? t('ui.SaveTitle') : 'Save';
 
       // créer le panel s’il n’existe pas
