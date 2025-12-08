@@ -158,7 +158,10 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
   { id: "entry_map_room_rahn", xp: 53.03, yp: 17.11, tag: "Map Room Rahn" },
   { id: "entry_sunward_spire", xp: 47.65, yp: 13.58, tag: "Sunward Spire" },
   { id: "entry_tomb_eldtrich_sun", xp: 57.86, yp: 15.17, tag: "Tomb Eldritch Sun" },
-  { id: "entry_sanctum_choosen", xp: 26.77, yp: 31.19, tag: "Sanctum Chosen" }
+  { id: "entry_sanctum_choosen", xp: 26.77, yp: 31.19, tag: "Sanctum Chosen" },
+
+  { id: "entry_splendors_shattered_realm", xp: 20.09, yp: 97.32, tag: "Sanctum Chosen" },
+
 
 ];
 
@@ -271,6 +274,8 @@ window.DUNGEON_LINKS = {
   "sunward_spire": ["entry_sunward_spire"],
   "tomb_eldtrich_sun": ["entry_tomb_eldtrich_sun"],
   "sanctum_choosen": ["entry_sanctum_choosen"],
+  "splendors_shattered_realm" : ["entry_splendors_shattered_realm"],
+  
 
 
 };

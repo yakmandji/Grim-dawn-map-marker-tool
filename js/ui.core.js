@@ -839,10 +839,10 @@ viewport.addEventListener('pointermove', e => {
     const ih = state.mapNatural.h * state.view.scale;
 
     // marges autour de la map
-    const marginLeft   = 320;
-    const marginRight  = 320;
-    const marginTop    = 320;
-    const marginBottom = 450;
+    const marginLeft   = 550;
+    const marginRight  = 550;
+    const marginTop    = 550;
+    const marginBottom = 550;
 
     const minX = vb.width  - iw - marginRight;
     const maxX = marginLeft;

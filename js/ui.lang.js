@@ -134,6 +134,11 @@
       "ui.ShrineTierNormal": "Normal mode",
       "ui.ShrineTierElite": "Elite mode",
       "ui.ShrineTierUltimate": "Ultimate mode",
+      "ui.DonePanel": "Done panel",
+      "ui.ShrineTotal" : "Shrines completed",
+      "ui.DeleteShrineButton": "Reset all shrines",
+      "ui.ConfirmResetShrines": "Reset all shrines for this character?",
+      "toast.ShrinesReset": "Shrines have been reset for this character.",
 
     },
     fr: {
@@ -261,8 +266,15 @@
       "search.CustomLocalOnly": "Uniquement les marqueurs et notes personnalisés de la carte actuelle",
       "ui.Shrine": "Sanctuaire",
       "ui.ShrineTierNormal": "Mode Normal",
-      "ui.ShrineTierElite": "Mode Difficile",
+      "ui.ShrineTierElite": "Mode Élite",
       "ui.ShrineTierUltimate": "Mode Ultime",
+      "ui.DonePanel": "Panneau des complétés",
+      "ui.ShrineTotal": "Sanctuaires complétés",
+      "ui.DeleteShrineButton": "Réinitialiser tous les sanctuaires",
+      "ui.ConfirmResetShrines": "Réinitialiser tous les sanctuaires pour ce personnage ?",
+      "toast.ShrinesReset": "Les sanctuaires ont été réinitialisés pour ce personnage.",
+
+
 
     },
     es: {
@@ -387,7 +399,16 @@
       "ui.HelpLineTools": "Eliminar marcadores, rutas o notas desde la sección de herramientas solo afecta al personaje activo",
       "character.AvatarLabel": "Elegir un avatar",
       "search.CustomLocalOnly": "Solo marcadores y notas personalizadas del mapa actual",
-      "ui.Shrine" : "Shrine",
+      "ui.Shrine": "Santuario",
+      "ui.ShrineTierNormal": "Modo Normal",
+      "ui.ShrineTierElite": "Modo Élite",
+      "ui.ShrineTierUltimate": "Modo Definitivo",
+      "ui.DonePanel": "Panel de completados",
+      "ui.ShrineTotal": "Santuarios completados",      
+      "ui.DeleteShrineButton": "Restablecer todos los santuarios",
+      "ui.ConfirmResetShrines": "¿Restablecer todos los santuarios para este personaje?",
+      "toast.ShrinesReset": "Los santuarios han sido restablecidos para este personaje.",
+
 
     },
 
@@ -514,7 +535,15 @@
       "ui.HelpLineTools": "Das Löschen aller Marker, Routen oder Notizen betrifft nur den aktiven Charakter",
       "character.AvatarLabel": "Avatar auswählen",
       "search.CustomLocalOnly": "Nur eigene Markierungen und Notizen der aktuellen Karte",
-
+      "ui.ShrineTierNormal": "Normalmodus",
+      "ui.ShrineTierElite": "Elitemodus",
+      "ui.ShrineTierUltimate": "Ultimativer Modus",
+      "ui.DonePanel": "Abgeschlossen-Panel",
+      "ui.ShrineTotal": "Abgeschlossene Schreine",
+      "ui.DeleteShrineButton": "Alle Schreine zurücksetzen",
+      "ui.ConfirmResetShrines": "Alle Schreine für diesen Charakter zurücksetzen?",
+      "toast.ShrinesReset": "Die Schreine wurden für diesen Charakter zurückgesetzt.",
+      "ui.Shrine": "Schrein",
     },
 
   pt: {
@@ -641,7 +670,15 @@
       "ui.HelpLineTools": "Excluir marcadores, rotas ou notas na seção Ferramentas afeta apenas o personagem ativo",
       "character.AvatarLabel": "Escolher um avatar",
       "search.CustomLocalOnly": "Apenas marcadores e notas personalizadas do mapa atual",
-
+      "ui.ShrineTierNormal": "Modo Normal",
+      "ui.ShrineTierElite": "Modo Elite",
+      "ui.ShrineTierUltimate": "Modo Supremo",
+      "ui.DonePanel": "Painel de concluídos",
+      "ui.ShrineTotal": "Santuários concluídos",
+      "ui.DeleteShrineButton": "Redefinir todos os santuários",
+      "ui.ConfirmResetShrines": "Redefinir todos os santuários para este personagem?",
+      "toast.ShrinesReset": "Os santuários foram redefinidos para este personagem.",
+      "ui.Shrine": "Santuário",
 
   },
 
@@ -767,6 +804,15 @@
     "ui.HelpLineTools": "Удаление маркеров, маршрутов или заметок влияет только на активного персонажа",
     "character.AvatarLabel": "Выбрать аватар",
     "search.CustomLocalOnly": "Только пользовательские метки и заметки текущей карты",
+    "ui.ShrineTierNormal": "Режим Нормальный",
+    "ui.ShrineTierElite": "Режим Элита",
+    "ui.ShrineTierUltimate": "Режим Высший",
+    "ui.DonePanel": "Панель выполненного",
+    "ui.ShrineTotal": "Завершённые святыни",
+    "ui.DeleteShrineButton": "Сбросить все святилища",
+    "ui.ConfirmResetShrines": "Сбросить все святилища для этого персонажа?",
+    "toast.ShrinesReset": "Святилища были сброшены для этого персонажа.",
+    "ui.Shrine": "Святилище",
 
   },
 
@@ -893,7 +939,15 @@
       "ui.HelpLineTools": "La cancellazione di segnalini, percorsi o note influisce solo sul personaggio attivo",
       "character.AvatarLabel": "Scegli un avatar",
       "search.CustomLocalOnly": "Solo marcatori e note personalizzati della mappa attuale",
-
+      "ui.ShrineTierNormal": "Modalità Normale",
+      "ui.ShrineTierElite": "Modalità Élite",
+      "ui.ShrineTierUltimate": "Modalità Suprema",
+      "ui.DonePanel": "Pannello completati",
+      "ui.ShrineTotal": "Santuari completati",
+      "ui.DeleteShrineButton": "Reimposta tutti i santuari",
+      "ui.ConfirmResetShrines": "Reimpostare tutti i santuari per questo personaggio?",
+      "toast.ShrinesReset": "I santuari sono stati reimpostati per questo personaggio.",
+      "ui.Shrine": "Santuario",
 
     },
 
@@ -1020,6 +1074,15 @@
       "ui.HelpLineTools": "在工具栏中删除标记、路线或备注只会影响当前角色",
       "character.AvatarLabel": "选择头像",
       "search.CustomLocalOnly": "仅显示当前地图的自定义标记和备注",
+      "ui.ShrineTierNormal": "普通难度",
+      "ui.ShrineTierElite": "精英难度",
+      "ui.ShrineTierUltimate": "终极难度",
+      "ui.DonePanel": "完成面板",
+      "ui.ShrineTotal": "已完成的神龛",      
+      "ui.DeleteShrineButton": "重置所有神龛",
+      "ui.ConfirmResetShrines": "要为此角色重置所有神龛吗？",
+      "toast.ShrinesReset": "已为此角色重置所有神龛。",
+      "ui.Shrine": "祭坛",
 
     },
     ja: {
@@ -1145,6 +1208,15 @@
       "ui.HelpLineTools": "ツールでマーカー・ルート・ノートを削除しても、影響するのはアクティブキャラクターのみです",
       "character.AvatarLabel": "アバターを選択",
       "search.CustomLocalOnly": "現在のマップのカスタムマーカーとノートのみを表示",
+      "ui.ShrineTierNormal": "ノーマルモード",
+      "ui.ShrineTierElite": "エリートモード",
+      "ui.ShrineTierUltimate": "アルティメットモード",
+      "ui.DonePanel": "完了パネル",
+      "ui.ShrineTotal": "完了した祭壇",
+      "ui.DeleteShrineButton": "すべての祠をリセット",
+      "ui.ConfirmResetShrines": "このキャラクターのすべての祠をリセットしますか？",
+      "toast.ShrinesReset": "このキャラクターの祠がリセットされました。",
+      "ui.Shrine": "聖堂",
 
     }
 

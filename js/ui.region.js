@@ -9,7 +9,7 @@
 { id: 'tag_wightmire_cellar01', tag: 'tagWightmireCellar01', xp: 72.90, yp: 77.69, isDungeon: true },
 { id: 'tag_map_ominous_lair', tag: 'tagMapOminousLair', xp: 60.6, yp: 49.5, isDungeon: true },
 { id: 'tag_uGOld_arkovia03', tag: 'tagUGOldArkovia03', xp: 40.91, yp: 84, isDungeon: true },
-{ id: 'tag_map_laboratory_storerooms', tag: 'tagMapLaboratoryStorerooms', xp: 59.19, yp: 50.7, isDungeon: true },
+{ id: 'tag_map_laboratory_storerooms', tag: 'tagMapLaboratoryStorerooms', xp: 58.53, yp: 51.13, isDungeon: true },
 { id: 'tag_map_laboratory_living_quarters', tag: 'tagMapLaboratoryLivingQuarters', xp: 62.08, yp: 48.26, isDungeon: true },
 { id: 'tag_map_laboratory_jail', tag: 'tagMapLaboratoryJail', xp: 59.12, yp: 45.9, isDungeon: true },
 { id: 'tag_U_gOld_arkovia_04', tag: 'tagUGOldArkovia04', xp: 55.72, yp: 80.60, isDungeon: true },
@@ -79,7 +79,7 @@
 { id: 'map_broken_hills', tag: 'tagMapBrokenHills', xp: 47.15, yp: 83.36 },
 { id: 'map_rocky_coast', tag: 'tagMapRockyCoast', xp: 52.64, yp: 81.46 },
 { id: 'map_new_harbor', tag: 'tagMapNewHarbor', xp: 53.08, yp: 78.92 },
-{ id: 'map_old_arkovia', tag: 'tagMapOldArkovia', xp: 50.13, yp: 78.9 },
+{ id: 'map_old_arkovia', tag: 'tagMapOldArkovia', xp: 50.13, yp: 79.3 },
 { id: 'map_twin_falls', tag: 'tagMapTwinFalls', xp: 47.39, yp: 78.26 },
 { id: 'GDX2_map_side_areas_03', tag: 'tagGDX2MapSideAreas_03', xp: 43.6, yp: 77.9 },
 { id: 'map_jagged_waste_fort', tag: 'tagMapJaggedWasteFort', xp: 44.37, yp: 73.44 },
@@ -131,7 +131,6 @@
 { id: 'map_port_valbury_gauntlet', tag: 'tagMapPortValburyGauntlet', xp: 40.27, yp: 27.32 },
 { id: 'map_port_valbury_district01', tag: 'tagMapPortValburyDistrict01', xp: 38.96, yp: 27.56 },
 { id: 'map_port_valbury_a', tag: 'tagMapPortValbury', xp: 40.8, yp: 30.02 },
-{ id: 'map_port_valbury_b', tag: 'tagMapPortValbury', xp: 42.54, yp: 30.64 },
 { id: 'map_port_valbury_outskirts', tag: 'tagMapPortValburyOutskirts', xp: 44.68, yp: 31.87 },
 { id: 'UG_fort_faction01', tag: 'tagUGFortFaction01', xp: 28.82, yp: 48.67 },
 { id: 'map_voidlands02', tag: 'tagMapVoidlands02', xp: 21.12, yp: 55.02, isDungeon: true },
@@ -241,7 +240,7 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gdx2_cairan_ruins01', tag: 'tagGDX2CairanRuins01', xp: 15.84, yp: 53.93, isDungeon: true },
 { id: 'tag_gdx2_bysmiel_eldritch', tag: 'tagGDX2BysmielEldritch', xp: 1.64, yp: 87.32, isDungeon: true },
 { id: 'tag_gdx2_beetle01', tag: 'tagGDX2Beetle01', xp: 35.84, yp: 92.03, isDungeon: true },
-{ id: 'tag_gdx2_ruined_temple01_b', tag: 'tagGDX2RuinedTemple01', xp: 50.43, yp: 86.97, isDungeon: true },
+{ id: 'tag_gdx2_ruined_temple01_b', tag: 'tagGDX2RuinedTemple01', xp: 49.06, yp: 79.27, isDungeon: true },
 { id: 'tag_gdx2_howling_chasm', tag: 'tagGDX2HowlingChasm', xp: 55.80, yp: 58.52, isDungeon: true },
 { id: 'tag_gdx2_ruined_dc', tag: 'tagGDX2RuinedDC', xp: 66.33, yp: 54.81, isDungeon: true },
 { id: 'tag_gdx2_ruined_temple02', tag: 'tagGDX2RuinedTemple02', xp: 79.74, yp: 44.34, isDungeon: true },
@@ -249,13 +248,13 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gdx2_votc02', tag: 'tagGDX2VOTC02', xp: 71.39, yp: 30.27, isDungeon: true },
 { id: 'tag_gdx2_korvaak_tomb01', tag: 'tagGDX2KorvaakTomb01', xp: 64.12, yp: 1.53, isDungeon: true },
 { id: 'tag_gdx2_map_hidden_oasis', tag: 'tagGDX2MapHiddenOasis', xp: 32.09, yp: 70.63 },
-{ id: 'tagGDX2_roguelike_01A', tag: 'tagGDX2Roguelike_01A', xp: 86.77, yp: 31.09, isDungeon: true },
+{ id: 'tagGDX2_roguelike_01A', tag: 'tagGDX2Roguelike_01A', xp: 87.47, yp: 32.50, isDungeon: true },
 { id: 'tag_GDX2_sanctuary_ofHorran', tag: 'tagGDX2SanctuaryOfHorran', xp: 43.50, yp: 40.27, isDungeon: true },
 { id: 'tag_GDX2_roguelike_Area04', tag: 'tagGDX2Roguelike_Area04', xp: 79.72, yp: 14.67, isDungeon: true },
 { id: 'tagGDX2_roguelike_Area05', tag: 'tagGDX2Roguelike_Area05', xp: 94.55, yp: 13.13, isDungeon: true },
-{ id: 'tag_GDX2_roguelike_01', tag: 'tagGDX2Roguelike_01', xp: 79.84, yp: 31.40, isDungeon: true },
-{ id: 'tag_GDX2_roguelike_01B', tag: 'tagGDX2Roguelike_01B', xp: 94.07, yp: 31.22, isDungeon: true },
-{ id: 'tag_GDX2_roguelike_01D', tag: 'tagGDX2Roguelike_01D', xp: 94.88, yp: 22.04, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_01', tag: 'tagGDX2Roguelike_01', xp: 79.94, yp: 32.32, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_01B', tag: 'tagGDX2Roguelike_01B', xp: 95.77, yp: 32.22, isDungeon: true },
+{ id: 'tag_GDX2_roguelike_01D', tag: 'tagGDX2Roguelike_01D', xp: 98.29, yp: 20.25, isDungeon: true },
 { id: 'tag_GDX2_roguelike_01C', tag: 'tagGDX2Roguelike_01C', xp: 91.80, yp: 26.38, isDungeon: true },
 { id: 'tag_GDX2_vOTC03', tag: 'tagGDX2VOTC03', xp: 45.76, yp: 24.17, isDungeon: true },
 { id: 'tag_gDX2_solael_void', tag: 'tagGDX2SolaelVoid', xp: 79.98, yp: 54.72, isDungeon: true },
@@ -267,6 +266,10 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gDX2_eldritch_realm02', tag: 'tagGDX2EldritchRealm02', xp: 75.77, yp: -1.50, isDungeon: true },
 { id: 'tag_gDX2_cellar', tag: 'tagGDX2Cellar', xp: 14.57, yp: 91.67, isDungeon: true },
 { id: 'tag_gDX2_roguelike_Area03', tag: 'tagGDX2Roguelike_Area03', xp: 51.92, yp: 72.91, isDungeon: true },
+{ id: 'tag_Splendor_OfShattered_Realm', tag: 'tagSplendorOfShatteredRealm', xp: 23.71, yp: 91.91, isDungeon: true },
+
+
+
 
 ];
 
@@ -566,6 +569,7 @@ en: {
   tagGDX2Roguelike_01D: "Conduit of the Eternal Night",
   tagGDX2SideAreas_01: "Plague Pit",
   tagGDX2SideAreas_02: "Corrupted Tomb",
+  tagSplendorOfShatteredRealm: "Splendors of the Shattered Realm"
 },
 
 fr: {
@@ -866,6 +870,7 @@ fr: {
   tagGDX2Roguelike_01D: "Conduit de la Nuit Éternelle",
   tagGDX2SideAreas_01: "Fosse de la Peste",
   tagGDX2SideAreas_02: "Tombeau Corrompu",
+  tagSplendorOfShatteredRealm: "Splendeurs du Royaume Fragmenté",
 
 },
 
@@ -1166,6 +1171,7 @@ fr: {
   tagGDX2Roguelike_01D: "Conducto de la Noche Eterna",
   tagGDX2SideAreas_01: "Fosa de la plaga",
   tagGDX2SideAreas_02: "Tumba Corrupta",
+  tagSplendorOfShatteredRealm: "Maravillas del Reino Destrozado",
   },
 
 de: {
@@ -1466,7 +1472,7 @@ de: {
   tagGDX2Roguelike_01D:"Verbindung der Ewigen Nacht",
   tagGDX2SideAreas_01:"Seuchengrube",
   tagGDX2SideAreas_02:"Verdorbenes Grab",
-
+  tagSplendorOfShatteredRealm: "Herrlichkeiten des Erschütterten Reichs",
 
 },
 
@@ -1767,6 +1773,8 @@ pt: {
   tagGDX2Roguelike_01D:"Conduto da Noite Eterna",
   tagGDX2SideAreas_01:"Cova da Peste",
   tagGDX2SideAreas_02:"Tumba Corrompida",
+  tagSplendorOfShatteredRealm: "Esplendores do Reino Despedaçado",
+
 
 },
 
@@ -2067,6 +2075,7 @@ it: {
   tagGDX2Roguelike_01D:"Condotto della Notte Eterna",
   tagGDX2SideAreas_01:"Fossa Comune",
   tagGDX2SideAreas_02:"Tomba Corrotta",
+  tagSplendorOfShatteredRealm: "Splendori del Reame Infranto",
 
 },
 
@@ -2367,6 +2376,8 @@ ru: {
   tagGDX2Roguelike_01D:"Источник Вечной Ночи",
   tagGDX2SideAreas_01:"Чумная яма",
   tagGDX2SideAreas_02:"Заражённая усыпальница",
+  tagSplendorOfShatteredRealm: "Великолепие Расколотого мира",
+
 
 },
 
@@ -2667,6 +2678,7 @@ ru: {
     tagGDX2Roguelike_01D:"永恒之夜的通道",
     tagGDX2SideAreas_01:"瘟疫陷坑",
     tagGDX2SideAreas_02:"腐坏的坟墓",
+    tagSplendorOfShatteredRealm: "碎裂之境的辉煌",
   },
 
   ja: {
@@ -2965,7 +2977,9 @@ ru: {
     tagGDX2Roguelike_01D: "永遠の夜の導管",
     tagGDX2SideAreas_01: "疫病のピット",
     tagGDX2SideAreas_02: "腐敗した墓",
-    tagWorldMapWitchGodTemple:"三神寺院"
+    tagWorldMapWitchGodTemple:"三神寺院",
+    tagSplendorOfShatteredRealm: "シャッタード レルムの栄華",
+
   }
 
 };

@@ -40,6 +40,12 @@ textarea {
   font-family: inherit;
 }
 
+.d-flex{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .title{
   font-family: var(--font-title);
   letter-spacing: 0.03em;
@@ -208,7 +214,8 @@ header .sep {
   padding: 10px 20px 10px 20px;
  }
   
-.section h3 {
+.section h3,
+.done-panel-inner h3 {
   display: flex;
   gap:8px;
   margin: 0 0 8px;

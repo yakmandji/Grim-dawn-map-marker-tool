@@ -278,8 +278,40 @@
 
 
   /************************************************************
-   * ADMIN FILTERS (inchangé)
+   * ADMIN FILTERS
    ************************************************************/
+    // === SAVE / LOAD des admin filters ===
+    const ADMIN_FILTER_KEY = 'gdmm_admin_filters_v1';
+
+    function loadAdminFilterState() {
+      try {
+        const raw = localStorage.getItem(ADMIN_FILTER_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveAdminFilterState(state) {
+      try {
+        localStorage.setItem(ADMIN_FILTER_KEY, JSON.stringify(state));
+      } catch {}
+    }
+
+    function applySavedAdminFilterState() {
+      const state = loadAdminFilterState();
+      document.querySelectorAll('.filterToggle[data-admin]').forEach(btn => {
+        const key = btn.dataset.admin;
+        const isOn = state[key];
+        if (isOn === false) {
+          btn.classList.remove('is-on');
+        } else {
+          btn.classList.add('is-on');
+        }
+      });
+    }
+
+
   document.querySelectorAll('.filterToggle[data-admin]').forEach(btn => {
     btn.classList.add('filter-exempt');
   });
@@ -290,18 +322,27 @@
     if (!mapWrap) return;
     const riftBtn   = document.querySelector('.filterToggle[data-admin="rift"]');
     const regionBtn = document.querySelector('.filterToggle[data-admin="region"]');
+    const shrineBtn = document.querySelector('.filterToggle[data-admin="shrine"]');
 
     mapWrap.classList.toggle('hide-rift',   !riftBtn?.classList.contains('is-on'));
     mapWrap.classList.toggle('hide-region', !regionBtn?.classList.contains('is-on'));
+    mapWrap.classList.toggle('hide-shrine', !shrineBtn?.classList.contains('is-on'));
   }
 
   document.querySelectorAll('.filterToggle[data-admin]').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.classList.toggle('is-on');
+
+      // --- sauver ---
+      const state = loadAdminFilterState();
+      state[btn.dataset.admin] = btn.classList.contains('is-on');
+      saveAdminFilterState(state);
+
       applyAdminVisibility();
     });
   });
 
+  applySavedAdminFilterState();
   applyAdminVisibility();
 
   /************************************************************

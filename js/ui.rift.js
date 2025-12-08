@@ -60,7 +60,7 @@ window.RIFT_MARKERS_KORVAN = [
 { id: 'rift_infernal_wastes', tag: 'tagGDX2RiftInfernalWastes', xp: 60.82, yp: 36.08 },
 { id: 'rift_temple', tag: 'tagGDX2RiftTemple', xp: 58.11, yp: 7.50 },
 { id: 'rift_korvan_city', tag: 'tagGDX2RiftKorvanCity', xp: 53.59, yp: 25.55 },
-{ id: 'rift_lost_oasis', tag: 'tagGDX2RiftLostOasis', xp: 88.40, yp: 17.72 },
+{ id: 'rift_lost_oasis', tag: 'tagGDX2RiftLostOasis', xp: 91.40, yp: 18.45, },
 { id: 'tag_gDX2_rift_eldritch', tag: 'tagGDX2RiftEldritch', xp: 68.69, yp: 8.43 }
 
 ]

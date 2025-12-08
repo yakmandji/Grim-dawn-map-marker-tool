@@ -83,7 +83,7 @@ window.DUNGEON_OVERLAYS = [
 { id: 'infestation',          map: 'malmouth', img: 'infestation.jpg',       left: 4.6480, top: -0.8114, width: 24.8347, height: 30.9737 },
 { id: 'fringes_of_sanity',    map: 'malmouth', img: 'fringes-of-sanity.jpg', left: 78.6480, top: 57.8114, width: 7.5, height: 10.8 },
 
-{ id: 'temple_osyr',            map: 'korvan', img: 'temple-osyr.jpg',          left: 40.9642, top: 77.5371, width: 15.2423, height: 14.8871 },
+{ id: 'temple_osyr',            map: 'korvan', img: 'temple-osyr.jpg',          left: 40.9642, top: 77.5371, width: 17.2423, height: 16.8871 },
 { id: 'crawling_nest',          map: 'korvan', img: 'crawling-nest.jpg',        left: 30.6314, top: 91.3196, width: 8.9726,  height: 8.6092 },
 { id: 'veiled_den',             map: 'korvan', img: 'veiled-den.jpg',           left: 0.4052,  top: 86.5082, width: 11.2750, height: 11.0184 },
 { id: 'forlorn_bastion',        map: 'korvan', img: 'forlorn-bastion.jpg',      left: 0.1843,  top: 58.1950, width: 13.8198, height: 13.5079 },
@@ -95,7 +95,7 @@ window.DUNGEON_OVERLAYS = [
 { id: 'temple_athep',           map: 'korvan', img: 'temple-athep.jpg',         left: 78.9896, top: 43.2728, width: 8.8441,  height: 8.6389 },
 { id: 'tomb_sethan',            map: 'korvan', img: 'tomb-sethan.jpg',          left: 42.0452, top: 29.6374, width: 8.5888,  height: 8.3872 },
 { id: 'tomb_nephos',            map: 'korvan', img: 'tomb-nephos.jpg',          left: 65.9758, top: 28.1206, width: 11.2257, height: 10.9644 },
-{ id: 'heretic_maggi',          map: 'korvan', img: 'heretic-maggi.jpg',        left: 78.1561, top: 11.9025, width: 20.7072, height: 20.2333 },
+{ id: 'heretic_maggi',          map: 'korvan', img: 'heretic-maggi.jpg',        left: 78.1561, top: 11.9025, width: 23.9072, height: 21.2333 },
 { id: 'tomb_eldtrich_sun',      map: 'korvan', img: 'tomb-eldtrich-sun.jpg',    left: 55.6329, top: -7.6381,  width: 23.4630, height: 17.9762 },
 { id: 'sanctuary_horan',        map: 'korvan', img: 'sanctuary-horan.jpg',      left: 42.4004, top: 38.3038, width: 9.6211,  height: 9.3995 },
 { id: 'tomb_ariath',            map: 'korvan', img: 'tomb-ariath.jpg',          left: 45.1954, top: 23.4806, width: 6,  height: 6 },
@@ -105,6 +105,9 @@ window.DUNGEON_OVERLAYS = [
 { id: 'pit_atonement',        map: 'korvan', img: 'pit-atonement.jpg',      left: 49.1701,  top: 20.2112,  width: 2.51, height: 2.500 },
 { id: 'durgs_den',        map: 'korvan', img: 'durgs-den.jpg',      left: 36.1701,  top: 55.6112,  width: 3.51, height: 3.51 },
 { id: 'forgotten_cellar',        map: 'korvan', img: 'forgotten-cellar.jpg',      left: 14.1701,  top: 91.6112,  width: 2.51, height: 2.51 },
+
+{ id: 'splendors_shattered_realm', map: 'korvan', img: 'splendors-shattered-realm.jpg',  left: 24.6314, top: 91.3196, width: 4, height: 4 },
+
 
 ];
 

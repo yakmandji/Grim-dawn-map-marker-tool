@@ -256,7 +256,8 @@ button.cancel{
 }
 
 .tool-section button.danger {
-  padding: 8px 10px;
+  padding: 8px 8px;
+  font-size: 10px;
 }
 
 #routesPanel button.danger,
@@ -977,7 +978,7 @@ input[type="color"]::-moz-color-swatch {
 
 .region-label {
   font-family: var(--font-title);
-  font-size: 1.1em;
+  font-size: 1em;
   text-transform: uppercase;
   font-weight: 600;
   color: #cab398;
@@ -1151,7 +1152,7 @@ input[type="color"]::-moz-color-swatch {
 
 
 .malmouthmap .region-label{
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .korvanmap .region-label{
@@ -1182,9 +1183,11 @@ input[type="color"]::-moz-color-swatch {
 
 /*ADMIN MARKERS TOOGLE*/
 
-.mapWrap.hide-rift   .marker-rift   { display: none !important; }
-.mapWrap.hide-region .marker-region { display: none !important; }
-
+.mapWrap.hide-rift .marker-rift,
+.mapWrap.hide-shrine .marker-shrine,
+.mapWrap.hide-region .marker-region{ 
+  display: none !important; 
+}
 
 /*LINKED MARKER*/
 
@@ -1503,19 +1506,83 @@ input[type="color"]::-moz-color-swatch {
   pointer-events: auto;
 }
 
+.marker-shrine.shrine-done img{
+ opacity: 0.6;
+}
+
 .shrine-icon {
   width: 20px;
   height: 20px;
 }
 
-/* Pour debug visuel des tiers (tu rafineras plus tard) */
-.shrine-normal   .shrine-icon { filter: hue-rotate(50deg); }    /* jaune-ish */
-.shrine-elite    .shrine-icon { filter: hue-rotate(20deg); }    /* orange-ish */
-.shrine-ultimate .shrine-icon { filter: hue-rotate(-20deg); }   /* rouge-ish */
+.label-shrine{
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
 
 .shrine-label .shrine-difficulty {
   display: block;
   font-size: 11px;
   opacity: 0.7;
   margin-top: 2px;
+}
+
+.shrine-popup {
+  padding: 6px 10px;
+  background: var(--panel);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  z-index: 9999;
+  margin-top: -30px;
+  margin-left: -54px;
+}
+
+.shrine-popup label span{
+    font-size: 11px;
+}
+
+.shrine-done-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.shrine-counter-row{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.count-shrine{
+  font-size: 16px;
+}
+
+.shrine-ultimate .shrine-difficulty{
+ color: #ae3ba4;
+}
+
+.shrine-elite .shrine-difficulty{
+   color: #c3c64a;
+}
+
+.marker-shrine.shrine-done.shrine-normal .shrine-done-badge { color:#3fd9dc; }
+.marker-shrine.shrine-done.shrine-elite  .shrine-done-badge { color:#bec221; }
+.marker-shrine.shrine-done.shrine-ultimate .shrine-done-badge { color:#b17cff; }
+
+.shrine-done-badge::after {
+  content: "✓";
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  color: #3fd9dc;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 4px;
+  pointer-events: none;
+  line-height: 1;
+  opacity: 0.7; 
+  z-index: 1;
 }

@@ -309,6 +309,23 @@
     showToast(GDMMLang.t('toast.MarkerMapCleared'));
   });
 
+    $('#clearShrine')?.addEventListener('click', () => {
+    if (typeof window.clearAllShrinesForActiveChar !== 'function') return;
+
+    const msg = (window.GDMMLang && typeof GDMMLang.t === 'function')
+      ? (GDMMLang.t('ui.ConfirmResetShrines') || 'Reset all shrines for this character?')
+      : 'Reset all shrines for this character?';
+
+    if (!confirm(msg)) return;
+
+    window.clearAllShrinesForActiveChar();
+
+    if (typeof showToast === 'function' && window.GDMMLang && GDMMLang.t) {
+      showToast(GDMMLang.t('toast.ShrinesReset') || 'Shrines reset for this character');
+    }
+  });
+
+
 // --- Advanced compression toggle ---
 const ADVANCED_COMPRESSION = true;
 
