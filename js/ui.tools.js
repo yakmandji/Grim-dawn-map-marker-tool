@@ -224,7 +224,7 @@
         if (typeof liveMap.w === 'number') out.map.w = liveMap.w;
         if (typeof liveMap.h === 'number') out.map.h = liveMap.h;
 
-        // nom de fichier propre : cairn_profile.json, malmouth_profile.json, etc.
+        // nom de fichier
         const safeName = (name || 'map')
           .toLowerCase()
           .replace(/\s+/g, '_')
@@ -335,7 +335,7 @@ const SHARE_WORKER_BASE =
   'https://share.grimcustommarker.org';
 
 // Anti-spam share : délai minimum entre deux partages
-const SHARE_COOLDOWN_MS = 10_000; // 10 secondes
+const SHARE_COOLDOWN_MS = 10_000; 
 let lastShareClickTs = 0;
 
 
@@ -468,10 +468,6 @@ if (shareBtn) {
   });
 }
 
-
-
-
-
 //------------------------------------------------------------------------------------
 
   // Stock pour pouvoir supprimer le handler plus tard
@@ -486,7 +482,7 @@ if (shareBtn) {
     modalEl.classList?.add('is-active');
     modalEl.style.display = 'block';
 
-    // Afficher le backdrop (flou)
+    // Afficher le backdrop
     if (backdropEl) {
       backdropEl.style.display = 'block';
     }
@@ -527,7 +523,7 @@ if (shareBtn) {
     }
   }
 
-// Gestion globale de toutes les croix "X"
+// Gestion globale de toutes les croix
 document.querySelectorAll('.closeModal').forEach((btn) => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();

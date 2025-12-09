@@ -119,7 +119,7 @@
             // Utilise le centerOn standard (maintenant que mapReady est true)
             window.centerOn(cfg.xp, cfg.yp, cfg.scale);
           } else {
-            // Fallback au cas où (normalement pas nécessaire)
+            // Fallback au cas où
             const vb = viewport.getBoundingClientRect();
             const pt = pctToPx(cfg.xp, cfg.yp);
 
@@ -203,7 +203,7 @@
       // Coords par défaut (en % de la map) + zoom "confort"
       let xp = null;
       let yp = null;
-      let scale = 0.8; // tu peux ajuster
+      let scale = 0.8; // Ajustement
 
       if (name === 'Cairn') {
         // Devil's Crossing

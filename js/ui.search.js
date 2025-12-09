@@ -119,10 +119,6 @@ function buildGlobalIndex() {
 
   // --- Search -----------------------------------------------------------
 
-  // --- Search -----------------------------------------------------------
-
-  // --- Search -----------------------------------------------------------
-
   function search(term) {
     const q = normalize(term || "").trim();
     if (!q) return [];
@@ -167,7 +163,7 @@ function buildGlobalIndex() {
         }
 
       // 3) Texte utilisé pour le match
-      //    → région + type + éventuellement mot "Sanctuaire" + difficulté
+      //  région + type + éventuellement mot "Sanctuaire" + difficulté
       let searchText = nBaseLabel;
 
       if (item.type === 'shrine') {
@@ -206,7 +202,7 @@ function buildGlobalIndex() {
       });
     });
 
-    return results.slice(0, 100); // tu peux ajuster si tu veux
+    return results.slice(0, 100);
   }
 
 
@@ -347,7 +343,7 @@ function escapeRegex(str) {
     if (!label) return '';
     if (!tokens || !tokens.length) return escapeHtml(label);
 
-    // On ne surligne que les mots "significatifs" (>= 2 lettres)
+    // On ne surligne que les mots "significatifs" ( 2 lettres)
     let uniq = Array.from(new Set(
       tokens
         .map(t => (t || '').trim())
@@ -389,7 +385,7 @@ function renderResults(list) {
     ? GDMMLang.t.bind(GDMMLang)
     : (k) => k;
 
-  // 🔎 Récupère ce que l'utilisateur a tapé pour le highlight
+  // Récupère ce que l'utilisateur a tapé pour le highlight
   let rawTerm = (inputEl && inputEl.value) || '';
   rawTerm = rawTerm.trim();
 
@@ -660,7 +656,7 @@ async function goTo(item) {
     return;
   }
 
-  // 2) Profil différent → on passe par le <select id="profileSelect">
+  // 2) Profil différent → on passe par le select
   const sel = document.getElementById('profileSelect');
   if (!sel) return;
 
@@ -718,7 +714,7 @@ async function goTo(item) {
         // On rend d'abord les résultats
         renderResults(results);
 
-        // Puis on injecte le petit message d'info en haut de la liste
+        // On injecte le message d'info en haut de la liste
         if (resultsEl) {
           const info = document.createElement('div');
           info.className = 'search-info';
@@ -748,7 +744,7 @@ async function goTo(item) {
 
     // Quand on clique ailleurs que sur la zone de recherche,on cache les résultats
     inputEl.addEventListener('blur', () => {
-      clearResultsLater(1500); // Délai pour laisser passer un éventuel clic sur un résultat
+      clearResultsLater(1500); // Délai
     });
 
     // Échap dans l’input

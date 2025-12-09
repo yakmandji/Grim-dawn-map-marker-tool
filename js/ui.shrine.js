@@ -251,7 +251,7 @@
     let hasElite = false;
     let hasUltimate = false;
 
-    // Est-ce que ce perso a coché au moins 1 shrine elite / ultimate ?
+    // Est-ce que ce perso a coché au moins 1 shrine elite / ultimate
     Object.values(completed).forEach(entry => {
       if (!entry) return;
       if (entry.elite) hasElite = true;
@@ -276,9 +276,9 @@
     Object.values(completed).forEach(entry => {
       if (!entry) return;
 
-      if (entry.normal) done++;                  // on compte toujours normal
-      if (tier !== 'normal' && entry.elite) done++;     // on compte elite si on est au moins elite
-      if (tier === 'ultimate' && entry.ultimate) done++; // on compte ultimate seulement si palier ultimate
+      if (entry.normal) done++;
+      if (tier !== 'normal' && entry.elite) done++;
+      if (tier === 'ultimate' && entry.ultimate) done++;
     });
 
     return { done, max, tier, base };
@@ -298,7 +298,7 @@
   }
 
 
-  // Retourne une clé stable pour le perso actif (id ou "_global")
+  // Retourne une clé stable pour le perso actif
   function getActiveCharacterKeyForShrines() {
     try {
       if (window.characterManager && typeof characterManager.getActiveCharacter === 'function') {
@@ -324,7 +324,7 @@
 
   function openShrinePanel(shrineCfg, anchorEl) {
 
-    // 1) Si on reclique sur le même shrine alors que le panel est ouvert → on le ferme
+    // 1) Si on reclique sur le même shrine alors que le panel est ouvert on le ferme
     if (shrinePanel && shrinePanel.style.display !== 'none' && currentShrineId === shrineCfg.id) {
       closeShrinePanel();
       return;
@@ -336,13 +336,13 @@
       ? GDMMLang.t.bind(GDMMLang)
       : (k) => k;
 
-    // 2) S'il y avait déjà un panel, on le supprime pour repartir propre
+    // 2) S'il y avait déjà un panel, on le supprime
     if (shrinePanel) {
       shrinePanel.remove();
       shrinePanel = null;
     }
 
-    // 3) On recrée un panel tout neuf (avec la bonne langue)
+    // 3) On recrée un panel tout neuf
     shrinePanel = document.createElement('div');
     shrinePanel.className = 'marker-popup shrine-popup';
     shrinePanel.id = 'shrinePanel';

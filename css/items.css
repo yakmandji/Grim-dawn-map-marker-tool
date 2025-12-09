@@ -1,5 +1,4 @@
 
-/* On cache le select natif, mais on le garde pour la logique */
 #langSelect,
 #profileSelect,
 #newCategory,
@@ -218,9 +217,8 @@ button:active:not(.select-current) {
 /* En mode pan, ne pas afficher la main sur les overlays de donjons */
 .mapViewport.pan .dungeon-wrapper,
 .mapViewport.pan .dungeon-wrapper * {
-  cursor: pointer;  /* ou 'default' si tu préfères juste le curseur normal */
+  cursor: pointer;
 }
-
 
 .marker:hover{
   z-index: 7;
@@ -316,7 +314,7 @@ input[type="password"]:focus
   justify-content: center;
 }
 
-/* fond goutte SVG, qu'on va recolorer */
+
 .pin-bg {
   position: absolute;
   inset: 0;
@@ -861,7 +859,6 @@ input[type="color"]::-moz-color-swatch {
     transform 0.15s ease;
 }
 
-/* État ON (bouton "enfoncé" + lumière visible) */
 .filterToggle.is-on {
   transform: translateY(1px);
   box-shadow:
@@ -882,7 +879,7 @@ input[type="color"]::-moz-color-swatch {
     0 0 0 1px rgba(0,0,0,0.7);
 }
 
-/* Petit badge de compteur */
+/* Badge de compteur */
 .filterCount {
   position: absolute;
   top: -3px;
@@ -903,7 +900,6 @@ input[type="color"]::-moz-color-swatch {
 }
 
 
-/* Optionnel : un peu plus discret quand le bouton est off */
 .filterToggle:not(.is-on) .filterCount {
   opacity: 0.6;
   box-shadow: none;
@@ -1126,9 +1122,6 @@ input[type="color"]::-moz-color-swatch {
 }
 
 
-/*------------------------------------*/
-
-
 .region-note-tooltip {
   position: fixed;
   max-width: 280px;
@@ -1209,7 +1202,6 @@ input[type="color"]::-moz-color-swatch {
 }
 
 
-/* Anim de disparition d’un item de la liste principale */
 .listItem.fade-out {
   opacity: 0;
   transform: translateX(6px);
@@ -1412,7 +1404,7 @@ input[type="color"]::-moz-color-swatch {
 
 .search-input-icon {
   position: absolute;
-  right: 80px; /* ✨ dépend de ton bouton Markers */
+  right: 80px;
   width: 16px;
   height: 16px;
   pointer-events: none;

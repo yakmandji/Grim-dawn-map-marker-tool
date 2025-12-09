@@ -1040,7 +1040,7 @@ if (newPathBtn) {
       if (typeof clampViewToMap === "function") clampViewToMap();
       if (typeof applyView === "function") applyView();
 
-    }, 16); // ~60fps
+    }, 16); // ~16fps
   }
 
 
@@ -1087,7 +1087,7 @@ if (newPathBtn) {
     (async () => {
       // 1) Crée la structure de base pour chaque map connue
       Object.keys(MAP_SOURCES).forEach((name) => {
-        ensureProfile(name); // markers: [], map: {}, etc.
+        ensureProfile(name);
       });
 
       // 2) Charge les données utilisateur (markers, routes…)
@@ -1097,7 +1097,7 @@ if (newPathBtn) {
       const mapNames = Object.keys(MAP_SOURCES);
       let initial = mapNames[0] || Object.keys(state.profiles)[0] || null;
 
-      // On essaie d'abord d'utiliser la dernière map connue *valide*
+      // On essaie d'abord d'utiliser la dernière map connue valide
       try {
         const last = localStorage.getItem(LAST_PROFILE_KEY);
         if (last && state.profiles[last]) {
@@ -1210,7 +1210,7 @@ function setupPopup(triggerSelector, popupAttr) {
 
     const trigger = document.querySelector(triggerSelector);
     const popup   = document.querySelector(`.gd-popup[data-popup="${popupAttr}"]`);
-    const group   = document.getElementById('header-add-group'); // <-- conteneur des 2 boutons
+    const group   = document.getElementById('header-add-group');
 
     if (!trigger || !popup || !group) return;
 
@@ -1261,7 +1261,7 @@ function setupPopup(triggerSelector, popupAttr) {
         togglePopup();
     });
 
-    // Boutons internes (X)
+    // Boutons internes
     closeButtons.forEach(btn =>
         btn.addEventListener('click', closePopup)
     );
@@ -1285,13 +1285,12 @@ function setupPopup(triggerSelector, popupAttr) {
     document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
 
-        // Si on est sur la popup "route" ET en train de tracer, ESC termine la route
+        // ESC termine la route
         if (popupAttr === 'route' && state.tool === 'path') {
             finalizeCurrentPath();
             setTool('pan');
             showToast(GDMMLang.t('toast.PathFinished'));
         }
-        // Dans tous les cas, on ferme la popup associée
         closePopup();
     });
 

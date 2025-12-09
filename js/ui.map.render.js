@@ -200,7 +200,7 @@ function buildNoteList() {
     return state && state.active ? state.active : null;
   }
 
-  // 🔹 Helper perso actif
+  // Helper perso actif
   function getActiveCharacterKey() {
     try {
       if (window.characterManager && typeof characterManager.getActiveCharacter === 'function') {
@@ -545,7 +545,7 @@ function buildNoteList() {
     });
   }
 
-  // Helper interne (on copie-coller depuis ton core)
+  // Helper interne
   function hexToRgba(hex, alpha = 1) {
     const clean = hex.replace('#', '');
     const bigint = parseInt(clean, 16);
@@ -600,7 +600,7 @@ function buildNoteList() {
               if (m.shared) {
                 const sharedBadge = document.createElement('img');
                 sharedBadge.className = 'shared-badge';
-                sharedBadge.src = 'img/share-icon.svg'; // mets ici ton SVG
+                sharedBadge.src = 'img/share-icon.svg';
                 sharedBadge.alt = (window.GDMMLang && GDMMLang.t)
                   ? GDMMLang.t('ui.SharedMarker')
                   : 'Shared';
@@ -951,7 +951,7 @@ function buildNoteList() {
               ? `${mainText} - ${difficultyText}`
               : mainText;
 
-            // 1ʳᵉ ligne = texte principal, 2ᵉ = difficulté en petit
+            // 1ere ligne = texte principal, 2eme = difficulté en petit
             if (difficultyText) {
               lab.innerHTML = `${mainText}<br><span class="shrine-difficulty">${difficultyText}</span>`;
             } else {
@@ -1033,10 +1033,9 @@ function buildNoteList() {
 
 
           // Tap mobile : affiche l’overlay du donjon
-          // ----------------------------------------
           el.addEventListener('pointerup', (e) => {
             e.preventDefault();
-            e.stopPropagation(); // très important pour que le "tap ailleurs pour fermer" ne s’active pas
+            e.stopPropagation(); // Pour que le tap ailleurs ne s’active pas
 
             if (window.showDungeonLinksForEntry) {
               window.showDungeonLinksForEntry(m.id);
@@ -1111,7 +1110,7 @@ function buildNoteList() {
                 if (typeof m.targetXp === 'number' && typeof m.targetYp === 'number') {
                   centerOn(m.targetXp, m.targetYp, m.targetScale || 1.2);
 
-                  const navId = m.targetId || m.id;   // <- compat : targetId si défini, sinon id
+                  const navId = m.targetId || m.id;
 
                   if (navId) {
                     const destNav = document.querySelector(`.marker-link[data-nav-id="${navId}"]`);
@@ -1146,13 +1145,9 @@ function buildNoteList() {
                 }
 
                 sel.dispatchEvent(new Event('change', { bubbles: true }));
-
-                // on supprime le setTimeout(centerOn(...))
-                // Le centrage sera fait dans le onload de la map.
                     
-                // On garde juste éventuellement le pulse après coup :
                 if (hasCoords && m.targetId) {
-                  // Petit délai pour laisser les navlinks se rendre sur la nouvelle map
+                  // Délai pour laisser les navlinks se rendre sur la nouvelle map
                   setTimeout(() => {
                     const destNav = document.querySelector(`.marker-link[data-nav-id="${m.targetId}"]`);
                     if (destNav) {
@@ -1210,16 +1205,12 @@ function buildNoteList() {
             const p = document.getElementById('regionNotePanel');
             if (!p || p.style.display === 'none') return;
 
-            // si on clique dans la fenêtre -> ne rien faire
             if (p.contains(e.target)) return;
 
-            // si on clique sur le bouton crayon -> ne rien faire (ça rouvre le panneau)
             if (e.target.closest('.region-note-edit')) return;
 
-            // si on clique sur une région -> ne pas fermer (pan doit fonctionner)
+            // si on clique sur une région ne pas fermer
             if (e.target.closest('.marker-region')) return;
-
-            // on ferme proprement
             p.style.display = 'none';
           },
           true

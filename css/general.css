@@ -392,7 +392,7 @@ header .sep {
     font-size: 12px;
 }
 
-/* === Map loading overlay (v1.8) === */
+/* === Map loading overlay === */
 #mapLoader {
   position: fixed;
   inset: 0;
@@ -446,7 +446,6 @@ header .sep {
 
 /* === Shared read-only view === */
 
-/* On masque tout ce qui est "interaction" */
 body.shared-only-view header .right-panel {
   display: none;
 }
@@ -994,7 +993,6 @@ label.checkbox{
   inset: 0;
   pointer-events: none;
 
-  /* 🔥 Le secret : un radial-gradient en fading */
   background: radial-gradient(
     circle,
     rgba(0,0,0,0) 55%,
