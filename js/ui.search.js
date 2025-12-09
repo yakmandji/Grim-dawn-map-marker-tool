@@ -42,45 +42,75 @@ const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
     rift:    'img/rift.png',
     dungeon: 'img/donjon-yellow.svg',
     note:    'img/info-icon.svg',
+    shrine:  'img/icon-shrine.png',
   };
 
 
   // --- Global index --------------------------------------
 
-  function buildGlobalIndex() {
-    rawIndex = [];
+function buildGlobalIndex() {
+  rawIndex = [];
 
-    const maps = [
-      { profile: 'Cairn',        regionsKey: 'REGION_MARKERS_CAIRN',    riftsKey: 'RIFT_MARKERS_CAIRN' },
-      { profile: 'Malmouth',     regionsKey: 'REGION_MARKERS_MALMOUTH', riftsKey: 'RIFT_MARKERS_MALMOUTH' },
-      { profile: 'Korvan Basin', regionsKey: 'REGION_MARKERS_KORVAN',   riftsKey: 'RIFT_MARKERS_KORVAN' },
-    ];
+  const maps = [
+    {
+      profile: 'Cairn',
+      regionsKey: 'REGION_MARKERS_CAIRN',
+      riftsKey:   'RIFT_MARKERS_CAIRN',
+      shrinesKey: 'SHRINE_MARKERS_CAIRN',
+    },
+    {
+      profile: 'Malmouth',
+      regionsKey: 'REGION_MARKERS_MALMOUTH',
+      riftsKey:   'RIFT_MARKERS_MALMOUTH',
+      shrinesKey: 'SHRINE_MARKERS_MALMOUTH',
+    },
+    {
+      profile: 'Korvan Basin',
+      regionsKey: 'REGION_MARKERS_KORVAN',
+      riftsKey:   'RIFT_MARKERS_KORVAN',
+      shrinesKey: 'SHRINE_MARKERS_KORVAN',
+    },
+  ];
 
     maps.forEach(cfg => {
       const regions = window[cfg.regionsKey] || [];
       const rifts   = window[cfg.riftsKey]   || [];
+      const shrines = window[cfg.shrinesKey] || [];
 
-      regions.forEach(m => {
-        rawIndex.push({
-          profile: cfg.profile,
-          type: m.isDungeon ? 'dungeon' : 'region',
-          tag: m.tag,
-          xp: m.xp,
-          yp: m.yp,
+
+        regions.forEach(m => {
+          rawIndex.push({
+            profile: cfg.profile,
+            type: m.isDungeon ? 'dungeon' : 'region',
+            tag: m.tag,
+            xp: m.xp,
+            yp: m.yp,
+          });
         });
-      });
 
-      rifts.forEach(m => {
+        rifts.forEach(m => {
+          rawIndex.push({
+            profile: cfg.profile,
+            type: 'rift',
+            tag: m.tag,
+            xp: m.xp,
+            yp: m.yp,
+          });
+        });
+
+      shrines.forEach(m => {
         rawIndex.push({
           profile: cfg.profile,
-          type: 'rift',
-          tag: m.tag,
+          type: 'shrine',
+          id: m.id,
+          tag: m.regionTag || m.tag || null,  // pour getRegionLabel + recherche
           xp: m.xp,
           yp: m.yp,
+          difficulty: m.difficulty || 'normal',
         });
       });
     });
-  }
+}
 
   // Called form ui.core.js 
   function refresh() {
@@ -89,15 +119,22 @@ const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
 
   // --- Search -----------------------------------------------------------
 
+  // --- Search -----------------------------------------------------------
+
+  // --- Search -----------------------------------------------------------
+
   function search(term) {
-    const q = normalize(term);
+    const q = normalize(term || "").trim();
     if (!q) return [];
 
-    const lang = (window.GDMMLang && GDMMLang.getLang && GDMMLang.getLang()) || 'en';
+    // On découpe en mots, on garde seulement ceux qui contiennent des lettres/chiffres
+    const tokens = q.split(/\s+/).filter(tok => tok && /[0-9a-z\u00c0-\u024f]/i.test(tok));
+    if (!tokens.length) return [];
 
     const results = [];
 
     rawIndex.forEach(item => {
+      // 1) Label de base = nom de région (comme avant)
       let label = item.tag || '';
 
       if (item.type === 'rift') {
@@ -110,32 +147,69 @@ const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
         }
       }
 
-      const nLabel = normalize(label);
-      if (!nLabel.includes(q)) return;
+      const baseLabel   = label || '';
+      const nBaseLabel  = normalize(baseLabel);
 
-      // Label type adapted to language
-      let typeLabel;
-      if (lang === 'fr') {
-        typeLabel =
-          item.type === 'rift'    ? 'Faille'  :
-          item.type === 'dungeon' ? 'Donjon'  :
-                                    'Région';
+      // 2) Libellé de type (i18n)
+      let typeLabel = '';
+
+        if (item.type === 'rift') {
+          typeLabel = t('ui.rift');
+        } 
+        else if (item.type === 'dungeon') {
+          typeLabel = t('ui.dungeon'); 
+        } 
+        else if (item.type === 'shrine') {
+          typeLabel = t('ui.shrine');
+        } 
+        else {
+          typeLabel = t('ui.region');
+        }
+
+      // 3) Texte utilisé pour le match
+      //    → région + type + éventuellement mot "Sanctuaire" + difficulté
+      let searchText = nBaseLabel;
+
+      if (item.type === 'shrine') {
+        // Mot "Sanctuaire"/"Shrine" dans la langue actuelle
+        let shrineWord = t('ui.shrine');
+        if (!shrineWord || shrineWord === 'ui.shrine') {
+          shrineWord = t('ui.shrine') || 'Shrine';
+        }
+        searchText += ' ' + normalize(shrineWord);
+
+        // Difficulté
+        let diffKey = 'ui.shrineTierNormal';
+        if (item.difficulty === 'elite') diffKey = 'ui.shrineTierElite';
+        else if (item.difficulty === 'ultimate') diffKey = 'ui.shrineTierUltimate';
+
+        const diffText = t(diffKey) || item.difficulty || '';
+        if (diffText) {
+          searchText += ' ' + normalize(diffText);
+        }
       } else {
-        typeLabel =
-          item.type === 'rift'    ? 'Rift'    :
-          item.type === 'dungeon' ? 'Dungeon' :
-                                    'Region';
+        if (typeLabel) {
+          searchText += ' ' + normalize(typeLabel);
+        }
       }
 
+      // 4) Filtre : tous les tokens doivent être présents, ordre libre
+      const haystack = searchText;
+      const matchesAll = tokens.every(tok => haystack.includes(tok));
+      if (!matchesAll) return;
+
+      // 5) On garde le résultat
       results.push({
         ...item,
-        label,
+        label: baseLabel,
         typeLabel,
       });
     });
 
-    return results.slice(0, 30);
+    return results.slice(0, 100); // tu peux ajuster si tu veux
   }
+
+
 
 /*----------------MARKER SEARCH--------------------------------------------------*/
 
@@ -255,96 +329,213 @@ function searchRegionNotes(term) {
 /*----------------END NOTE SEARCH--------------------------------------------------*/
 
 
+function escapeHtml(str) {
+  return (str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Surbrillance des mots tapés dans la recherche
+  function highlightLabel(label, tokens) {
+    if (!label) return '';
+    if (!tokens || !tokens.length) return escapeHtml(label);
+
+    // On ne surligne que les mots "significatifs" (>= 2 lettres)
+    let uniq = Array.from(new Set(
+      tokens
+        .map(t => (t || '').trim())
+        .filter(t => t.length >= 2)
+    ));
+
+    if (!uniq.length) {
+      return escapeHtml(label);
+    }
+
+    uniq.sort((a, b) => b.length - a.length);
+
+    const pattern = new RegExp(
+      '(' + uniq.map(escapeRegex).join('|') + ')',
+      'gi'
+    );
+
+    const html = escapeHtml(label);
+
+    return html.replace(pattern, match => {
+      return `<span class="search-match">${match}</span>`;
+    });
+  }
+
+
 
 /*----------------RENDER RESULT--------------------------------------------------*/
 
-    function renderResults(list) {
-      if (!resultsEl) return;
+function renderResults(list) {
+  if (!resultsEl) return;
 
-      resultsEl.innerHTML = '';
-      if (!list.length) {
-        resultsEl.style.display = 'none';
-        return;
+  resultsEl.innerHTML = '';
+  if (!list.length) {
+    resultsEl.style.display = 'none';
+    return;
+  }
+
+  const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
+    ? GDMMLang.t.bind(GDMMLang)
+    : (k) => k;
+
+  // 🔎 Récupère ce que l'utilisateur a tapé pour le highlight
+  let rawTerm = (inputEl && inputEl.value) || '';
+  rawTerm = rawTerm.trim();
+
+  // Mode "/": on retire le slash pour matcher les mots
+  if (rawTerm.startsWith('/')) {
+    rawTerm = rawTerm.slice(1).trim();
+  }
+
+  const tokens = rawTerm ? rawTerm.split(/\s+/).filter(Boolean) : [];
+
+  list.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'search-result';
+    row.classList.add(`type-${item.type}`);
+
+    if (item.type === 'shrine') {
+      const diff = item.difficulty || 'normal';
+      row.classList.add(`shrine-${diff}`);
+    }
+
+    if (item.type === 'marker' && item.cat) {
+      row.classList.add(`cat-${item.cat.toLowerCase()}`);
+    }
+    if (item.type === 'marker' && item.done) {
+      row.classList.add('completed');
+    }
+
+    // Icône principale
+    const icon = document.createElement('img');
+    icon.className = 'search-type-icon';
+    icon.draggable = false;
+
+    // Label principal
+    const span = document.createElement('span');
+    span.className = 'search-label';
+
+    // --- Texte + icône selon le type ------------------------
+
+    if (item.type === 'note') {
+      // Note de région : "Nom de région - début de la note…"
+      let preview = '';
+      if (item.note) {
+        const trimmed = item.note.trim();
+        preview = trimmed.length > 40 ? trimmed.slice(0, 40) + '…' : trimmed;
       }
 
-      list.forEach(item => {
-        const row = document.createElement('div');
-        row.className = 'search-result';
-        row.classList.add(`type-${item.type}`);
+      const labelText = preview
+        ? `${item.label} - ${preview}`
+        : item.label;
 
-        if (item.type === 'marker' && item.cat) {
-          row.classList.add(`cat-${item.cat.toLowerCase()}`);
-        }
+      span.innerHTML = highlightLabel(labelText, tokens);
 
-        if (item.type === 'marker' && item.done) {
-          row.classList.add('completed');
-        }
-
-        // Icône SVG
-        const icon = document.createElement('img');
-        icon.className = 'search-type-icon';
-        icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
-        icon.draggable = false;
-
-        const span = document.createElement('span');
-        span.className = 'search-label';
-
-        const t = window.GDMMLang?.t;
-        let typeLabel;
-
-        // MARKER USER → utiliser la catégorie réelle
-        if (item.type === 'marker') {
-          const cat = item.cat || 'General';
-          typeLabel = t ? t(`ui.${cat}Marker`) : cat;
-        }
-        // ADMIN TYPES → Rift / Region / Dungeon
-        else if (item.type !== 'note') {
-          typeLabel = t ? t(`ui.${item.type}`) : item.type;
-        }
-
-        // --- Texte affiché ---
-        if (item.type === 'note') {
-          // Note de région : "Nom de région - début de la note…"
-          let preview = '';
-          if (item.note) {
-            const trimmed = item.note.trim();
-            preview = trimmed.length > 40 ? trimmed.slice(0, 40) + '…' : trimmed;
-          }
-
-          span.textContent = preview
-            ? `${item.label} - ${preview}`
-            : item.label; // fallback si jamais la note est vide
-        } else {
-          // Comportement classique pour les autres types
-          span.textContent = `${typeLabel} - ${item.label} (${item.profile})`;
-        }
-
-        // --- Icône personnalisée pour les markers utilisateurs ---
-        if (item.type === 'marker') {
-          // On récupère l’icône du marker utilisateur (déjà utilisée en map)
-          if (window.GDMMCore && typeof GDMMCore.iconFor === 'function') {
-            icon.src = GDMMCore.iconFor(item.cat) || 'img/pin-general.svg';
-          } else {
-            icon.src = 'img/pin-general.svg';
-          }
-        } else {
-          // Icônes admin / notes (region / rift / dungeon / note)
-          icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
-        }
-
-        row.appendChild(icon);
-        row.appendChild(span);
-
-        row.addEventListener('mousedown', (e) => {
-          e.preventDefault();
-          goTo(item);
-        });
-
-        resultsEl.appendChild(row);
-      });
-
-      resultsEl.style.display = 'block';
+      icon.src = TYPE_ICON_PATHS.note;
     }
+
+    else if (item.type === 'shrine') {
+      const shrineWord = t('ui.shrine') || 'Shrine';
+
+      // Texte de difficulté i18n
+      let diffKey = 'ui.shrineTierNormal';
+      if (item.difficulty === 'elite') diffKey = 'ui.shrineTierElite';
+      else if (item.difficulty === 'ultimate') diffKey = 'ui.shrineTierUltimate';
+
+      const diffText = t(diffKey) || (item.difficulty || '');
+
+      let labelText;
+      if (diffText) {
+        labelText = `${shrineWord} - ${item.label} - ${diffText} (${item.profile})`;
+      } else {
+        labelText = `${shrineWord} - ${item.label} (${item.profile})`;
+      }
+
+      span.innerHTML = highlightLabel(labelText, tokens);
+
+      // Icône selon la difficulté (comme sur la map)
+      let iconPath = 'img/icon-shrine.png';
+      if (item.difficulty === 'elite') {
+        iconPath = 'img/icon-shrine-e.png';
+      } else if (item.difficulty === 'ultimate') {
+        iconPath = 'img/icon-shrine-u.png';
+      }
+      icon.src = iconPath;
+    }
+
+    else {
+        let labelText;
+
+        if (item.type === 'rift') {
+          // Pas de catégorie pour les failles
+          labelText = `${item.label} (${item.profile})`;
+        } else {
+          // Types classiques : region / dungeon / marker
+          labelText =
+            item.typeLabel && item.label
+              ? `${item.typeLabel} - ${item.label} (${item.profile})`
+              : item.label || '';
+        }
+
+        span.innerHTML = highlightLabel(labelText, tokens);
+
+
+      span.innerHTML = highlightLabel(labelText, tokens);
+
+      // Icône personnalisée pour les markers utilisateurs
+      if (item.type === 'marker') {
+        if (window.GDMMCore && typeof GDMMCore.iconFor === 'function') {
+          icon.src = GDMMCore.iconFor(item.cat) || 'img/pin-general.svg';
+        } else {
+          icon.src = 'img/pin-general.svg';
+        }
+      } else {
+        // Icônes admin / notes (region / rift / dungeon)
+        icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
+      }
+    }
+
+    row.appendChild(icon);
+    row.appendChild(span);
+
+    // Ajouter la coche verte à la fin (pour les shrines done)
+    if (item.type === 'shrine') {
+      if (typeof window.isShrineDoneForActiveChar === 'function' && item.id) {
+        const done = isShrineDoneForActiveChar(item.id, item.difficulty);
+        if (done) {
+          const doneIcon = document.createElement('img');
+          doneIcon.className = 'search-shrine-done-icon';
+          doneIcon.alt = t('ui.Done') || 'Done';
+          doneIcon.src = 'img/check.svg';
+
+          row.appendChild(doneIcon);
+        }
+      }
+    }
+
+    row.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      goTo(item);
+    });
+
+    resultsEl.appendChild(row);
+  });
+
+  resultsEl.style.display = 'block';
+}
+
+
 /*----------------END RENDER RESULT--------------------------------------------------*/
 
 
@@ -368,7 +559,7 @@ function clearResultsLater(delay = 150) {
 /*----------------HIGHLIGHT CENTER--------------------------------------------------*/
 
   function highlightAtCenter(item) {
-    // Cas spécial : marker utilisateur (on le connaît par son id)
+    // 1) Cas spécial : marker utilisateur (déjà géré)
     if (item && item.type === 'marker' && item.id) {
       const markerEl = document.querySelector(`.marker[data-mid="${item.id}"]`);
       if (markerEl) {
@@ -378,6 +569,21 @@ function clearResultsLater(delay = 150) {
       return;
     }
 
+    // 2) Cas spécial : shrine → on cible directement le bon marker
+    if (item && item.type === 'shrine' && item.id) {
+      const diff = item.difficulty || 'normal';
+      const shrineEl = document.querySelector(
+        `.marker-shrine[data-shrine-id="${item.id}"][data-difficulty="${diff}"]`
+      );
+
+      if (shrineEl) {
+        shrineEl.classList.add('marker-highlight');
+        setTimeout(() => shrineEl.classList.remove('marker-highlight'), 1500);
+        return;
+      }
+    }
+
+    // 3) Cas classique : rifts / régions (comportement existant)
     const viewport = document.getElementById('mapViewport');
     if (!viewport) return;
 
@@ -422,6 +628,7 @@ function clearResultsLater(delay = 150) {
     markerEl.classList.add('marker-highlight');
     setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
   }
+
 /*----------------END HIGHLIGHT CENTER--------------------------------------------------*/
 
 
@@ -538,11 +745,10 @@ async function goTo(item) {
       onSearchInput(e.target.value);
     });
 
-    // Quand on clique ailleurs que sur la zone de recherche,
-    // on cache les résultats
 
+    // Quand on clique ailleurs que sur la zone de recherche,on cache les résultats
     inputEl.addEventListener('blur', () => {
-      clearResultsLater(1500); // petit délai pour laisser passer un éventuel clic sur un résultat
+      clearResultsLater(1500); // Délai pour laisser passer un éventuel clic sur un résultat
     });
 
     // Échap dans l’input

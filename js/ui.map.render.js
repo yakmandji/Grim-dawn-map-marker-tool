@@ -935,14 +935,14 @@ function buildNoteList() {
                 ? getRegionLabel(m.regionTag, m.regionTag)
                 : (m.label || m.tag || m.regionTag || '');
 
-            const shrineWord = t('ui.Shrine') || 'Shrine';
+            const shrineWord = t('ui.shrine') || 'Shrine';
 
             // Texte de difficulté (i18n)
-            let difficultyKey = 'ui.ShrineTierNormal';
+            let difficultyKey = 'ui.shrineTierNormal';
             if (m.difficulty === 'elite') {
-              difficultyKey = 'ui.ShrineTierElite';
+              difficultyKey = 'ui.shrineTierElite';
             } else if (m.difficulty === 'ultimate') {
-              difficultyKey = 'ui.ShrineTierUltimate';
+              difficultyKey = 'ui.shrineTierUltimate';
             }
             const difficultyText = t(difficultyKey) || '';
 
