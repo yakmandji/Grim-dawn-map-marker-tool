@@ -137,6 +137,7 @@ const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
     return results.slice(0, 30);
   }
 
+/*----------------MARKER SEARCH--------------------------------------------------*/
 
   function searchMarkers(term) {
     const q = normalize(term);
@@ -174,7 +175,11 @@ const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
     // On limite un peu quand même
     return results.slice(0, 50);
   }
+/*----------------END MARKER SEARCH--------------------------------------------------*/
 
+
+
+/*----------------NOTE SEARCH--------------------------------------------------*/
 
 function searchRegionNotes(term) {
   const q = normalize(term);
@@ -247,10 +252,11 @@ function searchRegionNotes(term) {
 
   return results.slice(0, 50);
 }
+/*----------------END NOTE SEARCH--------------------------------------------------*/
 
 
 
-  // --- UI ------------------------------------
+/*----------------RENDER RESULT--------------------------------------------------*/
 
     function renderResults(list) {
       if (!resultsEl) return;
@@ -339,6 +345,7 @@ function searchRegionNotes(term) {
 
       resultsEl.style.display = 'block';
     }
+/*----------------END RENDER RESULT--------------------------------------------------*/
 
 
 
@@ -357,6 +364,8 @@ function clearResultsLater(delay = 150) {
 }
 
 
+
+/*----------------HIGHLIGHT CENTER--------------------------------------------------*/
 
   function highlightAtCenter(item) {
     // Cas spécial : marker utilisateur (on le connaît par son id)
@@ -413,9 +422,11 @@ function clearResultsLater(delay = 150) {
     markerEl.classList.add('marker-highlight');
     setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
   }
+/*----------------END HIGHLIGHT CENTER--------------------------------------------------*/
 
 
 
+/*----------------GO TO ITEM--------------------------------------------------*/
 
 async function goTo(item) {
   clearResultsLater();
@@ -463,7 +474,11 @@ async function goTo(item) {
     }, 400);
   }
 }
+/*----------------END GO TO ITEM--------------------------------------------------*/
 
+
+
+/*----------------INIT--------------------------------------------------*/
   function init() {
     inputEl   = document.getElementById('locationSearch');
     resultsEl = document.getElementById('locationSearchResults');
@@ -539,28 +554,31 @@ async function goTo(item) {
     });
 
   }
+/*----------------END INIT--------------------------------------------------*/
 
-  document.addEventListener('DOMContentLoaded', init);
+
+
+document.addEventListener('DOMContentLoaded', init);
 
   // FORCE CTRL + F
-    window.addEventListener("keydown", (e) => {
-      const isFind = (e.key === "f" || e.key === "F") && (e.ctrlKey || e.metaKey);
-      if (!isFind) return;
+  window.addEventListener("keydown", (e) => {
+    const isFind = (e.key === "f" || e.key === "F") && (e.ctrlKey || e.metaKey);
+    if (!isFind) return;
 
-      // si on est déjà en train d'écrire dans un champ, on laisse le navigateur faire
-      const active = document.activeElement;
-      if (active && ["INPUT", "TEXTAREA", "SELECT"].includes(active.tagName)) {
-        return;
-      }
+    // si on est déjà en train d'écrire dans un champ, on laisse le navigateur faire
+    const active = document.activeElement;
+    if (active && ["INPUT", "TEXTAREA", "SELECT"].includes(active.tagName)) {
+      return;
+    }
 
-      e.preventDefault();
+    e.preventDefault();
 
-      const searchInput = document.getElementById("locationSearch"); // <-- IMPORTANT : bon ID
-      if (searchInput) {
-        searchInput.focus();
-        searchInput.select();
-      }
-    });
+    const searchInput = document.getElementById("locationSearch"); // <-- IMPORTANT : bon ID
+    if (searchInput) {
+      searchInput.focus();
+      searchInput.select();
+    }
+  });
 
   window.GDMMSearch = {
     refresh,
