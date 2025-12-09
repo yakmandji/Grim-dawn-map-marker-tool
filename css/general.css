@@ -624,7 +624,7 @@ body.shared-only-view #mergeSharedBtn,
 .done-list {
   padding: 6px 8px 8px;
   overflow-y: scroll;
-  max-height: 200px;
+  max-height: 15vh;
 }
 
 /* Lignes de l’historique */
