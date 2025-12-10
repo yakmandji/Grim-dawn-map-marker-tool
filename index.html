@@ -28,7 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.43" />
+  <link rel="stylesheet" href="css/general.css?v1.44" />
   <link rel="stylesheet" href="css/items.css?v1.40" />
   <link rel="stylesheet" href="css/responsive.css?v1.19" />
   <link rel="stylesheet" href="css/sidebar-toggle.css?v1.20" />
@@ -120,7 +120,7 @@
                         <h3>
                           <img src="img/route-icon.svg" width="17">
                           <span data-i18n="ui.NewPathTitle">New Path</span>
-                        </h3>
+                        </h3>i
                       </div>        
                       <div id="currentPathName" class="path-badge"></div>
                       <div class="row">
@@ -147,8 +147,14 @@
           <img src="img/merge.svg" width="18" alt="Merge"> 
           <span data-i18n="ui.MergeRoutesButton">Add shared to my map</span>
         </button>
-      <div class="right-panel">
+        <div id="shared-view-message">
+          <span data-i18n="ui.readOnlyMessage">
+           Vue en lecture seul seulement. Pour la vue normal 
+          </span>
+          <a href="?" data-i18n="ui.readOnlyMessageLink">cliquez ici</a> 
+        </div>
 
+      <div class="right-panel">
        <button data-i18n-tooltip="share.tooltip" id="shareRoutesBtn" class="small header-btn">
           <img src="img/share-icon.svg" width="18" alt="Share">
           <span data-i18n="ui.ShareMapButton">Share my map</span>
@@ -625,7 +631,7 @@
 <!--END MULTI CHARACTER MODAL ------------------------------------------------------->
 
 
-  <script src="js/ui.lang.js?v=3.57"></script>
+  <script src="js/ui.lang.js?v=3.58"></script>
   <script src="js/core.js?v=3.10"></script>
   <script src="js/ui.rift.js?v=3.89"></script>
   <script src="js/ui.region.js?v=4.04"></script>
@@ -644,7 +650,7 @@
   <script src="js/ui.share.js?v=1.05"></script>
 
   <script src="libs/pako.min.js"></script>
-  <script src="js/ui.tools.js?v=2.97"></script>
+  <script src="js/ui.tools.js?v=2.98"></script>
   <script src="js/ui.overlay.js?v=3.20"></script>
   <script src="js/ui.dungeon.links.js?v=1.18"></script>
   <script src="js/ui.filter.js?v=2.98"></script>

@@ -443,6 +443,14 @@ header .sep {
   to { transform: rotate(360deg); }
 }
 
+#shared-view-message{
+  display: none;
+  font-size: 12px;
+}
+
+#shared-view-message a{
+  color: var(--txt);
+}
 
 /* === Shared read-only view === */
 
@@ -461,10 +469,16 @@ body.shared-only-view #list label,
 body.shared-only-view #list button.danger,
 body.shared-only-view .lock-label,
 body.shared-only-view #routesList button.danger ,
+body.shared-only-view #noteList .note-delete-btn,
 body.shared-only-view .header-actions
  {
   display: none;
 }
+
+body.shared-only-view #shared-view-message{
+  display: block;
+}
+
 
 body.shared-only-view .sidebar .title {
   display: flex;

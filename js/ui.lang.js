@@ -135,6 +135,8 @@
       "ui.DeleteShrineButton": "Reset all shrines",
       "ui.ConfirmResetShrines": "Reset all shrines for this character?",
       "toast.ShrinesReset": "Shrines have been reset for this character.",
+      "ui.readOnlyMessage": "Read-only view. To return to normal mode",
+      "ui.readOnlyMessageLink": "click here",
 
     },
     fr: {
@@ -267,6 +269,8 @@
       "ui.DeleteShrineButton": "Réinitialiser tous les sanctuaires",
       "ui.ConfirmResetShrines": "Réinitialiser tous les sanctuaires pour ce personnage ?",
       "toast.ShrinesReset": "Les sanctuaires ont été réinitialisés pour ce personnage.",
+      "ui.readOnlyMessage": "Vue en lecture seul seulement. Pour la vue normal",
+      "ui.readOnlyMessageLink": "cliquez ici",
 
 
 
@@ -400,7 +404,8 @@
       "ui.DeleteShrineButton": "Restablecer todos los santuarios",
       "ui.ConfirmResetShrines": "¿Restablecer todos los santuarios para este personaje?",
       "toast.ShrinesReset": "Los santuarios han sido restablecidos para este personaje.",
-
+      "ui.readOnlyMessage": "Vista de solo lectura. Para volver al modo normal",
+      "ui.readOnlyMessageLink": "haz clic aquí",
 
     },
 
@@ -534,6 +539,10 @@
       "ui.ConfirmResetShrines": "Alle Schreine für diesen Charakter zurücksetzen?",
       "toast.ShrinesReset": "Die Schreine wurden für diesen Charakter zurückgesetzt.",
       "ui.shrine": "Schrein",
+      "ui.readOnlyMessage": "Nur-Lese-Ansicht. Um zum normalen Modus zurückzukehren",
+      "ui.readOnlyMessageLink": "klicken Sie hier",
+
+
     },
 
   pt: {
@@ -667,6 +676,9 @@
       "ui.ConfirmResetShrines": "Redefinir todos os santuários para este personagem?",
       "toast.ShrinesReset": "Os santuários foram redefinidos para este personagem.",
       "ui.shrine": "Santuário",
+      "ui.readOnlyMessage": "Visualização somente leitura. Para voltar ao modo normal",
+      "ui.readOnlyMessageLink": "clique aqui",
+
 
   },
 
@@ -799,6 +811,10 @@
     "ui.ConfirmResetShrines": "Сбросить все святилища для этого персонажа?",
     "toast.ShrinesReset": "Святилища были сброшены для этого персонажа.",
     "ui.shrine": "Святилище",
+    "ui.readOnlyMessage": "Режим только для чтения. Чтобы вернуться в обычный режим",
+    "ui.readOnlyMessageLink": "нажмите здесь",
+
+
 
   },
 
@@ -932,6 +948,8 @@
       "ui.ConfirmResetShrines": "Reimpostare tutti i santuari per questo personaggio?",
       "toast.ShrinesReset": "I santuari sono stati reimpostati per questo personaggio.",
       "ui.shrine": "Santuario",
+      "ui.readOnlyMessage": "Vista in sola lettura. Per tornare alla modalità normale",
+      "ui.readOnlyMessageLink": "clicca qui",
 
     },
 
@@ -1065,6 +1083,9 @@
       "ui.ConfirmResetShrines": "要为此角色重置所有神龛吗？",
       "toast.ShrinesReset": "已为此角色重置所有神龛。",
       "ui.shrine": "祭坛",
+      "ui.readOnlyMessage": "只读模式。要返回正常模式",
+      "ui.readOnlyMessageLink": "请点击这里",
+
 
     },
     ja: {
@@ -1197,6 +1218,8 @@
       "ui.ConfirmResetShrines": "このキャラクターのすべての祠をリセットしますか？",
       "toast.ShrinesReset": "このキャラクターの祠がリセットされました。",
       "ui.shrine": "聖堂",
+      "ui.readOnlyMessage": "読み取り専用ビューです。通常モードに戻るには",
+      "ui.readOnlyMessageLink": "こちらをクリック",
 
     }
 

@@ -348,24 +348,24 @@ let lastShareClickTs = 0;
 
 // Share current routes via Cloudflare Worker (with legacy fallback)
 const shareBtn = document.getElementById('shareRoutesBtn');
-if (shareBtn) {
-  shareBtn.addEventListener('click', async () => {
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
 
-  const now = Date.now();
-  if (now - lastShareClickTs < SHARE_COOLDOWN_MS) {
-    const wait = Math.ceil((SHARE_COOLDOWN_MS - (now - lastShareClickTs)) / 1000);
+    const now = Date.now();
+    if (now - lastShareClickTs < SHARE_COOLDOWN_MS) {
+      const wait = Math.ceil((SHARE_COOLDOWN_MS - (now - lastShareClickTs)) / 1000);
 
-    showToast(
-      GDMMLang.t('toast.ShareCooldown', { wait }) ||
-        `Please wait ${wait}s before sharing again.`,
-      'warning',
-      4000
-    );
+      showToast(
+        GDMMLang.t('toast.ShareCooldown', { wait }) ||
+          `Please wait ${wait}s before sharing again.`,
+        'warning',
+        4000
+      );
 
-    return;
-  }
+      return;
+    }
 
-  lastShareClickTs = now;
+    lastShareClickTs = now;
     
     const prof = currentProfile();
     if (!prof) return;
@@ -374,8 +374,19 @@ if (shareBtn) {
     const sharedMarkers = allMarkers.filter(m => m && m.shared);
     const hasRoutes = Array.isArray(prof.paths) && prof.paths.length > 0;
 
-    // Check for both shared markers OR routes
-    if (!hasRoutes && sharedMarkers.length === 0) {
+    // --- Notes de région pour cette map (si helper dispo) ---
+    let sharedNotes = null;
+    let hasSharedNotes = false;
+
+    if (typeof window.getAllRegionNotes === 'function') {
+      sharedNotes = window.getAllRegionNotes(state.active);
+      if (sharedNotes && typeof sharedNotes === 'object') {
+        hasSharedNotes = Object.keys(sharedNotes).length > 0;
+      }
+    }
+
+    // Rien à partager : ni routes, ni markers partagés, ni notes
+    if (!hasRoutes && sharedMarkers.length === 0 && !hasSharedNotes) {
       showToast(
         GDMMLang.t('toast.NothingToShare') || 'Nothing to share',
         'warning',
@@ -383,6 +394,7 @@ if (shareBtn) {
       );
       return;
     }
+
 
     const round = v => Math.round((v || 0) * 10) / 10;
 
@@ -406,12 +418,6 @@ if (shareBtn) {
 
 
     // --- Notes de région pour cette map (si helper dispo) ---
-     const sharedNotes =
-       typeof window.getAllRegionNotes === 'function'
-         ? window.getAllRegionNotes(state.active)
-         : null;
-
-
     const payload = {
        v: '3',
        map: state.active,
