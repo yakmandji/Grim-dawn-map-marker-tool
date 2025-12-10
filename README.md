@@ -8,7 +8,7 @@
 - Multiple characters creation
 - Game mod navigation QSDZ / WSAD and minimap
 - Advanced search function
-- Map sharing system: share your markers/routes with a simple link and merge shared map with yours
+- Map sharing system: share your markers, routes and notes with a simple link and merge shared map with yours
 - Seven-language support: English, French, Spanish, Portuguese, Russian, Italian etc...
 - Full import/export If you switch browser or computer
 
