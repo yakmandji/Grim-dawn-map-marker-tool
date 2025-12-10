@@ -131,6 +131,11 @@ function buildNoteList() {
     const centerBtn = row.querySelector('.marker-center');
     if (centerBtn) {
       centerBtn.addEventListener('click', () => {
+
+        if (typeof window.ensureAdminLayerVisible === 'function') {
+          window.ensureAdminLayerVisible('region');
+        }
+        
         const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
         if (!regionEl) return;
 

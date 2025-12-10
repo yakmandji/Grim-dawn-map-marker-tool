@@ -638,6 +638,18 @@ async function goTo(item) {
     inputEl.blur();
   }
 
+ // Assurer que la couche admin est visible pour ce type de résultat
+  if (typeof window.ensureAdminLayerVisible === 'function') {
+    if (item.type === 'rift') {
+      window.ensureAdminLayerVisible('rift');
+    } else if (item.type === 'shrine') {
+      window.ensureAdminLayerVisible('shrine');
+    } else if (item.type === 'region' || item.type === 'dungeon') {
+      window.ensureAdminLayerVisible('region');
+    }
+  }
+
+
   const zoom =
     item.type === 'region' ? 0.8 :
     item.type === 'dungeon' ? 1.2 :

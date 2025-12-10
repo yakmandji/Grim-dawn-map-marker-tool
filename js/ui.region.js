@@ -10,6 +10,7 @@
 { id: 'tag_map_ominous_lair', tag: 'tagMapOminousLair', xp: 60.6, yp: 49.5, isDungeon: true },
 { id: 'tag_uGOld_arkovia03', tag: 'tagUGOldArkovia03', xp: 40.91, yp: 84, isDungeon: true },
 { id: 'tag_map_laboratory_storerooms', tag: 'tagMapLaboratoryStorerooms', xp: 58.53, yp: 51.13, isDungeon: true },
+{ id: 'tag_map_laboratory_storerooms2', tag: 'tagMapLaboratoryStorerooms', xp: 59.69, yp: 48.62, isDungeon: true },
 { id: 'tag_map_laboratory_living_quarters', tag: 'tagMapLaboratoryLivingQuarters', xp: 62.08, yp: 48.26, isDungeon: true },
 { id: 'tag_map_laboratory_jail', tag: 'tagMapLaboratoryJail', xp: 59.12, yp: 45.9, isDungeon: true },
 { id: 'tag_U_gOld_arkovia_04', tag: 'tagUGOldArkovia04', xp: 55.72, yp: 80.60, isDungeon: true },
@@ -25,7 +26,7 @@
 { id: 'tag_map_hidden_path04', tag: 'tagMapHiddenPath01', xp: 16.82, yp: 30.41, isDungeon: true },
 
 { id: 'tag_UG_secret_02', tag: 'tagUGSecret02', xp: 27.24, yp: 20.29, isDungeon: true },
-{ id: 'tag_MapWardens_Labratory02', tag: 'tagMapWardensLabratory02', xp: 63.68, yp: 49.44, isDungeon: true },
+{ id: 'tag_MapWardens_Labratory02', tag: 'tagMapWardensLabratory02', xp: 62.47, yp: 48.70, isDungeon: true },
 
 
 { id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89 },

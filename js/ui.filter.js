@@ -345,6 +345,24 @@
   applySavedAdminFilterState();
   applyAdminVisibility();
 
+
+  // Helper global : forcer l’affichage d’une couche admin
+  window.ensureAdminLayerVisible = function (kind) {
+    const btn = document.querySelector(`.filterToggle[data-admin="${kind}"]`);
+    if (!btn) return;
+
+    if (!btn.classList.contains('is-on')) {
+      btn.classList.add('is-on');
+
+      const state = loadAdminFilterState();
+      state[kind] = true;
+      saveAdminFilterState(state);
+
+      applyAdminVisibility();
+    }
+  };
+
+
   /************************************************************
    * INIT
    ************************************************************/
