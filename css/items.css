@@ -1156,6 +1156,7 @@ input[type="color"]::-moz-color-swatch {
 
 .marker-region-dungeon .region-label{
   opacity: 0.25;
+  font-size: 0.85em;
 }
 
 .marker-region-dungeon .region-label.opacity{

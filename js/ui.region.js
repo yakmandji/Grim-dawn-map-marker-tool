@@ -25,6 +25,7 @@
 { id: 'tag_map_hidden_path04', tag: 'tagMapHiddenPath01', xp: 16.82, yp: 30.41, isDungeon: true },
 
 { id: 'tag_UG_secret_02', tag: 'tagUGSecret02', xp: 27.24, yp: 20.29, isDungeon: true },
+{ id: 'tag_MapWardens_Labratory02', tag: 'tagMapWardensLabratory02', xp: 63.68, yp: 49.44, isDungeon: true },
 
 
 { id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89 },
