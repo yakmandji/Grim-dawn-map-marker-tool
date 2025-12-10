@@ -16,6 +16,12 @@
 
 /* NOTE LIST ------------------------------------------------------*/
   function getAllRegionNotes() {
+
+  // Mode vue partagée : on lit les notes du lien uniquement
+  if (state.sharedView && state.sharedNotes && typeof state.sharedNotes === 'object') {
+    return state.sharedNotes;
+  }
+
     const store   = loadRegionNotesStore();   // utilise le nouveau format v2
     const profile = getActiveProfileName();
     if (!profile) return {};
@@ -191,7 +197,6 @@ function buildNoteList() {
 
 
   // --- NOTES DE REGION : stockage par personnages ---
-  // localStorage: { [profileName]: { [regionId]: "note" } }
 
   const REGION_NOTES_KEY = 'gdmm_region_notes_v1';
   let regionNotesStore = null;
@@ -293,6 +298,38 @@ function buildNoteList() {
   }
 
 
+    function clearAllRegionNotesForActiveProfile() {
+      const store   = loadRegionNotesStore();
+      const profile = getActiveProfileName();
+      if (!profile) return;
+
+      const charKey = typeof getActiveCharacterKey === 'function'
+        ? getActiveCharacterKey()
+        : '_global';
+
+      // 1) Supprime toutes les notes "par personnage" pour ce profil
+      if (
+        store.byCharacter &&
+        store.byCharacter[charKey] &&
+        store.byCharacter[charKey][profile]
+      ) {
+        delete store.byCharacter[charKey][profile];
+
+        // Si plus aucune map pour ce perso, on nettoie aussi le niveau du perso
+        if (Object.keys(store.byCharacter[charKey]).length === 0) {
+          delete store.byCharacter[charKey];
+        }
+      }
+
+      // 2) Supprime aussi les anciennes notes globales pour ce profil (legacy v1)
+      if (store.global && store.global[profile]) {
+        delete store.global[profile];
+      }
+
+      saveRegionNotesStore(store);
+    }
+
+
 
   // Lecture : perso -> fallback global
   function getRegionNote(regionId) {
@@ -359,6 +396,51 @@ function buildNoteList() {
   }
 
 
+    function mergeSharedNotesIntoLocal(sharedNotes, targetProfileName) {
+      if (!sharedNotes || typeof sharedNotes !== 'object') return;
+
+      const store   = loadRegionNotesStore();
+
+      // Si on te donne un profil cible, on l’utilise, sinon on garde l’ancienne logique
+      const profile = targetProfileName || getActiveProfileName();
+      if (!profile) return;
+
+      const charKey = getActiveCharacterKey();
+
+      if (!store.byCharacter) store.byCharacter = {};
+      if (!store.byCharacter[charKey]) store.byCharacter[charKey] = {};
+      if (!store.byCharacter[charKey][profile]) {
+        store.byCharacter[charKey][profile] = {};
+      }
+
+      const notesForChar = store.byCharacter[charKey][profile];
+
+      Object.entries(sharedNotes).forEach(([regionId, raw]) => {
+        if (!regionId) return;
+
+        // Ne jamais écraser une note déjà existante
+        if (notesForChar[regionId] !== undefined) return;
+
+        const text = raw && typeof raw === 'object' ? raw.text : raw;
+        if (!text || !String(text).trim()) return;
+
+        const ts = raw && typeof raw === 'object' && typeof raw.ts === 'number'
+          ? raw.ts
+          : Date.now();
+
+        notesForChar[regionId] = { text: String(text), ts };
+      });
+
+      saveRegionNotesStore(store);
+
+      // Rafraîchir la liste des notes si elle existe
+      if (typeof buildNoteList === 'function') {
+        buildNoteList();
+      }
+    }
+
+
+
 
     function refreshRegionNoteIndicator(regionEl, regionId) {
       if (!regionEl || !regionId) return;
@@ -413,7 +495,7 @@ function buildNoteList() {
 
       regionEl.appendChild(infoIcon);
     }
-
+// ---END NOTES DE REGION : stockage par personnages ---
 
 
   const currentProfile = core.currentProfile || function(){ return null; };
@@ -1282,6 +1364,11 @@ function buildNoteList() {
         txtEl.focus();
       }
     }
+
+  // Helpers pour le partage / merge de notes
+  window.getAllRegionNotes = getAllRegionNotes;
+  window.mergeSharedNotesIntoLocal = mergeSharedNotesIntoLocal;
+  window.clearAllRegionNotesForActiveProfile = clearAllRegionNotesForActiveProfile;
 
 
   // Export public

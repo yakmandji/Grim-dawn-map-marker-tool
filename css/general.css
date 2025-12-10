@@ -460,7 +460,8 @@ body.shared-only-view #list select,
 body.shared-only-view #list label,
 body.shared-only-view #list button.danger,
 body.shared-only-view .lock-label,
-body.shared-only-view #routesList button.danger 
+body.shared-only-view #routesList button.danger ,
+body.shared-only-view .header-actions
  {
   display: none;
 }
@@ -777,7 +778,7 @@ label.checkbox{
 .character-line {
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 0px 12px;
   gap: 10px;
   cursor: pointer;
 }
@@ -799,7 +800,7 @@ label.checkbox{
   flex-grow: 1;
   display: flex;
   align-items: center;
-  margin-right: 30px;
+  padding: 12px 10px;
 }
 
 .character-name {

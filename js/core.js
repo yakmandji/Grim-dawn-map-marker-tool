@@ -20,6 +20,7 @@
     lastCreatedMarkerId: null,
     sharedView: false,
     sharedProfileName: null,
+    sharedNotes: null,
     skipViewRestoreOnce: false,
   };
 

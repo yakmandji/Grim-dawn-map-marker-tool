@@ -104,11 +104,25 @@
       return;
     }
 
-    if (!data) return;
+  if (!data) return;
 
-    let routes  = [];
-    let markers = [];
-    const mapName = data.map || null;
+      let routes  = [];
+      let markers = [];
+      const mapName = data.map || null;
+
+      // --- Notes partagées ---
+      const sharedNotes =
+        data && data.notes && typeof data.notes === 'object'
+          ? data.notes
+          : null;
+
+      // Stockage global pour le bouton "Add shared to my map"
+      window._gdmmLastSharedNotesPayload = sharedNotes;
+
+      // Active le mode vue partagée pour que getAllRegionNotes() lise les notes du lien
+      state.sharedView  = true;
+      state.sharedNotes = sharedNotes || {};
+
 
     // --- Format compact v2 ({ v, map, r: [...], m: [...] }) ---
     if (Array.isArray(data.r) || Array.isArray(data.m)) {
@@ -155,7 +169,13 @@
       return;
     }
 
-    if (!routes.length && !markers.length) return;
+    const hasSharedNotes =
+      sharedNotes && typeof sharedNotes === 'object' &&
+      Object.keys(sharedNotes).length > 0;
+
+    if (!routes.length && !markers.length && !hasSharedNotes) {
+      return;
+    }
 
     if (mapName && typeof ensureMapLoadedForProfile === 'function') {
       try {

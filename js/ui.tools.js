@@ -183,12 +183,18 @@
         return;
       }
 
-      // Supprime toutes les notes globales
-      localStorage.removeItem('gdmm_region_notes_v1');
+      // Supprime uniquement les notes du personnage + profil (map) actifs
+      if (typeof window.clearAllRegionNotesForActiveProfile === 'function') {
+        window.clearAllRegionNotesForActiveProfile();
+      } else {
+        // Fallback de sécurité si jamais le helper n'existe pas
+        localStorage.removeItem('gdmm_region_notes_v1');
+      }
 
       // Recharge pour enlever les "i" et tooltips
       location.reload();
     });
+
 
 
 
@@ -359,7 +365,7 @@ if (shareBtn) {
     return;
   }
 
-      lastShareClickTs = now;
+  lastShareClickTs = now;
     
     const prof = currentProfile();
     if (!prof) return;
@@ -398,11 +404,20 @@ if (shareBtn) {
       c: m.color || '#78f1c2',
     }));
 
+
+    // --- Notes de région pour cette map (si helper dispo) ---
+     const sharedNotes =
+       typeof window.getAllRegionNotes === 'function'
+         ? window.getAllRegionNotes(state.active)
+         : null;
+
+
     const payload = {
-      v: '2.8',
-      map: state.active,
-      r: compactRoutes,
-      m: compactMarkers,
+       v: '3',
+       map: state.active,
+       r: compactRoutes,
+       m: compactMarkers,
+       notes: sharedNotes,
     };
 
     // --- Compression (pour compatibilité avec les vieux liens ?share=) ---
@@ -602,12 +617,35 @@ if (mergeBtn) {
       p => p.id && !existingPathIds.has(p.id)
     );
 
-    if (!newMarkers.length && !newPaths.length) {
-        showToast(GDMMLang.t('toast.SharedNoNewData'),'warning', 4200);
+    // Est-ce qu'on a des notes partagées à merger
+    const hasSharedNotes =
+      window._gdmmLastSharedNotesPayload &&
+      typeof window._gdmmLastSharedNotesPayload === 'object' &&
+      Object.keys(window._gdmmLastSharedNotesPayload).length > 0;
+
+    // Si aucun nouveau marker, aucune nouvelle route ET pas de notes → vraiment rien à faire
+    if (!newMarkers.length && !newPaths.length && !hasSharedNotes) {
+      showToast(GDMMLang.t('toast.SharedNoNewData'), 'warning', 4200);
     } else {
-      // 6) Real merge
+      // 6) Merge markers & routes (même si l'un des deux est vide)
       target.markers = (target.markers || []).concat(newMarkers);
       target.paths   = (target.paths   || []).concat(newPaths);
+
+      // 7) Merge des notes de région (si présentes dans le partage)
+      if (
+        hasSharedNotes &&
+        typeof window.mergeSharedNotesIntoLocal === 'function'
+      ) {
+        try {
+          window.mergeSharedNotesIntoLocal(
+            window._gdmmLastSharedNotesPayload,
+            targetName
+          );
+        } catch (e) {
+          console.warn('[GDMM] Failed to merge shared region notes', e);
+        }
+      }
+
 
       saveUserDataToLocal();
       setActiveProfile(targetName);
@@ -617,8 +655,9 @@ if (mergeBtn) {
       renderRoutesPanel();
       markAsChanged();
 
-      showToast(GDMMLang.t('toast.SharedMerged'),'success', 4500);
+      showToast(GDMMLang.t('toast.SharedMerged'), 'success', 4500);
     }
+
 
     // Remove shared profile & exit shared mode
     delete profiles[sharedName];
