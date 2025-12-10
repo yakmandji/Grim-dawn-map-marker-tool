@@ -2,14 +2,19 @@
 
 📍 Add, move, rename, and delete markers easily
 - 100% client-side (no dependencies, no build)
-- Multiple marker types and route creation 
-- Map sharing system: share your markers/routes with a simple link and merge shared map with yours (only if you tag your markers as shared)
+- Multiple marker types and route creation
+- Note region support
+- Check list for Shrines
+- Multiple characters creation
+- Game mod navigation QSDZ / WSAD and minimap
+- Advanced search function
+- Map sharing system: share your markers/routes with a simple link and merge shared map with yours
 - Seven-language support: English, French, Spanish, Portuguese, Russian, Italian etc...
 - Full import/export If you switch browser or computer
 
 📦 How to use
 
-- Just open the web app :
+- Just open the web app and start using :
   https://www.grimcustommarker.org/
 - Choose a map from the selection list (main game or DLC).
 - Add markers by clicking on the map 📍 then pressing Add.
