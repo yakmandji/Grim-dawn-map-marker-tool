@@ -702,11 +702,11 @@ function initCharacterUI() {
         console.warn('Erreur changement map :', e);
       }
 
-      if (typeof buildNoteList === 'function') {
+      if (typeof window.buildNoteList === 'function') {
         try {
-          buildNoteList();
+          window.buildNoteList();
         } catch (e) {
-          console.warn('Error while refresh note :', e);
+          console.warn('Error while refreshing note list:', e);
         }
       }
 

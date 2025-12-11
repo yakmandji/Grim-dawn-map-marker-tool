@@ -136,7 +136,7 @@
 { id: 'map_port_valbury_outskirts', tag: 'tagMapPortValburyOutskirts', xp: 44.68, yp: 31.87 },
 { id: 'UG_fort_faction01', tag: 'tagUGFortFaction01', xp: 28.82, yp: 48.67 },
 { id: 'map_voidlands02', tag: 'tagMapVoidlands02', xp: 21.12, yp: 55.02, isDungeon: true },
-{ id: 'map_jagged_waste_fort_dungeon', tag: 'tagMapJaggedWasteFort', xp: 46.43, yp: 61.65, isDungeon: true },
+{ id: 'map_jagged_waste_fort_dungeon', tag: 'tagMapJaggedWasteFort', xp: 44.05, yp: 65.29, isDungeon: true },
 { id: 'UG_old_arkovia02', tag: 'tagUGOldArkovia02', xp: 50.25, yp: 67.09, isDungeon: true },
 { id: 'map_cronleys_hideout', tag: 'tagMapCronleysHideout', xp: 54.39, yp: 66.08, isDungeon: true },
 { id: 'UG_old_arkovia01', tag: 'tagUGOldArkovia01', xp: 58.24, yp: 74.79, isDungeon: true },

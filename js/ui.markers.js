@@ -45,11 +45,41 @@ const { $, inner } = window.UiCore;
     }
 
     if (hidden) {
-      showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
+      const allBtn       = document.querySelector('.filterToggle[data-all]');
+      const sharedBtn    = document.querySelector('.filterToggle[data-shared]');
+      const catButtons   = document.querySelectorAll('.filterToggle[data-cat]');
+      const targetCatBtn = document.querySelector(`.filterToggle[data-cat="${cat}"]`);
+
+      let filtersChanged = false;
+
+      if (targetCatBtn) {
+        // 1) On désactive "All" et "Shared"
+        allBtn?.classList.remove('is-on');
+        sharedBtn?.classList.remove('is-on');
+
+        // 2) On active uniquement la catégorie du marker
+        catButtons.forEach(btn => {
+          btn.classList.toggle('is-on', btn === targetCatBtn);
+        });
+
+        filtersChanged = true;
+      }
+
+      if (filtersChanged && window.UiFilters?.applyCategoryFilters) {
+        // 3) On réapplique les filtres → le marker devient visible
+        window.UiFilters.applyCategoryFilters();
+      } else {
+        // Si on n’a pas réussi à changer les filtres (cat inconnue, etc.) → fallback toast
+        showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
+      }
     }
 
     if (marker) {
       state.lastCreatedMarkerId = marker.id;
+    }
+
+    if (sharedCheckbox && shared) {
+      sharedCheckbox.checked = false;
     }
 
     $('#newLabel').value = '';

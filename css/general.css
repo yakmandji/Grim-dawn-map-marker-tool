@@ -124,7 +124,7 @@ header {
   left: calc(var(--sidebar-width) + 28px);
   right: 28px;
   width: calc(100% - var(--sidebar-width) - 41px);
-  z-index: 2;
+  z-index: 8;
   background : var(--panel);
 }
 
