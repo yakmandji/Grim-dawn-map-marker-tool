@@ -106,7 +106,8 @@ function buildNoteList() {
     row.dataset.regionId = regionId;
 
     row.innerHTML = `
-      <img src="img/info-icon.svg" class="icon-16" width="20"/>
+      <img src="img/info-icon.svg" class="icon-16" width="20" />
+
       <span class="note-region-name"></span>
 
       <button type="button"
@@ -125,6 +126,40 @@ function buildNoteList() {
     const labelSpan = row.querySelector('.note-region-name');
     if (labelSpan) {
       labelSpan.textContent = preview || regionName;
+    }
+
+    // --- Tooltip body-level sur l’icône info ---
+    const infoIcon = row.querySelector('.icon-16');
+    if (infoIcon) {
+      infoIcon.addEventListener('mouseenter', (ev) => {
+        const fullText = (noteText || '').trim();
+        if (!fullText) return;
+
+        // si une ancienne tooltip traîne, on la vire
+        if (infoIcon._noteTooltip) {
+          infoIcon._noteTooltip.remove();
+          infoIcon._noteTooltip = null;
+        }
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'region-note-tooltip';
+        tooltip.textContent = fullText;
+
+        document.body.appendChild(tooltip);
+
+        const r = ev.target.getBoundingClientRect();
+        tooltip.style.left = `${r.left + r.width / 2}px`;
+        tooltip.style.top  = `${r.bottom + 8}px`;
+
+        infoIcon._noteTooltip = tooltip;
+      });
+
+      infoIcon.addEventListener('mouseleave', () => {
+        if (infoIcon._noteTooltip) {
+          infoIcon._noteTooltip.remove();
+          infoIcon._noteTooltip = null;
+        }
+      });
     }
 
     // --- Bouton center ---
