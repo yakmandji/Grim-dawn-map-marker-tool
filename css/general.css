@@ -568,9 +568,9 @@ body.shared-only-view #mergeSharedBtn,
 /* Panneau flottant des Done */
 .done-panel {
   position: fixed;
-  bottom: 3.5vh;
+  bottom: 1.6vh;
   right: 14px;
-  z-index: 1200;
+  z-index: 4;
   font-size: 13px;
   transition: transform 0.2s ease-out;
 }
@@ -893,7 +893,7 @@ label.checkbox{
   align-items: center;
   gap: 8px;
   pointer-events: none;
-  z-index: 1; 
+  z-index: 6; 
 }
 
 .floating > * {
@@ -971,7 +971,7 @@ label.checkbox{
   top: 213px;
   color: #dfbd96;
   font-size: 13px;
-  z-index: 1;
+  z-index: 2;
 }
 
 #zoomOut{
