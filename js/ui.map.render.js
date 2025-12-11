@@ -165,25 +165,28 @@ function buildNoteList() {
     // --- Bouton center ---
     const centerBtn = row.querySelector('.marker-center');
     if (centerBtn) {
-      centerBtn.addEventListener('click', () => {
 
-        if (typeof window.ensureAdminLayerVisible === 'function') {
-          window.ensureAdminLayerVisible('region');
-        }
-        
-        const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
-        if (!regionEl) return;
+      function handler() {
+          if (typeof window.ensureAdminLayerVisible === 'function') {
+            window.ensureAdminLayerVisible('region');
+          }
+          
+          const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+          if (!regionEl) return;
 
-        const xp = parseFloat(regionEl.dataset.xp);
-        const yp = parseFloat(regionEl.dataset.yp);
-        if (isNaN(xp) || isNaN(yp)) return;
+          const xp = parseFloat(regionEl.dataset.xp);
+          const yp = parseFloat(regionEl.dataset.yp);
+          if (isNaN(xp) || isNaN(yp)) return;
 
-        window.centerOn(xp, yp, 1.0);
+          window.centerOn(xp, yp, 1.0);
 
-        // Pulse animation
-        regionEl.classList.add('marker-highlight');
-        setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
-      });
+          // Pulse animation
+          regionEl.classList.add('marker-highlight');
+          setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
+      }
+
+      centerBtn.addEventListener('click', handler);
+      infoIcon.addEventListener('click', handler);
     }
 
     // --- Bouton delete  ---

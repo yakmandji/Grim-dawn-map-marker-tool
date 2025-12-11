@@ -1126,6 +1126,9 @@ input[type="color"]::-moz-color-swatch {
   font-size: 12px;
 }
 
+#noteList .listItem .icon-16{
+    cursor: pointer;
+}
 
 .region-note-tooltip {
   position: fixed;
