@@ -58,7 +58,7 @@
 /* Menu déroulant */
 .custom-dropdown-inner {
   position: absolute;
-  top: 100%;
+  top: 12px;
   left: 0;
   margin-top: 20px;
   background: var(--panel);
@@ -85,13 +85,11 @@
 #list .custom-dropdown .custom-dropdown-inner .option-item {
   height: 1px;
   position: absolute;
-  margin-top: 0;
   padding: 0;
 }
 
 #list .custom-dropdown.open .custom-dropdown-inner{
   height: inherit;
-  margin-top: 6px;
   padding: 6px 0;
 }
 
@@ -1010,6 +1008,13 @@ input[type="color"]::-moz-color-swatch {
   );
   opacity: 0.9;
 }
+
+
+.region-note-tooltip {
+  margin-left: 20px;
+  transform: inherit!important;
+}
+
 
 /* --- Icône crayon pour notes de région --- */
 
