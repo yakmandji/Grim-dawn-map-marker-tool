@@ -30,7 +30,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "tomb_of_korvaak", map: "cairn", img: "tom-of-korvaak.jpg", left: 2.1229, top: 32.7744, width: 5.4447, height: 5.3338 },
 { id: "obsidian_throne", map: "cairn", img: "obsidian-throne.jpg?1.0", left: 20.7851, top: 23.7041, width: 9.092, height: 8.8537 },
 { id: "port_valbury_fondation", map: "cairn", img: "port-valbury-fondation.jpg", left: 34.2021, top: 31.2484, width: 4.7604, height: 4.6642 },
-{ id: "edge_of_reality", map: "cairn", img: "edge-of-reality.jpg", left: 26.9649, top: 13.5681, width: 7.2252, height: 9.9713 },
+{ id: "edge_of_reality", map: "cairn", img: "edge-of-reality.jpg?1.0", left: 26.9649, top: 13.5681, width: 7.2252, height: 9.9713 },
 { id: "altritch_karters", map: "cairn", img: "altritch-karters.jpg", left: 37.1109, top: 18.1491, width: 2.4817, height: 2.431 },
 { id: "black_sepulcher", map: "cairn", img: "black-sepulcher.jpg", left: 30.4948, top: 6.7776, width: 6.7359, height: 6.6083 },
 { id: "discord_anarchy", map: "cairn", img: "discord-anarchy-entropy-rog.jpg?1.0", left: 28.4948, top: -2.566, width: 25.5599, height: 9.144 },
