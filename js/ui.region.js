@@ -161,7 +161,7 @@
 { id: 'UG_voidlands01', tag: 'tagUGVoidlands01', xp: 29.69, yp: 4.62, isDungeon: true },
 { id: 'map_smugglers_pass', tag: 'tagMapSmugglersPass', xp: 28.30, yp: 82.74, isDungeon: true },
 { id: 'map_mountain_deeps', tag: 'tagMapMountainDeeps', xp: 24.67, yp: 73.06, isDungeon: true },
-{ id: 'UG_dermapteran03a', tag: 'tagUGDermapteran03A', xp: 19.77, yp: 68.35, isDungeon: true },
+{ id: 'UG_dermapteran03a', tag: 'tagUGDermapteran03A', xp: 20.79, yp: 70.34, isDungeon: true },
 { id: 'tag_uG_dermapteran_02', tag: 'tagUGDermapteran02', xp: 15.12, yp: 68.09, isDungeon: true },
 { id: 'tag_uG_dermapteran_01', tag: 'tagUGDermapteran01', xp: 17.50, yp: 66.46, isDungeon: true },
 { id: 'tag_uGHomestead_cave01', tag: 'tagUGHomesteadCave01', xp: 15.34, yp: 62.88, isDungeon: true },
