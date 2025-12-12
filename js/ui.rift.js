@@ -9,7 +9,7 @@ window.RIFT_MARKERS_CAIRN = [
 { id: 'tag_rift_burrwitch_outskirts', tag: 'tagRiftBurrwitchOutskirts', xp: 67.8, yp: 71.3 },
 { id: 'rift_burrwitch_village', tag: 'tagRiftBurrwitchVillage', xp: 68.1, yp: 64.7 },
 { id: 'tift_wardens_cellar', tag: 'tagRiftWardensCellar', xp: 63.78, yp: 53.27 },
-{ id: 'rift_wardens_labratory01', tag: 'tagRiftWardensLabratory01', xp: 60.36, yp: 52.20, },
+{ id: 'rift_wardens_labratory01', tag: 'tagRiftWardensLabratory01', xp: 60.01, yp: 52.70, },
 { id: 'rift_wardens_labratory02', tag: 'tagRiftWardensLabratory02', xp: 64.09, yp: 49.17 },
 { id: 'rift_broken_hills', tag: 'tagRiftBrokenHills', xp: 49.43, yp: 82.6 },
 { id: 'rift_old_arkovia', tag: 'tagRiftOldArkovia', xp: 52.37, yp: 78.4 },
@@ -60,7 +60,7 @@ window.RIFT_MARKERS_KORVAN = [
 { id: 'rift_infernal_wastes', tag: 'tagGDX2RiftInfernalWastes', xp: 60.82, yp: 36.08 },
 { id: 'rift_temple', tag: 'tagGDX2RiftTemple', xp: 58.11, yp: 7.50 },
 { id: 'rift_korvan_city', tag: 'tagGDX2RiftKorvanCity', xp: 53.59, yp: 25.55 },
-{ id: 'rift_lost_oasis', tag: 'tagGDX2RiftLostOasis', xp: 91.40, yp: 18.45, },
+{ id: 'rift_lost_oasis', tag: 'tagGDX2RiftLostOasis', xp: 69.25, yp: 21.83, },
 { id: 'tag_gDX2_rift_eldritch', tag: 'tagGDX2RiftEldritch', xp: 68.69, yp: 8.43 }
 
 ]

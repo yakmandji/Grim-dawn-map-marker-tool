@@ -9,7 +9,7 @@
     { id: 'shrineMapFloodedPassage01', regionTag: 'tagMapFloodedPassage01', xp: 63.82, yp: 69.77, difficulty: 'normal' },
     { id: 'shrineUGBurialCave', regionTag: 'tagUGBurialCave', xp: 63.37, yp: 67.00, difficulty: 'normal' },
     { id: 'shirneMapBurrwitchEstates', regionTag: 'tagMapBurrwitchEstates', xp: 68.52, yp: 60.07, difficulty: 'normal' },
-    { id: 'shrineMapOminousLair', regionTag: 'tagMapOminousLair', xp: 61.94, yp: 50.55, difficulty: 'normal' },
+    { id: 'shrineMapOminousLair', regionTag: 'tagMapOminousLair', xp: 62.00, yp: 50.66, difficulty: 'normal' },
     { id: 'shrinetagMapEastMarsh03', regionTag: 'tagMapEastMarsh03', xp: 80.67, yp: 65.27, difficulty: 'normal' },
     { id: 'shrinetagWorldMapWitchGodTemple', regionTag: 'tagWorldMapWitchGodTemple', xp: 86.88, yp: 64.84, difficulty: 'normal' },
     { id: 'shrinetagUGArkovianFoothills02', regionTag: 'tagUGArkovianFoothills02', xp: 60.83, yp: 84.68, difficulty: 'normal' },
@@ -56,17 +56,17 @@
   ];
 
   window.SHRINE_MARKERS_KORVAN = [
-    { id: 'shrinetagGDX2CairanRuins01', regionTag: 'tagGDX2CairanRuins01', xp: 13.05, yp: 51.85, difficulty: 'normal' },
+    { id: 'shrinetagGDX2CairanRuins01', regionTag: 'tagGDX2CairanRuins01', xp: 11.74, yp: 50.72, difficulty: 'normal' },
     { id: 'shrinetagSplendorOfShatteredRealm', regionTag: 'tagSplendorOfShatteredRealm', xp: 27.44, yp: 93.95, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapRuinedTemple01', regionTag: 'tagGDX2MapRuinedTemple01', xp: 55.74, yp: 89.23, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapHiddenOasis', regionTag: 'tagGDX2MapHiddenOasis', xp: 33.76, yp: 71.72, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapRuinedCity01', regionTag: 'tagGDX2MapRuinedCity01', xp: 30.53, yp: 45.04, difficulty: 'normal' },
-    { id: 'shrinetagGDX2SanctuaryOfHorran', regionTag: 'tagGDX2SanctuaryOfHorran', xp: 45.27, yp: 42.29, difficulty: 'normal' },
+    { id: 'shrinetagGDX2SanctuaryOfHorran', regionTag: 'tagGDX2SanctuaryOfHorran', xp: 45.56, yp: 42.08, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapRuinedCity02', regionTag: 'tagGDX2MapRuinedCity02', xp: 74.37, yp: 43.74, difficulty: 'normal' },
     { id: 'shrinetagGDX2VOTC02', regionTag: 'tagGDX2VOTC02', xp: 71.11, yp: 35.37, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapRaisedTemple', regionTag: 'tagGDX2MapRaisedTemple', xp: 51.95, yp: 15.22, difficulty: 'normal' },
     { id: 'shrinetagGDX2KorvaakTomb01', regionTag: 'tagGDX2KorvaakTomb01', xp: 60.73, yp: -4.00, difficulty: 'normal' },
-    { id: 'shrinetagGDX2Roguelike_01', regionTag: 'tagGDX2Roguelike_01', xp: 85.39, yp: 28.41, difficulty: 'normal' },
+    { id: 'shrinetagGDX2Roguelike_01', regionTag: 'tagGDX2Roguelike_01', xp: 82.94, yp: 20.85, difficulty: 'normal' },
     { id: 'shrinetagGDX1UGSecret01Korvan', regionTag: 'tagGDX1UGSecret01', xp: 17.87, yp: 23.93, difficulty: 'ultimate' },
   ];
 

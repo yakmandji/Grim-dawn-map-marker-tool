@@ -113,7 +113,7 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 
 window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 { id: "entry_burning_cellar_01", xp: 66.14, yp: 46.42, tag: "Burning Cellar 01" },
-{ id: "entry_burning_cellar_02", xp: 70.17, yp: 47.37, tag: "Burning Cellar 02" },
+{ id: "entry_burning_cellar_02", xp: 67.37, yp: 42.27, tag: "Burning Cellar 02" },
 { id: "entry_fringes_of_sanity", xp: 68.76, yp: 59.44, tag: "Fringes Of Sanity" },
 { id: "entry_cinder_waste", xp: 64.99, yp: 61.18, tag: "Cinder Waste" },
 { id: "entry_cinder_waste_02", xp: 67.11, yp: 69.07, tag: "Cinder Waste 02" },

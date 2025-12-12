@@ -180,7 +180,6 @@ window.NAV_MARKERS_CAIRN = [
       },
        // --------------------------------------------------Téléport Void's Eige Inside -
 
-
       // Lower Crossing To Hargate Isle
       {
         xp: 63.47,
@@ -230,7 +229,31 @@ window.NAV_MARKERS_CAIRN = [
         targetScale: 1,
         id: 'SewerMalmouth',
         targetId: 'ConclaveOfThree'
-      },      
+      },
+    /*Malmouth Outskirts-------------------------------------*/
+      {
+        xp: 70.03, 
+        yp: 47.69,
+        tag: 'tagGoTo + tagGDX1MapMalmouthOutskirtsRuins',
+        icon: 'img/icon-link.png',
+        targetXp: 61.67,
+        targetYp: 55.83,
+        targetScale: 1,
+        id: 'MalmouthOutskirtsNorth',
+        targetId: 'MalmouthOutskirtsSouth'
+      },
+      {
+        xp: 61.67, 
+        yp: 55.83,
+        tag: 'tagGoTo + tagGDX1MapMalmouthOutskirtsRuins',
+        icon: 'img/icon-link.png',
+        targetXp: 70.03,
+        targetYp: 47.69,
+        targetScale: 1,
+        id: 'MalmouthOutskirtsSouth',
+        targetId: 'MalmouthOutskirtsNorth'
+      },
+
   ];
 
 
