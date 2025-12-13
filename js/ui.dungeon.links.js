@@ -128,14 +128,28 @@ window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 { id: "entry_cinder_waste_02", xp: 67.11, yp: 69.07, tag: "Cinder Waste 02" },
 { id: "entry_cinder_waste_03", xp: 73.70, yp: 68.19, tag: "Cinder Waste 03" },
 { id: "entry_edge_reality", xp: 60.22, yp: 54.58, tag: "Edge Of Reality" },
+{ id: "entry_edge_reality2", xp: 70.52, yp: 47.08, tag: "Edge Of Reality2", eyeColor:"gray-muted" },
 { id: "entry_sewer_hideout", xp: 51.37, yp: 45.61, tag: "Sewer Hideout" },
 { id: "entry_sewer_hideout_02", xp: 49.48, yp: 36.42, tag: "Sewer Hideout 02", eyeColor:"gray" },
 { id: "entry_sewer_hideout_03", xp: 59.10, yp: 38.00, tag: "Sewer Hideout 03", eyeColor:"green" },
 { id: "entry_herald_mathis", xp: 41.55, yp: 49.89, tag: "Herald Mathis" },
+{ id: "entry_herald_mathis2", xp: 40.24, yp: 51.69, tag: "Herald Mathis2", eyeColor:"gray-muted" },
+
 { id: "entry_ransaked_lighthouse", xp: 38.11, yp: 41.07, tag: "Ransacked Lighthouse" },
+{ id: "entry_ransaked_lighthouse2", xp: 38.34, yp: 39.43, tag: "Ransacked Lighthouse2", eyeColor:"gray-muted" },
+
 { id: "entry_swelling_depths", xp: 43.76, yp: 31.72, tag: "Swelling Depths" },
-{ id: "entry_infestation", xp: 50.67, yp: 3.68, tag: "Infestation" },
-{ id: "entry_chamber_council", xp: 49.78, yp: 19.58, tag: "Chamber Council" }
+{ id: "entry_swelling_depths2", xp: 42.51, yp: 36.76, tag: "Swelling Depths2", eyeColor:"gray-muted" },
+
+{ id: "entry_infestation", xp: 50.67, yp: 3.64, tag: "Infestation" },
+{ id: "entry_infestation2", xp: 50.70, yp: 4.19, tag: "Infestation2", eyeColor:"gray-muted" },
+{ id: "entry_infestation3", xp: 50.20, yp: 4, tag: "Infestation2", eyeColor:"blue" },
+
+
+
+{ id: "entry_chamber_council", xp: 49.78, yp: 19.58, tag: "Chamber Council" },
+{ id: "entry_chamber_council2", xp: 48.22, yp: 17.36, tag: "Chamber Council2", eyeColor:"gray-muted" },
+
 
 ];
 
@@ -253,13 +267,13 @@ window.DUNGEON_LINKS = {
   "burning_cellar": ["entry_burning_cellar_01", "entry_burning_cellar_02"],
   "fringes_of_sanity": ["entry_fringes_of_sanity" ],
   "cinder_waste": ["entry_cinder_waste", "entry_cinder_waste_02", "entry_cinder_waste_03" ],
-  "edge_reality": ["entry_edge_reality" ],
+  "edge_reality": ["entry_edge_reality", "entry_edge_reality2" ],
   "sewer_hideout": ["entry_sewer_hideout", "entry_sewer_hideout_02" , "entry_sewer_hideout_03" ],
-  "herald_mathis": ["entry_herald_mathis" ],
-  "ransaked_lighthouse": ["entry_ransaked_lighthouse" ],
-  "swelling_depths": ["entry_swelling_depths" ],
-  "infestation": ["entry_infestation" ],
-  "chamber_council": ["entry_chamber_council" ],
+  "herald_mathis": ["entry_herald_mathis","entry_herald_mathis2" ],
+  "ransaked_lighthouse": ["entry_ransaked_lighthouse","entry_ransaked_lighthouse2" ],
+  "swelling_depths": ["entry_swelling_depths","entry_swelling_depths2" ],
+  "infestation": ["entry_infestation","entry_infestation2","entry_infestation3" ],
+  "chamber_council": ["entry_chamber_council","entry_chamber_council2" ],
 
   /*KORVAN*/
   "forgotten_cellar": ["entry_forgotten_cellar" ],

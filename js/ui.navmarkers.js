@@ -206,6 +206,32 @@ window.NAV_MARKERS_CAIRN = [
 ];
 
   window.NAV_MARKERS_MALMOUTH = [
+
+/*------------------------Cinder Wastes*/
+      {
+        xp: 88.47, 
+        yp: 79.45,
+        tag: 'tagGoTo + tagGDX1UGUgdenbogVoidRift04',
+        icon: 'img/icon-link.png',
+        targetXp:83.61,
+        targetYp:67.22,
+        targetScale: 1,
+        id: 'CinderWaste',
+        targetId: 'FringeSanity'
+      },
+      {
+        xp: 83.61, 
+        yp: 67.22,
+        tag: 'tagGoTo + tagGDX1UGUgdenbogVoidRift02',
+        icon: 'img/icon-link.png',
+        targetXp: 88.47,
+        targetYp: 79.45,
+        targetScale: 1,
+        id: 'FringeSanity',
+        targetId: 'CinderWaste'
+      },    
+/*------------------------Cinder Wastes*/
+
       {
         xp: 63.63,
         yp: 95.08,
@@ -219,8 +245,8 @@ window.NAV_MARKERS_CAIRN = [
         targetId: 'EidgeCairn'
       },
       {
-        xp: 33.48, 
-        yp: 68.49,
+        xp: 46.52, 
+        yp: 65.53,
         icon: 'img/icon-link.png',
         tag: 'tagGoTo + tagGDX2MapWitchGodBase',
         targetProfile: 'Korvan Basin',
