@@ -471,7 +471,9 @@ body.shared-only-view .lock-label,
 body.shared-only-view #routesList button.danger ,
 body.shared-only-view #noteList .note-delete-btn,
 body.shared-only-view .link-for-marker,
-body.shared-only-view .header-actions
+body.shared-only-view .header-actions,
+body.shared-only-view .done-panel,
+body.shared-only-view .js-character-dropdown
  {
   display: none;
 }
