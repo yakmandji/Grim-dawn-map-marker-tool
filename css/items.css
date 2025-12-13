@@ -1536,6 +1536,35 @@ input[type="color"]::-moz-color-swatch {
   pointer-events: none;
 }
 
+.entry-icon.eye-yellow { filter: none; }
+
+.entry-icon.eye-green {
+  filter: hue-rotate(105deg) saturate(1.4) brightness(1.1);
+}
+
+.entry-icon.eye-purple {
+  filter: hue-rotate(250deg) saturate(1.7) brightness(1.1);
+}
+
+.entry-icon.eye-blue {
+  filter: hue-rotate(180deg) saturate(1.6) brightness(1.1);
+}
+
+.entry-icon.eye-gray {
+  filter:
+    grayscale(100%)
+    brightness(1.05)
+    contrast(1.1);
+}
+
+.entry-icon.eye-gray-muted {
+  filter:
+    grayscale(100%)
+    brightness(0.85)
+    contrast(0.9);
+  opacity: 0.7;
+}
+
 /*CHARACTER SELECTION*/
 
 .character-avatar-row {

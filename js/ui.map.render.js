@@ -616,7 +616,12 @@
           const img = document.createElement('img');
           img.src = m.icon || 'img/eye-icon.png';
           img.className = 'entry-icon';
+
+          const color = (m.eyeColor || 'yellow').toLowerCase();
+          img.classList.add('eye-' + color);
+
           el.appendChild(img);
+
 
           const pt = pctToPx(m.xp, m.yp);
           el.style.left = pt.x + 'px';

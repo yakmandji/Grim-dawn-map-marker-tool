@@ -7,33 +7,33 @@
 window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_convict_tunnel", xp: 63.30, yp: 89.56, tag: "Convict Tunnel" },
 { id: "entry_burial_cave", xp: 66.25, yp: 83.00, tag: "Burial Cave" },
-{ id: "entry_burial_cave_b", xp: 65.19, yp: 82.23, tag: "Burial Cave b" },
+{ id: "entry_burial_cave_b", xp: 65.19, yp: 82.23, tag: "Burial Cave b", eyeColor:"gray" },
 { id: "entry_cave", xp: 70.60, yp: 78.42, tag: "Cave" },
 { id: "entry_cave2", xp: 70.47, yp: 79.60, tag: "Cave 2" },
 { id: "entry_cultists_lair", xp: 70.48, yp: 76.12, tag: "Cultists Lair" },
 { id: "entry_caverne_2", xp: 71.36, yp: 73.50, tag: "Caverne 2" },
-{ id: "entry_caverne_2b", xp: 69.33, yp: 72.90, tag: "Caverne 2" },
-{ id: "entry_caverne_3", xp: 69.09, yp: 74.72, tag: "Caverne 3" },
+{ id: "entry_caverne_2b", xp: 69.33, yp: 72.90, tag: "Caverne 2", eyeColor:"gray" },
+{ id: "entry_caverne_3", xp: 69.09, yp: 74.72, tag: "Caverne 3", eyeColor:"gray" },
 { id: "entry_caverne_3b", xp: 68.20, yp: 75.91, tag: "Caverne 3b" },
-{ id: "entry_burial_cave_2a", xp: 69.07, yp: 68.91, tag: "burial cave 2a" },
+{ id: "entry_burial_cave_2a", xp: 69.07, yp: 68.91, tag: "burial cave 2a", eyeColor:"gray" },
 { id: "entry_burial_cave_2b", xp: 68.18, yp: 69.30, tag: "burial cave 2b" },
 { id: "entry_river_passage", xp: 71.13, yp: 63.24, tag: "river passage" },
-{ id: "entry_river_passage2", xp: 70.40, yp: 62.10, tag: "river passage2" },
+{ id: "entry_river_passage2", xp: 70.40, yp: 62.10, tag: "river passage2", eyeColor:"gray" },
 { id: "entry_festering_lair", xp: 65.86, yp: 62.66, tag: "festering lair" },
 { id: "entry_depraved_sanctuary", xp: 73.26, yp: 71.31, tag: "Depraved Sanctuary" },
 { id: "entry_flooded_passage", xp: 67.66, yp: 71.93, tag: "Flooded Passage" },
-{ id: "entry_flooded_passage2", xp: 70.50, yp: 71.40, tag: "Flooded Passage 2" },
+{ id: "entry_flooded_passage2", xp: 70.50, yp: 71.40, tag: "Flooded Passage 2", eyeColor:"gray" },
 { id: "entry_flooded_cellar", xp: 66.95, yp: 65.67, tag: "Flooded Cellar" },
-{ id: "entry_flooded_cellar2", xp: 67.38, yp: 64.96, tag: "Flooded Cellar 2" },
-{ id: "entry_flooded_cellar3", xp: 68.19, yp: 65.00, tag: "Flooded Cellar 3" },
+{ id: "entry_flooded_cellar2", xp: 67.38, yp: 64.96, tag: "Flooded Cellar 2", eyeColor:"gray" },
+{ id: "entry_flooded_cellar3", xp: 68.19, yp: 65.00, tag: "Flooded Cellar 3", eyeColor:"green" },
 { id: "entry_temple_of_three", xp: 78.50, yp: 62.32, tag: "Temple Of Three" },
-{ id: "entry_dank_cellar", xp: 69.80, yp: 60.24, tag: "Dank Cellar" },
-{ id: "entry_dank_cellar2", xp: 68.86, yp: 60.01, tag: "Dank Cellar 2" },
+{ id: "entry_dank_cellar", xp: 69.80, yp: 60.24, tag: "Dank Cellar", eyeColor:"gray" },
+{ id: "entry_dank_cellar2", xp: 68.86, yp: 60.01, tag: "Dank Cellar 2", eyeColor:"green" },
 { id: "entry_dank_cellar3", xp: 68.30, yp: 60.10, tag: "Dank Cellar 3" },
-{ id: "entry_musty_cellar", xp: 67.87, yp: 59.16, tag: "Musty Cellar" },
+{ id: "entry_musty_cellar", xp: 67.87, yp: 59.16, tag: "Musty Cellar", eyeColor:"gray" },
 { id: "entry_musty_cellar2", xp: 68.74, yp: 58.74, tag: "Musty Cellar 2" },
 { id: "entry_underground_transit", xp: 70.10, yp: 59.10, tag: "Underground Transit" },
-{ id: "entry_decrepit_cellar", xp: 75.80, yp: 54.27, tag: "Decrepit Cellar" },
+{ id: "entry_decrepit_cellar", xp: 75.80, yp: 54.27, tag: "Decrepit Cellar", eyeColor:"gray" },
 { id: "entry_decrepit_cellar2", xp: 77.31, yp: 52.29, tag: "Decrepit Cellar 2" },
 { id: "entry_overgrown_cellar", xp: 73.65, yp: 48.84, tag: "Overgrown Cellar" },
 { id: "entry_den_carraxus", xp: 79.37, yp: 45.85, tag: "Den Carraxus" },
@@ -48,35 +48,39 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_desolate_waste", xp: 85.28, yp: 23.76, tag: "Desolate Waste" },
 { id: "entry_larrias_den", xp: 87.50, yp: 36.10, tag: "Larrias Den" },
 { id: "entry_spined_cove", xp: 57.89, yp: 85.92, tag: "Spined Cove" },
-{ id: "entry_spined_cove2", xp: 56.61, yp: 86.84, tag: "Spined Cove 2" },
+{ id: "entry_spined_cove2", xp: 56.61, yp: 86.84, tag: "Spined Cove 2", eyeColor:"gray" },
 { id: "entry_stirring_hive", xp: 52.28, yp: 81.30, tag: "Stirring Hive" },
-{ id: "entry_hargate_laboratory", xp: 62.18, yp: 81.36, tag: "Hargate Laboratory" },
+{ id: "entry_hargate_laboratory", xp: 62.18, yp: 81.36, tag: "Hargate Laboratory", eyeColor:"gray-muted" },
 { id: "entry_hargate_laboratory2", xp: 61.47, yp: 80.85, tag: "Hargate Laboratory 2" },
-{ id: "entry_staunton_mine", xp: 52.07, yp: 86.38, tag: "Staunton Mine" },
+{ id: "entry_staunton_mine", xp: 52.07, yp: 86.38, tag: "Staunton Mine", eyeColor:"gray"},
 { id: "entry_staunton_mine2", xp: 52.26, yp: 85.53, tag: "Staunton Mine 2" },
 { id: "entry_suffering_angish", xp: 49.69, yp: 85.44, tag: "Suffering Angish" },
 { id: "entry_corrupted_tomb", xp: 48.85, yp: 80.37, tag: "Corrupted Tomb" },
 { id: "entry_swarming_hive", xp: 47.59, yp: 79.02, tag: "Swarming Hive" },
-{ id: "entry_hannefy_mine", xp: 54.02, yp: 76.71, tag: "Hannefy Mine" },
+{ id: "entry_hannefy_mine", xp: 52.15, yp: 76.94, tag: "Hannefy Mine", eyeColor:"gray" },
 { id: "entry_hannefy_mine2", xp: 53.30, yp: 75.07, tag: "Hannefy Mine 2" },
+{ id: "entry_hannefy_mine3", xp: 54.04, yp: 76.75, tag: "Hannefy Mine", eyeColor:"purple" },
+
 { id: "entry_cronleys_hideout", xp: 52.64, yp: 76.17, tag: "Cronleys Hideout" },
+{ id: "entry_cronleys_hideout2", xp: 49.87, yp: 77.11, tag: "Cronleys Hideout", eyeColor:"gray-muted"},
+
 { id: "entry_arkovian_undercity", xp: 49.16, yp: 79.23, tag: "Arkovian Undercity" },
-{ id: "entry_arkovian_undercity2", xp: 50.29, yp: 81.46, tag: "Arkovian Undercity 2" },
+{ id: "entry_arkovian_undercity2", xp: 50.29, yp: 81.46, tag: "Arkovian Undercity 2", eyeColor:"gray" },
 { id: "entry_smuggler_pass", xp: 39.41, yp: 77.83, tag: "Smuggler Pass" },
-{ id: "entry_smuggler_pass2", xp: 29.37, yp: 77.95, tag: "Smuggler Pass2" },
+{ id: "entry_smuggler_pass2", xp: 29.37, yp: 77.95, tag: "Smuggler Pass2", eyeColor:"gray" },
 { id: "entry_Burried_crypt", xp: 29.69, yp: 69.94, tag: "Burried Crypt" },
 
 { id: "entry_the_hidden_path", xp: 13.10, yp: 34.28, tag: "The Hidden Path" },
 
-
-
-
-{ id: "entry_forgotten_depths", xp: 41.45, yp: 75.93, tag: "Forgotten Depths" },
+{ id: "entry_forgotten_depths", xp: 41.45, yp: 75.93, tag: "Forgotten Depths", eyeColor:"gray" },
 { id: "entry_forgotten_depths2", xp: 41.88, yp: 73.90, tag: "Forgotten Depths 3" },
 { id: "entry_bloodbriars_lair", xp: 41.88, yp: 74.83, tag: "Bloodbriars Lair" },
 { id: "entry_mountain_deep", xp: 31.21, yp: 76.26, tag: "Mountain Deep" },
-{ id: "entry_mountain_deep3", xp: 36.53, yp: 69.71, tag: "Mountain Deep 3" },
+{ id: "entry_mountain_deep3", xp: 36.53, yp: 69.71, tag: "Mountain Deep 3", eyeColor:"gray" },
+
 { id: "entry_tyrant_hold", xp: 44.60, yp: 71.64, tag: "Tyrant Hold" },
+{ id: "entry_tyrant_hold2", xp: 43.58, yp: 71.33, tag: "Tyrant Hold", eyeColor:"gray-muted" },
+
 { id: "entry_royal_hive", xp: 25.62, yp: 66.38, tag: "Royal Hive" },
 { id: "entry_royal_hive2", xp: 26.25, yp: 65.78, tag: "Royal Hive 2" },
 { id: "entry_royal_hive3", xp: 27.01, yp: 66.25, tag: "Royal Hive 3" },
@@ -91,37 +95,42 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_the_bonepit", xp: 34.93, yp: 51.89, tag: "The Bonepit" },
 { id: "entry_fort_haron", xp: 28.99, yp: 46.98, tag: "Fort Haron" },
 { id: "entry_darkvale_gate", xp: 22.59, yp: 45.02, tag: "Darkvale Gate" },
-{ id: "entry_darkvale_gate2", xp: 21.09, yp: 40.68, tag: "Darkvale Gate 2" },
+{ id: "entry_darkvale_gate2", xp: 21.09, yp: 40.68, tag: "Darkvale Gate 2", eyeColor:"gray" },
+
 { id: "entry_tomb_of_korvaak", xp: 10.05, yp: 31.72, tag: "Tomb Of Korvaak" },
+{ id: "entry_tomb_of_korvaak2", xp: 9.68, yp: 31.88, tag: "Tomb Of Korvaak2", eyeColor:"gray-muted" },
+
 { id: "entry_tomb_of_the_damned", xp: 9.79, yp: 25.52, tag: "Tomb Of The Damned" },
-{ id: "entry_fort_ikon_prison", xp: 13.84, yp: 20.17, tag: "Fort Ikon Prison" },
+{ id: "entry_fort_ikon_prison", xp: 13.84, yp: 20.17, tag: "Fort Ikon Prison", eyeColor:"gray-muted" },
 { id: "entry_fort_ikon_prison2", xp: 14.47, yp: 22.36, tag: "Fort Ikon Prison 2" },
 { id: "entry_fort_ikon_armory", xp: 14.44, yp: 20.03, tag: "Fort Ikon Armory" },
-{ id: "entry_fort_ikon_armory2", xp: 16.29, yp: 21.43, tag: "Fort Ikon Armory 2" },
+{ id: "entry_fort_ikon_armory2", xp: 16.29, yp: 21.43, tag: "Fort Ikon Armory 2", eyeColor:"gray-muted" },
 { id: "entry_obsidian_throne", xp: 21.08, yp: 20.73, tag: "Obsidian Throne" },
 { id: "entry_obsidian_throne2", xp: 21.54, yp: 19.14, tag: "Obsidian Throne 2" },
 { id: "entry_obsidian_throne3", xp: 20.06, yp: 18.90, tag: "Obsidian Throne 3" },
 { id: "entry_edge_of_reality", xp: 25.58, yp: 13.28, tag: "Edge Of Reality" },
 { id: "entry_black_sepulcher", xp: 26.11, yp: 9.43, tag: "Black Sepulcher" },
 { id: "entry_discord_anarchy", xp: 21.47, yp: 0.88, tag: "Discord Anarchy" },
-{ id: "entry_tom_of_the_watcher", xp: 23.23, yp: 4.59, tag: "Tom Of The Watcher" },
+{ id: "entry_tom_of_the_watcher", xp: 23.40, yp: 4.59, tag: "Tom Of The Watcher" },
+{ id: "entry_tom_of_the_watcher2", xp: 23.11, yp: 4.57, tag: "Tom Of The Watcher", eyeColor:"gray" },
+
 { id: "entry_port_valbury_fondation", xp: 41.93, yp: 30.63, tag: "Port Valbury Fondation" },
-{ id: "entry_port_valbury_fondation2", xp: 41.39, yp: 29.93, tag: "Port Valbury Fondation 2" },
+{ id: "entry_port_valbury_fondation2", xp: 41.39, yp: 29.93, tag: "Port Valbury Fondation 2", eyeColor:"gray" },
 { id: "entry_altritch_karters", xp: 40.81, yp: 21.21, tag: "Altritch Karters" }
 
 ];
 
 window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 { id: "entry_burning_cellar_01", xp: 66.14, yp: 46.42, tag: "Burning Cellar 01" },
-{ id: "entry_burning_cellar_02", xp: 67.37, yp: 42.27, tag: "Burning Cellar 02" },
+{ id: "entry_burning_cellar_02", xp: 67.37, yp: 42.27, tag: "Burning Cellar 02", eyeColor:"gray" },
 { id: "entry_fringes_of_sanity", xp: 68.76, yp: 59.44, tag: "Fringes Of Sanity" },
 { id: "entry_cinder_waste", xp: 64.99, yp: 61.18, tag: "Cinder Waste" },
 { id: "entry_cinder_waste_02", xp: 67.11, yp: 69.07, tag: "Cinder Waste 02" },
 { id: "entry_cinder_waste_03", xp: 73.70, yp: 68.19, tag: "Cinder Waste 03" },
 { id: "entry_edge_reality", xp: 60.22, yp: 54.58, tag: "Edge Of Reality" },
 { id: "entry_sewer_hideout", xp: 51.37, yp: 45.61, tag: "Sewer Hideout" },
-{ id: "entry_sewer_hideout_02", xp: 49.48, yp: 36.42, tag: "Sewer Hideout 02" },
-{ id: "entry_sewer_hideout_03", xp: 59.10, yp: 38.00, tag: "Sewer Hideout 03" },
+{ id: "entry_sewer_hideout_02", xp: 49.48, yp: 36.42, tag: "Sewer Hideout 02", eyeColor:"gray" },
+{ id: "entry_sewer_hideout_03", xp: 59.10, yp: 38.00, tag: "Sewer Hideout 03", eyeColor:"green" },
 { id: "entry_herald_mathis", xp: 41.55, yp: 49.89, tag: "Herald Mathis" },
 { id: "entry_ransaked_lighthouse", xp: 38.11, yp: 41.07, tag: "Ransacked Lighthouse" },
 { id: "entry_swelling_depths", xp: 43.76, yp: 31.72, tag: "Swelling Depths" },
@@ -141,17 +150,19 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
   { id: "entry_sandblown_ruin", xp: 32.97, yp: 52.27, tag: "Sandblown Ruin" },
   { id: "entry_durgs_den", xp: 37.88, yp: 53.45, tag: "Durgs Den" },
   { id: "entry_howling_chasm", xp: 55.09, yp: 48.37, tag: "Howling Chasm" },
-  { id: "entry_howling_chasm2", xp: 58.55, yp: 47.54, tag: "Howling Chasm 2" },
+  { id: "entry_howling_chasm2", xp: 58.55, yp: 47.54, tag: "Howling Chasm 2", eyeColor:"gray" },
   { id: "entry_sanctuary_horan", xp: 48.98, yp: 51.75, tag: "Sanctuary Horan" },
   { id: "entry_edge_reality_korv", xp: 67.02, yp: 48.35, tag: "Edge Reality Korv" },
   { id: "entry_bloodied_waste", xp: 70.47, yp: 44.66, tag: "Bloodied Waste" },
   { id: "entry_temple_athep", xp: 73.22, yp: 42.55, tag: "Temple Athep" },
+  { id: "entry_temple_athep2", xp: 68.82, yp: 41.88, tag: "Temple Athep2", eyeColor:"gray-muted" },
+
   { id: "entry_tomb_sethan", xp: 57.46, yp: 39.53, tag: "Tomb Sethan" },
   { id: "entry_tomb_sethan2", xp: 59.37, yp: 33.20, tag: "Tomb Sethan 2" },
   { id: "entry_tomb_ariath", xp: 51.61, yp: 32.09, tag: "Tomb Ariath" },
   { id: "entry_tomb_nephos", xp: 56.43, yp: 29.84, tag: "Tomb Nephos" },
-  { id: "entry_tomb_nephos2", xp: 57.14, yp: 28.36, tag: "Tomb Nephos 2" },
-  { id: "entry_tomb_nephos3", xp: 58.05, yp: 29.57, tag: "Tomb Nephos 3" },
+  { id: "entry_tomb_nephos2", xp: 57.14, yp: 28.36, tag: "Tomb Nephos 2", eyeColor:"gray-muted" },
+  { id: "entry_tomb_nephos3", xp: 58.05, yp: 29.57, tag: "Tomb Nephos 3", eyeColor:"gray-muted" },
   { id: "entry_heretic_maggi", xp: 60.78, yp: 26.09, tag: "Heretic Maggi" },
   { id: "entry_pit_atonement", xp: 52.66, yp: 22.22, tag: "Pit Atonement" },
   { id: "entry_map_room_rahn", xp: 53.03, yp: 17.11, tag: "Map Room Rahn" },
@@ -206,8 +217,8 @@ window.DUNGEON_LINKS = {
   "suffering_angish": ["entry_suffering_angish"],
   "corrupted_tomb": ["entry_corrupted_tomb"],
   "swarming_hive": ["entry_swarming_hive"],
-  "hannefy_mine": ["entry_hannefy_mine","entry_hannefy_mine2"],
-  "cronleys_hideout": ["entry_cronleys_hideout"],
+  "hannefy_mine": ["entry_hannefy_mine","entry_hannefy_mine2", "entry_hannefy_mine3"],
+  "cronleys_hideout": ["entry_cronleys_hideout", "entry_cronleys_hideout2"],
   "arkovian_undercity": ["entry_arkovian_undercity","entry_arkovian_undercity2"],
   "smuggler_pass": ["entry_smuggler_pass", "entry_smuggler_pass2"],
   "forgotten_depths": ["entry_forgotten_depths","entry_forgotten_depths2"],
@@ -216,7 +227,7 @@ window.DUNGEON_LINKS = {
 
 
   "mountain_deep": ["entry_mountain_deep","entry_mountain_deep2","entry_mountain_deep3"],
-  "tyrant_hold": ["entry_tyrant_hold"],
+  "tyrant_hold": ["entry_tyrant_hold", "entry_tyrant_hold2"],
   "royal_hive": ["entry_royal_hive","entry_royal_hive2","entry_royal_hive3","entry_royal_hive4"],
   "bastion_order": ["entry_bastion_order"],
   "kymons_sanctuary": ["entry_kymons_sanctuary"],
@@ -224,7 +235,7 @@ window.DUNGEON_LINKS = {
   "the_bonepit": ["entry_the_bonepit"],
   "fort_haron": ["entry_fort_haron"],
   "darkvale_gate": ["entry_darkvale_gate","entry_darkvale_gate2"],
-  "tomb_of_korvaak": ["entry_tomb_of_korvaak"],
+  "tomb_of_korvaak": ["entry_tomb_of_korvaak", "entry_tomb_of_korvaak2"],
   "tomb_of_the_damned": ["entry_tomb_of_the_damned"],
   "fort_ikon_prison": ["entry_fort_ikon_prison","entry_fort_ikon_prison2"],
   "fort_ikon_prison": ["entry_fort_ikon_prison","entry_fort_ikon_prison2"],
@@ -233,7 +244,7 @@ window.DUNGEON_LINKS = {
   "edge_of_reality": ["entry_edge_of_reality"],
   "black_sepulcher": ["entry_black_sepulcher"],
   "discord_anarchy": ["entry_discord_anarchy"],
-  "tom_of_the_watcher": ["entry_tom_of_the_watcher"],
+  "tom_of_the_watcher": ["entry_tom_of_the_watcher", "entry_tom_of_the_watcher2"],
   "entropy": ["entry_entropy"],
   "port_valbury_fondation": ["entry_port_valbury_fondation","entry_port_valbury_fondation2"],
   "altritch_karters": ["entry_altritch_karters"],
@@ -263,7 +274,7 @@ window.DUNGEON_LINKS = {
   "sanctuary_horan": ["entry_sanctuary_horan"],
   "edge_reality_korv": ["entry_edge_reality_korv"],
   "bloodied_waste": ["entry_bloodied_waste"],
-  "temple_athep": ["entry_temple_athep"],
+  "temple_athep": ["entry_temple_athep", "entry_temple_athep2"],
   "tomb_sethan": ["entry_tomb_sethan", "entry_tomb_sethan2"],
   "tomb_ariath": ["entry_tomb_ariath"],
   "tomb_nephos": ["entry_tomb_nephos","entry_tomb_nephos2","entry_tomb_nephos3"],
@@ -290,6 +301,37 @@ window.DUNGEON_ENTRY_MARKERS_BY_SIZE = {
 // =====================================================
 // TRAITS DONJON <-> ENTREES
 // =====================================================
+
+
+const EYE_LINK_STYLE = {
+  yellow: {
+    stroke: 'rgba(255,220,80,0.9)',
+    glow:   'drop-shadow(0 0 3px #ffd84a) drop-shadow(0 0 6px #ffd84aaa)',
+  },
+  green: {
+    stroke: 'rgba(33,216,207,0.8)',
+    glow:   'drop-shadow(0 0 3px #00ffb4) drop-shadow(0 0 6px #00ffb4aa)',
+  },
+  purple: {
+    stroke: 'rgba(190,120,255,0.85)',
+    glow:   'drop-shadow(0 0 3px #c28bff) drop-shadow(0 0 6px #c28bffaa)',
+  },
+  blue: {
+    stroke: 'rgba(100,190,255,0.85)',
+    glow:   'drop-shadow(0 0 3px #7fd3ff) drop-shadow(0 0 6px #7fd3ffaa)',
+  },
+  gray: {
+    stroke: 'rgba(200,200,200,0.75)',
+    glow:   'drop-shadow(0 0 2px #bbb) drop-shadow(0 0 4px #ffffff55)',
+  },
+  'gray-muted': {
+    stroke: 'rgba(170,170,170,0.55)',
+    glow:   'drop-shadow(0 0 1px #aaa)',
+  },
+};
+
+
+
 
 function ensureDungeonLinkLayer() {
   const inner = document.getElementById('mapInner');
@@ -483,12 +525,15 @@ function drawDungeonLinesForOverlay(overlayObj) {
     line.setAttribute('x2', edge.x);
     line.setAttribute('y2', edge.y);
 
-    // Style vert éther simple
-    line.setAttribute('stroke', 'rgba(33,216,207,0.8)');
+    // Style lié à la couleur de l'œil
+    const eyeColor = (entryObj.cfg.eyeColor || 'yellow').toLowerCase();
+    const style = EYE_LINK_STYLE[eyeColor] || EYE_LINK_STYLE.green;
+
+    line.setAttribute('stroke', style.stroke);
     line.setAttribute('stroke-width', '1');
     line.setAttribute('stroke-linecap', 'round');
-/*    line.setAttribute('stroke-dasharray', '2 6');*/
-    line.style.filter = 'drop-shadow(0 0 3px #00ffb4) drop-shadow(0 0 6px #00ffb4aa)';
+    /* line.setAttribute('stroke-dasharray', '2 6'); */
+    line.style.filter = style.glow;
 
     svg.appendChild(line);
   });
