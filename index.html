@@ -28,8 +28,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.46" />
-  <link rel="stylesheet" href="css/items.css?v1.43" />
+  <link rel="stylesheet" href="css/general.css?v1.47" />
+  <link rel="stylesheet" href="css/items.css?v1.44" />
   <link rel="stylesheet" href="css/responsive.css?v1.21" />
   <link rel="stylesheet" href="css/sidebar-toggle.css?v1.20" />
   
@@ -75,10 +75,6 @@
                         <img src="img/marker-pin.svg" width="17">
                         <span data-i18n="ui.NewMarkerTitle">New marker</span>
                       </h3>
-                        <label style="flex:0 0 auto" class="small done-input d-flex">
-                          <input id="newShared" type="checkbox" class="checkbox-green"/>
-                          <span data-i18n="ui.SharedMarker">Shared</span>
-                        </label>
                     </div>
                     <div class="row">
                       <input id="newLabel" type="text" data-i18n-placeholder="ui.MarkerNamePlaceholder" placeholder="Name / note" />
@@ -223,7 +219,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.5.26</span>
+        <span>V.5.30</span>
       </div>      
       <div class="title-banner">
         <div class="app-logo">
@@ -285,9 +281,6 @@
                 </button>
                 <button class="filterToggle" data-cat="NPC" data-i18n-title="ui.ShowHideNPC" title="Show NPC">
                   <img src="img/npc2.svg" alt="NPC">
-                </button>
-                <button class="filterToggle" data-shared="true" data-i18n-title="ui.ShowHideSharedMarker" title="Show shared markers">
-                  <img src="img/share-icon.svg" alt="Shared">
                 </button>
               </div>
               <!-- === END FILTER BAR === -->
@@ -355,7 +348,6 @@
       </div>
       <ul>
         <li data-i18n="ui.HelpLineMarker1">Select new marker and the categorie. Give a name to your marker and click in the map</li>
-        <li data-i18n="ui.HelpLineMarker2">If you select the shared box, your marker will be shared when you generate a shared link</li>
       </ul>
 
       <div class="help-section-title">
@@ -382,7 +374,6 @@
        </div>
         <ul>
           <li data-i18n="ui.HelpLineShare1">Click Share map to generate a shared link with your routes and markers</li>
-          <li data-i18n="ui.HelpLineShare2">Routes will be all shared, but only your markers with shared options checked will be shared</li>
           <li data-i18n="ui.HelpLineShare3">Share your journey and quest notes, and contribute to a richer community map.</li>
         </ul>
 
@@ -505,11 +496,12 @@
 
           <label style="flex:0 0 auto" class="small list-input done-input">
             <input data-done type="checkbox" class="checkbox-green" /> <img class="show-collapsed" data-i18n-title="ui.Done" title="done" src="img/done-icon.svg" width="14"> <span class="hide-collapsed" data-i18n="ui.Done">Done</span>
-          </label>
-          <label style="flex:0 0 auto" class="small list-input shared-input">
-            <input data-shared type="checkbox" class="checkbox-green" />
-            <span class="hide-collapsed" data-i18n="ui.SharedMarker">Shared</span> <img class="show-collapsed" src="img/share-icon.svg" data-i18n-title="ui.SharedMarker" title="share" width="14">
-          </label>         
+          </label> 
+
+            <button data-link class="link-for-marker small" data-i18n-title="ui.linkMarker" title="Link your marker">
+              <img src="img/link.svg" width="16" alt="Link">
+            </button>
+
           <button data-delete class="danger" data-i18n-title="ui.DeleteButton" title="Delete">
             <img src="img/bin-icon.svg" width="14" >
           </button>
@@ -632,7 +624,7 @@
 <!--END MULTI CHARACTER MODAL ------------------------------------------------------->
 
 
-  <script src="js/ui.lang.js?v=3.59"></script>
+  <script src="js/ui.lang.js?v=3.60"></script>
   <script src="js/core.js?v=3.10"></script>
   <script src="js/ui.rift.js?v=3.93"></script>
   <script src="js/ui.region.js?v=4.10"></script>
@@ -643,21 +635,21 @@
   <script src="js/ui.map.base.js?v=1.26"></script>
   <script src="js/ui.map.minimap.js?v=1.13"></script>
 
-  <script src="js/ui.markers.js?v=19"></script>
-  <script src="js/ui.routes.js?v=1.18"></script>
+  <script src="js/ui.markers.js?v=20"></script>
+  <script src="js/ui.routes.js?v=1.19"></script>
 
   <script src="js/ui.core.js?v=3.77"></script>
 
   <script src="js/ui.map.notes.js?v=1.00"></script>
 
-  <script src="js/ui.map.render.js?v=1.76"></script>
-  <script src="js/ui.share.js?v=1.06"></script>
+  <script src="js/ui.map.render.js?v=1.77"></script>
+  <script src="js/ui.share.js?v=1.07"></script>
 
   <script src="libs/pako.min.js"></script>
-  <script src="js/ui.tools.js?v=2.98"></script>
+  <script src="js/ui.tools.js?v=2.99"></script>
   <script src="js/ui.overlay.js?v=3.25"></script>
   <script src="js/ui.dungeon.links.js?v=1.21"></script>
-  <script src="js/ui.filter.js?v=3.00"></script>
+  <script src="js/ui.filter.js?v=3.01"></script>
   <script src="js/ui.search.js?v=1.21"></script>
 
   <script src="js/characterManager.js?v=1.05"></script>

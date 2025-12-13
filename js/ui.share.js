@@ -148,22 +148,16 @@
         label: m.l || '',
         cat: m.k || 'General',
         color: m.c || '#78f1c2',
-        shared: true,
       }));
+
     }
     // --- Ancien format (routes / markers en clair) ---
     else if (Array.isArray(data.routes) || Array.isArray(data.markers)) {
       const incomingRoutes = Array.isArray(data.routes) ? data.routes : [];
-      routes = incomingRoutes.map(r => {
-        if (!r || typeof r !== 'object') return r;
-        return { ...r, shared: true };
-      });
+        routes = incomingRoutes.map(r => r);
 
       const incomingMarkers = Array.isArray(data.markers) ? data.markers : [];
-      markers = incomingMarkers.map(m => {
-        if (!m || typeof m !== 'object') return m;
-        return { ...m, shared: true };
-      });
+        markers = incomingMarkers.map(m => m);
       } else {
       // rien d'exploitable
       return;
@@ -311,5 +305,83 @@
   window.UiShare = {
     loadSharedFromUrl,
   };
+
+
+  // ============================================================
+  // Share helper (used by "Share map" and per-item "Link" buttons)
+  // ============================================================
+  async function createLink(payload) {
+    const ADVANCED_COMPRESSION = !!window.ADVANCED_COMPRESSION;
+
+    const round = (v) => Math.round((v || 0) * 10) / 10;
+
+    // Normalise un peu (au cas où)
+    const safePayload = {
+      v: payload?.v || '3',
+      map: payload?.map || state.active,
+      r: Array.isArray(payload?.r) ? payload.r : [],
+      m: Array.isArray(payload?.m) ? payload.m : [],
+      notes: payload?.notes ?? null,
+    };
+
+    // --- Compression fallback ?share= ---
+    let compressed;
+    try {
+      const json = JSON.stringify(safePayload);
+
+      if (ADVANCED_COMPRESSION && window.pako) {
+        const gzipped = pako.deflate(json, { level: 9 });
+        const b64 = btoa(String.fromCharCode.apply(null, gzipped));
+        compressed = encodeURIComponent(b64);
+      } else if (window.LZString && LZString.compressToEncodedURIComponent) {
+        compressed = LZString.compressToEncodedURIComponent(json);
+      } else {
+        compressed = btoa(json);
+      }
+    } catch (e) {
+      console.error('[GDMM] compression failed', e);
+      if (window.showToast) showToast('Compression error ❌', 'error');
+      return null;
+    }
+
+    // --- 1) Worker short link ---
+    let finalUrl = null;
+    try {
+      if (SHARE_WORKER_BASE) {
+        const res = await fetch(`${SHARE_WORKER_BASE}/create`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: safePayload }),
+        });
+
+        const out = await res.json();
+        if (out && out.ok && out.id) {
+          finalUrl = `${location.origin}${location.pathname}?s=${encodeURIComponent(out.id)}`;
+        }
+      }
+    } catch (e) {
+      console.warn('[GDMM] share via Worker failed, falling back to ?share=', e);
+    }
+
+    // --- 2) Legacy fallback ---
+    if (!finalUrl) {
+      finalUrl = `${location.origin}${location.pathname}?share=${compressed}`;
+    }
+
+    // --- Copy only (UI feedback handled by caller) ---
+    try {
+      await navigator.clipboard.writeText(finalUrl);
+    } catch (e) {
+      console.warn('[GDMM] Clipboard API failed, using prompt fallback', e);
+      window.prompt('Share this link:', finalUrl);
+    }
+
+    return finalUrl;
+  }
+
+  window.GDMMShare = window.GDMMShare || {};
+  window.GDMMShare.createLink = createLink;
+
+
 
 })();

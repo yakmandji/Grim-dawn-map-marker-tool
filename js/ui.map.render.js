@@ -174,7 +174,6 @@
                 el.dataset.done = '0';
               }
               if (m.cat) el.classList.add(m.cat.toLowerCase());
-              if (m.shared) el.classList.add('shared');
               el.dataset.mid = m.id;
 
               // --- PIN ---
@@ -192,24 +191,14 @@
               pin.appendChild(bg);
               el.appendChild(pin);
 
-              // Shared Badge
-              if (m.shared) {
-                const sharedBadge = document.createElement('img');
-                sharedBadge.className = 'shared-badge';
-                sharedBadge.src = 'img/share-icon.svg';
-                sharedBadge.alt = (window.GDMMLang && GDMMLang.t)
-                  ? GDMMLang.t('ui.SharedMarker')
-                  : 'Shared';
-                pin.appendChild(sharedBadge);
-              }
-
               // --- LABEL ---
               const lab = document.createElement('div');
               lab.className = 'label';
 
-              const p = document.createElement('p');
-              p.textContent = m.label || '(no name)'; 
-              lab.appendChild(p);
+              const labelP = document.createElement('p');
+              labelP.textContent = m.label || '(no name)';
+              lab.appendChild(labelP);
+
 
               el.appendChild(lab);
               // position initiale

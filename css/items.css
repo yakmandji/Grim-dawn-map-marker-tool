@@ -257,7 +257,10 @@ button.cancel{
 }
 
 #routesPanel button.danger,
-#list button.danger{
+#list button.danger,
+#list button.danger,
+button.link-for-marker
+{
   max-width: 32px;
 }
 
@@ -397,7 +400,9 @@ input[type="password"]:focus
 }
 
 button.marker-center,
- button.marker-save{
+button.link-for-marker,
+button.link-for-route,
+button.marker-save{
   padding: 6px 7px 6px 7px;
   border: none;
   color: #78f1c2;

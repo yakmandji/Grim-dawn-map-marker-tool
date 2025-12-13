@@ -470,6 +470,7 @@ body.shared-only-view #list button.danger,
 body.shared-only-view .lock-label,
 body.shared-only-view #routesList button.danger ,
 body.shared-only-view #noteList .note-delete-btn,
+body.shared-only-view .link-for-marker,
 body.shared-only-view .header-actions
  {
   display: none;

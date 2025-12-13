@@ -7,7 +7,6 @@
   function applyCategoryFilters() {
 
     const catButtons = document.querySelectorAll('.filterToggle[data-cat]');
-    const sharedBtn  = document.querySelector('.filterToggle[data-shared]');
     const allBtn     = document.querySelector('.filterToggle[data-all]');
 
     const activeCategoryBtn = [...catButtons].find(btn =>
@@ -18,44 +17,7 @@
       ? activeCategoryBtn.getAttribute('data-cat').toLowerCase()
       : null;
 
-    const sharedActive = sharedBtn && sharedBtn.classList.contains('is-on');
     const allActive    = allBtn && allBtn.classList.contains('is-on');
-
-    /************************************************************
-     * 1) MODE EXCLUSIF SHARED
-     ************************************************************/
-    if (sharedActive) {
-
-      // MAP
-      document.querySelectorAll('.marker').forEach(el => {
-        const cl = el.classList;
-
-        // Catégorie user (general / quest / boss / loot / waypoint / donjon / npc)
-        // → même logique que plus bas dans "MODE CATEGORIE EXCLUSIVE"
-        const markerCat = [...cl].find(c =>
-          ['general','quest','boss','loot','waypoint','donjon','npc'].includes(c)
-        );
-
-        // Pas de catégorie = marker admin (rift, etc.) → toujours visible
-        if (!markerCat) {
-          el.style.display = "";
-          return;
-        }
-
-        // Filtre "Shared only" appliqué UNIQUEMENT aux user markers
-        const isDone   = el.dataset.done === "1";
-        const isShared = cl.contains('shared');
-        el.style.display = (isShared || isDone) ? "" : "none";
-      });
-
-      // LISTE → uniquement les markers user, donc on garde la logique simple
-      document.querySelectorAll('#list .listItem').forEach(el => {
-        const isShared = el.classList.contains('shared');
-        el.style.display = isShared ? "" : "none";
-      });
-
-      return;
-    }
 
 
     /************************************************************
@@ -130,7 +92,6 @@
       if (!p || !Array.isArray(p.markers)) return;
 
       const counts = {};
-      let sharedCount = 0;
 
       for (const m of p.markers) {
         // On ne compte que les marqueurs NON terminés pour les filtres
@@ -138,7 +99,6 @@
 
         const cat = m.cat || 'General';
         counts[cat] = (counts[cat] || 0) + 1;
-        if (m.shared) sharedCount++;
       }
 
       // --- MAJ des compteurs + visibilité des onglets de catégorie ---
@@ -176,36 +136,6 @@
         }
       });
 
-      // --- MAJ du compteur / visibilité pour SHARED ---
-      const sharedBtn = document.querySelector('.filterToggle[data-shared]');
-      if (sharedBtn) {
-        let badge = sharedBtn.querySelector('.filterCount');
-        if (!badge) {
-          badge = document.createElement('span');
-          badge.className = 'filterCount';
-          sharedBtn.appendChild(badge);
-        }
-
-        if (sharedCount > 0) {
-          badge.textContent = sharedCount;
-          badge.style.display = '';
-          sharedBtn.style.display = '';
-        } else {
-          badge.textContent = '';
-          badge.style.display = 'none';
-
-          if (sharedBtn.classList.contains('is-on')) {
-            sharedBtn.classList.remove('is-on');
-            const allBtn = document.querySelector('.filterToggle[data-all]');
-            if (allBtn) {
-              allBtn.classList.add('is-on');
-            }
-          }
-
-          sharedBtn.style.display = 'none';
-        }
-      }
-
       // On ré-applique les filtres au cas où on vient de changer l’onglet actif
       applyCategoryFilters();
     }
@@ -221,9 +151,6 @@
 
       // All ON
       btn.classList.add('is-on');
-
-      // Shared OFF
-      document.querySelector('.filterToggle[data-shared]')?.classList.remove('is-on');
 
       // Toutes les catégories OFF
       document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
@@ -241,9 +168,6 @@
       // All OFF
       document.querySelector('.filterToggle[data-all]')?.classList.remove('is-on');
 
-      // Shared OFF
-      document.querySelector('.filterToggle[data-shared]')?.classList.remove('is-on');
-
       // Ce bouton ON
       btn.classList.add('is-on');
 
@@ -251,26 +175,6 @@
       document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
         if (catBtn !== btn) catBtn.classList.remove('is-on');
       });
-
-      applyCategoryFilters();
-    });
-  });
-
-
-  /*** SHARED EXCLUSIF *****************************************/
-  document.querySelectorAll('.filterToggle[data-shared]').forEach(btn => {
-    btn.addEventListener('click', () => {
-
-      // All OFF
-      document.querySelector('.filterToggle[data-all]')?.classList.remove('is-on');
-
-      // Catégories OFF
-      document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
-        catBtn.classList.remove('is-on');
-      });
-
-      // Shared ON
-      btn.classList.add('is-on');
 
       applyCategoryFilters();
     });

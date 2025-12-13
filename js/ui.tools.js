@@ -371,8 +371,9 @@ const shareBtn = document.getElementById('shareRoutesBtn');
     if (!prof) return;
 
     const allMarkers = Array.isArray(prof.markers) ? prof.markers : [];
-    const sharedMarkers = allMarkers.filter(m => m && m.shared);
+    const markersToShare = allMarkers.filter(Boolean);
     const hasRoutes = Array.isArray(prof.paths) && prof.paths.length > 0;
+
 
     // --- Notes de région pour cette map (si helper dispo) ---
     let sharedNotes = null;
@@ -386,7 +387,7 @@ const shareBtn = document.getElementById('shareRoutesBtn');
     }
 
     // Rien à partager : ni routes, ni markers partagés, ni notes
-    if (!hasRoutes && sharedMarkers.length === 0 && !hasSharedNotes) {
+    if (!hasRoutes && markersToShare.length === 0 && !hasSharedNotes) {
       showToast(
         GDMMLang.t('toast.NothingToShare') || 'Nothing to share',
         'warning',
@@ -407,7 +408,7 @@ const shareBtn = document.getElementById('shareRoutesBtn');
       pts: (p.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
     }));
 
-    const compactMarkers = sharedMarkers.map(m => ({
+    const compactMarkers = markersToShare.map(m => ({
       i: m.id,
       x: round(m.xp),
       y: round(m.yp),
@@ -415,7 +416,6 @@ const shareBtn = document.getElementById('shareRoutesBtn');
       k: m.cat || 'General',
       c: m.color || '#78f1c2',
     }));
-
 
     // --- Notes de région pour cette map (si helper dispo) ---
     const payload = {
@@ -604,9 +604,6 @@ if (mergeBtn) {
     const incomingMarkers = Array.isArray(sharedProf.markers) ? sharedProf.markers : [];
     const incomingPaths   = Array.isArray(sharedProf.paths)   ? sharedProf.paths   : [];
 
-     // Only shared marker
-    const sharedIncomingMarkers = incomingMarkers.filter(m => m && m.shared);
-
     // 4) Sets of existing IDs
     const existingMarkerIds = new Set(
       (target.markers || []).map(m => m.id).filter(Boolean)
@@ -615,8 +612,8 @@ if (mergeBtn) {
       (target.paths || []).map(p => p.id).filter(Boolean)
     );
 
-    const newMarkers = sharedIncomingMarkers.filter(
-      m => m.id && !existingMarkerIds.has(m.id)
+    const newMarkers = incomingMarkers.filter(
+      m => m && m.id && !existingMarkerIds.has(m.id)
     );
 
     const newPaths   = incomingPaths.filter(

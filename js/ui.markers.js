@@ -20,15 +20,12 @@ const { $, inner } = window.UiCore;
     const label = $('#newLabel').value.trim();
     const cat   = $('#newCategory').value;
     const done  = false;
-    const sharedCheckbox = document.getElementById('newShared');
-    const shared = sharedCheckbox ? !!sharedCheckbox.checked : false;
 
-    const marker = coreAddMarker({ xp, yp, label, cat, done, shared });
+    const marker = coreAddMarker({ xp, yp, label, cat, done });
 
 
     // === UX : avertir si le marker créé est caché par un filtre actif ===
     const activeCatBtn = document.querySelector('.filterToggle.is-on[data-cat]');
-    const sharedBtn    = document.querySelector('.filterToggle.is-on[data-shared]');
 
     // Déterminer si le marker sera invisible
     let hidden = false;
@@ -39,23 +36,16 @@ const { $, inner } = window.UiCore;
       if (cat !== activeCat) hidden = true;
     }
 
-    // Cas 2 : onglet shared actif
-    if (sharedBtn && !shared) {
-      hidden = true;
-    }
-
     if (hidden) {
       const allBtn       = document.querySelector('.filterToggle[data-all]');
-      const sharedBtn    = document.querySelector('.filterToggle[data-shared]');
       const catButtons   = document.querySelectorAll('.filterToggle[data-cat]');
       const targetCatBtn = document.querySelector(`.filterToggle[data-cat="${cat}"]`);
 
       let filtersChanged = false;
 
       if (targetCatBtn) {
-        // 1) On désactive "All" et "Shared"
+        // 1) On désactive "All"
         allBtn?.classList.remove('is-on');
-        sharedBtn?.classList.remove('is-on');
 
         // 2) On active uniquement la catégorie du marker
         catButtons.forEach(btn => {
@@ -76,10 +66,6 @@ const { $, inner } = window.UiCore;
 
     if (marker) {
       state.lastCreatedMarkerId = marker.id;
-    }
-
-    if (sharedCheckbox && shared) {
-      sharedCheckbox.checked = false;
     }
 
     $('#newLabel').value = '';
@@ -180,9 +166,6 @@ const { $, inner } = window.UiCore;
         if (m.cat) {
           el.classList.add(m.cat.toLowerCase());
         }
-        if (m.shared) {
-          el.classList.add('shared');
-        }
 
         // label
         const label = el.querySelector('[data-label]');
@@ -211,58 +194,6 @@ const { $, inner } = window.UiCore;
           updateMarkerFromUI(m.id, { cat: v }, true);
         };
 
-          // shared
-          const sharedInput = el.querySelector('[data-shared]');
-          if (sharedInput) {
-            sharedInput.checked = !!m.shared;
-            sharedInput.onchange = (e) => {
-              const isShared = !!e.target.checked;
-
-              // 1) MAJ des données
-              coreUpdateMarker(m.id, { shared: isShared });
-              markAsChanged();
-              saveUserDataToLocal();
-
-              // 2) MAJ de la ligne dans la liste
-              el.classList.toggle('shared', isShared);
-
-              // 3) MAJ du marker sur la map (classe + badge)
-              const markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
-              if (markerEl) {
-                markerEl.classList.toggle('shared', isShared);
-
-                const pin = markerEl.querySelector('.pin');
-                if (pin) {
-                  let badge = pin.querySelector('.shared-badge');
-
-                  if (isShared) {
-                    if (!badge) {
-                      badge = document.createElement('img');
-                      badge.className = 'shared-badge';
-                      badge.src = 'img/share-icon.svg';
-                      badge.alt = (window.GDMMLang && GDMMLang.t)
-                        ? GDMMLang.t('ui.SharedMarker')
-                        : 'Shared';
-                      pin.appendChild(badge);
-                    }
-                  } else if (badge) {
-                    badge.remove();
-                  }
-                }
-              }
-
-              // 4) MAJ des compteurs / filtres (sans re-render massif)
-              if (window.UiFilters) {
-                if (typeof UiFilters.updateFilterCounts === 'function') {
-                  UiFilters.updateFilterCounts();
-                }
-                if (typeof UiFilters.applyCategoryFilters === 'function') {
-                  UiFilters.applyCategoryFilters();
-                }
-              }
-            };
-          }
-
         // done
         const done = el.querySelector('[data-done]');
         done.checked = !!m.done;
@@ -271,11 +202,6 @@ const { $, inner } = window.UiCore;
           const isDone = !!e.target.checked;
 
           if (isDone) {
-            const sharedInput = el.querySelector('[data-shared]');
-            if (sharedInput) {
-              sharedInput.checked = false;
-            }
-
             if (hideDoneOnMap) {
               hideDoneOnMap = false;
               const panel = $('#donePanel');
@@ -287,7 +213,7 @@ const { $, inner } = window.UiCore;
             el.classList.add('fade-out');
 
             setTimeout(() => {
-              updateMarkerFromUI(m.id, { done: true, shared: false }, true);
+              updateMarkerFromUI(m.id, { done: true, }, true);
             }, 180);
           } else {
             updateMarkerFromUI(m.id, { done: false }, true);
@@ -296,6 +222,48 @@ const { $, inner } = window.UiCore;
 
         el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
         el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
+
+
+        const linkBtn = el.querySelector('[data-link]');
+        if (linkBtn) {
+          linkBtn.onclick = async () => {
+            if (!window.GDMMShare?.createLink) {
+              if (typeof showToast === 'function') {
+                showToast('Share system not ready ❌', 'error', 3500);
+              }
+              return;
+            }
+
+            const round = (v) => Math.round((v || 0) * 10) / 10;
+
+            const payload = {
+              v: '3',
+              map: state.active,
+              r: [],
+              m: [{
+                i: m.id,
+                x: round(m.xp),
+                y: round(m.yp),
+                l: m.label || '',
+                k: m.cat || 'General',
+                c: m.color || '#78f1c2',
+              }],
+              notes: null,
+            };
+
+            const url = await window.GDMMShare.createLink(payload);
+            
+            if (typeof showToast === 'function') {
+              const msg =
+                (window.GDMMLang?.t && GDMMLang.t('toast.ShareUrlCopied')) ||
+                'Link copied ✅';
+              showToast(msg, 'success', 3800);
+            }
+
+          };
+        }
+
+
 
         host.appendChild(el);
         initMarkerCategoryDropdown(el);

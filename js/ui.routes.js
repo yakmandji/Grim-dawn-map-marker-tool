@@ -375,6 +375,52 @@
       centerBtn.addEventListener('click', () => centerRouteOnMap(path));
       row.appendChild(centerBtn);
 
+      // --- Bouton Link (share only this route) ---
+      const linkBtn = document.createElement('button');
+      linkBtn.type = 'button';
+      linkBtn.className = 'link-for-route small';
+      linkBtn.setAttribute('data-i18n-title', 'ui.linkRoute');
+      linkBtn.title =
+        (window.GDMMLang?.t && GDMMLang.t('ui.linkRoute')) || 'Link';
+      linkBtn.innerHTML = '<img src="img/link.svg" width="16" alt="Link">';
+
+      linkBtn.addEventListener('click', async () => {
+        if (!window.GDMMShare?.createLink) return;
+
+        const round = v => Math.round((v || 0) * 10) / 10;
+
+        const compactRoute = {
+          i: path.id,
+          n: path.name || '',
+          c: path.color || '#ffcc00',
+          w: path.width || 4,
+          o: typeof path.opacity === 'number' ? path.opacity : 0.85,
+          pts: (path.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
+        };
+
+        const payload = {
+          v: '3',
+          map: state.active,
+          r: [compactRoute],
+          m: [],
+          notes: null,
+        };
+
+        await window.GDMMShare.createLink(payload);
+
+        // toast (comme marker)
+        if (typeof showToast === 'function') {
+          const msg =
+            (window.GDMMLang?.t && GDMMLang.t('toast.ShareUrlCopied')) ||
+            'Link copied ✅';
+          showToast(msg, 'success', 3800);
+        }
+      });
+
+      row.appendChild(linkBtn);
+
+
+
       // --- Bouton Delete ---
       const deleteBtn = document.createElement('button');
       deleteBtn.type = 'button';
