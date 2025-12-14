@@ -46,6 +46,10 @@ textarea {
   gap: 6px;
 }
 
+.text-center{
+  text-align: center;
+}
+
 .title{
   font-family: var(--font-title);
   letter-spacing: 0.03em;
@@ -391,7 +395,6 @@ header .sep {
     text-decoration: none;
     border-bottom: 1px dotted #765d39;
     padding-bottom: 2px;
-    display: block;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;

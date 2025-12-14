@@ -14,6 +14,20 @@
   font-size: 14px;
 }
 
+.gd-hr{
+  border: 0;
+  height: 1px;
+  margin: 20px 0;
+  opacity: 0.9;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--border-color) 75%, transparent) 18%,
+    color-mix(in srgb, var(--titlecolor) 70%, white 10%) 50%,
+    color-mix(in srgb, var(--border-color) 75%, transparent) 82%,
+    transparent 
+  );
+}
 
 .search-info {
   font-size: 11px;
@@ -35,6 +49,12 @@
 .helpPopup ul li {
     padding-bottom: 2px;
     font-size: 13px;
+}
+
+.helpPopup a.button{
+  margin: auto;
+  display: block;
+  width: fit-content;
 }
 
 /* --- Dropdown custom --- */
@@ -158,7 +178,7 @@
   display: none;
 }
 
-button, select, .chip {
+button, select, .chip, a.button {
   background: linear-gradient(145deg, #17363b, #1b4447);
   color: #ced3ec;
   border: none;
@@ -166,6 +186,16 @@ button, select, .chip {
   cursor: pointer;
   font-weight: 500;
   font-size: 12px;
+}
+
+a.button{
+  padding: 10px 24px;
+  text-decoration: none;
+  color: var(--txt);
+}
+
+a.button:hover{
+  background: linear-gradient(145deg, #1d444b, #1e5458);
 }
 
 input::placeholder,
