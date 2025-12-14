@@ -1085,13 +1085,56 @@ if (newPathBtn) {
 
   // --- Init on load ---
     (async () => {
+
       // 1) Crée la structure de base pour chaque map connue
       Object.keys(MAP_SOURCES).forEach((name) => {
         ensureProfile(name);
       });
 
-      // 2) Charge les données utilisateur (markers, routes…)
-      loadUserDataFromLocal();
+
+        loadUserDataFromLocal();
+
+        const params = new URLSearchParams(location.search);
+        const isSharedBoot = params.has('s') || params.has('share');
+
+        if (isSharedBoot) {
+          showLoader(GDMMLang.t('toast.LoadingMap'));
+
+          // attendre UiShare (car ui.share.js est chargé après ui.core.js)
+          const waitUiShare = () => new Promise((resolve, reject) => {
+            const t0 = Date.now();
+            const timer = setInterval(() => {
+              if (window.UiShare && typeof UiShare.loadSharedFromUrl === 'function') {
+                clearInterval(timer);
+                resolve();
+              } else if (Date.now() - t0 > 4000) {
+                clearInterval(timer);
+                reject(new Error('UiShare not ready'));
+              }
+            }, 20);
+          });
+
+          try {
+            await waitUiShare();
+            await UiShare.loadSharedFromUrl();
+          } catch (e) {
+            console.warn('[GDMM] shared boot failed:', e);
+            hideLoader(); // évite loader infini si ça foire
+          }
+
+          // RENDU UI (comme un boot normal)
+          refreshProfilesUI();
+          renderList();
+          renderMarkers();
+          renderRoutesPanel();
+          initDonePanelToggle();
+
+          // UI / lock
+          state.locked = true;
+          applyLockUI();
+
+          return;
+        }
 
       // 3) Choix du profil initial
       const mapNames = Object.keys(MAP_SOURCES);
@@ -1141,10 +1184,6 @@ if (newPathBtn) {
       state.locked = true;
       applyLockUI();
 
-      // routes partagées via ?share= (module UiShare)
-      if (window.UiShare && typeof UiShare.loadSharedFromUrl === 'function') {
-        UiShare.loadSharedFromUrl();
-      }
     })();
 
 

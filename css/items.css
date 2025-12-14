@@ -258,8 +258,6 @@ button.cancel{
 
 #routesPanel button.danger,
 #list button.danger,
-#list button.danger,
-button.link-for-marker
 {
   max-width: 32px;
 }
@@ -408,9 +406,15 @@ button.marker-save{
   color: #78f1c2;
   font-size: 16px;
   cursor: pointer;
-  max-width: 48px;
+  max-width: 30px;
+  min-width: 27px;
   display: flex;
   justify-content: center;  
+}
+
+#list button.danger{
+  max-width: 32px;
+  min-width: 32px;
 }
 
 /* Highlight pulse ring */
@@ -471,11 +475,6 @@ button.marker-save{
     transform: scale(1.3);
     opacity: 0;
   }
-}
-
-.listItem input[type="text"]{
-  width: 100vh;
-  font-size: 13px;
 }
 
 #list .listItem.highlight,

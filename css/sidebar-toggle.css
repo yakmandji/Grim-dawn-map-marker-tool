@@ -74,13 +74,16 @@ body.sidebar-collapsed .js-character-dropdown .select-current .char-avatar-curre
 
 body.sidebar-collapsed .section:not(.tool-section) button.marker-center, 
 body.sidebar-collapsed .section:not(.tool-section) button.marker-save,
+body.sidebar-collapsed .link-for-marker,
 body.sidebar-collapsed .section:not(.tool-section) button.danger{
 	padding: 4px 5px 4px 5px;
 	max-width: 23px!important;
+	min-width: inherit !important;
 }
 
 body.sidebar-collapsed button.marker-center img, 
 body.sidebar-collapsed button.marker-save img,
+body.sidebar-collapsed .link-for-marker img,
 body.sidebar-collapsed button.danger img{
 	width: 12px;
 }
@@ -98,6 +101,14 @@ body.sidebar-collapsed #list{
     max-height: 375px;
 }
 
+body.sidebar-collapsed #list .row.d-flex{
+	align-items: baseline;
+}
+
+body.sidebar-collapsed #list .left{
+	min-width: 94px;
+}
+
 body.sidebar-collapsed #list .list-input{
 	padding: 1px 1px 0px 1px;
 }
@@ -106,6 +117,10 @@ body.sidebar-collapsed #routesPanel,
 body.sidebar-collapsed #notePanel{
 	max-height: 290px !important;
 	min-height: inherit !important;
+}
+
+#notePanel #noteList{
+	min-width: 100%;
 }
 
 body.sidebar-collapsed #routesList,
@@ -150,9 +165,8 @@ body.sidebar-collapsed .sidebar .section.light .filterToggle{
     max-width: 27px;
 }
 
-body.sidebar-collapsed .listItem input{
-	max-width: 102px;
-	font-size: 11px;
+body.sidebar-collapsed .listItem input[type="text"]{
+	min-width: 100%;
 }
 
 body.sidebar-collapsed #routesList .listItem input{

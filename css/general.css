@@ -282,8 +282,16 @@ header .sep {
   border-bottom: none; 
 }
 
-#list .listItem div .row:nth-child(2){
-  align-items: flex-start;
+#list .right{
+    justify-content: center;
+}
+
+#list .left{
+  min-width: 290px;
+}
+
+#list .left input[type="text"]{
+  width: 100%;
 }
 
 .modal{
@@ -502,12 +510,10 @@ body.shared-only-view #profileDropdown button
 }
 
 /* Mais on laisse la map et les contrôles de zoom fonctionnels */
-body.shared-only-view .mapWrap,
-body.shared-only-view #zoomControls,
-body.shared-only-view #cursorReadout
+body.shared-only-view .mapWrap
  {
   pointer-events: auto;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* Hide normal mode */

@@ -104,7 +104,7 @@
       return;
     }
 
-  if (!data) return;
+    if (!data) return;
 
       let routes  = [];
       let markers = [];
@@ -247,19 +247,27 @@
 
     // Si la map (originale ou pas) a déjà un embed / sessionSrc, on le réutilise
     if (p.map && p.map.embedData) {
-      if (window.showLoader) {
-        showLoader(GDMMLang.t('toast.LoadingMap'));
-      }
-      if (typeof window.setMapSrc === 'function') {
-        setMapSrc(p.map.embedData);
-      }
+        const ui = window.UiCore || {};
+        if (typeof ui.showLoader === 'function') {
+          ui.showLoader(GDMMLang.t('toast.LoadingMap'));
+        }
+        if (typeof ui.setMapSrc === 'function') {
+          ui.setMapSrc(p.map.embedData);
+        } else if (typeof ui.hideLoader === 'function') {
+          ui.hideLoader();
+        }
+
     } else if (p.map && p.map.sessionSrc) {
-      if (window.showLoader) {
-        showLoader(GDMMLang.t('toast.LoadingMap'));
-      }
-      if (typeof window.setMapSrc === 'function') {
-        setMapSrc(p.map.sessionSrc);
-      }
+        const ui = window.UiCore || {};
+        if (typeof ui.showLoader === 'function') {
+          ui.showLoader(GDMMLang.t('toast.LoadingMap'));
+        }
+        if (typeof ui.setMapSrc === 'function') {
+          ui.setMapSrc(p.map.sessionSrc);
+        } else if (typeof ui.hideLoader === 'function') {
+          ui.hideLoader();
+        }
+        
     }
 
     // --- Fallback de centrage au cas où _gdmmPendingNavCenter ne serait pas consommé ---
