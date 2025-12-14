@@ -524,6 +524,45 @@ button.marker-save{
   padding: 4px 5px 5px 5px;
 }
 
+#list .marker-cat-badge{
+    background: #0c4d44;
+    max-width: min-content;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+#list .marker-cat-badge.loot{
+    background: #453c12;
+    color: #a6ab70;
+}
+
+#list .marker-cat-badge.boss{
+    background: #480e0e;
+    color: #dd9e9e;
+}
+
+#list .marker-cat-badge.quest{
+    background: #412250;
+    color: #d0b4de;
+}
+
+#list .marker-cat-badge.waypoint{
+    background: #153e60;
+    color: #75b4a4;
+}
+
+#list .marker-cat-badge.donjon{
+    background: #383838;
+    color: #cfcfcf;
+}
+
+#list .marker-cat-badge.npc{
+    background: #543a19;
+    color: #e5d0bc;
+}
+
 @keyframes highlightPulse {
   0% {
     box-shadow: 0 0 0px 0 rgba(26, 98, 74, 0);

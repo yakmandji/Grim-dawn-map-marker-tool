@@ -27,10 +27,6 @@ body.sidebar-collapsed header{
 	width: calc(100% - var(--sidebar-width) - 33px);
 }
 
-body.sidebar-collapsed .listItem div .row:last-child{
-	margin-top: 0!important;
-}
-
 body.sidebar-collapsed .listItem div > .row{
 	justify-content: space-between;
 }
@@ -114,6 +110,10 @@ body.sidebar-collapsed #list .list-input{
 
 body.sidebar-collapsed #list .marker-cat-badge span{
 	display: none;
+}
+
+body.sidebar-collapsed #list .marker-cat-badge{
+	padding: 2px 5px;
 }
 
 body.sidebar-collapsed #list .right{

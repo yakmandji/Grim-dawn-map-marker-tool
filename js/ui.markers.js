@@ -15,12 +15,12 @@ const {
 // Icônes par catégorie (utilisé en read-only dans la liste)
 const CATEGORY_ICONS = {
   General:  'img/waypoint.svg',
-  Quest:    'img/quest.svg',
-  Boss:     'img/boss.svg',
-  Loot:     'img/loot.svg',
+  Quest:    'img/quest2.svg',
+  Boss:     'img/boss2.svg',
+  Loot:     'img/loot2.svg',
   Waypoint: 'img/passage.svg',
-  Donjon:   'img/donjon.svg',
-  NPC:      'img/npc.svg',
+  Donjon:   'img/donjon2.svg',
+  NPC:      'img/npc2.svg',
 };
 
 // Clé i18n par catégorie (pour le label read-only)
