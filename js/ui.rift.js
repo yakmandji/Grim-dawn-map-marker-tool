@@ -91,6 +91,7 @@ window.RIFT_LABELS = {
     "tagRiftDeadmansGulch": "Deadman's Gulch Rift",
     "tagRiftHomestead": "Homestead Rift",
     "tagRiftRottedCroplands": "Rotting Croplands Rift",
+    "tagRiftSorrowsBastion": "Sorrow's Bastion Rift",
     "tagRiftBloodGrove": "Blood Grove Rift",
     "tagRiftDarkvale": "Darkvale Gate Rift",
     "tagRiftAlpineGate": "Asterkarn Mountains Rift",
