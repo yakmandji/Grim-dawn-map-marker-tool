@@ -222,6 +222,7 @@ const { $, inner } = window.UiCore;
         const catIcon = el.querySelector('.marker-cat-icon');
         if (catIcon) {
           catIcon.src = CATEGORY_ICONS[cat] || CATEGORY_ICONS.General;
+          catIcon.title = catLabel.textContent;
         }
 
         label.addEventListener('blur', (e) => {

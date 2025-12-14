@@ -1,5 +1,5 @@
 body.sidebar-collapsed{
-	--sidebar-width: 220px;
+	--sidebar-width: 240px;
 }
 
 body.sidebar-collapsed #version{
@@ -102,6 +102,10 @@ body.sidebar-collapsed #list .row.d-flex{
 
 body.sidebar-collapsed #list .left{
 	min-width: 94px;
+}
+
+body.sidebar-collapsed #list .left .row{
+	margin-top: 2px;
 }
 
 body.sidebar-collapsed #list .list-input{
