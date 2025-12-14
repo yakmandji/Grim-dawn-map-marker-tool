@@ -1,5 +1,5 @@
 body.sidebar-collapsed{
-	--sidebar-width: 208px;
+	--sidebar-width: 220px;
 }
 
 body.sidebar-collapsed #version{
@@ -17,7 +17,6 @@ body.sidebar-collapsed .show-collapsed{
 }
 
 body.sidebar-collapsed .sidebar .marker-save,
-body.sidebar-collapsed #list .marker-cat-dropdown,
 body.sidebar-collapsed .info,
 body.sidebar-collapsed .announce{
 	display: none;
@@ -111,6 +110,14 @@ body.sidebar-collapsed #list .left{
 
 body.sidebar-collapsed #list .list-input{
 	padding: 1px 1px 0px 1px;
+}
+
+body.sidebar-collapsed #list .marker-cat-badge span{
+	display: none;
+}
+
+body.sidebar-collapsed #list .right{
+	justify-content: right;
 }
 
 body.sidebar-collapsed #routesPanel,

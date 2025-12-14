@@ -475,7 +475,6 @@ body.shared-only-view .helpPopup,
 body.shared-only-view .listItem .marker-delete,
 body.shared-only-view .listItem .marker-save,
 body.shared-only-view #shareRoutesBtn,
-body.shared-only-view #list select,
 body.shared-only-view #list label,
 body.shared-only-view #list button.danger,
 body.shared-only-view .lock-label,
@@ -504,7 +503,6 @@ body.shared-only-view .sidebar {
 
 body.shared-only-view #list input,
 body.shared-only-view #routesList input,
-body.shared-only-view #list .select-current,
 body.shared-only-view #profileDropdown button
 {
   pointer-events: none;

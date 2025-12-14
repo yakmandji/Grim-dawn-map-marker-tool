@@ -219,7 +219,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.5.31</span>
+        <span>V.5.33</span>
       </div>      
       <div class="title-banner">
         <div class="app-logo">
@@ -474,23 +474,10 @@
               <div class="left">
                 <input data-label type="text" placeholder="marker name" />
                 <div class="row mt-2" style="gap:15px;">
-                    <select data-cat class="small select-green">
-                      <option value="General" data-i18n="ui.GeneralMarker">Personal marker</option>
-                      <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
-                      <option value="Boss" data-i18n="ui.BossMarker">Boss</option>
-                      <option value="Loot" data-i18n="ui.LootMarker">Loot</option>
-                      <option value="Waypoint" data-i18n="ui.WaypointMarker">Waypoint</option>
-                      <option value="Donjon" data-i18n="ui.DonjonMarker">Donjon</option>
-                      <option value="NPC" data-i18n="ui.NPCMarker">NPC</option>
-                    </select>
-                    <!-- Dropdown new -->
-                      <div class="custom-dropdown marker-cat-dropdown">
-                        <button class="select-current select-green">
-                          <img class="marker-cat-icon" src="" width="15" height="15" style="margin-right:2px;">
-                          <span class="select-label"></span>
-                        </button>
-                        <div class="custom-dropdown-inner"></div>
-                      </div>
+                    <div class="marker-cat-badge d-flex" data-cat-badge>
+                      <img class="marker-cat-icon" src="" width="14" height="14" alt="">
+                      <span data-cat-label></span>
+                    </div>
                     <!-- Dropdown new -->              
                     <label style="flex:0 0 auto" class="small list-input done-input">
                       <input data-done type="checkbox" class="checkbox-green" /> <img class="show-collapsed" data-i18n-title="ui.Done" title="done" src="img/done-icon.svg" width="14"> <span class="hide-collapsed" data-i18n="ui.Done">Done</span>

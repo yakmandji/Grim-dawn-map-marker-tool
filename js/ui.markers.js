@@ -11,6 +11,29 @@ const {
   deleteMarker: coreDeleteMarker,
 } = window.GDMMCore;
 
+
+// Icônes par catégorie (utilisé en read-only dans la liste)
+const CATEGORY_ICONS = {
+  General:  'img/waypoint.svg',
+  Quest:    'img/quest.svg',
+  Boss:     'img/boss.svg',
+  Loot:     'img/loot.svg',
+  Waypoint: 'img/passage.svg',
+  Donjon:   'img/donjon.svg',
+  NPC:      'img/npc.svg',
+};
+
+// Clé i18n par catégorie (pour le label read-only)
+const CATEGORY_I18N_KEYS = {
+  General:  'ui.GeneralMarker',
+  Quest:    'ui.QuestMarker',
+  Boss:     'ui.BossMarker',
+  Loot:     'ui.LootMarker',
+  Waypoint: 'ui.WaypointMarker',
+  Donjon:   'ui.DonjonMarker',
+  NPC:      'ui.NPCMarker',
+};
+
 const { $, inner } = window.UiCore;
 
 
@@ -170,8 +193,36 @@ const { $, inner } = window.UiCore;
         // label
         const label = el.querySelector('[data-label]');
         const originalLabel = m.label || '';
-
         label.value = originalLabel;
+
+        // catégorie (read-only)
+        const cat = m.cat || 'General';
+        const catClass = cat.toLowerCase();
+
+        // badge catégorie (classe CSS dynamique)
+        const catBadge = el.querySelector('.marker-cat-badge');
+        if (catBadge) {
+          // nettoyage au cas où (rerender)
+          catBadge.classList.remove(
+            'general','quest','boss','loot','waypoint','donjon','npc'
+          );
+          catBadge.classList.add(catClass);
+        }
+
+        // texte
+        const catLabel = el.querySelector('[data-cat-label]');
+        if (catLabel) {
+          const key = CATEGORY_I18N_KEYS[cat] || CATEGORY_I18N_KEYS.General;
+          catLabel.textContent = (window.GDMMLang?.t)
+            ? GDMMLang.t(key)
+            : cat;
+        }
+
+        // icône
+        const catIcon = el.querySelector('.marker-cat-icon');
+        if (catIcon) {
+          catIcon.src = CATEGORY_ICONS[cat] || CATEGORY_ICONS.General;
+        }
 
         label.addEventListener('blur', (e) => {
           const newVal = e.target.value;
@@ -182,17 +233,6 @@ const { $, inner } = window.UiCore;
           // Sinon on met à jour + toast
           updateMarkerFromUI(m.id, { label: newVal }, true);
         });
-
-
-        // catégorie
-        const catSel = el.querySelector('[data-cat]');
-        catSel.value = m.cat || 'General';
-
-        catSel.onchange = e => {
-          const v = e.target.value;
-          // on laisse updateMarkerFromUI gérer le re-render complet
-          updateMarkerFromUI(m.id, { cat: v }, true);
-        };
 
         // done
         const done = el.querySelector('[data-done]');
@@ -263,10 +303,7 @@ const { $, inner } = window.UiCore;
           };
         }
 
-
-
         host.appendChild(el);
-        initMarkerCategoryDropdown(el);
       }
     });
 
@@ -290,74 +327,6 @@ const { $, inner } = window.UiCore;
 
 /* END -----------------------------------------------------------------------*/
 
-
-/*Marker Edition New Dropdown --------------------------------------------------------*/
-
-  function initMarkerCategoryDropdown(rowEl) {
-    const sel = rowEl.querySelector('[data-cat]');
-    const dd  = rowEl.querySelector('.marker-cat-dropdown');
-    if (!sel || !dd) return;
-
-    const inner = dd.querySelector('.custom-dropdown-inner');
-    if (!inner) return;
-
-    const categoryIcons = {
-      General:  'img/waypoint.svg',
-      Quest:    'img/quest.svg',
-      Boss:     'img/boss.svg',
-      Loot:     'img/loot.svg',
-      Waypoint: 'img/passage.svg',
-      Donjon:   'img/donjon.svg',
-      NPC:      'img/npc.svg',
-    };
-
-    // Remplir les options avec SVG + traduction
-    inner.innerHTML = '';
-    Array.from(sel.options).forEach(opt => {
-      const iconSrc = categoryIcons[opt.value] || '';
-      const i18nKey = opt.getAttribute('data-i18n') || '';
-
-      inner.innerHTML += `
-        <button class="option-item" data-value="${opt.value}">
-          ${iconSrc ? `<img src="${iconSrc}" width="14" height="14" style="margin-right:6px;">` : ''}
-          <span ${i18nKey ? `data-i18n="${i18nKey}"` : ''}>${opt.textContent}</span>
-        </button>
-      `;
-    });
-
-    // Init du dropdown custom
-    initCustomDropdownForElements({
-      nativeSelect: sel,
-      dropdown: dd,
-      itemSelector: '.option-item',
-      valueAttr: 'data-value',
-      currentButtonSelector: '.select-current',
-      currentLabelSelector: '.select-label',
-      getLabel: (item) => {
-        const span = item.querySelector('span[data-i18n]');
-        if (!span) return item.textContent.trim();
-        const key = span.getAttribute('data-i18n');
-        return GDMMLang.t(key);   // ← traduction dynamique !
-      },
-
-      extraSync: ({ currentBtn, item }) => {
-        const btnIcon = currentBtn.querySelector('.marker-cat-icon');
-        const itemIcon = item.querySelector('img');
-        if (btnIcon && itemIcon) {
-          btnIcon.src = itemIcon.src;
-        }
-      }
-    });
-
-    // retraduction (car contenu créé après applyLang initial)
-    if (window.GDMMLang) {
-      GDMMLang.applyLang(GDMMLang.getLang());
-    }
-  }
-  /*END ------------------------------------------------------------*/
-
-
-
     // --- Expose API Markers ---
   if (!window.UiMarkers) {
     window.UiMarkers = {};
@@ -369,7 +338,6 @@ const { $, inner } = window.UiCore;
   deleteMarkerFromUI,
   listFiltered,
   renderList,
-  initMarkerCategoryDropdown,
 });
 
   if (window.UiCore) {
