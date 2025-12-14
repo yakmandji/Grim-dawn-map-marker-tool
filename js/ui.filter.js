@@ -101,6 +101,35 @@
         counts[cat] = (counts[cat] || 0) + 1;
       }
 
+      // --- Masquer "All" tant qu'il n'y a aucun marqueur actif ---
+        const allBtn = document.querySelector('.filterToggle[data-all]');
+        const totalActive = Object.values(counts).reduce((a, b) => a + b, 0);
+
+      if (allBtn) {
+        if (totalActive === 0) {
+          // Plus aucun marqueur → on cache All et on nettoie les états
+          allBtn.style.display = 'none';
+          allBtn.classList.remove('is-on');
+
+          document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
+            catBtn.classList.remove('is-on');
+          });
+        } else {
+          // Au moins un marqueur → All redevient visible
+          allBtn.style.display = '';
+
+          // Sécurité : si aucun filtre n'est actif, All devient actif
+          const anyActive =
+            allBtn.classList.contains('is-on') ||
+            [...document.querySelectorAll('.filterToggle[data-cat]')]
+              .some(btn => btn.classList.contains('is-on'));
+
+          if (!anyActive) {
+            allBtn.classList.add('is-on');
+          }
+        }
+      }
+
       // --- MAJ des compteurs + visibilité des onglets de catégorie ---
       document.querySelectorAll('.filterToggle[data-cat]').forEach(btn => {
         const cat = btn.getAttribute('data-cat') || 'General';
