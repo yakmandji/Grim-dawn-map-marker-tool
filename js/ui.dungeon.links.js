@@ -627,3 +627,29 @@ function showDungeonLinksForOverlay(overlayId) {
 }
 
 window.showDungeonLinksForOverlay = showDungeonLinksForOverlay;
+
+
+// --- Refresh forced dungeon hover (re-apply hovered overlay + lines + label highlight) ---
+function refreshDungeonForcedHover() {
+  const core  = window.GDMMCore || {};
+  const state = core.state || {};
+  if (!state.dungeonOverlays || !Array.isArray(state.dungeonForcedHover)) return;
+
+  const overlayId = state.dungeonForcedHover[0];
+  if (!overlayId) return;
+
+  const overlayObj = state.dungeonOverlays.find(o => o.cfg?.id === overlayId);
+  if (!overlayObj) return;
+
+  // Re-apply hovered class (safety)
+  state.dungeonOverlays.forEach(o => {
+    if (!o.el) return;
+    o.el.classList.toggle('is-hovered', o === overlayObj);
+  });
+
+  // Re-draw + re-highlight (labels get re-created by renderMarkers)
+  drawDungeonLinesForOverlay(overlayObj);
+  highlightDungeonRegionLabelsForOverlay(overlayObj);
+}
+
+window.refreshDungeonForcedHover = refreshDungeonForcedHover;

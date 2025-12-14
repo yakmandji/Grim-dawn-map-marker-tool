@@ -412,6 +412,10 @@ function renderMarkers(options = {}) {
     UiMapRender.renderAdminMarkers(inner);
   }
 
+  if (typeof window.refreshDungeonForcedHover === 'function') {
+    window.refreshDungeonForcedHover();
+  }
+
   if (!skipRoutesPanel && typeof renderRoutesPanel === 'function') {
     renderRoutesPanel();
   }

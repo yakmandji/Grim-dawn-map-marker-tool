@@ -19,7 +19,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "arkovian_undercity", map: "cairn", img: "arkovian-undercity.jpg?1.10", left: 46.2992, top: 66.3647, width: 7.017, height: 6.1196 },
 { id: "tyrant_hold", map: "cairn", img: "tyrant-hold.jpg?1.1", left: 43.4316, top: 59.5735, width: 6.6584, height: 6.5157 },
 { id: "mountain_deep", map: "cairn", img: "mountain-deep.jpg", left: 20.9091, top: 72.1, width: 6.8081, height: 6.6695 },
-{ id: "royal_hive", map: "cairn", img: "royal-hive.jpg?1.0", left: 13.5229, top: 62.4664, width: 9.4592, height: 9.3523 },
+{ id: "royal_hive", map: "cairn", img: "royal-hive.jpg?1.1", left: 13.5229, top: 62.4664, width: 9.4592, height: 9.3523 },
 { id: "bastion_order", map: "cairn", img: "bastion-order.jpg", left: 27.69, top: 57.946, width: 3.1863, height: 3.1196 },
 { id: "kymons_sanctuary", map: "cairn", img: "kymons-sanctuary.jpg", left: 36.7244, top: 53.7821, width: 3.5, height: 3.4 },
 { id: "darkvale_gate", map: "cairn", img: "darkvale-gate.jpg?1.10", left: 23.2176, top: 33.8538, width: 8.1688, height: 8.0004 },
@@ -183,7 +183,7 @@ function renderDungeonOverlays() {
 
       // Mode ajout de marqueur :
       // on laisse le clic remonter pour que le viewport crée le marker
-      if (coreState.tool === 'add') {
+      if (coreState.tool === 'add' || coreState.tool === 'path') {
         return;
       }
 

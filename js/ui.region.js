@@ -100,7 +100,7 @@
 { id: 'map_homestead', tag: 'tagMapHomestead', xp: 36.39, yp: 63.43 },
 { id: 'map_conflagration01', tag: 'tagMapConflagration01', xp: 40.04, yp: 60.44 },
 { id: 'map_sorrows_bastion_road', tag: 'tagMapSorrowsBastionRoad', xp: 35.24, yp: 60.42 },
-{ id: 'map_sorrows_bastion', tag: 'tagMapSorrowsBastion', xp: 32.9, yp: 58.33 },
+{ id: 'map_sorrows_bastion', tag: 'tagMapSorrowsBastion', xp: 31.5, yp: 57.89 },
 { id: 'map_blood_grove_shrine', tag: 'tagMapBloodGroveShrine', xp: 28.79, yp: 55.88 },
 { id: 'map_blood_grove', tag: 'tagMapBloodGrove', xp: 31.65, yp: 53.04 },
 { id: 'map_blood_grove_mine', tag: 'tagMapBloodGroveMine', xp: 34.42, yp: 52.17 },

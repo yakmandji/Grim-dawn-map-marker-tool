@@ -40,6 +40,10 @@ textarea {
   font-family: inherit;
 }
 
+#pathLayer{
+  z-index: 6;
+}
+
 .d-flex{
   display: flex;
   align-items: center;
@@ -261,6 +265,7 @@ header .sep {
 
 #routesList .listItem{
   padding: 5px 8px 5px 8px;
+  justify-content: space-between;
 }
 
 .listItem { 
