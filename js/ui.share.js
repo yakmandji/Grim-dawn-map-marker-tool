@@ -315,10 +315,32 @@
   };
 
 
+  // Anti-spam "per-item link" (marker/route share links)
+  const LINK_COOLDOWN_MS = window.GDMM_LINK_COOLDOWN_MS ?? 5500;
+  let lastLinkClickTs = 0;
+
+
   // ============================================================
   // Share helper (used by "Share map" and per-item "Link" buttons)
   // ============================================================
   async function createLink(payload) {
+
+    const now = Date.now();
+    if (now - lastLinkClickTs < LINK_COOLDOWN_MS) {
+      const wait = Math.ceil((LINK_COOLDOWN_MS - (now - lastLinkClickTs)) / 1000);
+
+      if (typeof window.showToast === 'function') {
+        const msg =
+          (window.GDMMLang?.t && GDMMLang.t('toast.ShareCooldown', { wait })) ||
+          `Please wait ${wait}s before sharing again.`;
+        showToast(msg, 'warning', 4000);
+      }
+      return null;
+
+    }
+    lastLinkClickTs = now;
+
+
     const ADVANCED_COMPRESSION = !!window.ADVANCED_COMPRESSION;
 
     const round = (v) => Math.round((v || 0) * 10) / 10;

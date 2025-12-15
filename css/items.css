@@ -334,6 +334,10 @@ input[type="password"]:focus
   z-index: 4;
 }
 
+.marker.completed{
+  transform: translate(-49%, -65%) scale(var(--mk, 1));
+}
+
 .pin {
   position: relative;
   width: 36px;
@@ -392,8 +396,8 @@ input[type="password"]:focus
 .marker.completed .pin-bg{
   transform: translateX(-50%) !important;
   margin-left: 50%;
-  opacity: 0.5;
-  width: 28px;
+  opacity: 0.75;
+  width: 26px;
 }
 
 .lock-label{
@@ -509,7 +513,8 @@ button.marker-save{
 
 #list .listItem.highlight,
 #routesList .listItem.highlight,
-#noteList .listItem.highlight {
+#noteList .listItem.highlight,
+#doneList .doneItem.highlight {
   position: relative;
   overflow: visible;
   animation: highlightPulse 1.2s ease 2;
@@ -1420,7 +1425,7 @@ input[type="color"]::-moz-color-swatch {
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px 16px;
-  width: 270px;
+  width: 390px;
   transition: width 0.25s ease-in-out;
 }
 
@@ -1543,13 +1548,21 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .search-result.completed {
-    opacity: 0.55;
-    filter: grayscale(70%);
+    opacity: 0.80;
 }
 
 .search-result.completed .search-label {
-    text-decoration: line-through;
     color: #888;
+}
+
+.search-result.completed::after {
+  content: "DONE";
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(100, 100, 100, 0.25);
+  color: #aaa;
+  margin-left: 6px;
 }
 
 /* Highlight uniforme pour tous les types */

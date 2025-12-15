@@ -269,7 +269,11 @@ function rememberActiveProfile() {
       const iconWrap = document.createElement('div');
       iconWrap.className = 'doneIcon';
 
-      const ic = iconFor(m.cat);
+      let ic = iconFor(m.cat);
+      if (ic && m.done) {
+        ic = ic.replace('.svg', '-done.svg');
+      }
+
       if (ic) {
         const img = document.createElement('img');
         img.className = 'doneIcon-img';
@@ -451,7 +455,7 @@ function renderMarkers(options = {}) {
     const vb = viewport.getBoundingClientRect();
     const pt = pctToPx(xp, yp);
 
-    const scale = clamp(targetScale || state.view.scale, 0.40, 1.20);
+    const scale = clamp(targetScale || state.view.scale, 0.35, 1.30);
     state.view.scale = scale;
 
     state.view.x = vb.width  / 2 - pt.x * scale;
@@ -700,8 +704,8 @@ viewport.addEventListener('pointermove', e => {
           const ratio = newDist / pinchState.startDistance;
           const targetScale = clamp(
             pinchState.startScale * ratio,
-            0.40,
-            1.20
+            0.35,
+            1.30
           );
           const vb = viewport.getBoundingClientRect();
           const centerNow = midpoint(p1, p2);
@@ -792,7 +796,7 @@ viewport.addEventListener('pointermove', e => {
   //ZOOM FONCTION
     function zoomAt(clientX, clientY, step) {
       const old = state.view.scale;
-      const ns = clamp(old * (1 + step), 0.40, 1.20);
+      const ns = clamp(old * (1 + step), 0.35, 1.30);
       if (ns === old) return;
       const vb = viewport.getBoundingClientRect();
       const ox = clientX - vb.left;

@@ -184,8 +184,12 @@
               bg.className = 'pin-bg';
 
               // on prend directement l'icône de la catégorie
-              const iconSrc = iconFor(m.cat) || 'img/pin-general.svg';
+              let iconSrc = iconFor(m.cat) || 'img/pin-general.svg';
+              if (m.done) {
+                iconSrc = iconSrc.replace('.svg', '-done.svg');
+              }
               bg.src = iconSrc;
+
               bg.alt = '';
 
               pin.appendChild(bg);
@@ -252,12 +256,17 @@
                 // --- Mode LOCK : no drag
                   if (state.locked) {
                     if (!moved && !justCreated) {   // Scroll only if not just created
-                      const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+                      const rowSelector = m.done
+                        ? `#doneList .doneItem[data-mid="${m.id}"]`
+                        : `#list .listItem[data-mid="${m.id}"]`;
+
+                      const row = document.querySelector(rowSelector);
                       if (row) {
                         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         row.classList.add('highlight');
                         setTimeout(() => row.classList.remove('highlight'), 2200);
                       }
+
                     }
                     state.lastCreatedMarkerId = null; 
                     return;
@@ -265,11 +274,15 @@
 
                 if (!dragging) {
                   if (!moved && !justCreated) {     
-                    const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+                    const rowSelector = m.done
+                      ? `#doneList .doneItem[data-mid="${m.id}"]`
+                      : `#list .listItem[data-mid="${m.id}"]`;
+
+                    const row = document.querySelector(rowSelector);
                     if (row) {
                       row.scrollIntoView({ behavior: 'smooth', block: 'center' });
                       row.classList.add('highlight');
-                      setTimeout(() => row.classList.remove('highlight'), 800);
+                      setTimeout(() => row.classList.remove('highlight'), 2200);
                     }
                   }
                   state.lastCreatedMarkerId = null; 
@@ -279,11 +292,15 @@
                 // --- End drag ---
                 dragging = false;
                 if (!moved) {
-                  const row = document.querySelector(`#list .listItem[data-mid="${m.id}"]`);
+                  const rowSelector = m.done
+                    ? `#doneList .doneItem[data-mid="${m.id}"]`
+                    : `#list .listItem[data-mid="${m.id}"]`;
+
+                  const row = document.querySelector(rowSelector);
                   if (row) {
                     row.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     row.classList.add('highlight');
-                    setTimeout(() => row.classList.remove('highlight'), 800);
+                    setTimeout(() => row.classList.remove('highlight'), 2200);
                   }
                   return;
                 }
