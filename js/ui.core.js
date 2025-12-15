@@ -461,11 +461,22 @@ function renderMarkers(options = {}) {
 
     if (markerId) {
       const markerEl = document.querySelector(`.marker[data-mid="${markerId}"]`);
-      if (markerEl) {
-        markerEl.classList.add('marker-highlight');
-        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+
+      // Si c’est un Done marker et que l’historique est masqué, on réactive History
+      if (markerEl && markerEl.classList.contains('completed')) {
+        if (typeof window.ensureAdminLayerVisible === 'function') {
+          window.ensureAdminLayerVisible('history');
+        }
+      }
+
+      // (re-sélection après éventuel changement de classe / filtre)
+      const markerEl2 = document.querySelector(`.marker[data-mid="${markerId}"]`);
+      if (markerEl2) {
+        markerEl2.classList.add('marker-highlight');
+        setTimeout(() => markerEl2.classList.remove('marker-highlight'), 1500);
       }
     }
+
   }
 
   window.centerOn = centerOn;
