@@ -724,18 +724,6 @@ label.checkbox{
   overflow: hidden;
 }
 
-.doneItem .doneLabel::after {
-  content: "";
-  position: absolute;
-  top: 58%;
-  left: -26px;
-  width: 110%;
-  height: 1.5px;
-  background: rgba(255, 255, 255, 0.35);
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
 .done-empty {
   text-align: center;
   padding: 12px 8px;

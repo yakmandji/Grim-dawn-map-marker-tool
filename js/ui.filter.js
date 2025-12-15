@@ -43,7 +43,6 @@
 
       // DONE markers are always visible
       if (el.dataset.done === "1") {
-        el.style.display = "";
         return;
       }
 
@@ -256,10 +255,13 @@
     const riftBtn   = document.querySelector('.filterToggle[data-admin="rift"]');
     const regionBtn = document.querySelector('.filterToggle[data-admin="region"]');
     const shrineBtn = document.querySelector('.filterToggle[data-admin="shrine"]');
+    const historyBtn = document.querySelector('.filterToggle[data-admin="history"]');
+
 
     mapWrap.classList.toggle('hide-rift',   !riftBtn?.classList.contains('is-on'));
     mapWrap.classList.toggle('hide-region', !regionBtn?.classList.contains('is-on'));
     mapWrap.classList.toggle('hide-shrine', !shrineBtn?.classList.contains('is-on'));
+    mapWrap.classList.toggle('hide-history', !historyBtn?.classList.contains('is-on'));
   }
 
   document.querySelectorAll('.filterToggle[data-admin]').forEach(btn => {

@@ -19,8 +19,6 @@ const {
  const Routes = window.UiRoutes || {};
 
   const LAST_PROFILE_KEY = 'gdmm_last_profile';
-  let hideDoneOnMap = false;
-  window.hideDoneOnMap = hideDoneOnMap
 
 function rememberActiveProfile() {
   if (!state.active) return;
@@ -313,25 +311,21 @@ function rememberActiveProfile() {
   };
 // END -----------------------------------------------
 
-window.initDonePanelToggle = function initDonePanelToggle() {
-  const panel  = $('#donePanel');
-  const toggle = $('#donePanelToggle');
-  if (!panel || !toggle) return;
+  window.initDonePanelToggle = function initDonePanelToggle() {
+    const panel  = $('#donePanel');
+    const toggle = $('#donePanelToggle');
+    if (!panel || !toggle) return;
 
-  if (window.innerWidth < 768) {
-    hideDoneOnMap = true;
-    window.hideDoneOnMap = hideDoneOnMap;
-    panel.classList.add('collapsed');
-  }
+    // Mobile : on replie le panneau par défaut
+    if (window.innerWidth < 768) {
+      panel.classList.add('collapsed');
+    }
 
-  toggle.addEventListener('click', () => {
-    hideDoneOnMap = !hideDoneOnMap;
-    window.hideDoneOnMap = hideDoneOnMap;
-    panel.classList.toggle('collapsed', hideDoneOnMap);
-    renderMarkers();
-    renderList();
-  });
-};
+    toggle.addEventListener('click', () => {
+      panel.classList.toggle('collapsed');
+    });
+  };
+
 
   function hexToRgba(hex, alpha = 1) {
     const clean = hex.replace('#', '');

@@ -162,8 +162,6 @@
 
         // 3) draw markers
             markers.forEach(m => {
-              //Hide done collapesd
-              if (window.hideDoneOnMap && m.done) return;
 
               const el = document.createElement('div');
               el.classList.add('marker');

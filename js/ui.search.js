@@ -646,6 +646,8 @@ async function goTo(item) {
       window.ensureAdminLayerVisible('shrine');
     } else if (item.type === 'region' || item.type === 'dungeon') {
       window.ensureAdminLayerVisible('region');
+    }  else if (item.type === 'marker' && item.done) {
+      window.ensureAdminLayerVisible('history');
     }
   }
 

@@ -1269,8 +1269,9 @@ input[type="color"]::-moz-color-swatch {
 
 .mapWrap.hide-rift .marker-rift,
 .mapWrap.hide-shrine .marker-shrine,
-.mapWrap.hide-region .marker-region{ 
-  display: none !important; 
+.mapWrap.hide-region .marker-region,
+.mapWrap.hide-history .marker.completed{ 
+  display: none; 
 }
 
 /*LINKED MARKER*/
