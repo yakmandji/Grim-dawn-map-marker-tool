@@ -473,7 +473,69 @@ function renderMarkers(options = {}) {
       }
     }
   }
+
   window.centerOn = centerOn;
+
+
+// Anim Smooth ---------------------------------------------------------
+      let _centerAnim = null;
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function smoothCenterOn(xp, yp, targetScale = null, duration = 260) {
+        if (!state.mapReady) return;
+        if (_centerAnim) cancelAnimationFrame(_centerAnim);
+
+        const vb = viewport.getBoundingClientRect();
+        const pt = pctToPx(xp, yp);
+
+        const start = {
+          x: state.view.x,
+          y: state.view.y,
+          scale: state.view.scale,
+        };
+
+        const endScale = clamp(
+          targetScale == null ? state.view.scale : targetScale,
+          0.40,
+          1.20
+        );
+
+        const end = {
+          scale: endScale,
+          x: vb.width  / 2 - pt.x * endScale,
+          y: vb.height / 2 - pt.y * endScale,
+        };
+
+        const t0 = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - t0) / Math.max(1, duration));
+          const e = easeOutCubic(t);
+
+          state.view.scale = start.scale + (end.scale - start.scale) * e;
+          state.view.x     = start.x     + (end.x     - start.x)     * e;
+          state.view.y     = start.y     + (end.y     - start.y)     * e;
+
+          clampViewToMap();
+          applyView();
+
+          if (t < 1) {
+            _centerAnim = requestAnimationFrame(step);
+          } else {
+            _centerAnim = null;
+            persistViewForCurrentProfile();
+          }
+        };
+
+        _centerAnim = requestAnimationFrame(step);
+      }
+
+      window.smoothCenterOn = smoothCenterOn;
+// Anim Smooth ---------------------------------------------------------
+
+
 
   // --- Pan & Zoom ---
   let panning = false, panId = null, panStart = {x:0,y:0}, viewStart = {x:0,y:0};
@@ -1057,6 +1119,9 @@ if (newPathBtn) {
       clearInterval(keyboardPanInterval);
       keyboardPanInterval = null;
     }
+    if (typeof persistViewForCurrentProfile === "function") {
+      persistViewForCurrentProfile();
+    }    
   }
 
   window.addEventListener("keydown", (e) => {

@@ -20,7 +20,7 @@
     { id: 'shrinetagMapBarrenHighlands', regionTag: 'tagMapBarrenHighlands', xp: 43.05, yp: 81.97, difficulty: 'normal' },
     { id: 'shrinetagUGBrokenHills02B', regionTag: 'tagUGBrokenHills02B', xp: 50.91, yp: 94.66, difficulty: 'normal' },
     { id: 'shrinetagMapMountainDeeps', regionTag: 'tagMapMountainDeeps', xp: 21.98, yp: 75.46, difficulty: 'normal' },
-    { id: 'shrinetagUGJaggedWasteCave02', regionTag: 'tagUGJaggedWasteCave02', xp: 35.71, yp: 82.72, difficulty: 'normal' },
+    { id: 'shrinetagUGJaggedWasteCave02', regionTag: 'tagUGJaggedWasteCave02', xp: 37.03, yp: 82.31, difficulty: 'normal' },
     { id: 'shrinetagMapJaggedWasteFort', regionTag: 'tagMapJaggedWasteFort', xp: 44.12, yp: 72.87, difficulty: 'normal' },
     { id: 'shrinetagMapInfestedFarms', regionTag: 'tagMapInfestedFarms', xp: 32.53, yp: 65.68, difficulty: 'normal' },
     { id: 'shrinetagUGHomesteadCave01', regionTag: 'tagUGHomesteadCave01', xp: 14.63, yp: 64.63, difficulty: 'normal' },

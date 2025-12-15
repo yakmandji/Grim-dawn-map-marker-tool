@@ -172,7 +172,7 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
   { id: "entry_temple_athep2", xp: 68.82, yp: 41.88, tag: "Temple Athep2", eyeColor:"gray-muted" },
 
   { id: "entry_tomb_sethan", xp: 57.46, yp: 39.53, tag: "Tomb Sethan" },
-  { id: "entry_tomb_sethan2", xp: 59.37, yp: 33.20, tag: "Tomb Sethan 2" },
+  { id: "entry_tomb_sethan2", xp: 59.37, yp: 33.20, tag: "Tomb Sethan 2", eyeColor:"gray" },
   { id: "entry_tomb_ariath", xp: 51.61, yp: 32.09, tag: "Tomb Ariath" },
   { id: "entry_tomb_nephos", xp: 56.43, yp: 29.84, tag: "Tomb Nephos" },
   { id: "entry_tomb_nephos2", xp: 57.14, yp: 28.36, tag: "Tomb Nephos 2", eyeColor:"gray-muted" },
@@ -252,7 +252,6 @@ window.DUNGEON_LINKS = {
   "tomb_of_korvaak": ["entry_tomb_of_korvaak", "entry_tomb_of_korvaak2"],
   "tomb_of_the_damned": ["entry_tomb_of_the_damned"],
   "fort_ikon_prison": ["entry_fort_ikon_prison","entry_fort_ikon_prison2"],
-  "fort_ikon_prison": ["entry_fort_ikon_prison","entry_fort_ikon_prison2"],
   "fort_ikon_armory": ["entry_fort_ikon_armory","entry_fort_ikon_armory2"],
   "obsidian_throne": ["entry_obsidian_throne","entry_obsidian_throne2","entry_obsidian_throne3"],
   "edge_of_reality": ["entry_edge_of_reality"],
@@ -310,6 +309,136 @@ window.DUNGEON_ENTRY_MARKERS_BY_SIZE = {
   "5142x3574": window.DUNGEON_ENTRY_MARKERS_MALMOUTH,
   "5427x5553": window.DUNGEON_ENTRY_MARKERS_KORVAN,
 };
+
+
+
+function ensureOverlayVisibility(overlayObj, targetRatio = 0.50, marginPx = 60, duration = 220) {
+  const core  = window.GDMMCore || {};
+  const state = core.state || {};
+  const ui = window.UiCore || {};
+  const viewport = ui.viewport;
+  if (!viewport || !state.mapNatural || !state.view) return false;
+
+  const vb = viewport.getBoundingClientRect();
+  const scale = state.view.scale || 1;
+
+  const iw = state.mapNatural.w || 1;
+  const ih = state.mapNatural.h || 1;
+
+  // overlay % -> px map
+  const leftPx   = (overlayObj.cfg.left   / 100) * iw;
+  const topPx    = (overlayObj.cfg.top    / 100) * ih;
+  const widthPx  = (overlayObj.cfg.width  / 100) * iw;
+  const heightPx = (overlayObj.cfg.height / 100) * ih;
+
+  // overlay px écran (dans viewport)
+  const L0 = state.view.x + leftPx * scale;
+  const T0 = state.view.y + topPx  * scale;
+  const R0 = L0 + widthPx  * scale;
+  const B0 = T0 + heightPx * scale;
+
+  // zone sûre
+  const vL = marginPx;
+  const vT = marginPx;
+  const vR = vb.width  - marginPx;
+  const vB = vb.height - marginPx;
+
+  function ratioFor(dx, dy) {
+    const L = L0 + dx, R = R0 + dx;
+    const T = T0 + dy, B = B0 + dy;
+
+    const iL = Math.max(L, vL);
+    const iT = Math.max(T, vT);
+    const iR = Math.min(R, vR);
+    const iB = Math.min(B, vB);
+
+    const visW = Math.max(0, iR - iL);
+    const visH = Math.max(0, iB - iT);
+
+    const areaVis = visW * visH;
+    const areaTot = Math.max(1, (R - L) * (B - T));
+    return areaVis / areaTot;
+  }
+
+  // déjà OK
+  if (ratioFor(0, 0) >= targetRatio) return false;
+
+  const MAX_ITERS = 10;
+  let step = Math.max(80, Math.min(180, Math.min(vb.width, vb.height) * 0.18)); // step auto
+  let dx = 0, dy = 0;
+
+  for (let i = 0; i < MAX_ITERS; i++) {
+    const base = ratioFor(dx, dy);
+
+    const candidates = [
+      { dx: dx + step, dy },
+      { dx: dx - step, dy },
+      { dx, dy: dy + step },
+      { dx, dy: dy - step },
+    ];
+
+    let best = null;
+    let bestR = base;
+
+    for (const c of candidates) {
+      const r = ratioFor(c.dx, c.dy);
+      if (r > bestR) {
+        bestR = r;
+        best = c;
+      }
+    }
+
+    if (!best) {
+      // overlay totalement hors écran -> on va le chercher
+      let sx = 0, sy = 0;
+
+      if (R0 + dx < vL) sx = +step;       // trop à gauche
+      else if (L0 + dx > vR) sx = -step;  // trop à droite
+
+      if (B0 + dy < vT) sy = +step;       // trop en haut
+      else if (T0 + dy > vB) sy = -step;  // trop en bas
+
+      // si on ne sait pas dans quelle direction aller, on abandonne
+      if (sx === 0 && sy === 0) break;
+
+      dx += sx;
+      dy += sy;
+
+      continue; // ⬅️ très important : on repart pour une itération
+    }
+
+    dx = best.dx;
+    dy = best.dy;
+
+    if (bestR >= targetRatio) break;
+
+    // on affine un peu à la fin
+    step = Math.max(40, Math.floor(step * 0.75));
+  }
+
+  if (dx === 0 && dy === 0) return false;
+
+  // convertir dx/dy écran -> nouveau centre -> smoothCenterOn
+  const curCenterMapX = (vb.width  / 2 - state.view.x) / scale;
+  const curCenterMapY = (vb.height / 2 - state.view.y) / scale;
+
+  const newCenterMapX = curCenterMapX - dx / scale;
+  const newCenterMapY = curCenterMapY - dy / scale;
+
+  const xp = (newCenterMapX / iw) * 100;
+  const yp = (newCenterMapY / ih) * 100;
+
+  if (typeof window.smoothCenterOn === "function") {
+    window.smoothCenterOn(xp, yp, scale, duration);
+  } else if (typeof window.centerOn === "function") {
+    window.centerOn(xp, yp, scale);
+  }
+
+  return true;
+}
+
+
+
 
 
 // =====================================================
@@ -375,6 +504,7 @@ function ensureDungeonLinkLayer() {
 
 
 function clearDungeonLinks() {
+
   const svg = document.getElementById('dungeonLinkLayer');
   if (svg) {
     while (svg.firstChild) svg.removeChild(svg.firstChild);
@@ -383,6 +513,7 @@ function clearDungeonLinks() {
   const core = window.GDMMCore || {};
   const state = core.state || {};
 
+  state.activeDungeonOverlayId = null;
   state.dungeonForcedHover = null;
 
   if (state.dungeonOverlays) {
@@ -588,8 +719,15 @@ function showDungeonLinksForEntry(entryId) {
     return;
   }
 
+  // Auto-pan si l’overlay est hors champ
+  ensureOverlayVisibility(overlayObj, 0.60, 60, 860);
+
+
   // hover forcé de ce donjon
   state.dungeonForcedHover = [overlayId];
+  state.activeDungeonOverlayId = overlayId;
+
+
   state.dungeonOverlays.forEach(o => {
     if (!o.el) return;
     o.el.classList.toggle('is-hovered', o === overlayObj);
@@ -598,10 +736,6 @@ function showDungeonLinksForEntry(entryId) {
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
 }
-window.showDungeonLinksForEntry = showDungeonLinksForEntry;
-
-
-
 window.showDungeonLinksForEntry = showDungeonLinksForEntry;
 
 // --- survol d'un OVERLAY (layer donjon) ---
