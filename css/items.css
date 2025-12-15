@@ -398,7 +398,7 @@ input[type="password"]:focus
   transform: translateX(-50%) !important;
   margin-left: 50%;
   opacity: 0.75;
-  width: 26px;
+  width: 22px;
 }
 
 .lock-label{
