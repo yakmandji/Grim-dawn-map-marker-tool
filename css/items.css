@@ -1536,10 +1536,42 @@ input[type="color"]::-moz-color-swatch {
 .search-result.type-shrine.shrine-elite span{
   color: #c2bc41;
 }
+.marker-shrine.shrine-elite::before {
+  content: "";
+  position: absolute;
+  inset: -5px;               /* taille de la lueur */
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 100, 0.9) 0%,
+    rgba(255, 215, 100, 0.6) 35%,
+    rgba(255, 215, 100, 0.25) 50%,
+    rgba(255, 215, 100, 0.0) 70%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
 
 .search-result.type-shrine.shrine-ultimate span{
   color: #9e68b7;
 }
+.marker-shrine.shrine-ultimate::before {
+  content: "";
+  position: absolute;
+  inset: -5px;               /* même taille que Elite */
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(180, 120, 255, 0.95) 0%,
+    rgba(150, 80, 255, 0.65) 30%,
+    rgba(120, 50, 200, 0.35) 53%,
+    rgba(120, 50, 200, 0.0) 70%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
 
 .search-result.type-dungeon .search-label {
   color: #b99963; 
@@ -1762,7 +1794,7 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .shrine-ultimate .shrine-difficulty{
- color: #ae3ba4;
+ color: #da3ecd;
 }
 
 .shrine-elite .shrine-difficulty{
