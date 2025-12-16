@@ -243,23 +243,24 @@ const { $, inner } = window.UiCore;
           const isDone = !!e.target.checked;
 
           if (isDone) {
-            if (hideDoneOnMap) {
-              hideDoneOnMap = false;
-              const panel = $('#donePanel');
-              if (panel) {
-                panel.classList.remove('collapsed');
-              }
+            // Si l’historique est masqué sur la map, on le réactive (comme shrine/region)
+            if (window.UiFilters?.ensureHistoryVisible) {
+              window.UiFilters.ensureHistoryVisible();
             }
 
-            el.classList.add('fade-out');
+            // (optionnel) ouvre le panneau done si tu veux
+            const panel = $('#donePanel');
+            if (panel) panel.classList.remove('collapsed');
 
+            el.classList.add('fade-out');
             setTimeout(() => {
-              updateMarkerFromUI(m.id, { done: true, }, true);
+              updateMarkerFromUI(m.id, { done: true }, true);
             }, 180);
           } else {
             updateMarkerFromUI(m.id, { done: false }, true);
           }
         };
+
 
         el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
         el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
