@@ -106,7 +106,7 @@
 { id: 'map_blood_grove_mine', tag: 'tagMapBloodGroveMine', xp: 34.42, yp: 52.17 },
 { id: 'map_blood_grove_aether_mine', tag: 'tagMapBloodGroveAetherMine', xp: 33.46, yp: 48.22 },
 { id: 'map_darkvale_mill', tag: 'tagMapDarkvaleMill', xp: 27.45, yp: 52.44 },
-{ id: 'map_faction_fort', tag: 'tagMapFactionFort', xp: 31.10, yp: 42.73, isDungeon: true },
+{ id: 'map_faction_fort', tag: 'tagMapFactionFort', xp: 30.10, yp: 42.73, isDungeon: true },
 { id: 'map_darkvale', tag: 'tagMapDarkvale', xp: 25.05, yp: 47.53 },
 { id: 'map_alpine_road_a', tag: 'tagMapAlpineRoad', xp: 16.1, yp: 38.29 },
 { id: 'map_alpine_road_b', tag: 'tagMapAlpineRoad', xp: 12.47, yp: 33.28 },

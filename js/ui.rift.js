@@ -34,7 +34,7 @@ window.RIFT_MARKERS_CAIRN = [
 { id: 'necropolis_gate', tag: 'tagRiftNecropolisGate', xp: 22.5, yp: 15.25 },
 { id: 'necropolis_interior', tag: 'tagRiftNecropolisInterior', xp: 23.55, yp: 5.6 },
 { id: 'rift_blood_grove', tag: 'tagRiftBloodGrove', xp: 30.39, yp: 51.52 },
-{ id: 'dark_vale', tag: 'tagRiftDarkvale', xp: 29.24, yp: 39.23 },
+{ id: 'dark_vale', tag: 'tagRiftDarkvale', xp: 29.59, yp: 38.38 },
 { id: 'Sorrows_Bastion', tag: 'tagRiftSorrowsBastion', xp: 33.80, yp: 58.72 }
 
 
