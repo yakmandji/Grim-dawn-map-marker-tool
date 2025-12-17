@@ -182,7 +182,7 @@ header .sep {
   background: #0e0a06;
   border-radius: 14px;
   overflow: hidden;
-  margin-top: 90px;
+  margin-top: 85px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
 
@@ -1097,7 +1097,7 @@ header .gd-popup__card input[type="text"]{
 }
 
 #archive-container{
-  padding: 12px 12px;
+  padding: 12px 18px;
 }
 
 .done-list {
