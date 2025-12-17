@@ -1182,3 +1182,16 @@ button:focus {
  {
   display: none;
 }
+
+/* --- Archive fly animation --- */
+.marker-fly {
+  position: fixed;
+  z-index: 99999;
+  pointer-events: none;
+  margin: 0;
+  transform-origin: left center;
+  will-change: transform, opacity;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  border-radius: 10px;
+  transition: transform 900ms cubic-bezier(.18,.85,.25,1), opacity 900ms ease;
+}
