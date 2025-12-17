@@ -28,8 +28,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.54" />
-  <link rel="stylesheet" href="css/items.css?v1.55" />
+  <link rel="stylesheet" href="css/general.css?v1.55" />
+  <link rel="stylesheet" href="css/items.css?v1.56" />
   <link rel="stylesheet" href="css/responsive.css?v1.22" />
   <link rel="stylesheet" href="css/sidebar-toggle.css?v1.24" />
   
@@ -50,23 +50,23 @@
     <header id="left-menu">
 
       <button id="sidebarToggle" class="sidebar-toggle" data-i18n-title="ui.ToggleSidebar" type="button" title="Toggle sidebar">
-          <img src="img/double-arrow-green.svg" width="14" alt="">
+          <img src="img/double-arrow-g.svg" width="14" alt="">
       </button>
       <div class="header-actions" id="header-add-group">
-          <button id="btn-new-marker" class="gd-btn gd-btn--header">
-              <img src="img/marker-pin.svg" width="15">
+          <button id="btn-new-marker" class="gd-btn gd-btn--header menu-button">
+              <img src="img/marker-pin-g.svg" width="15">
               <span data-i18n="ui.NewMarkerTitle">New marker</span>
           </button>
         <div class="sep"></div>
-          <button id="btn-new-route" class="gd-btn gd-btn--header">
-              <img src="img/route-icon.svg" width="17">
+          <button id="btn-new-route" class="gd-btn gd-btn--header menu-button">
+              <img src="img/route-icon-g.svg" width="17">
               <span data-i18n="ui.NewPathTitle">New Path</span>
           </button>
       </div>
         <!--         POPUP ADD MARKER AND ROUTE ------------------------------------- -->
 
         <div class="gd-popup gd-popup--marker" data-popup="marker">
-            <div class="gd-popup__card">
+            <div class="gd-popup__card tool-section">
                 <button class="gd-popup__close" data-popup-close>×</button>
 
                   <div class="section principal">
@@ -79,7 +79,7 @@
                     <div class="row">
                       <input id="newLabel" type="text" data-i18n-placeholder="ui.MarkerNamePlaceholder" placeholder="Name / note" />
                     </div>
-                    <div class="row" style="margin-top: 6px;">
+                    <div class="row" style="margin-top: 16px;">
                       <select id="newCategory" class="select-green">
                         <option value="General" data-i18n="ui.GeneralMarker">Personal marker</option>
                         <option value="Quest" data-i18n="ui.QuestMarker">Quest</option>
@@ -98,7 +98,7 @@
                       </div>  
 
                       <button id="toolAdd" class="small">
-                          <img src="img/add-circle.png?v2.2" width="16">
+                          <img src="img/add-circle.png?v2.2" width="20">
                           <span data-i18n="ui.AddMarkerButton">Add</span>
                       </button>
                     </div>
@@ -108,13 +108,13 @@
 
         <!-- Popup Nouveau tracé -->
         <div class="gd-popup gd-popup--route" data-popup="route">
-            <div class="gd-popup__card">
+            <div class="gd-popup__card tool-section">
                 <button class="gd-popup__close" data-popup-close>×</button>
 
                   <div class="section principal">
                       <div class="row title-icon" style="padding-bottom: 8px;">
                         <h3>
-                          <img src="img/route-icon.svg" width="17">
+                          <img src="img/route-icon.svg" width="18">
                           <span data-i18n="ui.NewPathTitle">New Path</span>
                         </h3>
                       </div>        
@@ -122,12 +122,12 @@
                       <div class="row">
                         <input id="newPathName" type="text" data-i18n-placeholder="ui.PathNamePlaceholder" placeholder="Path name (optional)">
                       </div>        
-                      <div class="row" style="margin-top: 6px;">
+                      <div class="row" style="margin-top: 16px;">
                         <button id="newPathBtn" class="small" type="button">
                           <img src="img/add-circle.png?v2.2" width="16"><span data-i18n="ui.AddRouteButton">Add</span>
                         </button>
                         <button id="toolFinishPath" class="toolBtn small">
-                          <img src="img/check.svg" width="20"><span data-i18n="ui.FinishPath">Finish</span>
+                          <img src="img/check.svg" width="17"><span data-i18n="ui.FinishPath">Finish</span>
                         </button>
                       </div>
                   </div>  
@@ -139,7 +139,7 @@
           <img src="img/hamburger.svg" width="28" alt="">
       </button>
 
-       <button id="mergeSharedBtn" class="small" >
+       <button id="mergeSharedBtn" class="small menu-button" >
           <img src="img/merge.svg" width="18" alt="Merge"> 
           <span data-i18n="ui.MergeRoutesButton">Add shared to my map</span>
         </button>
@@ -151,14 +151,14 @@
         </div>
 
       <div class="right-panel">
-       <button data-i18n-tooltip="share.tooltip" id="shareRoutesBtn" class="small header-btn">
-          <img src="img/share-icon.svg" width="18" alt="Share">
+       <button data-i18n-tooltip="share.tooltip" id="shareRoutesBtn" class="small menu-button">
+          <img src="img/share-icon-g.svg" width="18" alt="Share">
           <span data-i18n="ui.ShareMapButton">Share my map</span>
         </button>
 
         <div class="save-block">
-          <button id="exportAllBtn">
-            <img src="img/save-icon.svg" width="16">
+          <button id="exportAllBtn" class="menu-button">
+            <img src="img/save-icon-g.svg" width="16">
             <span data-i18n="ui.SaveTitle">Save</span>
           </button>
         </div>
@@ -180,39 +180,39 @@
         </select>
 
         <div id="langDropdown" class="custom-dropdown">
-          <button type="button" class="select-current select-green">
+          <button type="button" class="select-current select-green menu-button">
             <span class="flag flag-fr"></span>
             <span class="lang-label">Français</span>
           </button>
           <div class="custom-dropdown-inner">
-            <button type="button" class="option-item" data-lang="en">
+            <button type="button" class="option-item menu-button" data-lang="en">
               <span class="flag flag-en"></span><span>English</span>
             </button>
-            <button type="button" class="option-item" data-lang="fr">
+            <button type="button" class="option-item menu-button" data-lang="fr">
               <span class="flag flag-fr"></span><span>Français</span>
             </button>
-            <button type="button" class="option-item" data-lang="es">
+            <button type="button" class="option-item menu-button" data-lang="es">
               <span class="flag flag-es"></span><span>Español</span>
             </button>
-            <button type="button" class="option-item" data-lang="de">
+            <button type="button" class="option-item menu-button" data-lang="de">
               <span class="flag flag-de"></span><span>Deutsch</span>
             </button>
-            <button type="button" class="option-item" data-lang="pt">
+            <button type="button" class="option-item menu-button" data-lang="pt">
               <span class="flag flag-pt"></span><span>Português</span>
             </button>
-            <button type="button" class="option-item" data-lang="it">
+            <button type="button" class="option-item menu-button" data-lang="it">
               <span class="flag flag-it"></span><span>Italiano</span>
             </button>
-            <button type="button" class="option-item" data-lang="pl">
+            <button type="button" class="option-item menu-button" data-lang="pl">
               <span class="flag flag-pl"></span><span>Polish</span>
             </button>            
-            <button type="button" class="option-item" data-lang="ru">
+            <button type="button" class="option-item menu-button" data-lang="ru">
               <span class="flag flag-ru"></span><span>Русский</span>
             </button>
-            <button type="button" class="option-item" data-lang="zh">
+            <button type="button" class="option-item menu-button" data-lang="zh">
               <span class="flag flag-zh"></span><span>中文</span>
             </button>
-            <button type="button" class="option-item" data-lang="ja">
+            <button type="button" class="option-item menu-button" data-lang="ja">
               <span class="flag flag-ja"></span><span>日本語</span>
             </button>
           </div>
@@ -223,7 +223,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.5.41</span>
+        <span>V.5.42</span>
       </div>      
       <div class="title-banner">
         <div class="app-logo">
@@ -396,22 +396,6 @@
 
     </div>
 
-    <main class="mapWrap">
-      <div id="mapViewport" class="mapViewport">
-        <div id="mapInner" class="mapInner">
-          <div class="dungeon-wrapper">
-            
-          </div>
-          <img id="mapImg" alt="Map" draggable="false" />
-        </div>
-      </div>
-
-      <div class="searchBar">
-        <input id="locationSearch" type="text" placeholder="Search region / rift / dungeon..." data-i18n-placeholder="ui.SearchLocationPlaceholder"
-        />
-        <div id="locationSearchResults" class="search-results markers-scroll"></div>
-      </div>
-
     <div class="floating">
       <span class="" id="zoomReadout">100%</span>
       <div id="zoomControls">
@@ -467,6 +451,21 @@
       </div>
     </div>
 
+    <main class="mapWrap">
+      <div id="mapViewport" class="mapViewport">
+        <div id="mapInner" class="mapInner">
+          <div class="dungeon-wrapper">
+            
+          </div>
+          <img id="mapImg" alt="Map" draggable="false" />
+        </div>
+      </div>
+
+      <div class="searchBar">
+        <input id="locationSearch" type="text" placeholder="Search region / rift / dungeon..." data-i18n-placeholder="ui.SearchLocationPlaceholder"
+        />
+        <div id="locationSearchResults" class="search-results markers-scroll"></div>
+      </div>
 
     </main>
   </div>

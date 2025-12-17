@@ -78,14 +78,14 @@
 /* Menu déroulant */
 .custom-dropdown-inner {
   position: absolute;
-  top: 12px;
+  top: 25px;
   left: 0;
   margin-top: 20px;
   background: var(--panel);
   border-radius: 10px;
   border: 1px solid #27524b;
   padding: 6px 0;
-  min-width: 114px;
+  min-width: 130px;
   z-index: 50;
   opacity: 0;
   transform: translateY(4px);
@@ -222,7 +222,7 @@ select option:checked {
   color: #90a7b1;
 }
 
-button:hover:not(.select-current) {
+button:hover:not(.select-current, header button.menu-button) {
   background:linear-gradient(145deg, #113e3d, #195855);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
@@ -259,7 +259,7 @@ button.small, button,
   align-items: center;
   justify-content: center;
   gap: 6px; 
-  padding: 13px 18px;
+  padding: 9px 18px;
   line-height: 1;
   vertical-align: middle;
   cursor: pointer; 
@@ -294,7 +294,7 @@ button.cancel{
 }
 
 button.danger:hover {
-  background: linear-gradient(145deg, #5e190d, #49150a);
+  background: linear-gradient(145deg, #5e190d, #49150a)!important;
   color: #cb939c;
 }
 
@@ -769,6 +769,7 @@ input[type="color"]::-moz-color-swatch {
   display: flex;
   gap: 0px;
   align-items: center;
+  padding-left: 7px;
 }
 
 .filterToggle {
@@ -786,7 +787,7 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .filterBar .filterToggle{
-    margin: 16px 0px 32px 9px;
+    margin: 16px 0px 16px 11px;
 }
 
 .filterToggle.is-on:hover {
@@ -906,13 +907,13 @@ input[type="color"]::-moz-color-swatch {
 }
 
 
-.listItem.general  { border-left: 4px solid #23843b; }
-.listItem.quest    { border-left: 4px solid #712d95; }
-.listItem.boss     { border-left: 4px solid #882a2a; }
-.listItem.loot     { border-left: 4px solid #889730; }
-.listItem.waypoint { border-left: 4px solid #4a9ab2; }
-.listItem.donjon   { border-left: 4px solid #8c8c8c; }
-.listItem.npc      { border-left: 4px solid #9c7848; }
+.listItem.general  { border-left: 3px solid #23843b; }
+.listItem.quest    { border-left: 3px solid #47205c; }
+.listItem.boss     { border-left: 3px solid #621e1e; }
+.listItem.loot     { border-left: 3px solid #6e6423; }
+.listItem.waypoint { border-left: 3px solid #1c5364; }
+.listItem.donjon   { border-left: 3px solid #4e4e4e; }
+.listItem.npc      { border-left: 3px solid #574327; }
 
 .filterToggle img {
   width: 18px;
@@ -942,7 +943,7 @@ input[type="color"]::-moz-color-swatch {
   box-shadow:
     0 1px 3px rgba(0,0,0,0.8),
     0 0 0 1px rgba(120, 241, 194, 0.4);
-  background: linear-gradient(145deg, #07211a, #0f3727);
+  background: linear-gradient(145deg, #0c3031, #051b18);
 }
 
 .filterToggle.is-on::after {
@@ -977,6 +978,26 @@ input[type="color"]::-moz-color-swatch {
   pointer-events: none;
 }
 
+header button.menu-button,
+header button.menu-button.select-current{
+  background: none;
+  color: #b9ae92;
+  border: none;
+  transition: all 0.6s;
+  border: 2px solid transparent;
+}
+
+header button.menu-button:active{
+  background: inherit;
+}
+
+header button.menu-button:hover,
+header button.menu-button.select-current:hover {
+  border: 2px solid #A6A6A6!important;
+  box-shadow: 0 0 10px 5px rgba(166, 166, 166, 0.2);
+  background-color: rgba(166, 166, 166, 0.1);
+  transition: all 0.3s;
+}
 
 .filterToggle:not(.is-on) .filterCount {
   opacity: 0.6;
@@ -1366,7 +1387,7 @@ input[type="color"]::-moz-color-swatch {
   border: 2px solid #1a5f62;
   border-radius: 8px;
   color: #6de3d8;
-  padding: 8px 32px 8px 12px;
+  padding: 9px 32px 10px 12px!important;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -1383,13 +1404,6 @@ input[type="color"]::-moz-color-swatch {
 /* Hover */
 .select-green:hover {
   border-color: #25abaa;
-  box-shadow: var(--select-focus);
-}
-
-/* Focus */
-.select-green:focus {
-  border-color: #25abaa;
-  outline: none;
   box-shadow: var(--select-focus);
 }
 
