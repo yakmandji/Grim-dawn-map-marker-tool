@@ -5,7 +5,7 @@
   --txt: #67999b;
   --titlecolor: #4b9f93;
   --buttontxt : #5cccbe;
-  --placeholdertext : #5f9da1;
+  --placeholdertext : #40757f;
   --muted: #508c86;
   --ok: #8be38b;
   --danger: #ff6b7a;
@@ -26,7 +26,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  background: linear-gradient(81deg, #4c3a21, #866d43 116%, #8a6a3f);
+  background: linear-gradient(81deg, #493e18, #493a1c 116%, #3b3319);
   color: var(--txt);
   font-size: 14px;
   line-height: 1.4;
@@ -112,15 +112,13 @@ textarea, [contenteditable="true"] {
 .app {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
-  gap: 12px;
+  gap: 20px;
   max-height: 100vh; 
-  padding: 0 14px 12px 14px;
+  padding: 0 20px 12px 20px;
 }
 
 header {
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.50);
   grid-column: 1 / -1;
-  border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 16px 22px;
   display: flex;
@@ -128,12 +126,11 @@ header {
   gap: 10px;
   flex-wrap: wrap;
   position: fixed;
-  top: 15px;
-  left: calc(var(--sidebar-width) + 28px);
+  top: 8px;
+  left: calc(var(--sidebar-width) + 40px);
   right: 28px;
-  width: calc(100% - var(--sidebar-width) - 41px);
+  width: calc(100% - var(--sidebar-width) - 60px);
   z-index: 8;
-  background : var(--panel);
 }
 
 header .right-panel{
@@ -163,9 +160,9 @@ header .sep {
     padding: 6px 7px 6px 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     margin-top: 15px;
-    height: 97vh;
+    height: 96.5vh;
     overflow-y: scroll;
     background-color: var(--panel);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
@@ -186,7 +183,8 @@ header .sep {
   background: #0e0a06;
   border-radius: 14px;
   overflow: hidden;
-  margin-top: 106px;
+  margin-top: 90px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
 
 .mapViewport { 
@@ -213,9 +211,9 @@ header .sep {
 
 .section {
   background: var(--p2);
-  border: 1px solid rgb(90 198 155 / 24%);
   border-radius: 12px;
   padding: 10px 0px 10px 0px;
+  margin-top: 8px;
 }
 
 .section.principal {
@@ -603,15 +601,15 @@ body.shared-only-view #mergeSharedBtn,
 /* Panneau flottant des Done */
 .done-panel {
   position: fixed;
-  bottom: 1.6vh;
-  right: 14px;
+  bottom: 1.9vh;
+  right: 20px;
   z-index: 4;
   font-size: 13px;
   transition: transform 0.2s ease-out;
 }
 
 .done-panel.collapsed {
-  transform: translateX(280px);
+  transform: translateX(298px);
 }
 
 .done-panel.collapsed .done-toggle img {
@@ -620,10 +618,9 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .done-panel-inner {
-  width: 300px;
+  width: 350px;
   max-height: 60vh;
   border-radius: 10px;
-  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   font-size: 13px;
@@ -811,8 +808,8 @@ label.checkbox{
 
 .floating { 
   position: absolute;
-  right: 12px;
-  top: 4px;
+  right: 28px;
+  top: 94px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -861,7 +858,7 @@ label.checkbox{
 
 .filter-minimap{
   display: flex;
-  height: 54px;
+  height: 60px;
   gap: 10px;
   justify-content: center;
 }
@@ -914,11 +911,6 @@ label.checkbox{
   margin-top: -22px;  
   border: 2px solid #523b1b;
 }
-
-.map-info-container .select-green{
-  padding: 6px 20px 6px 12px;
-}
-
 
 .miniMap-inner {
   position: relative;
@@ -1012,13 +1004,19 @@ button:focus {
 .gd-popup__card {
     min-width: 520px;
     max-width: calc(100vw - 32px);
-    background: var(--panel);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
     padding: 22px 22px;
     position: relative;
     animation: gd-popup-enter 0.15s ease-out;
+}
+
+header .gd-popup__card .section.principal{
+  background:none;
+  border: none ;
+}
+
+header .gd-popup__card input[type="text"]{
+  padding: 10px 10px;
 }
 
 .gd-popup.is-open {
@@ -1118,7 +1116,7 @@ button:focus {
 .doneItem .doneLabel {
   position: relative;
   opacity: 0.7;
-  max-width: 132px;
+  max-width: 175px;
   overflow: hidden;
   font-size: 12px;
 }
