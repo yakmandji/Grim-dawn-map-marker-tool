@@ -303,10 +303,10 @@ input[type="search"],
 input[type="password"],
 textarea {
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgb(12 35 40);
   color: var(--placeholdertext);
   border-radius: 6px;
-  padding: 5px 10px;
+  padding: 6px 10px;
   outline: none;
 }
 
@@ -320,7 +320,6 @@ input[type="password"]:focus
 
 .list-input{
   flex: 0 0 auto;
-  padding: 4px 1px 4px 1px;
   border-radius: 6px;
   display: flex;
 }
@@ -403,10 +402,15 @@ input[type="password"]:focus
 
 .lock-label{
   flex: none;
-  padding-right: 14px;
+  padding-right: 5px;
   font-size: 11px;
   display: flex;
   align-items: center;
+  max-width: 137px;
+}
+
+.lock-label #lockAll{
+  min-width: 13px;
 }
 
 .lock-label span{
@@ -533,10 +537,11 @@ button.marker-save{
 #list .marker-cat-badge{
     background: #0c4d44;
     max-width: min-content;
-    padding: 2px 10px;
+    padding: 3px 10px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 11px;
     white-space: nowrap;
+    opacity: 0.85;
 }
 
 #list .marker-cat-badge.loot{
@@ -907,13 +912,13 @@ input[type="color"]::-moz-color-swatch {
 }
 
 
-.listItem.general  { border-left: 3px solid #23843b; }
-.listItem.quest    { border-left: 3px solid #47205c; }
-.listItem.boss     { border-left: 3px solid #621e1e; }
-.listItem.loot     { border-left: 3px solid #6e6423; }
-.listItem.waypoint { border-left: 3px solid #1c5364; }
-.listItem.donjon   { border-left: 3px solid #4e4e4e; }
-.listItem.npc      { border-left: 3px solid #574327; }
+.listItem.general  { border-left: 4px solid #23843b; }
+.listItem.quest    { border-left: 4px solid #47205c; }
+.listItem.boss     { border-left: 4px solid #621e1e; }
+.listItem.loot     { border-left: 4px solid #6e6423; }
+.listItem.waypoint { border-left: 4px solid #1c5364; }
+.listItem.donjon   { border-left: 4px solid #4e4e4e; }
+.listItem.npc      { border-left: 4px solid #574327; }
 
 .filterToggle img {
   width: 18px;

@@ -176,6 +176,12 @@
       bottom: 60px;
   }
 
+  .map-info-container {
+    margin-top: -86px;
+    margin-right: -26px;
+  }
+
+
   .header-actions{
     flex-direction: column;
     align-items: baseline;
@@ -193,9 +199,9 @@
 
   header{
     top:0;
-    transform: translateX(-105%);
-    left: 11px!important;
-    width: 84%;
+    transform: translateX(-94%);
+    left: -14px!important;
+    width: 41%;
     flex-direction: column;
     position: absolute;
     z-index: 5000;

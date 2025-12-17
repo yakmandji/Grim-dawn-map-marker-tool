@@ -3,15 +3,15 @@
   --panel: #09181b;
   --p2: #0f252a;
   --txt: #67999b;
-  --titlecolor: #4b9f93;
+  --titlecolor: #59afa3;
   --buttontxt : #5cccbe;
-  --placeholdertext : #40757f;
+  --placeholdertext : #5497a4;
   --muted: #508c86;
   --ok: #8be38b;
   --danger: #ff6b7a;
   --select-focus : 0 0 6px rgb(38 240 240 / 60%), inset 0 0 6px rgba(0, 0, 0, 0.4);
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
-  --sidebar-width: 460px;
+  --sidebar-width: 440px;
   --border-color : #6d532f;
   --gold-main: #d5b278;       /* doré principal */
   --gold-dark: #8a6a3f;       /* version ombrée */
@@ -157,7 +157,7 @@ header .sep {
     position: relative;
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    padding: 6px 7px 6px 16px;
+    padding: 6px 18px 6px 18px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -173,7 +173,6 @@ header .sep {
   gap: 8px; 
   align-items: center; 
   flex-wrap: wrap;
-  padding-bottom: 2px;
 }
 
 .row > * { flex: 1; }
@@ -227,7 +226,7 @@ header .sep {
   display: flex;
   gap:8px;
   margin: 0 0 8px;
-  font-size: 13px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: .8px;
   color:var(--titlecolor);
@@ -274,7 +273,7 @@ border: 1px dashed #52422d;
   flex: 1; 
   overflow: auto; 
   border-radius: 10px;
-  padding: 3px 14px 16px 14px;
+  padding: 0 14px 0 14px;
 }
 
 #noteList .listItem{
@@ -291,13 +290,11 @@ border: 1px dashed #52422d;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 9px 8px 9px 8px;
+  padding: 13px 16px 13px 16px;
   align-items: center;
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-.listItem:nth-child(odd){
+  margin-top: 14px;
+  margin-bottom: 14px;
+  border-radius: 6px;
   background: var(--p2);
 }
 
@@ -314,11 +311,11 @@ border: 1px dashed #52422d;
 }
 
 #list .left{
-  min-width: 290px;
+  min-width: 220px;
 }
 
 #list .left input[type="text"]{
-  width: 100%;
+  width: 210px;
 }
 
 .modal{

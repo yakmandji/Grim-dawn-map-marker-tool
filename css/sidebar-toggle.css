@@ -51,6 +51,10 @@ body.sidebar-collapsed .filterBar{
 	flex-direction: column;
 }
 
+body.sidebar-collapsed .filterBar{
+	padding-left: 0px;
+}
+
 body.sidebar-collapsed .filterBar .filterToggle{
     margin: 2px 3px 14px 4px;
     width: 31px;
@@ -103,11 +107,15 @@ body.sidebar-collapsed #list .row.d-flex{
 }
 
 body.sidebar-collapsed #list .left{
-	min-width: 94px;
+	min-width: 122px;
 }
 
 body.sidebar-collapsed #list .left .row{
 	margin-top: 2px;
+}
+
+body.sidebar-collapsed #list .left input[type="text"]{
+	width: 100%;
 }
 
 body.sidebar-collapsed #list .list-input{
