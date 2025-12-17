@@ -245,7 +245,3 @@ body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-
 body.sidebar-collapsed .js-character-dropdown .custom-dropdown-inner .character-select-zone{
 	margin-right: 0px;
 }
-
-body.sidebar-collapsed .tool-section .row{
-	flex-direction: column;
-}
