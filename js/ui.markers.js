@@ -36,6 +36,48 @@ const CATEGORY_I18N_KEYS = {
 
 const { $, inner } = window.UiCore;
 
+  // --- Done fly animation ---
+function animateArchiveFlyBlock(listRowEl) {
+  const target = document.getElementById('donePanel') || document.getElementById('donePanelToggle');
+  if (!listRowEl || !target) return;
+
+  const a = listRowEl.getBoundingClientRect();
+  const b = target.getBoundingClientRect();
+
+  // Clone du bloc
+  const ghost = listRowEl.cloneNode(true);
+  ghost.classList.add('marker-fly');
+
+  ghost.style.left = a.left + 'px';
+  ghost.style.top = a.top + 'px';
+  ghost.style.width = a.width + 'px';
+  ghost.style.height = a.height + 'px';
+  ghost.style.opacity = '1';
+
+  document.body.appendChild(ghost);
+
+  // Destination : vers le panneau (mais pas besoin d’aller pile dessus)
+  const endX = b.left + 20;
+  const endY = b.top + b.height / 2;
+
+  const startX = a.left + a.width / 2;
+  const startY = a.top + a.height / 2;
+
+  const dx = endX - startX;
+  const dy = endY - startY;
+
+  requestAnimationFrame(() => {
+    ghost.style.transform = `translate(${dx}px, ${dy}px) scale(0.65)`;
+    ghost.style.opacity = '0';
+  });
+
+  ghost.addEventListener('transitionend', (ev) => {
+    if (ev.propertyName === 'transform') ghost.remove();
+  });
+}
+
+  // -------------------------END Done fly animation ---
+
 
   // --- Markers ---
   function addMarkerFromUI(xp, yp){
@@ -243,6 +285,7 @@ const { $, inner } = window.UiCore;
           const isDone = !!e.target.checked;
 
           if (isDone) {
+            animateArchiveFlyBlock(el); // Done animation
             // Si l’historique est masqué sur la map, on le réactive (comme shrine/region)
             if (window.UiFilters?.ensureHistoryVisible) {
               window.UiFilters.ensureHistoryVisible();
