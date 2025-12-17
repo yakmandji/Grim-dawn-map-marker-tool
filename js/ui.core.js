@@ -290,13 +290,13 @@ function rememberActiveProfile() {
       const centerBtn = document.createElement('button');
       centerBtn.type = 'button';
       centerBtn.className = 'marker-center small';
-      centerBtn.innerHTML = `<img src="img/center-icon.svg" width="14">`;
+      centerBtn.innerHTML = `<img src="img/center-icon.svg" width="12">`;
       centerBtn.onclick = () => centerOn(m.xp, m.yp, 1.2, m.id);
 
       const delBtn = document.createElement('button');
       delBtn.type = 'button';
       delBtn.className = 'marker-delete danger small';
-      delBtn.innerHTML = `<img src="img/bin-icon.svg" width="14">`;
+      delBtn.innerHTML = `<img src="img/bin-icon.svg" width="12">`;
       delBtn.onclick = () => deleteMarkerFromUI(m.id);
 
       actions.appendChild(centerBtn);

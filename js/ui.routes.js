@@ -353,7 +353,7 @@
       saveBtn.setAttribute('data-i18n-title', 'ui.SaveTitle');
       saveBtn.title =
         (window.GDMMLang?.t && GDMMLang.t('ui.SaveTitle')) || 'Save';
-      saveBtn.innerHTML = '<img src="img/save-icon.svg" width="14">';
+      saveBtn.innerHTML = '<img src="img/save-icon.svg" width="13">';
 
       // Clic sur le bouton : même logique, avec toast, et sans double-save
       saveBtn.addEventListener('click', () => {
@@ -371,7 +371,7 @@
       centerBtn.title =
         (window.GDMMLang?.t && GDMMLang.t('ui.CenterOnMap')) ||
         'Center on map';
-      centerBtn.innerHTML = '<img src="img/center-icon.svg" width="14">';
+      centerBtn.innerHTML = '<img src="img/center-icon.svg" width="13">';
       centerBtn.addEventListener('click', () => centerRouteOnMap(path));
       row.appendChild(centerBtn);
 
@@ -382,7 +382,7 @@
       linkBtn.setAttribute('data-i18n-title', 'ui.linkRoute');
       linkBtn.title =
         (window.GDMMLang?.t && GDMMLang.t('ui.linkRoute')) || 'Link';
-      linkBtn.innerHTML = '<img src="img/link.svg" width="16" alt="Link">';
+      linkBtn.innerHTML = '<img src="img/link.svg" width="15" alt="Link">';
 
       linkBtn.addEventListener('click', async () => {
         if (!window.GDMMShare?.createLink) return;
@@ -428,7 +428,7 @@
       deleteBtn.title =
         (window.GDMMLang?.t && GDMMLang.t('ui.DeleteButton')) ||
         'Delete';
-      deleteBtn.innerHTML = '<img src="img/bin-icon.svg" width="14">';
+      deleteBtn.innerHTML = '<img src="img/bin-icon.svg" width="13">';
       deleteBtn.addEventListener('click', () => deleteRoute(path.id));
       row.appendChild(deleteBtn);
 

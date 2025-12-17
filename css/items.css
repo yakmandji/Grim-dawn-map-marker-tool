@@ -407,6 +407,8 @@ input[type="password"]:focus
   display: flex;
   align-items: center;
   max-width: 137px;
+  gap: 3px;
+  color: #1d706e;
 }
 
 .lock-label #lockAll{
@@ -416,6 +418,7 @@ input[type="password"]:focus
 .lock-label span{
   padding-left: 5px;
   padding-right: 5px;
+  line-height: 13px;
 }
 
 .chip { 

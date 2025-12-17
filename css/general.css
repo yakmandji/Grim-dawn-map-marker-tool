@@ -277,7 +277,7 @@ border: 1px dashed #52422d;
 }
 
 #noteList .listItem{
-  padding: 4px 8px 4px 8px;
+  padding: 8px 8px 8px 8px;
 }
 
 #routesList .listItem{
@@ -634,10 +634,6 @@ body.shared-only-view #mergeSharedBtn,
   padding: 5px 8px;  
 }
 
-.done-panel #doneList button img{
-  width: 14px;
-}
-
 label.checkbox{
   display: flex;
   gap: 6px;
@@ -646,7 +642,7 @@ label.checkbox{
 .doneActions {
   flex: 0 0 auto;
   display: flex;
-  gap: 4px;
+  gap: 8px;
 }
 
 #mobile-menu-toggle{
