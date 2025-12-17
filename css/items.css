@@ -1388,10 +1388,10 @@ header button.menu-button.select-current:hover {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: #0d2b23;
+  background: #0d2a2b;
   border: 2px solid #1a5f62;
   border-radius: 8px;
-  color: #6de3d8;
+  color: #59b7c1;
   padding: 9px 32px 10px 12px!important;
   font-size: 12px;
   cursor: pointer;
