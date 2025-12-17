@@ -189,6 +189,9 @@
               bg.src = iconSrc;
 
               bg.alt = '';
+              bg.draggable = false;
+              bg.addEventListener('dragstart', e => e.preventDefault());
+
 
               pin.appendChild(bg);
               el.appendChild(pin);

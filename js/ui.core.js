@@ -930,6 +930,9 @@ viewport.addEventListener('pointermove', e => {
 
 
   // --- Drag & Drop image ---
+
+  viewport.addEventListener('dragstart', e => e.preventDefault());
+  
   ;['dragenter','dragover'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.style.outline = '2px dashed #78f1c2'; }));
   ;['dragleave','drop'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.style.outline = 'none'; }));
   viewport.addEventListener('drop', e => { const f = e.dataTransfer.files?.[0]; if (!f) return; setMapSrc(f); });

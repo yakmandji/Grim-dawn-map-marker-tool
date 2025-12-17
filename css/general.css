@@ -1217,3 +1217,8 @@ header .gd-popup__card input[type="text"]{
   border-radius: 10px;
   transition: transform 900ms cubic-bezier(.18,.85,.25,1), opacity 900ms ease;
 }
+
+.dungeon-wrapper, .dungeon-wrapper * {
+  -webkit-user-drag: none;
+  user-select: none;
+}
