@@ -7,7 +7,7 @@
   }
 }
 
-@media (min-width: 770px) and (max-width: 1400px) {
+@media (min-width: 770px) and (max-width: 1200px) {
 
   .app{
     padding: 2px 7px 12px 12px;
@@ -149,21 +149,6 @@
 
 }
 
-@media (min-width: 770px) and (max-width: 1179px) {
-
-  header,
-  body.sidebar-collapsed header{
-    width: 98.2% !important;
-    left: 8px !important;
-    left: inherit;
-    right: inherit;
-  }
-
-  .sidebar{
-    margin-top: 94px;
-  }
-
-}
 
 @media (max-width: 770px) {
 
