@@ -186,7 +186,7 @@ header .sep {
   background: #0e0a06;
   border-radius: 14px;
   overflow: hidden;
-  margin-top: 98px;
+  margin-top: 106px;
 }
 
 .mapViewport { 
@@ -213,7 +213,7 @@ header .sep {
 
 .section {
   background: var(--p2);
-  border: 1px dashed #7a664a;
+  border: 1px solid rgb(90 198 155 / 24%);
   border-radius: 12px;
   padding: 10px 0px 10px 0px;
 }
@@ -223,7 +223,9 @@ header .sep {
  }
   
 .section h3,
-.done-panel-inner h3 {
+.done-panel-inner h3,
+.done-panel-inner h4
+ {
   display: flex;
   gap:8px;
   margin: 0 0 8px;
@@ -239,11 +241,29 @@ header .sep {
 }
 
 .tool-section{
-  background: #120c04;
+  background: linear-gradient(150deg, #272111, #120d06);
+
+  border-radius: 18px;
+  padding: 22px;
+
+border: 1px dashed #52422d;
+
+  box-shadow:
+    /* relief externe (posé sur fond sombre) */
+    10px 10px 26px rgba(0,0,0,0.55),
+    -10px -10px 26px rgba(255,255,255,0.03),
+
+    /* matelassé interne (coussin) */
+    inset 2px 2px 7px rgba(0,0,0,0.60),
+    inset -2px -2px 7px rgba(255,220,170,0.06);
+
 }
 
-.tool-section h3{
+.tool-section h3,
+.tool-section h4,
+.tool-section .done-count{
   color: #81755d;
+  text-transform: uppercase;
 }
 
 .tool-section p{
@@ -607,9 +627,13 @@ body.shared-only-view #mergeSharedBtn,
   display: flex;
   flex-direction: column;
   font-size: 13px;
-  background-color: rgba(3, 22, 20, 0.8);
+  background-color: var(--panel);
   border-top-left-radius: 0;
   overflow: hidden;
+}
+
+.done-panel-inner .section.principal {
+  padding: 15px 12px 10px 11px;
 }
 
 .done-panel #doneList button{
@@ -618,92 +642,6 @@ body.shared-only-view #mergeSharedBtn,
 
 .done-panel #doneList button img{
   width: 14px;
-}
-
-.done-toggle {
-  width: 26px;
-  height: 40px;
-  border-radius: 10px 0 0 10px;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-right: none;
-  background-color: rgba(3, 22, 20, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-  position: absolute;
-  left: -25px;
-  top: 0;
-}
-
-.done-toggle img {
-  display: block;
-  transition: transform 0.18s ease-out;
-}
-
-.done-panel-header {
-  padding: 8px 10px;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.done-list {
-  padding: 6px 8px 8px;
-  overflow-y: scroll;
-  max-height: 15vh;
-}
-
-/* Lignes de l’historique */
-.doneItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 4px 4px;
-  border-radius: 6px;
-  margin-bottom: 2px;
-  background: rgba(255,255,255,0.03);
-}
-
-.doneIcon {
-  flex: 0 0 auto;
-  width: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.doneIcon-img {
-  width: 21px;
-  height: 21px;
-  display: block;
-  pointer-events: none;
-  user-select: none;
-}
-
-.doneIcon-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(200, 220, 220, 0.7);
-}
-
-.doneItem:hover {
-  background: rgba(255,255,255,0.06);
-}
-
-.doneLabel {
-  flex: 1 1 auto;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.doneLabel[title] {
-  cursor: help;
 }
 
 label.checkbox{
@@ -715,22 +653,6 @@ label.checkbox{
   flex: 0 0 auto;
   display: flex;
   gap: 4px;
-}
-
-.doneItem .doneLabel {
-  position: relative;
-  opacity: 0.7;
-  max-width: 132px;
-  overflow: hidden;
-}
-
-.done-empty {
-  text-align: center;
-  padding: 12px 8px;
-  opacity: 0.6;
-  font-size: 12px;
-  font-style: italic;
-  color: #ccc;
 }
 
 #mobile-menu-toggle{
@@ -1181,6 +1103,115 @@ button:focus {
 .is-hidden
  {
   display: none;
+}
+
+#archive-container{
+  padding: 12px 12px;
+}
+
+.done-list {
+  padding: 6px 0 8px;
+  overflow-y: scroll;
+  max-height: 15vh;
+}
+
+.doneItem .doneLabel {
+  position: relative;
+  opacity: 0.7;
+  max-width: 132px;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.done-empty {
+  text-align: center;
+  padding: 12px 8px;
+  opacity: 0.6;
+  font-size: 12px;
+  font-style: italic;
+  color: #ccc;
+}
+
+.done-toggle {
+  width: 26px;
+  height: 40px;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-right: none;
+  background-color: rgba(3, 22, 20, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  left: -25px;
+  top: 0;
+}
+
+.done-toggle img {
+  display: block;
+  transition: transform 0.18s ease-out;
+}
+
+.done-panel-header {
+  padding: 12px 14px 0px 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Lignes de l’historique */
+.doneItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 4px;
+  border-radius: 6px;
+  margin-bottom: 2px;
+}
+
+.doneItem:nth-child(odd){
+  background: rgba(255,255,255,0.03);
+}
+
+.doneIcon {
+  flex: 0 0 auto;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doneIcon-img {
+  width: 21px;
+  height: 21px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.doneIcon-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(200, 220, 220, 0.7);
+}
+
+.doneItem:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.doneLabel {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.doneLabel[title] {
+  cursor: help;
 }
 
 /* --- Archive fly animation --- */
