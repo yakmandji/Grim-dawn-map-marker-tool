@@ -183,7 +183,7 @@ button, select, .chip, a.button {
   background: linear-gradient(145deg, #17363b, #1b4447);
   color: #ced3ec;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
   font-size: 12px;
@@ -259,7 +259,7 @@ button.small, button,
   align-items: center;
   justify-content: center;
   gap: 6px; 
-  padding: 8px 18px;
+  padding: 13px 18px;
   line-height: 1;
   vertical-align: middle;
   cursor: pointer; 
