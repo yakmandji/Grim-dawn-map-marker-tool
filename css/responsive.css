@@ -3,7 +3,7 @@
 @media (min-width: 771px) and (max-width: 1580px) {
 
   .miniMap{
-    margin-top: 0;
+    margin-top: -15px;
   }
 
   .miniMap-inner{
@@ -12,7 +12,16 @@
   }
 
   #zoomReadout{
-    top: 173px;
+    top: 158px;
+  }
+
+  #cursorReadout,
+  .map-hint{
+    display: none;
+  }
+
+  #zoomControls{
+    top: 112px;
   }
 
 }
