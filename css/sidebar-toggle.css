@@ -32,8 +32,9 @@ body.sidebar-collapsed .listItem div > .row{
 	justify-content: space-between;
 }
 
-body.sidebar-collapsed .app-logo img{
-	width: 185px;
+body.sidebar-collapsed .app-logo .title {
+	margin-top: 34px;
+	font-size: 23px;
 }
 
 body.sidebar-collapsed .app{
