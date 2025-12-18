@@ -18,16 +18,17 @@
   border: 0;
   height: 1px;
   margin: 20px 0;
-  opacity: 0.9;
+  opacity: 1;
   background: linear-gradient(
     90deg,
     transparent,
-    color-mix(in srgb, var(--border-color) 75%, transparent) 18%,
-    color-mix(in srgb, var(--titlecolor) 70%, white 10%) 50%,
-    color-mix(in srgb, var(--border-color) 75%, transparent) 82%,
-    transparent 
+    rgba(255,255,255,0.12) 18%,
+    rgba(255,255,255,0.22) 50%,
+    rgba(255,255,255,0.12) 82%,
+    transparent
   );
 }
+
 
 .search-info {
   font-size: 11px;
@@ -1842,3 +1843,4 @@ header button.menu-button.select-current:hover {
   opacity: 0.7; 
   z-index: 1;
 }
+
