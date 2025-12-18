@@ -1,7 +1,7 @@
 :root {
   --bg: #0f1220;
   --panel: #09181b;
-  --p2: #0f252a;
+  --p2: #0a2223;
   --txt: #67999b;
   --titlecolor: #59afa3;
   --buttontxt : #5cccbe;
@@ -308,6 +308,7 @@ border: 1px dashed #52422d;
 
 #list .right{
     justify-content: center;
+    max-width: 90px;
 }
 
 #list .left{
@@ -967,9 +968,9 @@ button:focus {
 }
 
 .header-actions{
-  width: 350px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .gd-popup {
