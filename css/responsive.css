@@ -1,13 +1,24 @@
 /*MOBILE VERSION---------------------------------------------*/
 
-@media (min-width: 1451px) and (max-width: 1580px) {
+@media (min-width: 771px) and (max-width: 1580px) {
 
-  header button{
-    max-width: 150px;
+  .miniMap{
+    margin-top: 0;
   }
+
+  .miniMap-inner{
+    width: 170px;
+    height: 170px;
+  }
+
+  #zoomReadout{
+    top: 173px;
+  }
+
 }
 
-@media (min-width: 770px) and (max-width: 1200px) {
+
+@media (max-width: 1300px) {
 
   .app{
     padding: 2px 7px 12px 12px;
@@ -31,57 +42,43 @@
     right: 7px;
   }
 
-}
+  .floating #miniMap,
+  #zoomReadout,
+  #zoomControls{
+    display: none;
+  }
 
-
-@media (min-width: 771px) and (max-width: 1580px) {
-
-  .miniMap{
+  .map-info-container{
     margin-top: 0;
-  }
-
-  .miniMap-inner{
-    width: 170px;
-    height: 170px;
-  }
-
-  #zoomReadout{
-    top: 173px;
+    margin-right: -23px;
   }
 
 }
 
 
-@media (max-width: 770px) {
-
-  .sidebar{
-    position: fixed;
-    height: 240px;
-    bottom: 0;
-    z-index: 2;
-    flex-direction: row;
-    width: 100%;
-    overflow-x: scroll;
-  }
+@media (max-width: 1140px) {
 
   header #shareRoutesBtn span,
-  #zoomReadout,
-  #zoomControls,
   header .save-block span{
     display: none;
   }
 
-  #version{
-    left: 11px;
-    width: 48px;
-  }
+header{
+  background: var(--panel);
+}
+
+header #shareRoutesBtn span, header .save-block span{
+  display: block;
+}
+
+header button{
+  text-align: left;
+} 
 
 .app-logo img{
     width: 110px;
     margin-top: 30px;
 }
-
-.announce{display: none;}
 
 .filterBar .filterToggle {
     margin: 0px 0px 0px 9px;
@@ -89,45 +86,6 @@
 
   #left-menu.open {
     transform: translateX(0);
-  }
-
-  .app{
-    grid-template-columns: 1fr;
-    height: 76%;
-  }
-
-  .sidebar{
-    position: fixed;
-    height: 216px;
-    bottom: 0;
-    z-index: 2;
-    flex-direction: row;
-    width: 100%;
-    overflow-x: scroll;
-  }
-
-
-  .sidebar .section{
-    margin-top: 0!important;
-  }
-
- .sidebar .filterBar{
-    padding: 8px 18px 11px 18px;
- }
-
- .sidebar .tool-section{
-  display: flex;
-  flex-direction: column;
-  min-width: 263px;
- }
-
- .sidebar .tool-section .info{
-  display: none;
- }
-
-  .section.light{
-    min-width: 420px;
-    max-height: 400px!important;
   }
 
    #list .listItem{
@@ -139,26 +97,61 @@
     height: 20px;
   }
 
-  .done-panel{
-    bottom: 43.5vh;
-  }
-
-  .floating #miniMap{
-    display: none;
-  }
-
 }
 
 
-@media (max-width: 770px) {
+@media (max-width: 930px) {
 
   header .sep,
+  .logo-d,
+  .app-logo .announce,
+  .tool-section .info,
+  .lock-label,
+  .filterBar,
   #sidebarToggle{
     display: none;
   }
 
+  .sidebar{
+    position: fixed;
+    height: 170px;
+    bottom: 0;
+    z-index: 2;
+    flex-direction: row;
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .js-character-dropdown .custom-dropdown-inner{
+    position: relative;
+    height: 0;
+  }
+
+  .js-character-dropdown .custom-dropdown-inner .character-line{
+    height: 0;
+  }
+
+  .js-character-dropdown.open .custom-dropdown-inner,
+  .js-character-dropdown.open .custom-dropdown-inner .character-line{
+    height: initial;
+  }
+
+  .app-logo img.logo-m{
+    display: block;
+    width: 45px;
+  }
+
+  .sidebar .section.light,
+  .sidebar .section.principal{
+    min-width: 360px;
+  }
+
   .searchBar{
-      bottom: 60px;
+      bottom: 9px;
+  }
+
+  .done-panel.collapsed {
+    transform: translateX(334px);
   }
 
   .map-info-container {
@@ -175,7 +168,7 @@
 
   .gd-popup{
     top: 0!important;
-    transform: translateX(-100%);
+    transform: translateX(-45%);
   }
 
   .gd-popup__card{
@@ -224,7 +217,9 @@
   }
 
   .app{
+    display: initial;
     padding: 0 12px 12px 0px;
+    height: 100vh;
   }
 
   #cursorReadout{
@@ -247,12 +242,14 @@
 
 
   .mapWrap{
-    width: 103%;
+    min-width: 100%;
     margin-top: 8px;
+    height: 72vh;
   }
 
   .done-panel{
     right: 1px;
+    bottom: 38vh;
   }
 
 
