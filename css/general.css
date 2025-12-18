@@ -1,12 +1,12 @@
 :root {
   --bg: #0f1220;
   --panel: #09181b;
-  --p2: #0a2223;
+  --p2: #0a1e23;
   --txt: #67999b;
   --titlecolor: #59afa3;
   --buttontxt : #5cccbe;
   --placeholdertext : #5497a4;
-  --muted: #508c86;
+  --muted: #367177;
   --ok: #8be38b;
   --danger: #ff6b7a;
   --select-focus : 0 0 6px rgb(38 240 240 / 60%), inset 0 0 6px rgba(0, 0, 0, 0.4);
@@ -44,10 +44,6 @@ textarea {
   z-index: 6;
 }
 
-.sidebar .logo-m{
-  display: none;
-}
-
 .d-flex{
   display: flex;
   align-items: center;
@@ -82,15 +78,21 @@ textarea, [contenteditable="true"] {
 
 .app-logo {position: relative;}
 
+.app-logo .title{
+  font-size: 34px;
+  margin: 0px 16px 0px 16px;
+  line-height: 34px;
+  color: #37a593;
+}
+
 .announce{
-  position: absolute;
-  left: 30px;
   font-size: 12px;
-  bottom: 6px;
   font-weight: 400;
-  color:#358c7d;
+  color:#4c898c;
   width: 300px;
   text-align: center;
+  margin-top: 47px;
+  margin-bottom: 3px;
 }
 
 .seo-summary {
@@ -158,6 +160,16 @@ header .sep {
 }
 
 .sidebar {
+    overflow-y: scroll;
+    background-image:
+      linear-gradient(rgba(9,24,27,0.55), rgba(9,19,22,0.1)),
+      url("../img/grim_dawn_icon.jpg"),
+      linear-gradient(rgb(9 24 27), rgb(8 19 22));
+    background-attachment: scroll, local, scroll;
+    background-size: cover, 161px, cover;
+    background-position: top;
+    background-repeat: no-repeat;
+
     position: relative;
     border: 1px solid var(--border-color);
     border-radius: 14px;
@@ -167,8 +179,6 @@ header .sep {
     gap: 16px;
     margin-top: 15px;
     height: 96.5vh;
-    overflow-y: scroll;
-    background-color: var(--panel);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
@@ -230,7 +240,7 @@ header .sep {
   display: flex;
   gap:8px;
   margin: 0 0 8px;
-  font-size: 15px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: .8px;
   color:var(--titlecolor);
@@ -556,48 +566,52 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 /* ---- CYBER GREEN SCROLLBAR ---- */
-
-.sidebar.markers-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;  
+/* =========================
+   VARIABLES (optionnel)
+========================= */
+:root {
+  --scroll-thumb: rgb(51 129 117 / 35%);
 }
 
-.sidebar.markers-scroll:hover {
-  scrollbar-color: rgb(32 110 95 / 55%) #082722;
-}
-
-.sidebar.markers-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.sidebar.markers-scroll::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-
+/* visible tout le temps */
 .markers-scroll {
-  scrollbar-width: thin;   
-  scrollbar-color: #6d5734 #291f12;
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) transparent;
 }
 
-/* Chromium browsers (Chrome / Edge / Brave) */
+/* Chrome / Edge / Brave */
 .markers-scroll::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 .markers-scroll::-webkit-scrollbar-track {
-  background: #051414;
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px #0a2c2c;
+  background: transparent;
 }
 
 .markers-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #12c4c1, #26f0df);
+  background: none;
+  background-color: var(--scroll-thumb);
   border-radius: 10px;
+  transition: none; /* pas d'effet hover/flash */
 }
 
+/* neutralise le hover : même rendu */
+.markers-scroll:hover::-webkit-scrollbar-thumb,
 .markers-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #1dea8d, #4dffbd);
+  background: none;
+  background-color: var(--scroll-thumb);
+}
+
+/* Firefox: neutralise le hover aussi */
+.markers-scroll:hover {
+  scrollbar-color: var(--scroll-thumb) transparent;
+}
+
+.sidebar.markers-scroll{
+  scrollbar-width: none;
 }
 
 /* Panneau flottant des Done */
@@ -611,7 +625,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .done-panel.collapsed {
-  transform: translateX(298px);
+  transform: translateX(336px);
 }
 
 .done-panel.collapsed .done-toggle img {
@@ -661,7 +675,7 @@ label.checkbox{
   padding: 4px 10px;
   border-radius: 8px;
   background: rgb(37 97 103 / 22%);
-  color: #239367;
+  color: #277d82;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.6px;
@@ -683,6 +697,7 @@ label.checkbox{
 .js-character-dropdown{
   margin-left: auto;
   margin-right: auto;
+  margin-top: 45px;
 }
 
 .js-character-dropdown .custom-dropdown-inner{
@@ -778,6 +793,8 @@ label.checkbox{
   font-size: 18px;
   margin-right: 10px;
   font-weight: 600;
+  height: 20px;
+  line-height: 20px;
 }
 
 .character-line.add-new .character-select-zone {

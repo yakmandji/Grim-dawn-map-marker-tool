@@ -796,7 +796,7 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .filterBar .filterToggle{
-    margin: 16px 0px 16px 11px;
+    margin: 16px 0px 14px 11px;
 }
 
 .filterToggle.is-on:hover {

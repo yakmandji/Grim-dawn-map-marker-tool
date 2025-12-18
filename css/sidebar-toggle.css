@@ -18,6 +18,7 @@ body.sidebar-collapsed .show-collapsed{
 
 body.sidebar-collapsed .sidebar .marker-save,
 body.sidebar-collapsed .info,
+body.sidebar-collapsed #list .danger,
 body.sidebar-collapsed .announce{
 	display: none;
 }
@@ -40,7 +41,7 @@ body.sidebar-collapsed .app{
 }
 
 body.sidebar-collapsed .sidebar{
-	padding: 6px 0px 6px 8px;
+    padding: 6px 8px 6px 8px;
 }
 
 body.sidebar-collapsed .lock-label{
@@ -56,7 +57,7 @@ body.sidebar-collapsed .filterBar{
 }
 
 body.sidebar-collapsed .filterBar .filterToggle{
-    margin: 2px 3px 14px 4px;
+    margin: 2px 2px 14px 0;
     width: 31px;
     height: 27px;
 }
@@ -64,6 +65,10 @@ body.sidebar-collapsed .filterBar .filterToggle{
 body.sidebar-collapsed .filterBar .filterToggle img{
     width: 15px;
 	height: 15px;
+}
+
+body.sidebar-collapsed .js-character-dropdown {
+	margin-top: 6px;
 }
 
 body.sidebar-collapsed .js-character-dropdown .select-current .char-avatar-current{

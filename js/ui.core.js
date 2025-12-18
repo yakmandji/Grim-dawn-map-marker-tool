@@ -1480,20 +1480,6 @@ function setupPopup(triggerSelector, popupAttr) {
   });
 })();
 
-//Responsive JS------------------------------------------------------------------
-
-  const mq = window.matchMedia('(min-width: 930px) and (max-width: 1140px)');
-
-  function updateSidebarCollapsed(e) {
-    document.body.classList.toggle('sidebar-collapsed', e.matches);
-  }
-
-  // Initial
-  updateSidebarCollapsed(mq);
-
-  // Resize / orientation change
-  mq.addEventListener('change', updateSidebarCollapsed);
-//--------------------------------------- END Responsive JS---------------------------------------------
 
 // Init
 setupPopup('#btn-new-marker', 'marker');
