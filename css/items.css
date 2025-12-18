@@ -1018,15 +1018,6 @@ header button.menu-button.select-current:hover {
   position: relative;
 }
 
-.marker .pin .shared-badge {
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-}
-
 
 /*RIFT MARKER*/
 .marker-rift {
@@ -1844,3 +1835,46 @@ header button.menu-button.select-current:hover {
   z-index: 1;
 }
 
+/*PAN TOOL TIP*/
+
+.gdmm-pan-hint {
+  position: fixed;
+  left: 58%;
+  bottom: 33px;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  background: rgb(6 14 16 / 86%);
+  color: var(--txt);
+  font-size: 13px;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.gdmm-pan-hint.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.gdmm-pan-hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin: 0 2px;
+
+  background: rgba(255,255,255,0.12);
+  border: 1px solid var(--border-color);
+  font-size: 12px;
+}

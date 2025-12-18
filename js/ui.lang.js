@@ -141,6 +141,8 @@
       "ui.linkRoute": "Share route",
       "ui.HelpTextButton": "You can help me improve the tool, report issues, or ask for help on my GitHub page",
       "ui.HelpButton": "Feedback & Support",
+      "hint.PanSpeed": "Press <kbd>Shift</kbd> for fast speed — Press <kbd>Ctrl</kbd> for slow speed"
+
 
     },
     fr: {
@@ -279,6 +281,8 @@
       "ui.linkRoute" : "Partager la route",
       "ui.HelpTextButton": "Vous pouvez m’aider à améliorer l’outil, signaler des problèmes ou demander de l’aide sur la page GitHub du projet",
       "ui.HelpButton": "Retours & assistance",
+      "hint.PanSpeed": "Appuyez sur <kbd>Maj</kbd> pour aller plus vite — Appuyez sur <kbd>Ctrl</kbd> pour aller plus lentement"
+
 
     },
     es: {
@@ -416,6 +420,8 @@
       "ui.linkRoute": "Compartir ruta",
       "ui.HelpTextButton": "Puedes ayudarme a mejorar la herramienta, informar de problemas o pedir ayuda en la página de GitHub del proyecto",
       "ui.HelpButton": "Comentarios y ayuda",
+      "hint.PanSpeed": "Pulsa <kbd>Mayús</kbd> para ir más rápido — Pulsa <kbd>Ctrl</kbd> para ir más lento"
+
 
     },
 
@@ -555,6 +561,7 @@
       "ui.linkRoute": "Route teilen",
       "ui.HelpTextButton": "Du kannst helfen, das Tool zu verbessern, Probleme melden oder auf der GitHub-Seite des Projekts Unterstützung erhalten",
       "ui.HelpButton": "Feedback & Support",
+      "hint.PanSpeed": "Drücke <kbd>Umschalt</kbd> für schneller — Drücke <kbd>Strg</kbd> für langsamer"
 
 
     },
@@ -696,7 +703,7 @@
       "ui.linkRoute": "Compartilhar rota",
       "ui.HelpTextButton": "Você pode me ajudar a melhorar a ferramenta, relatar problemas ou pedir ajuda na página do GitHub do projeto",
       "ui.HelpButton": "Feedback e suporte",
-
+      "hint.PanSpeed": "Pressione <kbd>Shift</kbd> para mover mais rápido — Pressione <kbd>Ctrl</kbd> para mover mais devagar"
 
   },
 
@@ -835,6 +842,7 @@
     "ui.linkRoute": "Поделиться маршрутом",
     "ui.HelpTextButton": "Вы можете помочь улучшить инструмент, сообщить об ошибках или задать вопросы на странице проекта в GitHub",
     "ui.HelpButton": "Обратная связь и поддержка",
+    "hint.PanSpeed": "Нажмите <kbd>Shift</kbd>, чтобы двигаться быстрее — Нажмите <kbd>Ctrl</kbd>, чтобы двигаться медленнее"
 
   },
 
@@ -974,7 +982,7 @@
       "ui.linkRoute": "Condividi percorso",
       "ui.HelpTextButton": "Puoi aiutarmi a migliorare lo strumento, segnalare problemi o chiedere aiuto nella pagina GitHub del progetto",
       "ui.HelpButton": "Feedback e supporto",
-
+      "hint.PanSpeed": "Premi <kbd>Shift</kbd> per muoverti più velocemente — Premi <kbd>Ctrl</kbd> per muoverti più lentamente"
 
     },
 
@@ -1134,6 +1142,7 @@
 
       "ui.HelpTextButton": "Możesz pomóc mi ulepszyć narzędzie, zgłosić problemy lub poprosić o pomoc na GitHubie",
       "ui.HelpButton": "Opinie i wsparcie",
+      "hint.PanSpeed": "Naciśnij <kbd>Shift</kbd>, aby poruszać się szybciej — Naciśnij <kbd>Ctrl</kbd>, aby poruszać się wolniej"
     },
 
     zh: {
@@ -1272,6 +1281,7 @@
       "ui.linkRoute": "分享路线",
       "ui.HelpTextButton": "你可以帮助我改进这个工具、报告问题，或在项目的 GitHub 页面上寻求帮助",
       "ui.HelpButton": "反馈与支持",
+      "hint.PanSpeed": "按下 <kbd>Shift</kbd> 可加快移动速度 — 按下 <kbd>Ctrl</kbd> 可减慢移动速度"
 
 
     },
@@ -1411,6 +1421,8 @@
       "ui.linkRoute": "ルートを共有",
       "ui.HelpTextButton": "このツールの改善に協力したり、不具合を報告したり、GitHub のプロジェクトページで質問することができます",
       "ui.HelpButton": "フィードバックとサポート",
+      "hint.PanSpeed": "<kbd>Shift</kbd> を押すと高速移動 — <kbd>Ctrl</kbd> を押すと低速移動"
+
 
     }
 
@@ -1443,6 +1455,12 @@
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       if (dict[key]) el.setAttribute('placeholder', dict[key]);
+    });
+
+    // html (quand la traduction contient des balises)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key]) el.innerHTML = dict[key];
     });
 
     // title

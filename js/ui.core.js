@@ -1053,115 +1053,148 @@ if (newPathBtn) {
 // =============================
 // PAN AU CLAVIER
 // =============================
-(function(){
-  const keys = {};
 
-  // Touches qui font bouger la map (flèches + ZQSD + WASD)
-  const PAN_KEYS = [
-    "ArrowLeft","ArrowRight","ArrowUp","ArrowDown",
-    "a","A","d","D","w","W","s","S", // WASD
-    "z","Z","q","Q"                  // ZQSD
-  ];
-  
-  let keyboardPanInterval = null;
+    const keys = {};
 
-  const SPEED       = 20;  // vitesse normale du pan
-  const SPEED_FAST  = 42;  // avec SHIFT
-  const SPEED_SLOW  = 10;  // avec CTRL
-  const MIN_PAN_SCALE = 1; // en dessous de ça, on ne "boost" plus
+    const PAN_KEYS = [
+      "ArrowLeft","ArrowRight","ArrowUp","ArrowDown",
+      "a","d","w","s",
+      "z","q"
+    ];
 
-  function startKeyboardPan() {
-    if (keyboardPanInterval) return;
+    let keyboardPanInterval = null;
 
-    keyboardPanInterval = setInterval(() => {
-      const core = window.GDMMCore || {};
-      const state = core.state || {};
-      if (!state.view) return;
+    const SPEED       = 20;
+    const SPEED_FAST  = 42;
+    const SPEED_SLOW  = 10;
+    const MIN_PAN_SCALE = 1;
 
-      let dx = 0;
-      let dy = 0;
-
-      // GAUCHE : flèche gauche, A (qwerty), Q (azerty)
-      if (keys["ArrowLeft"] || keys["a"] || keys["A"] || keys["q"] || keys["Q"]) {
-        dx -= 1;
-      }
-
-      // DROITE : flèche droite, D
-      if (keys["ArrowRight"] || keys["d"] || keys["D"]) {
-        dx += 1;
-      }
-
-      // HAUT : flèche haut, W (qwerty), Z (azerty)
-      if (keys["ArrowUp"] || keys["w"] || keys["W"] || keys["z"] || keys["Z"]) {
-        dy -= 1;
-      }
-
-      // BAS : flèche bas, S
-      if (keys["ArrowDown"] || keys["s"] || keys["S"]) {
-        dy += 1;
-      }
-
-      if (dx === 0 && dy === 0) return;
-
-      const speed =
-        keys["Shift"] ? SPEED_FAST :
-        keys["Control"] ? SPEED_SLOW :
-        SPEED;
-
-      const rawScale = state.view.scale || 1;
-      const effectiveScale = Math.max(rawScale, MIN_PAN_SCALE);
-      const real = speed / effectiveScale;
-
-      state.view.x -= dx * real;
-      state.view.y -= dy * real;
-
-      if (typeof clampViewToMap === "function") clampViewToMap();
-      if (typeof applyView === "function") applyView();
-
-    }, 16); // ~16fps
-  }
-
-
-  function stopKeyboardPan() {
-    if (keyboardPanInterval) {
-      clearInterval(keyboardPanInterval);
-      keyboardPanInterval = null;
-    }
-    if (typeof persistViewForCurrentProfile === "function") {
-      persistViewForCurrentProfile();
-    }    
-  }
-
-  window.addEventListener("keydown", (e) => {
-    // Ne rien faire si on est dans un champ de saisie
-    const el = e.target;
-    if (
-      el &&
-      (el.tagName === "INPUT" ||
-       el.tagName === "TEXTAREA" ||
-       el.isContentEditable)
-    ) {
-      return;
+    function normKey(e) {
+      const k = e.key;
+      // lettres -> minuscule (évite le piège Shift)
+      if (typeof k === "string" && k.length === 1) return k.toLowerCase();
+      return k; // ArrowLeft, Shift, Control, etc.
     }
 
-    if (PAN_KEYS.includes(e.key) || e.key === "Shift" || e.key === "Control") {
-      keys[e.key] = true;
-      e.preventDefault();
-      startKeyboardPan();
+      let panHintEl = null;
+      let panHintHideTimer = null;
+      let panHintHasBeenShown = false;
+
+      const PAN_HINT_DURATION_MS = 9000;  // temps affiché
+
+      function ensurePanHint() {
+        if (panHintEl) return panHintEl;
+
+        panHintEl = document.createElement("div");
+        panHintEl.className = "gdmm-pan-hint";
+
+        // clé i18n + rendu initial
+        panHintEl.setAttribute("data-i18n-html", "hint.PanSpeed");
+        panHintEl.innerHTML = GDMMLang.t("hint.PanSpeed");
+
+        document.body.appendChild(panHintEl);
+        return panHintEl;
+      }
+
+      function showPanHintOncePerPageLoad() {
+        if (panHintHasBeenShown) return;
+        panHintHasBeenShown = true;
+
+        const el = ensurePanHint();
+        el.classList.add("is-visible");
+
+        if (panHintHideTimer) clearTimeout(panHintHideTimer);
+        panHintHideTimer = setTimeout(() => {
+          el.classList.remove("is-visible");
+        }, PAN_HINT_DURATION_MS);
+      }
+
+
+    function startKeyboardPan() {
+      if (keyboardPanInterval) return;
+
+      showPanHintOncePerPageLoad();
+      keyboardPanInterval = setInterval(() => {
+        const core = window.GDMMCore || {};
+        const state = core.state || {};
+        if (!state.view) return;
+
+        let dx = 0;
+        let dy = 0;
+
+        if (keys["ArrowLeft"] || keys["a"] || keys["q"]) dx -= 1;
+        if (keys["ArrowRight"] || keys["d"])            dx += 1;
+        if (keys["ArrowUp"] || keys["w"] || keys["z"])  dy -= 1;
+        if (keys["ArrowDown"] || keys["s"])             dy += 1;
+
+        if (dx === 0 && dy === 0) return;
+
+        const speed =
+          keys["Shift"] ? SPEED_FAST :
+          keys["Control"] ? SPEED_SLOW :
+          SPEED;
+
+        const rawScale = state.view.scale || 1;
+        const effectiveScale = Math.max(rawScale, MIN_PAN_SCALE);
+        const real = speed / effectiveScale;
+
+        state.view.x -= dx * real;
+        state.view.y -= dy * real;
+
+        if (typeof clampViewToMap === "function") clampViewToMap();
+        if (typeof applyView === "function") applyView();
+      }, 16);
     }
-  });
 
-
-  window.addEventListener("keyup", (e) => {
-    if (keys[e.key]) {
-      delete keys[e.key];
-      if (Object.keys(keys).length === 0) stopKeyboardPan();
+    function stopKeyboardPan() {
+      if (keyboardPanInterval) {
+        clearInterval(keyboardPanInterval);
+        keyboardPanInterval = null;
+      }
+      if (typeof persistViewForCurrentProfile === "function") {
+        persistViewForCurrentProfile();
+      }
     }
-  });
 
-})();
+    window.addEventListener("keydown", (e) => {
+      const el = e.target;
+      if (
+        el &&
+        (el.tagName === "INPUT" ||
+         el.tagName === "TEXTAREA" ||
+         el.isContentEditable)
+      ) return;
 
+      const k = normKey(e);
 
+      if (PAN_KEYS.includes(k) || k === "Shift" || k === "Control") {
+        keys[k] = true;
+        e.preventDefault();
+        startKeyboardPan();
+      }
+    });
+
+    window.addEventListener("keyup", (e) => {
+      const k = normKey(e);
+
+      if (keys[k]) {
+        delete keys[k];
+        if (Object.keys(keys).length === 0) stopKeyboardPan();
+      }
+    });
+
+    // Important: si focus perdu, on purge tout (évite “touches coincées”)
+    window.addEventListener("blur", () => {
+      for (const k of Object.keys(keys)) delete keys[k];
+      stopKeyboardPan();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        for (const k of Object.keys(keys)) delete keys[k];
+        stopKeyboardPan();
+      }
+    });
 
 
   // --- Init on load ---
