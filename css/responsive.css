@@ -72,26 +72,18 @@
     display: none;
   }
 
-header{
-  background: var(--panel);
-}
+  header button{
+    text-align: left;
+  } 
 
-header #shareRoutesBtn span, header .save-block span{
-  display: block;
-}
+  .app-logo img{
+      width: 110px;
+      margin-top: 30px;
+  }
 
-header button{
-  text-align: left;
-} 
-
-.app-logo img{
-    width: 110px;
-    margin-top: 30px;
-}
-
-.filterBar .filterToggle {
-    margin: 0px 0px 0px 9px;
-}
+  .filterBar .filterToggle {
+      margin: 0px 0px 0px 9px;
+  }
 
   #left-menu.open {
     transform: translateX(0);
@@ -121,6 +113,14 @@ header button{
     display: none;
   }
 
+  header #shareRoutesBtn span, header .save-block span{
+    display: block;
+  }
+
+  header{
+    background: var(--panel);
+  }
+
   .sidebar{
     position: fixed;
     height: 170px;
@@ -129,6 +129,19 @@ header button{
     flex-direction: row;
     width: 100%;
     overflow-x: scroll;
+  }
+
+  .js-character-dropdown{
+    min-width: 160px;    
+  }
+
+  .js-character-dropdown .select-current{
+    padding: 9px 4px 12px 2px !important;
+  }
+
+  .js-character-dropdown .select-current .dropdown-selected-label{
+    font-size: 16px;
+    text-align: left;
   }
 
   .js-character-dropdown .custom-dropdown-inner{

@@ -44,6 +44,10 @@ textarea {
   z-index: 6;
 }
 
+.sidebar .logo-m{
+  display: none;
+}
+
 .d-flex{
   display: flex;
   align-items: center;
