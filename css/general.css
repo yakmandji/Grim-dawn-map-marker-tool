@@ -5,7 +5,7 @@
   --txt: #67999b;
   --titlecolor: #59afa3;
   --buttontxt : #5cccbe;
-  --placeholdertext : #5497a4;
+  --placeholdertext : #48828d;
   --muted: #367177;
   --ok: #8be38b;
   --danger: #ff6b7a;
@@ -91,7 +91,7 @@ textarea, [contenteditable="true"] {
   color:#4c898c;
   width: 300px;
   text-align: center;
-  margin-top: 47px;
+  margin-top: 68px;
   margin-bottom: 3px;
 }
 
@@ -162,12 +162,13 @@ header .sep {
 .sidebar {
     overflow-y: scroll;
     background-image:
-      linear-gradient(rgba(9,24,27,0.55), rgba(9,19,22,0.1)),
+      linear-gradient(rgba(9,24,27,0.50), rgba(9,19,22,0.1)),
       url("../img/grim_dawn_icon.jpg"),
       linear-gradient(rgb(9 24 27), rgb(8 19 22));
     background-attachment: scroll, local, scroll;
-    background-size: cover, 161px, cover;
-    background-position: top;
+    background-size: cover, 105px, cover;
+    background-position-y: 0, -18px, 0;
+    background-position-x: 0, center, 0;
     background-repeat: no-repeat;
 
     position: relative;
@@ -256,18 +257,12 @@ header .sep {
 
   border-radius: 18px;
   padding: 22px;
-
-border: 1px dashed #52422d;
-
+  border: 1px dashed #52422d;
   box-shadow:
-    /* relief externe (posé sur fond sombre) */
-    10px 10px 26px rgba(0,0,0,0.55),
-    -10px -10px 26px rgba(255,255,255,0.03),
-
-    /* matelassé interne (coussin) */
-    inset 2px 2px 7px rgba(0,0,0,0.60),
-    inset -2px -2px 7px rgba(255,220,170,0.06);
-
+    10px 10px 26px rgba(0, 0, 0, 0.55), 
+    -10px -10px 26px rgb(43 186 143 / 3%), 
+    inset 2px 2px 7px rgba(0, 0, 0, 0.60), 
+    inset -2px -2px 7px rgba(255, 220, 170, 0.06)
 }
 
 .tool-section h3,
@@ -696,7 +691,6 @@ label.checkbox{
 .js-character-dropdown{
   margin-left: auto;
   margin-right: auto;
-  margin-top: 45px;
 }
 
 .js-character-dropdown .custom-dropdown-inner{

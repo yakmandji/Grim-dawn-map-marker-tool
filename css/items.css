@@ -303,8 +303,8 @@ input[type="text"],
 input[type="search"],
 input[type="password"],
 textarea {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: rgb(11 30 34);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  background-color: rgba(15, 40, 45, 0.8);
   color: var(--placeholdertext);
   border-radius: 6px;
   padding: 6px 10px;
