@@ -15,11 +15,6 @@
     top: 158px;
   }
 
-  #cursorReadout,
-  .map-hint{
-    display: none;
-  }
-
   #zoomControls{
     top: 112px;
   }
@@ -51,17 +46,6 @@
     right: 7px;
   }
 
-  .floating #miniMap,
-  #zoomReadout,
-  #zoomControls{
-    display: none;
-  }
-
-  .map-info-container{
-    margin-top: 0;
-    margin-right: -23px;
-  }
-
 }
 
 
@@ -75,6 +59,22 @@
   header button{
     text-align: left;
   } 
+
+  .floating #miniMap,
+  #zoomReadout,
+  #zoomControls{
+    display: none;
+  }
+
+  .map-info-container{
+    margin-top: 0;
+    margin-right: -23px;
+  }
+
+  #cursorReadout,
+  .map-hint{
+    display: none;
+  }
 
   .app-logo img{
       width: 110px;
