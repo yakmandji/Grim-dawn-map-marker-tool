@@ -462,7 +462,7 @@ function renderMarkers(options = {}) {
     if (markerId) {
       const markerEl = document.querySelector(`.marker[data-mid="${markerId}"]`);
 
-      // Si c’est un Done marker et que l’historique est masqué, on réactive History
+      // Si c’est un Done marker et que l’historique est masqué, on réactive L'archive
       if (markerEl && markerEl.classList.contains('completed')) {
         if (typeof window.ensureAdminLayerVisible === 'function') {
           window.ensureAdminLayerVisible('history');

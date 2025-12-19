@@ -1174,9 +1174,11 @@ header .gd-popup__card input[type="text"]{
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 4px 4px;
+  padding: 4px 8px;
   border-radius: 6px;
   margin-bottom: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .doneItem:nth-child(odd){

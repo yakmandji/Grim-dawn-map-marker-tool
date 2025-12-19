@@ -160,6 +160,24 @@
       const markers = Array.isArray(p.markers) ? p.markers : [];
       if (!markers.length) return;
 
+
+        // helper: focus row in list or done panel
+        function focusRowForMarker(marker) {
+          if (marker.done) document.getElementById('donePanel')?.classList.remove('collapsed');
+
+          const rowSelector = marker.done
+            ? `#doneList .doneItem[data-mid="${marker.id}"]`
+            : `#list .listItem[data-mid="${marker.id}"]`;
+
+          const row = document.querySelector(rowSelector);
+          if (!row) return;
+
+          row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          row.classList.add('highlight');
+          setTimeout(() => row.classList.remove('highlight'), 2200);
+        }
+
+
         // 3) draw markers
             markers.forEach(m => {
 
@@ -257,17 +275,7 @@
                 // --- Mode LOCK : no drag
                   if (state.locked) {
                     if (!moved && !justCreated) {   // Scroll only if not just created
-                      const rowSelector = m.done
-                        ? `#doneList .doneItem[data-mid="${m.id}"]`
-                        : `#list .listItem[data-mid="${m.id}"]`;
-
-                      const row = document.querySelector(rowSelector);
-                      if (row) {
-                        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        row.classList.add('highlight');
-                        setTimeout(() => row.classList.remove('highlight'), 2200);
-                      }
-
+                        focusRowForMarker(m);
                     }
                     state.lastCreatedMarkerId = null; 
                     return;
@@ -275,16 +283,7 @@
 
                 if (!dragging) {
                   if (!moved && !justCreated) {     
-                    const rowSelector = m.done
-                      ? `#doneList .doneItem[data-mid="${m.id}"]`
-                      : `#list .listItem[data-mid="${m.id}"]`;
-
-                    const row = document.querySelector(rowSelector);
-                    if (row) {
-                      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      row.classList.add('highlight');
-                      setTimeout(() => row.classList.remove('highlight'), 2200);
-                    }
+                      focusRowForMarker(m);
                   }
                   state.lastCreatedMarkerId = null; 
                   return;
@@ -293,16 +292,7 @@
                 // --- End drag ---
                 dragging = false;
                 if (!moved) {
-                  const rowSelector = m.done
-                    ? `#doneList .doneItem[data-mid="${m.id}"]`
-                    : `#list .listItem[data-mid="${m.id}"]`;
-
-                  const row = document.querySelector(rowSelector);
-                  if (row) {
-                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    row.classList.add('highlight');
-                    setTimeout(() => row.classList.remove('highlight'), 2200);
-                  }
+                  focusRowForMarker(m);
                   return;
                 }
 
@@ -775,8 +765,6 @@
           window.buildNoteList();
         }
       }
-
-
 
   // Export public
   window.UiMapRender = {
