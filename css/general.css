@@ -620,7 +620,6 @@ body.shared-only-view #mergeSharedBtn,
   bottom: 1.9vh;
   right: 20px;
   z-index: 4;
-  font-size: 13px;
   transition: transform 0.2s ease-out;
 }
 

@@ -109,6 +109,7 @@
   .tool-section .info,
   .lock-label,
   .filterBar,
+  .filter-minimap,
   #sidebarToggle{
     display: none;
   }
@@ -117,11 +118,14 @@
     display: block;
   }
 
-  header{
-    background: var(--panel);
+  .app-logo .title{
+    font-size: 15px;
+    margin: 0px 3px 0px -11px;
+    line-height: 16px;
   }
 
   .sidebar{
+    background-image: linear-gradient(rgb(9 24 27), rgb(8 19 22));
     position: fixed;
     height: 170px;
     bottom: 0;
@@ -169,10 +173,19 @@
 
   .searchBar{
       bottom: 9px;
+      left: 2px;
+  }
+
+  .searchBar input#locationSearch{
+    width: 75%;
+  }
+
+  .searchBar input#locationSearch:focus{
+    width: 150%;
   }
 
   .done-panel.collapsed {
-    transform: translateX(334px);
+    transform: translateX(287px);
   }
 
   .map-info-container {
@@ -197,12 +210,13 @@
   }
 
   header{
+    background: var(--panel);
     top:0;
     transform: translateX(-94%);
     left: -14px!important;
     width: 41%;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     z-index: 5000;
     align-items: flex-start;
     max-width: 55%;
@@ -263,13 +277,18 @@
 
 
   .mapWrap{
+    position: fixed;
     min-width: 100%;
     margin-top: 8px;
-    height: 72vh;
+    height: calc(100% - 182px);
+  }
+
+  #donePanel .done-panel-inner{
+    width: 100%;
   }
 
   .done-panel{
-    right: 1px;
+    right: -5px;
     bottom: 38vh;
   }
 
