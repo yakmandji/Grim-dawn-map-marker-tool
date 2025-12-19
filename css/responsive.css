@@ -136,7 +136,13 @@
   }
 
   .js-character-dropdown{
+    margin-top: 0;
     min-width: 160px;    
+  }
+
+  .js-character-dropdown .select-current .char-avatar-current{
+    width: 32px;
+    height: 32px;
   }
 
   .js-character-dropdown .select-current{
@@ -168,8 +174,14 @@
 
   .sidebar .section.light,
   .sidebar .section.principal{
-    min-width: 360px;
+    min-width: 290px;
   }
+
+  .section #list .right{
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: flex-start;
+  } 
 
   .searchBar{
       bottom: 9px;
