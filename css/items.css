@@ -259,7 +259,7 @@ button.small, button,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px; 
+  gap: 9px; 
   padding: 9px 18px;
   line-height: 1;
   vertical-align: middle;
@@ -404,10 +404,10 @@ input[type="password"]:focus
 .lock-label{
   flex: none;
   padding-right: 5px;
-  font-size: 11px;
+  font-size: 10px;
   display: flex;
   align-items: center;
-  max-width: 137px;
+  max-width: 90px;
   gap: 3px;
   color: #1d706e;
 }
@@ -417,8 +417,6 @@ input[type="password"]:focus
 }
 
 .lock-label span{
-  padding-left: 5px;
-  padding-right: 5px;
   line-height: 13px;
 }
 
@@ -443,16 +441,27 @@ input[type="password"]:focus
 button.marker-center,
 button.link-for-marker,
 button.link-for-route,
+button.marker-delete,
 button.marker-save{
   padding: 6px 7px 6px 7px;
   border: none;
   color: #78f1c2;
   font-size: 16px;
   cursor: pointer;
-  max-width: 30px;
-  min-width: 27px;
   display: flex;
   justify-content: center;  
+}
+
+.menu-item-list button{
+  padding: 9px 20px 9px 14px;
+}
+
+button.marker-sub-menu,
+button.route-sub-menu{
+  max-width: 30px;
+  min-width: 30px;
+  font-size: 16px;
+  padding: 7px 6px;
 }
 
 #list button.danger{
@@ -778,7 +787,6 @@ input[type="color"]::-moz-color-swatch {
   display: flex;
   gap: 0px;
   align-items: center;
-  padding-left: 7px;
 }
 
 .filterToggle {
@@ -797,6 +805,10 @@ input[type="color"]::-moz-color-swatch {
 
 .filterBar .filterToggle{
     margin: 16px 0px 14px 11px;
+}
+
+.filterBar .filterToggle:first-child{
+  margin-left: 0;
 }
 
 .filterToggle.is-on:hover {

@@ -72,6 +72,166 @@
   }
 /*  END ----------------------------------------------------------------------*/
 
+/*ROUTE POPUP*/
+let activeRouteMenu = null;
+let activeRouteBtn = null;
+
+function getRouteSingletonMenu() {
+  const menus = Array.from(document.querySelectorAll('.route-list-menu'));
+  if (!menus.length) return null;
+
+  const keep = menus[0];
+  for (let i = 1; i < menus.length; i++) menus[i].remove();
+  return keep;
+}
+
+function closeRouteListMenu() {
+  if (activeRouteMenu) activeRouteMenu.classList.remove('is-open');
+  if (activeRouteBtn) activeRouteBtn.classList.remove('is-open');
+  activeRouteMenu = null;
+  activeRouteBtn = null;
+}
+
+function openRouteListMenu(btnEl) {
+  const menu = getRouteSingletonMenu();
+  if (!menu || !btnEl) return;
+
+  // Toggle si même bouton
+  if (activeRouteBtn === btnEl && menu.classList.contains('is-open')) {
+    closeRouteListMenu();
+    return;
+  }
+
+  // Si un autre bouton était actif -> ferme avant
+  if (activeRouteBtn && activeRouteBtn !== btnEl) closeRouteListMenu();
+
+  activeRouteMenu = menu;
+  activeRouteBtn = btnEl;
+
+  // Stocker l'id route depuis la row
+  const row = btnEl.closest('[data-pid]');
+  menu.dataset.pid = row?.dataset.pid || '';
+
+  // Toujours dans <body> (évite clipping)
+  if (menu.parentElement !== document.body) {
+    document.body.appendChild(menu);
+  }
+
+  const r = btnEl.getBoundingClientRect();
+
+  menu.style.position = 'fixed';
+  menu.style.zIndex = '9999';
+
+  let left = r.right + 8;
+  let top  = r.top - 2;
+
+  const approxMenuW = menu.offsetWidth || 170;
+  if (left + approxMenuW > window.innerWidth - 8) {
+    left = r.left - approxMenuW - 8;
+  }
+
+  const approxMenuH = menu.offsetHeight || 140;
+  if (top + approxMenuH > window.innerHeight - 8) {
+    top = window.innerHeight - approxMenuH - 8;
+  }
+  if (top < 8) top = 8;
+
+  menu.style.left = `${Math.round(left)}px`;
+  menu.style.top  = `${Math.round(top)}px`;
+
+  menu.classList.add('is-open');
+  btnEl.classList.add('is-open');
+}
+
+function initRouteSubMenus() {
+  // (optionnel mais recommandé) éviter double init si jamais
+  if (window.__gdmmRoutesSubMenuInit) return;
+  window.__gdmmRoutesSubMenuInit = true;
+
+  // 1) Empêcher blur au clic sur ...
+  document.addEventListener('pointerdown', (e) => {
+    const btn = e.target.closest('.route-sub-menu');
+    if (!btn) return;
+    e.preventDefault();
+  }, true);
+
+  // 2) Toggle / actions / close
+  document.addEventListener('click', async (e) => {
+    const menuEl = e.target.closest('.route-list-menu');
+    const dotsBtn = e.target.closest('.route-sub-menu');
+
+    // A) Clic sur une action du menu
+    const actionBtn = e.target.closest('.route-list-menu [data-route-action]');
+    if (actionBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // IMPORTANT: récupérer pid AVANT de fermer
+      const menu = getRouteSingletonMenu();
+      const pid = menu?.dataset?.pid;
+      const action = actionBtn.dataset.routeAction;
+
+      // Ferme tout de suite (UX)
+      closeRouteListMenu();
+
+      if (!pid || !action) return;
+
+      // retrouve la route
+      const p = currentProfile();
+      const route = p?.paths?.find(x => String(x.id) === String(pid));
+      if (!route) return;
+
+      switch (action) {
+        case 'delete':
+          deleteRoute(pid);
+          break;
+
+        case 'center':
+          centerRouteOnMap(route);
+          break;
+
+        case 'save':
+          if (typeof saveUserDataToLocal === 'function') saveUserDataToLocal();
+          if (typeof updateSaveIndicator === 'function') updateSaveIndicator(true);
+          break;
+
+        case 'link':
+          // mets ici ta logique existante si besoin
+          // shareSingleRoute(route);
+          break;
+      }
+
+      return;
+    }
+
+    // B) Clic sur "..." => toggle
+    if (dotsBtn) {
+      e.stopPropagation();
+      openRouteListMenu(dotsBtn);
+      return;
+    }
+
+    // C) Clic dans le menu (mais pas sur un bouton action) => ne rien faire
+    if (menuEl) return;
+
+    // D) Clic ailleurs => ferme
+    closeRouteListMenu();
+  });
+
+  // 3) ESC pour fermer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeRouteListMenu();
+  });
+
+  // 4) resize/scroll -> ferme
+  window.addEventListener('resize', closeRouteListMenu);
+  document.addEventListener('scroll', closeRouteListMenu, true);
+}
+/*------------------------------ROUTE POPUP END*/
+
+
+initRouteSubMenus();
+
   function ensurePathsArray() {
     const p = currentProfile();
     if (!p) return null;
@@ -264,126 +424,109 @@
   }
 
 
-  function renderRoutesPanel() {
-    const host = document.getElementById('routesList');
-    if (!host) return;
+  // --- Template helper (Routes list) ---------------------------------
+  function getRouteItemTemplate() {
+    const tpl = document.getElementById('tplRouteItem');
+    if (tpl && tpl.content) return tpl;
 
-    const p = currentProfile();
-    if (!p) return;
+    // Fallback sécurité : si le template n'existe pas, on recrée un <template> en JS
+    // (ça évite de casser si quelqu’un oublie de merge index.html)
+    const fallback = document.createElement('template');
+    fallback.id = 'tplRouteItem';
+    fallback.innerHTML = `
+      <div class="listItem route-item" data-route-item>
+        <input data-route-color type="color" class="routeColor" />
+        <input data-route-name type="text" class="markerLabel" placeholder="Route name" />
 
-    const paths = Array.isArray(p.paths) ? p.paths : [];
-    if (!Array.isArray(p.paths)) {
-      p.paths = paths; // sécurise une bonne fois pour toutes
-    }
+        <button type="button" class="marker-save small" data-route-save data-i18n-title="ui.SaveTitle" title="Save">
+          <img src="img/save-icon.svg" width="13">
+        </button>
 
-    host.innerHTML = '';
+        <button type="button" class="marker-center small" data-route-center data-i18n-title="ui.CenterOnMap" title="Center on map">
+          <img src="img/center-icon.svg" width="13">
+        </button>
 
-    // Compteur
-    const countEl = document.getElementById('routesCount');
-    if (countEl) countEl.textContent = paths.length;
+        <button type="button" class="link-for-route small" data-route-link data-i18n-title="ui.linkRoute" title="Link">
+          <img src="img/link.svg" width="15" alt="Link">
+        </button>
 
-    paths.forEach(path => {
-      const row = document.createElement('div');
-      row.className = 'listItem route-item';
-      row.dataset.pid = path.id;
+        <button type="button" class="danger small" data-route-delete data-i18n-title="ui.DeleteButton" title="Delete">
+          <img src="img/bin-icon.svg" width="13">
+        </button>
+      </div>
+    `.trim();
 
-      // --- Couleur ---
-      const color = document.createElement('input');
-      color.type = 'color';
+    document.body.appendChild(fallback);
+    return fallback;
+  }
+
+  function buildRouteRowFromTemplate(path) {
+    const tpl = getRouteItemTemplate();
+    const node = tpl.content.firstElementChild.cloneNode(true);
+
+    node.dataset.pid = path.id;
+
+    const color = node.querySelector('[data-route-color]');
+    const nameInput = node.querySelector('[data-route-name]');
+    const saveBtn = node.querySelector('[data-route-save]');
+    const centerBtn = node.querySelector('[data-route-center]');
+    const linkBtn = node.querySelector('[data-route-link]');
+    const deleteBtn = node.querySelector('[data-route-delete]');
+
+    // --- Couleur ---
+    if (color) {
       color.value = path.color || '#ffcc00';
-      color.className = 'routeColor';
 
-      // Debounce léger pour ne pas spammer updateRoute + saveUserDataToLocal
       let colorTimer = null;
-
       color.addEventListener('input', (e) => {
         const val = e.target.value;
         clearTimeout(colorTimer);
-
         colorTimer = setTimeout(() => {
-          // Met à jour la route + sauvegarde
           updateRoute(path.id, { color: val });
-
-          // Re-render de la carte pour voir la nouvelle couleur de suite
           if (window.UiCore?.renderMarkers) {
             window.UiCore.renderMarkers({ skipRoutesPanel: true });
           }
-        }, 160); // Rafraichissment de la couleur
+        }, 160);
       });
+    }
 
-      row.appendChild(color);
+    // --- Nom + save-if-changed (même logique qu'avant) ---
+    const saveNameIfChanged = () => {
+      const newName = (nameInput?.value || '').trim();
+      const oldName = path.name || '';
+      if (newName === oldName) return;
 
+      updateRoute(path.id, { name: newName });
 
-      // --- Nom ---
-      const nameInput = document.createElement('input');
-      nameInput.type = 'text';
+      if (typeof showToast === 'function' && window.GDMMLang?.t) {
+        showToast(GDMMLang.t('toast.RouteNameSaved'));
+      }
+    };
+
+    if (nameInput) {
       nameInput.value = path.name || '';
-      nameInput.className = 'markerLabel';
+      nameInput.classList.add('markerLabel'); // au cas où (sécurité)
       nameInput.placeholder =
-        (window.GDMMLang?.t && GDMMLang.t('ui.PathNamePlaceholder')) ||
-        'Route name';
+        (window.GDMMLang?.t && GDMMLang.t('ui.PathNamePlaceholder')) || 'Route name';
 
-      // Helper commun : sauvegarde seulement si le nom a changé
-      const saveNameIfChanged = () => {
-        const newName = (nameInput.value || '').trim();
-        const oldName = path.name || '';
+      nameInput.addEventListener('blur', saveNameIfChanged);
+    }
 
-        if (newName === oldName) {
-          return; // rien changé → rien à faire
-        }
-
-        updateRoute(path.id, { name: newName });
-
-        if (typeof showToast === 'function' && window.GDMMLang?.t) {
-          showToast(GDMMLang.t('toast.RouteNameSaved'));
-        }
-      };
-
-      // Blur : autosave seulement si modifié
-      nameInput.addEventListener('blur', () => {
-        saveNameIfChanged();
-      });
-
-      row.appendChild(nameInput);
-
-      // --- Bouton Save ---
-      const saveBtn = document.createElement('button');
-      saveBtn.type = 'button';
-      saveBtn.className = 'marker-save small';
-      saveBtn.setAttribute('data-i18n-title', 'ui.SaveTitle');
-      saveBtn.title =
-        (window.GDMMLang?.t && GDMMLang.t('ui.SaveTitle')) || 'Save';
-      saveBtn.innerHTML = '<img src="img/save-icon.svg" width="13">';
-
-      // Clic sur le bouton : même logique, avec toast, et sans double-save
+    // --- Save button ---
+    if (saveBtn) {
       saveBtn.addEventListener('click', () => {
         saveNameIfChanged();
-        nameInput.blur(); // pour sortir proprement du champ
+        nameInput?.blur();
       });
+    }
 
-      row.appendChild(saveBtn);
-
-
-      // --- Bouton Center ---
-      const centerBtn = document.createElement('button');
-      centerBtn.type = 'button';
-      centerBtn.className = 'marker-center small';
-      centerBtn.title =
-        (window.GDMMLang?.t && GDMMLang.t('ui.CenterOnMap')) ||
-        'Center on map';
-      centerBtn.innerHTML = '<img src="img/center-icon.svg" width="13">';
+    // --- Center button ---
+    if (centerBtn) {
       centerBtn.addEventListener('click', () => centerRouteOnMap(path));
-      row.appendChild(centerBtn);
+    }
 
-      // --- Bouton Link (share only this route) ---
-      const linkBtn = document.createElement('button');
-      linkBtn.type = 'button';
-      linkBtn.className = 'link-for-route small';
-      linkBtn.setAttribute('data-i18n-title', 'ui.linkRoute');
-      linkBtn.title =
-        (window.GDMMLang?.t && GDMMLang.t('ui.linkRoute')) || 'Link';
-      linkBtn.innerHTML = '<img src="img/link.svg" width="15" alt="Link">';
-
+    // --- Link button (identique à l’existant) ---
+    if (linkBtn) {
       linkBtn.addEventListener('click', async () => {
         if (!window.GDMMShare?.createLink) return;
 
@@ -408,7 +551,6 @@
 
         await window.GDMMShare.createLink(payload);
 
-        // toast (comme marker)
         if (typeof showToast === 'function') {
           const msg =
             (window.GDMMLang?.t && GDMMLang.t('toast.ShareUrlCopied')) ||
@@ -416,24 +558,39 @@
           showToast(msg, 'success', 3800);
         }
       });
+    }
 
-      row.appendChild(linkBtn);
-
-
-
-      // --- Bouton Delete ---
-      const deleteBtn = document.createElement('button');
-      deleteBtn.type = 'button';
-      deleteBtn.className = 'danger small';
-      deleteBtn.title =
-        (window.GDMMLang?.t && GDMMLang.t('ui.DeleteButton')) ||
-        'Delete';
-      deleteBtn.innerHTML = '<img src="img/bin-icon.svg" width="13">';
+    // --- Delete button ---
+    if (deleteBtn) {
       deleteBtn.addEventListener('click', () => deleteRoute(path.id));
-      row.appendChild(deleteBtn);
+    }
 
+    return node;
+  }
+
+
+  function renderRoutesPanel() {
+    const host = document.getElementById('routesList');
+    if (!host) return;
+
+    const p = currentProfile();
+    if (!p) return;
+
+    const paths = Array.isArray(p.paths) ? p.paths : [];
+    if (!Array.isArray(p.paths)) {
+      p.paths = paths;
+    }
+
+    host.innerHTML = '';
+
+    // Compteur
+    const countEl = document.getElementById('routesCount');
+    if (countEl) countEl.textContent = paths.length;
+
+    for (const path of paths) {
+      const row = buildRouteRowFromTemplate(path);
       host.appendChild(row);
-    });
+    }
 
     // i18n sur les titres / tooltips
     if (window.GDMMLang?.applyLang && window.GDMMLang?.getLang) {

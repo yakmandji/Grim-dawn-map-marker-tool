@@ -11,7 +11,7 @@
   --danger: #ff6b7a;
   --select-focus : 0 0 6px rgb(38 240 240 / 60%), inset 0 0 6px rgba(0, 0, 0, 0.4);
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
-  --sidebar-width: 440px;
+  --sidebar-width: 370px;
   --border-color : #6d532f;
   --gold-main: #d5b278;       /* doré principal */
   --gold-dark: #8a6a3f;       /* version ombrée */
@@ -174,7 +174,7 @@ header .sep {
     position: relative;
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    padding: 6px 18px 6px 18px;
+    padding: 6px 24px 6px 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -280,9 +280,7 @@ header .sep {
 .list,#routesList,#noteList { 
   min-height: 0; 
   flex: 1; 
-  overflow: auto; 
   border-radius: 10px;
-  padding: 0 14px 0 14px;
 }
 
 #noteList .listItem{
@@ -290,7 +288,7 @@ header .sep {
 }
 
 #routesList .listItem{
-  padding: 5px 8px 5px 8px;
+  padding: 8px 8px 8px 8px;
   justify-content: space-between;
 }
 
@@ -299,10 +297,9 @@ header .sep {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 13px 16px 13px 16px;
+  padding: 13px 28px 13px 16px;
   align-items: center;
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin: 14px 4px 14px 4px;
   border-radius: 6px;
   background: var(--p2);
 }
@@ -316,17 +313,68 @@ header .sep {
 }
 
 #list .right{
-    justify-content: center;
+    justify-content: end;
     max-width: 90px;
+    position: relative;
 }
 
 #list .left{
-  min-width: 220px;
+  min-width: 204px;
+}
+
+#list .left .row{
+  justify-content: space-between;
 }
 
 #list .left input[type="text"]{
-  width: 210px;
+  width: 100%;
 }
+
+.marker-list-menu,
+.route-list-menu {
+  position: fixed;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px) scale(0.985);
+  transform-origin: top left;
+
+  /* animation */
+  transition:
+    opacity 140ms ease-out,
+    transform 160ms cubic-bezier(.2, .8, .2, 1),
+    visibility 0s linear 160ms;
+  will-change: opacity, transform;
+}
+
+.menu-item-list ul li:not(:first-child){
+  margin-top: 6px;
+}
+
+.menu-item-list ul li span{
+  font-size: 12px;
+}
+
+.marker-list-menu.is-open,
+.route-list-menu.is-open {
+  opacity: 0.88;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 140ms ease-out,
+    transform 160ms cubic-bezier(.2, .8, .2, 1),
+    visibility 0s linear 0s;
+}
+
+.marker-list-menu ul,
+.route-list-menu ul{
+  list-style: none;
+  margin: 0;
+  padding: 0 6px 6px 6px;
+}
+
 
 .modal{
   position: fixed;  

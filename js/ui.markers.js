@@ -36,6 +36,148 @@ const CATEGORY_I18N_KEYS = {
 
 const { $, inner } = window.UiCore;
 
+
+// --- Tooltip-submenu
+let activeMenu = null;
+let activeBtn = null;
+
+function getMarkerSingletonMenu() {
+  const menus = Array.from(document.querySelectorAll('.marker-list-menu'));
+  if (!menus.length) return null;
+
+  const keep = menus[0];
+  for (let i = 1; i < menus.length; i++) menus[i].remove();
+  return keep;
+}
+
+function closeMarkerListMenu() {
+  if (activeMenu) activeMenu.classList.remove('is-open');
+  if (activeBtn) activeBtn.classList.remove('is-open');
+
+  if (activeMenu) {
+    activeMenu.style.left = '';
+    activeMenu.style.top = '';
+    activeMenu.style.position = '';
+    activeMenu.style.zIndex = '';
+  }
+
+  activeMenu = null;
+  activeBtn = null;
+}
+
+function openMarkerListMenu(btnEl) {
+  const menu = getMarkerSingletonMenu(); // <= IMPORTANT : singleton
+  if (!menu || !btnEl) return;
+
+  // Toggle si même bouton
+  if (activeBtn === btnEl && menu.classList.contains('is-open')) {
+    closeMarkerListMenu();
+    return;
+  }
+
+  // Si un autre bouton était actif -> ferme avant
+  if (activeBtn && activeBtn !== btnEl) closeMarkerListMenu();
+
+  activeMenu = menu;
+  activeBtn = btnEl;
+
+  const row = btnEl.closest('[data-mid], [data-pid]');
+  menu.dataset.kind = row?.dataset.pid ? 'route' : 'marker';
+  menu.dataset.id = row?.dataset.pid || row?.dataset.mid || '';
+
+  // Toujours dans <body> (évite clipping)
+  if (menu.parentElement !== document.body) {
+    document.body.appendChild(menu);
+  }
+
+  const r = btnEl.getBoundingClientRect();
+
+  menu.style.position = 'fixed';
+  menu.style.zIndex = '9999';
+
+  let left = r.right + 8;
+  let top  = r.top - 2;
+
+  const approxMenuW = menu.offsetWidth || 170;
+  if (left + approxMenuW > window.innerWidth - 8) {
+    left = r.left - approxMenuW - 8;
+  }
+
+  const approxMenuH = menu.offsetHeight || 140;
+  if (top + approxMenuH > window.innerHeight - 8) {
+    top = window.innerHeight - approxMenuH - 8;
+  }
+  if (top < 8) top = 8;
+
+  menu.style.left = `${Math.round(left)}px`;
+  menu.style.top  = `${Math.round(top)}px`;
+
+  menu.classList.add('is-open');
+  btnEl.classList.add('is-open');
+}
+
+function initMarkerSubMenus() {
+  // éviter double init (même pattern que routes)
+  if (window.__gdmmMarkersSubMenuInit) return;
+  window.__gdmmMarkersSubMenuInit = true;
+
+  document.addEventListener('pointerdown', (e) => {
+    const btn = e.target.closest('.marker-sub-menu');
+    if (!btn) return;
+    e.preventDefault();
+  }, true);
+
+  document.addEventListener('click', (e) => {
+    const menuEl = e.target.closest('.marker-list-menu');
+    const dotsBtn = e.target.closest('.marker-sub-menu');
+
+    // Clic sur un bouton du menu
+    const inMenuButton = e.target.closest('.marker-list-menu button');
+    if (inMenuButton) {
+      closeMarkerListMenu();
+      return;
+    }
+
+    // Clic sur "..."
+    if (dotsBtn) {
+      e.stopPropagation();
+      openMarkerListMenu(dotsBtn);
+      return;
+    }
+
+    // Clic dans la popup -> ne ferme pas
+    if (menuEl) return;
+
+    // Clic ailleurs -> ferme
+    closeMarkerListMenu();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMarkerListMenu();
+  });
+
+  window.addEventListener('resize', closeMarkerListMenu);
+  document.addEventListener('scroll', closeMarkerListMenu, true);
+}
+
+
+
+const GDMM_LIST_MENU = {
+  handlers: {}, // { marker: {...}, route: {...} }
+
+  register(kind, handlers) {
+    this.handlers[kind] = handlers;
+  },
+
+  runAction(kind, action, ctx) {
+    const fn = this.handlers?.[kind]?.[action];
+    if (typeof fn === 'function') fn(ctx);
+  }
+};
+
+window.GDMMListMenu = GDMM_LIST_MENU;
+
+
   // --- Done fly animation ---
 function animateArchiveFlyBlock(listRowEl) {
   const target = document.getElementById('donePanel') || document.getElementById('donePanelToggle');
@@ -305,8 +447,12 @@ function animateArchiveFlyBlock(listRowEl) {
         };
 
 
-        el.querySelector('[data-center]').onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
-        el.querySelector('[data-delete]').onclick = () => deleteMarkerFromUI(m.id);
+      const centerBtn = el.querySelector('[data-center]');
+      if (centerBtn) centerBtn.onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
+
+      const delBtn = el.querySelector('[data-delete]');
+      if (delBtn) delBtn.onclick = () => deleteMarkerFromUI(m.id);
+
 
 
         const linkBtn = el.querySelector('[data-link]');
@@ -394,4 +540,10 @@ function animateArchiveFlyBlock(listRowEl) {
     });
   }
 
+  // Init tooltip menu markers (safe: garde-fou dans la fonction)
+  if (typeof initMarkerSubMenus === 'function') {
+    initMarkerSubMenus();
+  }
+
 })();
+

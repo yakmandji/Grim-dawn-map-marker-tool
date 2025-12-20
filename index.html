@@ -28,10 +28,9 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.67" />
-  <link rel="stylesheet" href="css/items.css?v1.64" />
+  <link rel="stylesheet" href="css/general.css?v1.68" />
+  <link rel="stylesheet" href="css/items.css?v1.65" />
   <link rel="stylesheet" href="css/responsive.css?v1.31" />
-  <link rel="stylesheet" href="css/sidebar-toggle.css?v1.28" />
   
 </head>
 <body>
@@ -49,9 +48,6 @@
   <div class="app">
     <header id="left-menu">
 
-      <button id="sidebarToggle" class="sidebar-toggle" data-i18n-title="ui.ToggleSidebar" type="button" title="Toggle sidebar">
-          <img src="img/double-arrow-g.svg" width="14" alt="">
-      </button>
       <div class="header-actions" id="header-add-group">
           <button id="btn-new-marker" class="gd-btn gd-btn--header menu-button">
               <img src="img/marker-pin-g.svg" width="15">
@@ -246,10 +242,9 @@
 
       <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:60vh;margin-top: 0;">
         <div class="row">
-          <h3 class="m0 pl-20 title" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
+          <h3 class="m0 title" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
           </h3>
           <label class="lock-label">
-              <img src="img/lock.svg" alt="Lock" width="17" >
               <span data-i18n="ui.LockMarker">
                   Lock markers
               </span>
@@ -290,7 +285,7 @@
       </div>
 
       <section class="section light side-block" id="notePanel" style="display:flex;flex-direction:column;gap:0;max-height:25vh;">
-        <h3 class="mb3 pl-20 title">
+        <h3 class="mb3 title">
           <span data-i18n="ui.NoteList">Notes list</span>
           (<span id="noteCount">0</span>)
         </h3>
@@ -298,7 +293,7 @@
       </section>
 
       <section class="section light" id="routesPanel" class="side-block" style="display:flex;flex-direction:column;gap:0;max-height:25vh;">
-        <h3 class="mb3 pl-20 title"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
+        <h3 class="mb3 title"><span data-i18n="ui.RoutesList">Routes list </span>(<span id="routesCount">0</span>)</h3>
         <div id="routesList" class="markers-scroll"></div>
       </section>
 
@@ -473,8 +468,7 @@
     <div class="listItem">
       <div class="pin" data-pin></div>
       <div>
-
-          <div class="row d-flex" style="gap:6px">
+          <div class="row d-flex" style="gap:6px; align-items: flex-start;">
               <div class="left">
                 <input data-label type="text" placeholder="marker name" />
                 <div class="row mt-2" style="gap:15px;">
@@ -484,34 +478,103 @@
                     </div>
                     <!-- Dropdown new -->              
                     <label style="flex:0 0 auto" class="small list-input done-input" data-i18n-title="ui.DoneTitle" title="Archive ce marqueur : il est retiré de la carte et conservé dans l’historique">
-                      <input data-done type="checkbox" class="checkbox-green" /> 
-                      <img class="show-collapsed" data-i18n-title="ui.DoneTitle" title="done" src="img/done-icon.svg" width="14"> 
                       <span class="hide-collapsed" data-i18n="ui.Done">Done</span>
+                      <input data-done type="checkbox" class="checkbox-green" /> 
                     </label>                   
                 </div>                                  
               </div>
 
               <div class="right row">
-                  <button class="marker-save" data-i18n-title="ui.SaveTitle" title="Save">
-                    <img src="img/save-icon.svg" width="13">
+                  <button class="marker-sub-menu" data-i18n-title="ui.SaveTitle" title="Save">
+                    <img src="img/menu-icon.svg" width="13">
                   </button>
-                  <button data-center class="marker-center" data-i18n-title="ui.CenterOnMap" title="Center on map">
-                    <img src="img/center-icon.svg" width="13" data-i18n-title="ui.CenterOnMap" >
-                 </button>
-                  <button data-link class="link-for-marker small" data-i18n-title="ui.linkMarker" title="Link your marker">
-                    <img src="img/link.svg" width="13" height="13" alt="Link">
-                  </button>
-                  <button data-delete class="danger" data-i18n-title="ui.DeleteButton" title="Delete">
-                    <img src="img/bin-icon.svg" width="13" >
-                  </button>                
+                  <div class="marker-list-menu menu-item-list">
+                    <ul>
+                      <li class="marker-save">
+                          <button class="marker-save" data-i18n-title="ui.SaveTitle" title="Save">
+                              <img src="img/save-icon.svg" width="13">
+                              <span data-i18n="ui.SaveTitle">Save</span>
+                          </button>
+                      </li>
+                      <li data-center class="marker-center">
+                        <button data-center class="marker-center" data-i18n-title="ui.CenterOnMap" title="Center on map">
+                          <img src="img/center-icon.svg" width="13" data-i18n-title="ui.CenterOnMap" >
+                          <span data-i18n="ui.CenterOnMap" >Center</span>
+                       </button>
+                      </li>                      
+                      <li>
+                        <button data-link class="link-for-marker " data-i18n-title="ui.linkMarker" title="Link your marker">
+                          <img src="img/link.svg" width="13" height="13" alt="Link">
+                          <span data-i18n="ui.Share" >Share</span>
+                        </button>
+                      </li>
+                      <li>
+                        <button data-delete class="marker-delete" data-i18n-title="ui.DeleteButton" title="Delete">
+                          <img src="img/bin-icon.svg" width="13" >
+                          <span data-i18n="ui.DeleteButton" >Delete</span>
+                        </button> 
+                      </li>
+                    </ul>
+                  </div>
               </div>
 
           </div>
-
       </div>
 
     </div>
   </template>
+
+
+  <!-- Template Routes -->
+  <template id="tplRouteItem">
+    <div class="listItem route-item" data-route-item>
+      <input data-route-color type="color" class="routeColor" />
+
+      <input
+        data-route-name
+        type="text"
+        class="markerLabel"
+        placeholder="Route name"
+      />
+
+        <button class="route-sub-menu" data-i18n-title="ui.SaveTitle" title="Save">
+          <img src="img/menu-icon.svg" width="13">
+        </button>
+
+        <div class="route-list-menu menu-item-list">
+          <ul>
+            <li class="marker-save">
+                <button data-route-action="save" class="marker-save" data-i18n-title="ui.SaveTitle" title="Save">
+                    <img src="img/save-icon.svg" width="13">
+                    <span data-i18n="ui.SaveTitle">Save</span>
+                </button>
+            </li>
+            <li>
+              <button data-route-action="link" class="link-for-marker " data-i18n-title="ui.linkMarker" title="Link your marker">
+                <img src="img/link.svg" width="13" height="13" alt="Link">
+                <span data-i18n="ui.Share" >Share</span>
+              </button>
+            </li>
+            <li class="marker-center">
+              <button data-route-action="center" class="marker-center" data-i18n-title="ui.CenterOnMap" title="Center on map">
+                <img src="img/center-icon.svg" width="13" data-i18n-title="ui.CenterOnMap" >
+                <span data-i18n="ui.CenterOnMap" >Center</span>
+             </button>
+            </li>
+            <li>
+              <button data-route-action="delete" class="marker-delete" data-i18n-title="ui.DeleteButton" title="Delete">
+                <img src="img/bin-icon.svg" width="13" >
+                <span data-i18n="ui.DeleteButton" >Delete</span>
+              </button> 
+            </li>
+          </ul>
+        </div>
+
+    </div>
+  </template>
+
+
+
 
   <div id="toastContainer"></div>
 
@@ -624,7 +687,7 @@
 <!--END MULTI CHARACTER MODAL ------------------------------------------------------->
 
 
-  <script src="js/ui.lang.js?v=3.68"></script>
+  <script src="js/ui.lang.js?v=3.69"></script>
   <script src="js/core.js?v=3.10"></script>
   <script src="js/ui.rift.js?v=3.98"></script>
   <script src="js/ui.region.js?v=4.15"></script>
@@ -635,12 +698,12 @@
   <script src="js/ui.map.base.js?v=1.26"></script>
   <script src="js/ui.map.minimap.js?v=1.13"></script>
 
-  <script src="js/ui.markers.js?v=24"></script>
-  <script src="js/ui.routes.js?v=1.20"></script>
+  <script src="js/ui.markers.js?v=25"></script>
+  <script src="js/ui.routes.js?v=1.21"></script>
 
-  <script src="js/ui.core.js?v=3.91"></script>
+  <script src="js/ui.core.js?v=3.92"></script>
 
-  <script src="js/ui.map.notes.js?v=1.01"></script>
+  <script src="js/ui.map.notes.js?v=1.02"></script>
 
   <script src="js/ui.map.render.js?v=1.81"></script>
   <script src="js/ui.share.js?v=1.10"></script>

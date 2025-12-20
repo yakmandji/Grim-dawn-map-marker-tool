@@ -112,13 +112,13 @@
           <button type="button"
                   class="marker-center small"
                   title="${GDMMLang.t('ui.CenterOnMap')}">
-            <img src="img/center-icon.svg" width="13">
+            <img src="img/center-icon.svg" width="12">
           </button>
 
           <button type="button"
                   class="danger small note-delete-btn"
                   title="${GDMMLang.t('ui.DeleteButton')}">
-            <img src="img/bin-icon.svg" width="13">
+            <img src="img/bin-icon.svg" width="12">
           </button>
         `;
 
@@ -680,8 +680,5 @@
         window.openRegionNotePanel = openRegionNotePanel;
 
         window.mergeSharedNotesIntoLocal = mergeSharedNotesIntoLocal;
-
-
-
 
   })();
