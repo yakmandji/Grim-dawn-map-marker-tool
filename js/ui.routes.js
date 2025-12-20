@@ -195,10 +195,39 @@ function initRouteSubMenus() {
           if (typeof updateSaveIndicator === 'function') updateSaveIndicator(true);
           break;
 
-        case 'link':
-          // mets ici ta logique existante si besoin
-          // shareSingleRoute(route);
-          break;
+          case 'link': {
+            if (!window.GDMMShare?.createLink) return;
+
+            const round = v => Math.round((v || 0) * 10) / 10;
+
+            const compactRoute = {
+              i: route.id,
+              n: route.name || '',
+              c: route.color || '#ffcc00',
+              w: route.width || 4,
+              o: typeof route.opacity === 'number' ? route.opacity : 0.85,
+              pts: (route.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
+            };
+
+            const payload = {
+              v: '3',
+              map: state.active,
+              r: [compactRoute],
+              m: [],
+              notes: null,
+            };
+
+            await window.GDMMShare.createLink(payload);
+
+            if (typeof showToast === 'function') {
+              const msg =
+                (window.GDMMLang?.t && GDMMLang.t('toast.ShareUrlCopied')) ||
+                'Link copied ✅';
+              showToast(msg, 'success', 3800);
+            }
+            break;
+          }
+
       }
 
       return;

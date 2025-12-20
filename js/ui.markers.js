@@ -131,12 +131,30 @@ function initMarkerSubMenus() {
     const menuEl = e.target.closest('.marker-list-menu');
     const dotsBtn = e.target.closest('.marker-sub-menu');
 
-    // Clic sur un bouton du menu
-    const inMenuButton = e.target.closest('.marker-list-menu button');
-    if (inMenuButton) {
-      closeMarkerListMenu();
-      return;
+    // Clic sur un bouton du menu tooltip => exécuter l'action via dataset.id
+  const inMenuButton = e.target.closest('.marker-list-menu button');
+  if (inMenuButton) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const menu = inMenuButton.closest('.marker-list-menu');
+    const kind = menu?.dataset?.kind || 'marker';
+    const id   = menu?.dataset?.id || '';
+
+    // On mappe selon tes attributs HTML (pas de data-action chez toi)
+    let action = null;
+    if (inMenuButton.hasAttribute('data-center')) action = 'center';
+    else if (inMenuButton.hasAttribute('data-link')) action = 'link';
+    else if (inMenuButton.hasAttribute('data-delete')) action = 'delete';
+
+    if (action && id) {
+      window.GDMMListMenu?.runAction(kind, action, { id });
     }
+
+    closeMarkerListMenu();
+    return;
+  }
+
 
     // Clic sur "..."
     if (dotsBtn) {
@@ -176,6 +194,91 @@ const GDMM_LIST_MENU = {
 };
 
 window.GDMMListMenu = GDMM_LIST_MENU;
+
+
+// Actions tooltip pour les marqueurs
+GDMM_LIST_MENU.register('marker', {
+
+  center({ id }) {
+    const p = currentProfile();
+    const m = (p?.markers || []).find(x => String(x.id) === String(id));
+    if (!m) return;
+
+    const duration = 260;
+
+    // 1) on centre avec l'anim
+    if (typeof window.smoothCenterOn === 'function') {
+      window.smoothCenterOn(m.xp, m.yp, 0.8, duration);
+    } else if (typeof window.centerOn === 'function') {
+      // fallback: centerOn fait déjà le pulse si on lui passe markerId
+      window.centerOn(m.xp, m.yp, 0.8, m.id);
+      return;
+    }
+
+    // 2) et on refait le pulse (même logique que centerOn)
+    setTimeout(() => {
+      let markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
+
+      // Si c’est un Done marker et que l’historique est masqué, on réactive l'archive
+      if (markerEl && markerEl.classList.contains('completed')) {
+        if (typeof window.ensureAdminLayerVisible === 'function') {
+          window.ensureAdminLayerVisible('history');
+        }
+      }
+
+      // re-sélection après éventuel changement (filtres, classes, etc.)
+      markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
+      if (markerEl) {
+        markerEl.classList.add('marker-highlight');
+        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+      }
+    }, duration);
+  },
+
+
+  delete({ id }) {
+    deleteMarkerFromUI(id);
+  },
+
+  async link({ id }) {
+    const p = currentProfile();
+    const m = (p?.markers || []).find(x => String(x.id) === String(id));
+    if (!m) return;
+
+    if (!window.GDMMShare?.createLink) {
+      if (typeof showToast === 'function') {
+        showToast('Share system not ready ❌', 'error', 3500);
+      }
+      return;
+    }
+
+    const round = (v) => Math.round((v || 0) * 10) / 10;
+
+    const payload = {
+      v: '3',
+      map: state.active,
+      r: [],
+      m: [{
+        i: m.id,
+        x: round(m.xp),
+        y: round(m.yp),
+        l: m.label || '',
+        k: m.cat || 'General',
+        c: m.color || '#78f1c2',
+      }],
+      notes: null,
+    };
+
+    await window.GDMMShare.createLink(payload);
+
+    if (typeof showToast === 'function') {
+      const msg =
+        (window.GDMMLang?.t && GDMMLang.t('toast.ShareUrlCopied')) ||
+        'Link copied ✅';
+      showToast(msg, 'success', 3800);
+    }
+  }
+});
 
 
   // --- Done fly animation ---
@@ -447,16 +550,18 @@ function animateArchiveFlyBlock(listRowEl) {
         };
 
 
-      const centerBtn = el.querySelector('[data-center]');
-      if (centerBtn) centerBtn.onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
+        const centerBtn = el.querySelector('[data-center]');
+        if (centerBtn && !centerBtn.closest('.marker-list-menu')) {
+          centerBtn.onclick = () => centerOn(m.xp, m.yp, 0.8, m.id);
+        }
 
-      const delBtn = el.querySelector('[data-delete]');
-      if (delBtn) delBtn.onclick = () => deleteMarkerFromUI(m.id);
-
-
+        const delBtn = el.querySelector('[data-delete]');
+        if (delBtn && !delBtn.closest('.marker-list-menu')) {
+          delBtn.onclick = () => deleteMarkerFromUI(m.id);
+        }
 
         const linkBtn = el.querySelector('[data-link]');
-        if (linkBtn) {
+        if (linkBtn && !linkBtn.closest('.marker-list-menu')) {
           linkBtn.onclick = async () => {
             if (!window.GDMMShare?.createLink) {
               if (typeof showToast === 'function') {
@@ -482,17 +587,17 @@ function animateArchiveFlyBlock(listRowEl) {
               notes: null,
             };
 
-            const url = await window.GDMMShare.createLink(payload);
-            
+            await window.GDMMShare.createLink(payload);
+
             if (typeof showToast === 'function') {
               const msg =
                 (window.GDMMLang?.t && GDMMLang.t('toast.ShareUrlCopied')) ||
                 'Link copied ✅';
               showToast(msg, 'success', 3800);
             }
-
           };
         }
+
 
         host.appendChild(el);
       }
