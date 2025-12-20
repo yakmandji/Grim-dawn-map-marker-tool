@@ -23,6 +23,8 @@
 { id: 'tag_UGBurrwitch_village_ratDen01', tag: 'tagUGBurrwitchVillageRatDen01', xp: 62.14, yp: 59.30, isDungeon: true },
 { id: 'tag_gDX1UG_ancient_grove01D', tag: 'tagGDX1UGAncientGrove01D', xp: 89.43, yp: 58, isDungeon: true },
 { id: 'tag_map_hidden_path01', tag: 'tagMapHiddenPath01', xp: 76.24, yp: 63.55 },
+{ id: 'tag_map_hidden_pathLowerCrossing', tag: 'tagMapHiddenPath01', xp: 66.07, yp: 86.43 },
+
 { id: 'tag_map_hidden_path04', tag: 'tagMapHiddenPath01', xp: 16.82, yp: 30.41, isDungeon: true },
 
 { id: 'tag_UG_secret_02', tag: 'tagUGSecret02', xp: 27.24, yp: 20.29, isDungeon: true },
@@ -39,7 +41,7 @@
 { id: 'UG_devils_crossing_aquifer', tag: 'tagUGDevilsCrossingAquifer', xp: 69.88, yp: 93.61, isDungeon: true },
 { id: 'tag_UG_broken_hills02F', tag: 'tagUGBrokenHills02F', xp: 46.62, yp: 99.05, isDungeon: true },
 { id: 'map_old_grove', tag: 'tagMapOldGrove', xp: 62.27, yp: 90.3 },
-{ id: 'map_lower_crossing01', tag: 'tagMapLowerCrossing01', xp: 64.52, yp: 85.9 },
+{ id: 'map_lower_crossing01', tag: 'tagMapLowerCrossing01', xp: 64.39, yp: 85.69 },
 { id: 'map_burial_hill', tag: 'tagMapBurialHill', xp: 65.23, yp: 83.79 },
 { id: 'map_old_dump', tag: 'tagMapOldDump', xp: 66.84, yp: 81.79 },
 { id: 'map_wightmire01', tag: 'tagMapWightmire01', xp: 68.13, yp: 78.61 },
