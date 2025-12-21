@@ -294,12 +294,33 @@ function rememberActiveProfile() {
         centerBtn.innerHTML = `<img src="img/center-icon.svg" width="12">`;
 
         centerBtn.onclick = () => {
+          // déplacement/zoom smooth
           if (typeof window.smoothCenterOn === 'function') {
-            window.smoothCenterOn(m.xp, m.yp, 1.2, 260); // Centrage fluide
+            window.smoothCenterOn(m.xp, m.yp, 1.2, 260);
           } else if (typeof window.centerOn === 'function') {
-            window.centerOn(m.xp, m.yp, 1.2, m.id); // Centrage classique en fallback
+            // fallback = centerOn gère déjà le highlight
+            window.centerOn(m.xp, m.yp, 1.2, m.id);
+            return;
+          }
+
+          // highlight (pulse) comme centerOn(markerId)
+          let markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
+
+          // Si c’est un done marker et que la layer "history" est cachée, on la montre
+          if (markerEl && markerEl.classList.contains('completed')) {
+            if (typeof window.ensureAdminLayerVisible === 'function') {
+              window.ensureAdminLayerVisible('history');
+            }
+          }
+
+          // Re-sélection après éventuelle activation de la layer
+          markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
+          if (markerEl) {
+            markerEl.classList.add('marker-highlight');
+            setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
           }
         };
+
 
         const delBtn = document.createElement('button');
         delBtn.type = 'button';
