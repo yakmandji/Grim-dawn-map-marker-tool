@@ -49,6 +49,33 @@
       }
 
 
+    // Fonction de centrage fluide pour une note
+    function centerNoteOnMap(regionId) {
+      const notes = getAllRegionNotes(); // Charger toutes les notes
+      const note = notes[regionId]; // Récupérer la note correspondant à l'ID
+      if (!note) return;
+
+      const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+      if (!regionEl) return; // Si l'élément de la région n'est pas trouvé, sortir
+
+      const xp = parseFloat(regionEl.dataset.xp); // Coordonnée X
+      const yp = parseFloat(regionEl.dataset.yp); // Coordonnée Y
+      if (isNaN(xp) || isNaN(yp)) return; // Si les coordonnées sont invalides, sortir
+
+      // Utilisation de smoothCenterOn ou centerOn pour effectuer le centrage fluide
+      if (typeof window.smoothCenterOn === 'function') {
+        window.smoothCenterOn(xp, yp, 1.2, 260); // Centrer avec un zoom à 1.2 et une animation de 260ms
+      } else if (typeof window.centerOn === 'function') {
+        window.centerOn(xp, yp, 1.2, regionId); // Fallback vers centerOn si smoothCenterOn n'est pas disponible
+      }
+
+      // Optionnel : Animation de surbrillance de la note pendant un moment
+      regionEl.classList.add('marker-highlight');
+      setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
+    }
+
+
+    // Fonction pour construire la liste des notes
     function buildNoteList() {
       const listEl  = document.getElementById('noteList');
       const countEl = document.getElementById('noteCount');
@@ -80,11 +107,9 @@
       }
 
       // Choix dynamique selon l’état de la sidebar
-      const isCollapsed = document.body.classList.contains("sidebar-collapsed");
-      const maxLen = isCollapsed ? 22 : 85;
+      const maxLen = 65;
 
       regionIds.forEach(regionId => {
-
         const raw = notes[regionId];
         const noteText = raw && typeof raw === "object" ? raw.text : raw || "";
 
@@ -106,18 +131,11 @@
 
         row.innerHTML = `
           <img src="img/info-icon.svg" class="icon-16" width="20" />
-
-          <span class="note-region-name"></span>
-
-          <button type="button"
-                  class="marker-center small"
-                  title="${GDMMLang.t('ui.CenterOnMap')}">
+          <span class="note-region-name">${preview || regionName}</span>
+          <button type="button" class="marker-center small" title="${GDMMLang.t('ui.CenterOnMap')}">
             <img src="img/center-icon.svg" width="12">
           </button>
-
-          <button type="button"
-                  class="danger small note-delete-btn"
-                  title="${GDMMLang.t('ui.DeleteButton')}">
+          <button type="button" class="danger small note-delete-btn" title="${GDMMLang.t('ui.DeleteButton')}">
             <img src="img/bin-icon.svg" width="12">
           </button>
         `;
@@ -127,14 +145,14 @@
           labelSpan.textContent = preview || regionName;
         }
 
-        // --- Tooltip body-level sur l’icône info ---
+        // --- Tooltip : Toujours afficher le texte complet ---
         const infoIcon = row.querySelector('.icon-16');
         if (infoIcon) {
           infoIcon.addEventListener('mouseenter', (ev) => {
             const fullText = (noteText || '').trim();
             if (!fullText) return;
 
-            // si une ancienne tooltip traîne, on la vire
+            // Si une ancienne tooltip traîne, on la vire
             if (infoIcon._noteTooltip) {
               infoIcon._noteTooltip.remove();
               infoIcon._noteTooltip = null;
@@ -142,7 +160,7 @@
 
             const tooltip = document.createElement('div');
             tooltip.className = 'region-note-tooltip';
-            tooltip.textContent = fullText;
+            tooltip.textContent = fullText; // Affiche le texte complet de la note
 
             document.body.appendChild(tooltip);
 
@@ -164,57 +182,34 @@
         // --- Bouton center ---
         const centerBtn = row.querySelector('.marker-center');
         if (centerBtn) {
-
-          function handler() {
-              if (typeof window.ensureAdminLayerVisible === 'function') {
-                window.ensureAdminLayerVisible('region');
-              }
-              
-              const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
-              if (!regionEl) return;
-
-              const xp = parseFloat(regionEl.dataset.xp);
-              const yp = parseFloat(regionEl.dataset.yp);
-              if (isNaN(xp) || isNaN(yp)) return;
-
-              window.centerOn(xp, yp, 1.0);
-
-              // Pulse animation
-              regionEl.classList.add('marker-highlight');
-              setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
-          }
-
-          centerBtn.addEventListener('click', handler);
-          infoIcon.addEventListener('click', handler);
-        }
-
-        // --- Bouton delete  ---
-        const deleteBtn = row.querySelector('.note-delete-btn');
-        if (deleteBtn) {
-          deleteBtn.addEventListener('click', () => {
-            // 1) Efface du store (perso + global)
-            clearRegionNote(regionId);
-
-            // 2) Met à jour l’icône info sur la map
-            const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
-            if (regionEl) {
-              refreshRegionNoteIndicator(regionEl, regionId);
-            }
-
-            // 3) Rafraîchir la liste
-            buildNoteList();
-
-            // 4) Toast
-            if (typeof showToast === 'function') {
-              showToast(GDMMLang.t('toast.NoteDeleted'));
-            }
+          centerBtn.addEventListener('click', () => {
+            centerNoteOnMap(regionId);  // Appel de la fonction de centrage fluide
           });
         }
 
+        // --- Bouton delete ---
+        const deleteBtn = row.querySelector('.note-delete-btn');
+        if (deleteBtn) {
+          deleteBtn.addEventListener('click', () => {
+            clearRegionNote(regionId);  // Supprimer la note du store
+
+            // Rafraîchir l'indicateur de la note sur la carte
+            const regionEl = document.querySelector(`.marker-region[data-region-id="${regionId}"]`);
+            if (regionEl && typeof refreshRegionNoteIndicator === 'function') {
+              refreshRegionNoteIndicator(regionEl, regionId); // Mettre à jour l'indicateur de la note
+            }
+
+            // Rafraîchir la liste des notes après la suppression
+            buildNoteList();  // Cela régénère toute la liste des notes
+            showToast('Note deleted');  // Afficher un message de confirmation
+          });
+        }
 
         listEl.appendChild(row);
       });
+
     }
+
 
     // Rebuild note list automatically when sidebar size changes
     (function() {

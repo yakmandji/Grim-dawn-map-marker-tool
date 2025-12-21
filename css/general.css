@@ -40,6 +40,10 @@ textarea {
   font-family: inherit;
 }
 
+.hide{
+  display: none!important;
+}
+
 #pathLayer{
   z-index: 6;
 }
@@ -570,11 +574,6 @@ body.shared-only-view .marker-delete
 
 body.shared-only-view #shared-view-message{
   display: block;
-}
-
-
-body.shared-only-view .sidebar .title {
-  display: flex;
 }
 
 body.shared-only-view .sidebar {

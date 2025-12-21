@@ -447,8 +447,11 @@ initRouteSubMenus();
     else if (span > 10) zoom = 1.0;
     else zoom = 1.2;
 
-    if (typeof window.centerOn === 'function') {
-      window.centerOn(cx, cy, zoom);
+    // Utilisation de smoothCenterOn ou centerOn pour effectuer le centrage fluide
+    if (typeof window.smoothCenterOn === 'function') {
+      window.smoothCenterOn(cx, cy, zoom);  // Centrage fluide avec zoom
+    } else if (typeof window.centerOn === 'function') {
+      window.centerOn(cx, cy, zoom);  // Fallback vers centerOn si smoothCenterOn n'est pas disponible
     }
   }
 

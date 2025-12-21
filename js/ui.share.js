@@ -167,6 +167,26 @@
       sharedNotes && typeof sharedNotes === 'object' &&
       Object.keys(sharedNotes).length > 0;
 
+        // --- Masquer les panels si aucune donnée partagée ---
+      if (!routes.length) {
+        document.getElementById('routesPanel').classList.add('hide');
+      } else {
+        document.getElementById('routesPanel').classList.remove('hide');
+      }
+
+      if (!markers.length) {
+        document.getElementById('marker-container').classList.add('hide');
+      } else {
+        document.getElementById('marker-container').classList.remove('hide');
+      }
+
+      if (!hasSharedNotes) {
+        document.getElementById('notePanel').classList.add('hide');
+      } else {
+        document.getElementById('notePanel').classList.remove('hide');
+      }
+
+
     if (!routes.length && !markers.length && !hasSharedNotes) {
       return;
     }

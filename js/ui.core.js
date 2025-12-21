@@ -244,71 +244,80 @@ function rememberActiveProfile() {
 
 
   // List of Done element ----------------------------------------
-  window.renderDoneList = function renderDoneList(doneMarkers) {
-    const host = $('#doneList');
-    if (!host) return;
+    window.renderDoneList = function renderDoneList(doneMarkers) {
+      const host = $('#doneList');
+      if (!host) return;
 
-    host.innerHTML = '';
+      host.innerHTML = '';
 
-    if (!doneMarkers.length) {
-      const emptyMsg = document.createElement('div');
-      emptyMsg.className = 'done-empty';
-      emptyMsg.setAttribute('data-i18n', 'ui.NothingDone');
-      emptyMsg.textContent = GDMMLang.t('ui.NothingDone');
-      host.appendChild(emptyMsg);
-      return;
-    }
-
-    doneMarkers.forEach(m => {
-      const row = document.createElement('div');
-      row.className = 'doneItem';
-      row.dataset.mid = m.id;
-
-      const iconWrap = document.createElement('div');
-      iconWrap.className = 'doneIcon';
-
-      let ic = iconFor(m.cat);
-      if (ic && m.done) {
-        ic = ic.replace('.svg', '-done.svg');
+      if (!doneMarkers.length) {
+        const emptyMsg = document.createElement('div');
+        emptyMsg.className = 'done-empty';
+        emptyMsg.setAttribute('data-i18n', 'ui.NothingDone');
+        emptyMsg.textContent = GDMMLang.t('ui.NothingDone');
+        host.appendChild(emptyMsg);
+        return;
       }
 
-      if (ic) {
-        const img = document.createElement('img');
-        img.className = 'doneIcon-img';
-        img.src = ic;
-        iconWrap.appendChild(img);
-      }
+      doneMarkers.forEach(m => {
+        const row = document.createElement('div');
+        row.className = 'doneItem';
+        row.dataset.mid = m.id;
 
-      const lab = document.createElement('div');
-      lab.className = 'doneLabel';
-      lab.textContent = m.label || '(no name)';
-      lab.title = m.label || '';
+        const iconWrap = document.createElement('div');
+        iconWrap.className = 'doneIcon';
 
-      const actions = document.createElement('div');
-      actions.className = 'doneActions';
+        let ic = iconFor(m.cat);
+        if (ic && m.done) {
+          ic = ic.replace('.svg', '-done.svg');
+        }
 
-      const centerBtn = document.createElement('button');
-      centerBtn.type = 'button';
-      centerBtn.className = 'marker-center small';
-      centerBtn.innerHTML = `<img src="img/center-icon.svg" width="12">`;
-      centerBtn.onclick = () => centerOn(m.xp, m.yp, 1.2, m.id);
+        if (ic) {
+          const img = document.createElement('img');
+          img.className = 'doneIcon-img';
+          img.src = ic;
+          iconWrap.appendChild(img);
+        }
 
-      const delBtn = document.createElement('button');
-      delBtn.type = 'button';
-      delBtn.className = 'marker-delete danger small';
-      delBtn.innerHTML = `<img src="img/bin-icon.svg" width="12">`;
-      delBtn.onclick = () => deleteMarkerFromUI(m.id);
+        const lab = document.createElement('div');
+        lab.className = 'doneLabel';
+        lab.textContent = m.label || '(no name)';
+        lab.title = m.label || '';
 
-      actions.appendChild(centerBtn);
-      actions.appendChild(delBtn);
+        const actions = document.createElement('div');
+        actions.className = 'doneActions';
 
-      row.appendChild(iconWrap);
-      row.appendChild(lab);
-      row.appendChild(actions);
+        // --- Modifions ici pour le centrage fluide ---
+        const centerBtn = document.createElement('button');
+        centerBtn.type = 'button';
+        centerBtn.className = 'marker-center small';
+        centerBtn.innerHTML = `<img src="img/center-icon.svg" width="12">`;
 
-      host.prepend(row);
-    });
-  };
+        centerBtn.onclick = () => {
+          if (typeof window.smoothCenterOn === 'function') {
+            window.smoothCenterOn(m.xp, m.yp, 1.2, 260); // Centrage fluide
+          } else if (typeof window.centerOn === 'function') {
+            window.centerOn(m.xp, m.yp, 1.2, m.id); // Centrage classique en fallback
+          }
+        };
+
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'marker-delete danger small';
+        delBtn.innerHTML = `<img src="img/bin-icon.svg" width="12">`;
+        delBtn.onclick = () => deleteMarkerFromUI(m.id);
+
+        actions.appendChild(centerBtn);
+        actions.appendChild(delBtn);
+
+        row.appendChild(iconWrap);
+        row.appendChild(lab);
+        row.appendChild(actions);
+
+        host.prepend(row);
+      });
+    };
+
 // END -----------------------------------------------
 
   window.initDonePanelToggle = function initDonePanelToggle() {

@@ -28,8 +28,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.70" />
-  <link rel="stylesheet" href="css/items.css?v1.65" />
+  <link rel="stylesheet" href="css/general.css?v1.71" />
+  <link rel="stylesheet" href="css/items.css?v1.66" />
   <link rel="stylesheet" href="css/responsive.css?v1.31" />
   
 </head>
@@ -216,7 +216,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.5.48</span>
+        <span>V.5.49</span>
       </div>      
       <div class="title-banner">
         <div class="app-logo">
@@ -240,7 +240,7 @@
     </div>
 <!--     END Character selection ------------------------------------- -->  
 
-      <div class="section light" style="display:flex;flex-direction:column;gap:0px;max-height:60vh;margin-top: 0;">
+      <div class="section light" id="marker-container" style="display:flex;flex-direction:column;gap:0px;max-height:60vh;margin-top: 0;">
         <div class="row">
           <h3 class="m0 title" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
           </h3>
@@ -490,18 +490,18 @@
                   </button>
                   <div class="marker-list-menu menu-item-list">
                     <ul>
-                      <li class="marker-save">
-                          <button class="marker-save" data-i18n-title="ui.SaveTitle" title="Save">
-                              <img src="img/save-icon.svg" width="13">
-                              <span data-i18n="ui.SaveTitle">Save</span>
-                          </button>
-                      </li>
                       <li data-center class="marker-center">
                         <button data-center class="marker-center" data-i18n-title="ui.CenterOnMap" title="Center on map">
                           <img src="img/center-icon.svg" width="13" data-i18n-title="ui.CenterOnMap" >
                           <span data-i18n="ui.CenterOnMap" >Center</span>
                        </button>
-                      </li>                      
+                      </li>                       
+                      <li class="marker-save">
+                          <button class="marker-save" data-i18n-title="ui.SaveTitle" title="Save">
+                              <img src="img/save-icon.svg" width="13">
+                              <span data-i18n="ui.SaveTitle">Save</span>
+                          </button>
+                      </li>                     
                       <li>
                         <button data-link class="link-for-marker " data-i18n-title="ui.linkMarker" title="Link your marker">
                           <img src="img/link.svg" width="13" height="13" alt="Link">
@@ -543,6 +543,12 @@
 
         <div class="route-list-menu menu-item-list">
           <ul>
+            <li class="marker-center">
+              <button data-route-action="center" class="marker-center" data-i18n-title="ui.CenterOnMap" title="Center on map">
+                <img src="img/center-icon.svg" width="13" data-i18n-title="ui.CenterOnMap" >
+                <span data-i18n="ui.CenterOnMap" >Center</span>
+             </button>
+            </li>            
             <li class="marker-save">
                 <button data-route-action="save" class="marker-save" data-i18n-title="ui.SaveTitle" title="Save">
                     <img src="img/save-icon.svg" width="13">
@@ -554,12 +560,6 @@
                 <img src="img/link.svg" width="13" height="13" alt="Link">
                 <span data-i18n="ui.Share" >Share</span>
               </button>
-            </li>
-            <li class="marker-center">
-              <button data-route-action="center" class="marker-center" data-i18n-title="ui.CenterOnMap" title="Center on map">
-                <img src="img/center-icon.svg" width="13" data-i18n-title="ui.CenterOnMap" >
-                <span data-i18n="ui.CenterOnMap" >Center</span>
-             </button>
             </li>
             <li>
               <button data-route-action="delete" class="marker-delete" data-i18n-title="ui.DeleteButton" title="Delete">
@@ -699,14 +699,14 @@
   <script src="js/ui.map.minimap.js?v=1.13"></script>
 
   <script src="js/ui.markers.js?v=26"></script>
-  <script src="js/ui.routes.js?v=1.22"></script>
+  <script src="js/ui.routes.js?v=1.23"></script>
 
-  <script src="js/ui.core.js?v=3.92"></script>
+  <script src="js/ui.core.js?v=3.93"></script>
 
-  <script src="js/ui.map.notes.js?v=1.02"></script>
+  <script src="js/ui.map.notes.js?v=1.03"></script>
 
   <script src="js/ui.map.render.js?v=1.81"></script>
-  <script src="js/ui.share.js?v=1.10"></script>
+  <script src="js/ui.share.js?v=1.11"></script>
 
   <script src="libs/pako.min.js"></script>
   <script src="js/ui.tools.js?v=2.99"></script>
