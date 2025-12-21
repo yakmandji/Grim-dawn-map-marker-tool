@@ -11,7 +11,7 @@
     { id: 'shirneMapBurrwitchEstates', regionTag: 'tagMapBurrwitchEstates', xp: 68.52, yp: 60.07, difficulty: 'normal' },
     { id: 'shrineMapOminousLair', regionTag: 'tagMapOminousLair', xp: 62.00, yp: 50.66, difficulty: 'normal' },
     { id: 'shrinetagMapEastMarsh03', regionTag: 'tagMapEastMarsh03', xp: 80.67, yp: 65.27, difficulty: 'normal' },
-    { id: 'shrinetagWorldMapWitchGodTemple', regionTag: 'tagWorldMapWitchGodTemple', xp: 86.88, yp: 64.84, difficulty: 'normal' },
+    { id: 'shrinetagWorldMapWitchGodTemple', regionTag: 'tagWorldMapWitchGodTemple', xp: 84.88, yp: 63.84, difficulty: 'normal' },
     { id: 'shrinetagUGArkovianFoothills02', regionTag: 'tagUGArkovianFoothills02', xp: 60.83, yp: 84.68, difficulty: 'normal' },
     { id: 'shrinetagMapRockyCoast', regionTag: 'tagMapRockyCoast', xp: 53.81, yp: 80.69, difficulty: 'normal' },
     { id: 'shrinetagMapCronleysHideout', regionTag: 'tagMapCronleysHideout', xp: 55.46, yp: 69.97, difficulty: 'normal' },

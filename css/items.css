@@ -1275,12 +1275,15 @@ header button.menu-button.select-current:hover {
   font-size: 1.1em;
 }
 
-.marker-region-dungeon .region-label{
+.marker-region-dungeon .region-label,
+.decor-dungeon{
   opacity: 0.25;
   font-size: 0.85em;
 }
 
-.marker-region-dungeon .region-label.opacity{
+.marker-region-dungeon .region-label.opacity,
+.decor-dungeon.opacity
+{
   opacity: 1;
 }
 

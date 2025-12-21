@@ -70,7 +70,7 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_smuggler_pass2", xp: 29.37, yp: 77.95, tag: "Smuggler Pass2", eyeColor:"gray" },
 { id: "entry_Burried_crypt", xp: 29.69, yp: 69.94, tag: "Burried Crypt" },
 
-{ id: "entry_the_hidden_path", xp: 13.10, yp: 34.28, tag: "The Hidden Path" },
+{ id: "entry_the_hidden_path", xp: 13.20, yp: 34.40, tag: "The Hidden Path" },
 
 { id: "entry_forgotten_depths", xp: 41.45, yp: 75.93, tag: "Forgotten Depths", eyeColor:"gray" },
 { id: "entry_forgotten_depths2", xp: 41.88, yp: 73.90, tag: "Forgotten Depths 3" },
@@ -524,6 +524,10 @@ function clearDungeonLinks() {
   const labels = document.querySelectorAll('.marker-region-dungeon .region-label.opacity');
   labels.forEach(l => l.classList.remove('opacity'));
 
+  const icons = document.querySelectorAll('img.decor-dungeon.opacity');
+  icons.forEach(i => i.classList.remove('opacity'));
+
+
 }
 
 window.clearDungeonLinks = clearDungeonLinks;
@@ -552,6 +556,33 @@ function highlightDungeonRegionLabelsForOverlay(overlayObj) {
     }
   });
 }
+
+// --- highlight des DECOR icons dans un donjon donné ---
+function highlightDungeonDecorIconsForOverlay(overlayObj) {
+  if (!overlayObj || !overlayObj.el) return;
+
+  const icons = document.querySelectorAll('img.decor-dungeon');
+  if (!icons.length) return;
+
+  // reset
+  icons.forEach(i => i.classList.remove('opacity'));
+
+  const rect = overlayObj.el.getBoundingClientRect();
+
+  icons.forEach(i => {
+    const r = i.getBoundingClientRect();
+    const intersect =
+      !(r.right  < rect.left ||
+        r.left   > rect.right ||
+        r.bottom < rect.top ||
+        r.top    > rect.bottom);
+
+    if (intersect) {
+      i.classList.add('opacity');
+    }
+  });
+}
+
 
 
 // --- helpers centres en coords "map" (0..mapNatural.w/h) ---
@@ -735,6 +766,8 @@ function showDungeonLinksForEntry(entryId) {
 
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
+  highlightDungeonDecorIconsForOverlay(overlayObj);
+
 }
 window.showDungeonLinksForEntry = showDungeonLinksForEntry;
 
@@ -758,6 +791,8 @@ function showDungeonLinksForOverlay(overlayId) {
 
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
+  highlightDungeonDecorIconsForOverlay(overlayObj);
+
 }
 
 window.showDungeonLinksForOverlay = showDungeonLinksForOverlay;
@@ -784,6 +819,8 @@ function refreshDungeonForcedHover() {
   // Re-draw + re-highlight (labels get re-created by renderMarkers)
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
+  highlightDungeonDecorIconsForOverlay(overlayObj);
+
 }
 
 window.refreshDungeonForcedHover = refreshDungeonForcedHover;

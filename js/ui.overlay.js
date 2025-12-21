@@ -10,7 +10,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "spined_cove", map: "cairn", img: "spined-cove.jpg?1.0", left: 59.54, top: 83.19, width: 3.2074, height: 3.1428 },
 { id: "convict_tunnel", map: "cairn", img: "convict-tunnel.jpg?1.0", left: 66.0394, top: 88.789, width: 6.0479, height: 5.924 },
 { id: "hargate_laboratory", map: "cairn", img: "hargate-laboratory.jpg?1.0", left: 56.0013, top: 75.5905, width: 6.8742, height: 4.6104 },
-{ id: "the_hidden_path", map: "cairn", img: "the-hidden-path.jpg", left: 14.8229, top: 29.7744, width: 3.6742, height: 3.6104 },
+{ id: "the_hidden_path", map: "cairn", img: "the-hidden-path.jpg?1.0", left: 14.8229, top: 29.7744, width: 4.3942, height: 4.2104 },
 
 { id: "depraved_sanctuary", map: "cairn", img: "depraved-sanctuary.jpg", left: 77.8031, top: 70.9049, width: 3.8444, height: 3.7678 },
 { id: "flooded_passage", map: "cairn", img: "flooded-passage.jpg?1.0", left: 60.4262, top: 68.7089, width: 4.8966, height: 4.795 },
@@ -43,7 +43,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "tomb_ugdall", map: "cairn", img: "tomb-ugdall.jpg", left: 91.0352, top: 31.86, width: 2.2575, height: 2.2121 },
 { id: "undergrowth", map: "cairn", img: "undergrowth.jpg", left: 92.4638, top: 34.6784, width: 4.4148, height: 4.3269 },
 { id: "larrias_den", map: "cairn", img: "larrias-den.jpg", left: 81.59, top: 34.8843, width: 2.5938, height: 2.5405 },
-{ id: "temple_of_three", map: "cairn", img: "temple-of-three.jpg", left: 83.4927, top: 62.3972, width: 7.1275, height: 6.9965 },
+{ id: "temple_of_three", map: "cairn", img: "temple-of-three.jpg", left: 81.4927, top: 61.3972, width: 7.1275, height: 6.9965 },
 { id: "ancient_groove", map: "cairn", img: "ancient-groove.jpg?1.0", left: 87.8555, top: 49.206, width: 12.0789, height: 11.8274 },
 { id: "underground_transit", map: "cairn", img: "underground-transit.jpg?1.0", left: 56.7988, top: 43.8385, width: 12.094, height: 11.8934 },
 { id: "overgrown_cellar", map: "cairn", img: "overgrown-cellar.jpg", left: 69.1694, top: 43.0654, width: 3.3869, height: 3.3173 },

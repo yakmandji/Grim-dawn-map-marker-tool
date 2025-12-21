@@ -22,27 +22,27 @@
 { id: 'tag_burrwitch_river_cave', tag: 'tagBurrwitchRiverCave', xp: 77.27, yp: 61.05, isDungeon: true },
 { id: 'tag_UGBurrwitch_village_ratDen01', tag: 'tagUGBurrwitchVillageRatDen01', xp: 62.14, yp: 59.30, isDungeon: true },
 { id: 'tag_gDX1UG_ancient_grove01D', tag: 'tagGDX1UGAncientGrove01D', xp: 89.43, yp: 58, isDungeon: true },
-{ id: 'tag_map_hidden_path01', tag: 'tagMapHiddenPath01', xp: 76.24, yp: 63.55 },
+{ id: 'tag_map_hidden_path04', tag: 'tagMapHiddenPath04', xp: 75.82, yp: 63.84 },
 { id: 'tag_map_hidden_pathLowerCrossing', tag: 'tagMapHiddenPath01', xp: 66.07, yp: 86.43 },
 
-{ id: 'tag_map_hidden_path04', tag: 'tagMapHiddenPath01', xp: 16.82, yp: 30.41, isDungeon: true },
+{ id: 'tag_map_hidden_path03b', tag: 'tagMapHiddenPath03', xp: 16.82, yp: 30.41, isDungeon: true },
 
 { id: 'tag_UG_secret_02', tag: 'tagUGSecret02', xp: 27.24, yp: 20.29, isDungeon: true },
 { id: 'tag_MapWardens_Labratory02', tag: 'tagMapWardensLabratory02', xp: 62.47, yp: 48.70, isDungeon: true },
 
 
 { id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89 },
-{ id: 'tag_map_hidden_path02', tag: 'tagMapHiddenPath01', xp: 46.82, yp: 84.34 },
-{ id: 'tag_map_hidden_path03', tag: 'tagMapHiddenPath01', xp: 12.69, yp: 33.90 },
+{ id: 'tag_map_hidden_path02', tag: 'tagMapHiddenPath02', xp: 46.34, yp: 84.94 },
+{ id: 'tag_map_hidden_path03', tag: 'tagMapHiddenPath03', xp: 12.69, yp: 33.90 },
 { id: 'region_dc', tag: 'tagMapDevilsCrossing01', xp: 62.2, yp: 88.85 },
 { id: 'UG_devils_crossing_hidden_passage01', tag: 'tagUGDevilsCrossingHiddenPassage01', xp: 66.51, yp: 89.82, isDungeon: true },
 { id: 'tag_gDX1UG_ugdenbog_cave01', tag: 'tagGDX1UGUgdenbogCave01', xp: 93.92, yp: 42.45, isDungeon: true },
-{ id: 'world_map_witch_god_temple', tag: 'tagWorldMapWitchGodTemple', xp: 84.55, yp: 63.28, isDungeon: true },
+{ id: 'world_map_witch_god_temple', tag: 'tagWorldMapWitchGodTemple', xp: 82.46, yp: 62.40, isDungeon: true },
 { id: 'UG_devils_crossing_aquifer', tag: 'tagUGDevilsCrossingAquifer', xp: 69.88, yp: 93.61, isDungeon: true },
 { id: 'tag_UG_broken_hills02F', tag: 'tagUGBrokenHills02F', xp: 46.62, yp: 99.05, isDungeon: true },
 { id: 'map_old_grove', tag: 'tagMapOldGrove', xp: 62.27, yp: 90.3 },
 { id: 'map_lower_crossing01', tag: 'tagMapLowerCrossing01', xp: 64.39, yp: 85.69 },
-{ id: 'map_burial_hill', tag: 'tagMapBurialHill', xp: 65.23, yp: 83.79 },
+{ id: 'map_burial_hill', tag: 'tagMapBurialHill', xp: 63.96, yp: 83.98 },
 { id: 'map_old_dump', tag: 'tagMapOldDump', xp: 66.84, yp: 81.79 },
 { id: 'map_wightmire01', tag: 'tagMapWightmire01', xp: 68.13, yp: 78.61 },
 { id: 'map_sodden_hollow', tag: 'tagMapSoddenHollow', xp: 70.2, yp: 77.05 },
@@ -102,7 +102,7 @@
 { id: 'map_homestead', tag: 'tagMapHomestead', xp: 36.39, yp: 63.43 },
 { id: 'map_conflagration01', tag: 'tagMapConflagration01', xp: 40.04, yp: 60.44 },
 { id: 'map_sorrows_bastion_road', tag: 'tagMapSorrowsBastionRoad', xp: 35.24, yp: 60.42 },
-{ id: 'map_sorrows_bastion', tag: 'tagMapSorrowsBastion', xp: 31.5, yp: 57.89 },
+{ id: 'map_sorrows_bastion', tag: 'tagMapSorrowsBastion', xp: 31.9, yp: 57.80 },
 { id: 'map_blood_grove_shrine', tag: 'tagMapBloodGroveShrine', xp: 28.79, yp: 55.88 },
 { id: 'map_blood_grove', tag: 'tagMapBloodGrove', xp: 31.65, yp: 53.04 },
 { id: 'map_blood_grove_mine', tag: 'tagMapBloodGroveMine', xp: 34.42, yp: 52.17 },
@@ -280,7 +280,11 @@ window.REGION_MARKERS_MALMOUTH = [
 
 window.REGION_LABELS = {
 en: {
-  tagMapHiddenPath01: "The Hidden Path",
+  tagMapHiddenPath01: "The First Hidden Path",
+    tagMapHiddenPath02: "The Second Hidden Path",
+    tagMapHiddenPath03: "The Third Hidden Path",
+    tagMapHiddenPath04: "The Fourth Hidden Path",
+
   tagMapDevilsCrossing01: "Devil's Crossing",
   tagMapLowerCrossing01: "Lower Crossing",
   tagMapBurialHill: "Burial Hill",
@@ -578,7 +582,10 @@ en: {
 
 fr: {
   tagGoTo: "Aller vers ",
-  tagMapHiddenPath01: "Le Chemin Caché",
+  tagMapHiddenPath01: "Le 1er Chemin Caché",
+  tagMapHiddenPath02: "Le 2ème Chemin Caché",
+  tagMapHiddenPath03: "Le 3ème Chemin Caché",
+  tagMapHiddenPath04: "Le 4ème Chemin Caché",
   tagMapDevilsCrossing01: "Le Passage du Diable",
   tagMapLowerCrossing01: "Le Bas Passage",
   tagMapBurialHill: "Colline aux Enterrements",
@@ -880,7 +887,11 @@ fr: {
 
   es: {
     tagGoTo: "Ir a ",
-    tagMapHiddenPath01: "El Camino Oculto",
+    tagMapHiddenPath01: "El Primer Camino Oculto",
+    tagMapHiddenPath02: "El Segundo Camino Oculto",
+    tagMapHiddenPath03: "El Tercer Camino Oculto",
+    tagMapHiddenPath04: "El Cuarto Camino Oculto",
+
     tagMapDevilsCrossing01: "Cruce del Diablo",
     tagMapLowerCrossing01: "Cruce Inferior",
     tagMapBurialHill: "Colina del Túmulo",
@@ -1180,7 +1191,11 @@ fr: {
 
 de: {
   tagGoTo: "Gehe zu ",
-  tagMapHiddenPath01: "Der Verborgene Pfad",
+  tagMapHiddenPath01: "Der erste Verborgene Pfad",
+    tagMapHiddenPath02: "Der zweite Verborgene Pfad",
+    tagMapHiddenPath03: "Der dritte Verborgene Pfad",
+    tagMapHiddenPath04: "Der vierte Verborgene Pfad",
+
   tagMapDevilsCrossing01: "Devil's Crossing",
   tagMapLowerCrossing01: "Lower Crossing",
   tagMapBurialHill: "Burial Hill",
@@ -1482,7 +1497,11 @@ de: {
 
 pt: {
   tagGoTo: "Ir para ",
-  tagMapHiddenPath01: "O Caminho Oculto",
+  tagMapHiddenPath01: "O Primeiro Caminho Oculto",
+tagMapHiddenPath02: "O Segundo Caminho Oculto",
+tagMapHiddenPath03: "O Terceiro Caminho Oculto",
+tagMapHiddenPath04: "O Quarto Caminho Oculto",
+
   tagMapDevilsCrossing01: "Cruzamento do Diabo",
   tagMapLowerCrossing01: "Cruzamento Inferior",
   tagMapBurialHill: "Colina Sepulcral",
@@ -1784,7 +1803,11 @@ pt: {
 
 it: {
   tagGoTo: "Vai a ",
-  tagMapHiddenPath01: "Il Sentiero Nascosto",
+  tagMapHiddenPath01: "Il Primo Percorso Nascosto",
+    tagMapHiddenPath02: "Il Secondo Percorso Nascosto",
+    tagMapHiddenPath03: "Il Terzo Percorso Nascosto",
+    tagMapHiddenPath04: "Il Quarto Percorso Nascosto",
+
   tagMapDevilsCrossing01: "Crocevia del Diavolo",
   tagMapLowerCrossing01: "Crocevia Basso",
   tagMapBurialHill: "Collina Sepolcrale",
@@ -2085,7 +2108,11 @@ it: {
 
 ru: {
   tagGoTo: "Перейти к ",
-  tagMapHiddenPath01: "Скрытый Путь",
+  tagMapHiddenPath01: "Первый скрытый путь",
+    tagMapHiddenPath02: "Второй скрытый путь",
+    tagMapHiddenPath03: "Третий скрытый путь",
+    tagMapHiddenPath04: "Четвёртый скрытый путь",
+
   tagMapDevilsCrossing01: "Перекрёсток Дьявола",
   tagMapLowerCrossing01: "Нижний Перекрёсток",
   tagMapBurialHill: "Погребальный Холм",
@@ -2386,7 +2413,11 @@ ru: {
 },
 
 pl: {
-  tagMapHiddenPath01: "Ukryta Ścieżka",
+  tagMapHiddenPath01: "Pierwsza Ukryta Ścieżka",
+    tagMapHiddenPath02: "Druga Ukryta Ścieżka",
+    tagMapHiddenPath03: "Trzecia Ukryta Ścieżka",
+    tagMapHiddenPath04: "Czwarta Ukryta Ścieżka",
+
   tagWorldMapWitchGodTemple: "Świątynia Trójcy",
   tagMapDevilsCrossing01: "Diabelska Przełęcz",
   tagMapLowerCrossing01: "Niższa Przełęcz",
@@ -2709,7 +2740,11 @@ pl: {
 
   zh: {
     tagGoTo: "前往",
-    tagMapHiddenPath01: "隐藏之路",
+    tagMapHiddenPath01: "第一个隐藏之路",
+    tagMapHiddenPath02: "第二个隐藏之路",
+    tagMapHiddenPath03: "第三个隐藏之路",
+    tagMapHiddenPath04: "第四个隐藏之路",
+
     tagMapDevilsCrossing01: "恶魔十字",
     tagMapLowerCrossing01: "下游渡口",
     tagMapBurialHill: "殓葬山脉",
@@ -3009,7 +3044,11 @@ pl: {
 
   ja: {
     tagGoTo: "移動",
-    tagMapHiddenPath01: "隠された道",
+    tagMapHiddenPath01: "最初の隠された道",
+    tagMapHiddenPath02: "2番目の隠された道",
+    tagMapHiddenPath03: "3番目の隠された道",
+    tagMapHiddenPath04: "4番目の隠された道",
+
     tagMapDevilsCrossing01: "デビルズ クロッシング",
     tagMapLowerCrossing01: "ローワー クロッシング",
     tagMapBurialHill: "埋葬丘",
