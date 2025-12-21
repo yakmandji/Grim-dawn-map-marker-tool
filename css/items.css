@@ -1240,7 +1240,7 @@ header button.menu-button.select-current:hover {
 }
 
 #noteList .listItem .icon-16{
-    cursor: pointer;
+    cursor: help;
 }
 
 .region-note-tooltip {
