@@ -40,9 +40,10 @@
     { id:'kymon-sanctuary', w: 70, h: 75, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
     { id:'fort-ikon', w: 75, h: 83, img: 'img/qol/fort-ikon.png?1.0', xp: 15.10, yp: 21.52,  anchor: 'center' },
-    { id:'devil-crossing', w: 65, h: 83, img: 'img/qol/devil-crossing.png', xp: 63.70, yp: 88.50,  anchor: 'center' },
-
+    { id:'devil-crossing', w: 65, h: 83, img: 'img/qol/devil-crossing.png', xp: 63.70, yp: 88.45,  anchor: 'center' },
     { id:'bloodfeast', w: 100, h: 70, img: 'img/qol/bloodfeast.png', xp: 45.11, yp: 60.80,  anchor: 'center', isDungeon: true },
+    { id:'homestead', w: 100, h: 110, img: 'img/qol/homestead.png', xp: 36.40, yp: 62.60,  anchor: 'center' },
+
 
 
 
