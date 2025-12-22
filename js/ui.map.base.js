@@ -39,6 +39,8 @@
     { id:'Bastion-order', w: 70, h: 75, img: 'img/qol/bastion-order.png', xp: 31.75, yp: 58.64,  anchor: 'center' },
     { id:'kymon-sanctuary', w: 70, h: 75, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
+    { id:'fort-ikon', w: 75, h: 75, img: 'img/qol/fort-ikon.png', xp: 15, yp: 21.55,  anchor: 'center' },
+
 
   ];
 

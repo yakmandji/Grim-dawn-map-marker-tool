@@ -215,6 +215,61 @@ function saveUserDataToLocal() {
 }
 
 
+                                                                    function saveViewOnlyToLocal() {
+                                                                      try {
+                                                                        const p = currentProfile();
+                                                                        if (!p || !state.active) return;
+
+                                                                        const view = p.view || {
+                                                                          x: state.view.x,
+                                                                          y: state.view.y,
+                                                                          scale: state.view.scale,
+                                                                        };
+
+                                                                        // --- Multi-character ---
+                                                                        if (window.characterManager) {
+                                                                          const raw = localStorage.getItem('grimSave_v2');
+                                                                          if (!raw) return;
+
+                                                                          const save = JSON.parse(raw);
+                                                                          const activeId = save.activeCharacterId;
+                                                                          const char = save.characters && save.characters[activeId];
+                                                                          if (!char) return;
+
+                                                                          char.state = char.state || {};
+                                                                          char.state.userData = char.state.userData || {};
+
+                                                                          // userData[profileName] = { markers, paths, view }
+                                                                          const prof = (char.state.userData[state.active] || {});
+                                                                          prof.view = view;
+                                                                          char.state.userData[state.active] = prof;
+
+                                                                          // optionnel : mémoriser profil actif
+                                                                          char.state.lastProfile = state.active;
+
+                                                                          localStorage.setItem('grimSave_v2', JSON.stringify(save));
+                                                                          return;
+                                                                        }
+
+                                                                        // --- Legacy fallback (si jamais) ---
+                                                                        const rawUser = localStorage.getItem('gdmm_user_data');
+                                                                        if (!rawUser) return;
+
+                                                                        const user = JSON.parse(rawUser) || {};
+                                                                        const prof = (user[state.active] || {});
+                                                                        prof.view = view;
+                                                                        user[state.active] = prof;
+
+                                                                        localStorage.setItem('gdmm_user_data', JSON.stringify(user));
+                                                                      } catch (e) {
+                                                                        console.warn('[GDMM] saveViewOnlyToLocal failed', e);
+                                                                      }
+                                                                    }
+
+
+
+
+
 function loadUserDataFromLocal() {
   try {
     let userData = null;
@@ -310,6 +365,7 @@ function loadUserDataFromLocal() {
     deleteMarker,
     clearMarkers,
     getUserDataOnly,
+    saveViewOnlyToLocal,
     saveUserDataToLocal,
     loadUserDataFromLocal,
     mergeUserMarkers,
