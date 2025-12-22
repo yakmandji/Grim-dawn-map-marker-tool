@@ -341,8 +341,8 @@ input[type="password"]:focus
 
 .pin {
   position: relative;
-  width: 36px;
-  height: 48px;
+  width: 30px;
+  height: 41px;
   display: flex;
   align-items: center;
   justify-content: center;
