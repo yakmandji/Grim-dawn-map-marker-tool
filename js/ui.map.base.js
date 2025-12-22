@@ -29,7 +29,7 @@
   window.DECOR_ICONS_CAIRN = [
     { id:'gardian-dreeg', w: 60, h: 40, img: 'img/qol/gardian-dreeg.png', xp: 67.84, yp: 83.50,  anchor: 'center' },
     { id:'gardian-solael', w: 60, h: 60, img: 'img/qol/gardian-solael.png', xp: 47.23, yp: 84.08,  anchor: 'center' },
-    { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 32.90,  anchor: 'center', isDungeon: true },
+    { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20,  anchor: 'center', isDungeon: true },
     { id:'rashalga', w: 90, h: 70, img: 'img/qol/rashalga-queen.png', xp: 15.87, yp: 31.11,  anchor: 'center', isDungeon: true },
     { id:'attendant', w: 50, h: 50, img: 'img/qol/attendant.png', xp: 87.37, yp: 62.58,  anchor: 'center', isDungeon: true },
     { id:'sentinel', w: 70, h: 70, img: 'img/qol/sentinel.png', xp: 87, yp: 63.24,  anchor: 'center', isDungeon: true },
@@ -41,6 +41,9 @@
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
     { id:'fort-ikon', w: 75, h: 83, img: 'img/qol/fort-ikon.png?1.0', xp: 15.10, yp: 21.52,  anchor: 'center' },
     { id:'devil-crossing', w: 65, h: 83, img: 'img/qol/devil-crossing.png', xp: 63.70, yp: 88.50,  anchor: 'center' },
+
+    { id:'bloodfeast', w: 100, h: 70, img: 'img/qol/bloodfeast.png', xp: 45.11, yp: 60.80,  anchor: 'center', isDungeon: true },
+
 
 
   ];
