@@ -1074,7 +1074,7 @@ header button.menu-button.select-current:hover {
 
 /*REGION MARKER*/
 .marker-region {
-    z-index: 1;
+    z-index: 3;
     position: absolute;
     pointer-events: auto;
     padding-top: 20px;
