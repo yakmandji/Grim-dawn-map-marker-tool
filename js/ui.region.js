@@ -119,7 +119,7 @@
 { id: 'map_necropolis_interior', tag: 'tagMapNecropolisInterior', xp: 22.53, yp: 3.53 },
 { id: 'UG_voidlands01c', tag: 'tagUGVoidlands01C', xp: 51.04, yp: -1, isDungeon: true },
 { id: 'UG_crypt_final01', tag: 'tagUGCryptFinal01', xp: 10.30, yp: 10.31, isDungeon: true },
-{ id: 'tag_UG_crypt_final03', tag: 'tagUGCryptFinal03', xp: 12.62, yp: 4.44, isDungeon: true },
+{ id: 'tag_UG_crypt_final03', tag: 'tagUGCryptFinal03', xp: 13.96, yp: 5.32, isDungeon: true },
 { id: 'UG_crypt_final02', tag: 'tagUGCryptFinal02', xp: 15.47, yp: 10.34, isDungeon: true },
 { id: 'UG_fort_ikon_prison', tag: 'tagUGFortIkon_Prison', xp: 8.11, yp: 13.74, isDungeon: true },
 { id: 'UG_crypt_faction_battle02', tag: 'tagUGCryptFactionBattle02', xp: 3.28, yp: 19.48, isDungeon: true },
