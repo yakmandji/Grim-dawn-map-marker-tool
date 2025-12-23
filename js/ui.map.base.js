@@ -30,9 +30,9 @@
     { id:'gardian-dreeg', w: 60, h: 40, img: 'img/qol/gardian-dreeg.png', xp: 67.84, yp: 83.50,  anchor: 'center' },
     { id:'gardian-solael', w: 60, h: 60, img: 'img/qol/gardian-solael.png', xp: 47.23, yp: 84.08,  anchor: 'center' },
     { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20,  anchor: 'center', isDungeon: true },
-    { id:'rashalga', w: 90, h: 70, img: 'img/qol/rashalga-queen.png', xp: 15.87, yp: 31.11,  anchor: 'center', isDungeon: true },
-    { id:'attendant', w: 50, h: 50, img: 'img/qol/attendant.png', xp: 87.37, yp: 62.58,  anchor: 'center', isDungeon: true },
-    { id:'sentinel', w: 70, h: 70, img: 'img/qol/sentinel.png', xp: 87, yp: 63.24,  anchor: 'center', isDungeon: true },
+    { id:'rashalga', w: 90, h: 70, img: 'img/qol/rashalga-queen.png', xp: 15.87, yp: 31.35,  anchor: 'center', isDungeon: true },
+    { id:'attendant', w: 50, h: 50, img: 'img/qol/attendant.png', xp: 87.57, yp: 63.4,  anchor: 'center', isDungeon: true },
+    { id:'sentinel', w: 70, h: 70, img: 'img/qol/sentinel.png', xp: 87, yp: 63.45,  anchor: 'center', isDungeon: true },
     { id:'hidden-donjon1', w: 70, h: 70, img: 'img/qol/hidden-donjon1.png', xp: 78.47, yp: 62.03,  anchor: 'center' },
     { id:'coliseum', w: 70, h: 70, img: 'img/qol/coliseum.png', xp: 45.23, yp: 77.16,  anchor: 'center' },
     { id:'warden-krieg', w: 60, h: 80, img: 'img/qol/warden-krieg.png', xp: 58.52, yp: 45.09,  anchor: 'center', isDungeon: true },
@@ -43,7 +43,11 @@
     { id:'devil-crossing', w: 65, h: 83, img: 'img/qol/devil-crossing.png', xp: 63.70, yp: 88.45,  anchor: 'center' },
     { id:'bloodfeast', w: 100, h: 70, img: 'img/qol/bloodfeast.png', xp: 45.11, yp: 60.80,  anchor: 'center', isDungeon: true },
     { id:'homestead', w: 100, h: 110, img: 'img/qol/homestead.png', xp: 36.40, yp: 62.60,  anchor: 'center' },
-
+    { id:'banegargoth', w: 100, h: 110, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90,  anchor: 'center', isDungeon: true },
+    { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.31, yp: 15.04,  anchor: 'center', isDungeon: true },
+    { id:'loghorrean', w: 110, h: 100, img: 'img/qol/loghorrean.png', xp: 14.81, yp: 5.41,  anchor: 'center', isDungeon: true },
+    { id:'thalonis.png', w: 80, h: 110, img: 'img/qol/thalonis.png', xp: 10.51, yp: 7.25,  anchor: 'center', isDungeon: true },
+    { id:'sharzul.png', w: 130, h: 160, img: 'img/qol/sharzul.png', xp: 52.05, yp: 0.7,  anchor: 'center', isDungeon: true },
 
 
 
