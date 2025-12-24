@@ -54,8 +54,9 @@
     { id:'alkamos', w: 100, h: 140, img: 'img/qol/alkamos.png', xp: 54.19, yp: 96.72,  anchor: 'center', isDungeon: true },
     { id:'ravna', w: 140, h: 130, img: 'img/qol/ravna.png', xp: 21.8, yp: 64.15,  anchor: 'center', isDungeon: true },
     { id:'kilrian', w: 110, h: 145, img: 'img/qol/kilrian.png', xp: 50.49, yp: 67.9,  anchor: 'center', isDungeon: true },
-    { id:'necropole', w: 130, h: 98, img: 'img/qol/necropole.png?1.0', xp: 22.36, yp: 16.1,  anchor: 'center' },
-
+    { id:'necropole', w: 130, h: 98, img: 'img/qol/necropole.png?1.1', xp: 22.36, yp: 16.1,  anchor: 'center' },
+    { id:'plagius', w: 110, h: 125, img: 'img/qol/plagius.png', xp: 35.63, yp: 10.81,  anchor: 'center', isDungeon: true },
+    { id:'necropole-door', w: 80, h: 80, img: 'img/qol/necropole-door.png', xp: 23.22, yp: 4.54,  anchor: 'center' },
 
 
   ];
