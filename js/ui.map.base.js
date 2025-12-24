@@ -57,6 +57,7 @@
     { id:'necropole', w: 130, h: 98, img: 'img/qol/necropole.png?1.1', xp: 22.36, yp: 16.1,  anchor: 'center' },
     { id:'plagius', w: 110, h: 125, img: 'img/qol/plagius.png', xp: 35.63, yp: 10.81,  anchor: 'center', isDungeon: true },
     { id:'necropole-door', w: 80, h: 80, img: 'img/qol/necropole-door.png', xp: 23.22, yp: 4.54,  anchor: 'center' },
+    { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 58.98, yp: 69.94,  anchor: 'center', isDungeon: true },
 
 
   ];
