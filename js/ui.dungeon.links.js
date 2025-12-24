@@ -111,8 +111,8 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_edge_of_reality", xp: 25.58, yp: 13.28, tag: "Edge Of Reality" },
 { id: "entry_black_sepulcher", xp: 26.11, yp: 9.43, tag: "Black Sepulcher" },
 { id: "entry_discord_anarchy", xp: 21.47, yp: 0.88, tag: "Discord Anarchy" },
-{ id: "entry_tom_of_the_watcher", xp: 23.40, yp: 4.59, tag: "Tom Of The Watcher" },
-{ id: "entry_tom_of_the_watcher2", xp: 23.11, yp: 4.57, tag: "Tom Of The Watcher", eyeColor:"gray" },
+{ id: "entry_tom_of_the_watcher", xp: 23.52, yp: 4.55, tag: "Tom Of The Watcher" },
+{ id: "entry_tom_of_the_watcher2", xp: 22.92, yp: 4.55, tag: "Tom Of The Watcher", eyeColor:"gray" },
 
 { id: "entry_port_valbury_fondation", xp: 41.93, yp: 30.63, tag: "Port Valbury Fondation" },
 { id: "entry_port_valbury_fondation2", xp: 41.39, yp: 29.93, tag: "Port Valbury Fondation 2", eyeColor:"gray" },
