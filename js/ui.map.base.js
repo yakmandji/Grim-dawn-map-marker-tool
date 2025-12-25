@@ -35,7 +35,7 @@
     { id:'sentinel', w: 95, h: 115, img: 'img/qol/sentinel.png?1.0', xp: 87, yp: 63.69,  anchor: 'center', isDungeon: true },
     { id:'hidden-donjon1', w: 70, h: 70, img: 'img/qol/hidden-donjon1.png', xp: 78.47, yp: 62.03,  anchor: 'center' },
     { id:'coliseum', w: 70, h: 70, img: 'img/qol/coliseum.png', xp: 45.23, yp: 77.16,  anchor: 'center' },
-    { id:'warden-krieg', w: 60, h: 80, img: 'img/qol/warden-krieg.png', xp: 58.52, yp: 45.09,  anchor: 'center', isDungeon: true },
+    { id:'warden-krieg', w: 110, h: 140, img: 'img/qol/warden-krieg.png', xp: 58.60, yp: 45.82,  anchor: 'center', isDungeon: true },
     { id:'Bastion-order', w: 68, h: 75, img: 'img/qol/bastion-order.png', xp: 31.95, yp: 58.64,  anchor: 'center' },
     { id:'kymon-sanctuary', w: 70, h: 75, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
@@ -64,8 +64,11 @@
     { id:'naxen', w: 130, h: 90, img: 'img/qol/naxen.png', xp: 99.84, yp: 26.93,  anchor: 'center', isDungeon: true },
     { id:'namadea', w: 140, h: 130, img: 'img/qol/namadea.png', xp: 79.10, yp: 28.1,  anchor: 'center', isDungeon: true },
 
-
   ];
+
+/*  window.DECOR_ICONS_MALMOUTH = [
+    
+  ]*/
 
 
   // --- Helpers DOM de base ---
@@ -342,11 +345,34 @@
     // 1) Nettoyage des anciens décors
     inner.querySelectorAll('img[data-decor="1"]').forEach(el => el.remove());
 
-    // 2) Choix de la map active
+    // 2) Choix de la map active (mobile)
     let list = [];
-    if (viewport.classList.contains('cairnmap')) list = window.DECOR_ICONS_CAIRN || [];
-    else if (viewport.classList.contains('malmouthmap')) list = window.DECOR_ICONS_MALMOUTH || [];
-    else if (viewport.classList.contains('korvanmap')) list = window.DECOR_ICONS_KORVAN || [];
+
+    const ui = window.UiCore || {};
+    const MAP_KEYS = {
+      '8948x9133': 'cairn',
+      '5142x3574': 'malmouth',
+      '5427x5553': 'korvan',
+    };
+
+    let key = null;
+    if (typeof ui.resolveSizeKey === 'function') {
+      key = ui.resolveSizeKey(MAP_KEYS);
+    } else if (state.mapNatural?.w && state.mapNatural?.h) {
+      key = `${state.mapNatural.w}x${state.mapNatural.h}`;
+    }
+
+    const which = key ? MAP_KEYS[key] : null;
+
+    if (which === 'cairn') list = window.DECOR_ICONS_CAIRN || [];
+    else if (which === 'malmouth') list = window.DECOR_ICONS_MALMOUTH || [];
+    else if (which === 'korvan') list = window.DECOR_ICONS_KORVAN || [];
+
+    // (optionnel) fallback ultime si jamais on n’a rien (évite “zéro décor”)
+    if (!list.length && viewport.classList.contains('cairnmap')) list = window.DECOR_ICONS_CAIRN || [];
+    if (!list.length && viewport.classList.contains('malmouthmap')) list = window.DECOR_ICONS_MALMOUTH || [];
+    if (!list.length && viewport.classList.contains('korvanmap')) list = window.DECOR_ICONS_KORVAN || [];
+
 
     // 3) Ajout direct dans #mapInner
     list.forEach(d => {
