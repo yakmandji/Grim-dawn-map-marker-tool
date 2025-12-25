@@ -27,7 +27,7 @@
   /*Map decoration*/
 
   window.DECOR_ICONS_CAIRN = [
-    { id:'gardian-dreeg', w: 85, h: 50, img: 'img/qol/gardian-dreeg.png', xp: 67.84, yp: 84.87,  anchor: 'center' },
+    { id:'gardian-dreeg', w: 95, h: 50, img: 'img/qol/gardian-dreeg.png', xp: 68.1, yp: 84.30,  anchor: 'center' },
     { id:'gardian-solael', w: 70, h: 70, img: 'img/qol/gardian-solael.png', xp: 46.98, yp: 84.08,  anchor: 'center' },
     { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20,  anchor: 'center', isDungeon: true },
     { id:'rashalga', w: 90, h: 70, img: 'img/qol/rashalga-queen.png', xp: 15.47, yp: 32.15,  anchor: 'center', isDungeon: true },
@@ -41,7 +41,7 @@
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
     { id:'fort-ikon', w: 75, h: 83, img: 'img/qol/fort-ikon.png?1.0', xp: 15.10, yp: 21.52,  anchor: 'center' },
     { id:'devil-crossing', w: 65, h: 83, img: 'img/qol/devil-crossing.png', xp: 63.70, yp: 88.45,  anchor: 'center' },
-    { id:'bloodfeast', w: 100, h: 70, img: 'img/qol/bloodfeast.png', xp: 45.11, yp: 60.80,  anchor: 'center', isDungeon: true },
+    { id:'bloodfeast', w: 110, h: 90, img: 'img/qol/bloodfeast.png', xp: 45.11, yp: 60.90,  anchor: 'center', isDungeon: true },
     { id:'homestead', w: 100, h: 110, img: 'img/qol/homestead.png', xp: 36.40, yp: 62.60,  anchor: 'center' },
     { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90,  anchor: 'center', isDungeon: true },
     { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.31, yp: 15.04,  anchor: 'center', isDungeon: true },
@@ -58,6 +58,10 @@
     { id:'plagius', w: 110, h: 125, img: 'img/qol/plagius.png', xp: 35.63, yp: 10.81,  anchor: 'center', isDungeon: true },
     { id:'necropole-door', w: 80, h: 80, img: 'img/qol/necropole-door.png', xp: 23.22, yp: 4.54,  anchor: 'center' },
     { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 58.98, yp: 69.94,  anchor: 'center', isDungeon: true },
+    { id:'gargabol', w: 130, h: 190, img: 'img/qol/gargabol.png', xp: 98.27, yp: 58.4,  anchor: 'center', isDungeon: true },
+    { id:'manticore', w: 180, h: 120, img: 'img/qol/manticore.png', xp: 92.42, yp: 55,  anchor: 'center', isDungeon: true },
+
+
 
 
   ];
