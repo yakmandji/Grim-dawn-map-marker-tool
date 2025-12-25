@@ -1284,13 +1284,10 @@ header button.menu-button.select-current:hover {
   opacity: 0.15;
 }
 
-.marker-region-dungeon .region-label.opacity
+.marker-region-dungeon .region-label.opacity,
+.decor-dungeon.opacity
 {
   opacity: 0.8;
-}
-
-.decor-dungeon.opacity{
-  opacity: 0.7;
 }
 
 .marker-region-dungeon .region-note-indicator {
