@@ -60,8 +60,9 @@
     { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 58.98, yp: 69.94,  anchor: 'center', isDungeon: true },
     { id:'gargabol', w: 130, h: 190, img: 'img/qol/gargabol.png', xp: 98.27, yp: 58.4,  anchor: 'center', isDungeon: true },
     { id:'manticore', w: 180, h: 120, img: 'img/qol/manticore.png', xp: 92.42, yp: 55,  anchor: 'center', isDungeon: true },
-
-
+    { id:'ekketzul', w: 190, h: 245, img: 'img/qol/ekketzul.png', xp: 73.66, yp: 19.33,  anchor: 'center', isDungeon: true },
+    { id:'naxen', w: 130, h: 90, img: 'img/qol/naxen.png', xp: 99.84, yp: 26.93,  anchor: 'center', isDungeon: true },
+    { id:'namadea', w: 140, h: 130, img: 'img/qol/namadea.png', xp: 79.10, yp: 28.1,  anchor: 'center', isDungeon: true },
 
 
   ];

@@ -143,8 +143,8 @@ window.NAV_MARKERS_CAIRN = [
       },
       // Téléport Void's Eige
       {
-        xp: 74.04, 
-        yp: 12.40,
+        xp: 74.18, 
+        yp: 10.80,
         tag: 'tagGoTo + tagGDX1MapMalmouthEntry',
         icon: 'img/icon-link.png',
         targetProfile: 'Malmouth',
@@ -158,7 +158,7 @@ window.NAV_MARKERS_CAIRN = [
        // Téléport Void's Eige Inside ------------------------------------------
       {
         xp: 72.13, 
-        yp: 20.03,
+        yp: 19.43,
         tag: 'tagGoTo + tagGDX1MapUgdenbogAltar',
         icon: 'img/icon-link.png',
         targetXp: 85.14,

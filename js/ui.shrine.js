@@ -40,11 +40,11 @@
     { id: 'shrinetagUGVoidlands01', regionTag: 'tagUGVoidlands01', xp: 31.86, yp: 0.56, difficulty: 'normal' },
     { id: 'shrinetagMapHallowedHill', regionTag: 'tagMapHallowedHill', xp: 71.10, yp: 64.58, difficulty: 'elite' },
     { id: 'shrinetagMapNecropolis', regionTag: 'tagMapNecropolis', xp: 24.31, yp: 7.53, difficulty: 'normal' },
-    { id: 'shrinetagGDX1UGUgdenbogVoidRift01', regionTag: 'tagGDX1UGUgdenbogVoidRift01', xp: 78.79, yp: 21.41, difficulty: 'elite' },
+    { id: 'shrinetagGDX1UGUgdenbogVoidRift01', regionTag: 'tagGDX1UGUgdenbogVoidRift01', xp: 78.32, yp: 21.41, difficulty: 'elite' },
     { id: 'shrinetagMapHiddenPath01', regionTag: 'tagMapHiddenPath01', xp: 67.36, yp: 84.30, difficulty: 'ultimate' },
     { id: 'shrinetagUGSecret02', regionTag: 'tagUGSecret02', xp: 28.57, yp: 21.00, difficulty: 'ultimate' },
     { id: 'shrinetagGDX1MapUgdenbogAncient', regionTag: 'tagGDX1MapUgdenbogAncient', xp: 90.31, yp: 40.50, difficulty: 'ultimate' },
-    { id: 'shrinetagGDX1UGUgdenbogMine01', regionTag: 'tagGDX1UGUgdenbogMine01', xp: 98.86, yp: 27.29, difficulty: 'ultimate' },
+    { id: 'shrinetagGDX1UGUgdenbogMine01', regionTag: 'tagGDX1UGUgdenbogMine01', xp: 99.54, yp: 27.94, difficulty: 'ultimate' },
   ];
 
   window.SHRINE_MARKERS_MALMOUTH = [
