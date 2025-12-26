@@ -1609,7 +1609,7 @@ function setupPopup(triggerSelector, popupAttr) {
       `left: ${left.toFixed(4)}, ` +
       `top: ${top.toFixed(4)}, ` +
       `width: ${width.toFixed(4)}, ` +
-      `height: ${height.toFixed(4)},`;
+      `height: ${height.toFixed(4)}`;
 
       const onDone = () => {
         if (typeof showToast === 'function') {

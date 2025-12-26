@@ -14,6 +14,11 @@
 { id: 'tag_map_laboratory_living_quarters', tag: 'tagMapLaboratoryLivingQuarters', xp: 62.97, yp: 47.25, isDungeon: true },
 { id: 'tag_map_laboratory_jail', tag: 'tagMapLaboratoryJail', xp: 59.12, yp: 45.9, isDungeon: true },
 { id: 'tag_U_gOld_arkovia_04', tag: 'tagUGOldArkovia04', xp: 55.72, yp: 80.60, isDungeon: true },
+
+{ id: 'tag_burrwitch_Cellar01', tag: 'tagBurrwitchCellar01', xp: 64.10, yp: 63.27, isDungeon: true },
+
+
+
 { id: 'tag_map_laboratory_inner', tag: 'tagMapLaboratoryInner', xp: 59.00, yp: 46.76, isDungeon: true },
 { id: 'tag_uG_flooded_passage_ruin', tag: 'tagUGFloodedPassageRuin',xp: 60.66, yp: 69.62, isDungeon: true },
 { id: 'tag_map_four_hills', tag: 'tagMapFourHills', xp: 52.79, yp: 75.72 },
@@ -51,7 +56,7 @@
 { id: 'map_burrwitch_outskirts01', tag: 'tagMapBurrwitchOutskirts01', xp: 68.64, yp: 69.91 },
 { id: 'map_moldering_fields', tag: 'tagMapMolderingFields', xp: 66.13, yp: 66.83 },
 { id: 'map_mud_row', tag: 'tagMapMudRow', xp: 69.21, yp: 66.42 },
-{ id: 'map_burrwitch_village01', tag: 'tagMapBurrwitchVillage01', xp: 67.65, yp: 63.54 },
+{ id: 'map_burrwitch_village01', tag: 'tagMapBurrwitchVillage01', xp: 68.40, yp: 63.35 },
 { id: 'map_hallowed_hill', tag: 'tagMapHallowedHill', xp: 69.94, yp: 63.94 },
 { id: 'map_east_marsh01', tag: 'tagMapEastMarsh01', xp: 74.61, yp: 66.54 },
 { id: 'map_east_marsh03', tag: 'tagMapEastMarsh03', xp: 78.79, yp: 65.76 },
