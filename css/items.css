@@ -1281,7 +1281,7 @@ header button.menu-button.select-current:hover {
 }
 
 .decor-dungeon{
-  opacity: 0.15;
+  opacity: 0.1;
 }
 
 .marker-region-dungeon .region-label.opacity,
@@ -1347,7 +1347,7 @@ header button.menu-button.select-current:hover {
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.15;
+  opacity: 0.1;
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 

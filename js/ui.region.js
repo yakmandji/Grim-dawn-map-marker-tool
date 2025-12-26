@@ -46,7 +46,7 @@
 { id: 'GDX1UGU_gdenbog_cellar01', tag: 'tagGDX1UGUgdenbogCellar01', xp: 70.38, yp: 43.29, isDungeon: true },
 { id: 'map_flooded_passage01', tag: 'tagMapFloodedPassage01', xp: 62.75, yp: 69.02, isDungeon: true },
 { id: 'burrwitch_cellar02', tag: 'tagBurrwitchCellar02', xp: 69.38, yp: 56.78, isDungeon: true },
-{ id: 'UG_cellar02', tag: 'tagUGCellar02', xp: 78.14, yp: 74.24, isDungeon: true },
+{ id: 'UG_cellar02', tag: 'tagUGCellar02', xp: 78.95, yp: 71.33, isDungeon: true },
 { id: 'map_foggy_bank', tag: 'tagMapFoggyBank', xp: 69.74, yp: 74.12 },
 { id: 'map_burrwitch_outskirts01', tag: 'tagMapBurrwitchOutskirts01', xp: 68.64, yp: 69.91 },
 { id: 'map_moldering_fields', tag: 'tagMapMolderingFields', xp: 66.13, yp: 66.83 },

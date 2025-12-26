@@ -43,7 +43,7 @@
     { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.31, yp: 15.04, isDungeon: true },
     { id:'loghorrean', w: 140, h: 110, img: 'img/qol/loghorrean.png', xp: 14.11, yp: 4.51, isDungeon: true },
     { id:'thalonis.png', w: 90, h: 130, img: 'img/qol/thalonis.png', xp: 10.70, yp: 7.25, isDungeon: true },
-    { id:'sharzul.png', w: 130, h: 160, img: 'img/qol/sharzul.png', xp: 52.05, yp: 0.7, isDungeon: true },
+    { id:'sharzul.png', w: 140, h: 170, img: 'img/qol/sharzul.png', xp: 52.30, yp: 1, isDungeon: true },
     { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 6.5, yp: 18.43, isDungeon: true },
     { id:'igor-eternal', w: 100, h: 130, img: 'img/qol/igor-eternal.png', xp: 44.60, yp: 97.91, isDungeon: true },
     { id:'kaliska', w: 120, h: 90, img: 'img/qol/kaliska.png', xp: 79.35, yp: 64.20,  anchor: 'center' },
@@ -70,6 +70,10 @@
     { id:'kymon-father', w: 90, h: 85, img: 'img/qol/kymon-father.png', xp: 39.26, yp: 56.98, isDungeon: true },
 
     { id:'karroz', w: 115, h: 115, img: 'img/qol/karroz.png', xp: 27.24, yp: 41.04, isDungeon: true },
+    { id:'rolderathis', w: 90, h: 120, img: 'img/qol/rolderathis.png', xp: 64.49, yp: 72.94, isDungeon: true },
+    { id:'salazar', w: 90, h: 140, img: 'img/qol/salazar.png', xp: 78.70, yp: 74.32, isDungeon: true },
+
+
 
 
   ];

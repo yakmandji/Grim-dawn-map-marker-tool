@@ -18,8 +18,8 @@ const {
   renderList,
 } = window.UiMarkers || {};
 
- const Routes = window.UiRoutes || {};
-
+  const VIEW_CLAMP_EXTRA_PX = 80; // marge visuelle pour voir les markers en entier
+  const Routes = window.UiRoutes || {};
   const LAST_PROFILE_KEY = 'gdmm_last_profile';
 
 function rememberActiveProfile() {
@@ -431,6 +431,10 @@ function renderMarkers(options = {}) {
   svg.style.left = '0';
   svg.style.top = '0';
   svg.style.pointerEvents = 'none';
+
+  svg.style.overflow = 'visible';
+  svg.setAttribute('overflow', 'visible');
+
   inner.appendChild(svg);
 
   // --- ROUTES ---
@@ -662,6 +666,22 @@ function renderMarkers(options = {}) {
     });
   }
 
+
+// Allow placing markers/routes slightly outside the map image (in %)
+const OUT_OF_MAP_MARGIN_PCT = 10;
+
+function isInExtendedBounds(xp, yp) {
+  return (
+    Number.isFinite(xp) &&
+    Number.isFinite(yp) &&
+    xp >= -OUT_OF_MAP_MARGIN_PCT &&
+    xp <= 100 + OUT_OF_MAP_MARGIN_PCT &&
+    yp >= -OUT_OF_MAP_MARGIN_PCT &&
+    yp <= 100 + OUT_OF_MAP_MARGIN_PCT
+  );
+}
+
+
 viewport.addEventListener('pointerdown', e => {
 
   if (e.altKey && e.shiftKey) {
@@ -718,7 +738,7 @@ viewport.addEventListener('pointerdown', e => {
   // --- MODE MARKER add ---
   if (state.tool === 'add') {
     const { xp, yp } = viewToPct(e.clientX, e.clientY);
-    if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
+    if (state.mapReady && isInExtendedBounds(xp, yp)) {
       addMarkerFromUI(xp, yp);
     }
     return;
@@ -727,7 +747,7 @@ viewport.addEventListener('pointerdown', e => {
   // --- MODE PATH (point add) ---
   if (state.tool === 'path') {
     const { xp, yp } = viewToPct(e.clientX, e.clientY);
-    if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100 && state.mapReady) {
+    if (state.mapReady && isInExtendedBounds(xp, yp)) {
       addPathPoint(xp, yp);
     }
     return;
@@ -855,10 +875,11 @@ viewport.addEventListener('pointermove', e => {
 
     const { xp, yp } = viewToPct(e.clientX, e.clientY);
     if (!panning) {
-      if (isFinite(xp) && isFinite(yp)) {
+      if (Number.isFinite(xp) && Number.isFinite(yp)) {
         const cr = $('#cursorReadout');
-        if (cr) cr.textContent = `x: ${clamp(xp,0,100).toFixed(1)}%, y: ${clamp(yp,0,100).toFixed(1)}%`;
+        if (cr) cr.textContent = `x: ${clamp(xp, 0, 100).toFixed(1)}%, y: ${clamp(yp, 0, 100).toFixed(1)}%`;
       }
+
       // --- Preview route mode PATH ---
       const pm = getPathMode();
       if (
@@ -869,14 +890,12 @@ viewport.addEventListener('pointermove', e => {
         pm.current.points.length > 0 &&
         state.mapReady
       ) {
-        if (xp >= 0 && xp <= 100 && yp >= 0 && yp <= 100) {
-          updatePathPreview(xp, yp);
-        } else {
-          clearPathPreview();
-        }
+        if (isInExtendedBounds(xp, yp)) updatePathPreview(xp, yp);
+        else clearPathPreview();
       } else {
         clearPathPreview();
       }
+
       return;
     }
 
@@ -985,23 +1004,27 @@ viewport.addEventListener('pointermove', e => {
     if (!state.mapReady) return;
 
     const vb = viewport.getBoundingClientRect();
-    const iw = state.mapNatural.w * state.view.scale;
-    const ih = state.mapNatural.h * state.view.scale;
+    const scale = state.view.scale;
 
-    // marges autour de la map
-    const marginLeft   = 550;
-    const marginRight  = 550;
-    const marginTop    = 550;
-    const marginBottom = 550;
+    const iw = state.mapNatural.w * scale;
+    const ih = state.mapNatural.h * scale;
 
-    const minX = vb.width  - iw - marginRight;
-    const maxX = marginLeft;
-    const minY = vb.height - ih - marginBottom;
-    const maxY = marginTop;
+    // Marge hors-map (même logique que placement markers/routes)
+    const marginX = iw * (OUT_OF_MAP_MARGIN_PCT / 100);
+    const marginY = ih * (OUT_OF_MAP_MARGIN_PCT / 100);
+
+    // Marge visuelle supplémentaire (icônes / labels)
+    const extra = VIEW_CLAMP_EXTRA_PX;
+
+    const minX = vb.width  - iw - marginX - extra;
+    const maxX = marginX + extra;
+    const minY = vb.height - ih - marginY - extra;
+    const maxY = marginY + extra;
 
     state.view.x = clamp(state.view.x, minX, maxX);
     state.view.y = clamp(state.view.y, minY, maxY);
   }
+
 
 
   // --- Drag & Drop image ---
