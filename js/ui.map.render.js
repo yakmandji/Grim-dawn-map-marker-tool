@@ -255,9 +255,14 @@
                 if (!dragging) return;
                 if (!startPct) return;
 
+                const margin = window.UiCore?.outOfMapMarginPct ?? 0;
+                const minPct = -margin;
+                const maxPct = 100 + margin;
+
+
                 const p1 = viewToPct(e.clientX, e.clientY);
-                let nx = clamp(p1.xp - startPct.dx, 0, 100);
-                let ny = clamp(p1.yp - startPct.dy, 0, 100);
+                let nx = clamp(p1.xp - startPct.dx, minPct, maxPct);
+                let ny = clamp(p1.yp - startPct.dy, minPct, maxPct);
 
                 const pt2 = pctToPx(nx, ny);
                 el.style.left = pt2.x + 'px';
@@ -267,42 +272,52 @@
               el.addEventListener('pointerup', (e) => {
                 const dx = e.clientX - (startClient?.x ?? e.clientX);
                 const dy = e.clientY - (startClient?.y ?? e.clientY);
-                const moved = Math.sqrt(dx*dx + dy*dy) > dragThreshold;
-                const justCreated = state.lastCreatedMarkerId === m.id; // test
+                const moved = Math.sqrt(dx * dx + dy * dy) > dragThreshold;
+                const justCreated = state.lastCreatedMarkerId === m.id;
 
-                try { el.releasePointerCapture(e.pointerId); } catch(_) {}
+                try { el.releasePointerCapture(e.pointerId); } catch (_) {}
 
                 // --- Mode LOCK : no drag
-                  if (state.locked) {
-                    if (!moved && !justCreated) {   // Scroll only if not just created
-                        focusRowForMarker(m);
-                    }
-                    state.lastCreatedMarkerId = null; 
-                    return;
-                  }
+                if (state.locked) {
+                  if (!moved && !justCreated) focusRowForMarker(m);
+                  state.lastCreatedMarkerId = null;
+                  return;
+                }
 
                 if (!dragging) {
-                  if (!moved && !justCreated) {     
-                      focusRowForMarker(m);
-                  }
-                  state.lastCreatedMarkerId = null; 
+                  if (!moved && !justCreated) focusRowForMarker(m);
+                  state.lastCreatedMarkerId = null;
                   return;
                 }
 
                 // --- End drag ---
                 dragging = false;
+
                 if (!moved) {
                   focusRowForMarker(m);
+                  state.lastCreatedMarkerId = null;
                   return;
                 }
 
+                if (!startPct) {
+                  state.lastCreatedMarkerId = null;
+                  return;
+                }
+
+                const margin = window.UiCore?.outOfMapMarginPct ?? 0;
+                const minPct = -margin;
+                const maxPct = 100 + margin;
+
                 const p1 = viewToPct(e.clientX, e.clientY);
-                let nx = clamp(p1.xp - startPct.dx, 0, 100);
-                let ny = clamp(p1.yp - startPct.dy, 0, 100);
+                const nx = clamp(p1.xp - startPct.dx, minPct, maxPct);
+                const ny = clamp(p1.yp - startPct.dy, minPct, maxPct);
 
                 updateMarkerFromUI(m.id, { xp: nx, yp: ny }, false);
                 renderMarkers({ skipRoutesPanel: true });
+
+                state.lastCreatedMarkerId = null;
               });
+
 
               inner.appendChild(el);   
            });
