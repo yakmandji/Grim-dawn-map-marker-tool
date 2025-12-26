@@ -29,40 +29,52 @@
   window.DECOR_ICONS_CAIRN = [
     { id:'gardian-dreeg', w: 95, h: 50, img: 'img/qol/gardian-dreeg.png', xp: 68.1, yp: 84.30,  anchor: 'center' },
     { id:'gardian-solael', w: 70, h: 70, img: 'img/qol/gardian-solael.png', xp: 46.98, yp: 84.08,  anchor: 'center' },
-    { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20,  anchor: 'center', isDungeon: true },
-    { id:'rashalga', w: 90, h: 70, img: 'img/qol/rashalga-queen.png', xp: 15.47, yp: 32.15,  anchor: 'center', isDungeon: true },
-    { id:'attendant', w: 60, h: 60, img: 'img/qol/attendant.png?1.0', xp: 87.77, yp: 63.4,  anchor: 'center', isDungeon: true },
-    { id:'sentinel', w: 95, h: 115, img: 'img/qol/sentinel.png?1.0', xp: 87, yp: 63.69,  anchor: 'center', isDungeon: true },
+    { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20, isDungeon: true },
+    { id:'rashalga', w: 90, h: 70, img: 'img/qol/rashalga-queen.png', xp: 15.47, yp: 32.15, isDungeon: true },
+    { id:'attendant', w: 60, h: 60, img: 'img/qol/attendant.png?1.0', xp: 87.77, yp: 63.4, isDungeon: true },
+    { id:'sentinel', w: 95, h: 115, img: 'img/qol/sentinel.png?1.0', xp: 87, yp: 63.69, isDungeon: true },
     { id:'hidden-donjon1', w: 70, h: 70, img: 'img/qol/hidden-donjon1.png', xp: 78.47, yp: 62.03,  anchor: 'center' },
     { id:'coliseum', w: 70, h: 70, img: 'img/qol/coliseum.png', xp: 45.23, yp: 77.16,  anchor: 'center' },
-    { id:'warden-krieg', w: 110, h: 140, img: 'img/qol/warden-krieg.png', xp: 58.60, yp: 45.82,  anchor: 'center', isDungeon: true },
-    { id:'Bastion-order', w: 68, h: 75, img: 'img/qol/bastion-order.png', xp: 31.95, yp: 58.64,  anchor: 'center' },
-    { id:'kymon-sanctuary', w: 70, h: 75, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },
+    { id:'warden-krieg', w: 110, h: 140, img: 'img/qol/warden-krieg.png', xp: 58.60, yp: 45.82, isDungeon: true },
+    { id:'Bastion-order', w: 55, h: 62, img: 'img/qol/bastion-order.png', xp: 31.85, yp: 58.64,  anchor: 'center' },
+    { id:'kymon-sanctuary', w: 55, h: 62, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
     { id:'fort-ikon', w: 75, h: 83, img: 'img/qol/fort-ikon.png?1.0', xp: 15.10, yp: 21.52,  anchor: 'center' },
     { id:'devil-crossing', w: 65, h: 83, img: 'img/qol/devil-crossing.png', xp: 63.70, yp: 88.45,  anchor: 'center' },
-    { id:'bloodfeast', w: 140, h: 100, img: 'img/qol/bloodfeast.png?1.0', xp: 45.11, yp: 61.1,  anchor: 'center', isDungeon: true },
+    { id:'bloodfeast', w: 140, h: 100, img: 'img/qol/bloodfeast.png?1.0', xp: 45.11, yp: 61.1, isDungeon: true },
     { id:'homestead', w: 100, h: 110, img: 'img/qol/homestead.png', xp: 36.40, yp: 62.60,  anchor: 'center' },
-    { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90,  anchor: 'center', isDungeon: true },
-    { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.31, yp: 15.04,  anchor: 'center', isDungeon: true },
-    { id:'loghorrean', w: 140, h: 110, img: 'img/qol/loghorrean.png', xp: 14.11, yp: 4.51,  anchor: 'center', isDungeon: true },
-    { id:'thalonis.png', w: 90, h: 130, img: 'img/qol/thalonis.png', xp: 10.70, yp: 7.25,  anchor: 'center', isDungeon: true },
-    { id:'sharzul.png', w: 130, h: 160, img: 'img/qol/sharzul.png', xp: 52.05, yp: 0.7,  anchor: 'center', isDungeon: true },
-    { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 6.5, yp: 18.43,  anchor: 'center', isDungeon: true },
-    { id:'igor-eternal', w: 100, h: 130, img: 'img/qol/igor-eternal.png', xp: 44.60, yp: 97.91,  anchor: 'center', isDungeon: true },
+    { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90, isDungeon: true },
+    { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.31, yp: 15.04, isDungeon: true },
+    { id:'loghorrean', w: 140, h: 110, img: 'img/qol/loghorrean.png', xp: 14.11, yp: 4.51, isDungeon: true },
+    { id:'thalonis.png', w: 90, h: 130, img: 'img/qol/thalonis.png', xp: 10.70, yp: 7.25, isDungeon: true },
+    { id:'sharzul.png', w: 130, h: 160, img: 'img/qol/sharzul.png', xp: 52.05, yp: 0.7, isDungeon: true },
+    { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 6.5, yp: 18.43, isDungeon: true },
+    { id:'igor-eternal', w: 100, h: 130, img: 'img/qol/igor-eternal.png', xp: 44.60, yp: 97.91, isDungeon: true },
     { id:'kaliska', w: 120, h: 90, img: 'img/qol/kaliska.png', xp: 79.35, yp: 64.20,  anchor: 'center' },
-    { id:'alkamos', w: 100, h: 140, img: 'img/qol/alkamos.png', xp: 54.19, yp: 96.72,  anchor: 'center', isDungeon: true },
-    { id:'ravna', w: 140, h: 130, img: 'img/qol/ravna.png', xp: 21.8, yp: 64.15,  anchor: 'center', isDungeon: true },
-    { id:'kilrian', w: 110, h: 145, img: 'img/qol/kilrian.png', xp: 50.49, yp: 67.9,  anchor: 'center', isDungeon: true },
+    { id:'alkamos', w: 100, h: 140, img: 'img/qol/alkamos.png', xp: 54.19, yp: 96.72, isDungeon: true },
+    { id:'ravna', w: 140, h: 130, img: 'img/qol/ravna.png', xp: 21.8, yp: 64.15, isDungeon: true },
+    { id:'kilrian', w: 110, h: 145, img: 'img/qol/kilrian.png', xp: 50.49, yp: 67.9, isDungeon: true },
     { id:'necropole', w: 130, h: 98, img: 'img/qol/necropole.png?1.1', xp: 22.36, yp: 16.1,  anchor: 'center' },
-    { id:'plagius', w: 110, h: 125, img: 'img/qol/plagius.png', xp: 35.63, yp: 10.81,  anchor: 'center', isDungeon: true },
+    { id:'plagius', w: 110, h: 125, img: 'img/qol/plagius.png', xp: 35.63, yp: 10.81, isDungeon: true },
     { id:'necropole-door', w: 80, h: 80, img: 'img/qol/necropole-door.png', xp: 23.22, yp: 4.54,  anchor: 'center' },
-    { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 58.98, yp: 69.94,  anchor: 'center', isDungeon: true },
-    { id:'gargabol', w: 130, h: 190, img: 'img/qol/gargabol.png', xp: 98.27, yp: 58.4,  anchor: 'center', isDungeon: true },
-    { id:'manticore', w: 180, h: 120, img: 'img/qol/manticore.png', xp: 92.42, yp: 55,  anchor: 'center', isDungeon: true },
-    { id:'ekketzul', w: 190, h: 245, img: 'img/qol/ekketzul.png', xp: 73.66, yp: 19.33,  anchor: 'center', isDungeon: true },
-    { id:'naxen', w: 130, h: 90, img: 'img/qol/naxen.png', xp: 99.84, yp: 26.93,  anchor: 'center', isDungeon: true },
-    { id:'namadea', w: 140, h: 130, img: 'img/qol/namadea.png', xp: 79.10, yp: 28.1,  anchor: 'center', isDungeon: true },
+    { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 58.98, yp: 69.94, isDungeon: true },
+    { id:'gargabol', w: 130, h: 190, img: 'img/qol/gargabol.png', xp: 98.27, yp: 58.4, isDungeon: true },
+    { id:'manticore', w: 180, h: 120, img: 'img/qol/manticore.png', xp: 92.42, yp: 55, isDungeon: true },
+    { id:'ekketzul', w: 190, h: 245, img: 'img/qol/ekketzul.png', xp: 73.66, yp: 19.33, isDungeon: true },
+    { id:'naxen', w: 130, h: 90, img: 'img/qol/naxen.png', xp: 99.84, yp: 26.93, isDungeon: true },
+    { id:'namadea', w: 140, h: 130, img: 'img/qol/namadea.png', xp: 79.10, yp: 28.1, isDungeon: true },
+    { id:'voldrak', w: 120, h: 120, img: 'img/qol/voldrak.png', xp: 30.6, yp: 83.60, isDungeon: true },
+    { id:'ragnadar', w: 130, h: 130, img: 'img/qol/ragnadar.png', xp: 22.45, yp: 58.42, isDungeon: true },
+    { id:'balokanatu', w: 170, h: 140, img: 'img/qol/balokanatu.png', xp: 35.52, yp: 4.6, isDungeon: true },
+    { id:'lagothak', w: 100, h: 190, img: 'img/qol/lagothak.png', xp: 42.55, yp: -1.00, isDungeon: true },
+    { id:'harvoul', w: 70, h: 70, img: 'img/qol/harvoul.png', xp: 3.65, yp: 37.06, isDungeon: true },
+    { id:'sharanatu', w: 80, h: 160, img: 'img/qol/lagothak.png', xp: 4.14, yp: 36.63, isDungeon: true },
+
+    { id:'noveria', w: 80, h: 90, img: 'img/qol/noveria.png', xp: 30.2, yp: 60.42, isDungeon: true },
+    { id:'kymon-father', w: 90, h: 85, img: 'img/qol/kymon-father.png', xp: 39.26, yp: 56.98, isDungeon: true },
+
+    { id:'karroz', w: 115, h: 115, img: 'img/qol/karroz.png', xp: 27.24, yp: 41.04, isDungeon: true },
+
 
   ];
 
@@ -402,12 +414,7 @@
       img.style.height = (d.h || 24) + 'px';
       img.style.pointerEvents = 'none';
       img.style.zIndex = '2';
-
-      switch (d.anchor) {
-        case 'bottom': img.style.transform = 'translate(-50%, -100%)'; break;
-        case 'top':    img.style.transform = 'translate(-50%, 0%)'; break;
-        default:       img.style.transform = 'translate(-50%, -50%)';
-      }
+      img.style.transform = 'translate(-50%, -50%)';
 
       inner.appendChild(img);
     });

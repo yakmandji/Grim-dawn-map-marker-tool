@@ -168,7 +168,7 @@
 { id: 'tag_uG_dermapteran_01', tag: 'tagUGDermapteran01', xp: 17.50, yp: 66.46, isDungeon: true },
 { id: 'tag_uGHomestead_cave01', tag: 'tagUGHomesteadCave01', xp: 15.34, yp: 62.88, isDungeon: true },
 { id: 'tag_uG_dermapteran_03B', tag: 'tagUGDermapteran03B', xp: 19.40, yp: 62.93, isDungeon: true },
-{ id: 'UG_crypt_necro01', tag: 'tagUGCryptNecro01', xp: 28.03, yp: 58.32, isDungeon: true },
+{ id: 'UG_crypt_necro01', tag: 'tagUGCryptNecro01', xp: 27.75, yp: 57.98, isDungeon: true },
 { id: 'UG_fort_zealot01', tag: 'tagUGFortZealot01', xp: 37, yp: 54, isDungeon: true },
 { id: 'map_deadmans_gulch', tag: 'tagMapDeadmansGulch', xp: 31.52, yp: 76.75 },
 { id: 'map_conflagration02', tag: 'tagMapConflagration02', xp: 32.38, yp: 73.42 },
