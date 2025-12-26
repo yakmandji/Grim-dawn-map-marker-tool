@@ -334,7 +334,8 @@ function animateArchiveFlyBlock(listRowEl) {
     const marker = coreAddMarker({ xp, yp, label, cat, done });
 
 
-    // === UX : avertir si le marker créé est caché par un filtre actif ===
+    // === UX : si le marker créé serait caché, bascule automatiquement sur sa catégorie ===
+
     const activeCatBtn = document.querySelector('.filterToggle.is-on[data-cat]');
 
     // Déterminer si le marker sera invisible
