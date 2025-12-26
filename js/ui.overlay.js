@@ -6,6 +6,8 @@ window.DUNGEON_OVERLAYS = [
 { id: "staunton_mine", map: "cairn", img: "staunton-mine.jpg?1.0", left: 55.3475, top: 91.9166, width: 4.4269, height: 4.1056 },
 { id: "forgotten_depths", map: "cairn", img: "the-forgotten-depths.jpg?1.0", left: 34.3228, top: 80.38493, width: 5.2, height: 5.1 },
 
+{ id: "smugglers_basin", map: "cairn", img: "smugglers-basin.jpg", left: 74.416, top: 70.1, width: 2.5, height: 2.5 },
+
 { id: "bloodbriars_lair", map: "cairn", img: "bloodbriars-lair.jpg?1.0", left: 34.9228, top: 74.38493, width: 3.5, height: 4 },
 { id: "spined_cove", map: "cairn", img: "spined-cove.jpg?1.0", left: 59.54, top: 83.19, width: 3.2074, height: 3.1428 },
 { id: "convict_tunnel", map: "cairn", img: "convict-tunnel.jpg?1.0", left: 66.0394, top: 88.789, width: 6.0479, height: 5.924 },
@@ -57,10 +59,10 @@ window.DUNGEON_OVERLAYS = [
 { id: "buried_crypt", map: "cairn", img: "buried-crypt.jpg", left: 28.858, top: 70.8461, width: 2, height: 2 },
 
 
-{ id: "cultists_lair", map: "cairn", img: "cultists-lair.jpg", left: 72.6966, top: 75.938, width: 2.0675, height: 2.0256 },
-{ id: "cave", map: "cairn", img: "cave.jpg", left: 72.2396, top: 78.5941, width: 1.844, height: 1.8066 },
-{ id: "caverne_2", map: "cairn", img: "caverne-2.jpg?1.0", left: 73.916, top: 72.2435, width: 3.3527, height: 3.3833 },
-{ id: "caverne_3", map: "cairn", img: "caverne-3.jpg?1.0", left: 63.416, top: 73.8435, width: 2.5527, height: 2.7833 },
+{ id: "cultists_lair", map: "cairn", img: "cultists-lair.jpg", left: 72.6966, top: 76.538, width: 2.0675, height: 2.0256 },
+{ id: "cave", map: "cairn", img: "cave.jpg", left: 72.2396, top: 78.8941, width: 1.844, height: 1.8066 },
+{ id: "caverne_2", map: "cairn", img: "caverne-2.jpg?1.0", left: 73.416, top: 72.9435, width: 3.3527, height: 3.3833 },
+{ id: "caverne_3", map: "cairn", img: "caverne-3.jpg?1.0", left: 63.416, top: 73.6435, width: 2.5527, height: 2.7833 },
 { id: "burial_cave2", map: "cairn", img: "burial-cave2.jpg?1.0", left: 61.416, top: 65.5435, width: 2.7527, height: 2.7833 },
 { id: "river_passage", map: "cairn", img: "river-passage.jpg?1.0", left: 75.162, top: 56.8204, width: 4.727, height: 4.6833 },
 { id: "swarming_hive", map: "cairn", img: "swarming-hive.jpg?1.0", left: 40.516, top: 83.8, width: 3.1, height: 3.1 },

@@ -1,12 +1,12 @@
   // --- CAIRN ---
   window.REGION_MARKERS_CAIRN = [
     
-{ id: 'tag_UG_wightmire_cave01', tag: 'tagUGWightmireCave01', xp: 72.56, yp: 78.86, isDungeon: true },
+{ id: 'tag_UG_wightmire_cave01', tag: 'tagUGWightmireCave01', xp: 72.54, yp: 79.18, isDungeon: true },
 { id: 'tag_UG_wightmire_cave03', tag: 'tagUGWightmireCave01', xp: 63.68, yp: 74.06, isDungeon: true },
 { id: 'tagU_rRotting_croplands_crypt01', tag: 'tagUGRottingCroplandsCrypt01', xp: 29, yp: 72.53, isDungeon: true },
 { id: 'tag_burrwitch_cellar03', tag: 'tagBurrwitchCellar03', xp: 63.60, yp: 58.52, isDungeon: true },
-{ id: 'tag_UG_wightmire_cave02', tag: 'tagUGWightmireCave01', xp: 75.25, yp: 72.66, isDungeon: true },
-{ id: 'tag_wightmire_cellar01', tag: 'tagWightmireCellar01', xp: 72.90, yp: 77.69, isDungeon: true },
+{ id: 'tag_UG_wightmire_cave02', tag: 'tagUGWightmireCave01', xp: 75.16, yp: 73.38, isDungeon: true },
+{ id: 'tag_wightmire_cellar01', tag: 'tagWightmireCellar01', xp: 73.03, yp: 78.32, isDungeon: true },
 { id: 'tag_map_ominous_lair', tag: 'tagMapOminousLair', xp: 60.6, yp: 49.5, isDungeon: true },
 { id: 'tag_uGOld_arkovia03', tag: 'tagUGOldArkovia03', xp: 40.91, yp: 84, isDungeon: true },
 { id: 'tag_map_laboratory_storerooms', tag: 'tagMapLaboratoryStorerooms', xp: 58.12, yp: 50.48, isDungeon: true },

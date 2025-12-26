@@ -15,6 +15,11 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_caverne_2b", xp: 69.33, yp: 72.90, tag: "Caverne 2", eyeColor:"gray" },
 { id: "entry_caverne_3", xp: 69.09, yp: 74.72, tag: "Caverne 3", eyeColor:"gray" },
 { id: "entry_caverne_3b", xp: 68.20, yp: 75.91, tag: "Caverne 3b" },
+
+{ id: "entry_smugglers_basin", xp: 71.03, yp: 68.51, tag: "Smugglers Basin" },
+
+
+
 { id: "entry_burial_cave_2a", xp: 69.07, yp: 68.91, tag: "burial cave 2a", eyeColor:"gray" },
 { id: "entry_burial_cave_2b", xp: 68.18, yp: 69.30, tag: "burial cave 2b" },
 { id: "entry_river_passage", xp: 71.13, yp: 63.24, tag: "river passage" },
@@ -197,6 +202,11 @@ window.DUNGEON_LINKS = {
   "festering_lair":["entry_festering_lair"],
   "buried_crypt":["entry_Burried_crypt"],
   "the_hidden_path":["entry_the_hidden_path"],
+
+  "smugglers_basin":["entry_smugglers_basin"],
+  
+
+
 
 
   "burial_cave2":["entry_burial_cave_2a", "entry_burial_cave_2b"],
