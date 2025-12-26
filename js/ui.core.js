@@ -1,6 +1,6 @@
 (function(){
 const {
-  state,DEV_MODE,clamp,iconFor,currentProfile,markAsChanged,updateSaveIndicator,
+  state,isDevUnlocked,clamp,iconFor,currentProfile,markAsChanged,updateSaveIndicator,
   setActiveProfile,renameProfile,deleteProfile,listProfiles,
   addMarker: coreAddMarker,
   updateMarker: coreUpdateMarker,
@@ -8,6 +8,8 @@ const {
   clearMarkers: coreClearMarkers,getUserDataOnly,saveUserDataToLocal,loadUserDataFromLocal,
   mergeUserMarkers,ensureProfile,
 } = window.GDMMCore;
+
+const DEV = () => isDevUnlocked?.() === true;
 
 const {
   addMarkerFromUI,
@@ -662,8 +664,23 @@ function renderMarkers(options = {}) {
 
 viewport.addEventListener('pointerdown', e => {
 
+  if (e.altKey && e.shiftKey) {
+    if (!window.GDMMCore?.isDevUnlocked?.()) return;
+
+    const p = viewToPct(e.clientX, e.clientY);
+    window.__gdmmOverlayDragStart?.(p.xp, p.yp);
+    e.preventDefault();
+    e.stopPropagation();
+    return;
+  }
+
+
+
   // --- Copie rapide des coords (Alt+clic sur la carte) ---
     if (e.altKey && state.mapReady) {
+     
+     if (!window.GDMMCore?.isDevUnlocked?.()) return;
+
       const { xp, yp } = viewToPct(e.clientX, e.clientY);
       if (isFinite(xp) && isFinite(yp)) {
         const cx = clamp(xp, 0, 100).toFixed(2);
@@ -695,6 +712,7 @@ viewport.addEventListener('pointerdown', e => {
       }
       return;
     }
+// --------------------------- End (Alt+clic sur la carte) ---
 
 
   // --- MODE MARKER add ---
@@ -789,6 +807,14 @@ viewport.addEventListener('pointerdown', e => {
 /*Pointer move------------------------------------------------*/
 
 viewport.addEventListener('pointermove', e => {
+
+  if (e.altKey && e.shiftKey && window.__gdmmOverlayDragMove) {
+    if (!window.GDMMCore?.isDevUnlocked?.()) return;
+
+    const p = viewToPct(e.clientX, e.clientY);
+    window.__gdmmOverlayDragMove(p.xp, p.yp);
+  }
+
   const isTouch = e.pointerType === 'touch';
 
     // 2) Sur mobile (touch) : on gère uniquement le pinch / pan,
@@ -868,6 +894,21 @@ viewport.addEventListener('pointermove', e => {
 
 
   function stopPan(e){
+
+
+    // --- ALT + SHIFT : finalize overlay rect even if we never started panning
+    if (e && e.altKey && e.shiftKey && typeof window.__gdmmOverlayDragEnd === 'function') {
+      if (!window.GDMMCore?.isDevUnlocked?.()) return;
+
+      const p = viewToPct(e.clientX, e.clientY);
+      window.__gdmmOverlayDragEnd(p.xp, p.yp);
+      e.preventDefault?.();
+      e.stopPropagation?.();
+      return;
+    }
+
+
+
     // Nettoyage des touches
     if (e && e.pointerType === 'touch') {
       activeTouches.delete(e.pointerId);
@@ -1485,6 +1526,103 @@ function setupPopup(triggerSelector, popupAttr) {
 
 
 //TOGGLE SIDE BAR
+
+
+// --- DEV helper : ALT + SHIFT + drag = copy overlay rect (%)
+(function () {
+  let rectEl = null;
+  let start = null;
+
+  function ensureRect() {
+    if (rectEl) return rectEl;
+    rectEl = document.createElement('div');
+    rectEl.style.position = 'absolute';
+    rectEl.style.border = '2px dashed #78f1c2';
+    rectEl.style.background = 'rgba(120,241,194,0.15)';
+    rectEl.style.pointerEvents = 'none';
+    rectEl.style.zIndex = '20';
+    return rectEl;
+  }
+
+  function removeRect() {
+    if (rectEl && rectEl.parentNode) {
+      rectEl.parentNode.removeChild(rectEl);
+    }
+    rectEl = null;
+  }
+
+  window.__gdmmOverlayDragStart = function (xp, yp) {
+    start = { xp, yp };
+    const el = ensureRect();
+    const mapInner = document.querySelector('.mapInner');
+    if (mapInner && !el.parentNode) {
+      mapInner.appendChild(el);
+    }
+  };
+
+  window.__gdmmOverlayDragMove = function (xp, yp) {
+    if (!start || !rectEl) return;
+
+    const left   = Math.min(start.xp, xp);
+    const top    = Math.min(start.yp, yp);
+    const width  = Math.abs(xp - start.xp);
+    const height = Math.abs(yp - start.yp);
+
+    rectEl.style.left   = left + '%';
+    rectEl.style.top    = top + '%';
+    rectEl.style.width  = width + '%';
+    rectEl.style.height = height + '%';
+  };
+
+  window.__gdmmOverlayDragEnd = function (xp, yp) {
+    if (!start) return;
+
+    const left   = Math.min(start.xp, xp);
+    const top    = Math.min(start.yp, yp);
+    const width  = Math.abs(xp - start.xp);
+    const height = Math.abs(yp - start.yp);
+
+    const txt =
+      `left: ${left.toFixed(4)}, ` +
+      `top: ${top.toFixed(4)}, ` +
+      `width: ${width.toFixed(4)}, ` +
+      `height: ${height.toFixed(4)},`;
+
+      const onDone = () => {
+        if (typeof showToast === 'function') {
+          showToast(
+            `Overlay copié :\n` +
+            `left=${left.toFixed(2)}, top=${top.toFixed(2)}\n` +
+            `width=${width.toFixed(2)}, height=${height.toFixed(2)}`
+          );
+        } else {
+          console.log('[GDMM] Overlay copié :', txt);
+        }
+      };
+
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(txt)
+          .then(onDone)
+          .catch((e) => {
+            console.warn('[GDMM] Clipboard failed', e);
+            onDone(); // au moins feedback visuel
+          });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        document.body.removeChild(ta);
+        onDone();
+      }
+
+
+    start = null;
+    removeRect();
+  };
+})();
+// ---END  DEV helper : ALT + SHIFT + drag = copy overlay rect (%)
 
 
 // Init

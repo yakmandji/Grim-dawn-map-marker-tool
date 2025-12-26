@@ -6,7 +6,6 @@
  */
 
 (function(){
-  const DEV_MODE = false;
 
   // --- State  ---
   const state = {
@@ -84,34 +83,6 @@
     const p = ensureProfile(name);
     state.active = name;
     return p;
-  }
-
-  function createProfile(name){
-    if (!name) return null;
-    if (state.profiles[name]) return null;
-    state.profiles[name] = { markers: [], map: {}, created: now(), updated: now() };
-    state.active = name;
-    return state.profiles[name];
-  }
-
-  function renameProfile(oldName, newName){
-    if (!oldName || !newName) return false;
-    if (!state.profiles[oldName]) return false;
-    if (state.profiles[newName]) return false;
-    state.profiles[newName] = JSON.parse(JSON.stringify(state.profiles[oldName]));
-    delete state.profiles[oldName];
-    if (state.active === oldName) state.active = newName;
-    return true;
-  }
-
-  function deleteProfile(name){
-    if (!state.profiles[name]) return false;
-    delete state.profiles[name];
-    if (state.active === name) {
-      const next = Object.keys(state.profiles)[0] || null;
-      state.active = next;
-    }
-    return true;
   }
 
   function listProfiles(){
@@ -214,61 +185,56 @@ function saveUserDataToLocal() {
   }
 }
 
+  function saveViewOnlyToLocal() {
+    try {
+      const p = currentProfile();
+      if (!p || !state.active) return;
 
-                                                                    function saveViewOnlyToLocal() {
-                                                                      try {
-                                                                        const p = currentProfile();
-                                                                        if (!p || !state.active) return;
+      const view = p.view || {
+        x: state.view.x,
+        y: state.view.y,
+        scale: state.view.scale,
+      };
 
-                                                                        const view = p.view || {
-                                                                          x: state.view.x,
-                                                                          y: state.view.y,
-                                                                          scale: state.view.scale,
-                                                                        };
+      // --- Multi-character ---
+      if (window.characterManager) {
+        const raw = localStorage.getItem('grimSave_v2');
+        if (!raw) return;
 
-                                                                        // --- Multi-character ---
-                                                                        if (window.characterManager) {
-                                                                          const raw = localStorage.getItem('grimSave_v2');
-                                                                          if (!raw) return;
+        const save = JSON.parse(raw);
+        const activeId = save.activeCharacterId;
+        const char = save.characters && save.characters[activeId];
+        if (!char) return;
 
-                                                                          const save = JSON.parse(raw);
-                                                                          const activeId = save.activeCharacterId;
-                                                                          const char = save.characters && save.characters[activeId];
-                                                                          if (!char) return;
+        char.state = char.state || {};
+        char.state.userData = char.state.userData || {};
 
-                                                                          char.state = char.state || {};
-                                                                          char.state.userData = char.state.userData || {};
+        // userData[profileName] = { markers, paths, view }
+        const prof = (char.state.userData[state.active] || {});
+        prof.view = view;
+        char.state.userData[state.active] = prof;
 
-                                                                          // userData[profileName] = { markers, paths, view }
-                                                                          const prof = (char.state.userData[state.active] || {});
-                                                                          prof.view = view;
-                                                                          char.state.userData[state.active] = prof;
+        // optionnel : mémoriser profil actif
+        char.state.lastProfile = state.active;
 
-                                                                          // optionnel : mémoriser profil actif
-                                                                          char.state.lastProfile = state.active;
+        localStorage.setItem('grimSave_v2', JSON.stringify(save));
+        return;
+      }
 
-                                                                          localStorage.setItem('grimSave_v2', JSON.stringify(save));
-                                                                          return;
-                                                                        }
+      // --- Legacy fallback (si jamais) ---
+      const rawUser = localStorage.getItem('gdmm_user_data');
+      if (!rawUser) return;
 
-                                                                        // --- Legacy fallback (si jamais) ---
-                                                                        const rawUser = localStorage.getItem('gdmm_user_data');
-                                                                        if (!rawUser) return;
+      const user = JSON.parse(rawUser) || {};
+      const prof = (user[state.active] || {});
+      prof.view = view;
+      user[state.active] = prof;
 
-                                                                        const user = JSON.parse(rawUser) || {};
-                                                                        const prof = (user[state.active] || {});
-                                                                        prof.view = view;
-                                                                        user[state.active] = prof;
-
-                                                                        localStorage.setItem('gdmm_user_data', JSON.stringify(user));
-                                                                      } catch (e) {
-                                                                        console.warn('[GDMM] saveViewOnlyToLocal failed', e);
-                                                                      }
-                                                                    }
-
-
-
-
+      localStorage.setItem('gdmm_user_data', JSON.stringify(user));
+    } catch (e) {
+      console.warn('[GDMM] saveViewOnlyToLocal failed', e);
+    }
+  }
 
 function loadUserDataFromLocal() {
   try {
@@ -342,9 +308,15 @@ function loadUserDataFromLocal() {
   }
 
 
+  function isDevUnlocked() {
+    try { return localStorage.getItem('gdmm_devmode') === '1'; }
+    catch (_) { return false; }
+  }
+
+
   // --- Expose global ---
   window.GDMMCore = {
-    DEV_MODE,
+    isDevUnlocked,
     state,
     updateSaveIndicator,
     now,
@@ -356,9 +328,6 @@ function loadUserDataFromLocal() {
     currentProfile,
     setActiveProfile,
     ensureProfile,
-    createProfile,
-    renameProfile,
-    deleteProfile,
     listProfiles,
     addMarker,
     updateMarker,

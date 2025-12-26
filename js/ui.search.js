@@ -11,6 +11,25 @@
       .replace(/[\u0300-\u036f]/g, ''); // remove accents
   }
 
+
+function handleDevSearchCommand(raw) {
+  const cmd = (raw || '').trim().toLowerCase();
+
+  if (cmd !== '/devmode' && cmd !== '/nodevmode') return false;
+
+  try {
+    if (cmd === '/devmode') {
+      localStorage.setItem('gdmm_devmode', '1');
+    } else {
+      localStorage.removeItem('gdmm_devmode');
+    }
+  } catch (_) {}
+
+  setTimeout(() => location.reload(), 200);
+  return true;
+}
+
+
 // Helper i18n local pour ce module
 const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
   ? GDMMLang.t.bind(GDMMLang)
@@ -718,6 +737,17 @@ async function goTo(item) {
       // Mode "perso" si le terme commence par "/"
       // Markers perso + notes de région
       if (trimmed.startsWith('/')) {
+
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter') return;
+
+        if (handleDevSearchCommand(inputEl.value)) {
+          e.preventDefault();
+          return;
+        }
+      });
+
+
         const markerTerm = trimmed.slice(1).trim();
 
         const markerResults = searchMarkers(markerTerm);
@@ -780,6 +810,7 @@ document.addEventListener('DOMContentLoaded', init);
   window.addEventListener("keydown", (e) => {
     const isFind = (e.key === "f" || e.key === "F") && (e.ctrlKey || e.metaKey);
     if (!isFind) return;
+
 
     // si on est déjà en train d'écrire dans un champ, on laisse le navigateur faire
     const active = document.activeElement;

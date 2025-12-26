@@ -2,15 +2,12 @@
 (function () {
   const {
     state,
-    DEV_MODE,
     clamp,
     iconFor,
     currentProfile,
     markAsChanged,
     updateSaveIndicator,
     setActiveProfile,
-    renameProfile,
-    deleteProfile,
     listProfiles,
     addMarker: coreAddMarker,
     updateMarker: coreUpdateMarker,
@@ -22,7 +19,6 @@
     mergeUserMarkers,
     ensureProfile,
   } = window.GDMMCore;
-
 
   /*Map decoration*/
 

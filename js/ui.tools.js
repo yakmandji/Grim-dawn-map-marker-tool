@@ -1,13 +1,9 @@
   const {
-    DEV_MODE,
     state,
     currentProfile,
     setActiveProfile,
     ensureProfile,
-    createProfile,
-    renameProfile,
     listProfiles,
-    deleteProfile,
     getUserDataOnly,
     clearMarkers: coreClearMarkers,
     saveUserDataToLocal,
@@ -199,7 +195,12 @@
 
 
 //ADMIN TOOLS
-  if (DEV_MODE) {
+
+  const isDev = (typeof window.GDMMCore?.isDevUnlocked === 'function')
+    ? window.GDMMCore.isDevUnlocked()
+    : false;
+
+  if (isDev) {
 
     $('#exportMapsOnlyBtn')?.addEventListener('click', async () => {
       const profiles = state.profiles || {};
@@ -250,45 +251,6 @@
       if (typeof showToast === 'function') {
         showToast('Maps exported separately (without markers) ✅');
       }
-    });
-
-
-    $('#clearSession')?.addEventListener('click', () => {
-      if (!confirm('Delete all session ?')) return;
-      state.profiles = {}; state.active = null;
-      mapImg.removeAttribute('src'); state.mapReady = false; state.mapNatural = { w:0, h:0 };
-      refreshProfilesUI();
-    });
-
-    $('#newProfile')?.addEventListener('click', () => {
-      const n = prompt('Name of new map ?'); if (!n) return;
-      if (state.profiles[n]) { alert('this name already exist'); return; }
-      createProfile(n);
-      setActiveProfile(n);
-      refreshProfilesUI();
-      renderList();
-      renderMarkers();
-      renderRoutesPanel();
-    });
-
-    $('#renProfile')?.addEventListener('click', () => {
-      if (!state.active) return;
-      const n = prompt('New name ?', state.active); if (!n || n === state.active) return;
-      if (state.profiles[n]) { alert('Name already exist'); return; }
-      renameProfile(state.active, n);
-      refreshProfilesUI();
-    });
-
-    $('#delProfile')?.addEventListener('click', () => {
-      if (!state.active) return;
-      const victim = state.active;
-      if (!confirm('You will delete « '+victim+' » map and all associated markers')) return;
-      deleteProfile(victim);
-      mapImg.removeAttribute('src'); state.mapReady=false; state.mapNatural={w:0,h:0};
-      refreshProfilesUI();
-      renderList();
-      renderMarkers();
-      renderRoutesPanel();
     });
 
     $('#mapFile')?.addEventListener('change', e => {

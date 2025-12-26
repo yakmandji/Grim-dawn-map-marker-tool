@@ -24,13 +24,10 @@
 { id: 'tag_gDX1UG_ancient_grove01D', tag: 'tagGDX1UGAncientGrove01D', xp: 89.43, yp: 58, isDungeon: true },
 { id: 'tag_map_hidden_path04', tag: 'tagMapHiddenPath04', xp: 75.82, yp: 63.84 },
 { id: 'tag_map_hidden_pathLowerCrossing', tag: 'tagMapHiddenPath01', xp: 66.07, yp: 86.43 },
-
+{ id: 'tag_uGBurrwitch_outskirtsBasin', tag: 'tagUGBurrwitchOutskirtsBasin', xp: 74.51, yp: 70.26, isDungeon: true },
 { id: 'tag_map_hidden_path03b', tag: 'tagMapHiddenPath03', xp: 16.82, yp: 30.41, isDungeon: true },
-
 { id: 'tag_UG_secret_02', tag: 'tagUGSecret02', xp: 27.24, yp: 20.29, isDungeon: true },
 { id: 'tag_MapWardens_Labratory02', tag: 'tagMapWardensLabratory02', xp: 62.47, yp: 48.70, isDungeon: true },
-
-
 { id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89 },
 { id: 'tag_map_hidden_path02', tag: 'tagMapHiddenPath02', xp: 46.34, yp: 84.94 },
 { id: 'tag_map_hidden_path03', tag: 'tagMapHiddenPath03', xp: 12.69, yp: 33.90 },
@@ -46,7 +43,7 @@
 { id: 'map_old_dump', tag: 'tagMapOldDump', xp: 66.84, yp: 81.79 },
 { id: 'map_wightmire01', tag: 'tagMapWightmire01', xp: 68.13, yp: 78.61 },
 { id: 'map_sodden_hollow', tag: 'tagMapSoddenHollow', xp: 70.2, yp: 77.05 },
-{ id: 'GDX1UGU_gdenbog_cellar01', tag: 'tagGDX1UGUgdenbogCellar01', xp: 69.54, yp: 43.33, isDungeon: true },
+{ id: 'GDX1UGU_gdenbog_cellar01', tag: 'tagGDX1UGUgdenbogCellar01', xp: 70.38, yp: 43.29, isDungeon: true },
 { id: 'map_flooded_passage01', tag: 'tagMapFloodedPassage01', xp: 62.75, yp: 69.02, isDungeon: true },
 { id: 'burrwitch_cellar02', tag: 'tagBurrwitchCellar02', xp: 69.38, yp: 56.78, isDungeon: true },
 { id: 'UG_cellar02', tag: 'tagUGCellar02', xp: 78.14, yp: 74.24, isDungeon: true },

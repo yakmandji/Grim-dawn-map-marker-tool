@@ -6,7 +6,9 @@ window.DUNGEON_OVERLAYS = [
 { id: "staunton_mine", map: "cairn", img: "staunton-mine.jpg?1.0", left: 55.3475, top: 91.9166, width: 4.4269, height: 4.1056 },
 { id: "forgotten_depths", map: "cairn", img: "the-forgotten-depths.jpg?1.0", left: 34.3228, top: 80.38493, width: 5.2, height: 5.1 },
 
-{ id: "smugglers_basin", map: "cairn", img: "smugglers-basin.jpg", left: 74.416, top: 70.1, width: 2.5, height: 2.5 },
+{ id: "smugglers_basin", map: "cairn", img: "smugglers-basin.jpg", left: 74.416, top: 70.1, width: 2.3, height: 2.3 },
+
+
 
 { id: "bloodbriars_lair", map: "cairn", img: "bloodbriars-lair.jpg?1.0", left: 34.9228, top: 74.38493, width: 3.5, height: 4 },
 { id: "spined_cove", map: "cairn", img: "spined-cove.jpg?1.0", left: 59.54, top: 83.19, width: 3.2074, height: 3.1428 },
@@ -48,7 +50,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "temple_of_three", map: "cairn", img: "temple-of-three.jpg", left: 81.4927, top: 61.3972, width: 7.1275, height: 6.9965 },
 { id: "ancient_groove", map: "cairn", img: "ancient-groove.jpg?1.0", left: 87.8555, top: 49.206, width: 12.0789, height: 11.8274 },
 { id: "underground_transit", map: "cairn", img: "underground-transit.jpg?1.0", left: 56.7988, top: 43.8385, width: 12.094, height: 11.8934 },
-{ id: "overgrown_cellar", map: "cairn", img: "overgrown-cellar.jpg", left: 69.1694, top: 43.0654, width: 3.3869, height: 3.3173 },
+{ id: "overgrown_cellar", map: "cairn", img: "overgrown-cellar.jpg", left: 69.8807, top: 42.9053, width: 3.9617, height: 3.8804 },
 { id: "flooded_cellar", map: "cairn", img: "flooded-cellar.jpg?1.0", left: 60.1724, top: 61.436, width: 4.0915, height: 4.0041 },
 { id: "festering_lair", map: "cairn", img: "festering-lair.jpg", left: 61.8724, top: 59.036, width: 2.1915, height: 2.2041 },
 { id: "decrepit_cellar", map: "cairn", img: "decrepit-cellar.jpg?1.0", left: 79.1162, top: 52.4204, width: 4.003, height: 3.9257 },
