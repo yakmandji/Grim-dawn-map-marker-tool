@@ -30,6 +30,54 @@ function handleDevSearchCommand(raw) {
 }
 
 
+  // --- Active overlay on search --------------------------------------
+function activateDungeonOverlayAt(xp, yp) {
+  const state = window.GDMMCore?.state || {};
+  const overlays = state.dungeonOverlays || [];
+  if (!overlays.length) return false;
+
+  // Cherche tous les overlays contenant le point
+  const matches = overlays.filter(o => {
+    const left   = o.left   ?? o.cfg?.left;
+    const top    = o.top    ?? o.cfg?.top;
+    const width  = o.width  ?? o.cfg?.width;
+    const height = o.height ?? o.cfg?.height;
+    if (![left, top, width, height].every(n => typeof n === 'number')) return false;
+
+    return (xp >= left && xp <= left + width && yp >= top && yp <= top + height);
+  });
+
+  if (!matches.length) return false;
+
+  // Si plusieurs overlays matchent, on prend le plus “petit” (le plus spécifique)
+  matches.sort((a, b) => {
+    const aw = (a.width  ?? a.cfg?.width)  || 0;
+    const ah = (a.height ?? a.cfg?.height) || 0;
+    const bw = (b.width  ?? b.cfg?.width)  || 0;
+    const bh = (b.height ?? b.cfg?.height) || 0;
+    return (aw * ah) - (bw * bh);
+  });
+
+  const best = matches[0];
+  const id = best.cfg?.id;
+  if (!id) return false;
+
+  if (typeof window.showDungeonLinksForOverlay === 'function') {
+    window.showDungeonLinksForOverlay(id);
+    return true;
+  }
+
+  // fallback (au cas où)
+  if (best.el) best.el.click();
+  return true;
+}
+
+// expose pour ui.map.base.js (nav inter-map)
+window.activateDungeonOverlayAt = activateDungeonOverlayAt;
+// ---END Active overlay on search --------------------------------------
+
+
+
 // Helper i18n local pour ce module
 const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
   ? GDMMLang.t.bind(GDMMLang)
@@ -652,12 +700,12 @@ function clearResultsLater(delay = 150) {
 
 async function goTo(item) {
   clearResultsLater();
-    if (inputEl) {
+  if (inputEl) {
     inputEl.value = '';
     inputEl.blur();
   }
 
- // Assurer que la couche admin est visible pour ce type de résultat
+  // Assurer que la couche admin est visible pour ce type de résultat
   if (typeof window.ensureAdminLayerVisible === 'function') {
     if (item.type === 'rift') {
       window.ensureAdminLayerVisible('rift');
@@ -665,26 +713,44 @@ async function goTo(item) {
       window.ensureAdminLayerVisible('shrine');
     } else if (item.type === 'region' || item.type === 'dungeon') {
       window.ensureAdminLayerVisible('region');
-    }  else if (item.type === 'marker' && item.done) {
+    } else if (item.type === 'marker' && item.done) {
       window.ensureAdminLayerVisible('history');
     }
   }
 
-
   const zoom =
     item.type === 'region' ? 0.8 :
-    item.type === 'dungeon' ? 1.2 :
-                              1.3;
+    item.type === 'dungeon' ? 1 :
+                              1;
 
   const core  = window.GDMMCore || {};
   const state = core.state || {};
   const targetProfile = item.profile;
+
+  // helper local : active l’overlay après center
+  function maybeActivateDungeonOverlay() {
+    if (item.type !== 'dungeon') return;
+
+    // petit délai pour être sûr que la layer + DOM overlays sont là
+    setTimeout(() => {
+      if (typeof window.activateDungeonOverlayAt === 'function') {
+        window.activateDungeonOverlayAt(item.xp, item.yp);
+      } else {
+        // fallback si tu n’as pas encore ajouté le helper
+        if (typeof window.showDungeonLinksForOverlay === 'function') {
+          // pas possible sans trouver l'id -> donc rien ici
+        }
+      }
+    }, 60);
+  }
 
   // 1) Même profil → on ne touche pas au select, on centre + pulse
   if (state.active === targetProfile) {
     if (typeof window.centerOn === 'function') {
       window.centerOn(item.xp, item.yp, zoom);
       highlightAtCenter(item);
+
+      maybeActivateDungeonOverlay();
     }
     return;
   }
@@ -707,9 +773,12 @@ async function goTo(item) {
     setTimeout(() => {
       window.centerOn(item.xp, item.yp, zoom);
       highlightAtCenter(item);
+
+      maybeActivateDungeonOverlay();
     }, 400);
   }
 }
+
 /*----------------END GO TO ITEM--------------------------------------------------*/
 
 

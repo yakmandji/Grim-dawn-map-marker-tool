@@ -1276,7 +1276,7 @@ header button.menu-button.select-current:hover {
 }
 
 .marker-region-dungeon .region-label{
-  opacity: 0.25;
+  opacity: 0.15;
   font-size: 0.85em;
 }
 
@@ -1349,6 +1349,9 @@ header button.menu-button.select-current:hover {
   background-position: center;
   opacity: 0.1;
   transition: opacity 0.15s ease, transform 0.15s ease;
+
+  border: 1px solid rgb(135 111 72 / 35%);
+  border-radius: 12px;
 }
 
 /* --- Custom checkbox green theme --- */

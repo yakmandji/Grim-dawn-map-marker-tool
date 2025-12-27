@@ -799,6 +799,9 @@ function showDungeonLinksForOverlay(overlayId) {
   }
 
   state.dungeonForcedHover = [overlayId];
+
+  state.activeDungeonOverlayId = overlayId;
+
   state.dungeonOverlays.forEach(o => {
     if (!o.el) return;
     o.el.classList.toggle('is-hovered', o === overlayObj);

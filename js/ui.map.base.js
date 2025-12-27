@@ -59,7 +59,7 @@
     { id:'ekketzul', w: 190, h: 245, img: 'img/qol/ekketzul.png', xp: 73.66, yp: 19.33, isDungeon: true },
     { id:'naxen', w: 130, h: 90, img: 'img/qol/naxen.png', xp: 99.84, yp: 26.93, isDungeon: true },
     { id:'namadea', w: 140, h: 130, img: 'img/qol/namadea.png', xp: 79.10, yp: 28.1, isDungeon: true },
-    { id:'voldrak', w: 120, h: 120, img: 'img/qol/voldrak.png', xp: 30.6, yp: 83.60, isDungeon: true },
+    { id:'voldrak', w: 130, h: 130, img: 'img/qol/voldrak.png', xp: 26.47, yp: 85.68, isDungeon: true },
     { id:'ragnadar', w: 130, h: 130, img: 'img/qol/ragnadar.png', xp: 22.45, yp: 58.42, isDungeon: true },
     { id:'balokanatu', w: 170, h: 140, img: 'img/qol/balokanatu.png', xp: 35.52, yp: 4.6, isDungeon: true },
     { id:'lagothak', w: 100, h: 190, img: 'img/qol/lagothak.png', xp: 42.55, yp: -1.00, isDungeon: true },

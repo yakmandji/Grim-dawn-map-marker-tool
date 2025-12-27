@@ -6,7 +6,7 @@
 { id: 'tagU_rRotting_croplands_crypt01', tag: 'tagUGRottingCroplandsCrypt01', xp: 29, yp: 72.53, isDungeon: true },
 { id: 'tag_burrwitch_cellar03', tag: 'tagBurrwitchCellar03', xp: 63.60, yp: 58.52, isDungeon: true },
 { id: 'tag_UG_wightmire_cave02', tag: 'tagUGWightmireCave01', xp: 75.16, yp: 73.38, isDungeon: true },
-{ id: 'tag_wightmire_cellar01', tag: 'tagWightmireCellar01', xp: 73.03, yp: 78.32, isDungeon: true },
+{ id: 'tag_wightmire_cellar01', tag: 'tagWightmireCellar01', xp: 73.03, yp: 78.50, isDungeon: true },
 { id: 'tag_map_ominous_lair', tag: 'tagMapOminousLair', xp: 60.6, yp: 49.5, isDungeon: true },
 { id: 'tag_uGOld_arkovia03', tag: 'tagUGOldArkovia03', xp: 40.91, yp: 84, isDungeon: true },
 { id: 'tag_map_laboratory_storerooms', tag: 'tagMapLaboratoryStorerooms', xp: 58.12, yp: 50.48, isDungeon: true },
@@ -16,8 +16,6 @@
 { id: 'tag_U_gOld_arkovia_04', tag: 'tagUGOldArkovia04', xp: 55.72, yp: 80.60, isDungeon: true },
 
 { id: 'tag_burrwitch_Cellar01', tag: 'tagBurrwitchCellar01', xp: 64.10, yp: 63.27, isDungeon: true },
-
-
 
 { id: 'tag_map_laboratory_inner', tag: 'tagMapLaboratoryInner', xp: 59.00, yp: 46.76, isDungeon: true },
 { id: 'tag_uG_flooded_passage_ruin', tag: 'tagUGFloodedPassageRuin',xp: 60.66, yp: 69.62, isDungeon: true },
@@ -37,10 +35,10 @@
 { id: 'tag_map_hidden_path02', tag: 'tagMapHiddenPath02', xp: 46.34, yp: 84.94 },
 { id: 'tag_map_hidden_path03', tag: 'tagMapHiddenPath03', xp: 12.69, yp: 33.90 },
 { id: 'region_dc', tag: 'tagMapDevilsCrossing01', xp: 62.2, yp: 88.85 },
-{ id: 'UG_devils_crossing_hidden_passage01', tag: 'tagUGDevilsCrossingHiddenPassage01', xp: 66.51, yp: 89.82, isDungeon: true },
+{ id: 'UG_devils_crossing_hidden_passage01', tag: 'tagUGDevilsCrossingHiddenPassage01', xp: 66.64, yp: 89.30, isDungeon: true },
 { id: 'tag_gDX1UG_ugdenbog_cave01', tag: 'tagGDX1UGUgdenbogCave01', xp: 93.92, yp: 42.45, isDungeon: true },
 { id: 'world_map_witch_god_temple', tag: 'tagWorldMapWitchGodTemple', xp: 82.46, yp: 62.40, isDungeon: true },
-{ id: 'UG_devils_crossing_aquifer', tag: 'tagUGDevilsCrossingAquifer', xp: 69.88, yp: 93.61, isDungeon: true },
+{ id: 'UG_devils_crossing_aquifer', tag: 'tagUGDevilsCrossingAquifer', xp: 71.10, yp: 93.31, isDungeon: true },
 { id: 'tag_UG_broken_hills02F', tag: 'tagUGBrokenHills02F', xp: 46.62, yp: 99.05, isDungeon: true },
 { id: 'map_old_grove', tag: 'tagMapOldGrove', xp: 62.27, yp: 90.3 },
 { id: 'map_lower_crossing01', tag: 'tagMapLowerCrossing01', xp: 64.39, yp: 85.69 },
@@ -145,7 +143,7 @@
 { id: 'map_cronleys_hideout', tag: 'tagMapCronleysHideout', xp: 54.39, yp: 66.08, isDungeon: true },
 { id: 'UG_old_arkovia01', tag: 'tagUGOldArkovia01', xp: 58.24, yp: 74.79, isDungeon: true },
 { id: 'UG_slith_lab02', tag: 'tagUGSlithLab02', xp: 56.62, yp: 76, isDungeon: true },
-{ id: 'tag_uG_slith_lab03', tag: 'tagUGSlithLab03', xp: 59.27, yp: 76.66, isDungeon: true },
+{ id: 'tag_uG_slith_lab03', tag: 'tagUGSlithLab03', xp: 60.64, yp: 79.18, isDungeon: true },
 { id: 'UG_broken_hills01', tag: 'tagUGBrokenHills01', xp: 59.98, yp: 83.8, isDungeon: true },
 { id: 'UG_arkovian_foothills01', tag: 'tagUGArkovianFoothills01', xp: 55.87, yp: 92.56, isDungeon: true },
 { id: 'tag_UG_broken_hills02', tag: 'tagUGBrokenHills02', xp: 44.58, yp: 90.42, isDungeon: true },
@@ -154,7 +152,7 @@
 { id: 'UG_broken_hills02b', tag: 'tagUGBrokenHills02B', xp: 51.83, yp: 91.49, isDungeon: true },
 { id: 'UG_broken_hills02d', tag: 'tagUGBrokenHills02D', xp: 53.11, yp: 95.67, isDungeon: true },
 { id: 'GDX2_side_areas_02', tag: 'tagGDX2SideAreas_02', xp: 38.22, yp: 90.46, isDungeon: true },
-{ id: 'UG_burrwitch_flooded_cellars', tag: 'tagUGBurrwitchFloodedCellars', xp: 60.57, yp: 62.00, isDungeon: true },
+{ id: 'UG_burrwitch_flooded_cellars', tag: 'tagUGBurrwitchFloodedCellars', xp: 60, yp: 62.00, isDungeon: true },
 { id: 'map_wardens_cellar01', tag: 'tagMapWardensCellar01', xp: 65.73, yp: 50.86, isDungeon: true },
 { id: 'map_wardens_labratory01', tag: 'tagMapWardensLabratory01', xp: 60.26, yp: 51.57, isDungeon: true },
 { id: 'GDX1_UG_ugdenbog_cellar02', tag: 'tagGDX1UGUgdenbogCellar02', xp: 80.82, yp: 55.67, isDungeon: true },

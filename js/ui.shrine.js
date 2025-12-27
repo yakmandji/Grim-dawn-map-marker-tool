@@ -4,10 +4,10 @@
   //LISTES PAR MAP -------------------------------------------------
   window.SHRINE_MARKERS_CAIRN = [
     { id: 'shrine_Burial_Hill', regionTag: 'tagMapBurialHill', xp: 70.09, yp: 83.85, difficulty: 'normal' },
-    { id: 'shrine_MapFoggy_Bank', regionTag: 'tagMapFoggyBank', xp: 64.77, yp: 74.89, difficulty: 'normal' },
-    { id: 'shrine_Devils_Crossing_Aquifer', regionTag: 'tagUGDevilsCrossingAquifer', xp: 71.19, yp: 90.63, difficulty: 'normal' },
+    { id: 'shrine_MapFoggy_Bank', regionTag: 'tagMapFoggyBank', xp: 64.93, yp: 74.96, difficulty: 'normal' },
+    { id: 'shrine_Devils_Crossing_Aquifer', regionTag: 'tagUGDevilsCrossingAquifer', xp: 72.14, yp: 90.65, difficulty: 'normal' },
     { id: 'shrineMapFloodedPassage01', regionTag: 'tagMapFloodedPassage01', xp: 63.82, yp: 69.77, difficulty: 'normal' },
-    { id: 'shrineUGBurialCave', regionTag: 'tagUGBurialCave', xp: 63.37, yp: 67.00, difficulty: 'normal' },
+    { id: 'shrineUGBurialCave', regionTag: 'tagUGBurialCave', xp: 63.37, yp: 67.20, difficulty: 'normal' },
     { id: 'shirneMapBurrwitchEstates', regionTag: 'tagMapBurrwitchEstates', xp: 68.52, yp: 60.07, difficulty: 'normal' },
     { id: 'shrineMapOminousLair', regionTag: 'tagMapOminousLair', xp: 62.00, yp: 50.66, difficulty: 'normal' },
     { id: 'shrinetagMapEastMarsh03', regionTag: 'tagMapEastMarsh03', xp: 80.67, yp: 65.27, difficulty: 'normal' },
@@ -19,7 +19,7 @@
     { id: 'shrinetagUGOldArkovia02', regionTag: 'tagUGOldArkovia02', xp: 49.09, yp: 67.30, difficulty: 'normal' },
     { id: 'shrinetagMapBarrenHighlands', regionTag: 'tagMapBarrenHighlands', xp: 43.05, yp: 81.97, difficulty: 'normal' },
     { id: 'shrinetagUGBrokenHills02B', regionTag: 'tagUGBrokenHills02B', xp: 50.91, yp: 94.66, difficulty: 'normal' },
-    { id: 'shrinetagMapMountainDeeps', regionTag: 'tagMapMountainDeeps', xp: 21.98, yp: 75.46, difficulty: 'normal' },
+    { id: 'shrinetagMapMountainDeeps', regionTag: 'tagMapMountainDeeps', xp: 22.10, yp: 75.79, difficulty: 'normal' },
     { id: 'shrinetagUGJaggedWasteCave02', regionTag: 'tagUGJaggedWasteCave02', xp: 37.03, yp: 82.31, difficulty: 'normal' },
     { id: 'shrinetagMapJaggedWasteFort', regionTag: 'tagMapJaggedWasteFort', xp: 44.12, yp: 72.87, difficulty: 'normal' },
     { id: 'shrinetagMapInfestedFarms', regionTag: 'tagMapInfestedFarms', xp: 32.53, yp: 65.68, difficulty: 'normal' },
