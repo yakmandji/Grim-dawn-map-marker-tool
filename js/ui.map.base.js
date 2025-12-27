@@ -183,7 +183,7 @@
             const vb = viewport.getBoundingClientRect();
             const pt = pctToPx(cfg.xp, cfg.yp);
 
-            const scale = clamp(cfg.scale || state.view.scale, 0.30, 1.30);
+            const scale = clamp(cfg.scale || state.view.scale, 0.30, 1.50);
             state.view.scale = scale;
 
             state.view.x = vb.width  / 2 - pt.x * scale;
