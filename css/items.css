@@ -1276,7 +1276,7 @@ header button.menu-button.select-current:hover {
 }
 
 .marker-region-dungeon .region-label{
-  opacity: 0.15;
+  opacity: 0.25;
   font-size: 0.85em;
 }
 

@@ -744,16 +744,30 @@ async function goTo(item) {
     }, 60);
   }
 
-  // 1) Même profil → on ne touche pas au select, on centre + pulse
+  // 1) Même profil → center fluide + pulse
   if (state.active === targetProfile) {
-    if (typeof window.centerOn === 'function') {
+    const duration = 260;
+
+    if (typeof window.smoothCenterOn === 'function') {
+      // smoothCenterOn cap à 1.2
+      window.smoothCenterOn(item.xp, item.yp, zoom, duration);
+
+      // highlight après la fin du mouvement
+      setTimeout(() => {
+        highlightAtCenter(item);
+      }, duration + 20);
+
+      // si tu actives un overlay donjon après le center
+      if (item.type === 'dungeon') {
+        setTimeout(() => window.activateDungeonOverlayAt?.(item.xp, item.yp), duration);
+      }
+    } else if (typeof window.centerOn === 'function') {
       window.centerOn(item.xp, item.yp, zoom);
       highlightAtCenter(item);
-
-      maybeActivateDungeonOverlay();
     }
     return;
   }
+
 
   // 2) Profil différent → on passe par le select
   const sel = document.getElementById('profileSelect');

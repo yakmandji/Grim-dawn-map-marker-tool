@@ -49,7 +49,7 @@
 
   window.SHRINE_MARKERS_MALMOUTH = [
     { id: 'shrineGDX1MapMalmouthOutskirtsRuins', regionTag: 'tagGDX1MapMalmouthOutskirtsRuins', xp: 69.60, yp: 47.57, difficulty: 'normal' },
-    { id: 'shrinetagGDX1UGMalmouthLighthouse01', regionTag: 'tagGDX1UGMalmouthLighthouse01', xp: 19.58, yp: 46.89, difficulty: 'normal' },
+    { id: 'shrinetagGDX1UGMalmouthLighthouse01', regionTag: 'tagGDX1UGMalmouthLighthouse01', xp: 18.78, yp: 45.25, difficulty: 'normal' },
     { id: 'shrinetagGDX1MapMalmouthInner', regionTag: 'tagGDX1MapMalmouthInner', xp: 47.75, yp: 14.22, difficulty: 'normal' },
     { id: 'shrinetagGDX1UGMalmouthAetherialFactory01', regionTag: 'tagGDX1UGMalmouthAetherialFactory01', xp: 30.75, yp: 0.00, difficulty: 'ultimate' },
     { id: 'shrinetagGDX2RuinedDC', regionTag: 'tagGDX2RuinedDC', xp: 83.50, yp: 53.86, difficulty: 'ultimate' },

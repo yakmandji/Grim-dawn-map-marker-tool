@@ -40,11 +40,11 @@
     { id:'bloodfeast', w: 140, h: 100, img: 'img/qol/bloodfeast.png?1.0', xp: 45.11, yp: 61.1, isDungeon: true },
     { id:'homestead', w: 100, h: 110, img: 'img/qol/homestead.png', xp: 36.40, yp: 62.60,  anchor: 'center' },
     { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90, isDungeon: true },
-    { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.31, yp: 15.04, isDungeon: true },
+    { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 14.7, yp: 15, isDungeon: true },
     { id:'loghorrean', w: 140, h: 110, img: 'img/qol/loghorrean.png', xp: 14.11, yp: 4.51, isDungeon: true },
     { id:'thalonis.png', w: 90, h: 130, img: 'img/qol/thalonis.png', xp: 10.70, yp: 7.25, isDungeon: true },
     { id:'sharzul.png', w: 140, h: 170, img: 'img/qol/sharzul.png', xp: 52.30, yp: 1, isDungeon: true },
-    { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 6.5, yp: 18.43, isDungeon: true },
+    { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 8.5, yp: 18.43, isDungeon: true },
     { id:'igor-eternal', w: 100, h: 130, img: 'img/qol/igor-eternal.png', xp: 44.60, yp: 97.91, isDungeon: true },
     { id:'kaliska', w: 120, h: 90, img: 'img/qol/kaliska.png', xp: 79.35, yp: 64.20,  anchor: 'center' },
     { id:'alkamos', w: 100, h: 140, img: 'img/qol/alkamos.png', xp: 54.19, yp: 96.72, isDungeon: true },
@@ -69,7 +69,7 @@
     { id:'noveria', w: 80, h: 90, img: 'img/qol/noveria.png', xp: 30.2, yp: 60.42, isDungeon: true },
     { id:'kymon-father', w: 90, h: 85, img: 'img/qol/kymon-father.png', xp: 39.26, yp: 56.98, isDungeon: true },
 
-    { id:'karroz', w: 115, h: 115, img: 'img/qol/karroz.png', xp: 27.24, yp: 41.04, isDungeon: true },
+    { id:'karroz', w: 115, h: 115, img: 'img/qol/karroz.png', xp: 27.24, yp: 41.14, isDungeon: true },
     { id:'rolderathis', w: 90, h: 120, img: 'img/qol/rolderathis.png', xp: 64.49, yp: 72.94, isDungeon: true },
     { id:'salazar', w: 90, h: 140, img: 'img/qol/salazar.png', xp: 78.70, yp: 74.32, isDungeon: true },
 
@@ -183,7 +183,7 @@
             const vb = viewport.getBoundingClientRect();
             const pt = pctToPx(cfg.xp, cfg.yp);
 
-            const scale = clamp(cfg.scale || state.view.scale, 0.25, 1.50);
+            const scale = clamp(cfg.scale || state.view.scale, 0.30, 1.30);
             state.view.scale = scale;
 
             state.view.x = vb.width  / 2 - pt.x * scale;
