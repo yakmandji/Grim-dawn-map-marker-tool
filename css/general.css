@@ -301,7 +301,7 @@ header .sep {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 13px 28px 13px 16px;
+  padding: 13px 8px 13px 16px;
   align-items: center;
   margin: 14px 4px 14px 4px;
   border-radius: 6px;
@@ -318,12 +318,13 @@ header .sep {
 
 #list .right{
     justify-content: end;
-    max-width: 90px;
+    max-width: 31px;
     position: relative;
 }
 
 #list .left{
   min-width: 204px;
+  max-width: 234px;
 }
 
 #list .left .row{
