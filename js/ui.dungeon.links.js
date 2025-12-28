@@ -18,13 +18,8 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_smugglers_basin", xp: 71.03, yp: 68.51, tag: "Smugglers Basin" },
 { id: "entry_smugglers_basin2", xp: 69.08, yp: 66.44, tag: "Smugglers Basin2" },
 { id: "entry_smugglers_basin3", xp: 66.05, yp: 65.97, tag: "Smugglers Basin3" },
-
-
 { id: "entry_infested_cellar", xp: 69.16, yp: 63.67, tag: "Infested cellar" },
 { id: "entry_infested_cellar2", xp: 67.91, yp: 63.20, tag: "Infested cellar2", eyeColor:"gray" },
-
-
-
 { id: "entry_burial_cave_2a", xp: 69.07, yp: 68.91, tag: "burial cave 2a", eyeColor:"gray" },
 { id: "entry_burial_cave_2b", xp: 68.18, yp: 69.30, tag: "burial cave 2b" },
 { id: "entry_river_passage", xp: 71.13, yp: 63.24, tag: "river passage" },
@@ -126,7 +121,14 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 
 { id: "entry_port_valbury_fondation", xp: 41.93, yp: 30.63, tag: "Port Valbury Fondation" },
 { id: "entry_port_valbury_fondation2", xp: 41.39, yp: 29.93, tag: "Port Valbury Fondation 2", eyeColor:"gray" },
-{ id: "entry_altritch_karters", xp: 40.81, yp: 21.21, tag: "Altritch Karters" }
+{ id: "entry_altritch_karters", xp: 40.81, yp: 21.21, tag: "Altritch Karters" },
+
+{ id: "entry_Devil_Crowsing_Town", xp: 62.06, yp: 89.62, tag: "Devil crowsing", icon: "img/search-town-icon.svg" },
+{ id: "entry_Fort_Icon_Town", xp: 14.48, yp: 21.84, tag: "Fort Icon Town", icon: "img/search-town-icon.svg" },
+{ id: "entry_Home_stead_Town", xp: 36.67, yp: 63.04, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
+
+
+
 
 ];
 
@@ -144,18 +146,13 @@ window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 { id: "entry_sewer_hideout_03", xp: 59.10, yp: 38.00, tag: "Sewer Hideout 03", eyeColor:"green" },
 { id: "entry_herald_mathis", xp: 41.55, yp: 49.89, tag: "Herald Mathis" },
 { id: "entry_herald_mathis2", xp: 40.24, yp: 51.69, tag: "Herald Mathis2", eyeColor:"gray-muted" },
-
 { id: "entry_ransaked_lighthouse", xp: 38.11, yp: 41.07, tag: "Ransacked Lighthouse" },
 { id: "entry_ransaked_lighthouse2", xp: 38.34, yp: 39.43, tag: "Ransacked Lighthouse2", eyeColor:"gray-muted" },
-
 { id: "entry_swelling_depths", xp: 43.76, yp: 31.72, tag: "Swelling Depths" },
 { id: "entry_swelling_depths2", xp: 42.51, yp: 36.76, tag: "Swelling Depths2", eyeColor:"gray-muted" },
-
 { id: "entry_infestation", xp: 50.67, yp: 3.64, tag: "Infestation" },
 { id: "entry_infestation2", xp: 50.70, yp: 4.19, tag: "Infestation2", eyeColor:"gray-muted" },
 { id: "entry_infestation3", xp: 50.20, yp: 4, tag: "Infestation2", eyeColor:"blue" },
-
-
 
 { id: "entry_chamber_council", xp: 49.78, yp: 19.58, tag: "Chamber Council" },
 { id: "entry_chamber_council2", xp: 48.22, yp: 17.36, tag: "Chamber Council2", eyeColor:"gray-muted" },
@@ -203,16 +200,17 @@ window.DUNGEON_LINKS = {
 
   /*CAIRN*/
   
+
+
+  "Devil_crowsing_town":["entry_Devil_Crowsing_Town"],
+  "Fort_Ikon_town":["entry_Fort_Icon_Town"],
+  "HomeStead_town":["entry_Home_stead_Town"],
+
   "river_passage":["entry_river_passage", "entry_river_passage2"],
   "festering_lair":["entry_festering_lair"],
   "buried_crypt":["entry_Burried_crypt"],
   "the_hidden_path":["entry_the_hidden_path"],
-
   "infested_cellar":["entry_infested_cellar", "entry_infested_cellar2"],
-
-
-
-  
   "smugglers_basin":["entry_smugglers_basin", "entry_smugglers_basin2", "entry_smugglers_basin3"],
   "burial_cave2":["entry_burial_cave_2a", "entry_burial_cave_2b"],
   "caverne_3": ["entry_caverne_3", "entry_caverne_3b"],

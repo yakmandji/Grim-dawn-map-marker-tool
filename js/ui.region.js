@@ -35,6 +35,8 @@
 { id: 'tag_map_hidden_path02', tag: 'tagMapHiddenPath02', xp: 46.34, yp: 84.94 },
 { id: 'tag_map_hidden_path03', tag: 'tagMapHiddenPath03', xp: 12.69, yp: 33.90 },
 { id: 'region_dc', tag: 'tagMapDevilsCrossing01', xp: 62.2, yp: 88.85 },
+{ id: 'region_dc2', tag: 'tagMapDevilsCrossing01', xp: 61.86, yp: 91.95, isDungeon: true },
+
 { id: 'UG_devils_crossing_hidden_passage01', tag: 'tagUGDevilsCrossingHiddenPassage01', xp: 66.64, yp: 89.30, isDungeon: true },
 { id: 'tag_gDX1UG_ugdenbog_cave01', tag: 'tagGDX1UGUgdenbogCave01', xp: 93.92, yp: 42.45, isDungeon: true },
 { id: 'world_map_witch_god_temple', tag: 'tagWorldMapWitchGodTemple', xp: 82.46, yp: 62.40, isDungeon: true },
@@ -100,6 +102,9 @@
 { id: 'map_rotted_harvest', tag: 'tagMapRottedHarvest', xp: 27.35, yp: 67.47 },
 { id: 'map_corrupted_pasture', tag: 'tagMapCorruptedPasture', xp: 29.04, yp: 64.09 },
 { id: 'map_homestead', tag: 'tagMapHomestead', xp: 36.39, yp: 63.43 },
+{ id: 'map_homestead2', tag: 'tagMapHomestead', xp: 42.98, yp: 62.35, isDungeon: true },
+
+
 { id: 'map_conflagration01', tag: 'tagMapConflagration01', xp: 40.04, yp: 60.44 },
 { id: 'map_sorrows_bastion_road', tag: 'tagMapSorrowsBastionRoad', xp: 35.24, yp: 60.42 },
 { id: 'map_sorrows_bastion', tag: 'tagMapSorrowsBastion', xp: 31.9, yp: 57.80 },
@@ -114,6 +119,9 @@
 { id: 'map_alpine_road_b', tag: 'tagMapAlpineRoad', xp: 12.47, yp: 33.28 },
 { id: 'map_alpine_valley', tag: 'tagMapAlpineValley', xp: 8.93, yp: 30.36 },
 { id: 'map_alpine_fort', tag: 'tagMapAlpineFort', xp: 12.95, yp: 24.28 },
+{ id: 'map_alpine_fort2', tag: 'tagMapAlpineFort', xp: 17.39, yp: 24.90, isDungeon: true},
+
+
 { id: 'map_plains_of_strife', tag: 'tagMapPlainsofStrife', xp: 19.8, yp: 19.25 },
 { id: 'map_necropolis_gate', tag: 'tagMapNecropolisGate', xp: 22.61, yp: 10.53 },
 { id: 'map_necropolis_interior', tag: 'tagMapNecropolisInterior', xp: 22.53, yp: 3.53 },
@@ -138,7 +146,7 @@
 { id: 'map_port_valbury_outskirts', tag: 'tagMapPortValburyOutskirts', xp: 44.68, yp: 31.87 },
 { id: 'UG_fort_faction01', tag: 'tagUGFortFaction01', xp: 28.82, yp: 48.67 },
 { id: 'map_voidlands02', tag: 'tagMapVoidlands02', xp: 21.12, yp: 55.02, isDungeon: true },
-{ id: 'map_jagged_waste_fort_dungeon', tag: 'tagMapJaggedWasteFort', xp: 44.05, yp: 65.29, isDungeon: true },
+{ id: 'map_jagged_waste_fort_dungeon', tag: 'tagMapJaggedWasteFort', xp: 47.05, yp: 65.29, isDungeon: true },
 { id: 'UG_old_arkovia02', tag: 'tagUGOldArkovia02', xp: 50.25, yp: 67.09, isDungeon: true },
 { id: 'map_cronleys_hideout', tag: 'tagMapCronleysHideout', xp: 54.39, yp: 66.08, isDungeon: true },
 { id: 'UG_old_arkovia01', tag: 'tagUGOldArkovia01', xp: 58.24, yp: 74.79, isDungeon: true },

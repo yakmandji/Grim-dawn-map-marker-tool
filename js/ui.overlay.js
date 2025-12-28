@@ -20,7 +20,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "cronleys_hideout", map: "cairn", img: "cronleys-hideout.jpg?1.1", left: 53.4257, top: 65.3967, width: 6.1811, height: 6.0534 },
 { id: "hannefy_mine", map: "cairn", img: "hannefy-mine.jpg?1.1", left: 56.0286, top: 71.5493, width: 3.962, height: 3.9036 },
 { id: "arkovian_undercity", map: "cairn", img: "arkovian-undercity.jpg?1.11", left: 46.2992, top: 66.3647, width: 7.017, height: 6.1196 },
-{ id: "tyrant_hold", map: "cairn", img: "tyrant-hold.jpg?1.2", left: 43.4316, top: 59.5735, width: 6.6584, height: 6.5157 },
+{ id: "tyrant_hold", map: "cairn", img: "tyrant-hold.jpg?1.2", left: 46.4316, top: 59.5735, width: 6.6584, height: 6.5157 },
 { id: "mountain_deep", map: "cairn", img: "mountain-deep.jpg", left: 20.9086, top: 72.0629, width: 7.0704, height: 7.2528 },
 { id: "royal_hive", map: "cairn", img: "royal-hive.jpg?1.2", left: 13.5229, top: 62.4664, width: 9.4592, height: 9.3523 },
 { id: "bastion_order", map: "cairn", img: "bastion-order.jpg?1.1", left: 27.39, top: 57.546, width: 3.4863, height: 3.4196 },
@@ -58,8 +58,6 @@ window.DUNGEON_OVERLAYS = [
 { id: "janaxias_den", map: "cairn", img: "janaxias-den.jpg?1.0", left: 93.5294, top: 42.3167, width: 2.9051, height: 2.8506 },
 { id: "burial_cave", map: "cairn", img: "burial-cave.jpg?1.3", left: 68.858, top: 83.3461, width: 2.178, height: 2.1404 },
 { id: "buried_crypt", map: "cairn", img: "buried-crypt.jpg?1.0", left: 28.858, top: 70.8461, width: 2, height: 2 },
-
-
 { id: "cultists_lair", map: "cairn", img: "cultists-lair.jpg?1.0", left: 72.6966, top: 76.538, width: 2.3675, height: 2.3256 },
 { id: "cave", map: "cairn", img: "cave.jpg", left: 72.2396, top: 79, width: 1.844, height: 1.8066 },
 { id: "caverne_2", map: "cairn", img: "caverne-2.jpg?1.1", left: 73.416, top: 72.9435, width: 3.3527, height: 3.3833 },
@@ -69,6 +67,11 @@ window.DUNGEON_OVERLAYS = [
 { id: "swarming_hive", map: "cairn", img: "swarming-hive.jpg?1.1", left: 40.516, top: 83.8, width: 3.1, height: 3.1 },
 { id: "stirring_hive", map: "cairn", img: "stirring-hive.jpg?1.1", left: 55.3, top: 80.45, width: 2.8, height: 2.8 },
 { id: "musty_cellar", map: "cairn", img: "musty-cellar.jpg?1.1", left: 63.3, top: 56, width: 2.8, height: 2.8 },
+
+{ id: "Devil_crowsing_town", map: "cairn", img: "devil-crowsing.jpg", left: 60.1386, top: 91.7030, width: 5.3868, height: 5.2460 },
+{ id: "Fort_Ikon_town", map: "cairn", img: "fort-icon-town.jpg", left: 15.5988, top: 24.6959, width: 5.1066, height: 4.6750 },
+{ id: "HomeStead_town", map: "cairn", img: "home-stead-town.jpg", left: 41.2463, top: 62.1956, width: 4.9, height: 3.7528 },
+
 
 
 { id: 'chamber_council',      map: 'malmouth', img: 'chamber-council.jpg?1.1',   left: 55.2913, top: -5.0980,  width: 14.4496, height: 20.7890 },
