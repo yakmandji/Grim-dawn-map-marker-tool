@@ -791,8 +791,8 @@ input[type="color"]::-moz-color-swatch {
 
 .filterToggle {
   position: relative;
-  width: 37px;
-  height: 33px;
+  width: 33px;
+  height: 30px;
   border: none;
   padding: 0;
   border-radius: 10px;
@@ -804,7 +804,7 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .filterBar .filterToggle{
-    margin: 16px 0px 14px 11px;
+    margin: 16px 0px 14px 8px;
 }
 
 .filterBar .filterToggle:first-child{
@@ -937,8 +937,8 @@ input[type="color"]::-moz-color-swatch {
 .listItem.npc      { border-left: 4px solid #574327; }
 
 .filterToggle img {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   pointer-events: none;
 }
 
