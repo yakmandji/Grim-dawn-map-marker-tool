@@ -71,7 +71,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "Devil_crowsing_town", map: "cairn", img: "devil-crowsing.jpg", left: 60.1386, top: 91.7030, width: 5.3868, height: 5.2460 },
 { id: "Fort_Ikon_town", map: "cairn", img: "fort-icon-town.jpg", left: 15.5988, top: 24.6959, width: 5.1066, height: 4.6750 },
 { id: "HomeStead_town", map: "cairn", img: "home-stead-town.jpg", left: 41.2463, top: 62.1956, width: 4.9, height: 3.7528 },
-{ id: "Covens_town", map: "cairn", img: "covens-village.jpg", left: 79.2969, top: 40.4631, width: 6.4470, height: 4.8357 },
+{ id: "Covens_town", map: "cairn", img: "covens-village.jpg?1.0", left: 79.2969, top: 40.4631, width: 6.4470, height: 4.8357 },
 
 
 
