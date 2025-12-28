@@ -65,8 +65,11 @@
 { id: 'map_abandoned_waterfront', tag: 'tagMapAbandonedWaterfront', xp: 65.37, yp: 61.08 },
 { id: 'map_burrwitch_estates', tag: 'tagMapBurrwitchEstates', xp: 68.89, yp: 59.5 },
 { id: 'GDX1_map_dark_wood', tag: 'tagGDX1MapDarkWood', xp: 76.62, yp: 50.9 },
-{ id: 'GDX1_map_ugdenbog', tag: 'tagGDX1MapUgdenbog', xp: 83.16, yp: 46.38 },
+{ id: 'GDX1_map_ugdenbog', tag: 'tagGDX1MapUgdenbog', xp: 82.58, yp: 47.52 },
 { id: 'GDX1_map_ugdenbog_coven', tag: 'tagGDX1MapUgdenbogCoven', xp: 84.34, yp: 47.65 },
+{ id: 'GDX1_map_ugdenbog_coven2', tag: 'tagGDX1MapUgdenbogCoven', xp: 81.67, yp: 40.71, isDungeon: true  },
+
+
 { id: 'GDX1_map_ugdenbog_ancient', tag: 'tagGDX1MapUgdenbogAncient', xp: 90.76, yp: 39.6 },
 { id: 'GDX1_map_ugdenbog_north', tag: 'tagGDX1MapUgdenbog', xp: 88.2, yp: 35.65 },
 { id: 'GDX1_map_ugdenbog_village', tag: 'tagGDX1MapUgdenbogVillage', xp: 86.6, yp: 27.66 },
@@ -118,7 +121,7 @@
 { id: 'map_alpine_road_a', tag: 'tagMapAlpineRoad', xp: 16.1, yp: 38.29 },
 { id: 'map_alpine_road_b', tag: 'tagMapAlpineRoad', xp: 12.47, yp: 33.28 },
 { id: 'map_alpine_valley', tag: 'tagMapAlpineValley', xp: 8.93, yp: 30.36 },
-{ id: 'map_alpine_fort', tag: 'tagMapAlpineFort', xp: 12.95, yp: 24.28 },
+{ id: 'map_alpine_fort', tag: 'tagMapAlpineFort', xp: 14.00, yp: 23.89 },
 { id: 'map_alpine_fort2', tag: 'tagMapAlpineFort', xp: 17.39, yp: 24.90, isDungeon: true},
 
 
@@ -164,7 +167,7 @@
 { id: 'map_wardens_cellar01', tag: 'tagMapWardensCellar01', xp: 65.73, yp: 50.86, isDungeon: true },
 { id: 'map_wardens_labratory01', tag: 'tagMapWardensLabratory01', xp: 60.26, yp: 51.57, isDungeon: true },
 { id: 'GDX1_UG_ugdenbog_cellar02', tag: 'tagGDX1UGUgdenbogCellar02', xp: 80.82, yp: 55.67, isDungeon: true },
-{ id: 'GDX1_UG_ugdenbog_cave05', tag: 'tagGDX1UGUgdenbogCave05', xp: 76.23, yp: 40.97, isDungeon: true },
+{ id: 'GDX1_UG_ugdenbog_cave05', tag: 'tagGDX1UGUgdenbogCave05', xp: 74.37, yp: 42, isDungeon: true },
 { id: 'UG_voidlands01b', tag: 'tagUGVoidlands01B', xp: 44.51, yp: 3.05, isDungeon: true },
 { id: 'UG_voidlands01a', tag: 'tagUGVoidlands01A', xp: 39.02, yp: -1, isDungeon: true },
 { id: 'UG_crypt_necropolis01', tag: 'tagUGCryptNecropolis01', xp: 31.17, yp: 7.67, isDungeon: true },

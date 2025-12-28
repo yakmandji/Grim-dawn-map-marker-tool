@@ -126,6 +126,7 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_Devil_Crowsing_Town", xp: 62.06, yp: 89.62, tag: "Devil crowsing", icon: "img/search-town-icon.svg" },
 { id: "entry_Fort_Icon_Town", xp: 14.48, yp: 21.84, tag: "Fort Icon Town", icon: "img/search-town-icon.svg" },
 { id: "entry_Home_stead_Town", xp: 36.67, yp: 63.04, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
+{ id: "entry_covens_Town", xp: 84.26, yp: 48.26, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
 
 
 
@@ -205,6 +206,9 @@ window.DUNGEON_LINKS = {
   "Devil_crowsing_town":["entry_Devil_Crowsing_Town"],
   "Fort_Ikon_town":["entry_Fort_Icon_Town"],
   "HomeStead_town":["entry_Home_stead_Town"],
+  "Covens_town":["entry_covens_Town"],
+
+
 
   "river_passage":["entry_river_passage", "entry_river_passage2"],
   "festering_lair":["entry_festering_lair"],

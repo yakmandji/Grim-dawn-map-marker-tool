@@ -30,7 +30,6 @@
     { id:'attendant', w: 60, h: 60, img: 'img/qol/attendant.png?1.0', xp: 87.77, yp: 63.4, isDungeon: true },
     { id:'sentinel', w: 95, h: 115, img: 'img/qol/sentinel.png?1.0', xp: 87, yp: 63.69, isDungeon: true },
     { id:'hidden-donjon1', w: 70, h: 70, img: 'img/qol/hidden-donjon1.png', xp: 78.47, yp: 62.03,  anchor: 'center' },
-    { id:'coliseum', w: 70, h: 70, img: 'img/qol/coliseum.png', xp: 45.23, yp: 77.16,  anchor: 'center' },
     { id:'warden-krieg', w: 110, h: 140, img: 'img/qol/warden-krieg.png', xp: 58.60, yp: 45.82, isDungeon: true },
     { id:'Bastion-order', w: 55, h: 62, img: 'img/qol/bastion-order.png', xp: 31.85, yp: 58.64,  anchor: 'center' },
     { id:'kymon-sanctuary', w: 55, h: 62, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },
@@ -69,6 +68,7 @@
     { id:'karroz', w: 115, h: 115, img: 'img/qol/karroz.png', xp: 27.24, yp: 41.14, isDungeon: true },
     { id:'rolderathis', w: 90, h: 120, img: 'img/qol/rolderathis.png', xp: 64.49, yp: 72.94, isDungeon: true },
     { id:'salazar', w: 90, h: 140, img: 'img/qol/salazar.png', xp: 78.70, yp: 74.32, isDungeon: true },
+    { id:'carraxus', w: 155, h: 110, img: 'img/qol/carraxus.png', xp: 76.96, yp: 42.46, isDungeon: true },
 
 
 

@@ -54,7 +54,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "festering_lair", map: "cairn", img: "festering-lair.jpg?1.0", left: 61.8724, top: 59.036, width: 2.1915, height: 2.2041 },
 { id: "decrepit_cellar", map: "cairn", img: "decrepit-cellar.jpg?1.1", left: 79.1162, top: 52.4204, width: 4.003, height: 3.9257 },
 { id: "dank_cellar", map: "cairn", img: "dank-cellar.jpg?1.1", left: 69.1789, top: 54.9625, width: 2.0346, height: 1.9938 },
-{ id: "den_carraxus", map: "cairn", img: "den-carraxus.jpg?1.0", left: 75.7808, top: 40.5345, width: 3.5545, height: 3.4868 },
+{ id: "den_carraxus", map: "cairn", img: "den-carraxus.jpg?1.0", left: 74.2808, top: 41.8345, width: 3.5545, height: 3.4868 },
 { id: "janaxias_den", map: "cairn", img: "janaxias-den.jpg?1.0", left: 93.5294, top: 42.3167, width: 2.9051, height: 2.8506 },
 { id: "burial_cave", map: "cairn", img: "burial-cave.jpg?1.3", left: 68.858, top: 83.3461, width: 2.178, height: 2.1404 },
 { id: "buried_crypt", map: "cairn", img: "buried-crypt.jpg?1.0", left: 28.858, top: 70.8461, width: 2, height: 2 },
@@ -71,6 +71,8 @@ window.DUNGEON_OVERLAYS = [
 { id: "Devil_crowsing_town", map: "cairn", img: "devil-crowsing.jpg", left: 60.1386, top: 91.7030, width: 5.3868, height: 5.2460 },
 { id: "Fort_Ikon_town", map: "cairn", img: "fort-icon-town.jpg", left: 15.5988, top: 24.6959, width: 5.1066, height: 4.6750 },
 { id: "HomeStead_town", map: "cairn", img: "home-stead-town.jpg", left: 41.2463, top: 62.1956, width: 4.9, height: 3.7528 },
+{ id: "Covens_town", map: "cairn", img: "covens-village.jpg", left: 79.2969, top: 40.4631, width: 6.4470, height: 4.8357 },
+
 
 
 
