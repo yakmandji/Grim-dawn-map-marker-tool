@@ -31,7 +31,7 @@
     { id: 'shrinetagMapAlpineValley', regionTag: 'tagMapAlpineValley', xp: 6.72, yp: 30.12, difficulty: 'normal' },
     { id: 'shrinetagMapAlpineValleyWest', regionTag: 'tagMapAlpineValley', xp: 12.00, yp: 30.93, difficulty: 'normal' },
     { id: 'shrinetagGDX1MapDarkWood', regionTag: 'tagGDX1MapDarkWood', xp: 77.96, yp: 51.51, difficulty: 'normal' },
-    { id: 'shrineUgdenbogCave04', regionTag: 'tagGDX1UGUgdenbogCave04', xp: 91.99, yp: 33.29, difficulty: 'normal' },
+    { id: 'shrineUgdenbogCave04', regionTag: 'tagGDX1UGUgdenbogCave04', xp: 92.10, yp: 33.51, difficulty: 'normal' },
     { id: 'shrineGDX1UGAncientGrove01', regionTag: 'tagGDX1UGAncientGrove01', xp: 94.42, yp: 52.13, difficulty: 'normal' },
     { id: 'shrineUGCryptFactionBattle02', regionTag: 'tagUGCryptFactionBattle02', xp: 4.20, yp: 21.35, difficulty: 'normal' },
     { id: 'shrineMapBloodGroveAetherMine', regionTag: 'tagMapBloodGroveAetherMine', xp: 34.18, yp: 46.64, difficulty: 'elite' },

@@ -69,8 +69,8 @@
     { id:'rolderathis', w: 90, h: 120, img: 'img/qol/rolderathis.png', xp: 64.49, yp: 72.94, isDungeon: true },
     { id:'salazar', w: 90, h: 140, img: 'img/qol/salazar.png', xp: 78.70, yp: 74.32, isDungeon: true },
     { id:'carraxus', w: 155, h: 110, img: 'img/qol/carraxus.png', xp: 76.96, yp: 42.46, isDungeon: true },
-
-
+    { id:'sylvarria', w: 95, h: 78, img: 'img/qol/sylvarria.png', xp: 95.23, yp: 36.05, isDungeon: true },
+    { id:'ugdall', w: 75, h: 120, img: 'img/qol/ugdall.png', xp: 93.37, yp: 33.8, isDungeon: true },
 
 
   ];

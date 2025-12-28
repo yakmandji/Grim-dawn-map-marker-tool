@@ -43,7 +43,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "desolate_waste", map: "cairn", img: "desolate-waste.jpg?1.2", left: 68.579, top: 9.6438, width: 13, height: 15.9076 },
 { id: "den_of_wendigo", map: "cairn", img: "den-of-wendigo.jpg?1.2", left: 74.8726, top: 26.1324, width: 7.192, height: 6.9843 },
 { id: "barrow_holm", map: "cairn", img: "barrow-holm.jpg?1.2", left: 94.8385, top: 24.3491, width: 6.8807, height: 6.805 },
-{ id: "tomb_ugdall", map: "cairn", img: "tomb-ugdall.jpg?1.0", left: 91.0352, top: 31.86, width: 2.2575, height: 2.2121 },
+{ id: "tomb_ugdall", map: "cairn", img: "tomb-ugdall.jpg?1.0", left: 91.0352, top: 31.86, width: 2.7575, height: 2.7121 },
 { id: "undergrowth", map: "cairn", img: "undergrowth.jpg?1.0", left: 92.4638, top: 34.6784, width: 4.4148, height: 4.3269 },
 { id: "larrias_den", map: "cairn", img: "larrias-den.jpg?1.0", left: 81.59, top: 34.8843, width: 2.5938, height: 2.5405 },
 { id: "temple_of_three", map: "cairn", img: "temple-of-three.jpg?1.0", left: 81.4927, top: 61.3972, width: 7.1275, height: 6.9965 },
