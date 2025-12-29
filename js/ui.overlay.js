@@ -45,7 +45,7 @@ window.DUNGEON_OVERLAYS = [
 { id: "barrow_holm", map: "cairn", img: "barrow-holm.jpg?1.2", left: 94.8385, top: 24.3491, width: 6.8807, height: 6.805 },
 { id: "tomb_ugdall", map: "cairn", img: "tomb-ugdall.jpg?1.0", left: 91.0352, top: 31.86, width: 2.7575, height: 2.7121 },
 { id: "undergrowth", map: "cairn", img: "undergrowth.jpg?1.0", left: 92.4638, top: 34.6784, width: 4.4148, height: 4.3269 },
-{ id: "larrias_den", map: "cairn", img: "larrias-den.jpg?1.0", left: 81.59, top: 34.8843, width: 2.5938, height: 2.5405 },
+{ id: "larrias_den", map: "cairn", img: "larrias-den.jpg?1.1", left: 81.59, top: 34.8843, width: 3.1938, height: 3.1405 },
 { id: "temple_of_three", map: "cairn", img: "temple-of-three.jpg?1.0", left: 81.4927, top: 61.3972, width: 7.1275, height: 6.9965 },
 { id: "ancient_groove", map: "cairn", img: "ancient-groove.jpg?1.1", left: 87.8555, top: 49.206, width: 12.0789, height: 11.8274 },
 { id: "underground_transit", map: "cairn", img: "underground-transit.jpg?1.1", left: 56.7988, top: 43.8385, width: 12.094, height: 11.8934 },
