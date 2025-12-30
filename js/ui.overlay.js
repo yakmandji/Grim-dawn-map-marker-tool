@@ -87,8 +87,8 @@ window.DUNGEON_OVERLAYS = [
 { id: 'infestation',          map: 'malmouth', img: 'infestation.jpg?1.2',       left: 10.9480, top: -15.8114, width: 24.8347, height: 30.9737 },
 { id: 'fringes_of_sanity',    map: 'malmouth', img: 'fringes-of-sanity.jpg?1.0', left: 78.6480, top: 57.8114, width: 7.5, height: 10.8 },
 
-{ id: 'temple_osyr',            map: 'korvan', img: 'temple-osyr.jpg?1.1',          left: 40.9642, top: 77.5371, width: 17.2423, height: 16.8871 },
-{ id: 'crawling_nest',          map: 'korvan', img: 'crawling-nest.jpg?1.0',        left: 30.6314, top: 91.3196, width: 8.9726,  height: 8.6092 },
+{ id: 'temple_osyr',            map: 'korvan', img: 'temple-osyr.jpg?1.1',          left: 41.9642, top: 73.5371, width: 15.2423, height: 14.8871 },
+{ id: 'crawling_nest',          map: 'korvan', img: 'crawling-nest.jpg?1.0',        left: 11.1969, top: 74.592, width: 9.3579, height: 8.7890 },
 { id: 'veiled_den',             map: 'korvan', img: 'veiled-den.jpg?1.0',           left: 0.4052,  top: 86.5082, width: 11.2750, height: 11.0184 },
 { id: 'forlorn_bastion',        map: 'korvan', img: 'forlorn-bastion.jpg?1.1',      left: 0.1843,  top: 58.1950, width: 13.8198, height: 13.5079 },
 { id: 'sandblown_ruin',         map: 'korvan', img: 'sandblown-ruin.jpg?1.0',       left: 8.1843,  top: 44.6179, width: 12.5339, height: 12.36004 },
@@ -109,8 +109,10 @@ window.DUNGEON_OVERLAYS = [
 { id: 'pit_atonement',        map: 'korvan', img: 'pit-atonement.jpg?1.0',      left: 49.1701,  top: 20.2112,  width: 2.51, height: 2.500 },
 { id: 'durgs_den',        map: 'korvan', img: 'durgs-den.jpg?1.0', left: 34.7422, top: 55.6601, width: 4.9904, height: 3.3834 },
 { id: 'forgotten_cellar',        map: 'korvan', img: 'forgotten-cellar.jpg?1.0',      left: 14.1701,  top: 91.6112,  width: 2.51, height: 2.51 },
+{ id: 'splendors_shattered_realm', map: 'korvan', img: 'splendors-shattered-realm.jpg?1.0',  left: 12.5270, top: 94.7219, width: 4.5536, height: 4.2713 },
 
-{ id: 'splendors_shattered_realm', map: 'korvan', img: 'splendors-shattered-realm.jpg?1.0',  left: 24.6314, top: 91.3196, width: 4, height: 4 },
+{ id: 'conclave_of_the_three_town', map: 'korvan', img: 'conclave-of-the-three.jpg?1.0',  left: 28.3378, top: 89.8466, width: 17.5, height: 12.3 },
+
 
 
 ];

@@ -158,7 +158,6 @@ window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 { id: "entry_chamber_council", xp: 49.78, yp: 19.58, tag: "Chamber Council" },
 { id: "entry_chamber_council2", xp: 48.22, yp: 17.36, tag: "Chamber Council2", eyeColor:"gray-muted" },
 
-
 ];
 
 
@@ -194,6 +193,8 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
 
   { id: "entry_splendors_shattered_realm", xp: 20.09, yp: 97.32, tag: "Sanctum Chosen" },
 
+{ id: "entry_conclave_of_the_three", xp: 20.56, yp: 95.16, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
+
 
 ];
 
@@ -207,7 +208,6 @@ window.DUNGEON_LINKS = {
   "Fort_Ikon_town":["entry_Fort_Icon_Town"],
   "HomeStead_town":["entry_Home_stead_Town"],
   "Covens_town":["entry_covens_Town"],
-
 
 
   "river_passage":["entry_river_passage", "entry_river_passage2"],
@@ -292,6 +292,9 @@ window.DUNGEON_LINKS = {
   "chamber_council": ["entry_chamber_council","entry_chamber_council2" ],
 
   /*KORVAN*/
+
+  "conclave_of_the_three_town":["entry_conclave_of_the_three"],
+  
   "forgotten_cellar": ["entry_forgotten_cellar" ],
   "veiled_den": ["entry_veiled_den" ],
   "crawling_nest": ["entry_crawling_nest" ],

@@ -1271,10 +1271,6 @@ header button.menu-button.select-current:hover {
   font-size: 1.3em;
 }
 
-.korvanmap .region-label{
-  font-size: 1.1em;
-}
-
 .marker-region-dungeon .region-label{
   opacity: 0.25;
   font-size: 0.85em;
@@ -1293,6 +1289,10 @@ header button.menu-button.select-current:hover {
 .marker-region-dungeon .region-note-indicator {
   opacity: 0.25; 
   transition: opacity 0.25s ease;
+}
+
+.korvanmap .region-label{
+  font-size: 1em;
 }
 
 .marker-region-dungeon .region-label.opacity + .region-note-indicator {

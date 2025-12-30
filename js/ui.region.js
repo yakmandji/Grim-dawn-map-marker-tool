@@ -225,9 +225,11 @@ window.REGION_MARKERS_MALMOUTH = [
 
 // --- KORVAN ---
   window.REGION_MARKERS_KORVAN = [
-{ id: 'tag_gdx2_map_secret_base_shrine', tag: 'tagGDX2MapSecretBaseShrine', xp: 22.86, yp: 98.96 },
+{ id: 'tag_gdx2_map_secret_base_shrine', tag: 'tagGDX2MapSecretBaseShrine', xp: 21.3, yp: 99.02 },
 { id: 'tag_gDX2_map_messengers_volcano', tag: 'tagGDX2MapMessengersVolcano', xp: 49.26, yp: 20.51, isDungeon: true },
-{ id: 'tag_gdx2_map_witch_god_base', tag: 'tagGDX2MapWitchGodBase', xp: 20.83, yp: 96.01 },
+{ id: 'tag_gdx2_map_witch_god_base', tag: 'tagGDX2MapWitchGodBase', xp: 19.53, yp: 96.01 },
+{ id: 'tag_gdx2_map_witch_god_base2', tag: 'tagGDX2MapWitchGodBase', xp: 34.60, yp: 90.37, isDungeon: true },
+
 { id: 'tag_gdx2_map_area01_a', tag: 'tagGDX2MapArea01', xp: 23.72, yp: 87.54 },
 { id: 'tag_gdx2_map_ruined_temple_city', tag: 'tagGDX2MapRuinedTempleCity', xp: 25.54, yp: 78.46 },
 { id: 'tag_gdx2_map_ruined_temple01', tag: 'tagGDX2MapRuinedTemple01', xp: 35.41, yp: 76.10 },
@@ -254,8 +256,8 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gdx1_ug_secret01', tag: 'tagGDX1UGSecret01', xp: 12.73, yp: 21.32, isDungeon: true },
 { id: 'tag_gdx2_cairan_ruins01', tag: 'tagGDX2CairanRuins01', xp: 16.27, yp: 48.53, isDungeon: true },
 { id: 'tag_gdx2_bysmiel_eldritch', tag: 'tagGDX2BysmielEldritch', xp: 1.64, yp: 87.32, isDungeon: true },
-{ id: 'tag_gdx2_beetle01', tag: 'tagGDX2Beetle01', xp: 35.84, yp: 92.03, isDungeon: true },
-{ id: 'tag_gdx2_ruined_temple01_b', tag: 'tagGDX2RuinedTemple01', xp: 49.06, yp: 79.27, isDungeon: true },
+{ id: 'tag_gdx2_beetle01', tag: 'tagGDX2Beetle01', xp: 12.32, yp: 75.46, isDungeon: true },
+{ id: 'tag_gdx2_ruined_temple01_b', tag: 'tagGDX2RuinedTemple01', xp: 51.97, yp: 77.65, isDungeon: true },
 { id: 'tag_gdx2_howling_chasm', tag: 'tagGDX2HowlingChasm', xp: 59.58, yp: 57.88, isDungeon: true },
 { id: 'tag_gdx2_ruined_dc', tag: 'tagGDX2RuinedDC', xp: 66.33, yp: 54.81, isDungeon: true },
 { id: 'tag_gdx2_ruined_temple02', tag: 'tagGDX2RuinedTemple02', xp: 84.33, yp: 43.07, isDungeon: true },
@@ -281,7 +283,7 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gDX2_eldritch_realm02', tag: 'tagGDX2EldritchRealm02', xp: 75.77, yp: -1.50, isDungeon: true },
 { id: 'tag_gDX2_cellar', tag: 'tagGDX2Cellar', xp: 14.57, yp: 91.67, isDungeon: true },
 { id: 'tag_gDX2_roguelike_Area03', tag: 'tagGDX2Roguelike_Area03', xp: 55.29, yp: 66.17, isDungeon: true },
-{ id: 'tag_Splendor_OfShattered_Realm', tag: 'tagSplendorOfShatteredRealm', xp: 23.71, yp: 91.91, isDungeon: true },
+{ id: 'tag_Splendor_OfShattered_Realm', tag: 'tagSplendorOfShatteredRealm', xp: 12.57, yp: 95.23, isDungeon: true },
 
 
 

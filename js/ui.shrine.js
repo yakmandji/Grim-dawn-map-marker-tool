@@ -57,8 +57,8 @@
 
   window.SHRINE_MARKERS_KORVAN = [
     { id: 'shrinetagGDX2CairanRuins01', regionTag: 'tagGDX2CairanRuins01', xp: 11.74, yp: 50.72, difficulty: 'normal' },
-    { id: 'shrinetagSplendorOfShatteredRealm', regionTag: 'tagSplendorOfShatteredRealm', xp: 27.44, yp: 93.95, difficulty: 'normal' },
-    { id: 'shrinetagGDX2MapRuinedTemple01', regionTag: 'tagGDX2MapRuinedTemple01', xp: 55.74, yp: 89.23, difficulty: 'normal' },
+    { id: 'shrinetagSplendorOfShatteredRealm', regionTag: 'tagSplendorOfShatteredRealm', xp: 15.75, yp: 97.47, difficulty: 'normal' },
+    { id: 'shrinetagGDX2MapRuinedTemple01', regionTag: 'tagGDX2MapRuinedTemple01', xp: 54.86, yp: 83.70, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapHiddenOasis', regionTag: 'tagGDX2MapHiddenOasis', xp: 33.76, yp: 71.72, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapRuinedCity01', regionTag: 'tagGDX2MapRuinedCity01', xp: 30.53, yp: 45.04, difficulty: 'normal' },
     { id: 'shrinetagGDX2SanctuaryOfHorran', regionTag: 'tagGDX2SanctuaryOfHorran', xp: 45.56, yp: 42.08, difficulty: 'normal' },
