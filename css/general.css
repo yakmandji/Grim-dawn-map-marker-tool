@@ -1215,7 +1215,7 @@ header .gd-popup__card input[type="text"]{
 }
 
 .done-panel-header {
-  padding: 12px 14px 0px 12px;
+  padding: 12px 22px 0px 12px;
   font-weight: 600;
   display: flex;
   justify-content: space-between;
