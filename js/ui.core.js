@@ -499,6 +499,10 @@ function renderMarkers(options = {}) {
     applyView();
     persistViewForCurrentProfile();
 
+    setTimeout(() => {
+      window.activateDungeonOverlayAt?.(xp, yp);
+     }, 60);
+
     if (markerId) {
       const markerEl = document.querySelector(`.marker[data-mid="${markerId}"]`);
 
@@ -571,6 +575,9 @@ function renderMarkers(options = {}) {
           } else {
             _centerAnim = null;
             persistViewForCurrentProfile();
+            setTimeout(() => {
+              window.activateDungeonOverlayAt?.(xp, yp);
+            }, 0);     
           }
         };
 
