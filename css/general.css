@@ -764,7 +764,7 @@ label.checkbox{
   border: none;
   padding: 9px 16px 10px 9px!important;
   flex-direction: column;
-  background-position: right 6px top 76%;
+  background-position: right 0 top 80%;
 }
 
 .js-character-dropdown .select-green:hover,
