@@ -182,8 +182,8 @@ header .sep {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-top: 15px;
-    height: 96.5vh;
+    margin-top: 20px;
+    height: calc(100vh - 40px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
@@ -679,7 +679,6 @@ body.shared-only-view #mergeSharedBtn,
 
 .done-panel-inner {
   width: 350px;
-  max-height: 60vh;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -1172,7 +1171,8 @@ header .gd-popup__card input[type="text"]{
 .done-list {
   padding: 6px 0 8px;
   overflow-y: scroll;
-  max-height: 15vh;
+  height: calc(100vh - 500px - 180px);
+  max-height: 600px;
 }
 
 .doneItem .doneLabel {

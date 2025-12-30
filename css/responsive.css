@@ -19,6 +19,11 @@
     top: 112px;
   }
 
+  .done-list {
+    height: calc(100vh - 500px - 125px);
+  }
+
+
 }
 
 
@@ -59,6 +64,10 @@
   header button{
     text-align: left;
   } 
+
+  .done-list {
+    height: calc(100vh - 500px);
+  }
 
   .floating #miniMap,
   #zoomReadout,
