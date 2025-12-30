@@ -77,6 +77,11 @@
           // Restaurer les notes
           localStorage.setItem('gdmm_region_notes_v1', JSON.stringify(imported.regionNotes));
 
+          // restaurer les shrines si le champ existe
+          if (imported.shrineProgress && typeof imported.shrineProgress === 'object') {
+            localStorage.setItem('gdmm_shrine_progress_v1', JSON.stringify(imported.shrineProgress));
+          }
+
           alert('Save (characters + region notes) imported successfully!');
           location.reload();
           return;
@@ -125,11 +130,23 @@
       console.warn('[GDMM] Failed to read region notes for export', e);
     }
 
+
+    // Charger la progression des shrines (multi-char)
+    let shrineProgress = null;
+    try {
+      const spRaw = localStorage.getItem('gdmm_shrine_progress_v1');
+      shrineProgress = spRaw ? JSON.parse(spRaw) : null;
+    } catch (e) {
+      console.warn('[GDMM] Failed to read shrine progress for export', e);
+      shrineProgress = null;
+    }
+
     // Construire un seul objet exporté
     const exportObj = {
       v: 2,
       save: saveData,
-      regionNotes: regionNotes
+      regionNotes: regionNotes,
+      shrineProgress: shrineProgress
     };
 
     // Exporter fichier JSON

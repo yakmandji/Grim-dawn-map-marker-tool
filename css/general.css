@@ -543,7 +543,7 @@ header .sep {
 }
 
 #shared-view-message a{
-  color: var(--txt);
+  color: #b9ae92;
 }
 
 /* === Shared read-only view === */
@@ -575,6 +575,8 @@ body.shared-only-view .marker-delete
 
 body.shared-only-view #shared-view-message{
   display: block;
+  position: absolute;
+  right: 11px;
 }
 
 body.shared-only-view .sidebar {
@@ -821,7 +823,7 @@ label.checkbox{
   color: #ff6b6b;
 }
 
-.character-line.is-active img {
+.character-line.is-active .char-avatar {
   border: 3px solid rgb(50 173 128 / 30%);
 }
 
