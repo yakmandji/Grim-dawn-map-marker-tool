@@ -154,7 +154,7 @@
   width: 15px;
   height: 12px;
   border-radius: 2px;
-  background-image: url('../img/flags.png');
+  background-image: url('../img/flags.png?v=1.1');
   flex: 0 0 auto;
   background-size: 76px;
 }
@@ -170,6 +170,7 @@
 .flag-ru { background-position: -113px -14px; }
 .flag-zh { background-position: -133px -14px; }
 .flag-ja { background-position: -154px -69px; }
+.flag-ko { background-position: -190px -69px; }
 
 
 .dungeon-wrapper.is-hovered .dungeon {

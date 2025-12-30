@@ -191,8 +191,12 @@ function buildGlobalIndex() {
     if (!q) return [];
 
     // On découpe en mots, on garde seulement ceux qui contiennent des lettres/chiffres
-    const tokens = q.split(/\s+/).filter(tok => tok && /[0-9a-z\u00c0-\u024f]/i.test(tok));
+    const tokens = q
+      .split(/\s+/)
+      .filter(tok => /\p{L}|\p{N}/u.test(tok));
+
     if (!tokens.length) return [];
+
 
     const results = [];
 
