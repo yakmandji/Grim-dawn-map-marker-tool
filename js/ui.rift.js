@@ -14,7 +14,7 @@ window.RIFT_MARKERS_CAIRN = [
 { id: 'rift_broken_hills', tag: 'tagRiftBrokenHills', xp: 49.43, yp: 82.6 },
 { id: 'rift_old_arkovia', tag: 'tagRiftOldArkovia', xp: 52.37, yp: 78.4 },
 { id: 'rift_arkovian_foothills', tag: 'tagRiftArkovianFoothills', xp: 54.5, yp: 85.9 },
-{ id: 'rift_cronleys_hideout', tag: 'tagRiftCronleysHideout', xp: 54.25, yp: 69.15 },
+{ id: 'rift_cronleys_hideout', tag: 'tagRiftCronleysHideout', xp: 54.35, yp: 69.45 },
 { id: 'rift_twin_falls', tag: 'tagRiftTwinFalls', xp: 48.6, yp: 77.4 },
 { id: 'rift_smugglers_pass', tag: 'tagRiftSmugglersPass', xp: 27.84, yp: 85.10 },
 { id: 'rift_smugglers_road', tag: 'tagRiftSmugglersRoad', xp: 37.25, yp: 68.9 },

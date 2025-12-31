@@ -14,7 +14,7 @@
     { id: 'shrinetagWorldMapWitchGodTemple', regionTag: 'tagWorldMapWitchGodTemple', xp: 84.88, yp: 63.84, difficulty: 'normal' },
     { id: 'shrinetagUGArkovianFoothills02', regionTag: 'tagUGArkovianFoothills02', xp: 60.83, yp: 84.68, difficulty: 'normal' },
     { id: 'shrinetagMapRockyCoast', regionTag: 'tagMapRockyCoast', xp: 53.81, yp: 80.69, difficulty: 'normal' },
-    { id: 'shrinetagMapCronleysHideout', regionTag: 'tagMapCronleysHideout', xp: 55.46, yp: 69.97, difficulty: 'normal' },
+    { id: 'shrinetagMapCronleysHideout', regionTag: 'tagMapCronleysHideout', xp: 55.66, yp: 70.3, difficulty: 'normal' },
     { id: 'shrinetagMapOldArkovia', regionTag: 'tagMapOldArkovia', xp: 49.95, yp: 79.05, difficulty: 'normal' },
     { id: 'shrinetagUGOldArkovia02', regionTag: 'tagUGOldArkovia02', xp: 49.09, yp: 67.30, difficulty: 'normal' },
     { id: 'shrinetagMapBarrenHighlands', regionTag: 'tagMapBarrenHighlands', xp: 43.05, yp: 81.97, difficulty: 'normal' },

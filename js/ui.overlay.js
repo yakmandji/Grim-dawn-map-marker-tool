@@ -17,7 +17,7 @@ window.DUNGEON_OVERLAYS = [
 
 { id: "depraved_sanctuary", map: "cairn", img: "depraved-sanctuary.jpg?1.1", left: 77.0266, top: 70.8195, width: 4.3266, height: 4.2136 },
 { id: "flooded_passage", map: "cairn", img: "flooded-passage.jpg?1.1", left: 60.4262, top: 68.7089, width: 4.8966, height: 4.795 },
-{ id: "cronleys_hideout", map: "cairn", img: "cronleys-hideout.jpg?1.1", left: 53.4257, top: 65.3967, width: 6.1811, height: 6.0534 },
+{ id: "cronleys_hideout", map: "cairn", img: "cronleys-hideout.jpg?1.11", left: 53.4257, top: 65.4967, width: 6.8811, height: 5.9534 },
 { id: "hannefy_mine", map: "cairn", img: "hannefy-mine.jpg?1.1", left: 56.0286, top: 71.5493, width: 3.962, height: 3.9036 },
 { id: "arkovian_undercity", map: "cairn", img: "arkovian-undercity.jpg?1.11", left: 46.2992, top: 66.3647, width: 7.017, height: 6.1196 },
 { id: "tyrant_hold", map: "cairn", img: "tyrant-hold.jpg?1.2", left: 46.4316, top: 59.5735, width: 6.6584, height: 6.5157 },
