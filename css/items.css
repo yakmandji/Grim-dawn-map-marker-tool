@@ -1045,6 +1045,14 @@ header button.menu-button.select-current:hover {
   z-index: 3;
 }
 
+.marker-rift.rift-dungeon{
+  opacity: 0.4;
+}
+
+.marker-rift.rift-dungeon.opacity{
+  opacity: 1;
+}
+
 .marker-rift .label {
   font-size: 0.90em;
   background: #3d0f0f;

@@ -348,6 +348,11 @@
 
           const lab = document.createElement('div');
           lab.className = 'label rift-label';
+
+          if (m.isDungeon) {
+             el.classList.add('rift-dungeon');
+          }
+
           lab.textContent = labelText;
           el.appendChild(lab);
 

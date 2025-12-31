@@ -547,6 +547,9 @@ function clearDungeonLinks() {
   const icons = document.querySelectorAll('img.decor-dungeon.opacity');
   icons.forEach(i => i.classList.remove('opacity'));
 
+  const rift = document.querySelectorAll('.marker.marker-rift');
+  rift.forEach(i => i.classList.remove('opacity'));
+
 
 }
 
@@ -603,6 +606,32 @@ function highlightDungeonDecorIconsForOverlay(overlayObj) {
   });
 }
 
+
+// --- highlight des Rift dans un donjon donné ---
+function highlightRiftForOverlay(overlayObj) {
+  if (!overlayObj || !overlayObj.el) return;
+
+  const rift = document.querySelectorAll('.marker-rift.rift-dungeon');
+  if (!rift.length) return;
+
+  // reset
+  rift.forEach(i => i.classList.remove('opacity'));
+
+  const rect = overlayObj.el.getBoundingClientRect();
+
+  rift.forEach(i => {
+    const r = i.getBoundingClientRect();
+    const intersect =
+      !(r.right  < rect.left ||
+        r.left   > rect.right ||
+        r.bottom < rect.top ||
+        r.top    > rect.bottom);
+
+    if (intersect) {
+      i.classList.add('opacity');
+    }
+  });
+}
 
 
 // --- helpers centres en coords "map" (0..mapNatural.w/h) ---
@@ -787,6 +816,7 @@ function showDungeonLinksForEntry(entryId) {
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
   highlightDungeonDecorIconsForOverlay(overlayObj);
+  highlightRiftForOverlay(overlayObj);  
 
 }
 window.showDungeonLinksForEntry = showDungeonLinksForEntry;
@@ -815,6 +845,7 @@ function showDungeonLinksForOverlay(overlayId) {
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
   highlightDungeonDecorIconsForOverlay(overlayObj);
+  highlightRiftForOverlay(overlayObj);
 
 }
 
@@ -843,6 +874,7 @@ function refreshDungeonForcedHover() {
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
   highlightDungeonDecorIconsForOverlay(overlayObj);
+  highlightRiftForOverlay(overlayObj);
 
 }
 

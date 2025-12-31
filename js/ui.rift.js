@@ -5,18 +5,18 @@ window.RIFT_MARKERS_CAIRN = [
 { id: 'rift_cower_crossing', tag: 'tagRiftLowerCrossing', xp: 65.35, yp: 83.7 },
 { id: 'rift_burrwitch_road', tag: 'tagRiftBurrwitchRoad', xp: 70.15, yp: 74.83 },
 { id: 'rift_wightmire', tag: 'tagRiftWightmire', xp: 68.63, yp: 78.32 },
-{ id: 'rift_flooded_passage', tag: 'tagRiftFloodedPassage', xp: 61.96, yp: 72.86 },
+{ id: 'rift_flooded_passage', tag: 'tagRiftFloodedPassage', xp: 61.96, yp: 72.86, isDungeon:true },
 { id: 'tag_rift_burrwitch_outskirts', tag: 'tagRiftBurrwitchOutskirts', xp: 67.8, yp: 71.3 },
 { id: 'rift_burrwitch_village', tag: 'tagRiftBurrwitchVillage', xp: 68.1, yp: 64.7 },
-{ id: 'tift_wardens_cellar', tag: 'tagRiftWardensCellar', xp: 63.78, yp: 53.27 },
-{ id: 'rift_wardens_labratory01', tag: 'tagRiftWardensLabratory01', xp: 60.01, yp: 52.70, },
-{ id: 'rift_wardens_labratory02', tag: 'tagRiftWardensLabratory02', xp: 64.09, yp: 49.17 },
+{ id: 'tift_wardens_cellar', tag: 'tagRiftWardensCellar', xp: 63.78, yp: 53.27, isDungeon:true },
+{ id: 'rift_wardens_labratory01', tag: 'tagRiftWardensLabratory01', xp: 60.01, yp: 52.70, isDungeon:true },
+{ id: 'rift_wardens_labratory02', tag: 'tagRiftWardensLabratory02', xp: 64.09, yp: 49.17, isDungeon:true },
 { id: 'rift_broken_hills', tag: 'tagRiftBrokenHills', xp: 49.43, yp: 82.6 },
 { id: 'rift_old_arkovia', tag: 'tagRiftOldArkovia', xp: 52.37, yp: 78.4 },
 { id: 'rift_arkovian_foothills', tag: 'tagRiftArkovianFoothills', xp: 54.5, yp: 85.9 },
-{ id: 'rift_cronleys_hideout', tag: 'tagRiftCronleysHideout', xp: 54.35, yp: 69.45 },
+{ id: 'rift_cronleys_hideout', tag: 'tagRiftCronleysHideout', xp: 54.35, yp: 69.45, isDungeon:true },
 { id: 'rift_twin_falls', tag: 'tagRiftTwinFalls', xp: 48.6, yp: 77.4 },
-{ id: 'rift_smugglers_pass', tag: 'tagRiftSmugglersPass', xp: 27.84, yp: 85.10 },
+{ id: 'rift_smugglers_pass', tag: 'tagRiftSmugglersPass', xp: 27.84, yp: 85.10, isDungeon:true },
 { id: 'rift_smugglers_road', tag: 'tagRiftSmugglersRoad', xp: 37.25, yp: 68.9 },
 { id: 'tag_rift_jaggedWaste', tag: 'tagRiftJaggedWaste', xp: 41.29, yp: 72.48 },
 { id: 'rift_deadmans_gulch', tag: 'tagRiftDeadmansGulch', xp: 31.9, yp: 77.48 },
@@ -34,7 +34,7 @@ window.RIFT_MARKERS_CAIRN = [
 { id: 'necropolis_gate', tag: 'tagRiftNecropolisGate', xp: 22.5, yp: 15.25 },
 { id: 'necropolis_interior', tag: 'tagRiftNecropolisInterior', xp: 23.55, yp: 5.6 },
 { id: 'rift_blood_grove', tag: 'tagRiftBloodGrove', xp: 30.39, yp: 51.52 },
-{ id: 'dark_vale', tag: 'tagRiftDarkvale', xp: 29.59, yp: 38.38 },
+{ id: 'dark_vale', tag: 'tagRiftDarkvale', xp: 29.59, yp: 38.38, isDungeon:true },
 { id: 'Sorrows_Bastion', tag: 'tagRiftSorrowsBastion', xp: 33.80, yp: 58.72 }
 
 
@@ -46,7 +46,7 @@ window.RIFT_MARKERS_MALMOUTH = [
 { id: 'rift_malmouth_outskirts', tag: 'tagGDX1RiftMalmouthOutskirts', xp: 65.5, yp: 38.50 },
 { id: 'rift_malmouth_industrial', tag: 'tagGDX1RiftMalmouthIndustrial', xp: 48.5, yp: 44.47 },
 { id: 'rift_malmouth_inner', tag: 'tagGDX1RiftMalmouthInner', xp: 41.6, yp: 17.28 },
-{ id: 'malmouth_sewers', tag: 'tagGDX1RiftMalmouthSewers', xp: 45.45, yp: 66.33 }
+{ id: 'malmouth_sewers', tag: 'tagGDX1RiftMalmouthSewers', xp: 45.45, yp: 66.33, isDungeon:true }
     
 ]
 
@@ -60,10 +60,10 @@ window.RIFT_MARKERS_KORVAN = [
 { id: 'rift_vanguard', tag: 'tagGDX2RiftVanguard', xp: 65.87, yp: 48.11 },
 { id: 'rift_abyd', tag: 'tagGDX2RiftAbyd', xp: 68.64, yp: 42.52 },
 { id: 'rift_infernal_wastes', tag: 'tagGDX2RiftInfernalWastes', xp: 60.82, yp: 36.08 },
-{ id: 'rift_temple', tag: 'tagGDX2RiftTemple', xp: 58.11, yp: 7.50 },
+{ id: 'rift_temple', tag: 'tagGDX2RiftTemple', xp: 58.11, yp: 7.50, isDungeon:true },
 { id: 'rift_korvan_city', tag: 'tagGDX2RiftKorvanCity', xp: 53.59, yp: 25.55 },
-{ id: 'rift_lost_oasis', tag: 'tagGDX2RiftLostOasis', xp: 69.25, yp: 21.83, },
-{ id: 'tag_gDX2_rift_eldritch', tag: 'tagGDX2RiftEldritch', xp: 68.69, yp: 8.43 }
+{ id: 'rift_lost_oasis', tag: 'tagGDX2RiftLostOasis', xp: 69.25, yp: 21.83,isDungeon:true },
+{ id: 'tag_gDX2_rift_eldritch', tag: 'tagGDX2RiftEldritch', xp: 68.69, yp: 8.43, isDungeon:true }
 
 ]
 
