@@ -259,11 +259,19 @@ function rememberActiveProfile() {
       if (!doneMarkers.length) {
         const emptyMsg = document.createElement('div');
         emptyMsg.className = 'done-empty';
-        emptyMsg.setAttribute('data-i18n', 'ui.NothingDone');
-        emptyMsg.textContent = GDMMLang.t('ui.NothingDone');
+
+        const mapName = window.GDMMCore?.state?.active;
+
+        emptyMsg.innerHTML = GDMMLang.t('ui.NothingDone', {
+          map: mapName
+            ? `<span class="done-map-name">${mapName}</span>`
+            : ''
+        });
+
         host.appendChild(emptyMsg);
         return;
       }
+
 
       doneMarkers.forEach(m => {
         const row = document.createElement('div');

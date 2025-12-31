@@ -226,7 +226,7 @@ window.REGION_MARKERS_MALMOUTH = [
 // --- KORVAN ---
   window.REGION_MARKERS_KORVAN = [
 { id: 'tag_gdx2_map_secret_base_shrine', tag: 'tagGDX2MapSecretBaseShrine', xp: 21.3, yp: 99.02 },
-{ id: 'tag_gDX2_map_messengers_volcano', tag: 'tagGDX2MapMessengersVolcano', xp: 49.26, yp: 20.51, isDungeon: true },
+{ id: 'tag_gDX2_map_messengers_volcano', tag: 'tagGDX2MapMessengersVolcano', xp: 48.56, yp: 20.51, isDungeon: true },
 { id: 'tag_gdx2_map_witch_god_base', tag: 'tagGDX2MapWitchGodBase', xp: 19.53, yp: 96.01 },
 { id: 'tag_gdx2_map_witch_god_base2', tag: 'tagGDX2MapWitchGodBase', xp: 34.60, yp: 90.37, isDungeon: true },
 
@@ -277,12 +277,12 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gDX2_solael_void', tag: 'tagGDX2SolaelVoid', xp: 80.00, yp: 53.87, isDungeon: true },
 { id: 'tag_gDX2_roguelike_area01', tag: 'tagGDX2Roguelike_Area01', xp: 35.04, yp: 61.65, isDungeon: true },
 { id: 'tag_gDX2_beet_le02', tag: 'tagGDX2Beetle02', xp: 36.71, yp: 55.8, isDungeon: true },
-{ id: 'tag_gDX2_map_room', tag: 'tagGDX2MapRoom', xp: 42.3, yp: 17.09, isDungeon: true },
+{ id: 'tag_gDX2_map_room', tag: 'tagGDX2MapRoom', xp: 41, yp: 17.09, isDungeon: true },
 { id: 'tag_gDX2_korvaak_tomb02', tag: 'tagGDX2KorvaakTomb02', xp: 67.80, yp: 8.87, isDungeon: true },
 { id: 'tag_gDX2_eldritch_realm01', tag: 'tagGDX2EldritchRealm01', xp: 70.88, yp: 0.41, isDungeon: true },
 { id: 'tag_gDX2_eldritch_realm02', tag: 'tagGDX2EldritchRealm02', xp: 75.77, yp: -1.50, isDungeon: true },
 { id: 'tag_gDX2_cellar', tag: 'tagGDX2Cellar', xp: 14.57, yp: 91.67, isDungeon: true },
-{ id: 'tag_gDX2_roguelike_Area03', tag: 'tagGDX2Roguelike_Area03', xp: 55.29, yp: 66.17, isDungeon: true },
+{ id: 'tag_gDX2_roguelike_Area03', tag: 'tagGDX2Roguelike_Area03', xp: 54.97, yp: 65.59, isDungeon: true },
 { id: 'tag_Splendor_OfShattered_Realm', tag: 'tagSplendorOfShatteredRealm', xp: 12.57, yp: 95.23, isDungeon: true },
 
 

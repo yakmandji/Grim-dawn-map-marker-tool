@@ -442,6 +442,23 @@ function animateArchiveFlyBlock(listRowEl) {
 
     host.innerHTML = '';
 
+    // --- Liste vide (marqueurs actifs) ---
+    if (!activeMarkers.length) {
+      const emptyMsg = document.createElement('div');
+      emptyMsg.className = 'list-empty';
+
+      const mapName = window.GDMMCore?.state?.active;
+
+      emptyMsg.innerHTML = GDMMLang.t('ui.NothingActive', {
+        map: mapName
+          ? `<span class="done-map-name">${mapName}</span>`
+          : ''
+      });
+
+      host.appendChild(emptyMsg);
+    }
+
+
     // === LISTE PRINCIPALE : uniquement les marqueurs NON done ===
     const CAT_ORDER = [
       'General',

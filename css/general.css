@@ -1189,9 +1189,13 @@ header .gd-popup__card input[type="text"]{
   text-align: center;
   padding: 12px 8px;
   opacity: 0.6;
-  font-size: 12px;
-  font-style: italic;
-  color: #ccc;
+  font-size: 14px;
+  color: var(--titlecolor);
+}
+
+.done-map-name {
+  font-weight: 600;
+  color: var(--titlecolor);
 }
 
 .done-toggle {

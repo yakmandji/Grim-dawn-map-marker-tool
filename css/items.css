@@ -340,6 +340,10 @@ input[type="password"]:focus
   transform: translate(-49%, -65%) scale(var(--mk, 1));
 }
 
+.list-empty{
+  color: #c1a46d;
+}
+
 .pin {
   position: relative;
   width: 30px;
@@ -1273,7 +1277,7 @@ header button.menu-button.select-current:hover {
 }
 
 .marker-region-dungeon .region-label{
-  opacity: 0.25;
+  opacity: 0.30;
   font-size: 0.95em;
 }
 
@@ -1293,7 +1297,7 @@ header button.menu-button.select-current:hover {
 }
 
 .korvanmap .region-label{
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 .marker-region-dungeon .region-label.opacity + .region-note-indicator {
@@ -1348,7 +1352,7 @@ header button.menu-button.select-current:hover {
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.18;
+  opacity: 0.23;
   transition: opacity 0.15s ease, transform 0.15s ease;
 
   border: 1px solid rgb(135 111 72 / 35%);
