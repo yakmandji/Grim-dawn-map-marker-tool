@@ -206,7 +206,7 @@
   }
 
   .done-panel.collapsed {
-    transform: translateX(287px);
+    transform: translateX(270px);
   }
 
   .map-info-container {
@@ -310,7 +310,7 @@
 
   .done-panel{
     right: -5px;
-    bottom: 38vh;
+    bottom: 170px;
   }
 
 
