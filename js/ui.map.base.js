@@ -49,7 +49,7 @@
     { id:'necropole', w: 130, h: 98, img: 'img/qol/necropole.png?1.1', xp: 22.36, yp: 16.1,  anchor: 'center' },
     { id:'plagius', w: 110, h: 125, img: 'img/qol/plagius.png', xp: 35.63, yp: 10.81, isDungeon: true },
     { id:'necropole-door', w: 80, h: 80, img: 'img/qol/necropole-door.png', xp: 23.22, yp: 4.54,  anchor: 'center' },
-    { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 58.98, yp: 69.94, isDungeon: true },
+    { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 59.38, yp: 69.94, isDungeon: true },
     { id:'gargabol', w: 130, h: 190, img: 'img/qol/gargabol.png', xp: 98.27, yp: 58.4, isDungeon: true },
     { id:'manticore', w: 180, h: 120, img: 'img/qol/manticore.png', xp: 92.42, yp: 55, isDungeon: true },
     { id:'ekketzul', w: 190, h: 245, img: 'img/qol/ekketzul.png', xp: 73.66, yp: 19.33, isDungeon: true },
