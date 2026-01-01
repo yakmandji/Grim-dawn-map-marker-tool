@@ -91,7 +91,7 @@ window.DUNGEON_OVERLAYS = [
 { id: 'crawling_nest',          map: 'korvan', img: 'crawling-nest.jpg?1.0',        left: 11.1969, top: 74.592, width: 9.3579, height: 8.7890 },
 { id: 'veiled_den',             map: 'korvan', img: 'veiled-den.jpg?1.0',           left: 0.4052,  top: 86.5082, width: 11.2750, height: 11.0184 },
 { id: 'forlorn_bastion',        map: 'korvan', img: 'forlorn-bastion.jpg?1.1',      left: 0.1843,  top: 58.1950, width: 13.8198, height: 13.5079 },
-{ id: 'sandblown_ruin',         map: 'korvan', img: 'sandblown-ruin.jpg?1.0',       left: 8.1843,  top: 44.6179, width: 12.5339, height: 12.36004 },
+{ id: 'sandblown_ruin',         map: 'korvan', img: 'sandblown-ruin.jpg?1.1',       left: 9.8843,  top: 45.6179, width: 11.5339, height: 11.36004 },
 { id: 'maw_of_enaht',           map: 'korvan', img: 'maw-of-enaht.jpg?1.1',         left: 29.9783, top: 59.4417, width: 20.1383, height: 9.5375 },
 { id: 'howling_chasm',          map: 'korvan', img: 'howling-chasm.jpg?1.2',        left: 50.6498, top: 56.5209, width: 14.0824, height: 16.7621 },
 { id: 'edge_reality_korv',      map: 'korvan', img: 'edge-reality.jpg?1.1',         left: 77.4415, top: 50.1895, width: 9.9928,  height: 9.7851 },

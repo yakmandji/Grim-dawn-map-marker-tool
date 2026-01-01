@@ -287,7 +287,7 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gdx2_map_raised_temple_a', tag: 'tagGDX2MapRaisedTemple', xp: 47.54, yp: 12.87, overlayPoly: [[52.5,15.2],[49.7,15.9],[49.5,15.1],[49.5,14.6],[50.1,14.4],[49.7,13.3],[48.9,13.4],[48.5,14.3],[47.7,14.6],[47,14.3],[46.5,13.5],[46.6,12.8],[46.9,12.3],[47.7,11.9],[49.4,11.8],[50,12.1],[50.8,12.9],[51,13.9],[51.4,14.1],[52.2,14.4],[52.3,14.8]] },
 { id: 'tag_gdx2_map_raised_temple_b', tag: 'tagGDX2MapRaisedTemple', xp: 38.16, yp: 8.37, isDungeon: true },
 { id: 'tag_gdx1_ug_secret01', tag: 'tagGDX1UGSecret01', xp: 12.73, yp: 21.32, isDungeon: true },
-{ id: 'tag_gdx2_cairan_ruins01', tag: 'tagGDX2CairanRuins01', xp: 16.27, yp: 48.53, isDungeon: true },
+{ id: 'tag_gdx2_cairan_ruins01', tag: 'tagGDX2CairanRuins01', xp: 17.88, yp: 47.86, isDungeon: true },
 { id: 'tag_gdx2_bysmiel_eldritch', tag: 'tagGDX2BysmielEldritch', xp: 1.64, yp: 87.32, isDungeon: true },
 { id: 'tag_gdx2_beetle01', tag: 'tagGDX2Beetle01', xp: 12.32, yp: 75.46, isDungeon: true },
 { id: 'tag_gdx2_ruined_temple01_b', tag: 'tagGDX2RuinedTemple01', xp: 51.97, yp: 77.65, isDungeon: true },
