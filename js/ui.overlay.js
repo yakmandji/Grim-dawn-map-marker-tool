@@ -187,34 +187,69 @@ function renderDungeonOverlays() {
     inner.appendChild(wrap);
 
     // --- Activation uniquement au clic/tap ---
+    // --- Distinction CLICK vs DRAG sur les overlays donjon ---
+    // Si l'utilisateur drag, on laisse le pan fonctionner et on n'active pas l'overlay.
+    wrap.__gdmmDragMoved = false;
+    wrap.__gdmmStartX = 0;
+    wrap.__gdmmStartY = 0;
+
+    wrap.addEventListener('pointerdown', (e) => {
+      // On ne stoppe PAS la propagation : on veut que le viewport puisse pan.
+      wrap.__gdmmDragMoved = false;
+      wrap.__gdmmStartX = e.clientX;
+      wrap.__gdmmStartY = e.clientY;
+    });
+
+    wrap.addEventListener('pointermove', (e) => {
+      const dx = Math.abs(e.clientX - wrap.__gdmmStartX);
+      const dy = Math.abs(e.clientY - wrap.__gdmmStartY);
+
+      // seuil anti micro-mouvements (ajuste si besoin : 4..10)
+      if (dx + dy > 6) wrap.__gdmmDragMoved = true;
+    });
+
+    wrap.addEventListener('pointerup', () => {
+      // ne rien faire ici : on garde le flag pour que le click le voie
+    });
+
+    wrap.addEventListener('pointercancel', () => {
+      wrap.__gdmmDragMoved = false;
+    });
+
+    // --- Activation uniquement au clic/tap (si pas un drag) ---
     wrap.addEventListener('click', (e) => {
       const core = window.GDMMCore || {};
       const coreState = core.state || {};
 
-      // Mode ajout de marqueur :
-      // on laisse le clic remonter pour que le viewport crée le marker
+      // Mode ajout de marqueur / route : on laisse le clic remonter
       if (coreState.tool === 'add' || coreState.tool === 'path') {
+        wrap.__gdmmDragMoved = false;
         return;
       }
 
-      // Pour tous les autres modes : comportement donjon
+      // Si c'était un drag => on laisse le pan, donc PAS de preventDefault/stopPropagation
+      if (wrap.__gdmmDragMoved) {
+        wrap.__gdmmDragMoved = false;
+        return;
+      }
+
+      // Clic "réel" => comportement donjon
       e.preventDefault();
       e.stopPropagation();
 
       state.activeDungeonOverlayId = state.activeDungeonOverlayId || null;
 
       if (state.activeDungeonOverlayId === d.id) {
-        if (window.clearDungeonLinks) {
-          window.clearDungeonLinks();
-        }
+        if (window.clearDungeonLinks) window.clearDungeonLinks();
         state.activeDungeonOverlayId = null;
       } else {
-        if (window.showDungeonLinksForOverlay) {
-          window.showDungeonLinksForOverlay(d.id);
-        }
+        if (window.showDungeonLinksForOverlay) window.showDungeonLinksForOverlay(d.id);
         state.activeDungeonOverlayId = d.id;
       }
+
+      wrap.__gdmmDragMoved = false;
     });
+
 
 
     state.dungeonOverlays.push({

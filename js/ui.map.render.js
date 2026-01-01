@@ -417,6 +417,11 @@
 
 
         function showRegionOverlay(inner, m) {
+
+          // Ne pas afficher l'overlay sur les dungeons non activés
+          if (m.isDungeon && !state.activeDungeonOverlayId) return;
+
+
           if (!m || !Array.isArray(m.overlayPoly) || m.overlayPoly.length < 3) return;
 
           const poly = ensureRegionOverlayPolygon(inner);
@@ -436,7 +441,7 @@
 
           const style = m.overlayStyle || {};
           const fill = style.fill || (m.isDungeon ? '#ffcc00' : '#26a68c');
-          const opacity = (typeof style.opacity === 'number') ? style.opacity : 0.12;
+          const opacity = (typeof style.opacity === 'number') ? style.opacity : 0.15;
           const strokeWidth = (typeof style.strokeWidth === 'number') ? style.strokeWidth : 0;
           const stroke = style.stroke || fill;
 
@@ -445,6 +450,7 @@
           poly.setAttribute('fill-opacity', String(opacity));
           poly.setAttribute('stroke', stroke);
           poly.setAttribute('stroke-width', String(strokeWidth));
+          poly.setAttribute('stroke-linejoin', 'round');
           poly.style.display = '';
         }
 

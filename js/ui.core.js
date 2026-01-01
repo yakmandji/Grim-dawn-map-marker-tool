@@ -600,6 +600,9 @@ function renderMarkers(options = {}) {
   // --- Pan & Zoom ---
   let panning = false, panId = null, panStart = {x:0,y:0}, viewStart = {x:0,y:0};
 
+  let pendingDungeonPan = null; // { id, x, y, viewStart }
+  const DUNGEON_PAN_THRESHOLD = 6; // ajuster (6..12)
+
   // --- Pinch zoom (mobile) ---
   const activeTouches = new Map();
   const pinchState = {
@@ -794,8 +797,7 @@ viewport.addEventListener('pointerdown', e => {
   }
 
   // --- classic PAN ---
-  e.preventDefault();
-
+  
   // Blur inputs
   const ae = document.activeElement;
   if (
@@ -817,17 +819,26 @@ viewport.addEventListener('pointerdown', e => {
   });
 
 
-  if (
-    e.target.closest &&
-    (
-      e.target.closest('.marker') ||
-      e.target.closest('.marker-entry-dungeon') ||
-      e.target.closest('.dungeon-wrapper') 
-    )
-  ) {
-    // on laisse l'élément gérer son pointerup / click.
-    return;
+  if (e.target.closest) {
+
+    // 1) marker / entry dungeon : on laisse gérer (inchangé)
+    if (e.target.closest('.marker') || e.target.closest('.marker-entry-dungeon')) {
+      return;
+    }
+
+    // 2) dungeon overlay : CLICK = overlay, DRAG = pan (nouveau)
+    if (e.target.closest('.dungeon-wrapper')) {
+      pendingDungeonPan = {
+        id: e.pointerId,
+        x: e.clientX,
+        y: e.clientY,
+        viewStart: { ...state.view },
+      };
+      // IMPORTANT: on ne démarre pas le pan ici, pour laisser le click se faire
+      return;
+    }
   }
+  e.preventDefault();
 
   if (e.pointerType === 'mouse' && e.button !== 0) return;
     
@@ -842,6 +853,30 @@ viewport.addEventListener('pointerdown', e => {
 /*Pointer move------------------------------------------------*/
 
 viewport.addEventListener('pointermove', e => {
+
+
+  // Si on a commencé sur un dungeon overlay: on ne pan QUE si c'est un drag
+  if (pendingDungeonPan && e.pointerId === pendingDungeonPan.id && !panning) {
+    const dx = Math.abs(e.clientX - pendingDungeonPan.x);
+    const dy = Math.abs(e.clientY - pendingDungeonPan.y);
+
+    if (dx + dy > DUNGEON_PAN_THRESHOLD) {
+      panning = true;
+      panId = e.pointerId;
+      viewport.setPointerCapture?.(panId);
+
+      panStart = {
+        x: pendingDungeonPan.x,
+        y: pendingDungeonPan.y,
+      };
+      viewStart = { ...pendingDungeonPan.viewStart };
+
+      // nettoyage après utilisation
+      pendingDungeonPan = null;
+    }
+
+  }
+
 
   if (e.altKey && e.shiftKey && window.__gdmmOverlayDragMove) {
     if (!window.GDMMCore?.isDevUnlocked?.()) return;
@@ -929,6 +964,9 @@ viewport.addEventListener('pointermove', e => {
 
   function stopPan(e){
 
+    if (pendingDungeonPan && e.pointerId === pendingDungeonPan.id) {
+      pendingDungeonPan = null;
+    }
 
     // --- ALT + SHIFT : finalize overlay rect even if we never started panning
     if (e && e.altKey && e.shiftKey && typeof window.__gdmmOverlayDragEnd === 'function') {
