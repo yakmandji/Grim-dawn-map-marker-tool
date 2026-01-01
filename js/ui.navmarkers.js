@@ -245,8 +245,8 @@ window.NAV_MARKERS_CAIRN = [
         targetId: 'EidgeCairn'
       },
       {
-        xp: 46.52, 
-        yp: 65.53,
+        xp: 46.45, 
+        yp: 65.64,
         icon: 'img/icon-link.png',
         tag: 'tagGoTo + tagGDX2MapWitchGodBase',
         targetProfile: 'Korvan Basin',

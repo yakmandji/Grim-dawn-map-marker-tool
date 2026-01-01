@@ -396,8 +396,10 @@
               svg.style.height = '100%';
               svg.style.pointerEvents = 'none';
 
-              // IMPORTANT: doit être SOUS les icônes (markers), AU-DESSUS de la map
+              // IMPORTANT: doit être sous les icônes (markers), au dessus de la map
               svg.style.zIndex = '2';
+              svg.style.overflow = 'visible';
+              svg.setAttribute('overflow', 'visible');
 
               inner.appendChild(svg);
             }
