@@ -457,7 +457,6 @@
         }
 
         function hideRegionOverlay() {
-          console.log("HIDE OVERLAY", window.__gdmmIsPanning);
           if (window.__gdmmIsPanning) return;
           const svg = document.getElementById('regionOverlaySvg');
           const poly = svg?.querySelector('#regionHoverOverlay');
