@@ -490,8 +490,15 @@
 
           // Entrée dans la zone (padding inclus)
           hoverEl.addEventListener('mouseover', (ev) => {
+            if (ev.target.closest && ev.target.closest('.region-note-indicator')) {
+              const tip = hoverEl._noteTooltip;
+              if (tip) tip.remove();
+              hoverEl._noteTooltip = null;
+              return;
+            }
             // ignore les déplacements internes (enfant -> enfant)
-            if (hoverEl.contains(ev.relatedTarget)) return;
+            const fromIndicator = ev.relatedTarget?.closest && ev.relatedTarget.closest('.region-note-indicator');
+            if (hoverEl.contains(ev.relatedTarget) && !fromIndicator) return;
 
             showRegionOverlay(inner, m);
 
@@ -567,8 +574,21 @@
           el.classList.add('is-static');
           inner.appendChild(el);
 
-          lab.addEventListener('click', (e) => {
-            // on évite de marcher sur le clic du crayon
+          // Bloquer le pan uniquement si cette région a une note (sinon la map peut pan normalement)
+          hoverEl.addEventListener('pointerdown', (e) => {
+            if (e.target.closest('.region-note-edit')) return;
+
+            const txt = getRegionNote(m.id);
+            if (txt && txt.trim()) {
+              e.stopPropagation();
+            }
+          });
+
+          hoverEl.addEventListener('click', (e) => {
+
+            const txt = getRegionNote(m.id);
+            if (!txt || !txt.trim()) return;
+            // ne pas interférer avec le crayon
             if (e.target.closest('.region-note-edit')) return;
 
             const noteList = document.getElementById('noteList');
@@ -581,6 +601,7 @@
             row.classList.add('highlight');
             setTimeout(() => row.classList.remove('highlight'), 2200);
           });
+
 
         });
 
