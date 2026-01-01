@@ -10,6 +10,7 @@ const {
 } = window.GDMMCore;
 
 const DEV = () => isDevUnlocked?.() === true;
+window.__gdmmIsPanning = false;
 
 const {
   addMarkerFromUI,
@@ -603,6 +604,10 @@ function renderMarkers(options = {}) {
   let pendingDungeonPan = null; // { id, x, y, viewStart }
   const DUNGEON_PAN_THRESHOLD = 6; // ajuster (6..12)
 
+  let pendingRegionPan = null; // { id, x, y, viewStart }
+  const REGION_PAN_THRESHOLD = 6;
+
+
   // --- Pinch zoom (mobile) ---
   const activeTouches = new Map();
   const pinchState = {
@@ -712,6 +717,23 @@ viewport.addEventListener('pointerdown', e => {
     return;
   }
 
+  // --- Region with note: click OR drag (like dungeon overlays)
+  const regionEl = e.target.closest?.('.marker-region');
+  if (
+    state.tool === 'pan' &&
+    e.pointerType === 'mouse' &&
+    regionEl &&
+    regionEl.classList.contains('has-region-note') &&
+    !e.target.closest('.region-note-edit')
+  ) {
+    pendingRegionPan = {
+      id: e.pointerId,
+      x: e.clientX,
+      y: e.clientY,
+      viewStart: { ...state.view },
+    };
+    return;
+  }
 
 
   // --- Copie rapide des coords (Alt+clic sur la carte) ---
@@ -844,6 +866,9 @@ viewport.addEventListener('pointerdown', e => {
     
   panning = true;
   panId = e.pointerId;
+  window.__gdmmIsPanning = true;
+  document.querySelectorAll('.region-note-tooltip').forEach(t => t.remove());
+
   viewport.setPointerCapture?.(panId);
   panStart = { x: e.clientX, y: e.clientY };
   viewStart = { ...state.view };
@@ -854,6 +879,24 @@ viewport.addEventListener('pointerdown', e => {
 
 viewport.addEventListener('pointermove', e => {
 
+  if (pendingRegionPan && e.pointerId === pendingRegionPan.id && !panning) {
+    const dx = Math.abs(e.clientX - pendingRegionPan.x);
+    const dy = Math.abs(e.clientY - pendingRegionPan.y);
+
+    if (dx + dy > REGION_PAN_THRESHOLD) {
+      panning = true;
+      window.__gdmmIsPanning = true;
+      document.querySelectorAll('.region-note-tooltip').forEach(t => t.remove());
+
+      panId = e.pointerId;
+      viewport.setPointerCapture?.(panId);
+
+      panStart = { x: pendingRegionPan.x, y: pendingRegionPan.y };
+      viewStart = { ...pendingRegionPan.viewStart };
+
+      pendingRegionPan = null;
+    }
+  }
 
   // Si on a commencé sur un dungeon overlay: on ne pan QUE si c'est un drag
   if (pendingDungeonPan && e.pointerId === pendingDungeonPan.id && !panning) {
@@ -863,6 +906,9 @@ viewport.addEventListener('pointermove', e => {
     if (dx + dy > DUNGEON_PAN_THRESHOLD) {
       panning = true;
       panId = e.pointerId;
+      window.__gdmmIsPanning = true;
+      document.querySelectorAll('.region-note-tooltip').forEach(t => t.remove());
+
       viewport.setPointerCapture?.(panId);
 
       panStart = {
@@ -968,6 +1014,10 @@ viewport.addEventListener('pointermove', e => {
       pendingDungeonPan = null;
     }
 
+    if (pendingRegionPan && e.pointerId === pendingRegionPan.id) {
+      pendingRegionPan = null;
+    }
+
     // --- ALT + SHIFT : finalize overlay rect even if we never started panning
     if (e && e.altKey && e.shiftKey && typeof window.__gdmmOverlayDragEnd === 'function') {
       if (!window.GDMMCore?.isDevUnlocked?.()) return;
@@ -998,6 +1048,7 @@ viewport.addEventListener('pointermove', e => {
     if (!panning) return;
     panning = false;
     panId = null;
+    window.__gdmmIsPanning = false;
     persistViewForCurrentProfile();
   }
 

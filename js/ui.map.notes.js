@@ -64,7 +64,7 @@
 
       // Utilisation de smoothCenterOn ou centerOn pour effectuer le centrage fluide
       if (typeof window.smoothCenterOn === 'function') {
-        window.smoothCenterOn(xp, yp, 1.2, 260); // Centrer avec un zoom à 1.2 et une animation de 260ms
+        window.smoothCenterOn(xp, yp, 1, 260); // Centrer avec un zoom à 1.2 et une animation de 260ms
       } else if (typeof window.centerOn === 'function') {
         window.centerOn(xp, yp, 1.2, regionId); // Fallback vers centerOn si smoothCenterOn n'est pas disponible
       }
@@ -574,7 +574,9 @@
             // close on X
             panel.querySelector('.region-note-close').addEventListener('click', () => {
               panel.style.display = 'none';
+              document.body.classList.remove('editing-region-note');
             });
+
 
             // FERMETURE EN CLIQUANT DEHORS
             document.addEventListener(
@@ -590,6 +592,7 @@
                 // si on clique sur une région ne pas fermer
                 if (e.target.closest('.marker-region')) return;
                 p.style.display = 'none';
+                document.body.classList.remove('editing-region-note');
               },
               true
             );
@@ -617,6 +620,7 @@
 
               // 4) Fermer le panel
               panel.style.display = 'none';
+              document.body.classList.remove('editing-region-note');
 
               // 5) Toast "Note enregistrée"
               if (typeof showToast === 'function' && window.GDMMLang && typeof GDMMLang.t === 'function') {
@@ -654,6 +658,7 @@
           panel.style.position = 'fixed';
           panel.style.left = `${rect.left + 10}px`;
           panel.style.top  = `${rect.bottom + 8}px`;
+          document.body.classList.add('editing-region-note');
           panel.style.display = 'block';
 
           if (txtEl) {

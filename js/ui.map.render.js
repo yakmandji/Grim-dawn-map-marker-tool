@@ -457,6 +457,8 @@
         }
 
         function hideRegionOverlay() {
+          console.log("HIDE OVERLAY", window.__gdmmIsPanning);
+          if (window.__gdmmIsPanning) return;
           const svg = document.getElementById('regionOverlaySvg');
           const poly = svg?.querySelector('#regionHoverOverlay');
           if (poly) poly.style.display = 'none';
@@ -489,16 +491,12 @@
           const hoverEl = lab.parentElement;
 
           // Entrée dans la zone (padding inclus)
-          hoverEl.addEventListener('mouseover', (ev) => {
-            if (ev.target.closest && ev.target.closest('.region-note-indicator')) {
-              const tip = hoverEl._noteTooltip;
-              if (tip) tip.remove();
-              hoverEl._noteTooltip = null;
-              return;
-            }
-            // ignore les déplacements internes (enfant -> enfant)
-            const fromIndicator = ev.relatedTarget?.closest && ev.relatedTarget.closest('.region-note-indicator');
-            if (hoverEl.contains(ev.relatedTarget) && !fromIndicator) return;
+          hoverEl.addEventListener('mouseenter', () => {
+            const old = hoverEl._noteTooltip;
+            if (old) old.remove();
+            hoverEl._noteTooltip = null;
+
+            if (window.__gdmmIsPanning) return;
 
             showRegionOverlay(inner, m);
 
@@ -518,10 +516,8 @@
             hoverEl._noteTooltip = tooltip;
           });
 
-          // Sortie réelle de la zone
-          hoverEl.addEventListener('mouseout', (ev) => {
-            // ignore les déplacements internes (enfant -> enfant)
-            if (hoverEl.contains(ev.relatedTarget)) return;
+          hoverEl.addEventListener('mouseleave', () => {
+            if (window.__gdmmIsPanning) return;
 
             hideRegionOverlay();
 
@@ -529,7 +525,6 @@
             if (tip) tip.remove();
             hoverEl._noteTooltip = null;
           });
-
 
           // --- Indicateur si une note existe déjà pour cette région ---
 
@@ -573,16 +568,6 @@
 
           el.classList.add('is-static');
           inner.appendChild(el);
-
-          // Bloquer le pan uniquement si cette région a une note (sinon la map peut pan normalement)
-          hoverEl.addEventListener('pointerdown', (e) => {
-            if (e.target.closest('.region-note-edit')) return;
-
-            const txt = getRegionNote(m.id);
-            if (txt && txt.trim()) {
-              e.stopPropagation();
-            }
-          });
 
           hoverEl.addEventListener('click', (e) => {
 

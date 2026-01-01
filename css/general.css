@@ -68,9 +68,17 @@ body, #app, #sidebar, #viewport, #header {
   cursor: default;
 }
 
+.region-note-indicator {
+  pointer-events: none;
+}
+
 textarea, [contenteditable="true"] {
   user-select: text;
   cursor: text;
+}
+
+body.editing-region-note .marker-region {
+  pointer-events: none;
 }
 
 .title-banner {
