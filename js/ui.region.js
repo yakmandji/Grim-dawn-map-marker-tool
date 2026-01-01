@@ -1,7 +1,7 @@
   // --- CAIRN ---
   window.REGION_MARKERS_CAIRN = [
     
-{ id: 'tag_UG_wightmire_cave01', tag: 'tagUGWightmireCave01', xp: 72.54, yp: 79.18, isDungeon: true },
+{ id: 'tag_UG_wightmire_cave01', tag: 'tagUGWightmireCave01', xp: 72.54, yp: 79.18, isDungeon: true, },
 { id: 'tag_UG_wightmire_cave03', tag: 'tagUGWightmireCave01', xp: 63.68, yp: 74.06, isDungeon: true },
 { id: 'tagU_rRotting_croplands_crypt01', tag: 'tagUGRottingCroplandsCrypt01', xp: 29, yp: 72.53, isDungeon: true },
 { id: 'tag_burrwitch_cellar03', tag: 'tagBurrwitchCellar03', xp: 63.60, yp: 58.52, isDungeon: true },
@@ -231,11 +231,22 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gdx2_map_witch_god_base2', tag: 'tagGDX2MapWitchGodBase', xp: 34.60, yp: 90.37, isDungeon: true },
 
 { id: 'tag_gdx2_map_area01_a', tag: 'tagGDX2MapArea01', xp: 23.72, yp: 87.54 },
-{ id: 'tag_gdx2_map_ruined_temple_city', tag: 'tagGDX2MapRuinedTempleCity', xp: 25.54, yp: 78.46 },
+{ id: 'tag_gdx2_map_ruined_temple_city', tag: 'tagGDX2MapRuinedTempleCity', xp: 25.54, yp: 78.46, 
+    overlayPoly: [[27.3,82.1],[24.9,83.7],[24.1,83.2],[23.1,81.7],[23.1,80.8],[24,80.2],[25.4,80.3],[28.5,78.3],
+    [29.2,78.5],[30.2,78],[30.1,77.1],[30.7,76.4],[30.1,76.1],[29.8,75.5],[29.3,74],[28.8,73.9],[28.7,74.5],[27.6,74.9],[27,74.5],
+    [26.4,73.6],[26.6,73.2],[25.5,72.1],[27.1,70.5],[28.7,71.5],[28.8,72.8],[29.9,73.2],[30.4,72.5],[31.2,72.4],[32.2,73.1],[32.3,73.4],
+    [33,73.6],[33.7,74.5],[34.2,75.4],[34.9,75.2],[36,76.8],[35.6,77.7],[34.5,79.1],[34,79.2],[29.8,82.4],[28.8,82.1],[28,82]],
+    // overlayStyle: {
+    //   fill: '#26a68c',     // couleur de remplissage (hex ou rgba)
+    //   opacity: 0.22,       // opacité du remplissage (0 → 1)
+    //   stroke: '#1e7f6f',   // couleur du contour (optionnel)
+    //   strokeWidth: 0       // 0 = pas de contour (par défaut)
+    // }
+},
 { id: 'tag_gdx2_map_ruined_temple01', tag: 'tagGDX2MapRuinedTemple01', xp: 35.41, yp: 76.10 },
 { id: 'tag_gdx2_map_area01_b', tag: 'tagGDX2MapArea01', xp: 25.29, yp: 59.98 },
 { id: 'tag_gdx2_roguelike_area02', tag: 'tagGDX2Roguelike_Area02', xp: 5.20, yp: 59.46, isDungeon: true },
-{ id: 'tag_gdx2_map_area02', tag: 'tagGDX2MapArea02', xp: 29.90, yp: 54.39 },
+{ id: 'tag_gdx2_map_area02', tag: 'tagGDX2MapArea02', xp: 23.59, yp: 66.83 },
 { id: 'tag_gdx2_map_ruined_city01', tag: 'tagGDX2MapRuinedCity01', xp: 31.71, yp: 50.00 },
 { id: 'tag_gdx2_map_dead_lake', tag: 'tagGDX2MapDeadLake', xp: 23.56, yp: 38.25 },
 { id: 'tag_gdx2_map_oasis', tag: 'tagGDX2MapOasis', xp: 46.78, yp: 53.12 },

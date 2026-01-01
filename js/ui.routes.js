@@ -544,6 +544,53 @@ initRouteSubMenus();
       nameInput.addEventListener('blur', saveNameIfChanged);
     }
 
+
+    // --- DEV: double-clic sur le nom => copie les points de la route (format overlayPoly) ---
+      async function __gdmmCopyToClipboard(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (e) {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            const ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            return ok;
+          } catch (_) {
+            return false;
+          }
+        }
+      }
+
+      if (nameInput && window.GDMMCore?.isDevUnlocked?.()) {
+        nameInput.title = (nameInput.title ? nameInput.title + '\n' : '') + 'DEV: double-click to copy overlay points';
+
+        nameInput.addEventListener('dblclick', async (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const round = v => Math.round((v || 0) * 10) / 10; // 1 décimale
+          const pts = (path.points || []).map(pt => [round(pt.xp), round(pt.yp)]);
+
+          // prêt à coller dans ui.region.js
+          const text = `overlayPoly: ${JSON.stringify(pts)}`;
+
+          const ok = await __gdmmCopyToClipboard(text);
+
+          if (typeof showToast === 'function') {
+            showToast(ok ? 'Overlay copied ✅' : 'Copy failed ❌', ok ? 'success' : 'error', 2500);
+          }
+        });
+      }
+
+
+
     // --- Save button ---
     if (saveBtn) {
       saveBtn.addEventListener('click', () => {

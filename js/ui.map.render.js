@@ -379,6 +379,84 @@
           }
         }
 
+
+
+        // --- Region hover overlay (SVG polygon) -----------------------------
+          function ensureRegionOverlayPolygon(inner) {
+            let svg = document.getElementById('regionOverlaySvg');
+            if (!svg) {
+              svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+              svg.id = 'regionOverlaySvg';
+              svg.setAttribute('width', '100%');
+              svg.setAttribute('height', '100%');
+              svg.style.position = 'absolute';
+              svg.style.left = '0';
+              svg.style.top = '0';
+              svg.style.width = '100%';
+              svg.style.height = '100%';
+              svg.style.pointerEvents = 'none';
+
+              // IMPORTANT: doit être SOUS les icônes (markers), AU-DESSUS de la map
+              svg.style.zIndex = '2';
+
+              inner.appendChild(svg);
+            }
+
+            let poly = svg.querySelector('#regionHoverOverlay');
+            if (!poly) {
+              poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+              poly.id = 'regionHoverOverlay';
+              poly.setAttribute('pointer-events', 'none');
+              poly.setAttribute('vector-effect', 'non-scaling-stroke');
+              poly.style.display = 'none';
+              svg.appendChild(poly);
+            }
+
+            return poly;
+          }
+
+
+        function showRegionOverlay(inner, m) {
+          if (!m || !Array.isArray(m.overlayPoly) || m.overlayPoly.length < 3) return;
+
+          const poly = ensureRegionOverlayPolygon(inner);
+          if (!poly) return;
+
+          const iw = state.mapNatural?.w || 1;
+          const ih = state.mapNatural?.h || 1;
+
+          // Cache string points en px (par map size: si tu changes de map, ça recalcule)
+          const cacheKey = `${iw}x${ih}`;
+          if (!m._overlayCache) m._overlayCache = {};
+          if (!m._overlayCache[cacheKey]) {
+            m._overlayCache[cacheKey] = m.overlayPoly
+              .map(([xp, yp]) => `${(xp / 100) * iw},${(yp / 100) * ih}`)
+              .join(' ');
+          }
+
+          const style = m.overlayStyle || {};
+          const fill = style.fill || (m.isDungeon ? '#ffcc00' : '#26a68c');
+          const opacity = (typeof style.opacity === 'number') ? style.opacity : 0.12;
+          const strokeWidth = (typeof style.strokeWidth === 'number') ? style.strokeWidth : 0;
+          const stroke = style.stroke || fill;
+
+          poly.setAttribute('points', m._overlayCache[cacheKey]);
+          poly.setAttribute('fill', fill);
+          poly.setAttribute('fill-opacity', String(opacity));
+          poly.setAttribute('stroke', stroke);
+          poly.setAttribute('stroke-width', String(strokeWidth));
+          poly.style.display = '';
+        }
+
+        function hideRegionOverlay() {
+          const svg = document.getElementById('regionOverlaySvg');
+          const poly = svg?.querySelector('#regionHoverOverlay');
+          if (poly) poly.style.display = 'none';
+        }
+
+        // ---END  Region hover overlay (SVG polygon) -----------------------------
+
+
         regionData.forEach(m => {
           const el = document.createElement('div');
           el.classList.add('marker-region', 'locked');
@@ -400,38 +478,43 @@
           el.appendChild(lab);
 
           // --- Tooltip lecture seule sur tout le label ---
-          lab.addEventListener('mouseenter', (ev) => {
-              const txt = getRegionNote(m.id);
-              if (!txt) return;
+          const hoverEl = lab.parentElement;
 
-              const tooltip = document.createElement('div');
-              tooltip.className = 'region-note-tooltip';
-              tooltip.textContent = txt;
+          // Entrée dans la zone (padding inclus)
+          hoverEl.addEventListener('mouseover', (ev) => {
+            // ignore les déplacements internes (enfant -> enfant)
+            if (hoverEl.contains(ev.relatedTarget)) return;
 
-              document.body.appendChild(tooltip);
+            showRegionOverlay(inner, m);
 
-              const r = ev.target.getBoundingClientRect();
-              tooltip.style.left = `${r.left + (r.width / 2)}px`;
-              tooltip.style.transform = "translateX(-50%)";
-              tooltip.style.top  = `${r.bottom + 10}px`;
+            const txt = getRegionNote(m.id);
+            if (!txt) return;
 
-              ev.target._noteTooltip = tooltip;
+            const tooltip = document.createElement('div');
+            tooltip.className = 'region-note-tooltip';
+            tooltip.textContent = txt;
+            document.body.appendChild(tooltip);
+
+            const r = hoverEl.getBoundingClientRect();
+            tooltip.style.left = `${r.left + (r.width / 2)}px`;
+            tooltip.style.transform = "translateX(-50%)";
+            tooltip.style.top = `${r.bottom + 10}px`;
+
+            hoverEl._noteTooltip = tooltip;
           });
 
-          lab.addEventListener('mouseleave', (ev) => {
-              const tip = ev.target._noteTooltip;
-              if (tip) tip.remove();
-              ev.target._noteTooltip = null;
+          // Sortie réelle de la zone
+          hoverEl.addEventListener('mouseout', (ev) => {
+            // ignore les déplacements internes (enfant -> enfant)
+            if (hoverEl.contains(ev.relatedTarget)) return;
+
+            hideRegionOverlay();
+
+            const tip = hoverEl._noteTooltip;
+            if (tip) tip.remove();
+            hoverEl._noteTooltip = null;
           });
 
-          // Bloquer le pan SI une note existe pour cette région
-          lab.addEventListener('pointerdown', (e) => {
-            const note = getRegionNote(m.id);
-            if (note && note.trim()) {
-              // il y a une note → on ne laisse pas le viewport capter le pointer
-              e.stopPropagation();
-            }
-          });
 
           // --- Indicateur si une note existe déjà pour cette région ---
 
