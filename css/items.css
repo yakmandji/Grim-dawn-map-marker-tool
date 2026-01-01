@@ -1279,14 +1279,13 @@ header button.menu-button.select-current:hover {
   to   { opacity:1; }
 }
 
-
-.malmouthmap .region-label{
-  font-size: 1.3em;
-}
-
 .marker-region-dungeon .region-label{
   opacity: 0.30;
   font-size: 0.95em;
+}
+
+.malmouthmap .region-label{
+  font-size: 1.3em;
 }
 
 .decor-dungeon{
