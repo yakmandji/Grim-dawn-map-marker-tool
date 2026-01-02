@@ -58,6 +58,10 @@
   width: fit-content;
 }
 
+.done-count{
+  min-width: max-content;
+}
+
 /* --- Dropdown custom --- */
 
 .custom-dropdown {
