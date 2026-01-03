@@ -284,7 +284,7 @@
       "ui.DeleteShrineButton": "Réinitialiser tous les sanctuaires",
       "ui.ConfirmResetShrines": "Réinitialiser tous les sanctuaires pour ce personnage ?",
       "toast.ShrinesReset": "Les sanctuaires ont été réinitialisés pour ce personnage.",
-      "ui.readOnlyMessage": "Vue en lecture seul seulement. Pour la vue normal",
+      "ui.readOnlyMessage": "Vue partagée en lecture seule. Pour retourner à votre carte",
       "ui.readOnlyMessageLink": "cliquez ici",
       "ui.linkMarker" : "Partager un marqueur",
       "ui.linkRoute" : "Partager la route",
@@ -432,7 +432,7 @@
       "ui.DeleteShrineButton": "Restablecer todos los santuarios",
       "ui.ConfirmResetShrines": "¿Restablecer todos los santuarios para este personaje?",
       "toast.ShrinesReset": "Los santuarios han sido restablecidos para este personaje.",
-      "ui.readOnlyMessage": "Vista de solo lectura. Para volver al modo normal",
+      "ui.readOnlyMessage": "Vista compartida en modo solo lectura. Para volver a tu mapa",
       "ui.readOnlyMessageLink": "haz clic aquí",
       "ui.linkMarker": "Compartir marcador",
       "ui.linkRoute": "Compartir ruta",
@@ -580,7 +580,7 @@
       "ui.ConfirmResetShrines": "Alle Schreine für diesen Charakter zurücksetzen?",
       "toast.ShrinesReset": "Die Schreine wurden für diesen Charakter zurückgesetzt.",
       "ui.shrine": "Schrein",
-      "ui.readOnlyMessage": "Nur-Lese-Ansicht. Um zum normalen Modus zurückzukehren",
+      "ui.readOnlyMessage": "Geteilte Ansicht im Nur-Lese-Modus. Um zu deiner Karte zurückzukehren",
       "ui.readOnlyMessageLink": "klicken Sie hier",
       "ui.linkMarker": "Marker teilen",
       "ui.linkRoute": "Route teilen",
@@ -729,7 +729,7 @@
       "ui.ConfirmResetShrines": "Redefinir todos os santuários para este personagem?",
       "toast.ShrinesReset": "Os santuários foram redefinidos para este personagem.",
       "ui.shrine": "Santuário",
-      "ui.readOnlyMessage": "Visualização somente leitura. Para voltar ao modo normal",
+      "ui.readOnlyMessage": "Visualização compartilhada em modo somente leitura. Para voltar ao seu mapa",
       "ui.readOnlyMessageLink": "clique aqui",
       "ui.linkMarker": "Compartilhar marcador",
       "ui.linkRoute": "Compartilhar rota",
@@ -877,7 +877,7 @@
     "ui.ConfirmResetShrines": "Сбросить все святилища для этого персонажа?",
     "toast.ShrinesReset": "Святилища были сброшены для этого персонажа.",
     "ui.shrine": "Святилище",
-    "ui.readOnlyMessage": "Режим только для чтения. Чтобы вернуться в обычный режим",
+    "ui.readOnlyMessage": "Общий доступ в режиме только для чтения. Чтобы вернуться к своей карте",
     "ui.readOnlyMessageLink": "нажмите здесь",
     "ui.linkMarker": "Поделиться маркером",
     "ui.linkRoute": "Поделиться маршрутом",
@@ -1027,7 +1027,7 @@
       "ui.ConfirmResetShrines": "Reimpostare tutti i santuari per questo personaggio?",
       "toast.ShrinesReset": "I santuari sono stati reimpostati per questo personaggio.",
       "ui.shrine": "Santuario",
-      "ui.readOnlyMessage": "Vista in sola lettura. Per tornare alla modalità normale",
+      "ui.readOnlyMessage": "Vista condivisa in sola lettura. Per tornare alla tua mappa",
       "ui.readOnlyMessageLink": "clicca qui",
       "ui.linkMarker": "Condividi marcatore",
       "ui.linkRoute": "Condividi percorso",
@@ -1195,7 +1195,7 @@
       "ui.ConfirmResetShrines": "Zresetować wszystkie kapliczki dla tej postaci?",
       "toast.ShrinesReset": "Kapliczki zostały zresetowane dla tej postaci.",
 
-      "ui.readOnlyMessage": "Widok tylko do odczytu. Aby wrócić do trybu normalnego",
+      "ui.readOnlyMessage": "Widok udostępniony w trybie tylko do odczytu. Aby wrócić do swojej mapy",
       "ui.readOnlyMessageLink": "kliknij tutaj",
 
       "ui.linkMarker": "Udostępnij znacznik",
@@ -1347,7 +1347,7 @@
       "ui.ConfirmResetShrines": "要为此角色重置所有神龛吗？",
       "toast.ShrinesReset": "已为此角色重置所有神龛。",
       "ui.shrine": "祭坛",
-      "ui.readOnlyMessage": "只读模式。要返回正常模式",
+      "ui.readOnlyMessage": "共享的只读视图。要返回到你的地图",
       "ui.readOnlyMessageLink": "请点击这里",
       "ui.linkMarker": "分享标记",
       "ui.linkRoute": "分享路线",
@@ -1496,7 +1496,7 @@
       "ui.ConfirmResetShrines": "このキャラクターのすべての祠をリセットしますか？",
       "toast.ShrinesReset": "このキャラクターの祠がリセットされました。",
       "ui.shrine": "聖堂",
-      "ui.readOnlyMessage": "読み取り専用ビューです。通常モードに戻るには",
+      "ui.readOnlyMessage": "共有マップは閲覧専用です。自分のマップに戻るには",
       "ui.readOnlyMessageLink": "こちらをクリック",
       "ui.linkMarker": "マーカーを共有",
       "ui.linkRoute": "ルートを共有",
@@ -1648,7 +1648,7 @@
       "ui.DeleteShrineButton": "모든 제단 초기화",
       "ui.ConfirmResetShrines": "이 캐릭터의 모든 제단을 초기화하시겠습니까?",
       "toast.ShrinesReset": "이 캐릭터의 제단이 초기화되었습니다.",
-      "ui.readOnlyMessage": "읽기 전용 보기입니다. 일반 모드로 돌아가려면",
+      "ui.readOnlyMessage": "공유된 읽기 전용 보기입니다. 내 지도로 돌아가려면",
       "ui.readOnlyMessageLink": "여기를 클릭하세요",
       "ui.linkMarker": "마커 공유",
       "ui.linkRoute": "경로 공유",
@@ -1667,7 +1667,6 @@
     }
 
   };
-
 
 
     // --- API i18n de base ----------------------------------

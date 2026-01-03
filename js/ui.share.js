@@ -106,172 +106,178 @@
 
     if (!data) return;
 
-                  // ==========================================
-                  // NEW: multi-map character share format (v4)
-                  // payload: { v:'4', active:'Cairn', maps:{ MapName:{r,m,notes} } }
-                  // ==========================================
-                  if (data && String(data.v) === '4' && data.maps && typeof data.maps === 'object') {
+        // ==========================================
+        // NEW: multi-map character share format (v4)
+        // payload: { v:'4', active:'Cairn', maps:{ MapName:{r,m,notes} } }
+        // ==========================================
+        if (data && String(data.v) === '4' && data.maps && typeof data.maps === 'object') {
 
 
-                    // CLEANUP previous shared profiles (flag OR name-based)
-                    try {
-                      for (const [name, profile] of Object.entries(state.profiles || {})) {
-                        if (!profile) continue;
-                        if (profile.isShared || String(name).startsWith('[Shared]')) {
-                          delete state.profiles[name];
-                        }
-                      }
-                    } catch (e) {
-                      console.warn('[GDMM] shared cleanup failed', e);
-                    }
+          // CLEANUP previous shared profiles (flag OR name-based)
+          try {
+            for (const [name, profile] of Object.entries(state.profiles || {})) {
+              if (!profile) continue;
+              if (profile.isShared || String(name).startsWith('[Shared]')) {
+                delete state.profiles[name];
+              }
+            }
+          } catch (e) {
+            console.warn('[GDMM] shared cleanup failed', e);
+          }
 
-                    window._gdmmSharedNotesByProfile = {};
-                    window._gdmmLastSharedNotesPayload = {};
-                    state.sharedNotes = {};
-                    window.__gdmmSharedNotesSwapInit = false;
-
-
-
-                    const mapsObj = data.maps || {};
-                    const desiredActive = data.active || null;
-
-                    // Crée un profil shared par map
-                    for (const [mapName, pack] of Object.entries(mapsObj)) {
-                      if (!mapName || !pack) continue;
-
-                      const compactRoutes  = Array.isArray(pack.r) ? pack.r : [];
-                      const compactMarkers = Array.isArray(pack.m) ? pack.m : [];
-                      const sharedNotes    = (pack.notes && typeof pack.notes === 'object') ? pack.notes : null;
-
-                      const routes = compactRoutes.map(r => ({
-                        id: r.i,
-                        name: r.n || '',
-                        color: r.c || '#ffcc00',
-                        width: r.w || 4,
-                        opacity: typeof r.o === 'number' ? r.o : 0.85,
-                        points: (r.pts || []).map(([xp, yp]) => ({ xp, yp })),
-                      }));
-
-                      const markers = compactMarkers.map(m => ({
-                        id: m.i,
-                        xp: m.x,
-                        yp: m.y,
-                        label: m.l || '',
-                        cat: m.k || 'General',
-                        color: m.c || '#78f1c2',
-                      }));
-
-                      // Nom unique du profil shared
-                      const baseName = `[Shared] ${mapName}`;
-                      let name = baseName;
-                      let i = 2;
-                      while (state.profiles && state.profiles[name]) {
-                        name = `${baseName} #${i++}`;
-                      }
-
-                      const p = ensureProfile(name);
-                      if (!p) continue;
-
-                      p.markers = markers;
-                      p.paths   = routes;
-                      p.isShared = true;
-                      p.sharedSourceMap = mapName;
-
-                      // Réutilise la map originale si elle existe déjà
-                      const src = state.profiles && state.profiles[mapName];
-                      if (src && src.map) p.map = src.map;
-
-                      // Associe les notes à ce profil shared
-                      window._gdmmSharedNotesByProfile[name] = sharedNotes || {};
-                      window._gdmmLastSharedNotesPayload = window._gdmmSharedNotesByProfile[name];
-
-                    }
-
-                    // Si possible, préload la map active
-                    if (desiredActive && typeof ensureMapLoadedForProfile === 'function') {
-                      try { await ensureMapLoadedForProfile(desiredActive); } catch(_) {}
-                    }
-
-                  // Re-sync shared profile map after preload (embedData/sessionSrc becomes available)
-                  for (const [n, p] of Object.entries(state.profiles || {})) {
-                    if (!p?.isShared) continue;
-                    const srcName = p.sharedSourceMap;
-                    const src = srcName && state.profiles?.[srcName];
-                    if (src?.map) p.map = src.map;
-                  }
+          window._gdmmSharedNotesByProfile = {};
+          window._gdmmLastSharedNotesPayload = {};
+          state.sharedNotes = {};
+          window.__gdmmSharedNotesSwapInit = false;
 
 
-                    // Trouve le profil shared correspondant à data.active
-                    let activeSharedProfile = null;
-                    if (desiredActive) {
-                      const entries = Object.entries(state.profiles || {});
-                      const match = entries.find(([n, p]) => p?.isShared && p?.sharedSourceMap === desiredActive);
-                      if (match) activeSharedProfile = match[0];
-                    }
 
-                    // fallback: premier profil shared trouvé
-                    if (!activeSharedProfile) {
-                      const entries = Object.entries(state.profiles || {});
-                      const match = entries.find(([n, p]) => p?.isShared);
-                      if (match) activeSharedProfile = match[0];
-                    }
+          const mapsObj = data.maps || {};
+          const desiredActive = data.active || null;
 
-                     if (activeSharedProfile) {
+          // Crée un profil shared par map
+          for (const [mapName, pack] of Object.entries(mapsObj)) {
+            if (!mapName || !pack) continue;
 
-                      // profil actif une fois
-                      const p = state.profiles[activeSharedProfile];
+            const compactRoutes  = Array.isArray(pack.r) ? pack.r : [];
+            const compactMarkers = Array.isArray(pack.m) ? pack.m : [];
+            const sharedNotes    = (pack.notes && typeof pack.notes === 'object') ? pack.notes : null;
 
-                      // ✅ garantir que la map du profil shared actif est chargée
-                      const srcName = p?.sharedSourceMap;
-                      if (srcName && typeof ensureMapLoadedForProfile === 'function') {
-                        try { await ensureMapLoadedForProfile(srcName); } catch(_) {}
-                        const src = state.profiles?.[srcName];
-                        if (src?.map) p.map = src.map;
-                      }
+            const routes = compactRoutes.map(r => ({
+              id: r.i,
+              name: r.n || '',
+              color: r.c || '#ffcc00',
+              width: r.w || 4,
+              opacity: typeof r.o === 'number' ? r.o : 0.85,
+              points: (r.pts || []).map(([xp, yp]) => ({ xp, yp })),
+            }));
 
-                      setActiveProfile(activeSharedProfile);
+            const markers = compactMarkers.map(m => ({
+              id: m.i,
+              xp: m.x,
+              yp: m.y,
+              label: m.l || '',
+              cat: m.k || 'General',
+              color: m.c || '#78f1c2',
+            }));
 
-                      window._gdmmLastSharedNotesPayload = window._gdmmSharedNotesByProfile?.[activeSharedProfile] || {};
-                      state.sharedNotes = window._gdmmSharedNotesByProfile?.[activeSharedProfile] || {};
+            // Nom unique du profil shared
+            const baseName = `[Shared] ${mapName}`;
+            let name = baseName;
+            let i = 2;
+            while (state.profiles && state.profiles[name]) {
+              name = `${baseName} #${i++}`;
+            }
 
-                      // Affiche la map (maintenant p.map doit être OK)
-                      if (p?.map?.embedData && window.UiCore?.setMapSrc) {
-                        window.UiCore.showLoader?.(GDMMLang.t('toast.LoadingMap'));
-                        window.UiCore.setMapSrc(p.map.embedData);
-                      } else if (p?.map?.sessionSrc && window.UiCore?.setMapSrc) {
-                        window.UiCore.showLoader?.(GDMMLang.t('toast.LoadingMap'));
-                        window.UiCore.setMapSrc(p.map.sessionSrc);
-                      }
+            const p = ensureProfile(name);
+            if (!p) continue;
 
-                      document.body.classList.add('shared-only-view');
-                      window.refreshProfilesUI?.();
-                      window.UiCore?.renderList?.();
-                      window.UiCore?.renderMarkers?.({ skipRoutesPanel: true });
-                      window.UiRoutes?.renderRoutesPanel?.();
-                    }
+            p.markers = markers;
+            p.paths   = routes;
+            p.isShared = true;
+            p.sharedSourceMap = mapName;
+
+            // Réutilise la map originale si elle existe déjà
+            const src = state.profiles && state.profiles[mapName];
+            if (src && src.map) p.map = src.map;
+
+            // Associe les notes à ce profil shared
+            window._gdmmSharedNotesByProfile[name] = sharedNotes || {};
+            window._gdmmLastSharedNotesPayload = window._gdmmSharedNotesByProfile[name];
+
+          }
+
+          // Si possible, préload la map active
+          if (desiredActive && typeof ensureMapLoadedForProfile === 'function') {
+            try { await ensureMapLoadedForProfile(desiredActive); } catch(_) {}
+          }
+
+        // Re-sync shared profile map after preload (embedData/sessionSrc becomes available)
+        for (const [n, p] of Object.entries(state.profiles || {})) {
+          if (!p?.isShared) continue;
+          const srcName = p.sharedSourceMap;
+          const src = srcName && state.profiles?.[srcName];
+          if (src?.map) p.map = src.map;
+        }
 
 
-                    // Listener pour swap les notes quand on change de profil shared
-                    const sel = document.getElementById('profileSelect');
-                    if (sel && !window.__gdmmSharedNotesSwapInit) {
-                      window.__gdmmSharedNotesSwapInit = true;
-                      sel.addEventListener('change', () => {
-                        const name = sel.value;
-                        if (!name) return;
+          // Trouve le profil shared correspondant à data.active
+          let activeSharedProfile = null;
+          if (desiredActive) {
+            const entries = Object.entries(state.profiles || {});
+            const match = entries.find(([n, p]) => p?.isShared && p?.sharedSourceMap === desiredActive);
+            if (match) activeSharedProfile = match[0];
+          }
 
-                        if (state.profiles?.[name]?.isShared) {
-                          state.sharedView = true;
-                          state.sharedNotes = window._gdmmSharedNotesByProfile?.[name] || {};
+          // fallback: premier profil shared trouvé
+          if (!activeSharedProfile) {
+            const entries = Object.entries(state.profiles || {});
+            const match = entries.find(([n, p]) => p?.isShared);
+            if (match) activeSharedProfile = match[0];
+          }
 
-                          //mettre à jour APRÈS avoir changé state.sharedNotes
-                          window._gdmmLastSharedNotesPayload = state.sharedNotes;
-                        }
-                      });
+           if (activeSharedProfile) {
 
-                    }
+            // profil actif une fois
+            const p = state.profiles[activeSharedProfile];
 
-                    return; // important: on stoppe ici, on ne passe pas dans l'ancien flux v3
-                  }
+            // garantir que la map du profil shared actif est chargée
+            const srcName = p?.sharedSourceMap;
+            if (srcName && typeof ensureMapLoadedForProfile === 'function') {
+              try { await ensureMapLoadedForProfile(srcName); } catch(_) {}
+              const src = state.profiles?.[srcName];
+              if (src?.map) p.map = src.map;
+            }
+
+              setActiveProfile(activeSharedProfile);
+
+              state.sharedView = true; // indispensable pour ui.map.notes.js
+              window._gdmmLastSharedNotesPayload = window._gdmmSharedNotesByProfile?.[activeSharedProfile] || {};
+              state.sharedNotes = window._gdmmSharedNotesByProfile?.[activeSharedProfile] || {};
+
+              // refresh du panel Notes (compteur + liste)
+              window.buildNoteList?.();
+
+
+            // Affiche la map (maintenant p.map doit être OK)
+            if (p?.map?.embedData && window.UiCore?.setMapSrc) {
+              window.UiCore.showLoader?.(GDMMLang.t('toast.LoadingMap'));
+              window.UiCore.setMapSrc(p.map.embedData);
+            } else if (p?.map?.sessionSrc && window.UiCore?.setMapSrc) {
+              window.UiCore.showLoader?.(GDMMLang.t('toast.LoadingMap'));
+              window.UiCore.setMapSrc(p.map.sessionSrc);
+            }
+
+            document.body.classList.add('shared-only-view');
+            window.refreshProfilesUI?.();
+            window.UiCore?.renderList?.();
+            window.UiCore?.renderMarkers?.({ skipRoutesPanel: true });
+            window.UiRoutes?.renderRoutesPanel?.();
+          }
+
+
+          // Listener pour swap les notes quand on change de profil shared
+          const sel = document.getElementById('profileSelect');
+          if (sel && !window.__gdmmSharedNotesSwapInit) {
+            window.__gdmmSharedNotesSwapInit = true;
+            sel.addEventListener('change', () => {
+              const name = sel.value;
+              if (!name) return;
+
+              if (state.profiles?.[name]?.isShared) {
+                state.sharedView = true;
+                state.sharedNotes = window._gdmmSharedNotesByProfile?.[name] || {};
+
+                //mettre à jour APRÈS avoir changé state.sharedNotes
+                window._gdmmLastSharedNotesPayload = state.sharedNotes;
+                 window.buildNoteList?.();
+              }
+            });
+
+          }
+
+          return; // important: on stoppe ici, on ne passe pas dans l'ancien flux v3
+        }
 
 
 

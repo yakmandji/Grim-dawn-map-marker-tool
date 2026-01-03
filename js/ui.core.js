@@ -1195,6 +1195,7 @@ if (newPathBtn) {
 
   // --- Profils (buttons) ---
   $('#profileSelect')?.addEventListener('change', async (e) => {
+                                                                  if (state.sharedBootInProgress) return;
     const name = e.target.value;
 
     setActiveProfile(name);
@@ -1454,6 +1455,12 @@ if (newPathBtn) {
         const isSharedBoot = params.has('s') || params.has('share');
 
         if (isSharedBoot) {
+          state.sharedBootInProgress = true;
+
+          // optionnel: évite le flash
+          mapImg?.removeAttribute('src');
+          state.mapReady = false;
+
           showLoader(GDMMLang.t('toast.LoadingMap'));
 
           // attendre UiShare (car ui.share.js est chargé après ui.core.js)
@@ -1463,34 +1470,41 @@ if (newPathBtn) {
               if (window.UiShare && typeof UiShare.loadSharedFromUrl === 'function') {
                 clearInterval(timer);
                 resolve();
-              } else if (Date.now() - t0 > 4000) {
+              } else if (Date.now() - t0 > 8000) {
                 clearInterval(timer);
                 reject(new Error('UiShare not ready'));
               }
             }, 20);
           });
 
+          let sharedOk = false;
+
           try {
             await waitUiShare();
             await UiShare.loadSharedFromUrl();
+            sharedOk = true;
+
+            refreshProfilesUI();
+            renderList();
+            renderMarkers();
+            renderRoutesPanel();
+            initDonePanelToggle();
+
+            state.locked = true;
+            applyLockUI();
+            hideLoader();
+
           } catch (e) {
             console.warn('[GDMM] shared boot failed:', e);
-            hideLoader(); // évite loader infini si ça foire
+            hideLoader();
+          } finally {
+            state.sharedBootInProgress = false;
           }
 
-          // RENDU UI (comme un boot normal)
-          refreshProfilesUI();
-          renderList();
-          renderMarkers();
-          renderRoutesPanel();
-          initDonePanelToggle();
-
-          // UI / lock
-          state.locked = true;
-          applyLockUI();
-
-          return;
+          if (sharedOk) return;
         }
+
+
 
       // 3) Choix du profil initial
       const mapNames = Object.keys(MAP_SOURCES);

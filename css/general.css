@@ -587,23 +587,20 @@ body.shared-only-view #shared-view-message{
   right: 11px;
 }
 
-body.shared-only-view .sidebar {
-  opacity: 0.8;
-}
-
 body.shared-only-view #list input,
 body.shared-only-view #routesList input
 {
   pointer-events: none;
-  opacity: 0.6;
+  background-color: transparent;
   cursor: default; 
+  border: none;
+  padding-left: 2px;
 }
 
 /* Mais on laisse la map et les contrôles de zoom fonctionnels */
 body.shared-only-view .mapWrap
  {
   pointer-events: auto;
-  opacity: 0.8;
 }
 
 /* Hide normal mode */
