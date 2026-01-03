@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grim Dawn Map Custom Marker Tool</title>
+
+  <meta name="description" content="Interactive map tool for Grim Dawn. Create custom markers, plan routes, share maps, save progress, and explore Cairn, Malmouth and Korvan Basin with a fully customizable interface." />
+  <meta name="keywords" content="Grim Dawn map, Grim Dawn markers, Grim Dawn tool, Grim Dawn planner, Cairn map, Korvan Basin, Malmouth, custom markers, interactive map" />
+  <meta name="author" content="Yakmandji & Contributors" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.grimcustommarker.org/" />
+
+    <!-- Open Graph (Facebook / Discord ) -->
+  <meta property="og:title" content="Grim Dawn Custom Marker Tool" />
+  <meta property="og:description" content="Create custom markers, plan routes, share maps and explore Grim Dawn with an interactive world map tool." />
+  <meta property="og:url" content="https://www.grimcustommarker.org/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
+
+    <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grim Dawn Custom Marker Tool" />
+  <meta name="twitter:description" content="Interactive map tool with custom markers & route planning for Grim Dawn." />
+  <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
+
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/general.css?v1.79" />
+  <link rel="stylesheet" href="css/items.css?v1.86" />
+  <link rel="stylesheet" href="css/responsive.css?v1.33" />
+  <link rel="stylesheet" href="css/catalog.css?v1.33" />
+
+  
+</head>
+<body id="catalog">
+
+  <div class="app-logo">
+      <div class="container">
+        <p class="announce" data-i18n="ui.announceCatalog">Grim Dawn</p>
+        <p class="title">Shared Custom Map Catalog</p>
+      </div>
+  </div>
+
+  <p aria-hidden="true" class="seo-summary">
+    Grim Dawn Custom Marker Tool is an interactive map that lets you create custom markers, plan routes,
+    and explore Cairn, Malmouth, and the Korvan Basin. Includes multi-language support, import/export,
+    and advanced map navigation.
+  </p>
+
+  <div class="app">
+
+
+    <header id="left-menu">
+
+      <button id="mobile-menu-toggle">
+          <img src="img/hamburger.svg" width="28" alt="">
+      </button>
+
+       <button id="mergeSharedBtn" class="small menu-button" >
+          <img src="img/merge.svg" width="18" alt="Merge"> 
+          <span data-i18n="ui.MergeRoutesButton">Add shared to my map</span>
+        </button>
+
+      <div class="right-panel">
+
+      <div class="catalog-actions">
+        <button class="button" id="openSubmit">+ Submit a Map</button>
+        <a href="index.html" class="button">← Back to Map</a>
+      </div>
+
+<!--         langue------------------------------------- -->
+        <select id="langSelect" class="select-green">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="it">Italiano</option>
+        <option value="pl">Polish</option>
+        <option value="ru">Русский</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+
+        
+        </select>
+
+        <div id="langDropdown" class="custom-dropdown">
+          <button type="button" class="select-current select-green menu-button">
+            <span class="flag flag-fr"></span>
+            <span class="lang-label">Français</span>
+          </button>
+          <div class="custom-dropdown-inner">
+            <button type="button" class="option-item menu-button" data-lang="en">
+              <span class="flag flag-en"></span><span>English</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="fr">
+              <span class="flag flag-fr"></span><span>Français</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="es">
+              <span class="flag flag-es"></span><span>Español</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="de">
+              <span class="flag flag-de"></span><span>Deutsch</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="pt">
+              <span class="flag flag-pt"></span><span>Português</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="it">
+              <span class="flag flag-it"></span><span>Italiano</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="pl">
+              <span class="flag flag-pl"></span><span>Polish</span>
+            </button>            
+            <button type="button" class="option-item menu-button" data-lang="ru">
+              <span class="flag flag-ru"></span><span>Русский</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="zh">
+              <span class="flag flag-zh"></span><span>中文</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="ja">
+              <span class="flag flag-ja"></span><span>日本語</span>
+            </button>
+            <button type="button" class="option-item menu-button" data-lang="ko">
+              <span class="flag flag-ko"></span><span>한국어</span>
+            </button>            
+          </div>
+        </div>
+<!--      langue END------------------------------------- -->
+      </div>
+    </header>
+
+    <main class="catalog-container">
+
+      <div id="catalog-helper">
+        <span data-i18n="ui.HelpCatalogHelper">For add a map to catalog, click on "share map" button on the main map tool to get your link</span>
+      </div>
+
+      <div id="catalogList" class="catalog-list">
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- Submit Modal -->
+  <div id="catalogBackdrop" style="display:none"></div>
+
+  <div class="modal" id="catalogSubmitModal" style="display:none">
+    <button class="closeModal">×</button>
+    <h3>Submit a map</h3>
+
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="submitTitle">
+
+      <div class="modal-body">
+        <label class="field">
+          <div class="field-label" data-i18n="catalog.Author">Your name</div>
+          <input id="submitAuthor" type="text" maxlength="24" placeholder="Yakmandji" />
+        </label>
+
+        <label class="field">
+          <div class="field-label" data-i18n="catalog.MapName">Map title</div>
+          <input id="submitTitleInput" type="text" maxlength="70" placeholder="Normal – Beginner Playthrough (Act 1–4)" />
+        </label>
+
+        <label class="field">
+          <div class="field-label" data-i18n="catalog.Campaign">Campaign</div>
+          <select id="submitMap">
+            <option value="Cairn">Cairn</option>
+            <option value="Malmouth">Malmouth</option>
+            <option value="Korvan Basin">Korvan Basin</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <div class="field-label" data-i18n="catalog.Language">Language</div>
+          <select id="submitLang">
+            <option value="EN">EN</option>
+            <option value="FR">FR</option>
+            <option value="ES">ES</option>
+            <option value="PT">PT</option>
+            <option value="RU">RU</option>
+            <option value="IT">IT</option>
+            <option value="ZH">ZH</option>
+            <option value="JA">JA</option>
+            <option value="DE">DE</option>
+            <option value="PL">PL</option>
+            <option value="KO">KO</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <div class="field-label" data-i18n="catalog.Description">Short description</div>
+          <textarea id="submitDesc" rows="3" maxlength="240"
+            placeholder="What is included? For who? (beginner, leveling, shrines...)"></textarea>
+        </label>
+
+        <label class="field">
+          <div class="field-label" data-i18n="catalog.ShareUrl">Share link</div>
+          <input id="submitUrl" type="text" placeholder="https://www.grimcustommarker.org/?s=XXXX" />
+          <div class="field-hint" data-i18n="catalog.ShareHint">
+            Generate this link from the map page using the Share button.
+          </div>
+        </label>
+
+        <div id="submitError" class="modal-error hidden"></div>
+        <div id="submitSuccess" class="modal-success hidden"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn cancelbutton" id="submitCancel" data-close="1" data-i18n="catalog.Cancel">Cancel</button>
+        <button id="catalogSubmitConfirm" class="btn">Copy submission</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="js/ui.lang.js?v=3.75"></script>
+  <script src="js/catalog.js?v=1.00"></script>
+
+</body>
+</html>

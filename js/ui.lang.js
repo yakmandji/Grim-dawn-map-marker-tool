@@ -143,8 +143,9 @@
       "ui.linkRoute": "Share route",
       "ui.HelpTextButton": "You can help me improve the tool, report issues, or ask for help on my GitHub page",
       "ui.HelpButton": "Feedback & Support",
-      "hint.PanSpeed": "Press <kbd>Shift</kbd> for fast speed — Press <kbd>Ctrl</kbd> for slow speed"
+      "hint.PanSpeed": "Press <kbd>Shift</kbd> for fast speed — Press <kbd>Ctrl</kbd> for slow speed",
 
+      "ui.HelpCatalogHelper": "For add a map to catalog, click on 'share map' button on the main map page to get your link",
 
     },
     fr: {
@@ -285,8 +286,9 @@
       "ui.linkRoute" : "Partager la route",
       "ui.HelpTextButton": "Vous pouvez m’aider à améliorer l’outil, signaler des problèmes ou demander de l’aide sur la page GitHub du projet",
       "ui.HelpButton": "Retours & assistance",
-      "hint.PanSpeed": "Appuyez sur <kbd>Maj</kbd> pour aller plus vite — Appuyez sur <kbd>Ctrl</kbd> pour aller plus lentement"
+      "hint.PanSpeed": "Appuyez sur <kbd>Maj</kbd> pour aller plus vite — Appuyez sur <kbd>Ctrl</kbd> pour aller plus lentement",
 
+      "ui.HelpCatalogHelper": "Pour partager une map dans le catalogue, cliquez sur le boutton 'partager ma carte' sur la page de votre map pour obtenir votre lien",
 
     },
     es: {
@@ -427,7 +429,6 @@
       "ui.HelpTextButton": "Puedes ayudarme a mejorar la herramienta, informar de problemas o pedir ayuda en la página de GitHub del proyecto",
       "ui.HelpButton": "Comentarios y ayuda",
       "hint.PanSpeed": "Pulsa <kbd>Mayús</kbd> para ir más rápido — Pulsa <kbd>Ctrl</kbd> para ir más lento"
-
 
     },
 

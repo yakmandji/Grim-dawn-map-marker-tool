@@ -1,0 +1,155 @@
+#catalog header .right-panel{
+	position: initial;
+
+}
+
+#catalog header{
+	justify-content: end;
+}
+
+body {
+  color: #e6e6e6;
+}
+
+#catalogBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 40;
+  margin-top: 80px;
+}
+
+.app-logo{
+	background-image:       
+	  linear-gradient(rgba(9,24,27,0.50), rgba(9,19,22,0.5)),
+      url("../img/catalog-banner.jpg");
+   background-size: cover;
+   padding: 180px 20px;
+   font-weight: 600;
+}
+
+.app-logo .container{
+	max-width: 1300px;
+	margin: auto;
+}
+
+.app-logo .announce {
+	text-align: left;
+	font-size: 20px;
+	color: #73cebf;
+	margin-top: 0;
+} 
+
+.app-logo .title {
+	font-size: 42px;
+	margin-left: 0;
+	color: #73cebf;
+} 
+
+.app{
+	display: initial;
+}
+
+.catalog-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 25px 24px;
+}
+
+.catalog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.catalog-card .catalog-name{
+	color: #32616a;
+} 
+
+.catalog-card .badge-container{
+
+}
+
+.catalog-card .title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--titlecolor);
+}
+
+.catalog-card .marker-cat-badge{
+   color: #4ed4c3;
+}
+
+.catalog-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.catalog-lang {
+  text-transform: uppercase;
+}
+
+.catalog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.catalog-card {
+  background: var(--panel);
+  border: 1px solid #2a3142;
+  border-radius: 16px;
+  padding: 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.catalog-card:hover{
+   box-shadow: 0 0 0 3px rgb(43 184 172 / 60%);
+}
+
+.catalog-card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.catalog-meta {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.catalog-desc {
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0.9;
+  color: var(--txt);
+  max-height: 95px;
+  min-height: 95px;
+  display: flex;
+  align-items: center;
+  margin-top: 13px;
+}
+
+.catalog-card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.empty-state {
+  opacity: 0.7;
+  padding: 40px 0;
+  text-align: center;
+}
+
+#catalog-helper{
+    display: flex;
+    justify-content: center;
+    padding: 14px;
+    color: #b9ae92;
+    margin-bottom: 20px;
+}
