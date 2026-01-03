@@ -147,11 +147,37 @@ body {
 }
 
 #catalog-helper{
-    display: flex;
-    justify-content: center;
     padding: 14px;
     color: #b9ae92;
-    margin-bottom: 20px;
+    margin-bottom: 55px;
+}
+
+#catalog-helper .title{
+  font-size: 24px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.catalog-helper-inner{
+  display: flex;
+  gap: 20px;
+}
+
+#catalog-helper .helper-card{
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+#catalog-helper .number{
+    font-size: 22px;
+    border-radius: 61px;
+    padding: 5px 15px;
+    border: 1px solid #524529;
+}
+
+#catalog-helper .text{
+  font-size: 13px;
 }
 
 /*FORM*/

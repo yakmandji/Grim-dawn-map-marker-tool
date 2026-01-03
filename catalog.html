@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Grim Dawn Map Custom Marker Tool</title>
 
-  <meta name="description" content="Interactive map tool for Grim Dawn. Create custom markers, plan routes, share maps, save progress, and explore Cairn, Malmouth and Korvan Basin with a fully customizable interface." />
-  <meta name="keywords" content="Grim Dawn map, Grim Dawn markers, Grim Dawn tool, Grim Dawn planner, Cairn map, Korvan Basin, Malmouth, custom markers, interactive map" />
+  <meta name="description" content="Browse community-created Grim Dawn maps. Discover shared maps with custom markers, routes, notes, and quest locations created by other players." />
+  <meta name="keywords" content="Grim Dawn community maps, Grim Dawn shared maps, Grim Dawn map catalog, Grim Dawn quest maps, Grim Dawn custom markers, Grim Dawn routes" />
   <meta name="author" content="Yakmandji & Contributors" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.grimcustommarker.org/" />
+  <link rel="canonical" href="https://www.grimcustommarker.org/catalog.html" />
 
-    <!-- Open Graph (Facebook / Discord ) -->
-  <meta property="og:title" content="Grim Dawn Custom Marker Tool" />
-  <meta property="og:description" content="Create custom markers, plan routes, share maps and explore Grim Dawn with an interactive world map tool." />
-  <meta property="og:url" content="https://www.grimcustommarker.org/" />
+  <!-- Open Graph (Facebook / Discord) -->
+  <meta property="og:title" content="Grim Dawn – Community Map Catalog" />
+  <meta property="og:description" content="Explore community-created Grim Dawn maps with shared markers, routes, and notes." />
+  <meta property="og:url" content="https://www.grimcustommarker.org/catalog.html" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
-    <!-- Twitter Card -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Grim Dawn Custom Marker Tool" />
-  <meta name="twitter:description" content="Interactive map tool with custom markers & route planning for Grim Dawn." />
+  <meta name="twitter:title" content="Grim Dawn – Community Map Catalog" />
+  <meta name="twitter:description" content="Discover and explore community-created Grim Dawn maps shared by other players." />
   <meta name="twitter:image" content="https://www.grimcustommarker.org/img/preview.jpg" />
 
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="css/general.css?v1.80" />
   <link rel="stylesheet" href="css/items.css?v1.87" />
   <link rel="stylesheet" href="css/responsive.css?v1.33" />
-  <link rel="stylesheet" href="css/catalog.css?v1.34" />
+  <link rel="stylesheet" href="css/catalog.css?v1.35" />
 
   
 </head>
@@ -131,7 +131,32 @@
     <main class="catalog-container">
 
       <div id="catalog-helper">
-        <span data-i18n="ui.HelpCatalogHelper">To add a map to the catalog, click the “Share my map” button on the main map page to generate a share link. Paste this link into the submission form. Your share link is automatically updated each time you click “Share my map” again.</span>
+        <span data-i18n="ui.HelpCatalogHelperTitle" class="title">
+          How it works 
+        </span>
+        <div class="catalog-helper-inner">
+
+          <div class="helper-card tool-section">
+            <span class="number">1</span>
+            <span class="text" data-i18n="ui.HelpCatalogHelper1">
+              First, create a share link using the “Share my map” button in the main map tool
+            </span>
+          </div>
+
+          <div class="helper-card tool-section">
+            <span class="number">2</span>
+            <span class="text" data-i18n="ui.HelpCatalogHelper2">
+              Then, submit this link through the Community Maps page form so it appears in the catalog
+            </span>
+          </div>
+
+          <div class="helper-card tool-section">
+            <span class="number">3</span>
+            <span class="text" data-i18n="ui.HelpCatalogHelper3">
+              Each time you click on "Share my map" button your map is updated in catalog. You don't need to create a new post
+            </span>
+          </div>
+        </div>
       </div>
 
       <div id="catalogList" class="catalog-list">
@@ -235,7 +260,7 @@
   </div>
 
 
-  <script src="js/ui.lang.js?v=3.75"></script>
+  <script src="js/ui.lang.js?v=3.76"></script>
   <script src="js/catalog.js?v=1.01"></script>
 
 </body>

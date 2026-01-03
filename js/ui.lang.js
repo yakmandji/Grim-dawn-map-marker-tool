@@ -145,7 +145,11 @@
       "ui.HelpButton": "Feedback & Support",
       "hint.PanSpeed": "Press <kbd>Shift</kbd> for fast speed — Press <kbd>Ctrl</kbd> for slow speed",
 
-      "ui.HelpCatalogHelper": "To add a map to the catalog, click the “Share my map” button on the main map page to generate a share link. Paste this link into the submission form. Your share link is automatically updated each time you click “Share my map” again.",
+      "ui.HelpCatalogHelperTitle": "How it works",
+      "ui.HelpCatalogHelper1": "First, create a share link using the \"Share my map\" button in the main map tool",
+      "ui.HelpCatalogHelper2": "Then, submit this link through the Community Maps page form so it appears in the catalog",
+      "ui.HelpCatalogHelper3": "Each time you click on \"Share my map\", your map is automatically updated in the catalog. You don’t need to create a new post",
+
       "ui.SubmitMapButton": "+ Submit a Map",
       "ui.BackToMapButton": "← Back to Map",
       "ui.CommunityMapButton": "Community maps",
@@ -292,7 +296,11 @@
       "ui.HelpButton": "Retours & assistance",
       "hint.PanSpeed": "Appuyez sur <kbd>Maj</kbd> pour aller plus vite — Appuyez sur <kbd>Ctrl</kbd> pour aller plus lentement",
 
-      "ui.HelpCatalogHelper": "Pour ajouter une carte au catalogue, cliquez sur le bouton « Partager ma carte » sur la page principale de la carte afin de générer un lien de partage. Collez ensuite ce lien dans le formulaire de soumission. Votre lien de partage est automatiquement mis à jour à chaque fois que vous cliquez de nouveau sur « Partager ma carte ».",
+      "ui.HelpCatalogHelperTitle": "Comment ça fonctionne",
+      "ui.HelpCatalogHelper1": "Commencez par créer un lien de partage via le bouton \"Partager ma carte\" dans l’outil principal",
+      "ui.HelpCatalogHelper2": "Ensuite, soumettez ce lien via le formulaire de la page Cartes communautaires pour l’ajouter au catalogue",
+      "ui.HelpCatalogHelper3": "À chaque clic sur \"Partager ma carte\", votre carte est automatiquement mise à jour dans le catalogue. Il n’est pas nécessaire de créer une nouvelle publication",
+
       "ui.SubmitMapButton": "+ Soumettre une carte",
       "ui.BackToMapButton": "← Retour à la carte",
       "ui.CommunityMapButton": "Cartes de la communauté",
@@ -440,7 +448,10 @@
       "ui.HelpButton": "Comentarios y ayuda",
       "hint.PanSpeed": "Pulsa <kbd>Mayús</kbd> para ir más rápido — Pulsa <kbd>Ctrl</kbd> para ir más lento",
 
-      "ui.HelpCatalogHelper": "Para añadir un mapa al catálogo, haz clic en el botón «Compartir mi mapa» en la página principal del mapa para generar un enlace de uso compartido. Pega este enlace en el formulario de envío. Tu enlace compartido se actualiza automáticamente cada vez que vuelves a hacer clic en «Compartir mi mapa».",
+      "ui.HelpCatalogHelperTitle": "Cómo funciona",
+      "ui.HelpCatalogHelper1": "Primero, crea un enlace compartido usando el botón \"Compartir mi mapa\" en la herramienta principal",
+      "ui.HelpCatalogHelper2": "Luego, envía este enlace a través del formulario de la página de Mapas comunitarios para que aparezca en el catálogo",
+      "ui.HelpCatalogHelper3": "Cada vez que haces clic en \"Compartir mi mapa\", tu mapa se actualiza automáticamente en el catálogo. No necesitas crear una nueva publicación",
       "ui.SubmitMapButton": "+ Enviar un mapa",
       "ui.BackToMapButton": "← Volver al mapa",
       "ui.CommunityMapButton": "Mapas de la comunidad",
@@ -588,7 +599,11 @@
       "ui.HelpButton": "Feedback & Support",
       "hint.PanSpeed": "Drücke <kbd>Umschalt</kbd> für schneller — Drücke <kbd>Strg</kbd> für langsamer",
 
-      "ui.HelpCatalogHelper": "Um eine Karte zum Katalog hinzuzufügen, klicken Sie auf der Hauptkartenseite auf die Schaltfläche „Meine Karte teilen“, um einen Freigabelink zu erstellen. Fügen Sie diesen Link in das Einreichungsformular ein. Ihr Freigabelink wird jedes Mal automatisch aktualisiert, wenn Sie erneut auf „Meine Karte teilen“ klicken.",
+      "ui.HelpCatalogHelperTitle": "So funktioniert es",
+      "ui.HelpCatalogHelper1": "Erstellen Sie zunächst einen Freigabelink über die Schaltfläche \"Meine Karte teilen\" im Hauptwerkzeug",
+      "ui.HelpCatalogHelper2": "Reichen Sie diesen Link anschließend über das Formular der Community-Karten-Seite ein, damit er im Katalog erscheint",
+      "ui.HelpCatalogHelper3": "Jedes Mal, wenn Sie auf \"Meine Karte teilen\" klicken, wird Ihre Karte automatisch im Katalog aktualisiert. Sie müssen keinen neuen Eintrag erstellen",
+
       "ui.SubmitMapButton": "+ Karte einreichen",
       "ui.BackToMapButton": "← Zurück zur Karte",
       "ui.CommunityMapButton": "Community-Karten",
@@ -737,7 +752,11 @@
       "ui.HelpButton": "Feedback e suporte",
       "hint.PanSpeed": "Pressione <kbd>Shift</kbd> para mover mais rápido — Pressione <kbd>Ctrl</kbd> para mover mais devagar",
 
-       "ui.HelpCatalogHelper": "Aby dodać mapę do katalogu, kliknij przycisk „Udostępnij moją mapę” na głównej stronie mapy, aby wygenerować link udostępniania. Wklej ten link do formularza zgłoszeniowego. Link udostępniania jest automatycznie aktualizowany za każdym razem, gdy ponownie klikniesz „Udostępnij moją mapę”.",
+       "ui.HelpCatalogHelperTitle": "Como funciona",
+      "ui.HelpCatalogHelper1": "Primeiro, crie um link de compartilhamento usando o botão \"Compartilhar meu mapa\" na ferramenta principal",
+      "ui.HelpCatalogHelper2": "Em seguida, envie este link pelo formulário da página de Mapas da Comunidade para que ele apareça no catálogo",
+      "ui.HelpCatalogHelper3": "Sempre que você clicar em \"Compartilhar meu mapa\", seu mapa será atualizado automaticamente no catálogo. Não é necessário criar uma nova publicação",
+
        "ui.SubmitMapButton": "+ Enviar um mapa",
        "ui.BackToMapButton": "← Voltar ao mapa",
        "ui.CommunityMapButton": "Mapas da comunidade",
@@ -885,7 +904,11 @@
     "ui.HelpButton": "Обратная связь и поддержка",
     "hint.PanSpeed": "Нажмите <kbd>Shift</kbd>, чтобы двигаться быстрее — Нажмите <kbd>Ctrl</kbd>, чтобы двигаться медленнее",
 
-    "ui.HelpCatalogHelper": "Чтобы добавить карту в каталог, нажмите кнопку «Поделиться моей картой» на главной странице карты, чтобы создать ссылку для общего доступа. Вставьте эту ссылку в форму отправки. Ссылка автоматически обновляется каждый раз, когда вы снова нажимаете «Поделиться моей картой».",
+    "ui.HelpCatalogHelperTitle": "Как это работает",
+    "ui.HelpCatalogHelper1": "Сначала создайте ссылку для общего доступа с помощью кнопки \"Поделиться картой\" в основном инструменте",
+    "ui.HelpCatalogHelper2": "Затем отправьте эту ссылку через форму на странице карт сообщества, чтобы она появилась в каталоге",
+    "ui.HelpCatalogHelper3": "Каждый раз при нажатии на \"Поделиться картой\" ваша карта автоматически обновляется в каталоге. Создавать новую запись не нужно",
+
     "ui.SubmitMapButton": "+ Отправить карту",
     "ui.BackToMapButton": "← Назад к карте",
     "ui.CommunityMapButton": "Карты сообщества",
@@ -1035,7 +1058,11 @@
       "ui.HelpButton": "Feedback e supporto",
       "hint.PanSpeed": "Premi <kbd>Shift</kbd> per muoverti più velocemente — Premi <kbd>Ctrl</kbd> per muoverti più lentamente",
 
-      "ui.HelpCatalogHelper": "Per aggiungere una mappa al catalogo, fai clic sul pulsante «Condividi la mia mappa» nella pagina principale della mappa per generare un link di condivisione. Incolla questo link nel modulo di invio. Il tuo link di condivisione viene aggiornato automaticamente ogni volta che fai di nuovo clic su «Condividi la mia mappa».",
+      "ui.HelpCatalogHelperTitle": "Come funziona",
+      "ui.HelpCatalogHelper1": "Per prima cosa, crea un link di condivisione utilizzando il pulsante \"Condividi la mia mappa\" nello strumento principale",
+      "ui.HelpCatalogHelper2": "Poi invia questo link tramite il modulo della pagina Mappe della Community affinché appaia nel catalogo",
+      "ui.HelpCatalogHelper3": "Ogni volta che clicchi su \"Condividi la mia mappa\", la tua mappa viene aggiornata automaticamente nel catalogo. Non è necessario creare un nuovo post",
+
       "ui.SubmitMapButton": "+ Invia una mappa",
       "ui.BackToMapButton": "← Torna alla mappa",
       "ui.CommunityMapButton": "Mappe della community",
@@ -1205,7 +1232,11 @@
       "ui.HelpButton": "Opinie i wsparcie",
       "hint.PanSpeed": "Naciśnij <kbd>Shift</kbd>, aby poruszać się szybciej — Naciśnij <kbd>Ctrl</kbd>, aby poruszać się wolniej",
 
-      "ui.HelpCatalogHelper": "Aby dodać mapę do katalogu, kliknij przycisk „Udostępnij moją mapę” na głównej stronie mapy, aby wygenerować link udostępniania. Wklej ten link do formularza zgłoszeniowego. Link udostępniania jest automatycznie aktualizowany za każdym razem, gdy ponownie klikniesz „Udostępnij moją mapę”.",
+      "ui.HelpCatalogHelperTitle": "Jak to działa",
+      "ui.HelpCatalogHelper1": "Najpierw utwórz link udostępniania, używając przycisku \"Udostępnij moją mapę\" w głównym narzędziu",
+      "ui.HelpCatalogHelper2": "Następnie prześlij ten link przez formularz na stronie Map Społeczności, aby pojawił się w katalogu",
+      "ui.HelpCatalogHelper3": "Za każdym razem, gdy klikniesz \"Udostępnij moją mapę\", mapa zostanie automatycznie zaktualizowana w katalogu. Nie musisz tworzyć nowego wpisu",
+
       "ui.SubmitMapButton": "+ Prześlij mapę",
       "ui.BackToMapButton": "← Powrót do mapy",
       "ui.CommunityMapButton": "Mapy społeczności",
@@ -1355,7 +1386,11 @@
       "ui.HelpButton": "反馈与支持",
       "hint.PanSpeed": "按下 <kbd>Shift</kbd> 可加快移动速度 — 按下 <kbd>Ctrl</kbd> 可减慢移动速度",
 
-      "ui.HelpCatalogHelper": "要将地图添加到目录中，请在主地图页面点击“分享我的地图”按钮以生成共享链接。将该链接粘贴到提交表单中。每次再次点击“分享我的地图”时，共享链接都会自动更新。",
+      "ui.HelpCatalogHelperTitle": "使用说明",
+      "ui.HelpCatalogHelper1": "首先，在主地图工具中使用“分享我的地图”按钮创建一个分享链接",
+      "ui.HelpCatalogHelper2": "然后，通过社区地图页面的表单提交该链接，使其显示在目录中",
+      "ui.HelpCatalogHelper3": "每次点击“分享我的地图”，你的地图都会在目录中自动更新。无需创建新的发布",
+
       "ui.SubmitMapButton": "+ 提交地图",
       "ui.BackToMapButton": "← 返回地图",
       "ui.CommunityMapButton": "社区地图",
@@ -1504,7 +1539,11 @@
       "ui.HelpButton": "フィードバックとサポート",
       "hint.PanSpeed": "<kbd>Shift</kbd> を押すと高速移動 — <kbd>Ctrl</kbd> を押すと低速移動",
 
-      "ui.HelpCatalogHelper": "カタログにマップを追加するには、メインのマップページで「マップを共有」ボタンをクリックして共有リンクを生成してください。このリンクを投稿フォームに貼り付けます。「マップを共有」を再度クリックするたびに、共有リンクは自動的に更新されます。",
+      "ui.HelpCatalogHelperTitle": "使い方",
+      "ui.HelpCatalogHelper1": "まず、メインのマップツールで「マップを共有」ボタンを使って共有リンクを作成します",
+      "ui.HelpCatalogHelper2": "次に、コミュニティマップページのフォームからこのリンクを送信して、カタログに表示させます",
+      "ui.HelpCatalogHelper3": "「マップを共有」をクリックするたびに、マップは自動的にカタログで更新されます。新しい投稿を作成する必要はありません",
+
       "ui.SubmitMapButton": "+ マップを送信",
       "ui.BackToMapButton": "← マップに戻る",
       "ui.CommunityMapButton": "コミュニティマップ",
@@ -1656,7 +1695,11 @@
       "ui.HelpButton": "피드백 및 지원",
       "hint.PanSpeed": "<kbd>Shift</kbd> 키로 빠르게 이동 — <kbd>Ctrl</kbd> 키로 느리게 이동",
 
-      "ui.HelpCatalogHelper": "카탈로그에 지도를 추가하려면 메인 지도 페이지에서 “지도 공유” 버튼을 클릭하여 공유 링크를 생성하세요. 이 링크를 제출 양식에 붙여넣으면 됩니다. “지도 공유”를 다시 클릭할 때마다 공유 링크는 자동으로 업데이트됩니다.",
+      "ui.HelpCatalogHelperTitle": "사용 방법",
+      "ui.HelpCatalogHelper1": "먼저 메인 지도 도구에서 \"내 지도 공유\" 버튼을 사용하여 공유 링크를 생성하세요",
+      "ui.HelpCatalogHelper2": "그런 다음 커뮤니티 지도 페이지의 양식을 통해 이 링크를 제출하여 카탈로그에 표시되도록 합니다",
+      "ui.HelpCatalogHelper3": "\"내 지도 공유\" 버튼을 클릭할 때마다 지도는 카탈로그에서 자동으로 업데이트됩니다. 새 게시물을 만들 필요가 없습니다",
+
       "ui.SubmitMapButton": "+ 지도 제출",
       "ui.BackToMapButton": "← 지도으로 돌아가기",
       "ui.CommunityMapButton": "커뮤니티 지도",
