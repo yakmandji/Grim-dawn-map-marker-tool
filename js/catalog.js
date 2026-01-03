@@ -2,11 +2,16 @@
 // catalog.js
 // V1 – Static demo data rendered dynamically
 
+const CATALOG_API_BASE = 'https://share2.grimcustommarker.org'; 
+// Idéalement: window.GDMM_SHARE_WORKER_BASE = "https://xxxx.workers.dev"
+
+
 
 function showError(msg) {
   const el = document.getElementById('submitError');
   if (!el) return;
-  el.textContent = msg;
+  const text = el.querySelector('.alert-text') || el;
+  text.textContent = msg;
   el.classList.remove('hidden');
 }
 
@@ -14,13 +19,15 @@ function hideError() {
   const el = document.getElementById('submitError');
   if (!el) return;
   el.classList.add('hidden');
-  el.textContent = '';
+  const text = el.querySelector('.alert-text') || el;
+  text.textContent = '';
 }
 
 function showSuccess(msg) {
   const el = document.getElementById('submitSuccess');
   if (!el) return;
-  el.textContent = msg;
+  const text = el.querySelector('.alert-text') || el;
+  text.textContent = msg;
   el.classList.remove('hidden');
 }
 
@@ -28,40 +35,37 @@ function hideSuccess() {
   const el = document.getElementById('submitSuccess');
   if (!el) return;
   el.classList.add('hidden');
-  el.textContent = '';
+  const text = el.querySelector('.alert-text') || el;
+  text.textContent = '';
 }
 
 
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () =>  {
   const catalogList = document.getElementById('catalogList');
   if (!catalogList) return;
 
-  // Temporary demo data (will be replaced by JSON / API later)
-  const demoCatalog = [
-    {
-      title: 'Normal – Beginner Playthrough (Act 1–4)',
-      author: 'Yakmandji',
-      map: 'Cairn',
-      lang: 'FR',
-      description: 'A beginner-friendly route covering main quests, rifts and key side areas.',
-      shareUrl: '?s=EXAMPLE'
-    },
-    {
-      title: 'Elite Leveling Route',
-      author: 'PlayerX',
-      map: 'Cairn',
-      lang: 'EN',
-      description: 'Map en Français avec lemplacement des quêtes . Map en Français avec lemplacement des quêtes. Map en Français avec lemplacement des quêtes. Map en Français avec lemplacement des quêtes. Map en Français avec lemplacement des quêtes. Map ',
-      shareUrl: '?s=EXAMPLE2'
-    }
-  ];
+  async function sha256Hex(str) {
+    const enc = new TextEncoder().encode(str);
+    const buf = await crypto.subtle.digest('SHA-256', enc);
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+  }
 
-  renderCatalog(demoCatalog);
+  const editKey = localStorage.getItem('gdmm_share_edit_key_v1') || '';
+  const myOwnerHash = editKey ? await sha256Hex(editKey) : '';
 
-  function renderCatalog(items) {
+
+  try {
+    const res = await fetch(`${CATALOG_API_BASE}/catalog`, { method: 'GET' });
+    const out = await res.json();
+    renderCatalog(Array.isArray(out.items) ? out.items : [], myOwnerHash);
+  } catch (e) {
+    console.warn('[catalog] load failed', e);
+    renderCatalog([], myOwnerHash); // empty state
+  }
+
+
+  function renderCatalog(items, myOwnerHash) {
     catalogList.innerHTML = '';
 
     if (!items.length) {
@@ -77,11 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'catalog-card';
 
+      const baseApp =
+        (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+          ? location.origin
+          : 'https://www.grimcustommarker.org';
+
+      const openUrl = `${baseApp}/?s=${encodeURIComponent(item.shareId)}`;
+      const isOwner = myOwnerHash && item.ownerHash === myOwnerHash;
+
+
       card.innerHTML = `
         <h3 class="title">${escapeHtml(item.title)}</h3>
         <div class="catalog-name">by ${escapeHtml(item.author)}</div>
         <div class="badge-container d-flex">
-          <div class="catalog-map marker-cat-badge d-flex">${escapeHtml(item.map)}</div>
+
           <div class="catalog-lang marker-cat-badge d-flex">${escapeHtml(item.lang)}</div>
         </div>
         <div class="catalog-desc">
@@ -89,15 +102,69 @@ document.addEventListener('DOMContentLoaded', () => {
             ${escapeHtml(item.description)}
           </span>
         </div>
-                <hr class="gd-hr">
+        <hr class="gd-hr">
         <div class="catalog-card-actions">
-          <a href="${item.shareUrl}" class="button">Open Map</a>
+          <a href="${openUrl}" class="button">Open Map</a>
+          ${isOwner ? `<button class="button danger catalog-delete-btn" data-shareid="${escapeHtml(item.shareId)}">Delete</button>` : ''}
         </div>
       `;
 
       catalogList.appendChild(card);
     });
   }
+
+  window.reloadCatalog = async function reloadCatalog() {
+    try {
+      const res = await fetch(`${CATALOG_API_BASE}/catalog`, { method: 'GET' });
+      const out = await res.json();
+      renderCatalog(Array.isArray(out.items) ? out.items : [], myOwnerHash);
+    } catch (e) {
+      console.warn('[catalog] reload failed', e);
+    }
+  };
+
+
+  catalogList.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.catalog-delete-btn');
+    if (!btn) return;
+
+    const shareId = btn.getAttribute('data-shareid');
+    if (!shareId) return;
+
+    if (!confirm('Delete this catalog entry?')) return;
+
+    try {
+      const editKey = localStorage.getItem('gdmm_share_edit_key_v1');
+      if (!editKey) throw new Error('Missing edit key. Please use Share at least once.');
+
+      btn.disabled = true;
+
+      const res = await fetch(`${CATALOG_API_BASE}/catalog/delete`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ shareId, editKey }),
+      });
+
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.ok) {
+        throw new Error(out.error || 'Delete failed');
+      }
+
+      // Reload list after delete
+      const r2 = await fetch(`${CATALOG_API_BASE}/catalog`, { method: 'GET' });
+      const o2 = await r2.json();
+      renderCatalog(Array.isArray(o2.items) ? o2.items : [], myOwnerHash);
+
+    } catch (err) {
+      console.warn('[catalog] delete failed', err);
+      alert(err.message || 'Delete failed');
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+
+
 
   // Basic XSS-safe helper (important once data is external)
   function escapeHtml(str) {
@@ -112,31 +179,60 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/*SUBMIT CATALOG*/
-async function submitToCatalog(payload) {
-  const err = validatePayload(payload);
-  if (err) throw new Error(err);
+  /*SUBMIT CATALOG*/
+  async function submitToCatalog(payload) {
 
-  // Simulation : pas d'appel réseau
-  console.log('📡 Simulated submit payload:', payload);
 
-  // Optionnel: stocker pour vérifier facilement
-  localStorage.setItem('catalog_last_submit', JSON.stringify(payload, null, 2));
+    const err = validatePayload(payload);
+    if (err) throw new Error(err);
 
-  // Simule une latence réseau (optionnel)
-  await new Promise(r => setTimeout(r, 300));
+    const editKey = localStorage.getItem('gdmm_share_edit_key_v1');
+    if (!editKey) {
+      throw new Error('Missing edit key. Please use Share at least once.');
+    }
 
-  // Retour "comme si" le serveur avait répondu
-  return { ok: true, id: 'cat_simulated_' + Date.now() };
-}
+    const shareId = extractShareId(payload.shareUrl);
+    if (!shareId) {
+      throw new Error('Invalid share link (missing ?s=...)');
+    }
 
+    const body = {
+      shareId,
+      title: payload.title,
+      author: payload.author,
+      description: payload.description,
+      lang: payload.lang,
+      editKey
+    };
+
+    const res = await fetch(`${CATALOG_API_BASE}/catalog/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || !out.ok) {
+      throw new Error(out.error || 'Submit failed');
+    }
+
+    return out;
+  }
+
+  function extractShareId(url) {
+    try {
+      const u = new URL(url, location.origin);
+      return u.searchParams.get('s');
+    } catch {
+      return null;
+    }
+  }
 
 
 function validatePayload(p) {
   const author = (p.author || '').trim();
   const title  = (p.title || '').trim();
   const desc   = (p.description || '').trim();
-  const map    = (p.map || '').trim();
   const lang   = (p.lang || '').trim();
   const url    = (p.shareUrl || '').trim();
 
@@ -147,15 +243,30 @@ function validatePayload(p) {
   if (desc.length < 20) return 'Please add a short description (min 20 chars).';
   if (desc.length > 240) return 'Description is too long (max 240).';
 
-  const allowedMaps = ['Cairn', 'Malmouth', 'Korvan Basin'];
-  if (!allowedMaps.includes(map)) return 'Invalid campaign/map.';
-
   const allowedLangs = ['EN','FR','ES','PT','RU','IT','ZH','JA','DE','PL','KO'];
   if (!allowedLangs.includes(lang)) return 'Invalid language.';
 
   if (!url) return 'Please paste a share link.';
-  if (!url.includes('?s=')) return 'Share link must contain "?s=".';
-  if (!url.includes('grimcustommarker.org')) return 'Share link must be on grimcustommarker.org.';
+
+  let u;
+  try {
+    u = new URL(url, location.origin);
+  } catch {
+    return 'Invalid share link URL.';
+  }
+
+  const shareId = u.searchParams.get('s');
+  if (!shareId) return 'Share link must contain "?s=".';
+
+  const host = (u.hostname || '').toLowerCase();
+  const allowedHost =
+    host === 'grimcustommarker.org' ||
+    host === 'www.grimcustommarker.org' ||
+    host === 'localhost' ||
+    host === '127.0.0.1';
+
+  if (!allowedHost) return 'Share link must be on grimcustommarker.org (or localhost for tests).';
+
 
   return '';
 }
@@ -213,10 +324,27 @@ function closeModal(modalEl, backdropEl) {
 
 const modal = document.getElementById('catalogSubmitModal');
 const backdrop = document.getElementById('catalogBackdrop');
+const submitBtn = document.getElementById('catalogSubmitConfirm');
+
 
 document.getElementById('openSubmit')?.addEventListener('click', (e) => {
   e.preventDefault();
   openModal(modal, backdrop);
+
+// Reset modal state when opening
+submitBtn.disabled = false;
+hideError();
+hideSuccess();
+
+// show form, hide success screen
+formState?.classList.remove('hidden');
+successState?.classList.add('hidden');
+
+// show footer again
+footerState?.classList.remove('hidden');
+
+
+
 });
 
 modal?.querySelectorAll('.closeModal')?.forEach(btn => {
@@ -237,13 +365,17 @@ modal?.querySelectorAll('.cancelbutton')?.forEach(btn => {
 
 const submitAuthor = document.getElementById('submitAuthor');
 const submitTitle  = document.getElementById('submitTitleInput'); // <-- IMPORTANT: l'id exact
-const submitMap    = document.getElementById('submitMap');
 const submitLang   = document.getElementById('submitLang');
 const submitDesc   = document.getElementById('submitDesc');
 const submitUrl    = document.getElementById('submitUrl');
 
+const formState    = document.getElementById('submitFormState');
+const successState = document.getElementById('submitSuccessState');
+const footerState  = document.getElementById('submitFooter');
 
-const submitBtn = document.getElementById('catalogSubmitConfirm');
+const viewCatalogBtn = document.getElementById('viewCatalogBtn');
+const closeSubmitBtn = document.getElementById('closeSubmitBtn');
+
 
 submitBtn?.addEventListener('click', async (e) => {
   e.preventDefault();
@@ -251,7 +383,6 @@ submitBtn?.addEventListener('click', async (e) => {
   const payload = {
     author: submitAuthor.value.trim(),
     title: submitTitle.value.trim(),
-    map: submitMap.value,
     lang: submitLang.value,
     description: submitDesc.value.trim(),
     shareUrl: submitUrl.value.trim(),
@@ -264,16 +395,34 @@ submitBtn?.addEventListener('click', async (e) => {
   try {
     const result = await submitToCatalog(payload);
 
-    showSuccess(
-      'Submission sent for review. Thank you!'
-    );
+    showSuccess('Your map is posted. Thank you!');
 
-    console.log('Submit result:', result);
+    // Switch to success screen
+    if (formState) formState.classList.add('hidden');
+    if (successState) successState.classList.remove('hidden');
+    if (footerState) footerState.classList.add('hidden');
 
-    // Optionnel : désactiver le bouton après succès
+
+    // Refresh the catalog behind
+    if (typeof window.reloadCatalog === 'function') {
+      window.reloadCatalog();
+    }
+
+    // Disable submit (optional, since form is hidden)
     submitBtn.disabled = true;
+
 
   } catch (err) {
     showError(err.message || 'Submission failed.');
   }
+
+});
+
+viewCatalogBtn?.addEventListener('click', () => {
+  closeModal(modal, backdrop);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+closeSubmitBtn?.addEventListener('click', () => {
+  closeModal(modal, backdrop);
 });

@@ -28,6 +28,30 @@
 //--------------------------------------------------
 
 
+window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
+  try {
+    const raw = localStorage.getItem('gdmm_region_notes_v1');
+    if (!raw) return null;
+
+    const store = JSON.parse(raw) || {};
+    const out = {};
+
+    if (store.global && store.global[profileName]) {
+      Object.assign(out, store.global[profileName]);
+    }
+
+    if (store.byCharacter && store.byCharacter[charId] && store.byCharacter[charId][profileName]) {
+      Object.assign(out, store.byCharacter[charId][profileName]);
+    }
+
+    return Object.keys(out).length ? out : null;
+  } catch (e) {
+    console.warn('[GDMM] notes read failed', e);
+    return null;
+  }
+};
+
+
   // Convert image (sessionSrc / embedData) in base64 for admin export
   async function srcToDataURL(src, mime = 'image/jpeg', quality = 0.85) {
     return new Promise((resolve, reject) => {
@@ -314,158 +338,171 @@
 // --- Advanced compression toggle ---
 const ADVANCED_COMPRESSION = true;
 
-// Cloudflare Worker pour les liens de partage
-const SHARE_WORKER_BASE =
-  window.GDMM_SHARE_WORKER_URL ||
-  'https://share.grimcustommarker.org';
-
 // Anti-spam share : délai minimum entre deux partages
 const SHARE_COOLDOWN_MS = 10_000; 
 let lastShareClickTs = 0;
 
 
-
 // Share current routes via Cloudflare Worker (with legacy fallback)
 const shareBtn = document.getElementById('shareRoutesBtn');
   if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
+
+  function getActiveCharacterIdForShare() {
+    try {
+      return window.characterManager?.getActiveCharacter?.()?.id || '_global';
+    } catch (_) {
+      return '_global';
+    }
+  }
+
+
+    function getOrCreateEditKey() {
+      const K = 'gdmm_share_edit_key_v1';
+      try {
+        let v = localStorage.getItem(K);
+        if (v && v.length > 20) return v;
+
+        if (crypto?.getRandomValues) {
+          const buf = new Uint8Array(32);
+          crypto.getRandomValues(buf);
+          v = Array.from(buf).map(b => b.toString(16).padStart(2,'0')).join('');
+        } else {
+          v = 'ek_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+        }
+        localStorage.setItem(K, v);
+        return v;
+      } catch {
+        return 'ek_' + Math.random().toString(36).slice(2);
+      }
+    }
+
+    function getShareIdForChar(charId) {
+      try { return localStorage.getItem(`gdmm_share_id_v1::${charId}`) || ''; }
+      catch { return ''; }
+    }
+    function setShareIdForChar(charId, id) {
+      try { localStorage.setItem(`gdmm_share_id_v1::${charId}`, id); }
+      catch {}
+    }
+
+
+  shareBtn.addEventListener('click', async () => {
+
+    // Purge shared profiles before generating a new share
+    try {
+      for (const [name, profile] of Object.entries(state.profiles || {})) {
+        if (!profile) continue;
+        if (profile.isShared || String(name).startsWith('[Shared]')) {
+          delete state.profiles[name];
+        }
+      }
+      window.refreshProfilesUI?.();
+      window.UiCore?.renderList?.();
+    } catch (e) {
+      console.warn('[GDMM] purge shared profiles failed', e);
+    }
+
 
     const now = Date.now();
     if (now - lastShareClickTs < SHARE_COOLDOWN_MS) {
       const wait = Math.ceil((SHARE_COOLDOWN_MS - (now - lastShareClickTs)) / 1000);
-
       showToast(
-        GDMMLang.t('toast.ShareCooldown', { wait }) ||
-          `Please wait ${wait}s before sharing again.`,
+        GDMMLang.t('toast.ShareCooldown', { wait }) || `Please wait ${wait}s before sharing again.`,
         'warning',
         4000
       );
-
       return;
     }
-
     lastShareClickTs = now;
-    
-    const prof = currentProfile();
-    if (!prof) return;
 
-    const allMarkers = Array.isArray(prof.markers) ? prof.markers : [];
-    const markersToShare = allMarkers.filter(Boolean);
-    const hasRoutes = Array.isArray(prof.paths) && prof.paths.length > 0;
-
-
-    // --- Notes de région pour cette map (si helper dispo) ---
-    let sharedNotes = null;
-    let hasSharedNotes = false;
-
-    if (typeof window.getAllRegionNotes === 'function') {
-      sharedNotes = window.getAllRegionNotes(state.active);
-      if (sharedNotes && typeof sharedNotes === 'object') {
-        hasSharedNotes = Object.keys(sharedNotes).length > 0;
-      }
-    }
-
-    // Rien à partager : ni routes, ni markers partagés, ni notes
-    if (!hasRoutes && markersToShare.length === 0 && !hasSharedNotes) {
-      showToast(
-        GDMMLang.t('toast.NothingToShare') || 'Nothing to share',
-        'warning',
-        7000
-      );
-      return;
-    }
-
-
+    // --- Build v4 payload: all maps of current character ---
     const round = v => Math.round((v || 0) * 10) / 10;
 
-    const compactRoutes = (prof.paths || []).map(p => ({
-      i: p.id,
-      n: p.name || '',
-      c: p.color || '#ffcc00',
-      w: p.width || 4,
-      o: typeof p.opacity === 'number' ? p.opacity : 0.85,
-      pts: (p.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
-    }));
+    const userData = (typeof getUserDataOnly === 'function') ? getUserDataOnly() : {};
+    const charId = getActiveCharacterIdForShare(); 
+    const maps = {};
 
-    const compactMarkers = markersToShare.map(m => ({
-      i: m.id,
-      x: round(m.xp),
-      y: round(m.yp),
-      l: m.label || '',
-      k: m.cat || 'General',
-      c: m.color || '#78f1c2',
-    }));
+    const KNOWN_MAPS = ['Cairn', 'Malmouth', 'Korvan Basin', 'Asterkarn'];
 
-    // --- Notes de région pour cette map (si helper dispo) ---
-    const payload = {
-       v: '3',
-       map: state.active,
-       r: compactRoutes,
-       m: compactMarkers,
-       notes: sharedNotes,
-    };
+    for (const profileName of KNOWN_MAPS) {
+      const u = userData?.[profileName] || {};
+      const paths   = Array.isArray(u.paths) ? u.paths : [];
+      const markers = Array.isArray(u.markers) ? u.markers : [];
 
-    // --- Compression (pour compatibilité avec les vieux liens ?share=) ---
-    let compressed;
-    try {
-      const json = JSON.stringify(payload);
+      const compactRoutes = paths.map(p => ({
+        i: p.id,
+        n: p.name || '',
+        c: p.color || '#ffcc00',
+        w: p.width || 4,
+        o: typeof p.opacity === 'number' ? p.opacity : 0.85,
+        pts: (p.points || []).map(pt => [round(pt.xp), round(pt.yp)]),
+      }));
 
-      if (ADVANCED_COMPRESSION && window.pako) {
-        const gzipped = pako.deflate(json, { level: 9 });
-        const b64 = btoa(String.fromCharCode.apply(null, gzipped));
-        compressed = encodeURIComponent(b64);
-      } else if (window.LZString && LZString.compressToEncodedURIComponent) {
-        compressed = LZString.compressToEncodedURIComponent(json);
-      } else {
-        // Pas de lib → on stocke en base64 brut
-        compressed = btoa(json);
-      }
-    } catch (e) {
-      console.error('[GDMM] compression failed', e);
-      showToast('Compression error ❌', 'error');
+      const compactMarkers = markers.filter(Boolean).map(m => ({
+        i: m.id,
+        x: round(m.xp),
+        y: round(m.yp),
+        l: m.label || '',
+        k: m.cat || 'General',
+        c: m.color || '#78f1c2',
+      }));
+
+      const notes = window.getNotesForProfile
+        ? window.getNotesForProfile(profileName, charId)
+        : null;
+
+      // on inclut même si vide
+      maps[profileName] = { r: compactRoutes, m: compactMarkers, notes };
+    }
+
+
+    // rien à partager
+    if (!Object.keys(maps).length) {
+      showToast(GDMMLang.t('toast.NothingToShare') || 'Nothing to share', 'warning', 7000);
       return;
     }
 
-    // --- 1) Tentative moderne : Cloudflare Worker + Gist ---
-    let finalUrl = null;
+    const payload = {
+      v: '4',
+      active: state.active,
+      maps,
+    };
 
-    try {
-      if (SHARE_WORKER_BASE) {
-        const res = await fetch(`${SHARE_WORKER_BASE}/create`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: payload }),
-        });
+    // --- Stable link per character (browser) ---
+    const editKey = getOrCreateEditKey();
+    const existingId = getShareIdForChar(charId);
 
-        const out = await res.json();
+    // IMPORTANT: on utilise la fonction centrale (worker + fallback + clipboard)
+    const url = await window.GDMMShare?.createLink?.(payload, {
+      id: existingId || null,
+      editKey,
+    });
 
-        if (out && out.ok && out.id) {
-          // On construit TOUJOURS l'URL à partir de l'origine courante
-          finalUrl = `${location.origin}${location.pathname}?s=${encodeURIComponent(
-            out.id
-          )}`;
+
+      // Store returned short share id (if any)
+      let stored = false;
+
+      try {
+        if (url) {
+          const u = new URL(url, location.origin);
+          const newId = u.searchParams.get('s');
+          if (newId) {
+            setShareIdForChar(charId, newId);
+            stored = true;
+          }
         }
-
+      } catch (e) {
+        console.warn('[GDMM share] failed to store share id', e);
       }
-    } catch (e) {
-      console.warn('[GDMM] share via Worker failed, falling back to ?share=', e);
-    }
 
-    // --- 2) Fallback : ancien système ?share=... ---
-    if (!finalUrl) {
-      finalUrl = `${location.origin}${location.pathname}?share=${compressed}`;
-    }
+      // Toast succès = UNIQUEMENT si tout s’est bien passé
+      if (stored) {
+        showToast(GDMMLang.t('toast.ShareUrlCopied'), 'success', 3800);
+      }
 
-    // --- Copie dans le presse-papier + feedback utilisateur ---
-    try {
-      await navigator.clipboard.writeText(finalUrl);
-      showToast(GDMMLang.t('toast.ShareUrlCopied'), 'success', 3800);
-    } catch (e) {
-      console.warn('[GDMM] Clipboard API failed, using prompt fallback', e);
-      window.prompt('Share this link:', finalUrl);
-      showToast(GDMMLang.t('toast.ShareUrlCopied'), 'success', 3800);
-    }
   });
+
+
 }
 
 //------------------------------------------------------------------------------------
@@ -554,97 +591,124 @@ document.getElementById('helpCloseBtn')?.addEventListener('click', () => {
 
 const mergeBtn = document.getElementById('mergeSharedBtn');
 if (mergeBtn) {
-  mergeBtn.addEventListener('click', () => {
+  mergeBtn.addEventListener('click', async () => {
+
     const profiles = state.profiles || {};
     const entries  = Object.entries(profiles);
 
-    // 1) Shared profile
-    const sharedEntry = entries.find(([name, p]) => p && p.isShared);
-    if (!sharedEntry) {
+    const sharedEntries = entries.filter(([name, p]) => p && p.isShared);
+    if (!sharedEntries.length) {
       showToast('No shared map loaded ❌', 'error');
       return;
     }
-    const [sharedName, sharedProf] = sharedEntry;
 
-    // 2) Target map
-    const targetName = sharedProf.sharedSourceMap;
-    if (!targetName || !profiles[targetName] || profiles[targetName].isShared) {
-      showToast(
-        (GDMMLang.t && GDMMLang.t('toast.SharedTargetMissing')) ||
-        'Original map not found ❌',
-        'error'
-      );
-      return;
-    }
+    // Map locale sur laquelle on revient après merge
+    const fallbackTarget = (state.active && !profiles[state.active]?.isShared)
+      ? state.active
+      : 'Cairn';
 
-    const target = profiles[targetName];
+    let mergedSomething = false;
+    let mergedMapsCount = 0;
 
-    // 3) Incoming data
-    const incomingMarkers = Array.isArray(sharedProf.markers) ? sharedProf.markers : [];
-    const incomingPaths   = Array.isArray(sharedProf.paths)   ? sharedProf.paths   : [];
+    for (const [sharedName, sharedProf] of sharedEntries) {
+      const targetName = sharedProf.sharedSourceMap;
 
-    // 4) Sets of existing IDs
-    const existingMarkerIds = new Set(
-      (target.markers || []).map(m => m.id).filter(Boolean)
-    );
-    const existingPathIds = new Set(
-      (target.paths || []).map(p => p.id).filter(Boolean)
-    );
+      if (!targetName || !profiles[targetName] || profiles[targetName].isShared) {
+        console.warn('[GDMM] shared target missing for', sharedName, '=>', targetName);
+        continue;
+      }
 
-    const newMarkers = incomingMarkers.filter(
-      m => m && m.id && !existingMarkerIds.has(m.id)
-    );
+      const target = profiles[targetName];
 
-    const newPaths   = incomingPaths.filter(
-      p => p.id && !existingPathIds.has(p.id)
-    );
+      const incomingMarkers = Array.isArray(sharedProf.markers) ? sharedProf.markers : [];
+      const incomingPaths   = Array.isArray(sharedProf.paths)   ? sharedProf.paths   : [];
 
-    // Est-ce qu'on a des notes partagées à merger
-    const hasSharedNotes =
-      window._gdmmLastSharedNotesPayload &&
-      typeof window._gdmmLastSharedNotesPayload === 'object' &&
-      Object.keys(window._gdmmLastSharedNotesPayload).length > 0;
+      const existingMarkerIds = new Set((target.markers || []).map(m => m?.id).filter(Boolean));
+      const existingPathIds   = new Set((target.paths   || []).map(p => p?.id).filter(Boolean));
 
-    // Si aucun nouveau marker, aucune nouvelle route ET pas de notes → vraiment rien à faire
-    if (!newMarkers.length && !newPaths.length && !hasSharedNotes) {
-      showToast(GDMMLang.t('toast.SharedNoNewData'), 'warning', 4200);
-    } else {
-      // 6) Merge markers & routes (même si l'un des deux est vide)
-      target.markers = (target.markers || []).concat(newMarkers);
-      target.paths   = (target.paths   || []).concat(newPaths);
+      const newMarkers = incomingMarkers.filter(m => m && m.id && !existingMarkerIds.has(m.id));
+      const newPaths   = incomingPaths.filter(p => p && p.id && !existingPathIds.has(p.id));
 
-      // 7) Merge des notes de région (si présentes dans le partage)
-      if (
-        hasSharedNotes &&
-        typeof window.mergeSharedNotesIntoLocal === 'function'
-      ) {
+      const notesPayload =
+        (window._gdmmSharedNotesByProfile && window._gdmmSharedNotesByProfile[sharedName]) || {};
+
+      const hasSharedNotes =
+        notesPayload &&
+        typeof notesPayload === 'object' &&
+        Object.keys(notesPayload).length > 0;
+
+      if (!newMarkers.length && !newPaths.length && !hasSharedNotes) {
+        continue;
+      }
+
+      if (newMarkers.length) target.markers = (target.markers || []).concat(newMarkers);
+      if (newPaths.length)   target.paths   = (target.paths   || []).concat(newPaths);
+
+      if (hasSharedNotes && typeof window.mergeSharedNotesIntoLocal === 'function') {
         try {
-          window.mergeSharedNotesIntoLocal(
-            window._gdmmLastSharedNotesPayload,
-            targetName
-          );
+          window.mergeSharedNotesIntoLocal(notesPayload, targetName);
         } catch (e) {
-          console.warn('[GDMM] Failed to merge shared region notes', e);
+          console.warn('[GDMM] Failed to merge shared region notes for', targetName, e);
         }
       }
 
-
-      saveUserDataToLocal();
-      setActiveProfile(targetName);
-      refreshProfilesUI();
-      renderList();
-      renderMarkers();
-      renderRoutesPanel();
-      markAsChanged();
-
-      showToast(GDMMLang.t('toast.SharedMerged'), 'success', 4500);
+      mergedSomething = true;
+      mergedMapsCount++;
     }
 
+    if (!mergedSomething) {
+      showToast(GDMMLang.t('toast.SharedNoNewData'), 'warning', 4200);
+      return;
+    }
 
-    // Remove shared profile & exit shared mode
-    delete profiles[sharedName];
-    refreshProfilesUI(); 
+    // Sauvegarde
+    saveUserDataToLocal();
+
+    showToast(
+      (GDMMLang.t && GDMMLang.t('toast.SharedMerged')) || `Shared merged (${mergedMapsCount} maps) ✅`,
+      'success',
+      4500
+    );
+
+    // =========================
+    // Exit shared mode (CLEAN + SAFE)
+    // =========================
+
+    // 1) Quitter le mode shared AVANT toute reconstruction UI
     document.body.classList.remove('shared-only-view');
+
+    // 2) Reset des flags runtime shared
+    state.sharedView = false;
+    state.sharedNotes = {};
+    window._gdmmLastSharedNotesPayload = null;
+    window._gdmmSharedNotesByProfile = null;
+
+    // 3) Supprimer TOUS les profils shared
+    for (const n of Object.keys(profiles)) {
+      if (profiles[n]?.isShared || String(n).startsWith('[Shared]')) {
+        delete profiles[n];
+      }
+    }
+
+    // 4) Rebuild la liste des profils MAINTENANT qu’on est sorti du shared mode
+    refreshProfilesUI();
+
+
+    // 5) Forcer un vrai switch via le pipeline officiel
+    const targetProfile = fallbackTarget;
+    const sel = document.getElementById('profileSelect');
+
+    if (sel) {
+      sel.value = targetProfile;
+      if (!sel.value) sel.selectedIndex = 0;
+
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    // Safety: close dropdown if still open
+    document.getElementById('profileDropdown')?.classList.remove('open');
+
+
 
     mergeBtn.disabled = true;
     mergeBtn.style.display = 'none';
@@ -656,6 +720,7 @@ if (mergeBtn) {
     }
   });
 }
+
 
 
   // --- Save marker ---

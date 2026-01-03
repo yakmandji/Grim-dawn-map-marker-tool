@@ -160,7 +160,7 @@ header .right-panel{
 
 header .sep { 
   width: 1px; 
-  background: #23473f; 
+  background: #816a34; 
   height: 22px; 
   margin: 0 12px; 
 }
@@ -592,8 +592,7 @@ body.shared-only-view .sidebar {
 }
 
 body.shared-only-view #list input,
-body.shared-only-view #routesList input,
-body.shared-only-view #profileDropdown button
+body.shared-only-view #routesList input
 {
   pointer-events: none;
   opacity: 0.6;

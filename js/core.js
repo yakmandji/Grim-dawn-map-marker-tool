@@ -142,20 +142,28 @@
   }
 
   // --- User-data only  ---
+// --- User-data only  ---
 function getUserDataOnly() {
   const out = {};
   const src = state.profiles || {};
+
   for (const [name, profile] of Object.entries(src)) {
     if (!profile) continue;
+
+    // Skip shared profiles (both flagged and name-based)
     if (profile.isShared) continue;
+    if (String(name).startsWith('[Shared]')) continue;
+
     out[name] = {
       markers: profile.markers || [],
       paths: profile.paths || [],
       view: profile.view || null
     };
   }
+
   return out;
 }
+
 
 function saveUserDataToLocal() {
   try {

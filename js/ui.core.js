@@ -147,12 +147,33 @@ function rememberActiveProfile() {
       const sel = $('#profileSelect');
       if (!sel) return;
       const active = state.active;
-      const names = listProfiles();
+      let names = listProfiles();
+
+      const sharedMode = document.body.classList.contains('shared-only-view');
+
+      // En shared mode -> on montre UNIQUEMENT les profils partagés
+      if (sharedMode) {
+        names = names.filter(n => state.profiles?.[n]?.isShared);
+      } 
+      // En mode normal -> on masque tous les profils partagés
+      else {
+        names = names.filter(n => !state.profiles?.[n]?.isShared && !String(n).startsWith('[Shared]'));
+      }
+
 
       // 1) Met à jour le <select> natif (logique existante)
+
+      const displayName = (n) => {
+        const p = state.profiles?.[n];
+        if (p?.isShared) return p.sharedSourceMap || String(n).replace(/^\[Shared\]\s*/, '');
+        return n;
+      };
+
+      
       sel.innerHTML = names
-        .map(n => `<option ${n === active ? 'selected' : ''}>${n}</option>`)
+        .map(n => `<option value="${n}" ${n === active ? 'selected' : ''}>${displayName(n)}</option>`)
         .join('');
+
       if (active) sel.value = active;
 
       // 2) Met à jour le dropdown custom des profils
@@ -164,16 +185,16 @@ function rememberActiveProfile() {
       if (!menuEl || !labelEl) return;
 
       const current = active || names[0] || '';
-      labelEl.textContent = current || '(profil)';
+      labelEl.textContent = current ? displayName(current) : '(profil)';
 
-      // On reconstruit la liste des options
       menuEl.innerHTML = names
         .map(name => `
           <button type="button" class="option-item" data-profile="${name}">
-            ${name}
+            ${displayName(name)}
           </button>
         `)
         .join('');
+
 
       // 3) (Ré)initialise le dropdown custom avec le helper générique
       if (window.initCustomDropdown) {
@@ -1175,13 +1196,30 @@ if (newPathBtn) {
   // --- Profils (buttons) ---
   $('#profileSelect')?.addEventListener('change', async (e) => {
     const name = e.target.value;
+
     setActiveProfile(name);
     rememberActiveProfile();
     showLoader(GDMMLang.t('toast.LoadingMap'));
 
-    // Charge le JSON de cette map si besoin
-    await ensureMapLoadedForProfile(name);
+    // ✅ FIX shared: load real campaign map name instead of "[Shared] X"
+    let loadKey = name;
+    const prof = currentProfile();
 
+    if (prof?.isShared && prof?.sharedSourceMap) {
+      loadKey = prof.sharedSourceMap;
+
+      // charge la map "réelle" si pas déjà en mémoire
+      await ensureMapLoadedForProfile(loadKey);
+
+      // resync: récupérer la map depuis le profil source (Cairn/Malmouth/...)
+      const src = state.profiles?.[loadKey];
+      if (src?.map) prof.map = src.map;
+    } else {
+      // normal
+      await ensureMapLoadedForProfile(loadKey);
+    }
+
+    // ✅ Now map should be available on currentProfile().map
     const p = currentProfile();
     if (p && p.map && p.map.embedData) {
       setMapSrc(p.map.embedData);
@@ -1193,11 +1231,13 @@ if (newPathBtn) {
       state.mapNatural = { w: 0, h: 0 };
       hideLoader();
     }
+
     renderList();
     renderMarkers();
     renderRoutesPanel();
     applyLockUI();
   });
+
 
 
   // --- Lock ---

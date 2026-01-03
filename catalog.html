@@ -28,10 +28,10 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v1.79" />
-  <link rel="stylesheet" href="css/items.css?v1.86" />
+  <link rel="stylesheet" href="css/general.css?v1.80" />
+  <link rel="stylesheet" href="css/items.css?v1.87" />
   <link rel="stylesheet" href="css/responsive.css?v1.33" />
-  <link rel="stylesheet" href="css/catalog.css?v1.33" />
+  <link rel="stylesheet" href="css/catalog.css?v1.34" />
 
   
 </head>
@@ -40,7 +40,7 @@
   <div class="app-logo">
       <div class="container">
         <p class="announce" data-i18n="ui.announceCatalog">Grim Dawn</p>
-        <p class="title">Shared Custom Map Catalog</p>
+        <p class="title" data-i18n="ui.CatalogMainTitle">Shared Custom Map Catalog</p>
       </div>
   </div>
 
@@ -59,16 +59,11 @@
           <img src="img/hamburger.svg" width="28" alt="">
       </button>
 
-       <button id="mergeSharedBtn" class="small menu-button" >
-          <img src="img/merge.svg" width="18" alt="Merge"> 
-          <span data-i18n="ui.MergeRoutesButton">Add shared to my map</span>
-        </button>
-
       <div class="right-panel">
 
       <div class="catalog-actions">
-        <button class="button" id="openSubmit">+ Submit a Map</button>
-        <a href="index.html" class="button">← Back to Map</a>
+        <button class="button" id="openSubmit" data-i18n="ui.SubmitMapButton">+ Submit a Map</button>
+        <a href="index.html" class="button" data-i18n="ui.BackToMapButton">← Back to Map</a>
       </div>
 
 <!--         langue------------------------------------- -->
@@ -136,7 +131,7 @@
     <main class="catalog-container">
 
       <div id="catalog-helper">
-        <span data-i18n="ui.HelpCatalogHelper">For add a map to catalog, click on "share map" button on the main map tool to get your link</span>
+        <span data-i18n="ui.HelpCatalogHelper">To add a map to the catalog, click the “Share my map” button on the main map page to generate a share link. Paste this link into the submission form. Your share link is automatically updated each time you click “Share my map” again.</span>
       </div>
 
       <div id="catalogList" class="catalog-list">
@@ -157,7 +152,21 @@
 
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="submitTitle">
 
-      <div class="modal-body">
+      <div id="submitSuccessState" class="hidden submit-success-state">
+        <h3>✅ Map submitted</h3>
+        <p>Your map has been successfully added to the catalog.</p>
+
+        <div class="actions">
+          <button id="viewCatalogBtn" class="button primary">
+            View in catalog
+          </button>
+          <button id="closeSubmitBtn" class="button">
+            Close
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body" id="submitFormState">
         <label class="field">
           <div class="field-label" data-i18n="catalog.Author">Your name</div>
           <input id="submitAuthor" type="text" maxlength="24" placeholder="Yakmandji" />
@@ -166,15 +175,6 @@
         <label class="field">
           <div class="field-label" data-i18n="catalog.MapName">Map title</div>
           <input id="submitTitleInput" type="text" maxlength="70" placeholder="Normal – Beginner Playthrough (Act 1–4)" />
-        </label>
-
-        <label class="field">
-          <div class="field-label" data-i18n="catalog.Campaign">Campaign</div>
-          <select id="submitMap">
-            <option value="Cairn">Cairn</option>
-            <option value="Malmouth">Malmouth</option>
-            <option value="Korvan Basin">Korvan Basin</option>
-          </select>
         </label>
 
         <label class="field">
@@ -208,17 +208,31 @@
           </div>
         </label>
 
-        <div id="submitError" class="modal-error hidden"></div>
-        <div id="submitSuccess" class="modal-success hidden"></div>
-      </div>
+          <div id="submitError" class="catalog-alert is-error hidden" role="alert" aria-live="polite">
+            <div class="alert-content">
+              <div class="alert-title">Error</div>
+              <div class="alert-text"></div>
+            </div>
+          </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn cancelbutton" id="submitCancel" data-close="1" data-i18n="catalog.Cancel">Cancel</button>
-        <button id="catalogSubmitConfirm" class="btn">Copy submission</button>
+          <div id="submitSuccess" class="catalog-alert is-success hidden" role="status" aria-live="polite">
+            <div class="alert-content">
+              <div class="alert-title">Success</div>
+              <div class="alert-text"></div>
+            </div>
+          </div>
+
+          <hr class="gd-hr">
+
+          <div class="modal-footer">
+            <button type="button" class="btn cancelbutton" id="submitCancel" data-close="1" data-i18n="catalog.Cancel">Cancel</button>
+            <button id="catalogSubmitConfirm" class="btn">Send your map</button>
+          </div>
+
       </div>
     </div>
-  </div>
 
+  </div>
 
 
   <script src="js/ui.lang.js?v=3.75"></script>

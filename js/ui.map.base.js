@@ -242,14 +242,23 @@
     const vb = viewport.getBoundingClientRect();
     const iw = state.mapNatural.w || 1;
     const ih = state.mapNatural.h || 1;
-    const s = Math.min(vb.width / iw, vb.height / ih);
 
-    state.view.scale = 0.18;
-    state.view.x = (vb.width  - iw * state.view.scale) / 2;
-    state.view.y = (vb.height - ih * state.view.scale) / 2;
+    // Scale that fits the whole map
+    let s = Math.min(vb.width / iw, vb.height / ih);
+
+    // Add a tiny padding so the map doesn't touch edges
+    s *= 0.98;
+
+    // Clamp to the same "normal navigation" limits
+    s = Math.max(0.30, Math.min(1.50, s));
+
+    state.view.scale = s;
+    state.view.x = (vb.width  - iw * s) / 2;
+    state.view.y = (vb.height - ih * s) / 2;
 
     applyView();
   }
+
 
     function setDefaultViewForProfile() {
       const p  = currentProfile && currentProfile();

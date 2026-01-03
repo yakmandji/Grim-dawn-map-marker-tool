@@ -54,7 +54,7 @@
       "toast.PathInProgress": "Path in progress…",
       "toast.ExportAll": "All data have been saved 💾",
       "toast.SharedNoNewData": "Nothing new to add from shared map ✅",
-      "toast.ShareUrlCopied": "share link copied to clipboard 📋",
+      "toast.ShareUrlCopied": "Share link copied 📋 (created or updated)",
       "toast.SharedMerged": "shared markers and routes added to your map ✅",
       "toast.SharedTargetMissing": "Original map not found. Maybe it was renamed or deleted ❌",
       "toast.MarkerDeleted": "Marker deleted 🗑️",
@@ -110,7 +110,7 @@
       "KeyboardPan": "WASD to move map",
       "ui.ToggleSidebar": "Toggle sidebar",
       "toast.ShareCooldown" : "Please wait {wait}s before sharing again",
-      "share.tooltip": "Share your full map.",
+      "share.tooltip": "Create or update your shared map",
       "character.DuplicateToggle": "Retrieve markers from an existing character",
       "character.DuplicateSourceLabel": "Target character →",
 
@@ -145,7 +145,11 @@
       "ui.HelpButton": "Feedback & Support",
       "hint.PanSpeed": "Press <kbd>Shift</kbd> for fast speed — Press <kbd>Ctrl</kbd> for slow speed",
 
-      "ui.HelpCatalogHelper": "For add a map to catalog, click on 'share map' button on the main map page to get your link",
+      "ui.HelpCatalogHelper": "To add a map to the catalog, click the “Share my map” button on the main map page to generate a share link. Paste this link into the submission form. Your share link is automatically updated each time you click “Share my map” again.",
+      "ui.SubmitMapButton": "+ Submit a Map",
+      "ui.BackToMapButton": "← Back to Map",
+      "ui.CommunityMapButton": "Community maps",
+      "ui.CatalogMainTitle" : "Shared Custom Map Catalog",
 
     },
     fr: {
@@ -217,7 +221,7 @@
       "ui.ShowHideRift": "Afficher/Masquer les failles (Rifts)",
        "ui.ShowHideShrine": "Afficher/Masquer les sanctuaires",
        "ui.ShowHideArchived": "Afficher/Masquer Archivés",
-      "toast.ShareUrlCopied": "Lien de partage copié dans le presse-papiers 📋",
+      "toast.ShareUrlCopied": "Lien de partage copié 📋 (créé ou mis à jour)",
       "toast.SharedMerged": "Marqueurs et tracés partagés ajoutés à votre carte ✅",
       "toast.SharedTargetMissing": "Carte d’origine introuvable. Elle a peut-être été renommée ou supprimée ❌",
       "ui.ShareMapButton": "Partager ma carte",
@@ -253,7 +257,7 @@
       "KeyboardPan": "QZSD pour déplacer la carte",
       "ui.ToggleSidebar": "Replier la barre latérale",
       "toast.ShareCooldown": "Veuillez attendre {wait}s avant de partager à nouveau.",
-      "share.tooltip": "Pour partager votre carte complète.",
+      "share.tooltip": "Créer ou mettre à jour votre carte partagée",
       "character.DuplicateToggle": "Récupérer les marqueurs d'un personnage existant",
       "character.DuplicateSourceLabel": "Personnage cible →",
 
@@ -288,7 +292,13 @@
       "ui.HelpButton": "Retours & assistance",
       "hint.PanSpeed": "Appuyez sur <kbd>Maj</kbd> pour aller plus vite — Appuyez sur <kbd>Ctrl</kbd> pour aller plus lentement",
 
-      "ui.HelpCatalogHelper": "Pour partager une map dans le catalogue, cliquez sur le boutton 'partager ma carte' sur la page de votre map pour obtenir votre lien",
+      "ui.HelpCatalogHelper": "Pour ajouter une carte au catalogue, cliquez sur le bouton « Partager ma carte » sur la page principale de la carte afin de générer un lien de partage. Collez ensuite ce lien dans le formulaire de soumission. Votre lien de partage est automatiquement mis à jour à chaque fois que vous cliquez de nouveau sur « Partager ma carte ».",
+      "ui.SubmitMapButton": "+ Soumettre une carte",
+      "ui.BackToMapButton": "← Retour à la carte",
+      "ui.CommunityMapButton": "Cartes de la communauté",
+      "ui.CatalogMainTitle": "Catalogue des cartes partagées",
+
+
 
     },
     es: {
@@ -359,7 +369,7 @@
       "toast.ExportAll": "Todos los datos se han guardado 💾",
       "toast.MarkerDeleted": "Marcador eliminado 🗑️",
       "toast.RouteDeleted": "Ruta eliminada 🧹",
-      "toast.ShareUrlCopied": "Enlace de compartición copiado al portapapeles 📋",
+      "toast.ShareUrlCopied": "Enlace compartido copiado 📋 (creado o actualizado)",
       "toast.SharedMerged": "Marcadores y rutas compartidos añadidos a tu mapa ✅",
       "toast.SharedTargetMissing": "Mapa original no encontrado. Puede que se haya renombrado o eliminado ❌",
       "ui.ShareMapButton": "Compartir mi mapa",
@@ -395,7 +405,7 @@
       "KeyboardPan": "WASD para mover el mapa",
       "ui.ToggleSidebar": "Alternar barra lateral",
       "toast.ShareCooldown": "Por favor espera {wait}s antes de compartir de nuevo.",
-      "share.tooltip": "Comparte tu mapa completo.",
+      "share.tooltip": "Crear o actualizar tu mapa compartido",
       "character.DuplicateToggle": "Recuperar los marcadores de un personaje existente",
       "character.DuplicateSourceLabel": "Personaje objetivo →",
 
@@ -428,7 +438,13 @@
       "ui.linkRoute": "Compartir ruta",
       "ui.HelpTextButton": "Puedes ayudarme a mejorar la herramienta, informar de problemas o pedir ayuda en la página de GitHub del proyecto",
       "ui.HelpButton": "Comentarios y ayuda",
-      "hint.PanSpeed": "Pulsa <kbd>Mayús</kbd> para ir más rápido — Pulsa <kbd>Ctrl</kbd> para ir más lento"
+      "hint.PanSpeed": "Pulsa <kbd>Mayús</kbd> para ir más rápido — Pulsa <kbd>Ctrl</kbd> para ir más lento",
+
+      "ui.HelpCatalogHelper": "Para añadir un mapa al catálogo, haz clic en el botón «Compartir mi mapa» en la página principal del mapa para generar un enlace de uso compartido. Pega este enlace en el formulario de envío. Tu enlace compartido se actualiza automáticamente cada vez que vuelves a hacer clic en «Compartir mi mapa».",
+      "ui.SubmitMapButton": "+ Enviar un mapa",
+      "ui.BackToMapButton": "← Volver al mapa",
+      "ui.CommunityMapButton": "Mapas de la comunidad",
+      "ui.CatalogMainTitle": "Catálogo de mapas",
 
     },
 
@@ -483,7 +499,7 @@
       "toast.PathInProgress": "Pfad in Bearbeitung…",
       "toast.ExportAll": "Alle Daten wurden gespeichert 💾",
       "toast.SharedNoNewData": "Keine neuen Daten zum Hinzufügen ✅",
-      "toast.ShareUrlCopied": "Freigabelink in die Zwischenablage kopiert 📋",
+      "toast.ShareUrlCopied": "Freigabelink kopiert 📋 (erstellt oder aktualisiert)",
       "toast.SharedMerged": "Geteilte Marker und Routen hinzugefügt ✅",
       "toast.SharedTargetMissing": "Originalkarte nicht gefunden. Vielleicht wurde sie umbenannt oder gelöscht ❌",
       "toast.MarkerDeleted": "Marker gelöscht 🗑️",
@@ -537,7 +553,7 @@
       "KeyboardPan": "WASD zum Bewegen der Karte",
       "ui.ToggleSidebar": "Seitenleiste umschalten",
       "toast.ShareCooldown": "Bitte warten Sie {wait}s, bevor Sie erneut teilen.",
-      "share.tooltip": "Teile deine komplette Karte.",
+      "share.tooltip": "Geteilte Karte erstellen oder aktualisieren",
       "character.DuplicateToggle": "Marker von einem bestehenden Charakter übernehmen",
       "character.DuplicateSourceLabel": "Zielcharakter →",
 
@@ -570,7 +586,13 @@
       "ui.linkRoute": "Route teilen",
       "ui.HelpTextButton": "Du kannst helfen, das Tool zu verbessern, Probleme melden oder auf der GitHub-Seite des Projekts Unterstützung erhalten",
       "ui.HelpButton": "Feedback & Support",
-      "hint.PanSpeed": "Drücke <kbd>Umschalt</kbd> für schneller — Drücke <kbd>Strg</kbd> für langsamer"
+      "hint.PanSpeed": "Drücke <kbd>Umschalt</kbd> für schneller — Drücke <kbd>Strg</kbd> für langsamer",
+
+      "ui.HelpCatalogHelper": "Um eine Karte zum Katalog hinzuzufügen, klicken Sie auf der Hauptkartenseite auf die Schaltfläche „Meine Karte teilen“, um einen Freigabelink zu erstellen. Fügen Sie diesen Link in das Einreichungsformular ein. Ihr Freigabelink wird jedes Mal automatisch aktualisiert, wenn Sie erneut auf „Meine Karte teilen“ klicken.",
+      "ui.SubmitMapButton": "+ Karte einreichen",
+      "ui.BackToMapButton": "← Zurück zur Karte",
+      "ui.CommunityMapButton": "Community-Karten",
+      "ui.CatalogMainTitle": "Kartenkatalog",
 
 
     },
@@ -608,7 +630,7 @@
     "ui.DeleteButton": "Excluir",
     "ui.CenterOnMap": "Centralizar no mapa",
      "toast.ExportAll": "Todos os dados foram salvos 💾",
-     "toast.ShareUrlCopied": "Link de compartilhamento copiado para a área de transferência 📋",
+     "toast.ShareUrlCopied": "Link compartilhado copiado 📋 (criado ou atualizado)",
     "ui.ShowHideGeneral": "Mostrar marcadores pessoais",
     "ui.ShowHideQuest": "Mostrar Missões",
     "ui.ShowHideBoss": "Mostrar Chefes",
@@ -645,7 +667,6 @@
     "toast.ExportAll": "Todos os dados foram salvos 💾",
     "toast.MarkerDeleted": "Marcador excluído 🗑️",
     "toast.RouteDeleted": "Rota excluída 🧹",
-    "toast.ShareUrlCopied": "Link de compartilhamento copiado para a área de transferência 📋",
     "toast.SharedMerged": "Marcadores e rotas compartilhados adicionados ao seu mapa ✅",
     "toast.SharedTargetMissing": "Mapa original não encontrado. Pode ter sido renomeado ou excluído ❌",
     "ui.ShareMapButton": "Compartilhar meu mapa",
@@ -681,7 +702,7 @@
       "KeyboardPan": "WASD para mover o mapa",
       "ui.ToggleSidebar": "Alternar barra lateral",
       "toast.ShareCooldown": "Aguarde {wait}s antes de compartilhar novamente.",
-      "share.tooltip": "Partilhar o mapa completo.",
+      "share.tooltip": "Criar ou atualizar seu mapa compartilhado",
       "character.DuplicateToggle": "Recuperar marcadores de um personagem existente",
       "character.DuplicateSourceLabel": "Personagem de destino →",
 
@@ -714,7 +735,14 @@
       "ui.linkRoute": "Compartilhar rota",
       "ui.HelpTextButton": "Você pode me ajudar a melhorar a ferramenta, relatar problemas ou pedir ajuda na página do GitHub do projeto",
       "ui.HelpButton": "Feedback e suporte",
-      "hint.PanSpeed": "Pressione <kbd>Shift</kbd> para mover mais rápido — Pressione <kbd>Ctrl</kbd> para mover mais devagar"
+      "hint.PanSpeed": "Pressione <kbd>Shift</kbd> para mover mais rápido — Pressione <kbd>Ctrl</kbd> para mover mais devagar",
+
+       "ui.HelpCatalogHelper": "Aby dodać mapę do katalogu, kliknij przycisk „Udostępnij moją mapę” na głównej stronie mapy, aby wygenerować link udostępniania. Wklej ten link do formularza zgłoszeniowego. Link udostępniania jest automatycznie aktualizowany za każdym razem, gdy ponownie klikniesz „Udostępnij moją mapę”.",
+       "ui.SubmitMapButton": "+ Enviar um mapa",
+       "ui.BackToMapButton": "← Voltar ao mapa",
+       "ui.CommunityMapButton": "Mapas da comunidade",
+       "ui.CatalogMainTitle": "Catálogo de mapas",
+
 
   },
 
@@ -786,7 +814,7 @@
     "toast.ExportAll": "Все данные сохранены 💾",
     "toast.MarkerDeleted": "Метка удалена 🗑️",
     "toast.RouteDeleted": "Маршрут удалён 🧹",
-    "toast.ShareUrlCopied": "Ссылка для обмена скопирована в буфер обмена 📋",
+    "toast.ShareUrlCopied": "Ссылка для общего доступа скопирована 📋 (создана или обновлена)",
     "toast.SharedMerged": "Общие маркеры и маршруты добавлены на вашу карту ✅",
     "toast.SharedTargetMissing": "Исходная карта не найдена. Возможно, она была переименована или удалена ❌",
     "ui.ShareMapButton": "Поделиться моей картой",
@@ -822,7 +850,7 @@
     "KeyboardPan": "WASD для перемещения карты",
     "ui.ToggleSidebar": "Переключить боковую панель",
     "toast.ShareCooldown": "Пожалуйста, подождите {wait} сек перед повторным поделиться.",
-    "share.tooltip": "Поделиться всей картой.",
+    "share.tooltip": "Создать или обновить общую карту",
     "character.DuplicateToggle": "Восстановить маркеры существующего персонажа",
     "character.DuplicateSourceLabel": "Целевой персонаж →",
 
@@ -855,7 +883,15 @@
     "ui.linkRoute": "Поделиться маршрутом",
     "ui.HelpTextButton": "Вы можете помочь улучшить инструмент, сообщить об ошибках или задать вопросы на странице проекта в GitHub",
     "ui.HelpButton": "Обратная связь и поддержка",
-    "hint.PanSpeed": "Нажмите <kbd>Shift</kbd>, чтобы двигаться быстрее — Нажмите <kbd>Ctrl</kbd>, чтобы двигаться медленнее"
+    "hint.PanSpeed": "Нажмите <kbd>Shift</kbd>, чтобы двигаться быстрее — Нажмите <kbd>Ctrl</kbd>, чтобы двигаться медленнее",
+
+    "ui.HelpCatalogHelper": "Чтобы добавить карту в каталог, нажмите кнопку «Поделиться моей картой» на главной странице карты, чтобы создать ссылку для общего доступа. Вставьте эту ссылку в форму отправки. Ссылка автоматически обновляется каждый раз, когда вы снова нажимаете «Поделиться моей картой».",
+    "ui.SubmitMapButton": "+ Отправить карту",
+    "ui.BackToMapButton": "← Назад к карте",
+    "ui.CommunityMapButton": "Карты сообщества",
+    "ui.CatalogMainTitle": "Каталог карт",
+
+
 
   },
 
@@ -928,7 +964,7 @@
       "toast.ExportAll": "Tutti i dati sono stati salvati 💾",
       "toast.MarkerDeleted": "Marcatore eliminato 🗑️",
       "toast.RouteDeleted": "Percorso eliminato 🧹",
-      "toast.ShareUrlCopied": "Link di condivisione copiato negli appunti 📋",
+      "toast.ShareUrlCopied": "Link condiviso copiato 📋 (creato o aggiornato)",
       "toast.SharedMerged": "Marcatori e percorsi condivisi aggiunti alla tua mappa ✅",
       "toast.SharedTargetMissing": "Mappa originale non trovata. Potrebbe essere stata rinominata o eliminata ❌",
       "ui.MergeRoutesButton": "Aggiungi la condivisione alla mia mappa",
@@ -964,7 +1000,7 @@
       "KeyboardPan": "WASD per muovere la mappa",
       "ui.ToggleSidebar": "Attiva/disattiva barra laterale",
       "toast.ShareCooldown": "Attendi {wait}s prima di condividere di nuovo.",
-      "share.tooltip": "Condividi la mappa completa.",
+      "share.tooltip": "Crea o aggiorna la tua mappa condivisa",
       "character.DuplicateToggle": "Recupera i marker da un personaggio esistente",
       "character.DuplicateSourceLabel": "Personaggio di destinazione →",
 
@@ -997,7 +1033,15 @@
       "ui.linkRoute": "Condividi percorso",
       "ui.HelpTextButton": "Puoi aiutarmi a migliorare lo strumento, segnalare problemi o chiedere aiuto nella pagina GitHub del progetto",
       "ui.HelpButton": "Feedback e supporto",
-      "hint.PanSpeed": "Premi <kbd>Shift</kbd> per muoverti più velocemente — Premi <kbd>Ctrl</kbd> per muoverti più lentamente"
+      "hint.PanSpeed": "Premi <kbd>Shift</kbd> per muoverti più velocemente — Premi <kbd>Ctrl</kbd> per muoverti più lentamente",
+
+      "ui.HelpCatalogHelper": "Per aggiungere una mappa al catalogo, fai clic sul pulsante «Condividi la mia mappa» nella pagina principale della mappa per generare un link di condivisione. Incolla questo link nel modulo di invio. Il tuo link di condivisione viene aggiornato automaticamente ogni volta che fai di nuovo clic su «Condividi la mia mappa».",
+      "ui.SubmitMapButton": "+ Invia una mappa",
+      "ui.BackToMapButton": "← Torna alla mappa",
+      "ui.CommunityMapButton": "Mappe della community",
+      "ui.CatalogMainTitle": "Catalogo mappe",
+
+
 
     },
 
@@ -1053,7 +1097,7 @@
       "toast.PathInProgress": "Trasa w trakcie…",
       "toast.ExportAll": "Wszystkie dane zostały zapisane 💾",
       "toast.SharedNoNewData": "Brak nowych danych do dodania z udostępnionej mapy ✅",
-      "toast.ShareUrlCopied": "Link udostępniania skopiowany do schowka 📋",
+      "toast.ShareUrlCopied": "Link udostępniony skopiowany 📋 (utworzony lub zaktualizowany)",
       "toast.SharedMerged": "Udostępnione znaczniki i trasy dodane do twojej mapy ✅",
       "toast.SharedTargetMissing": "Oryginalna mapa nie została znaleziona. Być może została zmieniona nazwa lub usunięta ❌",
       "toast.MarkerDeleted": "Znacznik usunięty 🗑️",
@@ -1119,7 +1163,7 @@
       "ui.ToggleSidebar": "Przełącz pasek boczny",
 
       "toast.ShareCooldown": "Poczekaj {wait}s przed kolejnym udostępnieniem",
-      "share.tooltip": "Udostępnij całą mapę.",
+      "share.tooltip": "Utwórz lub zaktualizuj udostępnioną mapę",
 
       "character.DuplicateToggle": "Pobierz znaczniki z istniejącej postaci",
       "character.DuplicateSourceLabel": "Postać docelowa →",
@@ -1159,7 +1203,16 @@
 
       "ui.HelpTextButton": "Możesz pomóc mi ulepszyć narzędzie, zgłosić problemy lub poprosić o pomoc na GitHubie",
       "ui.HelpButton": "Opinie i wsparcie",
-      "hint.PanSpeed": "Naciśnij <kbd>Shift</kbd>, aby poruszać się szybciej — Naciśnij <kbd>Ctrl</kbd>, aby poruszać się wolniej"
+      "hint.PanSpeed": "Naciśnij <kbd>Shift</kbd>, aby poruszać się szybciej — Naciśnij <kbd>Ctrl</kbd>, aby poruszać się wolniej",
+
+      "ui.HelpCatalogHelper": "Aby dodać mapę do katalogu, kliknij przycisk „Udostępnij moją mapę” na głównej stronie mapy, aby wygenerować link udostępniania. Wklej ten link do formularza zgłoszeniowego. Link udostępniania jest automatycznie aktualizowany za każdym razem, gdy ponownie klikniesz „Udostępnij moją mapę”.",
+      "ui.SubmitMapButton": "+ Prześlij mapę",
+      "ui.BackToMapButton": "← Powrót do mapy",
+      "ui.CommunityMapButton": "Mapy społeczności",
+      "ui.CatalogMainTitle": "Katalog map",
+
+
+
     },
 
     zh: {
@@ -1229,7 +1282,7 @@
       "toast.PathInProgress": "路线进行中…",
       "toast.ExportAll": "所有数据已保存 💾",
       "toast.SharedNoNewData": "没有新的共享数据可添加 ✅",
-      "toast.ShareUrlCopied": "共享链接已复制到剪贴板 📋",
+      "toast.ShareUrlCopied": "共享链接已复制 📋（已创建或更新）",
       "toast.SharedMerged": "共享的标记和路线已添加到您的地图 ✅",
       "toast.SharedTargetMissing": "未找到原始地图，可能已被重命名或删除 ❌",
       "toast.MarkerDeleted": "标记已删除 🗑️",
@@ -1267,7 +1320,7 @@
       "KeyboardPan": "按 W、A、S、D 移动地图",
       "ui.ToggleSidebar": "切换侧边栏",
       "toast.ShareCooldown": "请等待 {wait} 秒后再分享。",
-      "share.tooltip": "分享完整地图。",
+      "share.tooltip": "创建或更新共享地图",
       "character.DuplicateToggle": "从现有角色中恢复标记",
       "character.DuplicateSourceLabel": "目标角色 →",
 
@@ -1300,7 +1353,14 @@
       "ui.linkRoute": "分享路线",
       "ui.HelpTextButton": "你可以帮助我改进这个工具、报告问题，或在项目的 GitHub 页面上寻求帮助",
       "ui.HelpButton": "反馈与支持",
-      "hint.PanSpeed": "按下 <kbd>Shift</kbd> 可加快移动速度 — 按下 <kbd>Ctrl</kbd> 可减慢移动速度"
+      "hint.PanSpeed": "按下 <kbd>Shift</kbd> 可加快移动速度 — 按下 <kbd>Ctrl</kbd> 可减慢移动速度",
+
+      "ui.HelpCatalogHelper": "要将地图添加到目录中，请在主地图页面点击“分享我的地图”按钮以生成共享链接。将该链接粘贴到提交表单中。每次再次点击“分享我的地图”时，共享链接都会自动更新。",
+      "ui.SubmitMapButton": "+ 提交地图",
+      "ui.BackToMapButton": "← 返回地图",
+      "ui.CommunityMapButton": "社区地图",
+      "ui.CatalogMainTitle": "地图目录",
+
 
 
     },
@@ -1355,7 +1415,7 @@
       "toast.PathInProgress": "ルート作成中…",
       "toast.ExportAll": "すべてのデータを保存しました 💾",
       "toast.SharedNoNewData": "共有マップから追加する新しいデータはありません ✅",
-      "toast.ShareUrlCopied": "共有リンクをクリップボードにコピーしました 📋",
+      "toast.ShareUrlCopied": "共有リンクをコピーしました 📋（作成または更新）",
       "toast.SharedMerged": "共有されたマーカーとルートをマップに追加しました ✅",
       "toast.SharedTargetMissing": "元のマップが見つかりません。名前が変更されたか削除された可能性があります ❌",
       "toast.MarkerDeleted": "マーカーを削除しました 🗑️",
@@ -1409,7 +1469,7 @@
       "KeyboardPan": "WASD でマップを移動",
       "ui.ToggleSidebar": "サイドバーを切り替え",
       "toast.ShareCooldown": "{wait}秒待ってから再度共有してください。",
-      "share.tooltip": "マップ全体を共有します。",
+      "share.tooltip": "共有マップを作成または更新",
       "character.DuplicateToggle": "既存のキャラクターからマーカーを取得",
       "character.DuplicateSourceLabel": "対象キャラクター →",
 
@@ -1442,7 +1502,16 @@
       "ui.linkRoute": "ルートを共有",
       "ui.HelpTextButton": "このツールの改善に協力したり、不具合を報告したり、GitHub のプロジェクトページで質問することができます",
       "ui.HelpButton": "フィードバックとサポート",
-      "hint.PanSpeed": "<kbd>Shift</kbd> を押すと高速移動 — <kbd>Ctrl</kbd> を押すと低速移動"
+      "hint.PanSpeed": "<kbd>Shift</kbd> を押すと高速移動 — <kbd>Ctrl</kbd> を押すと低速移動",
+
+      "ui.HelpCatalogHelper": "カタログにマップを追加するには、メインのマップページで「マップを共有」ボタンをクリックして共有リンクを生成してください。このリンクを投稿フォームに貼り付けます。「マップを共有」を再度クリックするたびに、共有リンクは自動的に更新されます。",
+      "ui.SubmitMapButton": "+ マップを送信",
+      "ui.BackToMapButton": "← マップに戻る",
+      "ui.CommunityMapButton": "コミュニティマップ",
+      "ui.CatalogMainTitle": "マップカタログ",
+
+
+
     },
 
     ko: {
@@ -1496,7 +1565,7 @@
       "toast.PathInProgress": "경로 생성 중…",
       "toast.ExportAll": "모든 데이터가 저장되었습니다 💾",
       "toast.SharedNoNewData": "공유된 지도에서 추가할 새 항목이 없습니다 ✅",
-      "toast.ShareUrlCopied": "공유 링크가 클립보드에 복사되었습니다 📋",
+      "toast.ShareUrlCopied": "공유 링크가 복사되었습니다 📋 (생성 또는 업데이트됨)",
       "toast.SharedMerged": "공유된 마커와 경로가 지도에 추가되었습니다 ✅",
       "toast.SharedTargetMissing": "원본 지도를 찾을 수 없습니다. 이름이 변경되었거나 삭제되었을 수 있습니다 ❌",
       "toast.MarkerDeleted": "마커가 삭제되었습니다 🗑️",
@@ -1552,7 +1621,7 @@
       "KeyboardPan": "WASD로 지도 이동",
       "ui.ToggleSidebar": "사이드바 전환",
       "toast.ShareCooldown" : "{wait}초 후에 다시 공유할 수 있습니다",
-      "share.tooltip": "전체 지도를 공유합니다.",
+      "share.tooltip": "공유 지도를 생성하거나 업데이트",
       "character.DuplicateToggle": "기존 캐릭터의 마커 가져오기",
       "character.DuplicateSourceLabel": "대상 캐릭터 →",
 
@@ -1585,7 +1654,16 @@
       "ui.linkRoute": "경로 공유",
       "ui.HelpTextButton": "GitHub 페이지에서 도구 개선에 도움을 주거나, 문제를 신고하거나, 도움을 요청할 수 있습니다",
       "ui.HelpButton": "피드백 및 지원",
-      "hint.PanSpeed": "<kbd>Shift</kbd> 키로 빠르게 이동 — <kbd>Ctrl</kbd> 키로 느리게 이동"
+      "hint.PanSpeed": "<kbd>Shift</kbd> 키로 빠르게 이동 — <kbd>Ctrl</kbd> 키로 느리게 이동",
+
+      "ui.HelpCatalogHelper": "카탈로그에 지도를 추가하려면 메인 지도 페이지에서 “지도 공유” 버튼을 클릭하여 공유 링크를 생성하세요. 이 링크를 제출 양식에 붙여넣으면 됩니다. “지도 공유”를 다시 클릭할 때마다 공유 링크는 자동으로 업데이트됩니다.",
+      "ui.SubmitMapButton": "+ 지도 제출",
+      "ui.BackToMapButton": "← 지도으로 돌아가기",
+      "ui.CommunityMapButton": "커뮤니티 지도",
+      "ui.CatalogMainTitle": "지도 카탈로그",
+
+
+
     }
 
   };
@@ -1721,17 +1799,32 @@
       }
     }
 
-    // Ouverture / fermeture
-    currentBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdown.classList.toggle('open');
-    });
+    // Stocke le sync courant sur le dropdown (sera remplacé à chaque re-init)
+    dropdown.__gdmmSyncFromSelect = syncFromSelect;
 
-    document.addEventListener('click', () => {
-      dropdown.classList.remove('open');
-    });
+    // Bind 1 seule fois les listeners "globaux"
+    if (!dropdown.__gdmmDropdownBound) {
+      dropdown.__gdmmDropdownBound = true;
 
-    // Clic sur une option
+      // Ouverture / fermeture
+      currentBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+      });
+
+      document.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+      });
+
+      // Sync quand le <select> change (via code ou UI) → appelle toujours la dernière fonction
+      nativeSelect.addEventListener('change', () => {
+        if (typeof dropdown.__gdmmSyncFromSelect === 'function') {
+          dropdown.__gdmmSyncFromSelect();
+        }
+      });
+    }
+
+    // Rebind des items (car le menu HTML est reconstruit à chaque refreshProfilesUI)
     items.forEach(btn => {
       btn.addEventListener('click', () => {
         const value = btn.getAttribute(valueAttr);
@@ -1740,15 +1833,14 @@
         nativeSelect.value = value;
         nativeSelect.dispatchEvent(new Event('change'));
 
-        syncFromSelect();
+        // la fermeture doit rester ici
         dropdown.classList.remove('open');
       });
     });
 
-    // Sync quand le <select> change (via code ou UI)
-    nativeSelect.addEventListener('change', syncFromSelect);
-
+    // Sync initial
     syncFromSelect();
+
   }
 
   // --- Exposition globale -----------------------------------------------
