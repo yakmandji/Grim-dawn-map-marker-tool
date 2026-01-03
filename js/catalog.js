@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', async () =>  {
         </div>
         <hr class="gd-hr">
         <div class="catalog-card-actions">
-          <a href="${openUrl}" class="button">Open Map</a>
+          <a href="${openUrl}" class="button" target="_blank">Open Map</a>
           ${isOwner ? `<button class="button danger catalog-delete-btn" data-shareid="${escapeHtml(item.shareId)}">Delete</button>` : ''}
         </div>
       `;
