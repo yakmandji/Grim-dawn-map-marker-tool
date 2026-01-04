@@ -610,55 +610,47 @@ window.UiShare = {
     let finalUrl = null;
     try {
       if (SHARE_WORKER_BASE) {
+
+        // Build request body without null fields
+        const payloadBody = { data: safePayload };
+        if (opts?.id) payloadBody.id = opts.id;
+        if (opts?.editKey) payloadBody.editKey = opts.editKey;
+
         const res = await fetch(`${SHARE_WORKER_BASE}/create`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            data: safePayload,
-            id: opts.id || null,
-            editKey: opts.editKey || null,
-          }),
-
+          body: JSON.stringify(payloadBody),
         });
 
         const out = await res.json();
 
-          // If we attempted an update but the stored gist id is invalid (GitHub 404),
-          // retry once as a fresh create (no id), then return short URL.
-          if (out && out.error && out.ghStatus === 404 && opts && opts.id) {
+        // Retry once as fresh create if stored gist id is invalid (404)
+        if (out && out.error && out.ghStatus === 404 && opts && opts.id) {
 
-            // retry without id
+          const payloadBody2 = { data: safePayload };
+          if (opts?.editKey) payloadBody2.editKey = opts.editKey;
 
-            const res2 = await fetch(`${SHARE_WORKER_BASE}/create`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                data: safePayload,
-                id: null,
-                editKey: opts.editKey || null,
-              }),
-            });
+          const res2 = await fetch(`${SHARE_WORKER_BASE}/create`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payloadBody2),
+          });
 
-            let out2;
-            try {
-              out2 = await res2.json();
+          let out2;
+          try { out2 = await res2.json(); } catch { return null; }
 
-            } catch {
-              return null;
-            }
-
-            if (res2.ok && out2 && out2.ok && out2.id) {
-              return `${getShareBaseUrl()}/?s=${encodeURIComponent(out2.id)}`;
-            }
-
-            return null;
+          if (res2.ok && out2 && out2.ok && out2.id) {
+            return `${getShareBaseUrl()}/?s=${encodeURIComponent(out2.id)}`;
           }
+
+          return null;
+        }
 
         if (out && out.ok && out.id) {
           finalUrl = `${getShareBaseUrl()}/?s=${encodeURIComponent(out.id)}`;
         }
-
       }
+
     } catch (e) {
       console.warn('[GDMM] share via Worker failed, falling back to ?share=', e);
     }
