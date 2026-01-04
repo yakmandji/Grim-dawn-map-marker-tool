@@ -13,6 +13,11 @@
     
 { id: 'tag_UG_wightmire_cave01', tag: 'tagUGWightmireCave01', xp: 72.54, yp: 79.18, isDungeon: true, },
 { id: 'tag_UG_wightmire_cave03', tag: 'tagUGWightmireCave01', xp: 63.68, yp: 74.06, isDungeon: true },
+
+{ id: 'tag-UGDevils-Crossing-Dungeon01', tag: 'tagUGDevilsCrossingDungeon01', xp: 66.69, yp: 89.96, isDungeon: true, overlayPoly: [[67.6,92.2],[66.3,90.9],[67.6,89.7],[68.7,90.8],[68.2,91.3],[68.4,91.5]] },
+
+
+
 { id: 'tagU_rRotting_croplands_crypt01', tag: 'tagUGRottingCroplandsCrypt01', xp: 29, yp: 72.53, isDungeon: true },
 { id: 'tag_burrwitch_cellar03', tag: 'tagBurrwitchCellar03', xp: 63.60, yp: 58.52, isDungeon: true },
 { id: 'tag_UG_wightmire_cave02', tag: 'tagUGWightmireCave01', xp: 75.16, yp: 73.38, isDungeon: true },
@@ -71,7 +76,7 @@
 { id: 'region_dc', tag: 'tagMapDevilsCrossing01', xp: 62.2, yp: 88.85, overlayPoly: [[63,90],[61.8,89.4],[61.6,89],[62.2,88.4],[62.8,87.8],[63.5,88.3],[64.2,88.9],[64.2,89.1],[63.5,89.8]] },
 { id: 'region_dc2', tag: 'tagMapDevilsCrossing01', xp: 61.86, yp: 91.95, isDungeon: true },
 
-{ id: 'UG_devils_crossing_hidden_passage01', tag: 'tagUGDevilsCrossingHiddenPassage01', xp: 66.64, yp: 89.30, isDungeon: true },
+{ id: 'UG_devils_crossing_hidden_passage01', tag: 'tagUGDevilsCrossingHiddenPassage01', xp: 66.14, yp: 92.64, isDungeon: true, overlayPoly: [[68.1,93.1],[67.6,92.9],[67.3,92.5],[67.2,92.2],[67.4,91.8],[67,91.5],[66.8,91.8],[66.7,92.3],[66.8,93],[67,93.4],[67.3,93.6],[67.7,93.8],[67.9,93.5]]},
 { id: 'tag_gDX1UG_ugdenbog_cave01', tag: 'tagGDX1UGUgdenbogCave01', xp: 93.92, yp: 42.45, isDungeon: true },
 { id: 'world_map_witch_god_temple', tag: 'tagWorldMapWitchGodTemple', xp: 82.46, yp: 62.40, isDungeon: true },
 { id: 'UG_devils_crossing_aquifer', tag: 'tagUGDevilsCrossingAquifer', xp: 71.10, yp: 93.31, isDungeon: true },
