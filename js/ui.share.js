@@ -17,6 +17,23 @@
       window.GDMM_SHARE_WORKER_URL ||
       'https://share2.grimcustommarker.org';
 
+    // Public base URL used for share links when running locally (file:// or localhost)
+    function getShareBaseUrl() {
+      const PUBLIC = 'https://www.grimcustommarker.org';
+
+      const isFile = location.protocol === 'file:' || location.origin === 'null';
+      const isLocalhost =
+        location.hostname === 'localhost' ||
+        location.hostname === '127.0.0.1';
+
+      // In local usage, always generate a public clickable URL for sharing/catalog
+      if (isFile || isLocalhost) return PUBLIC;
+
+      // In prod/custom domain, keep current origin
+      return location.origin;
+    }
+
+
     // --- Decode legacy share payload from URL (GZIP + Base64) ---
     function decodeSharePayload(str) {
       if (!str) return null;
@@ -631,17 +648,16 @@ window.UiShare = {
             }
 
             if (res2.ok && out2 && out2.ok && out2.id) {
-              return `${location.origin}/?s=${encodeURIComponent(out2.id)}`;
+              return `${getShareBaseUrl()}/?s=${encodeURIComponent(out2.id)}`;
             }
 
             return null;
           }
 
-
-
         if (out && out.ok && out.id) {
-          finalUrl = `${location.origin}${location.pathname}?s=${encodeURIComponent(out.id)}`;
+          finalUrl = `${getShareBaseUrl()}/?s=${encodeURIComponent(out.id)}`;
         }
+
       }
     } catch (e) {
       console.warn('[GDMM] share via Worker failed, falling back to ?share=', e);
@@ -649,8 +665,9 @@ window.UiShare = {
 
     // --- 2) Legacy fallback ---
     if (!finalUrl) {
-      finalUrl = `${location.origin}${location.pathname}?share=${compressed}`;
+      finalUrl = `${getShareBaseUrl()}/?share=${compressed}`;
     }
+
 
     // --- Copy only (UI feedback handled by caller) ---
     try {
