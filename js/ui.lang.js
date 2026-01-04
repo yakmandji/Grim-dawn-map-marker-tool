@@ -155,6 +155,16 @@
       "ui.CommunityMapButton": "Community maps",
       "ui.CatalogMainTitle" : "Shared Custom Map Catalog",
 
+      "catalog.Author" : "Your name",
+      "catalog.MapName" : "Map title",
+      "catalog.Language" : "Language",
+      "catalog.Description" : "Description",
+      "catalog.ShareUrl" : "Share link",
+      "catalog.ShareHint" : "Generate this link from the map page using the Share button",
+      "ui.SubmitMapTitle" : "Submit a map",
+      "catalog.SendMapButton" : "Send your map",
+      "catalog.openMapButton" : "Open Map",
+
     },
     fr: {
       "ui.NewMarkerTitle": "Nouveau marqueur",
@@ -305,6 +315,16 @@
       "ui.BackToMapButton": "← Retour à la carte",
       "ui.CommunityMapButton": "Cartes de la communauté",
       "ui.CatalogMainTitle": "Catalogue des cartes partagées",
+
+      "catalog.Author": "Votre nom",
+      "catalog.MapName": "Titre de la carte",
+      "catalog.Language": "Langue",
+      "catalog.Description": "Description",
+      "catalog.ShareUrl": "Lien de partage",
+      "catalog.ShareHint": "Générez ce lien depuis la page de la carte via le bouton Partager",
+      "ui.SubmitMapTitle": "Soumettre une carte",
+      "catalog.SendMapButton": "Envoyer votre carte",    
+      "catalog.openMapButton" : "Voir la carte",  
 
 
 
@@ -457,6 +477,17 @@
       "ui.CommunityMapButton": "Mapas de la comunidad",
       "ui.CatalogMainTitle": "Catálogo de mapas",
 
+      "catalog.Author": "Tu nombre",
+      "catalog.MapName": "Título del mapa",
+      "catalog.Language": "Idioma",
+      "catalog.Description": "Descripción",
+      "catalog.ShareUrl": "Enlace para compartir",
+      "catalog.ShareHint": "Genera este enlace desde la página del mapa usando el botón Compartir",
+      "ui.SubmitMapTitle": "Enviar un mapa",
+      "catalog.SendMapButton": "Enviar tu mapa",
+      "catalog.openMapButton": "Ver el mapa",
+
+
     },
 
     de: {
@@ -608,6 +639,16 @@
       "ui.BackToMapButton": "← Zurück zur Karte",
       "ui.CommunityMapButton": "Community-Karten",
       "ui.CatalogMainTitle": "Kartenkatalog",
+
+      "catalog.Author": "Dein Name",
+      "catalog.MapName": "Kartentitel",
+      "catalog.Language": "Sprache",
+      "catalog.Description": "Beschreibung",
+      "catalog.ShareUrl": "Freigabelink",
+      "catalog.ShareHint": "Erstelle diesen Link auf der Kartenseite mit dem Teilen-Button",
+      "ui.SubmitMapTitle": "Karte einreichen",
+      "catalog.SendMapButton": "Karte senden",
+      "catalog.openMapButton": "Karte öffnen",
 
 
     },
@@ -762,6 +803,16 @@
        "ui.CommunityMapButton": "Mapas da comunidade",
        "ui.CatalogMainTitle": "Catálogo de mapas",
 
+       "catalog.Author": "Seu nome",
+      "catalog.MapName": "Título do mapa",
+      "catalog.Language": "Idioma",
+      "catalog.Description": "Descrição",
+      "catalog.ShareUrl": "Link de compartilhamento",
+      "catalog.ShareHint": "Gere este link na página do mapa usando o botão Compartilhar",
+      "ui.SubmitMapTitle": "Enviar um mapa",
+      "catalog.SendMapButton": "Enviar seu mapa",
+      "catalog.openMapButton": "Ver mapa",
+
 
   },
 
@@ -914,6 +965,15 @@
     "ui.CommunityMapButton": "Карты сообщества",
     "ui.CatalogMainTitle": "Каталог карт",
 
+    "catalog.Author": "Ваше имя",
+    "catalog.MapName": "Название карты",
+    "catalog.Language": "Язык",
+    "catalog.Description": "Описание",
+    "catalog.ShareUrl": "Ссылка для обмена",
+    "catalog.ShareHint": "Создайте эту ссылку на странице карты с помощью кнопки Поделиться",
+    "ui.SubmitMapTitle": "Отправить карту",
+    "catalog.SendMapButton": "Отправить карту",
+    "catalog.openMapButton": "Открыть карту",
 
 
   },
@@ -1068,6 +1128,15 @@
       "ui.CommunityMapButton": "Mappe della community",
       "ui.CatalogMainTitle": "Catalogo mappe",
 
+      "catalog.Author": "Il tuo nome",
+      "catalog.MapName": "Titolo della mappa",
+      "catalog.Language": "Lingua",
+      "catalog.Description": "Descrizione",
+      "catalog.ShareUrl": "Link di condivisione",
+      "catalog.ShareHint": "Genera questo link dalla pagina della mappa usando il pulsante Condividi",
+      "ui.SubmitMapTitle": "Invia una mappa",
+      "catalog.SendMapButton": "Invia la tua mappa",
+      "catalog.openMapButton": "Открыть карту",
 
 
     },
@@ -1242,6 +1311,15 @@
       "ui.CommunityMapButton": "Mapy społeczności",
       "ui.CatalogMainTitle": "Katalog map",
 
+      "catalog.Author": "Twoje imię",
+      "catalog.MapName": "Tytuł mapy",
+      "catalog.Language": "Język",
+      "catalog.Description": "Opis",
+      "catalog.ShareUrl": "Link do udostępnienia",
+      "catalog.ShareHint": "Wygeneruj ten link na stronie mapy za pomocą przycisku Udostępnij",
+      "ui.SubmitMapTitle": "Prześlij mapę",
+      "catalog.SendMapButton": "Wyślij mapę",
+      "catalog.openMapButton": "Otwórz mapę",
 
 
     },
@@ -1396,6 +1474,15 @@
       "ui.CommunityMapButton": "社区地图",
       "ui.CatalogMainTitle": "地图目录",
 
+      "catalog.Author": "你的名字",
+      "catalog.MapName": "地图标题",
+      "catalog.Language": "语言",
+      "catalog.Description": "描述",
+      "catalog.ShareUrl": "分享链接",
+      "catalog.ShareHint": "请在地图页面使用分享按钮生成此链接",
+      "ui.SubmitMapTitle": "提交地图",
+      "catalog.SendMapButton": "发送你的地图",
+      "catalog.openMapButton": "查看地图",
 
 
     },
@@ -1549,7 +1636,15 @@
       "ui.CommunityMapButton": "コミュニティマップ",
       "ui.CatalogMainTitle": "マップカタログ",
 
-
+      "catalog.Author": "あなたの名前",
+      "catalog.MapName": "マップのタイトル",
+      "catalog.Language": "言語",
+      "catalog.Description": "説明",
+      "catalog.ShareUrl": "共有リンク",
+      "catalog.ShareHint": "マップページの共有ボタンからこのリンクを生成してください",
+      "ui.SubmitMapTitle": "マップを送信",
+      "catalog.SendMapButton": "マップを送信",
+      "catalog.openMapButton": "マップを表示",      
 
     },
 
@@ -1705,7 +1800,15 @@
       "ui.CommunityMapButton": "커뮤니티 지도",
       "ui.CatalogMainTitle": "지도 카탈로그",
 
-
+      "catalog.Author": "이름",
+      "catalog.MapName": "지도 제목",
+      "catalog.Language": "언어",
+      "catalog.Description": "설명",
+      "catalog.ShareUrl": "공유 링크",
+      "catalog.ShareHint": "지도 페이지에서 공유 버튼을 사용해 이 링크를 생성하세요",
+      "ui.SubmitMapTitle": "지도 제출",
+      "catalog.SendMapButton": "지도 보내기",
+      "catalog.openMapButton": "지도 열기",
 
     }
 

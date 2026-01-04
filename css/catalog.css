@@ -5,6 +5,11 @@
 
 #catalog header{
 	justify-content: end;
+  width: 98%;
+  left: 0px;
+  right: 0;
+  margin:auto;
+  background: rgba(0,0,0,0.4);
 }
 
 body {
@@ -104,7 +109,7 @@ body {
   padding: 22px 22px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 8px;  
 }
 
 .catalog-card:hover{
@@ -161,12 +166,15 @@ body {
 .catalog-helper-inner{
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 #catalog-helper .helper-card{
   display: flex;
   align-items: flex-start;
   gap: 13px;
+  flex: 1 1 calc(33.333% - 14px);
+  min-width: 240px;   
 }
 
 #catalog-helper .number{

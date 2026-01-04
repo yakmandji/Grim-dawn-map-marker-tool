@@ -104,13 +104,19 @@ document.addEventListener('DOMContentLoaded', async () =>  {
         </div>
         <hr class="gd-hr">
         <div class="catalog-card-actions">
-          <a href="${openUrl}" class="button" target="_blank">Open Map</a>
+          <a href="${openUrl}" class="button" target="_blank" data-i18n="catalog.openMapButton">Open Map</a>
           ${isOwner ? `<button class="button danger catalog-delete-btn" data-shareid="${escapeHtml(item.shareId)}">Delete</button>` : ''}
         </div>
       `;
 
       catalogList.appendChild(card);
+
     });
+    // IMPORTANT: les cards sont rendues après le applyLang initial
+    if (window.GDMMLang && typeof window.GDMMLang.applyLang === 'function') {
+      window.GDMMLang.applyLang(window.GDMMLang.getLang());
+    }
+
   }
 
   window.reloadCatalog = async function reloadCatalog() {

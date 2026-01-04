@@ -281,7 +281,6 @@ select.active {
 
 button.danger {
   background: linear-gradient(145deg, #37150f, #4b0f0b);
-    padding:7px 7px 6px 7px;
   color: #985d53;
 }
 

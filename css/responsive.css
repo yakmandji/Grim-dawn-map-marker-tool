@@ -65,6 +65,10 @@
     text-align: left;
   } 
 
+  #catalog-helper .helper-card{
+    flex-basis: calc(50% - 12px);
+  }
+
   .done-list {
     height: calc(100vh - 500px);
   }
@@ -127,7 +131,7 @@
     display: block;
   }
 
-  .app-logo .title{
+  .app-logo .title:not(#catalog .title){
     font-size: 15px;
     margin: 0px 3px 0px -11px;
     line-height: 16px;
@@ -230,7 +234,7 @@
     min-width: 100%;
   }
 
-  header{
+  header:not(.catalog-header){
     background: var(--panel);
     top:0;
     transform: translateX(-94%);
@@ -245,7 +249,7 @@
     transition: transform 0.3s ease;
   }
 
-  header .right-panel{
+  header .right-panel:not(#catalog header .right-panel){
     position: initial;
     margin-top: 10px;
     flex-direction: row;
@@ -255,7 +259,7 @@
     gap: 16px;
   }
 
-  #mobile-menu-toggle{
+  #mobile-menu-toggle:not(#catalog #mobile-menu-toggle){
     display: block;
     position: absolute;
     right: -49px;
