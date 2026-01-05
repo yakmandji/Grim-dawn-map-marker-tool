@@ -1255,6 +1255,10 @@ header button.menu-button.select-current:hover {
     cursor: help;
 }
 
+#noteList .listItem button.danger{
+  padding: 7px 8px;
+}
+
 .region-note-tooltip {
   position: fixed;
   max-width: 280px;
