@@ -1873,7 +1873,7 @@ header button.menu-button.select-current:hover {
 .gdmm-pan-hint {
   position: fixed;
   left: 58%;
-  bottom: 33px;
+  bottom: 73px;
   transform: translateX(-50%);
   z-index: 9999;
 
