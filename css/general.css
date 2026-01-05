@@ -63,7 +63,11 @@ textarea {
   letter-spacing: 0.03em;
 }
 
-body, #app, #sidebar, #viewport, #header {
+body#mainmap-page, 
+body#mainmap-page #app, 
+body#mainmap-page #sidebar, 
+body#mainmap-page #viewport, 
+#header {
   user-select: none;
   cursor: default;
 }
