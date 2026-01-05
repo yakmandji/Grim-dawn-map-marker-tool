@@ -231,6 +231,31 @@
   });
 
 
+  // --- BFCache polish: when coming back from catalog/history ---
+  window.addEventListener('pageshow', (ev) => {
+    try {
+      if (!ev.persisted) return; // only BFCache restores
+
+      const p = currentProfile ? currentProfile() : null;
+      const src = p?.map?.embedData || p?.map?.sessionSrc || mapImg?.src || null;
+
+      const notReady =
+        !state.mapReady ||
+        !mapImg ||
+        !mapImg.complete ||
+        mapImg.naturalWidth === 0 ||
+        mapImg.naturalHeight === 0;
+
+      if (src && notReady) {
+        showLoader();
+        setMapSrc(src); // will re-trigger normal load pipeline
+      }
+    } catch (e) {
+      console.warn('[GDMM] pageshow restore handler failed', e);
+    }
+  });
+
+
   mapImg.addEventListener('error', () => {
     state.mapReady = false;
     alert('Failed to load image');
