@@ -22,6 +22,28 @@
     return pathMode;
   }
 
+  //Highlight Routes
+    function highlightRouteOnMap(pid, duration = 1600) {
+      if (!pid) return;
+
+      const sel = [
+        `path.route-line[data-pid="${pid}"]`,
+        `.path-point[data-pid="${pid}"]`,
+        `.path-endpoint[data-pid="${pid}"]`,
+      ].join(',');
+
+      const els = Array.from(document.querySelectorAll(sel));
+      if (!els.length) return;
+
+      els.forEach(el => el.classList.remove('route-highlight'));
+      // next frame to restart animation properly
+      requestAnimationFrame(() => {
+        els.forEach(el => el.classList.add('route-highlight'));
+        setTimeout(() => els.forEach(el => el.classList.remove('route-highlight')), duration);
+      });
+    }
+
+
   // --- Efface la prévisualisation de la route en cours ---
   function clearPathPreview() {
     const svg = document.getElementById('pathLayer');
@@ -188,7 +210,9 @@ function initRouteSubMenus() {
 
         case 'center':
           centerRouteOnMap(route);
+          setTimeout(() => highlightRouteOnMap(route.id), 250);
           break;
+
 
         case 'save':
           if (typeof saveUserDataToLocal === 'function') saveUserDataToLocal();
@@ -600,9 +624,15 @@ initRouteSubMenus();
     }
 
     // --- Center button ---
-    if (centerBtn) {
-      centerBtn.addEventListener('click', () => centerRouteOnMap(path));
-    }
+      if (centerBtn) {
+        centerBtn.addEventListener('click', () => {
+          centerRouteOnMap(path);
+
+          // petit délai pour laisser le smoothCenterOn bouger la vue
+          setTimeout(() => highlightRouteOnMap(path.id), 250);
+        });
+      }
+
 
     // --- Link button (identique à l’existant) ---
     if (linkBtn) {

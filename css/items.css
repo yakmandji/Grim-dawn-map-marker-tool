@@ -491,8 +491,8 @@ button.route-sub-menu{
 .marker.marker-highlight .pin::after {
   content: "";
   position: absolute;
-  top: 0px;
-  left: -6px;
+  top: -4px;
+  left: -8px;
   right: 6px;
   bottom: 6px;
   border-radius: 999px;
@@ -749,6 +749,25 @@ input[type="color"]::-moz-color-swatch {
   100% { transform: scale(1.4); opacity: 0.35; }
 }
 
+
+/* Route highlight on map */
+
+/* SVG line: just a tiny width bump + slight glow via opacity (no filter) */
+/* --- Route highlight: same visual language as markers --- */
+.path-point.route-highlight {
+  box-shadow:
+    0 0 0 1px #78f1c2,
+    0 0 8px rgba(120, 241, 194, 0.7);
+  animation: routePointPulse 1s ease-out 0s 2,
+             routePointFade 0.6s ease-in-out 2s 1 forwards;
+}
+
+@keyframes routePointPulse {
+  from { opacity: 0.90; }
+  to   { opacity: 0.3; }
+}
+
+
 /* Start / End bubble on paths */
 #mapInner .path-endpoint {
   position: absolute;
@@ -756,7 +775,7 @@ input[type="color"]::-moz-color-swatch {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3px 7px;
+  padding: 4px 4px;
   border-radius: 999px;
   font-size: 13px;
   line-height: 1;

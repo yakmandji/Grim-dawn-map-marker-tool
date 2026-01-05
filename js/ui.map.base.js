@@ -431,6 +431,51 @@
 /*----------------------------------------END ICON DE DECORS-----------*/
 
 
+function scrollToAndHighlight(el, {
+  highlightClass = 'highlight',
+  highlightDuration = 2200
+} = {}) {
+  if (!el) return;
+
+  // Restart animation if already highlighted
+  el.classList.remove(highlightClass);
+
+  // Smooth scroll to element
+  el.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+
+  // Wait until scroll is finished before highlighting
+  let lastTop = null;
+  let stableFrames = 0;
+
+  function check() {
+    const rect = el.getBoundingClientRect();
+
+    if (lastTop !== null && Math.abs(rect.top - lastTop) < 1) {
+      stableFrames++;
+      if (stableFrames >= 3) {
+        el.classList.add(highlightClass);
+
+        setTimeout(() => {
+          el.classList.remove(highlightClass);
+        }, highlightDuration);
+        return;
+      }
+    } else {
+      stableFrames = 0;
+      lastTop = rect.top;
+    }
+
+    requestAnimationFrame(check);
+  }
+
+  requestAnimationFrame(check);
+}
+
+
+
   // --- Exposition à l'extérieur ---
   window.UiCore = Object.assign(window.UiCore || {}, {
     $, $$,
@@ -445,6 +490,7 @@
     viewToPct,
     pctToPx,
     setMapSrc,
+    scrollToAndHighlight,
   });
 
   

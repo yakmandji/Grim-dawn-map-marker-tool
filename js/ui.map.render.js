@@ -60,6 +60,9 @@
         el.setAttribute('stroke-linejoin', 'round');
         el.setAttribute('opacity', path.opacity ?? 0.85);
         el.setAttribute('vector-effect', 'non-scaling-stroke');
+        el.classList.add('route-line');
+        el.dataset.pid = path.id;
+        el.style.setProperty('--rw', (path.width || 4) + 'px');
 
         svgLayer.appendChild(el);
       }
@@ -71,6 +74,7 @@
 
         const dot = document.createElement('div');
         dot.className = 'path-point';
+        dot.dataset.pid = path.id;
         dot.style.left = px + 'px';
         dot.style.top  = py + 'px';
 
@@ -90,6 +94,8 @@
           const tag = document.createElement('div');
           tag.className = 'path-endpoint ' +
             (type === 'start' ? 'path-start' : 'path-end');
+          tag.dataset.pid = path.id;
+
 
           if (type === 'start') {
             // Compact endpoint (icon only) + label displayed like markers (tooltip on hover)
@@ -138,9 +144,13 @@
                 `#routesList .listItem[data-pid="${path.id}"]`
               );
               if (row) {
-                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                row.classList.add('highlight');
-                setTimeout(() => row.classList.remove('highlight'), 2200);
+                if (window.UiCore?.scrollToAndHighlight) {
+                  window.UiCore.scrollToAndHighlight(row);
+                } else {
+                  row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  row.classList.add('highlight');
+                  setTimeout(() => row.classList.remove('highlight'), 2200);
+                }
               }
             });
           }
@@ -186,9 +196,14 @@
           const row = document.querySelector(rowSelector);
           if (!row) return;
 
-          row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          row.classList.add('highlight');
-          setTimeout(() => row.classList.remove('highlight'), 2200);
+          if (window.UiCore?.scrollToAndHighlight) {
+            window.UiCore.scrollToAndHighlight(row);
+          } else {
+            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            row.classList.add('highlight');
+            setTimeout(() => row.classList.remove('highlight'), 2200);
+          }
+
         }
 
 
@@ -595,9 +610,14 @@
             const row = noteList.querySelector(`.listItem[data-region-id="${m.id}"]`);
             if (!row) return;
 
-            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            row.classList.add('highlight');
-            setTimeout(() => row.classList.remove('highlight'), 2200);
+            if (window.UiCore?.scrollToAndHighlight) {
+              window.UiCore.scrollToAndHighlight(row);
+            } else {
+              row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              row.classList.add('highlight');
+              setTimeout(() => row.classList.remove('highlight'), 2200);
+            }
+
           });
 
 
