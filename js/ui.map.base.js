@@ -227,20 +227,7 @@
       window.UiMiniMap.force();   // force un redraw immédiat avec la nouvelle map
     }
 
-      // --- wait for decode + paint before hiding loader ---
-      const waitPaint = () => new Promise(r =>
-        requestAnimationFrame(() => requestAnimationFrame(r))
-      );
-
-      Promise.resolve()
-        .then(() => {
-          if (mapImg && typeof mapImg.decode === 'function') {
-            return mapImg.decode().catch(() => {});
-          }
-        })
-        .then(waitPaint)
-        .then(() => new Promise(r => setTimeout(r, 100)))
-        .then(() => hideLoader());
+    hideLoader();
   });
 
 
