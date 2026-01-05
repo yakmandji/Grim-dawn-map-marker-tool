@@ -34,8 +34,13 @@
     gap:0px;
   } 
   header{
-      left: calc(var(--sidebar-width) + 18px);
-      width: calc(100% - var(--sidebar-width) + -26px);
+    left: 0;
+    width: 100%;
+  }
+
+  .sidebar{
+    margin-top: 93px;
+    height: calc(100vh - 110px);
   }
 
   header #shareRoutesBtn span,
