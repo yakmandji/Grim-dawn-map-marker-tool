@@ -390,11 +390,13 @@ input[type="password"]:focus
   pointer-events: none;
 }
 
-.marker .label p{
+.marker .label p,
+.path-endpoint .label p{
   margin: 4px;
 }
 
-.marker:hover .label {
+.marker:hover .label,
+.path-endpoint:hover .label {
   opacity: 1;
   pointer-events: auto;
   transform: translate(12px, -50%);

@@ -92,11 +92,25 @@
             (type === 'start' ? 'path-start' : 'path-end');
 
           if (type === 'start') {
-            tag.innerHTML = `
-              <img src="img/foot-icon.svg" class="route-icon" width="14" height="14" alt="">
-              <span>${path.name || '(route)'}</span>
-            `;
-          } else {
+            // Compact endpoint (icon only) + label displayed like markers (tooltip on hover)
+            const icon = document.createElement('img');
+            icon.src = 'img/foot-icon.svg';
+            icon.className = 'route-icon';
+            icon.width = 14;
+            icon.height = 14;
+            icon.alt = '';
+            icon.draggable = false;
+            icon.addEventListener('dragstart', e => e.preventDefault());
+            tag.appendChild(icon);
+
+            // Reuse marker label styling (hidden by default, shown on hover)
+            const lab = document.createElement('div');
+            lab.className = 'label';
+            const p = document.createElement('p');
+            p.textContent = path.name || '(route)';
+            lab.appendChild(p);
+            tag.appendChild(lab);
+          }else {
             tag.innerHTML = `
               <img src="img/flag-icon.svg" class="route-icon" width="14" height="14" alt="">
             `;

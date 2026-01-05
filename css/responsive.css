@@ -40,7 +40,7 @@
 
   .sidebar{
     margin-top: 93px;
-    height: calc(100vh - 110px);
+    height: calc(100vh - 155px);
   }
 
   header #shareRoutesBtn span,
