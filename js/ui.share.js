@@ -44,30 +44,41 @@
           const b64 = decodeURIComponent(str);
           const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
           const out = pako.inflate(bin, { to: 'string' });
-          if (out) {
-            return JSON.parse(out);
-          }
+          if (out) return JSON.parse(out);
         } catch (e) {
           console.warn('[GDMM] GZIP decode failed, fallback to base64 JSON', e);
         }
       }
 
-      // 2) Base64 JSON brut
+      // 2) Base64 JSON brut (Latin1 only)
       try {
         const decoded = atob(str);
         return JSON.parse(decoded);
       } catch (e) {
-        // 3) Base64 JSON mais avec encodeURIComponent autour
+        // 3) Base64 JSON avec encodeURIComponent autour
         try {
           const decoded = atob(decodeURIComponent(str));
           return JSON.parse(decoded);
         } catch (e2) {
-          console.error('[GDMM] All decode methods failed', e2);
+          // 4) Base64 JSON UTF-8 (unicode-safe)
+          try {
+            const decoded = decodeURIComponent(escape(atob(str)));
+            return JSON.parse(decoded);
+          } catch (e3) {
+            // 5) Base64 JSON UTF-8 + encodeURIComponent autour
+            try {
+              const decoded = decodeURIComponent(escape(atob(decodeURIComponent(str))));
+              return JSON.parse(decoded);
+            } catch (e4) {
+              console.error('[GDMM] All decode methods failed', e4);
+            }
+          }
         }
       }
 
       return null;
     }
+
 
 
   // --- Charge la carte partagée depuis l'URL (?s=... ou ?share=...) ---
@@ -598,7 +609,7 @@ window.UiShare = {
       } else if (window.LZString && LZString.compressToEncodedURIComponent) {
         compressed = LZString.compressToEncodedURIComponent(json);
       } else {
-        compressed = btoa(json);
+        compressed = btoa(unescape(encodeURIComponent(json)));
       }
     } catch (e) {
       console.error('[GDMM] compression failed', e);
