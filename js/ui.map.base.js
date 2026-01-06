@@ -23,10 +23,10 @@
   /*Map decoration*/
 
   window.DECOR_ICONS_CAIRN = [
-    { id:'gardian-dreeg', w: 95, h: 50, img: 'img/qol/gardian-dreeg.png', xp: 68.1, yp: 84.30,  anchor: 'center' },
-    { id:'gardian-solael', w: 70, h: 70, img: 'img/qol/gardian-solael.png', xp: 46.98, yp: 84.08,  anchor: 'center' },
-    { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20, isDungeon: true },
-    { id:'rashalga', w: 90, h: 70, img: 'img/qol/rashalga-queen.png', xp: 15.47, yp: 32.15, isDungeon: true },
+/*    { id:'gardian-dreeg', w: 95, h: 50, img: 'img/qol/gardian-dreeg.png', xp: 68.1, yp: 84.30,  anchor: 'center' },*/
+/*    { id:'gardian-solael', w: 70, h: 70, img: 'img/qol/gardian-solael.png', xp: 46.98, yp: 84.08,  anchor: 'center' },*/
+/*    { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20, isDungeon: true },*/
+    { id:'rashalga', w: 110, h: 80, img: 'img/qol/rashalga-queen.png', xp: 15.35, yp: 30.07, isDungeon: true },
     { id:'attendant', w: 60, h: 60, img: 'img/qol/attendant.png?1.0', xp: 87.77, yp: 63.4, isDungeon: true },
     { id:'sentinel', w: 95, h: 115, img: 'img/qol/sentinel.png?1.0', xp: 87, yp: 63.69, isDungeon: true },
     { id:'hidden-donjon1', w: 70, h: 70, img: 'img/qol/hidden-donjon1.png', xp: 78.47, yp: 62.03,  anchor: 'center' },
