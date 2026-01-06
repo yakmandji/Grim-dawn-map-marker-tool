@@ -80,7 +80,7 @@ window.DUNGEON_OVERLAYS = [
 { id: 'edge_reality',         map: 'malmouth', img: 'edge-reality.jpg?1.0',      left: 81.2913, top: 29.7706, width: 18.5531, height: 26.6928 },
 { id: 'cinder_waste',         map: 'malmouth', img: 'cinder-waste.jpg?1.1',      left: 81.6282, top: 69.2334, width: 15.7526, height: 22.6637 },
 { id: 'burning_cellar',       map: 'malmouth', img: 'burning-cellar.jpg?1.1',    left: 68.3049, top: 17.3455, width: 11.1241, height: 16.0045 },
-{ id: 'sewer_hideout',        map: 'malmouth', img: 'sewer-hideout.jpg?1.2',     left: 38.3014, top: 57.6323, width: 19.9728, height: 29.2353 },
+{ id: 'sewer_hideout',        map: 'malmouth', img: 'sewer-hideout.jpg?1.3',     left: 38.3014, top: 57.6323, width: 19.9728, height: 29.2353 },
 { id: 'herald_mathis',        map: 'malmouth', img: 'herald-mathis.jpg?1.2',     left: 21.4997, top: 54.0677, width: 14.1405,  height: 20.3578 },
 { id: 'ransaked_lighthouse',  map: 'malmouth', img: 'ransaked-lighthouse.jpg?1.1', left: 14.5, top: 37.6631, width: 10.8627, height: 15.8140 },
 { id: 'swelling_depths',      map: 'malmouth', img: 'swelling-depths.jpg?1.3',   left: 20.2377, top: 15.5546, width: 11.505,  height: 16.542 },
