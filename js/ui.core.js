@@ -712,7 +712,7 @@ function renderMarkers(options = {}) {
 
 
 // Allow placing markers/routes slightly outside the map image (in %)
-const OUT_OF_MAP_MARGIN_PCT = 10;
+const OUT_OF_MAP_MARGIN_PCT = 15;
 
 function isInExtendedBounds(xp, yp) {
   return (
