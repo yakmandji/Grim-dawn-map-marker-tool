@@ -23,9 +23,6 @@
   /*Map decoration*/
 
   window.DECOR_ICONS_CAIRN = [
-/*    { id:'gardian-dreeg', w: 95, h: 50, img: 'img/qol/gardian-dreeg.png', xp: 68.1, yp: 84.30,  anchor: 'center' },*/
-/*    { id:'gardian-solael', w: 70, h: 70, img: 'img/qol/gardian-solael.png', xp: 46.98, yp: 84.08,  anchor: 'center' },*/
-/*    { id:'gardian-bysmael', w: 50, h: 50, img: 'img/qol/guardian-bysmiel.png', xp: 17.00, yp: 33.20, isDungeon: true },*/
     { id:'rashalga', w: 110, h: 80, img: 'img/qol/rashalga-queen.png', xp: 15.35, yp: 30.07, isDungeon: true },
     { id:'attendant', w: 60, h: 60, img: 'img/qol/attendant.png?1.0', xp: 87.77, yp: 63.4, isDungeon: true },
     { id:'sentinel', w: 95, h: 115, img: 'img/qol/sentinel.png?1.0', xp: 87, yp: 63.69, isDungeon: true },
@@ -71,15 +68,16 @@
     { id:'carraxus', w: 155, h: 110, img: 'img/qol/carraxus.png', xp: 76.96, yp: 42.46, isDungeon: true },
     { id:'sylvarria', w: 95, h: 78, img: 'img/qol/sylvarria.png', xp: 95.23, yp: 36.05, isDungeon: true },
     { id:'ugdall', w: 75, h: 120, img: 'img/qol/ugdall.png', xp: 93.37, yp: 33.8, isDungeon: true },
-    { id:'larria', w: 125, h: 115, img: 'img/qol/larria.png', xp: 84, yp: 37.35, isDungeon: true },
+    { id:'larria', w: 125, h: 115, img: 'img/qol/larria.png', xp: 79.69, yp: 67.67, isDungeon: true },
 
 
 
   ];
 
-/*  window.DECOR_ICONS_MALMOUTH = [
+  window.DECOR_ICONS_MALMOUTH = [
+    { id:'nimia', w: 120, h: 160, img: 'img/qol/nimia.png', xp: 79.91, yp: 66.4, isDungeon: true },
     
-  ]*/
+  ]
 
 
   // --- Helpers DOM de base ---

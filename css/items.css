@@ -491,8 +491,8 @@ button.route-sub-menu{
 .marker.marker-highlight .pin::after {
   content: "";
   position: absolute;
-  top: -4px;
-  left: -8px;
+  top: -5px;
+  left: -9px;
   right: 6px;
   bottom: 6px;
   border-radius: 999px;
