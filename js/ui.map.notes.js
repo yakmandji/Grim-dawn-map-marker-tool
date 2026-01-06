@@ -159,7 +159,7 @@
             }
 
             const tooltip = document.createElement('div');
-            tooltip.className = 'region-note-tooltip';
+            tooltip.classList.add('region-note-tooltip', 'note-list-tooltip');
             tooltip.textContent = fullText; // Affiche le texte complet de la note
 
             document.body.appendChild(tooltip);

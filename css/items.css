@@ -1298,6 +1298,10 @@ header button.menu-button.select-current:hover {
   animation: fadeInTooltip 140ms ease-out;
 }
 
+.region-note-tooltip.note-list-tooltip{
+  left:200px!important;
+}
+
 @keyframes fadeInTooltip {
   from { opacity:0; }
   to   { opacity:1; }
