@@ -678,7 +678,7 @@ body.shared-only-view #mergeSharedBtn,
 /* Panneau flottant des Done */
 .done-panel {
   position: fixed;
-  bottom: 7vh;
+  bottom: 57px;
   right: 20px;
   z-index: 4;
   transition: transform 0.2s ease-out;
@@ -1187,7 +1187,7 @@ header .gd-popup__card input[type="text"]{
 .done-list {
   padding: 6px 0 8px;
   overflow-y: scroll;
-  height: calc(100vh - 500px - 240px);
+  height: calc(100vh - 500px - 200px);
   max-height: 600px;
 }
 
