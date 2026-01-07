@@ -652,7 +652,6 @@ input[type="color"]::-moz-color-swatch {
 
 #toastContainer {
   position: fixed;
-  top: 6.5rem;
   left: 50%;
   transform: translateX(calc(-50% + var(--sidebar-width) / 2));
   display: flex;
@@ -814,7 +813,39 @@ input[type="color"]::-moz-color-swatch {
 
 /*FILTER BUTTON*/
 
-.filterBar {
+#globalFilters{
+  position: fixed;
+  top: 105px; 
+  left: calc(var(--sidebar-width) + ((100% - var(--sidebar-width)) / 2));
+  transform: translateX(-50%);
+  z-index: 9;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 0px 20px 4px 20px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #0b2123, #0a2326);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+}
+
+.filterAll {
+  position: relative;
+  padding-right: 14px;
+  margin-right: 12px;
+}
+
+.filterAll::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+.filterBar,
+.filterCats {
   display: flex;
   gap: 0px;
   align-items: center;
@@ -835,7 +866,7 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .filterBar .filterToggle{
-    margin: 16px 0px 14px 8px;
+    margin: 11px 0px 12px 12px;
 }
 
 .filterBar .filterToggle:first-child{
@@ -1862,7 +1893,7 @@ header button.menu-button.select-current:hover {
 }
 
 .count-shrine{
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .count-shrine #shrineCountDone{

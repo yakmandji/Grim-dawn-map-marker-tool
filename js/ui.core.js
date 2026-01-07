@@ -300,6 +300,8 @@ function rememberActiveProfile() {
         row.className = 'doneItem';
         row.dataset.mid = m.id;
 
+        if (m.cat) row.classList.add(String(m.cat).toLowerCase());
+
         const iconWrap = document.createElement('div');
         iconWrap.className = 'doneIcon';
 
@@ -1163,6 +1165,12 @@ viewport.addEventListener('pointermove', e => {
   // --- Toast ---
     function showToast(message, type = 'success', duration = 2500) {
       const container = document.getElementById('toastContainer');
+      const filters = document.getElementById('globalFilters');
+
+      if (toastContainer && filters) {
+          const r = filters.getBoundingClientRect();
+          toastContainer.style.top = `${Math.round(r.bottom + 10)}px`;
+       }
       if (!container) {
         console.warn('[GDMM] Missing #toastContainer element.');
         return;

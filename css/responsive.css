@@ -20,7 +20,7 @@
   }
 
   .done-list {
-    height: calc(100vh - 500px - 190px);
+    height: calc(100vh - 500px - 150px);
   }
 
 
@@ -59,7 +59,7 @@
 }
 
 
-@media (max-width: 1140px) {
+@media (max-width: 1350px) {
 
   header #shareRoutesBtn span,
   header .save-block span{
@@ -75,7 +75,7 @@
   }
 
   .done-list {
-    height: calc(100vh - 500px);
+    height: calc(100vh - 550px);
   }
 
   .floating #miniMap,
@@ -85,7 +85,7 @@
   }
 
   .map-info-container{
-    margin-top: 0;
+    margin-top: 85px;
     margin-right: -23px;
   }
 
@@ -97,10 +97,6 @@
   .app-logo img{
       width: 110px;
       margin-top: 30px;
-  }
-
-  .filterBar .filterToggle {
-      margin: 0px 0px 0px 9px;
   }
 
   #left-menu.open {

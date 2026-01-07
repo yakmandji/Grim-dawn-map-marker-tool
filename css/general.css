@@ -265,6 +265,10 @@ header .sep {
   align-items: center;
 }
 
+.done-panel-inner h4{
+  font-size: 11px;
+}
+
 .section.light{
   background: none;
 }

@@ -4,81 +4,82 @@
   /************************************************************
    *  APPLY CATEGORY FILTERS  (MAP + LIST)
    ************************************************************/
-  function applyCategoryFilters() {
+    function applyCategoryFilters() {
+      const CAT_SET = new Set(['general','quest','boss','loot','waypoint','donjon','npc']);
 
-    const catButtons = document.querySelectorAll('.filterToggle[data-cat]');
-    const allBtn     = document.querySelector('.filterToggle[data-all]');
+      const catButtons = document.querySelectorAll('.filterToggle[data-cat]');
+      const allBtn = document.querySelector('.filterToggle[data-all]');
 
-    const activeCategoryBtn = [...catButtons].find(btn =>
-      btn.classList.contains('is-on')
-    );
+      const allActive = !!(allBtn && allBtn.classList.contains('is-on'));
 
-    const activeCategory = activeCategoryBtn
-      ? activeCategoryBtn.getAttribute('data-cat').toLowerCase()
-      : null;
+      const activeCategoryBtn = [...catButtons].find(btn => btn.classList.contains('is-on'));
+      const activeCategory = (!allActive && activeCategoryBtn)
+        ? (activeCategoryBtn.getAttribute('data-cat') || '').toLowerCase()
+        : null;
 
-    const allActive    = allBtn && allBtn.classList.contains('is-on');
+      // --- helpers ---
+      const getCatFromClassList = (cl) => {
+        for (const c of cl) if (CAT_SET.has(c)) return c;
+        return null;
+      };
 
+      const setVisibleByCat = (el, cat) => {
+        const visible = (!activeCategory || cat === activeCategory);
+        el.style.display = visible ? "" : "none";
+      };
 
-    /************************************************************
-     * 2) MODE ALL
-     ************************************************************/
-    if (allActive) {
+      // =====================================================
+      // MODE ALL : on montre tout, point.
+      // =====================================================
+      if (allActive) {
+        // map
+        document.querySelectorAll('.marker').forEach(el => {
+          el.style.display = "";
+        });
+
+        // liste active
+        document.querySelectorAll('#list .listItem').forEach(el => {
+          el.style.display = "";
+        });
+
+        // archives
+        document.querySelectorAll('#doneList .doneItem').forEach(el => {
+          el.style.display = "";
+        });
+
+        return;
+      }
+
+      // =====================================================
+      // MODE FILTRE CATEGORIE (exclusive)
+      // =====================================================
+
+      // 1) MAP : ne filtre que les markers "user" (ceux qui ont une cat)
       document.querySelectorAll('.marker').forEach(el => {
-        const isDone = el.dataset.done === "1";
-        el.style.display = isDone ? "" : ""; // done toujours visible
+        const markerCat = getCatFromClassList(el.classList);
+
+        // si pas de cat, c'est un marker "système" (rift/region/etc.) => toujours visible
+        if (!markerCat) {
+          el.style.display = "";
+          return;
+        }
+
+        setVisibleByCat(el, markerCat);
       });
 
+      // 2) LISTE ACTIVE
       document.querySelectorAll('#list .listItem').forEach(el => {
-        el.style.display = "";
+        const markerCat = getCatFromClassList(el.classList) || 'general';
+        setVisibleByCat(el, markerCat);
       });
 
-      return;
+      // 3) ARCHIVES
+      document.querySelectorAll('#doneList .doneItem').forEach(el => {
+        const markerCat = getCatFromClassList(el.classList) || 'general';
+        setVisibleByCat(el, markerCat);
+      });
     }
 
-    /************************************************************
-     * 3) MODE CATEGORIE EXCLUSIVE
-     ************************************************************/
-    document.querySelectorAll('.marker').forEach(el => {
-
-      // DONE markers are always visible
-      if (el.dataset.done === "1") {
-        return;
-      }
-
-      const cl = el.classList;
-
-      // Marker user category (general / quest / boss / loot / waypoint / donjon / npc)
-      const markerCat = [...cl].find(c =>
-        ['general','quest','boss','loot','waypoint','donjon','npc'].includes(c)
-      );
-
-      // ADMIN markers (rift, region, dungeon-entry, overlays...)
-      // They have NO category → always visible
-      if (!markerCat) {
-        el.style.display = "";
-        return;
-      }
-
-      // Apply category filter only to user markers
-      const visible = (!activeCategory || markerCat === activeCategory);
-      el.style.display = visible ? "" : "none";
-    });
-
-    document.querySelectorAll('#list .listItem').forEach(el => {
-
-      const cl = el.classList;
-
-      // Only user markers exist in the list -> no admin markers here
-      const markerCat = [...cl].find(c =>
-        ['general','quest','boss','loot','waypoint','donjon','npc'].includes(c)
-      );
-
-      const visible = (!activeCategory || markerCat === activeCategory);
-      el.style.display = visible ? "" : "none";
-    });
-
-  }
 
 
   /************************************************************
@@ -94,7 +95,7 @@
 
       for (const m of p.markers) {
         // On ne compte que les marqueurs NON terminés pour les filtres
-        if (m.done) continue;
+/*        if (m.done) continue;*/
 
         const cat = m.cat || 'General';
         counts[cat] = (counts[cat] || 0) + 1;

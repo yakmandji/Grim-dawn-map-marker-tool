@@ -702,6 +702,32 @@ function clearResultsLater(delay = 150) {
 
 /*----------------GO TO ITEM--------------------------------------------------*/
 
+function ensureCategoryFilterForMarker(cat) {
+  if (!cat) return;
+
+  const catKey = String(cat).toLowerCase();
+
+  const allBtn = document.querySelector('.filterToggle[data-all]');
+  const catButtons = [...document.querySelectorAll('.filterToggle[data-cat]')];
+
+  // Trouve le bon bouton en comparant en lower-case (data-cat peut être "General")
+  const catBtn = catButtons.find(b =>
+    String(b.getAttribute('data-cat') || '').toLowerCase() === catKey
+  );
+
+  if (!catBtn) return;
+
+  // Mode exclusif : All OFF, cette catégorie ON, les autres OFF
+  allBtn?.classList.remove('is-on');
+  catButtons.forEach(b => b.classList.toggle('is-on', b === catBtn));
+
+  // Applique réellement le filtrage (map + listes)
+  window.UiFilters?.applyCategoryFilters?.();
+}
+
+
+
+
 async function goTo(item) {
   clearResultsLater();
   if (inputEl) {
@@ -720,6 +746,10 @@ async function goTo(item) {
     } else if (item.type === 'marker' && item.done) {
       window.ensureAdminLayerVisible('history');
     }
+  }
+
+  if (item.type === 'marker') {
+    ensureCategoryFilterForMarker(item.cat);
   }
 
   const zoom =
