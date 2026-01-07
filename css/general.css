@@ -712,6 +712,25 @@ body.shared-only-view #mergeSharedBtn,
   padding: 5px 8px;  
 }
 
+#doneList .doneCategoryHeader{
+  padding: 6px 10px;
+  font-weight: 600;
+  opacity: 0.85;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+#list .listCategoryHeader{
+  font-size: 13px;
+  font-weight: 600;
+  color:#417a72;
+  padding: 4px 0px 7px 1px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);  
+}
+
+#doneList .doneCategoryHeader:first-child{
+  padding-top: 0;
+}
+
 label.checkbox{
   display: flex;
   gap: 6px;
@@ -914,8 +933,8 @@ label.checkbox{
 
 .miniMap-inner {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   background-color: #050c0a;
   background-size: cover;
   background-position: top left;
@@ -935,7 +954,7 @@ label.checkbox{
 
 .filter-minimap{
   display: flex;
-  height: 60px;
+  height: 52px;
   gap: 10px;
   justify-content: center;
 }
@@ -967,7 +986,7 @@ label.checkbox{
 #zoomReadout{
   right: 43%;
   position: absolute;
-  top: 213px;
+  top: 198px;
   color: #dfbd96;
   font-size: 13px;
   z-index: 2;
@@ -1187,7 +1206,7 @@ header .gd-popup__card input[type="text"]{
 .done-list {
   padding: 6px 0 8px;
   overflow-y: scroll;
-  height: calc(100vh - 500px - 200px);
+  height: calc(100vh - 500px - 190px);
   max-height: 600px;
 }
 

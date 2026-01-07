@@ -272,112 +272,163 @@ function rememberActiveProfile() {
 
 
   // List of Done element ----------------------------------------
-    window.renderDoneList = function renderDoneList(doneMarkers) {
-      const host = $('#doneList');
-      if (!host) return;
+window.renderDoneList = function renderDoneList(doneMarkers) {
+  const host = $('#doneList');
+  if (!host) return;
 
-      host.innerHTML = '';
+  host.innerHTML = '';
 
-      if (!doneMarkers.length) {
-        const emptyMsg = document.createElement('div');
-        emptyMsg.className = 'done-empty';
+  if (!doneMarkers.length) {
+    const emptyMsg = document.createElement('div');
+    emptyMsg.className = 'done-empty';
 
-        const mapName = window.GDMMCore?.state?.active;
+    const mapName = window.GDMMCore?.state?.active;
 
-        emptyMsg.innerHTML = GDMMLang.t('ui.NothingDone', {
-          map: mapName
-            ? `<span class="done-map-name">${mapName}</span>`
-            : ''
-        });
+    emptyMsg.innerHTML = GDMMLang.t('ui.NothingDone', {
+      map: mapName
+        ? `<span class="done-map-name">${mapName}</span>`
+        : ''
+    });
 
-        host.appendChild(emptyMsg);
+    host.appendChild(emptyMsg);
+    return;
+  }
+
+  const CATEGORY_META = [
+    { cat: 'General',  i18n: 'ui.GeneralMarker'  },
+    { cat: 'Quest',    i18n: 'ui.QuestMarker'    },
+    { cat: 'Boss',     i18n: 'ui.BossMarker'     },
+    { cat: 'Loot',     i18n: 'ui.LootMarker'     },
+    { cat: 'Waypoint', i18n: 'ui.WaypointMarker' },
+    { cat: 'Donjon',   i18n: 'ui.DonjonMarker'   },
+    { cat: 'NPC',      i18n: 'ui.NPCMarker'      },
+  ];
+
+
+  // --- helper : render d'une ligne (ton code actuel, quasi inchangé) ---
+  function renderRow(m) {
+    const row = document.createElement('div');
+    row.className = 'doneItem';
+    row.dataset.mid = m.id;
+
+    row.classList.add(String(m.cat || 'General').toLowerCase());
+
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'doneIcon';
+
+    let ic = iconFor(m.cat);
+    if (ic && m.done) ic = ic.replace('.svg', '-done.svg');
+
+    if (ic) {
+      const img = document.createElement('img');
+      img.className = 'doneIcon-img';
+      img.src = ic;
+      iconWrap.appendChild(img);
+    }
+
+    const lab = document.createElement('div');
+    lab.className = 'doneLabel';
+    lab.textContent = m.label || '(no name)';
+    lab.title = m.label || '';
+
+    const actions = document.createElement('div');
+    actions.className = 'doneActions';
+
+    const centerBtn = document.createElement('button');
+    centerBtn.type = 'button';
+    centerBtn.className = 'marker-center small';
+    centerBtn.innerHTML = `<img src="img/center-icon.svg" width="12">`;
+
+    centerBtn.onclick = () => {
+      if (typeof window.smoothCenterOn === 'function') {
+        window.smoothCenterOn(m.xp, m.yp, 1.2, 260);
+      } else if (typeof window.centerOn === 'function') {
+        window.centerOn(m.xp, m.yp, 1.2, m.id);
         return;
       }
 
+      let markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
+      if (markerEl && markerEl.classList.contains('completed')) {
+        window.ensureAdminLayerVisible?.('history');
+      }
 
-      doneMarkers.forEach(m => {
-        const row = document.createElement('div');
-        row.className = 'doneItem';
-        row.dataset.mid = m.id;
-
-        if (m.cat) row.classList.add(String(m.cat).toLowerCase());
-
-        const iconWrap = document.createElement('div');
-        iconWrap.className = 'doneIcon';
-
-        let ic = iconFor(m.cat);
-        if (ic && m.done) {
-          ic = ic.replace('.svg', '-done.svg');
-        }
-
-        if (ic) {
-          const img = document.createElement('img');
-          img.className = 'doneIcon-img';
-          img.src = ic;
-          iconWrap.appendChild(img);
-        }
-
-        const lab = document.createElement('div');
-        lab.className = 'doneLabel';
-        lab.textContent = m.label || '(no name)';
-        lab.title = m.label || '';
-
-        const actions = document.createElement('div');
-        actions.className = 'doneActions';
-
-        // --- Modifions ici pour le centrage fluide ---
-        const centerBtn = document.createElement('button');
-        centerBtn.type = 'button';
-        centerBtn.className = 'marker-center small';
-        centerBtn.innerHTML = `<img src="img/center-icon.svg" width="12">`;
-
-        centerBtn.onclick = () => {
-          // déplacement/zoom smooth
-          if (typeof window.smoothCenterOn === 'function') {
-            window.smoothCenterOn(m.xp, m.yp, 1.2, 260);
-          } else if (typeof window.centerOn === 'function') {
-            // fallback = centerOn gère déjà le highlight
-            window.centerOn(m.xp, m.yp, 1.2, m.id);
-            return;
-          }
-
-          // highlight (pulse) comme centerOn(markerId)
-          let markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
-
-          // Si c’est un done marker et que la layer "history" est cachée, on la montre
-          if (markerEl && markerEl.classList.contains('completed')) {
-            if (typeof window.ensureAdminLayerVisible === 'function') {
-              window.ensureAdminLayerVisible('history');
-            }
-          }
-
-          // Re-sélection après éventuelle activation de la layer
-          markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
-          if (markerEl) {
-            markerEl.classList.add('marker-highlight');
-            setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
-          }
-        };
-
-
-        const delBtn = document.createElement('button');
-        delBtn.type = 'button';
-        delBtn.className = 'marker-delete danger small';
-        delBtn.innerHTML = `<img src="img/bin-icon.svg" width="12">`;
-        delBtn.onclick = () => deleteMarkerFromUI(m.id);
-
-        actions.appendChild(centerBtn);
-        actions.appendChild(delBtn);
-
-        row.appendChild(iconWrap);
-        row.appendChild(lab);
-        row.appendChild(actions);
-
-        host.prepend(row);
-      });
+      markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
+      if (markerEl) {
+        markerEl.classList.add('marker-highlight');
+        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+      }
     };
 
-// END -----------------------------------------------
+    const delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'marker-delete danger small';
+    delBtn.innerHTML = `<img src="img/bin-icon.svg" width="12">`;
+    delBtn.onclick = () => deleteMarkerFromUI(m.id);
+
+    actions.appendChild(centerBtn);
+    actions.appendChild(delBtn);
+
+    row.appendChild(iconWrap);
+    row.appendChild(lab);
+    row.appendChild(actions);
+
+    return row;
+  }
+
+  // --- group by category ---
+  const groups = new Map();
+  for (const m of doneMarkers) {
+    const cat = (m.cat || 'General');
+    if (!groups.has(cat)) groups.set(cat, []);
+    groups.get(cat).push(m);
+  }
+
+
+  // render categories in stable order, then any unknown categories at the end
+
+  for (const meta of CATEGORY_META) {
+    const items = groups.get(meta.cat);
+    if (!items || !items.length) continue;
+
+    const header = document.createElement('div');
+    header.className = 'doneCategoryHeader';
+
+    const label = (window.GDMMLang?.t ? GDMMLang.t(meta.i18n) : meta.cat);
+    header.textContent = `${label} (${items.length})`;
+
+    host.appendChild(header);
+
+    items.sort((a, b) => {
+      const da = a.doneAt || 0;
+      const db = b.doneAt || 0;
+      if (db !== da) return db - da;
+      return (a.label || '').localeCompare(b.label || '');
+    });
+
+    // ⬇️ c'était juste ça qui manquait
+    for (const m of items) {
+      host.appendChild(renderRow(m));
+    }
+  }
+
+
+  // Render any unknown categories at the end (fallback, non-translated)
+  for (const [cat, items] of groups.entries()) {
+    const isKnown = CATEGORY_META.some(x => x.cat === cat);
+    if (isKnown) continue;
+
+    const header = document.createElement('div');
+    header.className = 'doneCategoryHeader';
+    header.textContent = `${cat} (${items.length})`;
+    host.appendChild(header);
+
+    items.sort((a, b) => (b.doneAt || 0) - (a.doneAt || 0));
+    for (const m of items) host.appendChild(renderRow(m));
+  }
+
+};
+
+// END renderDoneList -----------------------------------------------
 
   window.initDonePanelToggle = function initDonePanelToggle() {
     const panel  = $('#donePanel');

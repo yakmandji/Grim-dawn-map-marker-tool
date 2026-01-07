@@ -321,6 +321,25 @@ function animateArchiveFlyBlock(listRowEl) {
   });
 }
 
+function setActiveCategoryFilter(cat) {
+  const catKey = String(cat || '').toLowerCase();
+
+  const allBtn = document.querySelector('.filterToggle[data-all]');
+  const catButtons = [...document.querySelectorAll('.filterToggle[data-cat]')];
+
+  const target = catButtons.find(b =>
+    String(b.getAttribute('data-cat') || '').toLowerCase() === catKey
+  );
+  if (!target) return;
+
+  // mode exclusif
+  allBtn?.classList.remove('is-on');
+  catButtons.forEach(b => b.classList.toggle('is-on', b === target));
+
+  window.UiFilters?.applyCategoryFilters?.();
+}
+
+
   // -------------------------END Done fly animation ---
 
 
@@ -333,47 +352,22 @@ function animateArchiveFlyBlock(listRowEl) {
 
     const marker = coreAddMarker({ xp, yp, label, cat, done });
 
+    // === UX : si un filtre catégorie est actif, bascule sur la catégorie du marker créé ===
+    const allBtn = document.querySelector('.filterToggle[data-all]');
+    const allActive = !!(allBtn && allBtn.classList.contains('is-on'));
 
-    // === UX : si le marker créé serait caché, bascule automatiquement sur sa catégorie ===
+    if (!allActive) {
+      const activeCatBtn = document.querySelector('.filterToggle.is-on[data-cat]');
+      if (activeCatBtn) {
+        const activeCat = String(activeCatBtn.getAttribute('data-cat') || '').toLowerCase();
+        const markerCat = String(cat || '').toLowerCase();
 
-    const activeCatBtn = document.querySelector('.filterToggle.is-on[data-cat]');
-
-    // Déterminer si le marker sera invisible
-    let hidden = false;
-
-    // Cas 1 : un onglet catégorie est actif
-    if (activeCatBtn) {
-      const activeCat = activeCatBtn.getAttribute('data-cat');
-      if (cat !== activeCat) hidden = true;
-    }
-
-    if (hidden) {
-      const allBtn       = document.querySelector('.filterToggle[data-all]');
-      const catButtons   = document.querySelectorAll('.filterToggle[data-cat]');
-      const targetCatBtn = document.querySelector(`.filterToggle[data-cat="${cat}"]`);
-
-      let filtersChanged = false;
-
-      if (targetCatBtn) {
-        // 1) On désactive "All"
-        allBtn?.classList.remove('is-on');
-
-        // 2) On active uniquement la catégorie du marker
-        catButtons.forEach(btn => {
-          btn.classList.toggle('is-on', btn === targetCatBtn);
-        });
-
-        filtersChanged = true;
-      }
-
-      if (filtersChanged && window.UiFilters?.applyCategoryFilters) {
-        // 3) On réapplique les filtres → le marker devient visible
-        window.UiFilters.applyCategoryFilters();
-      } else {
-        // Si on n’a pas réussi à changer les filtres (cat inconnue, etc.) → fallback toast
-        showToast(GDMMLang.t("toast.MarkerFiltered", { cat }));
+        if (markerCat && markerCat !== activeCat) {
+          setActiveCategoryFilter(markerCat);
+        }
       }
     }
+
 
     if (marker) {
       state.lastCreatedMarkerId = marker.id;
@@ -484,6 +478,17 @@ function animateArchiveFlyBlock(listRowEl) {
 
       const arr = grouped[cat];
 
+      // Header catégorie (traduit)
+      const header = document.createElement('div');
+      header.className = 'listCategoryHeader';
+
+      const key = CATEGORY_I18N_KEYS[cat] || CATEGORY_I18N_KEYS.General;
+      const label = (window.GDMMLang?.t) ? GDMMLang.t(key) : cat;
+
+      header.textContent = `${label} (${arr.length})`;
+      host.appendChild(header);
+
+
       // On parcourt du dernier au premier → le plus récent en haut
       for (let i = arr.length - 1; i >= 0; i--) {
         const m = arr[i];
@@ -554,17 +559,24 @@ function animateArchiveFlyBlock(listRowEl) {
               window.UiFilters.ensureHistoryVisible();
             }
 
-            // (optionnel) ouvre le panneau done si tu veux
+            // (optionnel) ouvre le panneau done
             const panel = $('#donePanel');
             if (panel) panel.classList.remove('collapsed');
 
-            el.classList.add('fade-out');
             setTimeout(() => {
-              updateMarkerFromUI(m.id, { done: true }, true);
+              updateMarkerFromUI(
+                m.id,
+                { done: true, doneAt: Date.now() },
+                true
+              );
             }, 180);
-          } else {
-            updateMarkerFromUI(m.id, { done: false }, true);
-          }
+            } else {
+              updateMarkerFromUI(
+                m.id,
+                { done: false, doneAt: null },
+                true
+              );
+            }
         };
 
 
