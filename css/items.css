@@ -822,7 +822,7 @@ input[type="color"]::-moz-color-swatch {
   display: flex;
   gap: 6px;
   align-items: center;
-  padding: 0px 20px 4px 20px;
+  padding: 0 20px 0 20px;
   border-radius: 10px;
   background: linear-gradient(145deg, #0b2123, #0a2326);
   box-shadow: 0 6px 16px rgba(0,0,0,0.45);
