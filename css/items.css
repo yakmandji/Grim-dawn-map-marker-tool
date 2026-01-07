@@ -818,7 +818,7 @@ input[type="color"]::-moz-color-swatch {
   top: 105px; 
   left: calc(var(--sidebar-width) + ((100% - var(--sidebar-width)) / 2));
   transform: translateX(-50%);
-  z-index: 9;
+  z-index: 7;
   display: flex;
   gap: 6px;
   align-items: center;
