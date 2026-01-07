@@ -555,6 +555,8 @@ function clearDungeonLinks() {
   const rift = document.querySelectorAll('.marker.marker-rift');
   rift.forEach(i => i.classList.remove('opacity'));
 
+  const poly = document.querySelector('#regionOverlaySvg #regionHoverOverlay');
+  if (poly) poly.style.display = 'none';
 
 }
 
@@ -832,6 +834,9 @@ function showDungeonLinksForOverlay(overlayId) {
   const state = core.state || {};
   if (!state.dungeonOverlays || !state.dungeonEntries) return;
 
+  const poly = document.querySelector('#regionOverlaySvg #regionHoverOverlay');
+  if (poly) poly.style.display = 'none';
+
   const overlayObj = state.dungeonOverlays.find(o => o.cfg.id === overlayId);
   if (!overlayObj) {
     clearDungeonLinks();
@@ -862,6 +867,9 @@ function refreshDungeonForcedHover() {
   const core  = window.GDMMCore || {};
   const state = core.state || {};
   if (!state.dungeonOverlays || !Array.isArray(state.dungeonForcedHover)) return;
+
+  const poly = document.querySelector('#regionOverlaySvg #regionHoverOverlay');
+  if (poly) poly.style.display = 'none';
 
   const overlayId = state.dungeonForcedHover[0];
   if (!overlayId) return;

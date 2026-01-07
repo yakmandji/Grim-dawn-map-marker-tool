@@ -449,9 +449,28 @@
 
         function showRegionOverlay(inner, m) {
 
-          // Ne pas afficher l'overlay sur les dungeons non activés
-          if (m.isDungeon && !state.activeDungeonOverlayId) return;
+          // Donjons : n'afficher l'overlay QUE si la région est dans le donjon actif (et visible)
+          if (m.isDungeon) {
+            const activeId = state.activeDungeonOverlayId;
+            if (!activeId) return;
 
+            const ov = (state.dungeonOverlays || []).find(o => o?.cfg?.id === activeId);
+            if (!ov || !ov.cfg) return;
+
+            // si l'overlay donjon est caché (filter / autre), on considère inactif
+            if (ov.el) {
+              const cs = getComputedStyle(ov.el);
+              if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return;
+            }
+
+            const left   = ov.cfg.left;
+            const top    = ov.cfg.top;
+            const right  = ov.cfg.left + ov.cfg.width;
+            const bottom = ov.cfg.top  + ov.cfg.height;
+
+            // la région (xp/yp) doit tomber dans le rectangle du donjon actif
+            if (m.xp < left || m.xp > right || m.yp < top || m.yp > bottom) return;
+          }
 
           if (!m || !Array.isArray(m.overlayPoly) || m.overlayPoly.length < 3) return;
 
@@ -461,7 +480,6 @@
           const iw = state.mapNatural?.w || 1;
           const ih = state.mapNatural?.h || 1;
 
-          // Cache string points en px (par map size: si tu changes de map, ça recalcule)
           const cacheKey = `${iw}x${ih}`;
           if (!m._overlayCache) m._overlayCache = {};
           if (!m._overlayCache[cacheKey]) {
@@ -484,6 +502,7 @@
           poly.setAttribute('stroke-linejoin', 'round');
           poly.style.display = '';
         }
+
 
         function hideRegionOverlay() {
           if (window.__gdmmIsPanning) return;
