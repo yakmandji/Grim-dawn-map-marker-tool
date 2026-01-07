@@ -46,7 +46,7 @@ window.RIFT_MARKERS_MALMOUTH = [
 { id: 'rift_malmouth_outskirts', tag: 'tagGDX1RiftMalmouthOutskirts', xp: 65.5, yp: 38.50 },
 { id: 'rift_malmouth_industrial', tag: 'tagGDX1RiftMalmouthIndustrial', xp: 48.5, yp: 44.47 },
 { id: 'rift_malmouth_inner', tag: 'tagGDX1RiftMalmouthInner', xp: 41.6, yp: 17.28 },
-{ id: 'malmouth_sewers', tag: 'tagGDX1RiftMalmouthSewers', xp: 45.35, yp: 66.33, isDungeon:true }
+{ id: 'malmouth_sewers', tag: 'tagGDX1RiftMalmouthSewers', xp: 45.35, yp: 71.33, isDungeon:true }
     
 ]
 

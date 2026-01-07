@@ -158,6 +158,9 @@ window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 { id: "entry_chamber_council", xp: 49.78, yp: 19.58, tag: "Chamber Council" },
 { id: "entry_chamber_council2", xp: 48.22, yp: 17.36, tag: "Chamber Council2", eyeColor:"gray-muted" },
 
+{ id: "entry_steel_cap_town", xp: 49.98, yp: 46.64, tag: "steel Cap Town", icon: "img/search-town-icon.svg" },
+
+
 ];
 
 
@@ -202,7 +205,6 @@ window.DUNGEON_LINKS = {
 
   /*CAIRN*/
   
-
 
   "Devil_crowsing_town":["entry_Devil_Crowsing_Town"],
   "Fort_Ikon_town":["entry_Fort_Icon_Town"],
@@ -280,6 +282,9 @@ window.DUNGEON_LINKS = {
   "altritch_karters": ["entry_altritch_karters"],
 
   /*MALMOUTH*/
+
+  "steel_cap_town":["entry_steel_cap_town"],
+  
   "burning_cellar": ["entry_burning_cellar_01", "entry_burning_cellar_02"],
   "fringes_of_sanity": ["entry_fringes_of_sanity" ],
   "cinder_waste": ["entry_cinder_waste", "entry_cinder_waste_02", "entry_cinder_waste_03" ],

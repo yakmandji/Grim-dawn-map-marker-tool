@@ -246,7 +246,7 @@ window.NAV_MARKERS_CAIRN = [
       },
       {
         xp: 46.45, 
-        yp: 65.64,
+        yp: 70.64,
         icon: 'img/icon-link.png',
         tag: 'tagGoTo + tagGDX2MapWitchGodBase',
         targetProfile: 'Korvan Basin',

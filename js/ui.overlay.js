@@ -80,12 +80,14 @@ window.DUNGEON_OVERLAYS = [
 { id: 'edge_reality',         map: 'malmouth', img: 'edge-reality.jpg?1.0',      left: 81.2913, top: 29.7706, width: 18.5531, height: 26.6928 },
 { id: 'cinder_waste',         map: 'malmouth', img: 'cinder-waste.jpg?1.1',      left: 81.6282, top: 69.2334, width: 15.7526, height: 22.6637 },
 { id: 'burning_cellar',       map: 'malmouth', img: 'burning-cellar.jpg?1.1',    left: 68.3049, top: 17.3455, width: 11.1241, height: 16.0045 },
-{ id: 'sewer_hideout',        map: 'malmouth', img: 'sewer-hideout.jpg?1.31',     left: 38.3014, top: 57.6323, width: 19.9728, height: 29.2353 },
+{ id: 'sewer_hideout',        map: 'malmouth', img: 'sewer-hideout.jpg?1.31',     left: 38.3014, top: 62.6323, width: 19.9728, height: 29.2353 },
 { id: 'herald_mathis',        map: 'malmouth', img: 'herald-mathis.jpg?1.2',     left: 21.4997, top: 54.0677, width: 14.1405,  height: 20.3578 },
 { id: 'ransaked_lighthouse',  map: 'malmouth', img: 'ransaked-lighthouse.jpg?1.1', left: 14.5, top: 37.6631, width: 10.8627, height: 15.8140 },
 { id: 'swelling_depths',      map: 'malmouth', img: 'swelling-depths.jpg?1.3',   left: 20.2377, top: 15.5546, width: 11.505,  height: 16.542 },
 { id: 'infestation',          map: 'malmouth', img: 'infestation.jpg?1.2',       left: 10.9480, top: -15.8114, width: 24.8347, height: 30.9737 },
 { id: 'fringes_of_sanity',    map: 'malmouth', img: 'fringes-of-sanity.jpg?1.0', left: 78.6480, top: 57.8114, width: 7.5, height: 10.8 },
+{ id: 'steel_cap_town',    map: 'malmouth', img: 'steel-cap-town.jpg?1.0', left: 44.9259, top: 49.5763, width: 12.7093, height: 12.5122 },
+
 
 { id: 'temple_osyr',            map: 'korvan', img: 'temple-osyr.jpg?1.1',          left: 41.9642, top: 73.5371, width: 15.2423, height: 14.8871 },
 { id: 'crawling_nest',          map: 'korvan', img: 'crawling-nest.jpg?1.0',        left: 11.1969, top: 74.592, width: 9.3579, height: 8.7890 },
