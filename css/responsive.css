@@ -122,11 +122,17 @@
   .app-logo .announce,
   .tool-section .info,
   .lock-label,
-  .filterBar,
   .filter-minimap,
   #sidebarToggle{
     display: none;
   }
+
+#globalFilters{
+  left: initial;
+  right: 0;
+  top:0;
+  transform: initial;
+}
 
   header #shareRoutesBtn span, header .save-block span{
     display: block;
@@ -182,6 +188,17 @@
     height: initial;
   }
 
+  #langDropdown .custom-dropdown-inner{
+    max-height: 161px;
+    display: flex;
+    max-width: 290px;
+    flex-wrap: wrap;
+  }
+
+  #langDropdown .custom-dropdown-inner .option-item{
+    width: initial;
+  }
+
   .app-logo img.logo-m{
     width: 45px;
   }
@@ -215,10 +232,14 @@
   }
 
   .map-info-container {
-    margin-top: -86px;
+    margin-top: -34px;
     margin-right: -26px;
   }
 
+
+  .doneItem .doneLabel{
+    max-width: 115px;
+  }
 
   .header-actions{
     flex-direction: column;
@@ -237,10 +258,10 @@
 
   header:not(.catalog-header){
     background: var(--panel);
-    top:0;
+    top:54px;
     transform: translateX(-94%);
     left: -14px!important;
-    width: 41%;
+    width: 50%;
     flex-direction: column;
     position: fixed;
     z-index: 5000;
