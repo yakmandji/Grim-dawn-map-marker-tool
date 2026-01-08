@@ -148,7 +148,7 @@
       "ui.HelpCatalogHelperTitle": "How it works",
       "ui.HelpCatalogHelper1": "Start by creating a share link for a marker, a route, or your map from the main application",
       "ui.HelpCatalogHelper2": "Then, submit this link using the form on the Community Content page to add it to the catalog",
-      "ui.HelpCatalogHelper3": "Each time you share a route or a marker, a new link is created. For a complete map, the same link is automatically updated",
+      "ui.HelpCatalogHelper3": "Routes and markers always generate a new link. Complete maps always have a single link (per character)",
 
       "ui.SubmitMapButton": "+ Submit content",
       "ui.BackToMapButton": "← Back to Map",
@@ -309,7 +309,7 @@
       "ui.HelpCatalogHelperTitle": "Comment ça fonctionne",
       "ui.HelpCatalogHelper1": "Commencez par créer un lien de partage pour un marqueur, une route ou votre carte depuis l’application principale",
       "ui.HelpCatalogHelper2": "Ensuite, soumettez ce lien via le formulaire de la page Contenu communautaire pour l’ajouter au catalogue",
-      "ui.HelpCatalogHelper3": "Chaque partage d’une route ou d’un marqueur génère un nouveau lien. Pour une carte complète, le même lien est automatiquement mis à jour",
+      "ui.HelpCatalogHelper3": "Les routes et les marqueurs génèrent toujours un nouveau lien. Les cartes complètes ont toujours un lien unique (par personnage)",
 
       "ui.SubmitMapButton": "+ Soumettre du contenu",
       "ui.BackToMapButton": "← Retour à la carte",
@@ -471,7 +471,7 @@
       "ui.HelpCatalogHelperTitle": "Cómo funciona",
       "ui.HelpCatalogHelper1": "Comienza creando un enlace para compartir un marcador, una ruta o tu mapa desde la aplicación principal",
       "ui.HelpCatalogHelper2": "Luego, envía este enlace mediante el formulario de la página Contenido de la comunidad para añadirlo al catálogo",
-      "ui.HelpCatalogHelper3": "Cada vez que compartes una ruta o un marcador, se crea un nuevo enlace. Para un mapa completo, el mismo enlace se actualiza automáticamente",
+      "ui.HelpCatalogHelper3": "Las rutas y los marcadores siempre generan un nuevo enlace. Los mapas completos siempre tienen un enlace único (por personaje)",
       "ui.SubmitMapButton": "+ Enviar contenido",
       "ui.BackToMapButton": "← Volver al mapa",
       "ui.CommunityMapButton": "Contenido de la comunidad",
@@ -633,7 +633,7 @@
       "ui.HelpCatalogHelperTitle": "So funktioniert es",
       "ui.HelpCatalogHelper1": "Beginne damit, einen Freigabelink für einen Marker, eine Route oder deine Karte in der Hauptanwendung zu erstellen",
       "ui.HelpCatalogHelper2": "Reiche diesen Link anschließend über das Formular auf der Seite Community-Inhalte ein, um ihn dem Katalog hinzuzufügen",
-      "ui.HelpCatalogHelper3": "Jedes Teilen einer Route oder eines Markers erzeugt einen neuen Link. Bei einer vollständigen Karte wird derselbe Link automatisch aktualisiert",
+      "ui.HelpCatalogHelper3": "Routen und Marker erzeugen immer einen neuen Link. Vollständige Karten haben immer einen eindeutigen Link (pro Charakter)",
 
       "ui.SubmitMapButton": "+ Inhalt einreichen",
       "ui.BackToMapButton": "← Zurück zur Karte",
@@ -796,7 +796,7 @@
        "ui.HelpCatalogHelperTitle": "Como funciona",
       "ui.HelpCatalogHelper1": "Comece criando um link de compartilhamento para um marcador, uma rota ou o seu mapa a partir da aplicação principal",
       "ui.HelpCatalogHelper2": "Em seguida, envie este link através do formulário da página Conteúdo da comunidade para adicioná-lo ao catálogo",
-      "ui.HelpCatalogHelper3": "Cada compartilhamento de uma rota ou marcador gera um novo link. Para um mapa completo, o mesmo link é atualizado automaticamente",
+      "ui.HelpCatalogHelper3": "Rotas e marcadores sempre geram um novo link. Mapas completos sempre têm um único link (por personagem)",
 
        "ui.SubmitMapButton": "+ Enviar conteúdo",
        "ui.BackToMapButton": "← Voltar ao mapa",
@@ -958,7 +958,7 @@
     "ui.HelpCatalogHelperTitle": "Как это работает",
     "ui.HelpCatalogHelper1": "Начните с создания ссылки для общего доступа к маркеру, маршруту или вашей карте в основном приложении",
      "ui.HelpCatalogHelper2": "Затем отправьте эту ссылку через форму на странице Контент сообщества, чтобы добавить её в каталог",
-    "ui.HelpCatalogHelper3": "Каждое предоставление доступа к маршруту или маркеру создаёт новую ссылку. Для полной карты та же ссылка обновляется автоматически",
+    "ui.HelpCatalogHelper3": "Маршруты и маркеры всегда создают новую ссылку. Полные карты всегда имеют одну уникальную ссылку (на персонажа)",
 
     "ui.SubmitMapButton": "+ Отправить контент",
     "ui.BackToMapButton": "← Назад к карте",
@@ -1121,7 +1121,7 @@
       "ui.HelpCatalogHelperTitle": "Come funziona",
       "ui.HelpCatalogHelper1": "Inizia creando un link di condivisione per un marcatore, un percorso o la tua mappa dall’applicazione principale",
       "ui.HelpCatalogHelper2": "Successivamente, invia questo link tramite il modulo della pagina Contenuti della community per aggiungerlo al catalogo",
-      "ui.HelpCatalogHelper3": "Ogni condivisione di un percorso o di un marcatore genera un nuovo link. Per una mappa completa, lo stesso link viene aggiornato automaticamente",
+      "ui.HelpCatalogHelper3": "Percorsi e marcatori generano sempre un nuovo link. Le mappe complete hanno sempre un link unico (per personaggio)",
 
       "ui.SubmitMapButton": "+ Invia contenuto",
       "ui.BackToMapButton": "← Torna alla mappa",
@@ -1304,7 +1304,7 @@
       "ui.HelpCatalogHelperTitle": "Jak to działa",
       "ui.HelpCatalogHelper1": "Zacznij od utworzenia linku udostępniania dla znacznika, trasy lub swojej mapy w głównej aplikacji",
       "ui.HelpCatalogHelper2": "Następnie prześlij ten link za pomocą formularza na stronie Treści społeczności, aby dodać go do katalogu",
-      "ui.HelpCatalogHelper3": "Każde udostępnienie trasy lub znacznika tworzy nowy link. W przypadku pełnej mapy ten sam link jest automatycznie aktualizowany",
+      "ui.HelpCatalogHelper3": "Trasy i znaczniki zawsze generują nowy link. Pełne mapy zawsze mają jeden unikalny link (na postać)",
 
       "ui.SubmitMapButton": "+ Dodaj treść",
       "ui.BackToMapButton": "← Powrót do mapy",
@@ -1467,7 +1467,7 @@
       "ui.HelpCatalogHelperTitle": "使用说明",
       "ui.HelpCatalogHelper1": "首先在主应用中创建一个用于共享标记、路线或你的地图的链接",
       "ui.HelpCatalogHelper2": "然后通过社区内容页面的表单提交此链接，将其添加到目录中",
-      "ui.HelpCatalogHelper3": "每次共享路线或标记都会生成一个新的链接。对于完整地图，同一个链接会自动更新",
+      "ui.HelpCatalogHelper3": "路线和标记始终会生成新的链接。完整地图始终只有一个链接（每个角色）",
 
        "ui.SubmitMapButton": "+ 提交内容",
       "ui.BackToMapButton": "← 返回地图",
@@ -1629,7 +1629,7 @@
       "ui.HelpCatalogHelperTitle": "使い方",
       "ui.HelpCatalogHelper1": "まずメインアプリで、マーカー、ルート、または自分のマップの共有リンクを作成します",
       "ui.HelpCatalogHelper2": "次に、コミュニティコンテンツページのフォームからこのリンクを送信して、カタログに追加します",
-      "ui.HelpCatalogHelper3": "ルートやマーカーを共有するたびに新しいリンクが作成されます。完全なマップの場合、同じリンクが自動的に更新されます",
+      "ui.HelpCatalogHelper3": "ルートやマーカーは常に新しいリンクを生成します。完全なマップは常に1つのリンクを持ちます（キャラクターごと）",
 
        "ui.SubmitMapButton": "+ コンテンツを送信",
       "ui.BackToMapButton": "← マップに戻る",
@@ -1793,7 +1793,7 @@
       "ui.HelpCatalogHelperTitle": "사용 방법",
       "ui.HelpCatalogHelper1": "먼저 메인 애플리케이션에서 마커, 경로 또는 자신의 지도를 공유하는 링크를 생성하세요",
       "ui.HelpCatalogHelper2": "그다음 커뮤니티 콘텐츠 페이지의 양식을 통해 이 링크를 제출하여 카탈로그에 추가하세요",
-      "ui.HelpCatalogHelper3": "경로나 마커를 공유할 때마다 새 링크가 생성됩니다. 전체 지도인 경우 동일한 링크가 자동으로 업데이트됩니다",
+      "ui.HelpCatalogHelper3": "경로와 마커는 항상 새 링크를 생성합니다. 전체 지도는 항상 하나의 링크만 가집니다 (캐릭터별)",
 
       "ui.SubmitMapButton": "+ 콘텐츠 제출",
       "ui.BackToMapButton": "← 지도으로 돌아가기",
