@@ -3,8 +3,6 @@
 // V1 – Static demo data rendered dynamically
 
 const CATALOG_API_BASE = 'https://share2.grimcustommarker.org'; 
-// Idéalement: window.GDMM_SHARE_WORKER_BASE = "https://xxxx.workers.dev"
-
 
 
 function showError(msg) {
@@ -170,8 +168,6 @@ document.addEventListener('DOMContentLoaded', async () =>  {
   });
 
 
-
-
   // Basic XSS-safe helper (important once data is external)
   function escapeHtml(str) {
     if (typeof str !== 'string') return '';
@@ -279,10 +275,6 @@ function validatePayload(p) {
 /*END SUBMIT CATALOG*/
 
 
-
-
-
-
 /*POPUP*/
 
 // --- Minimal modal helper ---
@@ -337,19 +329,17 @@ document.getElementById('openSubmit')?.addEventListener('click', (e) => {
   e.preventDefault();
   openModal(modal, backdrop);
 
-// Reset modal state when opening
-submitBtn.disabled = false;
-hideError();
-hideSuccess();
+  // Reset modal state when opening
+  submitBtn.disabled = false;
+  hideError();
+  hideSuccess();
 
-// show form, hide success screen
-formState?.classList.remove('hidden');
-successState?.classList.add('hidden');
+  // show form, hide success screen
+  formState?.classList.remove('hidden');
+  successState?.classList.add('hidden');
 
-// show footer again
-footerState?.classList.remove('hidden');
-
-
+  // show footer again
+  footerState?.classList.remove('hidden');
 
 });
 

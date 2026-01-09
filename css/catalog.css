@@ -21,7 +21,6 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.6);
   z-index: 40;
-  margin-top: 80px;
 }
 
 .app-logo{
