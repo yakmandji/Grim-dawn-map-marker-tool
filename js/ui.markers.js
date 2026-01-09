@@ -230,7 +230,7 @@ GDMM_LIST_MENU.register('marker', {
       markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
       if (markerEl) {
         markerEl.classList.add('marker-highlight');
-        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1800);
       }
     }, duration);
   },
