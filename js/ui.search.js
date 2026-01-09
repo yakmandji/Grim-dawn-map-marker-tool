@@ -631,7 +631,7 @@ function clearResultsLater(delay = 150) {
       const markerEl = document.querySelector(`.marker[data-mid="${item.id}"]`);
       if (markerEl) {
         markerEl.classList.add('marker-highlight');
-        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1800);
       }
       return;
     }
@@ -645,7 +645,7 @@ function clearResultsLater(delay = 150) {
 
       if (shrineEl) {
         shrineEl.classList.add('marker-highlight');
-        setTimeout(() => shrineEl.classList.remove('marker-highlight'), 1500);
+        setTimeout(() => shrineEl.classList.remove('marker-highlight'), 1800);
         return;
       }
     }
@@ -693,7 +693,7 @@ function clearResultsLater(delay = 150) {
       bestEl.closest('.marker-rift, .marker-region, .marker-region-dungeon') || bestEl;
 
     markerEl.classList.add('marker-highlight');
-    setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+    setTimeout(() => markerEl.classList.remove('marker-highlight'), 1800);
   }
 
 /*----------------END HIGHLIGHT CENTER--------------------------------------------------*/

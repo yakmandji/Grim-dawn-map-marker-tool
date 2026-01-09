@@ -355,7 +355,7 @@ window.renderDoneList = function renderDoneList(doneMarkers) {
       markerEl = document.querySelector(`.marker[data-mid="${m.id}"]`);
       if (markerEl) {
         markerEl.classList.add('marker-highlight');
-        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1500);
+        setTimeout(() => markerEl.classList.remove('marker-highlight'), 1800);
       }
     };
 
@@ -600,7 +600,7 @@ function renderMarkers(options = {}) {
       const markerEl2 = document.querySelector(`.marker[data-mid="${markerId}"]`);
       if (markerEl2) {
         markerEl2.classList.add('marker-highlight');
-        setTimeout(() => markerEl2.classList.remove('marker-highlight'), 1500);
+        setTimeout(() => markerEl2.classList.remove('marker-highlight'), 1800);
       }
     }
 
@@ -1081,7 +1081,6 @@ viewport.addEventListener('pointermove', e => {
 /*END------------------------------------------*/
 
 
-
   function stopPan(e){
 
     if (pendingDungeonPan && e.pointerId === pendingDungeonPan.id) {
@@ -1204,7 +1203,6 @@ viewport.addEventListener('pointermove', e => {
   }
 
 
-
   // --- Drag & Drop image ---
 
   viewport.addEventListener('dragstart', e => e.preventDefault());
@@ -1239,22 +1237,22 @@ viewport.addEventListener('pointermove', e => {
       }, duration);
     }
 
-// === PATHS (ADD / EXPORT / IMPORT) ===
-const newPathBtn = document.getElementById('newPathBtn');
-if (newPathBtn) {
-  newPathBtn.addEventListener('click', () => {
-    setTool('path');
-    const input = document.getElementById('newPathName');
-    const customName = input ? input.value.trim() : '';
-    const path = startNewPath(customName);
-    if (input) input.value = '';
-    renderRoutesPanel();
-  });
-}
+    // === PATHS (ADD / EXPORT / IMPORT) ===
+    const newPathBtn = document.getElementById('newPathBtn');
+    if (newPathBtn) {
+      newPathBtn.addEventListener('click', () => {
+        setTool('path');
+        const input = document.getElementById('newPathName');
+        const customName = input ? input.value.trim() : '';
+        const path = startNewPath(customName);
+        if (input) input.value = '';
+        renderRoutesPanel();
+      });
+    }
 
   // --- Profils (buttons) ---
   $('#profileSelect')?.addEventListener('change', async (e) => {
-                                                                  if (state.sharedBootInProgress) return;
+    if (state.sharedBootInProgress) return;
     const name = e.target.value;
 
     setActiveProfile(name);
@@ -1308,7 +1306,7 @@ if (newPathBtn) {
   });
   applyLockUI();
 
-//----------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------
 
 
   // --- Map sources (One Json per map) ---
@@ -1351,10 +1349,9 @@ if (newPathBtn) {
   }
 
 
-
-// =============================
-// PAN AU CLAVIER
-// =============================
+  // =============================
+  // PAN AU CLAVIER
+  // =============================
 
     const keys = {};
 
@@ -1499,7 +1496,7 @@ if (newPathBtn) {
     });
 
 
-  // --- Init on load ---
+    // --- Init on load ---
     (async () => {
 
       // 1) Crée la structure de base pour chaque map connue
@@ -1563,8 +1560,6 @@ if (newPathBtn) {
           if (sharedOk) return;
         }
 
-
-
       // 3) Choix du profil initial
       const mapNames = Object.keys(MAP_SOURCES);
       let initial = mapNames[0] || Object.keys(state.profiles)[0] || null;
@@ -1616,263 +1611,261 @@ if (newPathBtn) {
     })();
 
 
-// === SPACE → PAN (global) ===
-  let isSpaceDown = false;
-  let prevTool = null;
+    // === SPACE → PAN (global) ===
+    let isSpaceDown = false;
+    let prevTool = null;
 
-  window.addEventListener(
-    'keydown',
-    (e) => {
-      const active = document.activeElement;
-      if (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) {
-        return;
-      }
-      if (e.code === 'Space') {
-        e.preventDefault();
-        if (!isSpaceDown) {
-          isSpaceDown = true;
-          if (state.tool === 'path' || state.tool === 'add') {
-            prevTool = state.tool;
-            setTool('pan', { skipFinalize: true });
+    window.addEventListener(
+      'keydown',
+      (e) => {
+        const active = document.activeElement;
+        if (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) {
+          return;
+        }
+        if (e.code === 'Space') {
+          e.preventDefault();
+          if (!isSpaceDown) {
+            isSpaceDown = true;
+            if (state.tool === 'path' || state.tool === 'add') {
+              prevTool = state.tool;
+              setTool('pan', { skipFinalize: true });
+            }
           }
         }
-      }
-    },
-    true
-  );
-
-  window.addEventListener(
-    'keyup',
-    (e) => {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        isSpaceDown = false;
-
-        if (prevTool) {
-          setTool(prevTool);
-          prevTool = null;
-        }
-      }
-    },
-    true
-  );
-
-  // MOBILE MENU
-    const btn = document.getElementById('mobile-menu-toggle');
-    const menu = document.getElementById('left-menu');
-
-    if (btn && menu) {
-      btn.addEventListener('click', () => {
-        menu.classList.toggle('open');
-      });
-    }
-
-  // --- Expose global ---
-  if (!window.UiCore) {
-    window.UiCore = {};
-  }
-
-  /*POPUP ADD MARKER AND ROUTE*/
-
-function setupPopup(triggerSelector, popupAttr) {
-
-    const trigger = document.querySelector(triggerSelector);
-    const popup   = document.querySelector(`.gd-popup[data-popup="${popupAttr}"]`);
-    const group   = document.getElementById('header-add-group');
-
-    if (!trigger || !popup || !group) return;
-
-    const closeButtons = popup.querySelectorAll('[data-popup-close]');
-
-    function closePopup() {
-        popup.classList.remove('is-open');
-    }
-
-    function openPopup() {
-
-        // Fermer autres popups
-        document.querySelectorAll('.gd-popup.is-open').forEach(p => {
-            if (p !== popup) p.classList.remove('is-open');
-        });
-
-        // Positionner sous le groupe de boutons
-        const rect     = group.getBoundingClientRect();
-        const margin   = 8;
-        const card     = popup.querySelector('.gd-popup__card');
-        const width    = card.offsetWidth;
-
-        // Centrer : milieu du groupe - moitié popup
-        const POPUP_ALIGN_OFFSET = 120;
-        let left = rect.left + (rect.width / 2) - (width / 2) + POPUP_ALIGN_OFFSET;
-
-        // Ne pas sortir de l'écran
-        if (left < margin) left = margin;
-        if (left + width > window.innerWidth - margin) {
-            left = window.innerWidth - width - margin;
-        }
-
-        popup.style.top  = `${rect.bottom + margin + 15}px`;
-        popup.style.left = `${left}px`;
-
-        popup.classList.add('is-open');
-    }
-
-    function togglePopup() {
-        popup.classList.contains('is-open')
-            ? closePopup()
-            : openPopup();
-    }
-
-    // Ouvrir / fermer en cliquant sur le bouton
-    trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        togglePopup();
-    });
-
-    // Boutons internes
-    closeButtons.forEach(btn =>
-        btn.addEventListener('click', closePopup)
+      },
+      true
     );
 
-    // Fermer en cliquant dehors
-    document.addEventListener('click', (e) => {
+    window.addEventListener(
+      'keyup',
+      (e) => {
+        if (e.code === 'Space') {
+          e.preventDefault();
+          isSpaceDown = false;
 
-        // Ne pas fermer popup route pendant un tracé
-        if (state.tool === 'path' && popupAttr === 'route') return;
+          if (prevTool) {
+            setTool(prevTool);
+            prevTool = null;
+          }
+        }
+      },
+      true
+    );
 
-        if (
-            popup.classList.contains('is-open') &&
-            !popup.contains(e.target) &&
-            !trigger.contains(e.target)
-        ) {
+    // MOBILE MENU
+      const btn = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('left-menu');
+
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('open');
+        });
+      }
+
+    // --- Expose global ---
+    if (!window.UiCore) {
+      window.UiCore = {};
+    }
+
+    /*POPUP ADD MARKER AND ROUTE*/
+
+    function setupPopup(triggerSelector, popupAttr) {
+
+        const trigger = document.querySelector(triggerSelector);
+        const popup   = document.querySelector(`.gd-popup[data-popup="${popupAttr}"]`);
+        const group   = document.getElementById('header-add-group');
+
+        if (!trigger || !popup || !group) return;
+
+        const closeButtons = popup.querySelectorAll('[data-popup-close]');
+
+        function closePopup() {
+            popup.classList.remove('is-open');
+        }
+
+        function openPopup() {
+
+            // Fermer autres popups
+            document.querySelectorAll('.gd-popup.is-open').forEach(p => {
+                if (p !== popup) p.classList.remove('is-open');
+            });
+
+            // Positionner sous le groupe de boutons
+            const rect     = group.getBoundingClientRect();
+            const margin   = 8;
+            const card     = popup.querySelector('.gd-popup__card');
+            const width    = card.offsetWidth;
+
+            // Centrer : milieu du groupe - moitié popup
+            const POPUP_ALIGN_OFFSET = 120;
+            let left = rect.left + (rect.width / 2) - (width / 2) + POPUP_ALIGN_OFFSET;
+
+            // Ne pas sortir de l'écran
+            if (left < margin) left = margin;
+            if (left + width > window.innerWidth - margin) {
+                left = window.innerWidth - width - margin;
+            }
+
+            popup.style.top  = `${rect.bottom + margin + 15}px`;
+            popup.style.left = `${left}px`;
+
+            popup.classList.add('is-open');
+        }
+
+        function togglePopup() {
+            popup.classList.contains('is-open')
+                ? closePopup()
+                : openPopup();
+        }
+
+        // Ouvrir / fermer en cliquant sur le bouton
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePopup();
+        });
+
+        // Boutons internes
+        closeButtons.forEach(btn =>
+            btn.addEventListener('click', closePopup)
+        );
+
+        // Fermer en cliquant dehors
+        document.addEventListener('click', (e) => {
+
+            // Ne pas fermer popup route pendant un tracé
+            if (state.tool === 'path' && popupAttr === 'route') return;
+
+            if (
+                popup.classList.contains('is-open') &&
+                !popup.contains(e.target) &&
+                !trigger.contains(e.target)
+            ) {
+                closePopup();
+            }
+        });
+
+        // Fermer avec ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+
+            // ESC termine la route
+            if (popupAttr === 'route' && state.tool === 'path') {
+                finalizeCurrentPath();
+                setTool('pan');
+                showToast(GDMMLang.t('toast.PathFinished'));
+            }
             closePopup();
-        }
-    });
+        });
 
-    // Fermer avec ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key !== 'Escape') return;
-
-        // ESC termine la route
-        if (popupAttr === 'route' && state.tool === 'path') {
-            finalizeCurrentPath();
-            setTool('pan');
-            showToast(GDMMLang.t('toast.PathFinished'));
-        }
-        closePopup();
-    });
-
-}
-
-
-//TOGGLE SIDE BAR
-
-
-// --- DEV helper : ALT + SHIFT + drag = copy overlay rect (%)
-(function () {
-  let rectEl = null;
-  let start = null;
-
-  function ensureRect() {
-    if (rectEl) return rectEl;
-    rectEl = document.createElement('div');
-    rectEl.style.position = 'absolute';
-    rectEl.style.border = '2px dashed #78f1c2';
-    rectEl.style.background = 'rgba(120,241,194,0.15)';
-    rectEl.style.pointerEvents = 'none';
-    rectEl.style.zIndex = '20';
-    return rectEl;
-  }
-
-  function removeRect() {
-    if (rectEl && rectEl.parentNode) {
-      rectEl.parentNode.removeChild(rectEl);
     }
-    rectEl = null;
-  }
+    //TOGGLE SIDE BAR
 
-  window.__gdmmOverlayDragStart = function (xp, yp) {
-    start = { xp, yp };
-    const el = ensureRect();
-    const mapInner = document.querySelector('.mapInner');
-    if (mapInner && !el.parentNode) {
-      mapInner.appendChild(el);
-    }
-  };
 
-  window.__gdmmOverlayDragMove = function (xp, yp) {
-    if (!start || !rectEl) return;
+    // --- DEV helper : ALT + SHIFT + drag = copy overlay rect (%)
+    (function () {
+      let rectEl = null;
+      let start = null;
 
-    const left   = Math.min(start.xp, xp);
-    const top    = Math.min(start.yp, yp);
-    const width  = Math.abs(xp - start.xp);
-    const height = Math.abs(yp - start.yp);
+      function ensureRect() {
+        if (rectEl) return rectEl;
+        rectEl = document.createElement('div');
+        rectEl.style.position = 'absolute';
+        rectEl.style.border = '2px dashed #78f1c2';
+        rectEl.style.background = 'rgba(120,241,194,0.15)';
+        rectEl.style.pointerEvents = 'none';
+        rectEl.style.zIndex = '20';
+        return rectEl;
+      }
 
-    rectEl.style.left   = left + '%';
-    rectEl.style.top    = top + '%';
-    rectEl.style.width  = width + '%';
-    rectEl.style.height = height + '%';
-  };
+      function removeRect() {
+        if (rectEl && rectEl.parentNode) {
+          rectEl.parentNode.removeChild(rectEl);
+        }
+        rectEl = null;
+      }
 
-  window.__gdmmOverlayDragEnd = function (xp, yp) {
-    if (!start) return;
-
-    const left   = Math.min(start.xp, xp);
-    const top    = Math.min(start.yp, yp);
-    const width  = Math.abs(xp - start.xp);
-    const height = Math.abs(yp - start.yp);
-
-    const txt =
-      `left: ${left.toFixed(4)}, ` +
-      `top: ${top.toFixed(4)}, ` +
-      `width: ${width.toFixed(4)}, ` +
-      `height: ${height.toFixed(4)}`;
-
-      const onDone = () => {
-        if (typeof showToast === 'function') {
-          showToast(
-            `Overlay copié :\n` +
-            `left=${left.toFixed(2)}, top=${top.toFixed(2)}\n` +
-            `width=${width.toFixed(2)}, height=${height.toFixed(2)}`
-          );
-        } else {
-          console.log('[GDMM] Overlay copié :', txt);
+      window.__gdmmOverlayDragStart = function (xp, yp) {
+        start = { xp, yp };
+        const el = ensureRect();
+        const mapInner = document.querySelector('.mapInner');
+        if (mapInner && !el.parentNode) {
+          mapInner.appendChild(el);
         }
       };
 
-      if (navigator.clipboard?.writeText) {
-        navigator.clipboard.writeText(txt)
-          .then(onDone)
-          .catch((e) => {
-            console.warn('[GDMM] Clipboard failed', e);
-            onDone(); // au moins feedback visuel
-          });
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = txt;
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); } catch (_) {}
-        document.body.removeChild(ta);
-        onDone();
-      }
+      window.__gdmmOverlayDragMove = function (xp, yp) {
+        if (!start || !rectEl) return;
+
+        const left   = Math.min(start.xp, xp);
+        const top    = Math.min(start.yp, yp);
+        const width  = Math.abs(xp - start.xp);
+        const height = Math.abs(yp - start.yp);
+
+        rectEl.style.left   = left + '%';
+        rectEl.style.top    = top + '%';
+        rectEl.style.width  = width + '%';
+        rectEl.style.height = height + '%';
+      };
+
+      window.__gdmmOverlayDragEnd = function (xp, yp) {
+        if (!start) return;
+
+        const left   = Math.min(start.xp, xp);
+        const top    = Math.min(start.yp, yp);
+        const width  = Math.abs(xp - start.xp);
+        const height = Math.abs(yp - start.yp);
+
+        const txt =
+          `left: ${left.toFixed(4)}, ` +
+          `top: ${top.toFixed(4)}, ` +
+          `width: ${width.toFixed(4)}, ` +
+          `height: ${height.toFixed(4)}`;
+
+          const onDone = () => {
+            if (typeof showToast === 'function') {
+              showToast(
+                `Overlay copié :\n` +
+                `left=${left.toFixed(2)}, top=${top.toFixed(2)}\n` +
+                `width=${width.toFixed(2)}, height=${height.toFixed(2)}`
+              );
+            } else {
+              console.log('[GDMM] Overlay copié :', txt);
+            }
+          };
+
+          if (navigator.clipboard?.writeText) {
+            navigator.clipboard.writeText(txt)
+              .then(onDone)
+              .catch((e) => {
+                console.warn('[GDMM] Clipboard failed', e);
+                onDone(); // au moins feedback visuel
+              });
+          } else {
+            const ta = document.createElement('textarea');
+            ta.value = txt;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (_) {}
+            document.body.removeChild(ta);
+            onDone();
+          }
 
 
-    start = null;
-    removeRect();
-  };
-})();
-// ---END  DEV helper : ALT + SHIFT + drag = copy overlay rect (%)
+        start = null;
+        removeRect();
+      };
+    })();
+    // ---END  DEV helper : ALT + SHIFT + drag = copy overlay rect (%)
 
 
-// Init
-setupPopup('#btn-new-marker', 'marker');
-setupPopup('#btn-new-route',  'route');
+    // Init
+    setupPopup('#btn-new-marker', 'marker');
+    setupPopup('#btn-new-route',  'route');
 
-  Object.assign(window.UiCore, {
-    ensurePathsArray,refreshProfilesUI,renderList,renderMarkers,
-    renderRoutesPanel,showToast,updateSaveIndicator,resolveSizeKey,setTool,ensureMapLoadedForProfile,
-    outOfMapMarginPct: OUT_OF_MAP_MARGIN_PCT,
-  });
+    Object.assign(window.UiCore, {
+      ensurePathsArray,refreshProfilesUI,renderList,renderMarkers,
+      renderRoutesPanel,showToast,updateSaveIndicator,resolveSizeKey,setTool,ensureMapLoadedForProfile,
+      outOfMapMarginPct: OUT_OF_MAP_MARGIN_PCT,
+    });
 
 })();

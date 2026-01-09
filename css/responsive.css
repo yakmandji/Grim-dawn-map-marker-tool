@@ -27,7 +27,7 @@
 }
 
 
-@media (max-width: 1300px) {
+@media (max-width: 1450px) {
 
   .app{
     padding: 2px 7px 12px 12px;
@@ -55,20 +55,6 @@
   .done-panel {
     right: 7px;
   }
-
-}
-
-
-@media (max-width: 1350px) {
-
-  header #shareRoutesBtn span,
-  header .save-block span{
-    display: none;
-  }
-
-  header button{
-    text-align: left;
-  } 
 
   #catalog-helper .helper-card{
     flex-basis: calc(50% - 12px);

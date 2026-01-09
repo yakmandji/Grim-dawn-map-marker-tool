@@ -883,7 +883,7 @@
                     const destNav = document.querySelector(`.marker-link[data-nav-id="${navId}"]`);
                     if (destNav) {
                       destNav.classList.add('marker-highlight');
-                      setTimeout(() => destNav.classList.remove('marker-highlight'), 1500);
+                      setTimeout(() => destNav.classList.remove('marker-highlight'), 1800);
                     }
                   }
                 }
@@ -919,7 +919,7 @@
                     const destNav = document.querySelector(`.marker-link[data-nav-id="${m.targetId}"]`);
                     if (destNav) {
                       destNav.classList.add('marker-highlight');
-                      setTimeout(() => destNav.classList.remove('marker-highlight'), 1500);
+                      setTimeout(() => destNav.classList.remove('marker-highlight'), 1800);
                     }
                   }, 450);
                 }

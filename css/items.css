@@ -62,91 +62,6 @@
   min-width: max-content;
 }
 
-/* --- Dropdown custom --- */
-
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-#list .custom-dropdown{
-  max-width: 170px;
-}
-
-.select-current {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 10px;
-}
-
-/* Menu déroulant */
-.custom-dropdown-inner {
-  position: absolute;
-  top: 25px;
-  left: 0;
-  margin-top: 20px;
-  background: var(--panel);
-  border-radius: 10px;
-  border: 1px solid #27524b;
-  padding: 6px 0;
-  min-width: 130px;
-  z-index: 50;
-  opacity: 0;
-  transform: translateY(4px);
-  pointer-events: none;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  width: max-content;
-}
-
-.custom-dropdown.open .custom-dropdown-inner {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-  position: absolute;
-}
-
-#list .custom-dropdown .custom-dropdown-inner,
-#list .custom-dropdown .custom-dropdown-inner .option-item {
-  height: 1px;
-  position: absolute;
-  padding: 0;
-}
-
-#list .custom-dropdown.open .custom-dropdown-inner{
-  height: inherit;
-  padding: 6px 0;
-}
-
-#list .custom-dropdown.open .custom-dropdown-inner .option-item {
-  height: inherit;
-  position: initial;
-  margin-top: 3px;
-  padding: 2px 12px;
-  font-size: 11px;
-}
-
-.custom-dropdown-inner .option-item{
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  gap: 8px;
-  padding: 6px 16px 6px 11px;
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  text-align: left;
-  margin-bottom: 3px;
-}
-
-.custom-dropdown .select-label{
-  width: max-content;
-}
-
-.option-item:hover {
-  background: rgba(46, 109, 88, 0.6);
-}
-
 /* --- Sprite de drapeaux --- */
 
 #langDropdown button,
@@ -260,38 +175,10 @@ button:active:not(.select-current) {
   z-index: 7;
 }
 
-button.small, button,
-.right-panel button,select,
-a.button { 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px; 
-  padding: 9px 18px;
-  line-height: 1;
-  vertical-align: middle;
-  cursor: pointer; 
-  outline: none;
-}
-
-button.active,
-select.active { 
-  outline: 1px solid #78f1c2; 
-}
-
-button.danger {
-  background: linear-gradient(145deg, #37150f, #4b0f0b);
-  color: #985d53;
-}
-
-button.cancel{
-  padding: 8px 18px;
-  background: linear-gradient(145deg, #491c14, #65110b);
-}
-
-.tool-section button.danger {
+.tool-section button {
   padding: 8px 8px;
-  font-size: 10px;
+  font-size: 11px;
+  min-width: 40%;
 }
 
 #routesPanel button.danger,
@@ -422,6 +309,7 @@ input[type="password"]:focus
   max-width: 90px;
   gap: 3px;
   color: #1d706e;
+  padding-bottom: 8px;
 }
 
 .lock-label #lockAll{
@@ -448,24 +336,6 @@ input[type="password"]:focus
 .marker-name {
   flex: 1;
   padding-right: 60px;
-}
-
-button.marker-center,
-button.link-for-marker,
-button.link-for-route,
-button.marker-delete,
-button.marker-save{
-  padding: 6px 7px 6px 7px;
-  border: none;
-  color: #78f1c2;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;  
-}
-
-.menu-item-list button{
-  padding: 9px 20px 9px 14px;
 }
 
 button.marker-sub-menu,
@@ -503,7 +373,7 @@ button.route-sub-menu{
   height: 45px;
   opacity: 0;
   transform: scale(0.8);
-  animation: markerRingPulse 0.7s ease-out 0s 2 forwards;
+  animation: markerRingPulse 1s ease-out 0s 2 forwards;
 }
 
 .marker-region.marker-highlight .region-label::after,
@@ -521,7 +391,7 @@ button.route-sub-menu{
   opacity: 0;
   transform: scale(0.8);
   pointer-events: none;
-  animation: markerRingPulse 0.7s ease-out 0s 2 forwards;
+  animation: markerRingPulse 1s ease-out 0s 2 forwards;
   border-radius: 20px;
 }
 
@@ -1064,7 +934,7 @@ input[type="color"]::-moz-color-swatch {
 header button.menu-button,
 header button.menu-button.select-current{
   background: none;
-  color: #b9ae92;
+  color: var(--gold-txt);
   border: none;
   transition: all 0.6s;
   border: 2px solid transparent;
@@ -1299,7 +1169,8 @@ header button.menu-button.select-current:hover {
 }
 
 #noteList .listItem span{
-  width: 100%;
+  max-width: 160px;
+  min-width: 160px;
   font-size: 12px;
 }
 
@@ -1479,7 +1350,7 @@ header button.menu-button.select-current:hover {
   border: 2px solid #5f4e33;
   border-radius: 8px;
   color: #59b7c1;
-  padding: 9px 32px 10px 12px!important;
+  padding: 9px 32px 10px 12px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -1507,6 +1378,137 @@ header button.menu-button.select-current:hover {
 
 #list .select-green{
   font-size: 11px;
+}
+
+button.small, button,
+header .right-panel button,select,
+a.button { 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px; 
+  padding: 9px 18px;
+  vertical-align: middle;
+  cursor: pointer; 
+  outline: none;
+}
+
+button.active,
+select.active { 
+  outline: 1px solid #78f1c2; 
+}
+
+button.danger {
+  background: linear-gradient(145deg, #37150f, #4b0f0b);
+  color: #985d53;
+}
+
+button.cancel{
+  padding: 8px 18px;
+  background: linear-gradient(145deg, #491c14, #65110b);
+}
+
+button.marker-center,
+button.link-for-marker,
+button.link-for-route,
+button.marker-delete,
+button.marker-save{
+  padding: 6px 7px 6px 7px;
+  border: none;
+  color: #78f1c2;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;  
+}
+
+.menu-item-list button{
+  padding: 9px 20px 9px 14px;
+}
+
+/* --- Dropdown custom --- */
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#list .custom-dropdown{
+  max-width: 170px;
+}
+
+.select-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+}
+
+/* Menu déroulant */
+.custom-dropdown-inner {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  margin-top: 20px;
+  background: var(--panel);
+  border-radius: 10px;
+  border: 1px solid #27524b;
+  padding: 6px 0;
+  min-width: 130px;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  width: max-content;
+}
+
+.custom-dropdown.open .custom-dropdown-inner {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: absolute;
+}
+
+#list .custom-dropdown .custom-dropdown-inner,
+#list .custom-dropdown .custom-dropdown-inner .option-item {
+  height: 1px;
+  position: absolute;
+  padding: 0;
+}
+
+#list .custom-dropdown.open .custom-dropdown-inner{
+  height: inherit;
+  padding: 6px 0;
+}
+
+#list .custom-dropdown.open .custom-dropdown-inner .option-item {
+  height: inherit;
+  position: initial;
+  margin-top: 3px;
+  padding: 2px 12px;
+  font-size: 11px;
+}
+
+.custom-dropdown-inner .option-item{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 6px 16px 6px 11px;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: left;
+  margin-bottom: 3px;
+}
+
+.custom-dropdown .select-label{
+  width: max-content;
+}
+
+.option-item:hover {
+  background: rgba(46, 109, 88, 0.6);
 }
 
 /* --- Location search bar (bottom left) --- */

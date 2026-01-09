@@ -23,7 +23,7 @@
   }
 
   //Highlight Routes
-    function highlightRouteOnMap(pid, duration = 1600) {
+    function highlightRouteOnMap(pid, duration = 1800) {
       if (!pid) return;
 
       const sel = [

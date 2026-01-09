@@ -135,9 +135,9 @@ body.editing-region-note .marker-region {
 .app {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
-  gap: 20px;
+  gap: 30px;
   max-height: 100vh; 
-  padding: 0 20px 12px 20px;
+  padding: 0 30px 12px 20px;
 }
 
 header {
@@ -289,7 +289,7 @@ header .sep {
 .tool-section h3,
 .tool-section h4,
 .tool-section .done-count{
-  color: #81755d;
+  color: var(--gold-txt);
   text-transform: uppercase;
 }
 
@@ -317,7 +317,7 @@ header .sep {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   padding: 13px 8px 13px 16px;
   align-items: center;
   margin: 14px 4px 14px 4px;
@@ -340,8 +340,8 @@ header .sep {
 }
 
 #list .left{
-  min-width: 204px;
-  max-width: 234px;
+  min-width: 184px;
+  max-width: 190px;
 }
 
 #list .left .row{
@@ -679,7 +679,7 @@ body.shared-only-view #mergeSharedBtn,
 .done-panel {
   position: fixed;
   bottom: 57px;
-  right: 20px;
+  right: 30px;
   z-index: 4;
   transition: transform 0.2s ease-out;
 }
@@ -722,7 +722,7 @@ body.shared-only-view #mergeSharedBtn,
 #list .listCategoryHeader{
   font-size: 13px;
   font-weight: 600;
-  color:#417a72;
+  color:var(--muted);
   padding: 4px 0px 7px 1px;
   border-bottom: 1px solid rgba(255,255,255,0.08);  
 }
@@ -898,13 +898,13 @@ label.checkbox{
 }
 
 .js-character-dropdown .select-current .dropdown-selected-label{
-  color: #c1a46d;
+  color: var(--gold-txt);
   font-size: 18px;
 }
 
 .floating { 
   position: absolute;
-  right: 28px;
+  right: 48px;
   top: 94px;
   display: flex;
   flex-direction: column;
@@ -1087,8 +1087,8 @@ button:focus {
 
 .gd-popup__close {
     position: absolute;
-    top: 2px;
-    right: 3px;
+    top: 6px;
+    right: 7px;
     border: none;
     background: transparent;
     color: rgba(255, 255, 255, 0.6);

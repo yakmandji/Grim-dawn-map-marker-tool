@@ -657,16 +657,16 @@ function initCharacterUI() {
         GDMMCore.loadUserDataFromLocal();
       }
 
-                                                                      const core = window.GDMMCore || {};
-                                                                      const st = core.state || {};
+      const core = window.GDMMCore || {};
+      const st = core.state || {};
 
-                                                                      const params = new URLSearchParams(location.search);
-                                                                      const isSharedBoot = params.has('s') || params.has('share');
+      const params = new URLSearchParams(location.search);
+      const isSharedBoot = params.has('s') || params.has('share');
 
-                                                                      if (st.sharedBootInProgress || isSharedBoot || st.sharedView || document.body.classList.contains('shared-only-view')) {
-                                                                        // On garde juste l’UI perso (dropdown), mais on ne charge pas de map perso.
-                                                                        return;
-                                                                      }
+      if (st.sharedBootInProgress || isSharedBoot || st.sharedView || document.body.classList.contains('shared-only-view')) {
+        // On garde juste l’UI perso (dropdown), mais on ne charge pas de map perso.
+        return;
+      }
 
 
       try {

@@ -71,7 +71,7 @@
 
       // Optionnel : Animation de surbrillance de la note pendant un moment
       regionEl.classList.add('marker-highlight');
-      setTimeout(() => regionEl.classList.remove('marker-highlight'), 1500);
+      setTimeout(() => regionEl.classList.remove('marker-highlight'), 1800);
     }
 
 
@@ -107,7 +107,7 @@
       }
 
       // Choix dynamique selon l’état de la sidebar
-      const maxLen = 65;
+      const maxLen = 45;
 
       regionIds.forEach(regionId => {
         const raw = notes[regionId];
