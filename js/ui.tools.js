@@ -95,6 +95,16 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
         // { v: 2, save: { ... }, regionNotes: { ... } }
         if (imported.save && typeof imported.regionNotes === 'object') {
 
+          // Restaurer la clé d'édition si présente (ownership catalogue/share)
+          try {
+            const k = imported?.meta?.share?.editKey;
+            if (typeof k === 'string' && k.length > 20) {
+              localStorage.setItem('gdmm_share_edit_key_v1', k);
+            }
+          } catch (e) {
+            console.warn('[GDMM] Failed to restore share edit key from import', e);
+          }
+
           // Restaurer la save perso
           localStorage.setItem('grimSave_v2', JSON.stringify(imported.save));
 
@@ -165,12 +175,26 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
       shrineProgress = null;
     }
 
+    // Charger la clé d'édition (ownership catalogue/share)
+    let shareEditKey = '';
+    try {
+      shareEditKey = localStorage.getItem('gdmm_share_edit_key_v1') || '';
+    } catch (e) {
+      console.warn('[GDMM] Failed to read share edit key for export', e);
+      shareEditKey = '';
+    }
+
     // Construire un seul objet exporté
     const exportObj = {
       v: 2,
       save: saveData,
       regionNotes: regionNotes,
-      shrineProgress: shrineProgress
+      shrineProgress: shrineProgress,
+      meta: {
+        share: {
+          editKey: shareEditKey || null
+        }
+      }
     };
 
     // Exporter fichier JSON

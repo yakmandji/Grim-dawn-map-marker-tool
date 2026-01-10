@@ -289,19 +289,21 @@ function openModal(modalEl, backdropEl) {
 
   if (backdropEl) backdropEl.style.display = 'block';
 
-  if (activeModalHandler) {
-    document.removeEventListener('click', activeModalHandler);
+  // Clean previous handler
+  if (activeModalHandler && backdropEl) {
+    backdropEl.removeEventListener('click', activeModalHandler);
     activeModalHandler = null;
   }
 
-  setTimeout(() => {
+  if (backdropEl) {
     activeModalHandler = (e) => {
-      if (!modalEl.contains(e.target)) {
+      // Close ONLY when clicking the backdrop itself (not the modal content)
+      if (e.target === backdropEl) {
         closeModal(modalEl, backdropEl);
       }
     };
-    document.addEventListener('click', activeModalHandler);
-  });
+    backdropEl.addEventListener('click', activeModalHandler);
+  }
 }
 
 function closeModal(modalEl, backdropEl) {
@@ -313,11 +315,12 @@ function closeModal(modalEl, backdropEl) {
 
   if (backdropEl) backdropEl.style.display = 'none';
 
-  if (activeModalHandler) {
-    document.removeEventListener('click', activeModalHandler);
+  if (activeModalHandler && backdropEl) {
+    backdropEl.removeEventListener('click', activeModalHandler);
     activeModalHandler = null;
   }
 }
+
 
 
 const modal = document.getElementById('catalogSubmitModal');
