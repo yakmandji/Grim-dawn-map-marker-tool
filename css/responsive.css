@@ -104,7 +104,6 @@
 
   header .sep,
   .logo-d,
-  .app-logo .announce,
   .tool-section .info,
   .lock-label,
   .filter-minimap,
@@ -112,7 +111,7 @@
     display: none;
   }
 
-  footer{
+  #mainmap-page footer{
     position: fixed;
     bottom: 0;
   }
@@ -124,14 +123,34 @@
   transform: initial;
 }
 
+ #mainmap-page .title-banner .announce{
+  margin-top: 32px;
+ }
+
   header #shareRoutesBtn span, header .save-block span{
     display: block;
   }
 
-  .app-logo .title:not(#catalog .title){
+  #mainmap-page .app-logo .title:not(#catalog .title){
     font-size: 15px;
-    margin: 0px 3px 0px -11px;
     line-height: 16px;
+  }
+
+  .catalog-actions button{
+    padding: 5px 10px;
+  }
+
+  .catalog-header{
+    padding: 9px 8px;
+  }
+
+
+  .app-logo .title{
+      font-size: 32px;
+  }
+
+  #catalog .app-logo{
+    padding: 110px 20px;
   }
 
   .sidebar{
