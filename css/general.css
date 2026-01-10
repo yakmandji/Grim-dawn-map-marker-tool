@@ -1101,7 +1101,7 @@ button:focus {
     min-width: 520px;
     max-width: calc(100vw - 32px);
     border-radius: 12px;
-    padding: 22px 22px;
+    padding: 12px 22px 22px 22px;
     position: relative;
     animation: gd-popup-enter 0.15s ease-out;
 }
