@@ -757,7 +757,7 @@ label.checkbox{
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.6px;
-  z-index: 50;
+  z-index: 5;
   pointer-events: none;
 }
 
