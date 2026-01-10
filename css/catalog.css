@@ -131,11 +131,15 @@ body {
   line-height: 1.4;
   opacity: 0.9;
   color: var(--txt);
-  max-height: 95px;
-  min-height: 95px;
+  max-height: 60px;
+  min-height: 60px;
   display: flex;
   align-items: center;
-  margin-top: 13px;
+  margin-top: 2px;
+}
+
+.catalog-card .gd-hr {
+  margin: 12px 0;
 }
 
 .catalog-card-actions {

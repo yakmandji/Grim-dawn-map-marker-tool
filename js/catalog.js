@@ -242,8 +242,8 @@ function validatePayload(p) {
   if (author.length > 24) return 'Name is too long (max 24).';
   if (title.length < 6) return 'Please enter a title (min 6 chars).';
   if (title.length > 70) return 'Title is too long (max 70).';
-  if (desc.length < 20) return 'Please add a short description (min 20 chars).';
-  if (desc.length > 240) return 'Description is too long (max 240).';
+  if (desc.length < 10) return 'Please add a short description (min 10 chars).';
+  if (desc.length > 230) return 'Description is too long (max 230).';
 
   const allowedLangs = ['EN','FR','ES','PT','RU','IT','ZH','JA','DE','PL','KO'];
   if (!allowedLangs.includes(lang)) return 'Invalid language.';
