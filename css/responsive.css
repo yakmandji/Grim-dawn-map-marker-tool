@@ -113,6 +113,11 @@
     display: none;
   }
 
+  footer{
+    position: fixed;
+    bottom: 0;
+  }
+
 #globalFilters{
   left: initial;
   right: 0;
