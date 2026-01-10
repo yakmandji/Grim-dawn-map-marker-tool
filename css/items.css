@@ -196,12 +196,13 @@ input[type="text"],
 input[type="search"],
 input[type="password"],
 textarea {
-  border: 1px solid rgba(255, 255, 255, 0.02);
+  border: 1px solid rgb(63 199 199 / 16%);
   background-color: rgba(15, 40, 45, 0.8);
   color: var(--placeholdertext);
   border-radius: 6px;
   padding: 6px 10px;
   outline: none;
+  font-size: 13px;
 }
 
 input[type="text"]:focus,

@@ -1697,7 +1697,7 @@ viewport.addEventListener('pointermove', e => {
             const width    = card.offsetWidth;
 
             // Centrer : milieu du groupe - moitié popup
-            const POPUP_ALIGN_OFFSET = 120;
+            const POPUP_ALIGN_OFFSET = 88;
             let left = rect.left + (rect.width / 2) - (width / 2) + POPUP_ALIGN_OFFSET;
 
             // Ne pas sortir de l'écran
@@ -1706,7 +1706,7 @@ viewport.addEventListener('pointermove', e => {
                 left = window.innerWidth - width - margin;
             }
 
-            popup.style.top  = `${rect.bottom + margin + 15}px`;
+            popup.style.top  = `${rect.bottom + margin + 6}px`;
             popup.style.left = `${left}px`;
 
             popup.classList.add('is-open');

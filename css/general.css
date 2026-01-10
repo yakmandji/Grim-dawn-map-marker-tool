@@ -6,7 +6,7 @@
   --gold-txt: #b9ae92;
   --titlecolor: #59afa3;
   --buttontxt : #5cccbe;
-  --placeholdertext : #48828d;
+  --placeholdertext : #5da3b1;
   --muted: #367177;
   --ok: #8be38b;
   --danger: #ff6b7a;
@@ -1216,6 +1216,7 @@ header .gd-popup__card input[type="text"]{
   max-width: 175px;
   overflow: hidden;
   font-size: 12px;
+  color: var(--placeholdertext);
 }
 
 .done-empty {

@@ -39,7 +39,7 @@
   }
 
   .sidebar{
-    margin-top: 93px;
+    margin-top: 85px;
     height: calc(100vh - 155px);
   }
 
@@ -49,7 +49,6 @@
   }
 
   .mapWrap {
-    margin-top: 95px;
     margin-left: 6px;
   }
   .done-panel {
