@@ -197,14 +197,14 @@
     height: initial;
   }
 
-  #langDropdown .custom-dropdown-inner{
+  #mainmap-page #langDropdown .custom-dropdown-inner{
     max-height: 161px;
     display: flex;
     max-width: 290px;
     flex-wrap: wrap;
   }
 
-  #langDropdown .custom-dropdown-inner .option-item{
+  #mainmap-page #langDropdown .custom-dropdown-inner .option-item{
     width: initial;
   }
 

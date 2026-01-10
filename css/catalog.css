@@ -37,17 +37,19 @@ body {
 	margin: auto;
 }
 
-.app-logo .announce {
-	text-align: left;
-	font-size: 20px;
-	color: #73cebf;
-	margin-top: 0;
-} 
-
 .app-logo .title {
 	font-size: 42px;
 	margin-left: 0;
 	color: #73cebf;
+  line-height: 45px;
+} 
+
+.app-logo .announce {
+  text-align: left;
+  font-size: 20px;
+  color: #73cebf;
+  margin-top: 0;
+  font-weight: 600;
 } 
 
 .app{
@@ -69,7 +71,7 @@ body {
 }
 
 .catalog-card .catalog-name{
-	color: #32616a;
+	color: var(--gold-txt);
 } 
 
 .catalog-card .badge-container{
@@ -127,7 +129,7 @@ body {
 }
 
 .catalog-desc {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: 0.9;
   color: var(--txt);
@@ -161,7 +163,7 @@ body {
 }
 
 #catalog-helper .title{
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 20px;
   display: block;
 }
@@ -203,8 +205,13 @@ body {
 }
 
 .field-label{
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 4px;
+  font-weight: 700;
+}
+
+input[type="text"], input[type="search"], input[type="password"], textarea {
+    padding: 13px 10px;
 }
 
 .field-hint{

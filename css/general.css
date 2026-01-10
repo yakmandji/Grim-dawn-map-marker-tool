@@ -3,7 +3,7 @@
   --panel: #09181b;
   --p2: #0a1e23;
   --txt: #67999b;
-  --gold-txt: #b9ae92;
+  --gold-txt: #d6c8a6;
   --titlecolor: #59afa3;
   --buttontxt : #5cccbe;
   --placeholdertext : #5da3b1;
@@ -27,7 +27,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  background: linear-gradient(81deg, #493e18, #493a1c 116%, #3b3319);
+  background: linear-gradient(91deg, #3c3314, #6a5225 116%, #31290f);
   color: var(--txt);
   font-size: 14px;
   line-height: 1.4;
@@ -122,6 +122,8 @@ body.editing-region-note .marker-region {
 .mt-1{margin-top: 5px;}
 .mt-2{margin-top: 10px;}
 .mt-3{margin-top: 16px;}
+.mt-4{margin-top: 24px;}
+
 
 .m0{margin: 0!important;}
 
@@ -197,7 +199,6 @@ header .sep {
     gap: 16px;
     margin-top: 20px;
     height: calc(100vh - 78px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
 .row { 
@@ -275,12 +276,11 @@ header .sep {
 
 .tool-section{
   background: linear-gradient(150deg, #272111, #120d06);
-
   border-radius: 18px;
   padding: 22px;
   border: 1px dashed #52422d;
   box-shadow:
-    10px 10px 26px rgba(0, 0, 0, 0.55), 
+    6px 7px 26px rgba(0, 0, 0, 0.55), 
     -10px -10px 26px rgb(43 186 143 / 3%), 
     inset 2px 2px 7px rgba(0, 0, 0, 0.60), 
     inset -2px -2px 7px rgba(255, 220, 170, 0.06)
@@ -452,10 +452,11 @@ header .sep {
 
 .modal h3 {
   margin-top: 0;
-  font-size: 15px;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: var(--muted);
+  color: var(--txt);
+  text-align: center;
 }
 
 .modal ul {
