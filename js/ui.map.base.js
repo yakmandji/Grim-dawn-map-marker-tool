@@ -77,6 +77,13 @@
   window.DECOR_ICONS_MALMOUTH = [
     { id:'nimia', w: 120, h: 160, img: 'img/qol/nimia.png', xp: 79.91, yp: 66.4, isDungeon: true },
     { id:'crown_hill_door', w: 125, h: 125, img: 'img/qol/crown-hill-door.png', xp: 39.8, yp: 19, },
+
+    { id:'infestation_enter', w: 170, h: 155, img: 'img/qol/infestation-enter.png', xp: 51, yp: 2.7 },
+
+    { id:'fleshwork-qol', w: 140, h: 110, img: 'img/qol/fleshwork-qol.png', xp: 16.05, yp: 2.82, isDungeon: true },
+
+
+
     
   ]
 

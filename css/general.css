@@ -45,6 +45,10 @@ textarea {
   display: none!important;
 }
 
+#dungeonLinkLayer{
+  z-index: 2;
+}
+
 #pathLayer{
   z-index: 6;
 }

@@ -151,9 +151,9 @@ window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 { id: "entry_ransaked_lighthouse2", xp: 38.34, yp: 39.43, tag: "Ransacked Lighthouse2", eyeColor:"gray-muted" },
 { id: "entry_swelling_depths", xp: 43.76, yp: 31.72, tag: "Swelling Depths" },
 { id: "entry_swelling_depths2", xp: 42.51, yp: 36.76, tag: "Swelling Depths2", eyeColor:"gray-muted" },
-{ id: "entry_infestation", xp: 50.67, yp: 3.64, tag: "Infestation" },
-{ id: "entry_infestation2", xp: 50.70, yp: 4.19, tag: "Infestation2", eyeColor:"gray-muted" },
-{ id: "entry_infestation3", xp: 50.20, yp: 4, tag: "Infestation2", eyeColor:"blue" },
+{ id: "entry_infestation", xp: 51.2, yp: 2, tag: "Infestation" },
+{ id: "entry_infestation2", xp: 50.70, yp: 4, tag: "Infestation2", eyeColor:"gray-muted" },
+{ id: "entry_infestation3", xp: 50.41, yp: 3.06, tag: "Infestation2", eyeColor:"blue" },
 
 { id: "entry_chamber_council", xp: 49.78, yp: 19.58, tag: "Chamber Council" },
 { id: "entry_chamber_council2", xp: 48.22, yp: 17.36, tag: "Chamber Council2", eyeColor:"gray-muted" },
