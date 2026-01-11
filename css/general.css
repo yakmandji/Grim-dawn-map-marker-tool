@@ -598,6 +598,10 @@ body.shared-only-view #shared-view-message{
   right: 11px;
 }
 
+body.shared-only-view .title-banner{
+  margin-bottom: 30px;
+}
+
 body.shared-only-view #list input,
 body.shared-only-view #routesList input
 {
