@@ -210,6 +210,10 @@ input[type="password"]:focus
   border-color: rgb(120 241 231 / 80%)!important;
 }
 
+.js-modal-new-character input[type="text"]{
+  padding: 10px 10px;
+}
+
 .list-input{
   flex: 0 0 auto;
   border-radius: 6px;
@@ -430,11 +434,13 @@ button.route-sub-menu{
 .marker-cat-badge{
     background: #0c4d44;
     max-width: min-content;
-    padding: 3px 10px;
+    padding: 5px 10px;
     border-radius: 6px;
-    font-size: 11px;
+    font-size: 10px;
     white-space: nowrap;
     opacity: 0.85;
+    color: #7ab1bb;
+    line-height: 0px;
 }
 
 #list .marker-cat-badge.loot{
@@ -936,6 +942,7 @@ header button.menu-button.select-current{
   border: none;
   transition: all 0.6s;
   border: 2px solid transparent;
+  font-size: 13px;
 }
 
 header button.menu-button:active{
@@ -1298,8 +1305,8 @@ header button.menu-button.select-current:hover {
 .checkbox-green {
   appearance: none;
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 4px;
   border: 2px solid #30af7d;
   background: rgba(0,0,0,0.25);

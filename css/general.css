@@ -99,13 +99,13 @@ body.editing-region-note .marker-region {
   font-size: 30px;
   margin: 0px 16px 0px 16px;
   line-height: 34px;
-  color: #37a593;
+  color: var(--gold-txt);
 }
 
 .announce{
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
-  color:#4c898c;
+  color: var(--gold-txt);
   text-align: center;
   margin-top: 68px;
   margin-bottom: 3px;
@@ -612,6 +612,18 @@ body.shared-only-view #routesList input
 body.shared-only-view .mapWrap
  {
   pointer-events: auto;
+}
+
+body.shared-only-view #list .left > div{
+  margin-top: 0;
+}
+
+body.shared-only-view #list .listItem{
+  padding: 9px 8px 11px 16px;
+}
+
+body.shared-only-view #list .left input[type="text"]{
+  padding-top: 0;
 }
 
 /* Hide normal mode */
