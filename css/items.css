@@ -1260,6 +1260,11 @@ header button.menu-button.select-current:hover {
   display: none; 
 }
 
+.mapWrap.hide-route #pathLayer { display: none; }
+.mapWrap.hide-route .path-point,
+.mapWrap.hide-route .path-label,
+.mapWrap.hide-route .path-endpoint { display: none; }
+
 /*LINKED MARKER*/
 
 .marker-link {

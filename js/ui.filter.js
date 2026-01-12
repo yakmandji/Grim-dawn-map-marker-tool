@@ -257,8 +257,9 @@
     const regionBtn = document.querySelector('.filterToggle[data-admin="region"]');
     const shrineBtn = document.querySelector('.filterToggle[data-admin="shrine"]');
     const historyBtn = document.querySelector('.filterToggle[data-admin="history"]');
+    const routeBtn  = document.querySelector('.filterToggle[data-admin="route"]');
 
-
+    mapWrap.classList.toggle('hide-route', !routeBtn?.classList.contains('is-on'));
     mapWrap.classList.toggle('hide-rift',   !riftBtn?.classList.contains('is-on'));
     mapWrap.classList.toggle('hide-region', !regionBtn?.classList.contains('is-on'));
     mapWrap.classList.toggle('hide-shrine', !shrineBtn?.classList.contains('is-on'));
@@ -275,6 +276,9 @@
       saveAdminFilterState(state);
 
       applyAdminVisibility();
+      if (btn.dataset.admin === 'route') {
+        window.UiCore?.renderMarkers?.({ skipRoutesPanel: true });
+      }
     });
   });
 
@@ -283,20 +287,28 @@
 
 
   // Helper global : forcer l’affichage d’une couche admin
-  window.ensureAdminLayerVisible = function (kind) {
-    const btn = document.querySelector(`.filterToggle[data-admin="${kind}"]`);
-    if (!btn) return;
+    window.ensureAdminLayerVisible = function (kind, opts = {}) {
+      const { persist = true, rerender = false } = opts;
 
-    if (!btn.classList.contains('is-on')) {
-      btn.classList.add('is-on');
+      const btn = document.querySelector(`.filterToggle[data-admin="${kind}"]`);
+      if (!btn) return;
 
-      const state = loadAdminFilterState();
-      state[kind] = true;
-      saveAdminFilterState(state);
+      if (!btn.classList.contains('is-on')) {
+        btn.classList.add('is-on');
 
-      applyAdminVisibility();
-    }
-  };
+        if (persist) {
+          const state = loadAdminFilterState();
+          state[kind] = true;
+          saveAdminFilterState(state);
+        }
+
+        applyAdminVisibility();
+
+        if (rerender) {
+          window.UiCore?.renderMarkers?.({ skipRoutesPanel: true });
+        }
+      }
+    };
 
 
   /************************************************************

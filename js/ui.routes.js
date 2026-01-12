@@ -301,6 +301,7 @@ initRouteSubMenus();
 
   // --- Crée une nouvelle route vide ---
   function startNewPath(defaultName = '') {
+    window.ensureAdminLayerVisible?.('route', { persist: false, rerender: true });
     const p = currentProfile();
     if (!p) return null;
     const paths = ensurePathsArray();
@@ -447,6 +448,10 @@ initRouteSubMenus();
   }
 
   function centerRouteOnMap(path) {
+
+  // assure que les routes sont visibles (sans persister le choix)
+    window.ensureAdminLayerVisible?.('route', { persist: false, rerender: true });    
+    
     if (!path || !Array.isArray(path.points) || !path.points.length) return;
 
     const xs = path.points.map(pt => pt.xp);
@@ -723,6 +728,7 @@ initRouteSubMenus();
     deleteRoute,
     renderRoutesPanel,
     centerRouteOnMap,
+    highlightRouteOnMap,
   };
 
 })();

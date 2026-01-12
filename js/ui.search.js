@@ -110,6 +110,7 @@ const t = (window.GDMMLang && typeof GDMMLang.t === 'function')
     dungeon: 'img/donjon-yellow.svg',
     note:    'img/info-icon.svg',
     shrine:  'img/icon-shrine.png',
+    route:   'img/route-icon-g.svg',
   };
 
 
@@ -395,6 +396,44 @@ function searchRegionNotes(term) {
 }
 /*----------------END NOTE SEARCH--------------------------------------------------*/
 
+/*----------------ROUTES SEARCH--------------------------------------------------*/
+
+function searchRoutes(term) {
+  const q = normalize(term);
+  if (!q) return [];
+
+  const core = window.GDMMCore || {};
+  const getCurrentProfile = core.currentProfile || (() => null);
+  const state = core.state || {};
+
+  const p = getCurrentProfile();
+  const activeProfile = state.active || null;
+  if (!p || !activeProfile) return [];
+
+  const paths = Array.isArray(p.paths) ? p.paths : [];
+
+  const typeLabel =
+    (window.GDMMLang && typeof GDMMLang.t === 'function')
+      ? (GDMMLang.t('ui.Route') || 'Route')
+      : 'Route';
+
+  return paths
+    .filter(path => {
+      const name = (path && path.name) ? String(path.name) : '';
+      return normalize(name).includes(q);
+    })
+    .slice(0, 100)
+    .map(path => ({
+      type: 'route',
+      profile: activeProfile,
+      id: path.id,
+      label: path.name || typeLabel,
+      typeLabel,
+    }));
+}
+/*----------------END ROUTE SEARCH--------------------------------------------------*/
+
+
 
 function escapeHtml(str) {
   return (str || '')
@@ -557,20 +596,17 @@ function renderResults(list) {
 
         span.innerHTML = highlightLabel(labelText, tokens);
 
-
-      span.innerHTML = highlightLabel(labelText, tokens);
-
-      // Icône personnalisée pour les markers utilisateurs
-      if (item.type === 'marker') {
-        if (window.GDMMCore && typeof GDMMCore.iconFor === 'function') {
-          icon.src = GDMMCore.iconFor(item.cat) || 'img/pin-general.svg';
+        // Icône personnalisée pour les markers utilisateurs
+        if (item.type === 'marker') {
+          if (window.GDMMCore && typeof GDMMCore.iconFor === 'function') {
+            icon.src = GDMMCore.iconFor(item.cat) || 'img/pin-general.svg';
+          } else {
+            icon.src = 'img/pin-general.svg';
+          }
         } else {
-          icon.src = 'img/pin-general.svg';
+          // Icônes admin / notes (region / rift / dungeon)
+          icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
         }
-      } else {
-        // Icônes admin / notes (region / rift / dungeon)
-        icon.src = TYPE_ICON_PATHS[item.type] || TYPE_ICON_PATHS.region;
-      }
     }
 
     row.appendChild(icon);
@@ -735,6 +771,23 @@ async function goTo(item) {
     inputEl.blur();
   }
 
+  // Cas spécial : route (pas de xp/yp direct)
+  if (item && item.type === 'route' && item.id) {
+    const core = window.GDMMCore || {};
+    const p = core.currentProfile ? core.currentProfile() : null;
+    const paths = (p && Array.isArray(p.paths)) ? p.paths : [];
+    const route = paths.find(r => r && String(r.id) === String(item.id));
+    if (!route) return;
+
+    window.ensureAdminLayerVisible?.('route', { persist: false, rerender: true });
+    window.UiRoutes?.centerRouteOnMap?.(route);
+
+    if (window.UiRoutes?.highlightRouteOnMap) {
+      setTimeout(() => window.UiRoutes.highlightRouteOnMap(route.id), 250);
+    }
+    return;
+  }
+
   // Assurer que la couche admin est visible pour ce type de résultat
   if (typeof window.ensureAdminLayerVisible === 'function') {
     if (item.type === 'rift') {
@@ -852,30 +905,19 @@ async function goTo(item) {
       const trimmed = term.trim();
 
       // Mode "perso" si le terme commence par "/"
-      // Markers perso + notes de région
+      // Markers perso + notes de région + routes
       if (trimmed.startsWith('/')) {
-
-      inputEl.addEventListener('keydown', (e) => {
-        if (e.key !== 'Enter') return;
-
-        if (handleDevSearchCommand(inputEl.value)) {
-          e.preventDefault();
-          return;
-        }
-      });
-
-
         const markerTerm = trimmed.slice(1).trim();
 
         const markerResults = searchMarkers(markerTerm);
         const noteResults   = searchRegionNotes(markerTerm);
+        const routeResults  = searchRoutes(markerTerm); // ✅ ajout
 
-        const results = [...markerResults, ...noteResults];
+        const results = [...markerResults, ...noteResults, ...routeResults]; // ✅ ajout
 
-        // On rend d'abord les résultats
         renderResults(results);
 
-        // On injecte le message d'info en haut de la liste
+        // message d'info inchangé...
         if (resultsEl) {
           const info = document.createElement('div');
           info.className = 'search-info';
@@ -890,6 +932,7 @@ async function goTo(item) {
 
         return;
       }
+
 
       // Mode normal : lieux (régions / donjons / rifts)
       const results = search(term);

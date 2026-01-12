@@ -26,6 +26,10 @@
 
   // --- RENDER ROUTES (extrait de ui.core.js) ---
   function renderRoutes(svgLayer, inner) {
+
+    const wrap = document.querySelector('.mapWrap');
+    if (wrap?.classList.contains('hide-route')) return;
+    
     const p = currentProfile();
     if (!p || !state.mapReady) return;
 
