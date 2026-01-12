@@ -171,7 +171,7 @@ button:active:not(.select-current) {
   z-index: 7;
 }
 
-section.principal.tool-section button {
+.section.principal.tool-section button {
   padding: 8px 8px;
   font-size: 11px;
   min-width: 40%;
