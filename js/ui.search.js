@@ -428,7 +428,6 @@ function searchRoutes(term) {
       profile: activeProfile,
       id: path.id,
       label: path.name || typeLabel,
-      typeLabel,
     }));
 }
 /*----------------END ROUTE SEARCH--------------------------------------------------*/
@@ -503,6 +502,8 @@ function renderResults(list) {
   if (rawTerm.startsWith('/')) {
     rawTerm = rawTerm.slice(1).trim();
   }
+
+  const isCustomLocal = ((inputEl && (inputEl.value || '').trim()) || '').startsWith('/');
 
   const tokens = rawTerm ? rawTerm.split(/\s+/).filter(Boolean) : [];
 
@@ -584,10 +585,13 @@ function renderResults(list) {
         let labelText;
 
         if (item.type === 'rift') {
-          // Pas de catégorie pour les failles
           labelText = `${item.label} (${item.profile})`;
-        } else {
-          // Types classiques : region / dungeon / marker
+        }
+        else if (item.type === 'route') {
+          // On affiche uniquement le nom
+          labelText = item.label || '';
+        }
+        else {
           labelText =
             item.typeLabel && item.label
               ? `${item.typeLabel} - ${item.label} (${item.profile})`
@@ -911,9 +915,9 @@ async function goTo(item) {
 
         const markerResults = searchMarkers(markerTerm);
         const noteResults   = searchRegionNotes(markerTerm);
-        const routeResults  = searchRoutes(markerTerm); // ✅ ajout
+        const routeResults  = searchRoutes(markerTerm);
 
-        const results = [...markerResults, ...noteResults, ...routeResults]; // ✅ ajout
+        const results = [...markerResults, ...noteResults, ...routeResults];
 
         renderResults(results);
 
@@ -953,11 +957,20 @@ async function goTo(item) {
 
     // Échap dans l’input
     inputEl.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        inputEl.blur();
+      if (e.key !== 'Enter') return;
+
+      const raw = (inputEl.value || '').trim();
+      if (!raw.startsWith('/')) return;
+
+      // Dev commands are validated on Enter only
+      if (handleDevSearchCommand(raw)) {
+        e.preventDefault();
         clearResultsLater();
+        inputEl.value = '';
+        inputEl.blur();
       }
     });
+
 
   }
 /*----------------END INIT--------------------------------------------------*/
