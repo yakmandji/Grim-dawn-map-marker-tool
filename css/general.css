@@ -101,9 +101,9 @@ body.editing-region-note .marker-region {
 
 .app-logo .title{
   font-size: 30px;
-  margin: 0px 16px 0px 16px;
   line-height: 34px;
   color: var(--gold-txt);
+  line-height: 28px;
 }
 
 .announce{
@@ -111,8 +111,12 @@ body.editing-region-note .marker-region {
   font-weight: 400;
   color: var(--gold-txt);
   text-align: center;
-  margin-top: 68px;
+  margin-top: 55px;
   margin-bottom: 3px;
+}
+
+.announce .pre-title{
+  font-size: 14px;
 }
 
 .seo-summary {
