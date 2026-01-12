@@ -140,6 +140,11 @@ body {
   margin-top: 2px;
 }
 
+.catalog-card .marker-cat-badge{
+  padding: 10px 10px;
+}
+
+
 .catalog-card .gd-hr {
   margin: 12px 0;
 }
