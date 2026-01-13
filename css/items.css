@@ -101,13 +101,44 @@
 }
 
 button, select, .chip, a.button {
-  background: linear-gradient(145deg, #0a3c4b, #07333b);
-  color: #ced3ec;
-  border: none;
+  background: rgb(11 51 54 / 50%);
+  border: 1px solid #1e5350;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
   font-size: 12px;
+}
+
+button, select{
+  color:var(--buttontxt);
+}
+
+button.danger {
+    border-radius: 8px;
+    border: 1px solid #4a1616;
+    background: rgb(47 9 9 / 50%);
+    color: #d95850;
+    font-weight: 500;
+    padding: 9px 10px;
+}
+
+button.danger:hover {
+  background: linear-gradient(145deg, #3b140d, #2d100a) !important;
+  color: #f95252;
+}
+
+button.warning {
+    border-radius: 8px;
+    border: 1px solid #3b380b;
+    background: rgb(40 39 8 / 50%);
+    color: #b5a683;
+    font-weight: 500;
+    padding: 9px 10px;
+}
+
+button.warning:hover {
+  background: linear-gradient(145deg, #2e2f0b, #1f1c07) !important;
+  color: #c1b290;
 }
 
 a.button{
@@ -126,10 +157,6 @@ textarea::placeholder {
   opacity: 1;
 }
 
-button, select{
-  color:var(--buttontxt);
-}
-
 select option {
   background-color: #163e3f;
   color: #90a7b1;
@@ -145,7 +172,7 @@ select option:checked {
 
 button:hover:not(.select-current, header button.menu-button),
 a.button:hover:not(.select-current) {
-  background:linear-gradient(145deg, #0d2b2f, #0f3137);
+  background: rgb(16 60 63 / 80%);
 }
 
 button:active:not(.select-current) {
@@ -172,8 +199,6 @@ button:active:not(.select-current) {
 }
 
 .section.principal.tool-section button {
-  padding: 8px 8px;
-  font-size: 11px;
   min-width: 40%;
 }
 
@@ -181,11 +206,6 @@ button:active:not(.select-current) {
 #list button.danger,
 {
   max-width: 32px;
-}
-
-button.danger:hover {
-  background: linear-gradient(145deg, #5e190d, #49150a)!important;
-  color: #cb939c;
 }
 
 input[type="text"],
@@ -941,8 +961,8 @@ header button.menu-button.select-current{
   color: var(--gold-txt);
   border: none;
   transition: all 0.6s;
-  border: 2px solid transparent;
   font-size: 13px;
+  border: 1px solid transparent;
 }
 
 header button.menu-button:active{
@@ -951,7 +971,7 @@ header button.menu-button:active{
 
 header button.menu-button:hover,
 header button.menu-button.select-current:hover {
-  border: 2px solid #A6A6A6!important;
+  border: 1px solid #A6A6A6!important;
   box-shadow: 0 0 10px 5px rgba(166, 166, 166, 0.2);
   background-color: rgba(166, 166, 166, 0.1);
   transition: all 0.3s;
@@ -1356,12 +1376,8 @@ header button.menu-button.select-current:hover {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: #0d2a2b;
   border: 2px solid #5f4e33;
   border-radius: 8px;
-  color: #59b7c1;
-  padding: 9px 32px 10px 12px;
-  font-size: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
   position: relative;
@@ -1397,7 +1413,7 @@ a.button {
   align-items: center;
   justify-content: center;
   gap: 9px; 
-  padding: 9px 18px;
+  padding: 9px 10px;
   vertical-align: middle;
   cursor: pointer; 
   outline: none;
@@ -1406,11 +1422,6 @@ a.button {
 button.active,
 select.active { 
   outline: 1px solid #78f1c2; 
-}
-
-button.danger {
-  background: linear-gradient(145deg, #37150f, #4b0f0b);
-  color: #985d53;
 }
 
 #noteList button.danger,
@@ -1451,6 +1462,7 @@ button.marker-save{
 
 .menu-item-list button{
   padding: 9px 20px 9px 14px;
+  background: rgb(11 51 54 / 85%);
 }
 
 /* --- Dropdown custom --- */
@@ -1468,7 +1480,6 @@ button.marker-save{
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 10px;
 }
 
 /* Menu déroulant */
@@ -1528,6 +1539,8 @@ button.marker-save{
   border-radius: 0;
   text-align: left;
   margin-bottom: 3px;
+  border: none;
+  border: 1px solid transparent;
 }
 
 .custom-dropdown .select-label{

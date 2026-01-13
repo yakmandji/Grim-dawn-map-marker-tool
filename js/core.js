@@ -136,7 +136,7 @@
   function clearMarkers(){
     const p = currentProfile();
     if (!p) return false;
-    p.markers = [];
+    p.markers = p.markers.filter(m => m.done);
     p.updated = now();
     return true;
   }

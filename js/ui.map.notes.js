@@ -666,6 +666,15 @@
           }
         }
 
+        window.countAllRegionNotesForActiveProfile = function () {
+          try {
+            const notes = getAllRegionNotes();
+            return notes ? Object.keys(notes).length : 0;
+          } catch (e) {
+            return 0;
+          }
+        };
+
         // --- Exports publics pour le reste de l'application ---
         window.buildNoteList = buildNoteList;
         window.getAllRegionNotes = getAllRegionNotes;

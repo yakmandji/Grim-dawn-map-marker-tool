@@ -116,7 +116,8 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
             localStorage.setItem('gdmm_shrine_progress_v1', JSON.stringify(imported.shrineProgress));
           }
 
-          alert('Save (characters + region notes) imported successfully!');
+          localStorage.setItem('gdmm_show_toast_after_reload', 'SaveImported');
+
           location.reload();
           return;
         }
@@ -236,24 +237,75 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
         ? GDMMLang.t.bind(GDMMLang)
         : null;
 
+      const notesCount =
+        (typeof window.countAllRegionNotesForActiveProfile === 'function')
+          ? (window.countAllRegionNotesForActiveProfile() || 0)
+          : 0;
+
+      // 0 notes => pas de confirm, pas de reload
+      if (notesCount === 0) {
+        showToast?.(
+          t ? t('toast.NothingToDeleteNotes') : 'No region notes to delete',
+          'warning',
+          2200
+        );
+        return;
+      }
+
       const msg = t
         ? t('ui.DeleteNoteConfirm')
         : 'Delete all region notes? This cannot be undone.';
 
-      if (!confirm(msg)) {
-        return;
-      }
+      if (!confirm(msg)) return;
 
       // Supprime uniquement les notes du personnage + profil (map) actifs
       if (typeof window.clearAllRegionNotesForActiveProfile === 'function') {
         window.clearAllRegionNotesForActiveProfile();
       } else {
-        // Fallback de sécurité si jamais le helper n'existe pas
         localStorage.removeItem('gdmm_region_notes_v1');
       }
 
-      // Recharge pour enlever les "i" et tooltips
+      // Toast APRÈS reload
+      localStorage.setItem('gdmm_show_toast_after_reload', 'NotesCleared');
       location.reload();
+    });
+
+
+    // --- Delete ALL archived markers (done = true) ---
+    $('#clearArchive')?.addEventListener('click', () => {
+      const p = currentProfile();
+      if (!p || !Array.isArray(p.markers)) return;
+
+      const archived = p.markers.filter(m => m.done);
+      if (!archived.length) {
+        showToast?.(
+          GDMMLang.t?.('toast.NothingToDeleteArchive') || 'No archived markers',
+          'warning',
+          2200
+        );
+        return;
+      }
+
+      if (!confirm(
+        GDMMLang.t?.('ui.ConfirmDeleteArchive') ||
+        'Delete all archived markers?'
+      )) return;
+
+      // Keep only active markers
+      p.markers = p.markers.filter(m => !m.done);
+
+      markAsChanged?.();
+      saveUserDataToLocal?.();
+
+      renderList?.();
+      renderMarkers?.();
+      renderRoutesPanel?.();
+
+      showToast?.(
+        GDMMLang.t?.('toast.ArchiveCleared') || 'Archive cleared',
+        'success',
+        2600
+      );
     });
 
 
@@ -329,18 +381,88 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
   }
 
 
-    // --- Clear markers actif profil ---
-  $('#clearProfile')?.addEventListener('click', () => {
-    const prof = currentProfile(); if (!prof) return;
-    if (!confirm(GDMMLang.t('toast.WarnDeleteAllMarkers'))) return;
-    coreClearMarkers();
-    saveUserDataToLocal();
-    renderList();
-    renderMarkers();
-    markAsChanged();
-    renderRoutesPanel();
-    showToast(GDMMLang.t('toast.MarkerMapCleared'));
+  // --- Archive ALL active markers (active profile) ---
+  $('#addToArchive')?.addEventListener('click', () => {
+    const p = currentProfile();
+    if (!p) return;
+
+    const markers = Array.isArray(p.markers) ? p.markers : [];
+    const active = markers.filter(m => !m.done);
+
+    if (!active.length) {
+      showToast?.(GDMMLang.t('toast.NothingToArchive') || 'Nothing to archive', 'warning', 2200);
+      return;
+    }
+
+    const msg =
+      (GDMMLang.t && (GDMMLang.t('ui.ConfirmAddToArchive') || GDMMLang.t('toast.ConfirmAddToArchive'))) ||
+      `Archive ${active.length} active marker(s)?`;
+
+    if (!confirm(msg)) return;
+
+    // Si l’historique est masqué, on le force visible (même logique que quand on coche "done")
+    window.UiFilters?.ensureHistoryVisible?.();
+
+    const now = Date.now();
+
+    // Batch update (pas de rerender ici)
+    active.forEach(m => {
+      window.GDMMCore.updateMarker(m.id, { done: true, doneAt: now });
+    });
+
+    // 1 seul rerender + save
+    markAsChanged?.();
+    saveUserDataToLocal?.();
+
+    renderList?.();
+    renderMarkers?.();
+    renderRoutesPanel?.();
+
+    showToast?.(
+      (GDMMLang.t && (GDMMLang.t('toast.AllArchived') || GDMMLang.t('toast.MarkersArchived'))) ||
+        `Archived ${active.length} marker(s) ✅`,
+      'success',
+      2600
+    );
   });
+
+
+
+    // --- Clear markers actif profil ---
+    $('#clearProfile')?.addEventListener('click', () => {
+      const prof = currentProfile();
+      if (!prof || !Array.isArray(prof.markers)) return;
+
+      // Check active markers
+      const hasActiveMarkers = prof.markers.some(m => !m.done);
+
+      if (!hasActiveMarkers) {
+        showToast?.(
+          GDMMLang.t?.('toast.NothingToDeleteMarkers') ||
+            'No active markers to delete',
+          'warning',
+          2200
+        );
+        return;
+      }
+
+      if (!confirm(GDMMLang.t?.('toast.WarnDeleteAllMarkers'))) return;
+
+      coreClearMarkers();
+      saveUserDataToLocal();
+      renderList();
+      renderMarkers();
+      markAsChanged();
+      renderRoutesPanel();
+
+      showToast?.(
+        GDMMLang.t?.('toast.MarkerMapCleared') ||
+          'Active markers deleted',
+        'success',
+        2600
+      );
+    });
+
 
     $('#clearShrine')?.addEventListener('click', () => {
     if (typeof window.clearAllShrinesForActiveChar !== 'function') return;

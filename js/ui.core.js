@@ -1216,13 +1216,15 @@ viewport.addEventListener('pointermove', e => {
       const container = document.getElementById('toastContainer');
       const filters = document.getElementById('globalFilters');
 
-      if (toastContainer && filters) {
-          const r = filters.getBoundingClientRect();
-          toastContainer.style.top = `${Math.round(r.bottom + 10)}px`;
-       }
       if (!container) {
         console.warn('[GDMM] Missing #toastContainer element.');
         return;
+      }
+
+      // Reposition under filters
+      if (filters) {
+        const r = filters.getBoundingClientRect();
+        container.style.top = `${Math.round(r.bottom + 10)}px`;
       }
 
       const el = document.createElement('div');
@@ -1236,6 +1238,7 @@ viewport.addEventListener('pointermove', e => {
         setTimeout(() => el.remove(), 300);
       }, duration);
     }
+
 
     // === PATHS (ADD / EXPORT / IMPORT) ===
     const newPathBtn = document.getElementById('newPathBtn');
@@ -1607,6 +1610,52 @@ viewport.addEventListener('pointermove', e => {
       // defaut lock
       state.locked = true;
       applyLockUI();
+
+      // --- Post-reload toast (AFTER full UI init) ---
+      (function handlePostReloadToastAfterInit() {
+        const toastKey = localStorage.getItem('gdmm_show_toast_after_reload');
+        if (!toastKey) return;
+
+        localStorage.removeItem('gdmm_show_toast_after_reload');
+
+        // Attendre que le layout soit vraiment stable (filtres, fonts, etc.)
+        const maxTries = 20;
+        let tries = 0;
+
+        const tick = () => {
+          tries++;
+
+          const filters = document.getElementById('globalFilters');
+          const r = filters ? filters.getBoundingClientRect() : null;
+
+          // On considère "ok" si le bloc a une hauteur plausible et un bottom non nul
+          const ok = r && r.height > 20 && r.bottom > 20;
+
+          if (ok) {
+            showToast?.(
+              GDMMLang.t?.(`toast.${toastKey}`) || toastKey,
+              'success',
+              2600
+            );
+            return;
+          }
+
+          if (tries >= maxTries) {
+            // fallback : on affiche quand même (mieux que rien)
+            showToast?.(
+              GDMMLang.t?.(`toast.${toastKey}`) || toastKey,
+              'success',
+              2600
+            );
+            return;
+          }
+
+          requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+      })();
+
 
     })();
 

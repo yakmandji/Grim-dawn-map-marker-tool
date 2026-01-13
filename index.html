@@ -29,7 +29,7 @@
 
   <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="stylesheet" href="css/general.css?v2.00" />
-  <link rel="stylesheet" href="css/items.css?v2.06" />
+  <link rel="stylesheet" href="css/items.css?v2.07" />
   <link rel="stylesheet" href="css/responsive.css?v1.43" />
   
 </head>
@@ -117,7 +117,7 @@
                       </div>        
                       <div class="row" style="margin-top: 16px;">
                         <button id="newPathBtn" class="small" type="button">
-                          <img src="img/add-circle.png?v2.2" width="16"><span data-i18n="ui.AddRouteButton">Add</span>
+                          <img src="img/add-circle.png?v2.2" width="17"><span data-i18n="ui.AddRouteButton">Add</span>
                         </button>
                         <button id="toolFinishPath" class="toolBtn small">
                           <img src="img/check.svg" width="17"><span data-i18n="ui.FinishPath">Finish</span>
@@ -266,7 +266,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.5.82</span>
+        <span>V.5.83</span>
       </div>      
       <div class="title-banner">
         <div class="app-logo">
@@ -328,12 +328,17 @@
           <button id="importReplaceBtn" class="small" data-i18n="ui.ImportButton">Import save</button>
           <button id="exportFileBtn" class="small" data-i18n="ui.ExportButton">Export save</button>
         </div>
+        <hr class="gd-hr">
         <div class="row" style="margin-top:10px;">
-            <button id="clearProfile" class="small danger" data-i18n="ui.DeleteMarkerButton">Delete all markers</button>
+          <button id="clearShrine" class="small warning" data-i18n="ui.DeleteShrineButton">Reset all Shrines</button> 
+          <button id="addToArchive" class="small warning" data-i18n="ui.AddToArchive">Transfert all marker to archive</button> 
+        </div>
+        <hr class="gd-hr">
+        <div class="row" style="margin-top:10px;">
+            <button id="clearProfile" class="small danger" data-i18n="ui.DeleteMarkerButton">Delete all actives markers</button>
+            <button id="clearArchive" class="small danger" data-i18n="ui.DeleteArchiveButton">Delete all Archives</button>             
             <button id="clearPaths" class="small danger" data-i18n="ui.DeletePathButton">Delete all paths</button>
-            <button id="clearNotes" class="small danger" data-i18n="ui.DeleteNoteButton">Delete all Notes</button>
-            <button id="clearShrine" class="small danger" data-i18n="ui.DeleteShrineButton">Reset all Shrines</button>            
-
+            <button id="clearNotes" class="small danger" data-i18n="ui.DeleteNoteButton">Delete all Notes</button>          
         </div>   
       </div> 
 
@@ -727,8 +732,8 @@
   </div>
 </footer>
 
-  <script src="js/ui.lang.js?v=3.86"></script>
-  <script src="js/core.js?v=3.14"></script>
+  <script src="js/ui.lang.js?v=3.87"></script>
+  <script src="js/core.js?v=3.15"></script>
   <script src="js/ui.rift.js?v=4.22"></script>
   <script src="js/ui.region.js?v=4.43"></script>
 
@@ -741,15 +746,15 @@
   <script src="js/ui.markers.js?v=29"></script>
   <script src="js/ui.routes.js?v=1.28"></script>
 
-  <script src="js/ui.core.js?v=4.16"></script>
+  <script src="js/ui.core.js?v=4.17"></script>
 
-  <script src="js/ui.map.notes.js?v=1.06"></script>
+  <script src="js/ui.map.notes.js?v=1.07"></script>
 
   <script src="js/ui.map.render.js?v=1.92"></script>
   <script src="js/ui.share.js?v=1.16"></script>
 
   <script src="libs/pako.min.js"></script>
-  <script src="js/ui.tools.js?v=3.12"></script>
+  <script src="js/ui.tools.js?v=3.13"></script>
   <script src="js/ui.overlay.js?v=3.53"></script>
   <script src="js/ui.dungeon.links.js?v=1.37"></script>
   <script src="js/ui.filter.js?v=3.05"></script>
