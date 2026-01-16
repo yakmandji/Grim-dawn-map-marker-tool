@@ -114,7 +114,7 @@ window.DUNGEON_OVERLAYS = [
 { id: 'splendors_shattered_realm', map: 'korvan', img: 'splendors-shattered-realm.jpg?1.0',  left: 12.5270, top: 94.7219, width: 4.5536, height: 4.2713 },
 
 { id: 'conclave_of_the_three_town', map: 'korvan', img: 'conclave-of-the-three.jpg?1.0',  left: 28.3378, top: 89.8466, width: 17.5, height: 12.3 },
-
+{ id: 'vengard_of_the_three_town', map: 'korvan', img: 'vengard-of-the-three.jpg?1.0',  left: 65.2623, top: 50.7111, width: 11.6640, height: 8.2 },
 
 
 ];

@@ -204,6 +204,7 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
   { id: "entry_splendors_shattered_realm", xp: 20.09, yp: 97.32, tag: "Sanctum Chosen" },
 
 { id: "entry_conclave_of_the_three", xp: 20.56, yp: 95.16, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
+{ id: "entry_vengard_of_the_three_town", xp: 65.95, yp: 49.04, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
 
 
 ];
@@ -306,6 +307,8 @@ window.DUNGEON_LINKS = {
   /*KORVAN*/
 
   "conclave_of_the_three_town":["entry_conclave_of_the_three"],
+  "vengard_of_the_three_town":["entry_vengard_of_the_three_town"],
+  
   
   "forgotten_cellar": ["entry_forgotten_cellar" ],
   "veiled_den": ["entry_veiled_den" ],
