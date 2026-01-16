@@ -166,12 +166,19 @@ window.DUNGEON_ENTRY_MARKERS_MALMOUTH = [
 
 window.DUNGEON_ENTRY_MARKERS_KORVAN = [
   { id: "entry_forgotten_cellar", xp: 19.27, yp: 95.47, tag: "Forgotten Cellar" },
+
   { id: "entry_veiled_den", xp: 18.72, yp: 96.56, tag: "Veiled Den" },
   { id: "entry_crawling_nest", xp: 21.56, yp: 86.78, tag: "Crawling Nest" },
   { id: "entry_temple_osyr", xp: 34.83, yp: 75.86, tag: "Temple Osyr" },
   { id: "entry_maw_of_enaht", xp: 31.57, yp: 56.48, tag: "Maw Of Enaht" },
   { id: "entry_forlorn_bastion", xp: 18.99, yp: 62.02, tag: "Forlorn Bastion" },
+  { id: "entry_forlorn_bastion2", xp: 20.81, yp: 63.27, tag: "Forlorn Bastion 2", eyeColor:"gray-muted" },
+
+
   { id: "entry_sandblown_ruin", xp: 32.97, yp: 52.27, tag: "Sandblown Ruin" },
+  { id: "entry_sandblown_ruin2", xp: 33.47, yp: 52.08, tag: "Sandblown Ruin 2", eyeColor:"gray-muted" },
+
+
   { id: "entry_durgs_den", xp: 37.88, yp: 53.45, tag: "Durgs Den" },
   { id: "entry_howling_chasm", xp: 55.09, yp: 48.37, tag: "Howling Chasm" },
   { id: "entry_howling_chasm2", xp: 58.55, yp: 47.54, tag: "Howling Chasm 2", eyeColor:"gray" },
@@ -305,8 +312,8 @@ window.DUNGEON_LINKS = {
   "crawling_nest": ["entry_crawling_nest" ],
   "temple_osyr": ["entry_temple_osyr" ],
   "maw_of_enaht": ["entry_maw_of_enaht" ],
-  "forlorn_bastion": ["entry_forlorn_bastion" ],
-  "sandblown_ruin": ["entry_sandblown_ruin" ],
+  "forlorn_bastion": ["entry_forlorn_bastion", "entry_forlorn_bastion2" ],
+  "sandblown_ruin": ["entry_sandblown_ruin", "entry_sandblown_ruin2" ],
   "durgs_den": ["entry_durgs_den" ],
   "howling_chasm": ["entry_howling_chasm","entry_howling_chasm2" ],
   "sanctuary_horan": ["entry_sanctuary_horan"],
