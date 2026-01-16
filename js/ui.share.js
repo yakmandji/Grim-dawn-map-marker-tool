@@ -541,7 +541,7 @@
 
 window.UiShare = {
   loadSharedFromUrl,
-  createLink, // ✅ IMPORTANT
+  createLink, // IMPORTANT
 };
 
 
@@ -622,9 +622,8 @@ window.UiShare = {
     try {
       if (SHARE_WORKER_BASE) {
 
-        // Build request body without null fields
         const payloadBody = { data: safePayload };
-        if (opts?.id) payloadBody.id = opts.id;
+        if (opts?.id && opts?.editKey) payloadBody.id = opts.id;
         if (opts?.editKey) payloadBody.editKey = opts.editKey;
 
         const res = await fetch(`${SHARE_WORKER_BASE}/create`, {
@@ -633,11 +632,23 @@ window.UiShare = {
           body: JSON.stringify(payloadBody),
         });
 
-        const out = await res.json();
+        let out = null;
+        let raw = "";
+        try {
+          raw = await res.text();
+          out = raw ? JSON.parse(raw) : null;
+        } catch (e) {
+          console.warn("[GDMM] Worker returned non-JSON:", res.status, raw?.slice(0, 200));
+          return null;
+        }
+
+        if (!res.ok) {
+          console.warn("[GDMM] Worker error:", res.status, out);
+          return null;
+        }
 
         // Retry once as fresh create if stored gist id is invalid (404)
-        if (out && out.error && out.ghStatus === 404 && opts && opts.id) {
-
+        if (out && out.error && out.ghStatus === 404 && opts?.id) {
           const payloadBody2 = { data: safePayload };
           if (opts?.editKey) payloadBody2.editKey = opts.editKey;
 
@@ -647,19 +658,26 @@ window.UiShare = {
             body: JSON.stringify(payloadBody2),
           });
 
-          let out2;
-          try { out2 = await res2.json(); } catch { return null; }
-
-          if (res2.ok && out2 && out2.ok && out2.id) {
-            return `${getShareBaseUrl()}/?s=${encodeURIComponent(out2.id)}`;
+          let out2 = null;
+          let raw2 = "";
+          try {
+            raw2 = await res2.text();
+            out2 = raw2 ? JSON.parse(raw2) : null;
+          } catch {
+            console.warn("[GDMM] Worker returned non-JSON (retry):", res2.status, raw2?.slice(0, 200));
+            return null;
           }
 
+          if (res2.ok && out2?.ok && out2.id) {
+            return `${getShareBaseUrl()}/?s=${encodeURIComponent(out2.id)}`;
+          }
           return null;
         }
 
-        if (out && out.ok && out.id) {
+        if (out?.ok && out.id) {
           finalUrl = `${getShareBaseUrl()}/?s=${encodeURIComponent(out.id)}`;
         }
+    
       }
 
     } catch (e) {

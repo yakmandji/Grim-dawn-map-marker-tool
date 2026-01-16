@@ -614,22 +614,21 @@ const shareBtn = document.getElementById('shareRoutesBtn');
       maps,
     };
 
-    // --- Stable link per character (browser) ---
-    const editKey = getOrCreateEditKey();
-    const existingId = getShareIdForChar(charId);
+    const isFile = location.protocol === 'file:' || location.origin === 'null';
 
-    // IMPORTANT: on utilise la fonction centrale (worker + fallback + clipboard)
+    const editKey = isFile ? null : getOrCreateEditKey();
+    const existingId = isFile ? null : getShareIdForChar(charId);
+
     const url = await window.GDMMShare?.createLink?.(payload, {
       id: existingId || null,
       editKey,
     });
 
-
       // Store returned short share id (if any)
       let stored = false;
 
       try {
-        if (url) {
+        if (!isFile && url) {
           const u = new URL(url, location.origin);
           const newId = u.searchParams.get('s');
           if (newId) {
@@ -641,10 +640,12 @@ const shareBtn = document.getElementById('shareRoutesBtn');
         console.warn('[GDMM share] failed to store share id', e);
       }
 
+
       // Toast succès = UNIQUEMENT si tout s’est bien passé
-      if (stored) {
+      if (url) {
         showToast(GDMMLang.t('toast.ShareUrlCopied'), 'success', 3800);
       }
+
 
   });
 
