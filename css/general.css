@@ -748,7 +748,7 @@ body.shared-only-view #mergeSharedBtn,
   font-size: 12px;
   font-weight: 600;
   color:var(--muted);
-  padding: 4px 0px 8px 1px;
+  padding: 4px 8px 4px 1px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   text-align: right;
 }
