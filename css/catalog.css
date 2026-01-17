@@ -28,7 +28,7 @@ body {
 	  linear-gradient(rgba(9,24,27,0.50), rgba(9,19,22,0.5)),
       url("../img/catalog-banner.jpg");
    background-size: cover;
-   padding: 180px 20px;
+   padding: 137px 10px 70px 10px;
    font-weight: 600;
 }
 
@@ -53,6 +53,13 @@ body {
   font-weight: 600;
 } 
 
+.app-logo .title-desc{
+  max-width: 700px;
+  line-height: 24px;
+  color: var(--txt);
+  font-size: 16px;
+}
+
 .app{
 	display: initial;
 }
@@ -60,7 +67,7 @@ body {
 .catalog-container {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 25px 24px;
+  padding: 50px 24px;
 }
 
 .catalog-header {
@@ -163,9 +170,9 @@ body {
 }
 
 #catalog-helper{
-    padding: 14px;
     color: #b9ae92;
-    margin-bottom: 55px;
+    margin-bottom: 24px;
+    padding-top: 32px;
 }
 
 #catalog-helper .title{

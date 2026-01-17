@@ -148,7 +148,7 @@
       "ui.HelpCatalogHelperTitle": "How it works",
       "ui.HelpCatalogHelper1": "Start by creating a share link for a marker, a route, or your map from the main application",
       "ui.HelpCatalogHelper2": "Then, submit this link using the form on the Community Content page to add it to the catalog",
-      "ui.HelpCatalogHelper3": "Routes and markers always generate a new link. Complete maps always have a single link (per character)",
+      "ui.HelpCatalogHelper3": "Routes and markers always generate a new link. Complete maps update the same link (per character)",
 
       "ui.SubmitMapButton": "+ Submit content",
       "ui.BackToMapButton": "← Back to Map",
@@ -180,6 +180,7 @@
       "toast.NothingToDeleteNotes" : "No region notes to delete",
       "toast.NothingToDeleteNotes": "No region notes to delete",
       "toast.NotesCleared": "All region notes have been deleted",
+      "ui.announceCatalog" : "All community shared content can be merged into your own map while preserving your existing markers, routes, and progress",
 
     },
     fr: {
@@ -325,7 +326,7 @@
       "ui.HelpCatalogHelperTitle": "Comment ça fonctionne",
       "ui.HelpCatalogHelper1": "Commencez par créer un lien de partage pour un marqueur, une route ou votre carte depuis l’application principale",
       "ui.HelpCatalogHelper2": "Ensuite, soumettez ce lien via le formulaire de la page Contenu communautaire pour l’ajouter au catalogue",
-      "ui.HelpCatalogHelper3": "Les routes et les marqueurs génèrent toujours un nouveau lien. Les cartes complètes ont toujours un lien unique (par personnage)",
+      "ui.HelpCatalogHelper3": "Les routes et les marqueurs génèrent toujours un nouveau lien. Les cartes complètes mettent toujours à jour le même lien par personnage",
 
       "ui.SubmitMapButton": "+ Soumettre du contenu",
       "ui.BackToMapButton": "← Retour à la carte",
@@ -354,6 +355,8 @@
       "toast.NothingToDeleteMarkers": "Aucun marqueur actif à supprimer",
       "toast.NothingToDeleteNotes": "Aucune note de région à supprimer",
       "toast.NotesCleared": "Toutes les notes de région ont été supprimées",
+      "ui.announceCatalog" : "Tout le contenu communautaire partagé peut être fusionné avec votre propre carte tout en conservant vos marqueurs, routes et progression existants",
+
 
     },
     es: {
@@ -498,7 +501,7 @@
       "ui.HelpCatalogHelperTitle": "Cómo funciona",
       "ui.HelpCatalogHelper1": "Comienza creando un enlace para compartir un marcador, una ruta o tu mapa desde la aplicación principal",
       "ui.HelpCatalogHelper2": "Luego, envía este enlace mediante el formulario de la página Contenido de la comunidad para añadirlo al catálogo",
-      "ui.HelpCatalogHelper3": "Las rutas y los marcadores siempre generan un nuevo enlace. Los mapas completos siempre tienen un enlace único (por personaje)",
+      "ui.HelpCatalogHelper3": "Las rutas y los marcadores siempre generan un nuevo enlace. Los mapas completos siempre actualizan el mismo enlace por personaje",
       "ui.SubmitMapButton": "+ Enviar contenido",
       "ui.BackToMapButton": "← Volver al mapa",
       "ui.CommunityMapButton": "Contenido de la comunidad",
@@ -526,6 +529,8 @@
       "toast.NothingToDeleteMarkers": "No hay marcadores activos para eliminar",
       "toast.NothingToDeleteNotes": "No hay notas de región para eliminar",
       "toast.NotesCleared": "Todas las notas de región han sido eliminadas",
+      "ui.announceCatalog" : "Todo el contenido compartido por la comunidad puede fusionarse con tu propio mapa conservando tus marcadores, rutas y progreso existentes",
+
 
     },
 
@@ -672,7 +677,7 @@
       "ui.HelpCatalogHelperTitle": "So funktioniert es",
       "ui.HelpCatalogHelper1": "Beginne damit, einen Freigabelink für einen Marker, eine Route oder deine Karte in der Hauptanwendung zu erstellen",
       "ui.HelpCatalogHelper2": "Reiche diesen Link anschließend über das Formular auf der Seite Community-Inhalte ein, um ihn dem Katalog hinzuzufügen",
-      "ui.HelpCatalogHelper3": "Routen und Marker erzeugen immer einen neuen Link. Vollständige Karten haben immer einen eindeutigen Link (pro Charakter)",
+      "ui.HelpCatalogHelper3": "Routen und Marker erzeugen immer einen neuen Link. Vollständige Karten aktualisieren immer denselben Link pro Charakter",
 
       "ui.SubmitMapButton": "+ Inhalt einreichen",
       "ui.BackToMapButton": "← Zurück zur Karte",
@@ -701,6 +706,8 @@
       "toast.NothingToDeleteMarkers": "Keine aktiven Marker zum Löschen",
       "toast.NothingToDeleteNotes": "Keine Regionsnotizen zum Löschen",
       "toast.NotesCleared": "Alle Regionsnotizen wurden gelöscht",
+      "ui.announceCatalog" : "Alle von der Community geteilten Inhalte können in deine eigene Karte integriert werden, ohne deine bestehenden Marker, Routen und Fortschritte zu verlieren",
+
 
     },
 
@@ -847,7 +854,7 @@
        "ui.HelpCatalogHelperTitle": "Como funciona",
       "ui.HelpCatalogHelper1": "Comece criando um link de compartilhamento para um marcador, uma rota ou o seu mapa a partir da aplicação principal",
       "ui.HelpCatalogHelper2": "Em seguida, envie este link através do formulário da página Conteúdo da comunidade para adicioná-lo ao catálogo",
-      "ui.HelpCatalogHelper3": "Rotas e marcadores sempre geram um novo link. Mapas completos sempre têm um único link (por personagem)",
+      "ui.HelpCatalogHelper3": "Rotas e marcadores sempre geram um novo link. Mapas completos sempre atualizam o mesmo link por personagem",
 
        "ui.SubmitMapButton": "+ Enviar conteúdo",
        "ui.BackToMapButton": "← Voltar ao mapa",
@@ -876,6 +883,8 @@
       "toast.NothingToDeleteMarkers": "Não há marcadores ativos para excluir",
       "toast.NothingToDeleteNotes": "Não há notas de região para excluir",
       "toast.NotesCleared": "Todas as notas de região foram excluídas",      
+      "ui.announceCatalog" : "Todo o conteúdo compartilhado pela comunidade pode ser mesclado ao seu próprio mapa, preservando seus marcadores, rotas e progresso existentes",
+
 
   },
 
@@ -1021,7 +1030,7 @@
     "ui.HelpCatalogHelperTitle": "Как это работает",
     "ui.HelpCatalogHelper1": "Начните с создания ссылки для общего доступа к маркеру, маршруту или вашей карте в основном приложении",
      "ui.HelpCatalogHelper2": "Затем отправьте эту ссылку через форму на странице Контент сообщества, чтобы добавить её в каталог",
-    "ui.HelpCatalogHelper3": "Маршруты и маркеры всегда создают новую ссылку. Полные карты всегда имеют одну уникальную ссылку (на персонажа)",
+    "ui.HelpCatalogHelper3": "Маршруты и маркеры всегда создают новую ссылку. Полные карты всегда обновляют одну и ту же ссылку для персонажа",
 
     "ui.SubmitMapButton": "+ Отправить контент",
     "ui.BackToMapButton": "← Назад к карте",
@@ -1050,6 +1059,8 @@
     "toast.NothingToDeleteMarkers": "Нет активных маркеров для удаления",
     "toast.NothingToDeleteNotes": "Нет заметок регионов для удаления",
     "toast.NotesCleared": "Все заметки регионов были удалены",
+    "ui.announceCatalog" : "Весь контент, созданный сообществом, можно объединить с вашей картой, сохранив существующие маркеры, маршруты и прогресс",
+
 
   },
 
@@ -1196,7 +1207,7 @@
       "ui.HelpCatalogHelperTitle": "Come funziona",
       "ui.HelpCatalogHelper1": "Inizia creando un link di condivisione per un marcatore, un percorso o la tua mappa dall’applicazione principale",
       "ui.HelpCatalogHelper2": "Successivamente, invia questo link tramite il modulo della pagina Contenuti della community per aggiungerlo al catalogo",
-      "ui.HelpCatalogHelper3": "Percorsi e marcatori generano sempre un nuovo link. Le mappe complete hanno sempre un link unico (per personaggio)",
+      "ui.HelpCatalogHelper3": "Percorsi e marker generano sempre un nuovo link. Le mappe complete aggiornano sempre lo stesso link per personaggio",
 
       "ui.SubmitMapButton": "+ Invia contenuto",
       "ui.BackToMapButton": "← Torna alla mappa",
@@ -1225,6 +1236,8 @@
       "toast.NothingToDeleteMarkers": "Nessun marker attivo da eliminare",
       "toast.NothingToDeleteNotes": "Nessuna nota di regione da eliminare",
       "toast.NotesCleared": "Tutte le note di regione sono state eliminate",
+      "ui.announceCatalog" : "Tutti i contenuti condivisi dalla community possono essere uniti alla tua mappa mantenendo i tuoi marker, percorsi e progressi esistenti",
+
 
     },
 
@@ -1391,7 +1404,7 @@
       "ui.HelpCatalogHelperTitle": "Jak to działa",
       "ui.HelpCatalogHelper1": "Zacznij od utworzenia linku udostępniania dla znacznika, trasy lub swojej mapy w głównej aplikacji",
       "ui.HelpCatalogHelper2": "Następnie prześlij ten link za pomocą formularza na stronie Treści społeczności, aby dodać go do katalogu",
-      "ui.HelpCatalogHelper3": "Trasy i znaczniki zawsze generują nowy link. Pełne mapy zawsze mają jeden unikalny link (na postać)",
+      "ui.HelpCatalogHelper3": "Trasy i znaczniki zawsze generują nowy link. Pełne mapy zawsze aktualizują ten sam link dla postaci",
 
       "ui.SubmitMapButton": "+ Dodaj treść",
       "ui.BackToMapButton": "← Powrót do mapy",
@@ -1420,6 +1433,8 @@
       "toast.NothingToDeleteMarkers": "Brak aktywnych znaczników do usunięcia",
       "toast.NothingToDeleteNotes": "Brak notatek regionu do usunięcia",
       "toast.NotesCleared": "Wszystkie notatki regionu zostały usunięte",
+      "ui.announceCatalog" : "Cała zawartość udostępniona przez społeczność może zostać scalona z Twoją mapą, zachowując istniejące znaczniki, trasy i postępy",
+
 
     },
 
@@ -1566,7 +1581,7 @@
       "ui.HelpCatalogHelperTitle": "使用说明",
       "ui.HelpCatalogHelper1": "首先在主应用中创建一个用于共享标记、路线或你的地图的链接",
       "ui.HelpCatalogHelper2": "然后通过社区内容页面的表单提交此链接，将其添加到目录中",
-      "ui.HelpCatalogHelper3": "路线和标记始终会生成新的链接。完整地图始终只有一个链接（每个角色）",
+      "ui.HelpCatalogHelper3": "路线和标记始终会生成新的链接。完整地图始终为每个角色更新同一个链接",
 
        "ui.SubmitMapButton": "+ 提交内容",
       "ui.BackToMapButton": "← 返回地图",
@@ -1595,6 +1610,8 @@
       "toast.NothingToDeleteMarkers": "没有可删除的活动标记",
       "toast.NothingToDeleteNotes": "没有可删除的区域备注",
       "toast.NotesCleared": "所有区域备注已被删除",
+      "ui.announceCatalog" : "所有社区共享内容都可以合并到你的地图中，同时保留你现有的标记、路线和进度",
+
 
     },
     ja: {
@@ -1740,7 +1757,7 @@
       "ui.HelpCatalogHelperTitle": "使い方",
       "ui.HelpCatalogHelper1": "まずメインアプリで、マーカー、ルート、または自分のマップの共有リンクを作成します",
       "ui.HelpCatalogHelper2": "次に、コミュニティコンテンツページのフォームからこのリンクを送信して、カタログに追加します",
-      "ui.HelpCatalogHelper3": "ルートやマーカーは常に新しいリンクを生成します。完全なマップは常に1つのリンクを持ちます（キャラクターごと）",
+      "ui.HelpCatalogHelper3": "ルートやマーカーは常に新しいリンクを生成します。完全なマップはキャラクターごとに同じリンクを常に更新します",
 
        "ui.SubmitMapButton": "+ コンテンツを送信",
       "ui.BackToMapButton": "← マップに戻る",
@@ -1769,6 +1786,8 @@
       "toast.NothingToDeleteMarkers": "削除できるアクティブなマーカーはありません",
       "toast.NothingToDeleteNotes": "削除できる地域メモはありません",
       "toast.NotesCleared": "すべての地域メモが削除されました",
+      "ui.announceCatalog" : "コミュニティで共有されたすべてのコンテンツは、既存のマーカー、ルート、進行状況を保持したまま自分のマップに統合できます",
+
 
     },
 
@@ -1917,7 +1936,7 @@
       "ui.HelpCatalogHelperTitle": "사용 방법",
       "ui.HelpCatalogHelper1": "먼저 메인 애플리케이션에서 마커, 경로 또는 자신의 지도를 공유하는 링크를 생성하세요",
       "ui.HelpCatalogHelper2": "그다음 커뮤니티 콘텐츠 페이지의 양식을 통해 이 링크를 제출하여 카탈로그에 추가하세요",
-      "ui.HelpCatalogHelper3": "경로와 마커는 항상 새 링크를 생성합니다. 전체 지도는 항상 하나의 링크만 가집니다 (캐릭터별)",
+      "ui.HelpCatalogHelper3": "경로와 마커는 항상 새 링크를 생성합니다. 전체 지도는 캐릭터별로 동일한 링크를 항상 업데이트합니다",
 
       "ui.SubmitMapButton": "+ 콘텐츠 제출",
       "ui.BackToMapButton": "← 지도으로 돌아가기",
@@ -1946,6 +1965,8 @@
       "toast.NothingToDeleteMarkers": "삭제할 활성 마커가 없습니다",
       "toast.NothingToDeleteNotes": "삭제할 지역 메모가 없습니다",
       "toast.NotesCleared": "모든 지역 메모가 삭제되었습니다",
+      "ui.announceCatalog" : "모든 커뮤니티 공유 콘텐츠를 기존 마커, 경로 및 진행 상황을 유지한 채 자신의 지도에 병합할 수 있습니다",
+
       
     }
 

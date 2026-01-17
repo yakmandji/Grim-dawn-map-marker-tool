@@ -29,8 +29,8 @@
 
   <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png?v=1.1">
   <link rel="stylesheet" href="css/general.css?v1.84" />
-  <link rel="stylesheet" href="css/items.css?v1.91" />
-  <link rel="stylesheet" href="css/catalog.css?v1.42" />  
+  <link rel="stylesheet" href="css/items.css?v1.92" />
+  <link rel="stylesheet" href="css/catalog.css?v1.43" />  
   <link rel="stylesheet" href="css/responsive.css?v1.37" />
 
   
@@ -39,9 +39,43 @@
 
   <div class="app-logo">
       <div class="container">
-        <p class="announce title" data-i18n="ui.announceCatalog">Grim Dawn</p>
-        <p class="title" data-i18n="ui.CatalogMainTitle">Shared Custom Map Catalog</p>
-        <button class="button xlarge mt-4" id="openSubmit" data-i18n="ui.SubmitMapButton">+ Submit a Map</button>
+        <p class="announce title" >Grim Dawn <span data-i18n="ui.announce">Custom markers tool for</span></p>
+        <h1 class="title" data-i18n="ui.CatalogMainTitle">Community Content Catalog</h1>
+        <p class="title-desc" data-i18n="ui.announceCatalog">Each community shared content can be migrate to your own map by keeping your existant</p>
+
+          <div id="catalog-helper">
+            <span data-i18n="ui.HelpCatalogHelperTitle" class="title">
+              How it works 
+            </span>
+            <div class="catalog-helper-inner">
+
+              <div class="helper-card tool-section">
+                <span class="number">1</span>
+                <span class="text" data-i18n="ui.HelpCatalogHelper1">
+                  First, create a share link using the “Share my map” button in the main map tool
+                </span>
+              </div>
+
+              <div class="helper-card tool-section">
+                <span class="number">2</span>
+                <span class="text" data-i18n="ui.HelpCatalogHelper2">
+                  Then, submit this link through the Community Maps page form so it appears in the catalog
+                </span>
+              </div>
+
+              <div class="helper-card tool-section">
+                <span class="number">3</span>
+                <span class="text" data-i18n="ui.HelpCatalogHelper3">
+                  Each time you click on "Share my map" button your map is updated in catalog. You don't need to create a new post
+                </span>
+              </div>
+            </div>
+          </div>
+
+        <button class="button xlarge mt-4" data-action="open-submit" data-i18n="ui.SubmitMapButton">+ Submit content</button>
+
+
+
       </div>
   </div>
 
@@ -130,35 +164,6 @@
     </header>
 
     <main class="catalog-container">
-
-      <div id="catalog-helper">
-        <span data-i18n="ui.HelpCatalogHelperTitle" class="title">
-          How it works 
-        </span>
-        <div class="catalog-helper-inner">
-
-          <div class="helper-card tool-section">
-            <span class="number">1</span>
-            <span class="text" data-i18n="ui.HelpCatalogHelper1">
-              First, create a share link using the “Share my map” button in the main map tool
-            </span>
-          </div>
-
-          <div class="helper-card tool-section">
-            <span class="number">2</span>
-            <span class="text" data-i18n="ui.HelpCatalogHelper2">
-              Then, submit this link through the Community Maps page form so it appears in the catalog
-            </span>
-          </div>
-
-          <div class="helper-card tool-section">
-            <span class="number">3</span>
-            <span class="text" data-i18n="ui.HelpCatalogHelper3">
-              Each time you click on "Share my map" button your map is updated in catalog. You don't need to create a new post
-            </span>
-          </div>
-        </div>
-      </div>
 
       <div id="catalogList" class="catalog-list">
 
@@ -269,8 +274,8 @@
     </div>
   </footer>
 
-  <script src="js/ui.lang.js?v=3.80"></script>
-  <script src="js/catalog.js?v=1.07"></script>
+  <script src="js/ui.lang.js?v=3.81"></script>
+  <script src="js/catalog.js?v=1.08"></script>
 
 </body>
 </html>

@@ -328,23 +328,22 @@ const backdrop = document.getElementById('catalogBackdrop');
 const submitBtn = document.getElementById('catalogSubmitConfirm');
 
 
-document.getElementById('openSubmit')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  openModal(modal, backdrop);
+document.querySelectorAll('[data-action="open-submit"]').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal(modal, backdrop);
 
-  // Reset modal state when opening
-  submitBtn.disabled = false;
-  hideError();
-  hideSuccess();
+    submitBtn.disabled = false;
+    hideError();
+    hideSuccess();
 
-  // show form, hide success screen
-  formState?.classList.remove('hidden');
-  successState?.classList.add('hidden');
+    formState?.classList.remove('hidden');
+    successState?.classList.add('hidden');
 
-  // show footer again
-  footerState?.classList.remove('hidden');
-
+    footerState?.classList.remove('hidden');
+  });
 });
+
 
 modal?.querySelectorAll('.closeModal')?.forEach(btn => {
   btn.addEventListener('click', (e) => {
