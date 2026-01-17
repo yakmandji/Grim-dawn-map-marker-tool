@@ -41,6 +41,7 @@ body {
 	font-size: 42px;
 	margin-left: 0;
   margin-top: 0;
+  margin-bottom: 0;
 	color: #73cebf;
   line-height: 45px;
 } 
@@ -53,11 +54,11 @@ body {
   font-weight: 600;
 } 
 
-.app-logo .title-desc{
-  max-width: 700px;
+.title-desc{
   line-height: 24px;
   color: var(--txt);
   font-size: 16px;
+  margin-top: 8px;
 }
 
 .app{
