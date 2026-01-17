@@ -621,68 +621,59 @@ window.UiShare = {
     let finalUrl = null;
     try {
       if (SHARE_WORKER_BASE) {
+        // helper: POST /create and parse json safely
+        const postCreate = async (body) => {
+          const res = await fetch(`${SHARE_WORKER_BASE}/create`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          });
 
+          let out = null;
+          let raw = '';
+          try {
+            raw = await res.text();
+            out = raw ? JSON.parse(raw) : null;
+          } catch (e) {
+            console.warn('[GDMM] Worker returned non-JSON:', res.status, raw?.slice(0, 200));
+            // IMPORTANT: don't return null here; let fallback happen
+            return { res, out: null };
+          }
+
+          return { res, out };
+        };
+
+        // 1) try update (if we have id+editKey) else create
         const payloadBody = { data: safePayload };
         if (opts?.id && opts?.editKey) payloadBody.id = opts.id;
         if (opts?.editKey) payloadBody.editKey = opts.editKey;
 
-        const res = await fetch(`${SHARE_WORKER_BASE}/create`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payloadBody),
-        });
+        let { res, out } = await postCreate(payloadBody);
 
-        let out = null;
-        let raw = "";
-        try {
-          raw = await res.text();
-          out = raw ? JSON.parse(raw) : null;
-        } catch (e) {
-          console.warn("[GDMM] Worker returned non-JSON:", res.status, raw?.slice(0, 200));
-          return null;
-        }
+        // 2) if update failed because gist doesn't exist (404), retry once as fresh create (no id)
+        if (!res.ok && out?.ghStatus === 404 && opts?.id) {
+          console.warn('[GDMM] Stored gist id invalid (404). Retrying as fresh create…');
 
-        if (!res.ok) {
-          console.warn("[GDMM] Worker error:", res.status, out);
-          return null;
-        }
-
-        // Retry once as fresh create if stored gist id is invalid (404)
-        if (out && out.error && out.ghStatus === 404 && opts?.id) {
           const payloadBody2 = { data: safePayload };
           if (opts?.editKey) payloadBody2.editKey = opts.editKey;
 
-          const res2 = await fetch(`${SHARE_WORKER_BASE}/create`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payloadBody2),
-          });
-
-          let out2 = null;
-          let raw2 = "";
-          try {
-            raw2 = await res2.text();
-            out2 = raw2 ? JSON.parse(raw2) : null;
-          } catch {
-            console.warn("[GDMM] Worker returned non-JSON (retry):", res2.status, raw2?.slice(0, 200));
-            return null;
-          }
-
-          if (res2.ok && out2?.ok && out2.id) {
-            return `${getShareBaseUrl()}/?s=${encodeURIComponent(out2.id)}`;
-          }
-          return null;
+          const retry = await postCreate(payloadBody2);
+          res = retry.res;
+          out = retry.out;
         }
 
-        if (out?.ok && out.id) {
+        // 3) if ok, build short URL
+        if (res.ok && out?.ok && out.id) {
           finalUrl = `${getShareBaseUrl()}/?s=${encodeURIComponent(out.id)}`;
+        } else if (!res.ok) {
+          console.warn('[GDMM] Worker error:', res.status, out);
+          // finalUrl stays null => legacy fallback below
         }
-    
       }
-
     } catch (e) {
       console.warn('[GDMM] share via Worker failed, falling back to ?share=', e);
     }
+
 
     // --- 2) Legacy fallback ---
     if (!finalUrl) {

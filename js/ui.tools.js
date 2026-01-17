@@ -105,6 +105,20 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
             console.warn('[GDMM] Failed to restore share edit key from import', e);
           }
 
+          // Restaurer les shareIds par personnage (stable links)
+          try {
+            const ids = imported?.meta?.share?.shareIds;
+            if (ids && typeof ids === 'object') {
+              Object.entries(ids).forEach(([charId, sid]) => {
+                if (typeof charId === 'string' && typeof sid === 'string' && sid.length > 2) {
+                  localStorage.setItem(`gdmm_share_id_v1::${charId}`, sid);
+                }
+              });
+            }
+          } catch (e) {
+            console.warn('[GDMM] Failed to restore share ids from import', e);
+          }
+
           // Restaurer la save perso
           localStorage.setItem('grimSave_v2', JSON.stringify(imported.save));
 
@@ -165,6 +179,21 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
       console.warn('[GDMM] Failed to read region notes for export', e);
     }
 
+    // Charger les shareIds par personnage (stable links)
+    let shareIds = {};
+    try {
+      const chars = (saveData && saveData.characters) ? saveData.characters : {};
+      Object.keys(chars).forEach((charId) => {
+        const sid = localStorage.getItem(`gdmm_share_id_v1::${charId}`) || '';
+        if (sid) shareIds[charId] = sid;
+      });
+
+      const g = localStorage.getItem('gdmm_share_id_v1::_global') || '';
+      if (g) shareIds._global = g;
+    } catch (e) {
+      console.warn('[GDMM] Failed to read share ids for export', e);
+      shareIds = {};
+    }
 
     // Charger la progression des shrines (multi-char)
     let shrineProgress = null;
@@ -185,6 +214,8 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
       shareEditKey = '';
     }
 
+
+
     // Construire un seul objet exporté
     const exportObj = {
       v: 2,
@@ -193,7 +224,8 @@ window.getNotesForProfile = function getNotesForProfile(profileName, charId) {
       shrineProgress: shrineProgress,
       meta: {
         share: {
-          editKey: shareEditKey || null
+          editKey: shareEditKey || null,
+          shareIds: shareIds
         }
       }
     };
