@@ -1194,8 +1194,8 @@ header button.menu-button.select-current:hover {
 }
 
 #noteList .listItem span{
-  max-width: 160px;
-  min-width: 160px;
+  max-width: 152px;
+  min-width: 152px;
   font-size: 12px;
 }
 

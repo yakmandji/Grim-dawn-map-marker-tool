@@ -12,7 +12,7 @@
   --danger: #ff6b7a;
   --select-focus : 0 0 6px rgb(38 240 240 / 60%), inset 0 0 6px rgba(0, 0, 0, 0.4);
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
-  --sidebar-width: 350px;
+  --sidebar-width: 356px;
   --border-color : #6d532f;
   --gold-main: #d5b278;       /* doré principal */
   --gold-dark: #8a6a3f;       /* version ombrée */
@@ -697,7 +697,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .sidebar.markers-scroll{
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
 
 /* Panneau flottant des Done */
@@ -745,11 +745,12 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 #list .listCategoryHeader{
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color:var(--muted);
-  padding: 4px 0px 7px 1px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);  
+  padding: 4px 0px 8px 1px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  text-align: right;
 }
 
 #doneList .doneCategoryHeader:first-child{
