@@ -269,3 +269,13 @@ function renderDungeonOverlays() {
 
 window.renderDungeonOverlays = renderDungeonOverlays;
 
+// --- SAFETY: render overlays if map is already ready -----------------
+try {
+  const state = window.GDMMCore?.state;
+  if (state?.mapReady) {
+    // Map already loaded before ui.overlay.js -> render now
+    renderDungeonOverlays();
+  }
+} catch (e) {
+  console.warn('[GDMM] deferred dungeon overlay render failed', e);
+}
