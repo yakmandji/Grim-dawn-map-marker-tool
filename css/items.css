@@ -318,7 +318,7 @@ input[type="password"]:focus
 .marker.completed .pin-bg{
   transform: translateX(-50%) !important;
   margin-left: 50%;
-  opacity: 0.75;
+  opacity: 1;
   width: 22px;
 }
 
