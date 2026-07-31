@@ -697,7 +697,7 @@ window.getRiftLabel = function(tag, fallback) {
 
 // Map des rifts par taille d'image (w x h)
 window.RIFT_MARKERS_BY_SIZE = {
-  '9652x10037': window.RIFT_MARKERS_CAIRN,
+  '8948x9133': window.RIFT_MARKERS_CAIRN,
   '5142x3574': window.RIFT_MARKERS_MALMOUTH,
   '5427x5553': window.RIFT_MARKERS_KORVAN,
 };

@@ -1,4 +1,4 @@
-// Exemple simple : tu peux adapter avec tes vraies valeurs
+
 window.DUNGEON_OVERLAYS = [
 { id: "smuggler_pass", map: "cairn", img: "smuggler-pass.jpg?1.1", left: 25.8714, top: 79.5273, width: 7.083, height: 6.7 },
 { id: "corrupted_tomb", map: "cairn", img: "corrupted-tomb.jpg?1.1", left: 37.5938, top: 87.1456, width: 5.8531, height: 6.5455 },
@@ -37,9 +37,9 @@ window.DUNGEON_OVERLAYS = [
 { id: "altritch_karters", map: "cairn", img: "altritch-karters.jpg?1.0", left: 37.1109, top: 18.1491, width: 2.4817, height: 2.431 },
 { id: "black_sepulcher", map: "cairn", img: "black-sepulcher.jpg?1.0", left: 30.4948, top: 6.7776, width: 6.7359, height: 6.6083 },
 { id: "discord_anarchy", map: "cairn", img: "discord-anarchy-entropy-rog.jpg?1.1", left: 28.4948, top: -2.566, width: 25.5599, height: 9.144 },
-{ id: "fort_ikon_armory", map: "cairn", img: "fort-ikon-armory.jpg?1.1", left: 13.0632, top: 12.896, width: 5.3206, height: 5.2126 },
-{ id: "tom_of_the_watcher", map: "cairn", img: "tom-of-the-watcher.jpg?1.1", left: 9.8898, top: 4.1283, width: 9.3146, height: 6.6072 },
-{ id: "fort_ikon_prison", map: "cairn", img: "fort-ikon-prison.jpg?1.1", left: 7.0335, top: 13.1897, width: 5.8523, height: 5.7953 },
+{ id: "fort_ikon_armory", map: "cairn", img: "fort-ikon-armory.jpg?1.1", left: 14.9632, top: 14.500, width: 4.5, height: 4.45 },
+{ id: "tom_of_the_watcher", map: "cairn", img: "tom-of-the-watcher.jpg?1.1", left: 9.8898, top: -4.1283, width: 9.3146, height: 6.6072 },
+{ id: "fort_ikon_prison", map: "cairn", img: "fort-ikon-prison.jpg?1.1", left: 0.60, top: 13.1897, width: 5.8523, height: 5.7953 },
 { id: "desolate_waste", map: "cairn", img: "desolate-waste.jpg?1.2", left: 68.579, top: 9.6438, width: 13, height: 15.9076 },
 { id: "den_of_wendigo", map: "cairn", img: "den-of-wendigo.jpg?1.2", left: 74.8726, top: 26.1324, width: 7.192, height: 6.9843 },
 { id: "barrow_holm", map: "cairn", img: "barrow-holm.jpg?1.2", left: 94.8385, top: 24.3491, width: 6.8807, height: 6.805 },
@@ -140,7 +140,7 @@ function renderDungeonOverlays() {
 
   // correspondances map -> dossier + clé
   const MAP_INFO = {
-    '9652x10037': { folder: 'cairn' },
+    '8948x9133': { folder: 'cairn' },
     '5142x3574': { folder: 'malmouth' },
     '5427x5553': { folder: 'korvan' },
   };

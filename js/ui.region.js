@@ -167,14 +167,14 @@
 { id: 'map_necropolis_gate', tag: 'tagMapNecropolisGate', xp: 22.61, yp: 10.53, overlayPoly: [[22.6,16.4],[22.7,16],[23.4,16.1],[23.2,15.4],[23.7,14.7],[24,14.6],[24,13.8],[24.6,13],[25.1,13.6],[25.6,13.6],[26.1,13.2],[26.1,13],[25.8,12.8],[25.4,12.9],[25.1,12.6],[25.4,11.9],[25.6,11.8],[25.6,11.4],[25.2,10.8],[26.5,9.6],[26.5,9.3],[25.2,8],[25.1,7.5],[25.5,6.9],[25.6,6.3],[25.4,6.1],[25.3,5.7],[22.8,5.4],[22.5,4.9],[21.7,5.7],[22.2,6.1],[22.5,6.2],[22.4,6.8],[22.4,7.1],[22.8,7.4],[22.3,7.8],[22,8.2],[21.5,8.5],[21.7,9.2],[21.1,9.9],[20.2,10.5],[20.2,11.3],[21.2,12],[20.4,12.7],[20.2,13.2],[20.2,13.5],[21.7,15.1],[21.3,15.7],[21.5,16],[22.2,16],[22.1,16.5]] },
 { id: 'map_necropolis_interior', tag: 'tagMapNecropolisInterior', xp: 22.53, yp: 3.53, overlayPoly: [[22.5,4.9],[21.3,6.1],[21,6.1],[20.3,5.4],[20.2,4.8],[20.7,4.3],[20.9,3.5],[21.1,3.3],[21,3],[21.6,2.1],[22.1,2.1],[22.2,2],[21.8,1.6],[21.4,1.6],[21.1,1],[21.1,0.6],[21.6,0.5],[21.8,0.7],[22.1,0.8],[22.7,1.5],[23.3,1.3],[24.1,1.5],[25.3,2.5],[25.2,2.9],[25.7,3.1],[25.9,3.6],[25.7,4.2],[25.4,4.4],[25.3,4.7],[25.1,4.9],[24.9,5],[24.7,5.7],[22.9,5.4]] },
 { id: 'UG_voidlands01c', tag: 'tagUGVoidlands01C', xp: 51.04, yp: -1, isDungeon: true },
-{ id: 'UG_crypt_final01', tag: 'tagUGCryptFinal01', xp: 15.53, yp: 10.41, isDungeon: true },
-{ id: 'tag_UG_crypt_final03', tag: 'tagUGCryptFinal03', xp: 13.96, yp: 5.32, isDungeon: true },
-{ id: 'UG_crypt_final02', tag: 'tagUGCryptFinal02', xp: 10.34, yp: 10.42, isDungeon: true },
-{ id: 'UG_fort_ikon_prison', tag: 'tagUGFortIkon_Prison', xp: 10.11, yp: 13.74, isDungeon: true },
+{ id: 'UG_crypt_final01', tag: 'tagUGCryptFinal01', xp: 16.85, yp: 1.94, isDungeon: true },
+{ id: 'tag_UG_crypt_final03', tag: 'tagUGCryptFinal03', xp: 12.89, yp: -2.51, isDungeon: true },
+{ id: 'UG_crypt_final02', tag: 'tagUGCryptFinal02', xp: 10.34, yp: 2, isDungeon: true },
+{ id: 'UG_fort_ikon_prison', tag: 'tagUGFortIkon_Prison', xp: 4.11, yp: 13.74, isDungeon: true },
 { id: 'UG_crypt_faction_battle02', tag: 'tagUGCryptFactionBattle02', xp: 3.28, yp: 19.48, isDungeon: true },
 { id: 'UG_crypt_faction_battle01', tag: 'tagUGCryptFactionBattle01', xp: 1.17, yp: 24.41, isDungeon: true, overlayPoly: [[4.6,26.6],[5.4,26],[6,25.4],[6.3,25.7],[7.5,24.6],[6.8,23.9],[6.5,23.9],[6.2,23.5],[6.1,23.2],[5.3,22.6],[4.8,23.1],[3.1,21.4],[2.9,21.3],[2.9,21],[2.6,20.8],[2.2,20.9],[1.5,20.4],[1,20.2],[0.6,20.6],[0.6,20.9],[0.8,21.3],[1.2,21.8],[1.2,22.1],[1.6,22.4],[1.6,22.7],[3,24.2],[3.3,24.1],[4.5,22.8],[4.8,23.1],[4.1,23.7],[4.2,23.9],[4.9,24.6],[4.6,25],[4.2,25],[3.9,25.3],[4,25.6],[3.7,26.1],[4.1,26.5]] },
 { id: 'UG_crypt_zealot01', tag: 'tagUGCryptZealot01', xp: 5, yp: 33.45, isDungeon: true },
-{ id: 'UG_fort_ikon_armory', tag: 'tagUGFortIkon_Armory', xp: 16.25, yp: 17.26, isDungeon: true },
+{ id: 'UG_fort_ikon_armory', tag: 'tagUGFortIkon_Armory', xp: 17, yp: 18.29, isDungeon: true },
 { id: 'map_voidlands03', tag: 'tagMapVoidlands03', xp: 22.44, yp: 23.84, isDungeon: true },
 { id: 'map_voidlands', tag: 'tagMapVoidlands', xp: 27.90, yp: 27.02, isDungeon: true },
 { id: 'tag_uGVoid_lands_01D', tag: 'tagUGVoidlands01D', xp: 40.39, yp: 3.32, isDungeon: true, overlayPoly: [[39.7,1.7],[40.3,1.3],[40.7,1.7],[40.8,1.9],[41.2,1.7],[42.2,2.5],[42.3,2.8],[41.9,3.2],[41.4,3.9],[41.1,4],[40.6,3.8],[40.5,3.6],[40,3.3],[40.1,2.6],[39.9,2.4],[39.5,2]] },
@@ -3733,7 +3733,7 @@ window.getRegionLabel = function(tag, fallback) {
 };
 
 window.REGION_MARKERS_BY_SIZE = {
-  '9652x10037' : window.REGION_MARKERS_CAIRN,
+  '8948x9133' : window.REGION_MARKERS_CAIRN,
   '5142x3574' : window.REGION_MARKERS_MALMOUTH,
   '5427x5553' : window.REGION_MARKERS_KORVAN,
 };

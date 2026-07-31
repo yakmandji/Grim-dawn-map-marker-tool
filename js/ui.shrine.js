@@ -36,7 +36,7 @@
     { id: 'shrineUGCryptFactionBattle02', regionTag: 'tagUGCryptFactionBattle02', xp: 4.20, yp: 21.35, difficulty: 'normal' },
     { id: 'shrineMapBloodGroveAetherMine', regionTag: 'tagMapBloodGroveAetherMine', xp: 34.18, yp: 46.64, difficulty: 'elite' },
     { id: 'shrinetagUGCryptNecropolis01', regionTag: 'tagUGCryptNecropolis01', xp: 33.48, yp: 9.95, difficulty: 'normal' },
-    { id: 'shrinetagUGCryptFinal01', regionTag: 'tagUGCryptFinal01', xp: 14.86, yp: 7.61, difficulty: 'normal' },
+    { id: 'shrinetagUGCryptFinal01', regionTag: 'tagUGCryptFinal01', xp: 14.86, yp: -0.61, difficulty: 'normal' },
     { id: 'shrinetagUGVoidlands01', regionTag: 'tagUGVoidlands01', xp: 31.86, yp: 0.56, difficulty: 'normal' },
     { id: 'shrinetagMapHallowedHill', regionTag: 'tagMapHallowedHill', xp: 71.10, yp: 64.58, difficulty: 'elite' },
     { id: 'shrinetagMapNecropolis', regionTag: 'tagMapNecropolis', xp: 24.31, yp: 7.53, difficulty: 'normal' },
@@ -72,7 +72,7 @@
 
   // MAPPING PAR TAILLE D’IMAGE
   window.SHRINE_MARKERS_BY_SIZE = {
-    '9652x10037': window.SHRINE_MARKERS_CAIRN,
+    '8948x9133': window.SHRINE_MARKERS_CAIRN,
     '5142x3574': window.SHRINE_MARKERS_MALMOUTH,
     '5427x5553': window.SHRINE_MARKERS_KORVAN,
   };

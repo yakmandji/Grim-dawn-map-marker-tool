@@ -33,11 +33,11 @@
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
     { id:'bloodfeast', w: 140, h: 100, img: 'img/qol/bloodfeast.png?1.0', xp: 48.11, yp: 61.1, isDungeon: true },
     { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90, isDungeon: true },
-    { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 14.7, yp: 15, isDungeon: true },
-    { id:'loghorrean', w: 140, h: 110, img: 'img/qol/loghorrean.png', xp: 14.11, yp: 4.51, isDungeon: true },
-    { id:'thalonis.png', w: 90, h: 130, img: 'img/qol/thalonis.png', xp: 10.70, yp: 7.25, isDungeon: true },
+    { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.7, yp: 16.5, isDungeon: true },
+    { id:'loghorrean', w: 140, h: 110, img: 'img/qol/loghorrean.png', xp: 13.34, yp: -4.00, isDungeon: true },
+    { id:'thalonis.png', w: 90, h: 130, img: 'img/qol/thalonis.png', xp: 10.70, yp: -0.65, isDungeon: true },
     { id:'sharzul.png', w: 140, h: 170, img: 'img/qol/sharzul.png', xp: 52.30, yp: 1, isDungeon: true },
-    { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 8.5, yp: 18.43, isDungeon: true },
+    { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 4.5, yp: 18.43, isDungeon: true },
     { id:'igor-eternal', w: 100, h: 130, img: 'img/qol/igor-eternal.png', xp: 44.60, yp: 97.91, isDungeon: true },
     { id:'kaliska', w: 120, h: 90, img: 'img/qol/kaliska.png', xp: 79.35, yp: 64.20,  anchor: 'center' },
     { id:'alkamos', w: 100, h: 140, img: 'img/qol/alkamos.png', xp: 54.19, yp: 96.72, isDungeon: true },
@@ -153,7 +153,7 @@
       const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
       vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap');
 
-      if (key === '9652x10037') {
+      if (key === '8948x9133') {
         vp.classList.add('cairnmap');
       } else if (key === '5142x3574') {
         vp.classList.add('malmouthmap');
@@ -376,7 +376,7 @@
 
     const ui = window.UiCore || {};
     const MAP_KEYS = {
-      '9652x10037': 'cairn',
+      '8948x9133': 'cairn',
       '5142x3574': 'malmouth',
       '5427x5553': 'korvan',
     };
