@@ -140,7 +140,7 @@ function renderDungeonOverlays() {
 
   // correspondances map -> dossier + clé
   const MAP_INFO = {
-    '8948x9133': { folder: 'cairn' },
+    '9652x10037': { folder: 'cairn' },
     '5142x3574': { folder: 'malmouth' },
     '5427x5553': { folder: 'korvan' },
   };

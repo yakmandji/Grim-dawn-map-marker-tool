@@ -3733,7 +3733,7 @@ window.getRegionLabel = function(tag, fallback) {
 };
 
 window.REGION_MARKERS_BY_SIZE = {
-  '8948x9133' : window.REGION_MARKERS_CAIRN,
+  '9652x10037' : window.REGION_MARKERS_CAIRN,
   '5142x3574' : window.REGION_MARKERS_MALMOUTH,
   '5427x5553' : window.REGION_MARKERS_KORVAN,
 };

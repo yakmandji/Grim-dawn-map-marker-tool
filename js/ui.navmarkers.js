@@ -301,7 +301,7 @@ window.NAV_MARKERS_CAIRN = [
 
   // --- Mapping map sise ---
   window.NAV_MARKERS_BY_SIZE = {
-    '8948x9133': window.NAV_MARKERS_CAIRN,
+    '9652x10037': window.NAV_MARKERS_CAIRN,
     '5142x3574': window.NAV_MARKERS_MALMOUTH,
     '5427x5553': window.NAV_MARKERS_KORVAN,
   };

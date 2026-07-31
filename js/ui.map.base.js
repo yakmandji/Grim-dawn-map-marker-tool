@@ -153,7 +153,7 @@
       const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
       vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap');
 
-      if (key === '8948x9133') {
+      if (key === '9652x10037') {
         vp.classList.add('cairnmap');
       } else if (key === '5142x3574') {
         vp.classList.add('malmouthmap');
@@ -376,7 +376,7 @@
 
     const ui = window.UiCore || {};
     const MAP_KEYS = {
-      '8948x9133': 'cairn',
+      '9652x10037': 'cairn',
       '5142x3574': 'malmouth',
       '5427x5553': 'korvan',
     };
