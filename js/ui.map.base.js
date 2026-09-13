@@ -151,7 +151,7 @@
     const vp = viewport;
     if (vp && state.mapNatural.w && state.mapNatural.h) {
       const key = `${state.mapNatural.w}x${state.mapNatural.h}`;
-      vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap');
+      vp.classList.remove('cairnmap', 'malmouthmap', 'korvanmap', 'asterkarn');
 
       if (key === '8948x9133') {
         vp.classList.add('cairnmap');
@@ -159,6 +159,8 @@
         vp.classList.add('malmouthmap');
       } else if (key === '5427x5553') {
         vp.classList.add('korvanmap');
+      } else if (key === '5500x6716'){
+        vp.classList.add('asterkarn');
       }
     }
 
@@ -300,6 +302,10 @@
         xp = 20.83;
         yp = 93.01;
         scale = 0.7;
+      } else if (name === 'Asterkarn') {
+        xp = 40.83;
+        yp = 74.01;
+        scale = 0.7;
       }
       // Si on n'a rien de spécial pour ce profil → fallback
       if (xp == null || yp == null) {
@@ -379,6 +385,7 @@
       '8948x9133': 'cairn',
       '5142x3574': 'malmouth',
       '5427x5553': 'korvan',
+      '5500x6716': 'asterkarn',
     };
 
     let key = null;
@@ -393,11 +400,13 @@
     if (which === 'cairn') list = window.DECOR_ICONS_CAIRN || [];
     else if (which === 'malmouth') list = window.DECOR_ICONS_MALMOUTH || [];
     else if (which === 'korvan') list = window.DECOR_ICONS_KORVAN || [];
+    else if (which === 'asterkarn') list = window.DECOR_ICONS_ASTERKARN || [];
 
     // (optionnel) fallback ultime si jamais on n’a rien (évite “zéro décor”)
     if (!list.length && viewport.classList.contains('cairnmap')) list = window.DECOR_ICONS_CAIRN || [];
     if (!list.length && viewport.classList.contains('malmouthmap')) list = window.DECOR_ICONS_MALMOUTH || [];
     if (!list.length && viewport.classList.contains('korvanmap')) list = window.DECOR_ICONS_KORVAN || [];
+    if (!list.length && viewport.classList.contains('asterkarn')) list = window.DECOR_ICONS_ASTERKARN || [];
 
 
     // 3) Ajout direct dans #mapInner

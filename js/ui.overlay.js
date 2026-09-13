@@ -143,6 +143,7 @@ function renderDungeonOverlays() {
     '8948x9133': { folder: 'cairn' },
     '5142x3574': { folder: 'malmouth' },
     '5427x5553': { folder: 'korvan' },
+    '5500x6716': { folder: 'asterkarn' },
   };
 
   let key = null;

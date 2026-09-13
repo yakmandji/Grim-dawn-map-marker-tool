@@ -75,6 +75,7 @@
     '8948x9133': window.SHRINE_MARKERS_CAIRN,
     '5142x3574': window.SHRINE_MARKERS_MALMOUTH,
     '5427x5553': window.SHRINE_MARKERS_KORVAN,
+    '5500x6716': window.REGION_MARKERS_ASTERKARN,
   };
 
   /* SHRINE HELPER ------------------------------------------------------*/
