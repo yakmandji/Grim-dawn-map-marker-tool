@@ -129,6 +129,8 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 { id: "entry_covens_Town", xp: 84.26, yp: 48.26, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
 
 
+{ id: "entry_icehowl_cavern", xp: 10.90, yp: 12.77, tag: "Icehowl Cavern" },
+{ id: "entry_Icebound_passage_cairn", xp: 6.55, yp: 0.13, tag: "Icebound Passage Cairn" },
 
 
 ];
@@ -206,8 +208,44 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
 { id: "entry_conclave_of_the_three", xp: 20.56, yp: 95.16, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
 { id: "entry_vengard_of_the_three_town", xp: 65.95, yp: 49.04, tag: "HomeStead Town", icon: "img/search-town-icon.svg" },
 
+];
+
+window.DUNGEON_ENTRY_MARKERS_ASTERKARN = [
+  { id: "entry_blackhearts_hideout", xp: 43.86, yp: 62.45, tag: "Blackhearts Hideout" },
+  { id: "entry_roof_of_the_world", xp: 35.55, yp: 66.94, tag: "Roof of the World", eyeColor:"gray-muted" },
+  { id: "entry_icebound_passage", xp: 38.52, yp: 80.44, tag: "Icebound Passage" },
+  { id: "entry_fekks_burrow", xp: 51.75, yp: 59.36, tag: "Fekk's Burrow" },
+  { id: "entry_kurn_cellar", xp: 45.54, yp: 57.23, tag: "Kurn Cellar" },
+  { id: "entry_elderveil", xp: 49.20, yp: 55.98, tag: "Elderveil" },
+  { id: "entry_ulos_remorse", xp: 42.72, yp: 51.84, tag: "Ulo's Remorse" },
+  { id: "entry_lost_cairn_grotto", xp: 46.94, yp: 51.15, tag: "Lost Cairn Grotto" },
+  { id: "entry_scarfell_depths", xp: 38.25, yp: 40.24, tag: "Scarfell Depths" },
+  { id: "entry_ironeyes_hideout", xp: 36.71, yp: 37.10, tag: "Ironeye's Hideout" },
+  { id: "entry_ironeyes_hideout_exit", xp: 36.17, yp: 36.57, tag: "Ironeye's Hideout Exit", eyeColor:"gray-muted" },
+  { id: "entry_obsidian_wound", xp: 30.55, yp: 33.47, tag: "Obsidian Wound" },
+  { id: "entry_obsidian_wound_exit", xp: 30.27, yp: 33.66, tag: "Obsidian Wound Exit", eyeColor:"gray-muted" },
+  { id: "entry_crimson_expanse", xp: 22.85, yp: 35.93, tag: "Crimson Expanse" },
+  { id: "entry_crimson_expanse_exit", xp: 23.28, yp: 36.21, tag: "Crimson Expanse Exit", eyeColor:"gray-muted" },
+  { id: "entry_the_world_tear", xp: 22.83, yp: 32.52, tag: "The World Tear" },
+  { id: "entry_glacial_grotto", xp: 25.02, yp: 27.49, tag: "Glacial Grotto" },
+  { id: "entry_glacial_grotto2", xp: 52.51, yp: 28.53, tag: "Glacial Grotto 2" },
+  { id: "entry_black_lodge", xp: 55.79, yp: 23.60, tag: "Black Lodge" },
+  { id: "entry_the_threshold_between", xp: 53.50, yp: 22.84, tag: "The Threshold Between" },
+  { id: "entry_mammoth_burial_grounds", xp: 56.72, yp: 21.94, tag: "Mammoth Burial Grounds" },
+  { id: "entry_kamurs_ridge", xp: 52.66, yp: 18.48, tag: "Kamur's Ridge" },
+  { id: "entry_kamurs_ridge2", xp: 64.99, yp: 16.65, tag: "Kamur's Ridge 2" },
+  { id: "entry_scarstone_depths", xp: 66.87, yp: 15.38, tag: "Scarstone Depths" },
+  { id: "entry_scarstone_depths_exit", xp: 65.79, yp: 14.52, tag: "Scarstone Depths Exit", eyeColor:"gray-muted" },
+  { id: "entry_aurora_pinnacle", xp: 65.92, yp: 13.50, tag: "Aurora Pinnacle" },
+  { id: "entry_bitter_wind_pass", xp: 79.53, yp: 8.62, tag: "Bitter Wind Pass" },
+  { id: "entry_glacierbound_cave", xp: 78.07, yp: 8.79, tag: "Glacierbound Cave" },
+  { id: "entry_rimespire_cavern", xp: 79.86, yp: 5.60, tag: "Rimespire Cavern" },
+  { id: "entry_windwalkers_den", xp: 85.27, yp: 6.48, tag: "Windwalker's Den" },
+  { id: "entry_windwalkers_den_exit", xp: 84.90, yp: 6.13, tag: "Windwalker's Den Exit", eyeColor:"gray-muted" },
+  { id: "entry_roof_of_the_world", xp: 81.55, yp: 3.39, tag: "Roof of the World" },
 
 ];
+
 
 window.DUNGEON_LINKS = {
 
@@ -309,7 +347,6 @@ window.DUNGEON_LINKS = {
   "conclave_of_the_three_town":["entry_conclave_of_the_three"],
   "vengard_of_the_three_town":["entry_vengard_of_the_three_town"],
   
-  
   "forgotten_cellar": ["entry_forgotten_cellar" ],
   "veiled_den": ["entry_veiled_den" ],
   "crawling_nest": ["entry_crawling_nest" ],
@@ -334,6 +371,12 @@ window.DUNGEON_LINKS = {
   "sanctum_choosen": ["entry_sanctum_choosen"],
   "splendors_shattered_realm" : ["entry_splendors_shattered_realm"],
   
+  /*ASTERKARN*/
+  "icebound_passage":["entry_icebound_passage"],
+  "blackhearts_hideout":["entry_blackhearts_hideout"],
+  "fekks_burrow":["entry_fekks_burrow"],
+  "kurn-cellar":["entry_kurn_cellar"],
+  "elderveil":["entry_elderveil"],
 
 
 };
@@ -343,6 +386,7 @@ window.DUNGEON_ENTRY_MARKERS_BY_SIZE = {
   "8948x9133": window.DUNGEON_ENTRY_MARKERS_CAIRN,
   "5142x3574": window.DUNGEON_ENTRY_MARKERS_MALMOUTH,
   "5427x5553": window.DUNGEON_ENTRY_MARKERS_KORVAN,
+  '5500x6716' : window.DUNGEON_ENTRY_MARKERS_ASTERKARN,
 };
 
 

@@ -117,6 +117,16 @@ window.DUNGEON_OVERLAYS = [
 { id: 'vengard_of_the_three_town', map: 'korvan', img: 'vengard-of-the-three.jpg?1.0',  left: 65.2623, top: 50.7111, width: 11.6640, height: 8.2 },
 
 
+
+{ id: 'icebound_passage', map: 'asterkarn', img: 'icebound-passage.jpg',  left: 37.8867, top: 82.4870, width: 8.6824, height: 16.8282 },
+{ id: 'blackhearts_hideout', map: 'asterkarn', img: 'blackhearts-hideout.jpg',  left: 36.4848, top: 58.9805, width: 4.3862, height: 3.6556 },
+{ id: 'fekks_burrow', map: 'asterkarn', img: 'fekks-burrow.jpg',  left: 54.5504, top: 60.4551, width: 5.9714, height: 4.4404 },
+{ id: 'kurn-cellar', map: 'asterkarn', img: 'kurn-cellar.jpg',  left: 41.0135, top: 56.2479, width: 2.7387, height: 2.2028 },
+{ id: 'elderveil', map: 'asterkarn', img: 'elderveil.jpg',  left: 52.7481, top: 55.0622, width: 3.4361, height: 1.8960 },
+
+
+
+
 ];
 
 
