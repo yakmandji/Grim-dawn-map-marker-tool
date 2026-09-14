@@ -300,7 +300,7 @@ window.NAV_MARKERS_CAIRN = [
   window.NAV_MARKERS_ASTERKARN = [
       {
         xp: 79.54, 
-        yp: 8.44,
+        yp: 8.54,
         tag: 'tagGoTo + tagGDX3AuroraPinacle_01',
         icon: 'img/icon-link.png',
         targetProfile: 'Asterkarn',

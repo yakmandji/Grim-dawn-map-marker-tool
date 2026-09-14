@@ -236,8 +236,6 @@ window.DUNGEON_ENTRY_MARKERS_ASTERKARN = [
   { id: "entry_kamurs_ridge2", xp: 64.99, yp: 16.65, tag: "Kamur's Ridge 2" },
   { id: "entry_scarstone_depths", xp: 66.87, yp: 15.38, tag: "Scarstone Depths" },
   { id: "entry_scarstone_depths_exit", xp: 65.79, yp: 14.52, tag: "Scarstone Depths Exit", eyeColor:"gray-muted" },
-/*  { id: "entry_aurora_pinnacle", xp: 65.92, yp: 13.50, tag: "Aurora Pinnacle" },*/
-  { id: "entry_bitter_wind_pass", xp: 79.53, yp: 8.62, tag: "Bitter Wind Pass" },
   { id: "entry_glacierbound_cave", xp: 78.07, yp: 8.79, tag: "Glacierbound Cave" },
   { id: "entry_rimespire_cavern", xp: 79.86, yp: 5.60, tag: "Rimespire Cavern" },
   { id: "entry_windwalkers_den", xp: 85.27, yp: 6.48, tag: "Windwalker's Den" },
