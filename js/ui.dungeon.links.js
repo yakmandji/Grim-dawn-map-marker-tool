@@ -218,7 +218,7 @@ window.DUNGEON_ENTRY_MARKERS_ASTERKARN = [
   { id: "entry_elderveil", xp: 49.20, yp: 55.98, tag: "Elderveil" },
   { id: "entry_ulos_remorse", xp: 42.72, yp: 51.84, tag: "Ulo's Remorse" },
   { id: "entry_lost_cairn_grotto", xp: 46.94, yp: 51.15, tag: "Lost Cairn Grotto" },
-  { id: "entry_scarfell_depths", xp: 38.25, yp: 40.24, tag: "Scarfell Depths" },
+  { id: "entry_scarfell_depths", xp: 38.25, yp: 40.44, tag: "Scarfell Depths" },
   { id: "entry_ironeyes_hideout", xp: 36.71, yp: 37.10, tag: "Ironeye's Hideout" },
   { id: "entry_ironeyes_hideout_exit", xp: 36.17, yp: 36.57, tag: "Ironeye's Hideout Exit", eyeColor:"gray-muted" },
   { id: "entry_obsidian_wound", xp: 30.55, yp: 33.47, tag: "Obsidian Wound" },

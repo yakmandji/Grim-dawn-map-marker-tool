@@ -138,6 +138,12 @@ function buildGlobalIndex() {
       riftsKey:   'RIFT_MARKERS_KORVAN',
       shrinesKey: 'SHRINE_MARKERS_KORVAN',
     },
+    {
+      profile: 'Asterkarn',
+      regionsKey: 'REGION_MARKERS_ASTERKARN',
+      riftsKey:   'RIFT_MARKERS_ASTERKARN',
+      shrinesKey: 'SHRINE_MARKERS_ASTERKARN',
+    },    
   ];
 
     maps.forEach(cfg => {

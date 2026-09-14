@@ -35,7 +35,8 @@ window.RIFT_MARKERS_CAIRN = [
 { id: 'necropolis_interior', tag: 'tagRiftNecropolisInterior', xp: 23.55, yp: 5.6 },
 { id: 'rift_blood_grove', tag: 'tagRiftBloodGrove', xp: 30.39, yp: 51.52 },
 { id: 'dark_vale', tag: 'tagRiftDarkvale', xp: 29.59, yp: 38.38, isDungeon:true },
-{ id: 'Sorrows_Bastion', tag: 'tagRiftSorrowsBastion', xp: 33.80, yp: 58.72 }
+{ id: 'Sorrows_Bastion', tag: 'tagRiftSorrowsBastion', xp: 33.80, yp: 58.72 },
+{ id: 'Icebound_Passage', tag: 'tagGDX3RiftIceboundPassage', xp: 6.96, yp: 0.24 }
 
 
 ];
@@ -66,6 +67,29 @@ window.RIFT_MARKERS_KORVAN = [
 { id: 'tag_gDX2_rift_eldritch', tag: 'tagGDX2RiftEldritch', xp: 68.69, yp: 8.43, isDungeon:true }
 
 ]
+
+
+window.RIFT_MARKERS_ASTERKARN = [
+  { id: 'rift_freyoll_valley', tag: 'tagGDX3RiftFreyollValley', xp: 37.31, yp: 80.10 },
+  { id: 'kurnhold_rift', tag: 'tagGDX3RiftKurnhold', xp: 36.19, yp: 69.01 },
+  { id: 'voldur_river_rift', tag: 'tagGDX3RiftVoldurRiver', xp: 47.57, yp: 62.70 },
+  { id: 'guardians_sorrow_rift', tag: 'tagGDX3RiftGuardiansSorrow', xp: 49.32, yp: 54.81 },
+  { id: 'Kruusul_crags_rift', tag: 'tagGDX3RiftKruuSulCrags', xp: 57.92, yp: 50.01 },
+  { id: 'ulos_springs_rift', tag: 'tagGDX3RiftUlosSprings', xp: 45.23, yp: 44.37 },
+  { id: 'utak_kunar_rift', tag: 'tagGDX3RiftUtakKunar', xp: 36.25, yp: 40.34 },
+
+  { id: 'dread_wastes_rift', tag: 'tagGDX3RiftDreadWastes', xp: 31.40, yp: 37.88 },
+  { id: 'black_citadel_rift', tag: 'tagGDX3RiftBlackCitadel', xp: 25.59, yp: 33.10 },
+  { id: 'glacial_grotto_rift', tag: 'tagGDX3RiftGlacialGrotto', xp: 25.86, yp: 24.78 },
+  { id: 'glaciers_edge_rift', tag: 'tagGDX3RiftGlaciersEdge', xp: 53.21, yp: 28.94 },
+  { id: 'pilgrims_rest_rift', tag: 'tagGDX3RiftPilgrimsRest', xp: 51.31, yp: 23.32 },
+  { id: 'aurora_peaks_rift', tag: 'tagGDX3RiftAuroraPeaks', xp: 51.80, yp: 20.92, },
+  { id: 'bitter_wind_rift', tag: 'tagGDX3RiftBitterWind', xp: 64.61, yp: 16.79 },
+  { id: 'aurora_pinnacle_rift', tag: 'tagGDX3RiftAuroraPinnacle', xp: 79.36, yp: 8.88 },
+  { id: 'roof_of_the_world_rift', tag: 'tagGDX3RiftRoofOfTheWorld', xp: 80.34, yp: 6.59 },
+
+]
+
 
 // 2) Rift localization
 window.RIFT_LABELS = {
@@ -122,7 +146,26 @@ window.RIFT_LABELS = {
     "tagGDX2RiftKorvanCity": "Korvan City Rift",
     "tagGDX2RiftTemple": "Tomb of the Eldritch Sun Rift",
     "tagGDX2RiftEldritch": "Eldritch Gate Rift",
-    "tagGDX2RiftLostOasis": "Lost Oasis Rift"
+    "tagGDX2RiftLostOasis": "Lost Oasis Rift",
+
+    "tagGDX3RiftIceboundPassage": "Icebound Passage Rift",
+    "tagGDX3RiftFreyollValley": "Freyoll Valley Rift",
+    "tagGDX3RiftKurnhold": "Kurnhold Rift",
+    "tagGDX3RiftVoldurRiver": "Voldur River Rift",
+    "tagGDX3RiftGuardiansSorrow": "Guardian's Sorrow Rift",
+    "tagGDX3RiftKruuSulCrags": "Kruu'Sul Crags Rift",
+    "tagGDX3RiftUlosSprings": "Ulo's Springs Rift",
+    "tagGDX3RiftUtakKunar": "Utak Kunar Rift",
+    "tagGDX3RiftDreadWastes": "Dread Wastes Rift",
+    "tagGDX3RiftBlackCitadel": "Black Citadel Rift",
+    "tagGDX3RiftGlacialGrotto": "Glacial Grotto Rift",
+    "tagGDX3RiftGlaciersEdge": "Glacier's Edge Rift",
+    "tagGDX3RiftPilgrimsRest": "Pilgrim's Rest Rift",
+    "tagGDX3RiftAuroraPeaks": "Aurora Peaks Rift",
+    "tagGDX3RiftAuroraPinnacle": "Aurora Pinnacle Rift",
+    "tagGDX3RiftRoofOfTheWorld": "Roof of the World Rift",
+    "tagGDX3RiftBitterWind": "Bitter Wind Rift",
+
   },
   fr: {
     "tagRiftDevilsCrossing": "Faille du Passage du Diable",
@@ -177,7 +220,26 @@ window.RIFT_LABELS = {
     "tagGDX2RiftKorvanCity": "Faille de la Cité de Korvan",
     "tagGDX2RiftTemple": "Faille du Tombeau du Soleil Inquiétant",
     "tagGDX2RiftEldritch": "Faille des Champs Astraux",
-    "tagGDX2RiftLostOasis": "Faille de l'Oasis perdue"
+    "tagGDX2RiftLostOasis": "Faille de l'Oasis perdue",
+
+    "tagGDX3RiftIceboundPassage": "Faille du Couloir englacé",
+    "tagGDX3RiftFreyollValley": "Faille de la Vallée de Freyoll",
+    "tagGDX3RiftKurnhold": "Faille de Fort-Kurn",
+    "tagGDX3RiftVoldurRiver": "Faille du fleuve Voldur",
+    "tagGDX3RiftGuardiansSorrow": "Faille de la Plainte du Gardien",
+    "tagGDX3RiftKruuSulCrags": "Faille des Pics de Kruu'Sul",
+    "tagGDX3RiftUlosSprings": "Faille des Sources d'Ulo",
+    "tagGDX3RiftUtakKunar": "Faille d'Utak Kunar",
+    "tagGDX3RiftDreadWastes": "Faille des Plaines de l'Effroi",
+    "tagGDX3RiftBlackCitadel": "Faille de la Citadelle noire",
+    "tagGDX3RiftGlacialGrotto": "Faille de la Grotte des glaces",
+    "tagGDX3RiftGlaciersEdge": "Faille du Trait de glace",
+    "tagGDX3RiftPilgrimsRest": "Faille du Repos du Pèlerin",
+    "tagGDX3RiftAuroraPeaks": "Faille des Cimes de l'Aurore",
+    "tagGDX3RiftBitterWind": "Faille du Col de l'Âpre-Brise", 
+    "tagGDX3RiftAuroraPinnacle": "Faille du Piton de l'Aurore",
+    "tagGDX3RiftRoofOfTheWorld": "Faille du Toit du monde",
+      
   },
   es: {
     "tagRiftDevilsCrossing": "Grieta de Cruce del Diablo",
@@ -232,7 +294,25 @@ window.RIFT_LABELS = {
     "tagGDX2RiftKorvanCity": "Grieta de la Ciudad de Korvan",
     "tagGDX2RiftTemple": "Grieta de la Tumba del Sol Sobrenatural",
     "tagGDX2RiftEldritch": "Grieta de la Puerta Sobrenatural",
-    "tagGDX2RiftLostOasis": "Grieta del Oasis Perdido"
+    "tagGDX2RiftLostOasis": "Grieta del Oasis Perdido",
+
+    "tagGDX3RiftIceboundPassage": "Grieta de Paso Congelado",
+    "tagGDX3RiftFreyollValley": "Grieta del Valle de Freyoll",
+    "tagGDX3RiftKurnhold": "Grieta de Kurnhold",
+    "tagGDX3RiftVoldurRiver": "Grieta de Río Voldur",
+    "tagGDX3RiftGuardiansSorrow": "Grieta de Pesar del Guardián",
+    "tagGDX3RiftKruuSulCrags": "Grieta de Riscos de Kruu'Sul",
+    "tagGDX3RiftUlosSprings": "Grieta de los Manantiales de Ulo",
+    "tagGDX3RiftUtakKunar": "Grieta de Utak Kunar",
+    "tagGDX3RiftDreadWastes": "Grieta de Páramos del Terror",
+    "tagGDX3RiftBlackCitadel": "Grieta de la Ciudadela Negra",
+    "tagGDX3RiftGlacialGrotto": "Grieta de la Gruta Glacial",
+    "tagGDX3RiftGlaciersEdge": "Grieta de Borde del Glaciar",
+    "tagGDX3RiftPilgrimsRest": "Grieta de Descanso del Peregrino",
+    "tagGDX3RiftAuroraPeaks": "Grieta de Picos de la Aurora",
+    "tagGDX3RiftBitterWind": "Grieta de Paso del Viento Cortante",
+    "tagGDX3RiftAuroraPinnacle": "Grieta de Cumbre de Picos de la Aurora",
+    "tagGDX3RiftRoofOfTheWorld": "Grieta del Techo del Mundo",   
   },
   pt:{
     "tagRiftDevilsCrossing": "Portal do Cruzamento do Diabo",
@@ -287,7 +367,25 @@ window.RIFT_LABELS = {
     "tagGDX2RiftKorvanCity": "Portal da Cidade de Korvan",
     "tagGDX2RiftTemple": "Portal da Tumba do Sol Feérico",
     "tagGDX2RiftEldritch": "Portal do Portão Feérico",
-    "tagGDX2RiftLostOasis": "Portal do Oásis Perdido"
+    "tagGDX2RiftLostOasis": "Portal do Oásis Perdido",
+
+    "tagGDX3RiftIceboundPassage": "Passagem Congelada",
+    "tagGDX3RiftFreyollValley": "Portal do Vale Freyoll",
+    "tagGDX3RiftKurnhold": "Portal de Kurnhold",
+    "tagGDX3RiftVoldurRiver": "Portal do Rio Voldur",
+    "tagGDX3RiftGuardiansSorrow": "Portal do Lamento do Guardião",
+    "tagGDX3RiftKruuSulCrags": "Portal dos Penhascos de Kruu'Sul",
+    "tagGDX3RiftUlosSprings": "Portal das Fontes de Ulo",
+    "tagGDX3RiftUtakKunar": "Portal de Utak Kunar",
+    "tagGDX3RiftDreadWastes": "Portal dos Ermos do Pavor",
+    "tagGDX3RiftBlackCitadel": "Portal da Cidadela Negra",
+    "tagGDX3RiftGlacialGrotto": "Portal da Gruta Glacial",
+    "tagGDX3RiftGlaciersEdge": "Portal da Borda da Geleira",
+    "tagGDX3RiftPilgrimsRest": "Portal do Descanso do Peregrino",
+    "tagGDX3RiftAuroraPeaks": "Portal dos Picos Aurora",
+    "tagGDX3RiftBitterWind": "Portal dos Ventos Penetrantes",
+    "tagGDX3RiftAuroraPinnacle": "Portal do Pináculo Aurora",
+    "tagGDX3RiftRoofOfTheWorld": "Portal do Teto do Mundo",    
   },
   it:{
     "tagRiftDevilsCrossing": "Portale ~ Crocevia del Diavolo",
@@ -342,7 +440,26 @@ window.RIFT_LABELS = {
     "tagGDX2RiftKorvanCity": "Portale della Città di Korvan",
     "tagGDX2RiftTemple": "Portale della Tomba del Sole di Eldritch",
     "tagGDX2RiftEldritch": "Portale del Cancello di Eldritch",
-    "tagGDX2RiftLostOasis": "Portale dell'Oasi Perduta"
+    "tagGDX2RiftLostOasis": "Portale dell'Oasi Perduta",
+
+    "tagGDX3RiftIceboundPassage": "Portale del Valico dei Ghiacci",
+    "tagGDX3RiftFreyollValley": "Portale della Valle di Freyoll",
+    "tagGDX3RiftKurnhold": "Portale di Kurnhold",
+    "tagGDX3RiftVoldurRiver": "Portale del Fiume Voldur",
+    "tagGDX3RiftGuardiansSorrow": "Portale di Dolore del Guardiano",
+    "tagGDX3RiftKruuSulCrags": "Portale dei Dirupi di Kruu'Sul",
+    "tagGDX3RiftUlosSprings": "Portale delle Sorgenti di Ulo",
+    "tagGDX3RiftUtakKunar": "Portale di Utak Kunar",
+    "tagGDX3RiftDreadWastes": "Portale delle Lande del Terrore",
+    "tagGDX3RiftBlackCitadel": "Portale della Cittadella Nera",
+    "tagGDX3RiftGlacialGrotto": "Portale della Grotta Glaciale",
+    "tagGDX3RiftGlaciersEdge": "Portale di Margine dei Ghiacci",
+    "tagGDX3RiftPilgrimsRest": "Portale di Riposo del Pellegrino",
+    "tagGDX3RiftAuroraPeaks": "Portale dei Picchi dell'Aurora",
+    "tagGDX3RiftBitterWind": "Portale di Vento Amaro",
+    "tagGDX3RiftAuroraPinnacle": "Portale della Guglia dell'Aurora",
+    "tagGDX3RiftRoofOfTheWorld": "Portale del Tetto del Mondo",
+
   },
 
 pl:{
@@ -399,10 +516,29 @@ pl:{
   "tagGDX2RiftTemple": "Szczelina w Grobowcu Upiornego Słońca",
   "tagGDX2RiftEldritch": "Szczelina przy Upiornej Bramie",
   "tagGDX2RiftLostOasis": "Szczelina w Zaginionej Oazie",
+
+  "tagGDX3RiftIceboundPassage": "Szczelina Lodowego Przesmyku",
+  "tagGDX3RiftFreyollValley": "Szczelina Doliny Freyoll",
+  "tagGDX3RiftKurnhold": "Szczelina Kurnholdu",
+  "tagGDX3RiftVoldurRiver": "Szczelina rzeki Voldur",
+  "tagGDX3RiftGuardiansSorrow": "Szczelina Smutku Strażnika",
+  "tagGDX3RiftKruuSulCrags": "Szczelina turni Kruu'Sul",
+  "tagGDX3RiftUlosSprings": "Szczelina Źródeł Ulo",
+  "tagGDX3RiftUtakKunar": "Szczelina Utak Kuna",
+  "tagGDX3RiftDreadWastes": "Szczelina Pustkowi Grozy",
+  "tagGDX3RiftBlackCitadel": "Szczelina Czarnej Cytadeli",
+  "tagGDX3RiftGlacialGrotto": "Szczelina Lodowej Grody",
+  "tagGDX3RiftGlaciersEdge": "Szczelina Granicy Lodowca",
+  "tagGDX3RiftPilgrimsRest": "Szczelina Spoczynku Pielgrzyma",
+  "tagGDX3RiftAuroraPeaks": "Szczelina Szczytów Aurory",
+  "tagGDX3RiftBitterWind": "Szczelina Przenikliwego Wiatru",
+  "tagGDX3RiftAuroraPinnacle": "Szczelina Iglicy Aurory",
+  "tagGDX3RiftRoofOfTheWorld": "Szczelina Dachu Świata",
+
 },
 
   ru:{
-      "tagRiftDevilsCrossing": "Разлом Перекрёстка Дьявола",
+  "tagRiftDevilsCrossing": "Разлом Перекрёстка Дьявола",
   "tagRiftLowerCrossing": "Разлом Нижнего Перекрёстка",
   "tagRiftBurrwitchRoad": "Разлом Туманных Низин",
   "tagRiftWightmire": "Разлом Болот Нечисти",
@@ -454,7 +590,25 @@ pl:{
   "tagGDX2RiftKorvanCity": "Разлом Корвана",
   "tagGDX2RiftTemple": "Разлом Гробницы Жуткого Солнца",
   "tagGDX2RiftEldritch": "Разлом Жутких врат",
-  "tagGDX2RiftLostOasis": "Разлом Затерянного оазиса"
+  "tagGDX2RiftLostOasis": "Разлом Затерянного оазиса",
+
+  "tagGDX3RiftIceboundPassage": "Мёрзлый проход",
+  "tagGDX3RiftFreyollValley": "Разлом долины Фрейолл",
+  "tagGDX3RiftKurnhold": "Разлом Курнхольда",
+  "tagGDX3RiftVoldurRiver": "Разлом реки Вольдур",
+  "tagGDX3RiftGuardiansSorrow": "Разлом Скорби стража",
+  "tagGDX3RiftKruuSulCrags": "Разлом Круу'сульских утёсов",
+  "tagGDX3RiftUlosSprings": "Разлом Источников Уло",
+  "tagGDX3RiftUtakKunar": "Разлом Утак-Кунара",
+  "tagGDX3RiftDreadWastes": "Разлом Ужасающих пустошей",
+  "tagGDX3RiftBlackCitadel": "Разлом Чёрной цитадели",
+  "tagGDX3RiftGlacialGrotto": "Разлом Льдистого ущелья",
+  "tagGDX3RiftGlaciersEdge": "Разлом Края ледников",
+  "tagGDX3RiftPilgrimsRest": "Разлом Приюта паломника",
+  "tagGDX3RiftAuroraPeaks": "Разлом Пиков Авроры",
+  "tagGDX3RiftBitterWind": "Разлом Суровых ветров",
+  "tagGDX3RiftAuroraPinnacle": "Разлом вершины Авроры",
+  "tagGDX3RiftRoofOfTheWorld": "Разлом Крыши мира",
   },
   zh:{
       "tagRiftDevilsCrossing": "恶魔十字传送门",
@@ -509,7 +663,26 @@ pl:{
     "tagGDX2RiftKorvanCity": "科凡城传送门",
     "tagGDX2RiftTemple": "邪阳之墓传送门",
     "tagGDX2RiftEldritch": "邪术之门传送门",
-    "tagGDX2RiftLostOasis": "迷失绿洲传送门"
+    "tagGDX2RiftLostOasis": "迷失绿洲传送门",
+
+    "tagGDX3RiftIceboundPassage": "冰封通道传送门",
+    "tagGDX3RiftFreyollValley": "弗雷欧山谷传送门",
+    "tagGDX3RiftKurnhold": "库恩堡传送门",
+    "tagGDX3RiftVoldurRiver": "沃尔多河传送门",
+    "tagGDX3RiftGuardiansSorrow": "守护者之恸传送门",
+    "tagGDX3RiftKruuSulCrags": "可鲁苏尔峭壁传送门",
+    "tagGDX3RiftUlosSprings": "艾尔洛泉传送门",
+    "tagGDX3RiftUtakKunar": "乌塔克·库纳尔传送门",
+    "tagGDX3RiftDreadWastes": "恐惧荒地传送门",
+    "tagGDX3RiftBlackCitadel": "黑色堡垒传送门",
+    "tagGDX3RiftGlacialGrotto": "冰川洞窟传送门",
+    "tagGDX3RiftGlaciersEdge": "冰川边缘传送门",
+    "tagGDX3RiftPilgrimsRest": "朝圣者憩地传送门",
+    "tagGDX3RiftAuroraPeaks": "极光群峰传送门",
+    "tagGDX3RiftBitterWind": "苦风隘口传送门",
+    "tagGDX3RiftAuroraPinnacle": "极光峰顶传送门",
+    "tagGDX3RiftRoofOfTheWorld": "世界之巅传送门",
+
   },
   de:{
     "tagRiftDevilsCrossing": "Rift in Devil's Crossing",
@@ -564,7 +737,26 @@ pl:{
     "tagGDX2RiftKorvanCity": "Rift in Korvan Stadt",
     "tagGDX2RiftTemple": "Rift im Grab der Übernatürlichen Sonne",
     "tagGDX2RiftEldritch": "Rift am Übernatürlichen Tor",
-    "tagGDX2RiftLostOasis": "Rift in der Verschollenen Oase"
+    "tagGDX2RiftLostOasis": "Rift in der Verschollenen Oase",
+
+    "tagGDX3RiftIceboundPassage": "Eisgebundene-Passage-Rift",
+    "tagGDX3RiftFreyollValley": "Freyoll-Tal-Rift",
+    "tagGDX3RiftKurnhold": "Kurnhold-Rift",
+    "tagGDX3RiftVoldurRiver": "Fluss-Voldur-Rift",
+    "tagGDX3RiftGuardiansSorrow": "Wächtergram-Rift",
+    "tagGDX3RiftKruuSulCrags": "Kruu'Sul-Klippen-Rift",
+    "tagGDX3RiftUlosSprings": "Ulos-Quellen-Rift",
+    "tagGDX3RiftUtakKunar": "Utak-Kunar-Rift",
+    "tagGDX3RiftDreadWastes": "Schreckenseinöde-Rift",
+    "tagGDX3RiftBlackCitadel": "Schwarze-Zitadelle-Rift",
+    "tagGDX3RiftGlacialGrotto": "Gletschergrotte-Rift",
+    "tagGDX3RiftGlaciersEdge": "Gletscherrand-Rift",
+    "tagGDX3RiftPilgrimsRest": "Pilgerruh-Rift",
+    "tagGDX3RiftAuroraPeaks": "Auroragipfel-Rift",
+    "tagGDX3RiftBitterWind": "Scharfwind-Rift",
+    "tagGDX3RiftAuroraPinnacle": "Auroraspitzen-Rift",
+    "tagGDX3RiftRoofOfTheWorld": "Dach-der-Welt-Rift",
+
   },
   ja:{
     "tagRiftDevilsCrossing": "デビルズ クロッシング リフト",
@@ -623,7 +815,25 @@ pl:{
     "tagGDX2RiftKorvanCity": "コルヴァン市 リフト",
     "tagGDX2RiftTemple": "エルドリッチの太陽の墓 リフト",
     "tagGDX2RiftEldritch": "エルドリッチの門 リフト",
-    "tagGDX2RiftLostOasis": "失われたオアシス リフト"
+    "tagGDX2RiftLostOasis": "失われたオアシス リフト",
+
+    "tagGDX3RiftIceboundPassage": "氷結の隘路リフト",
+    "tagGDX3RiftFreyollValley": "フレヨル渓谷リフト",
+    "tagGDX3RiftKurnhold": "カーンホールドリフト",
+    "tagGDX3RiftVoldurRiver": "ヴォルドゥル川リフト",
+    "tagGDX3RiftGuardiansSorrow": "守護者の悲哀リフト",
+    "tagGDX3RiftKruuSulCrags": "クルースルの岩山リフト",
+    "tagGDX3RiftUlosSprings": "ウロの泉リフト",
+    "tagGDX3RiftUtakKunar": "ウタク・クナルリフト",
+    "tagGDX3RiftDreadWastes": "ドレッドウェイストリフト",
+    "tagGDX3RiftBlackCitadel": "黒の城塞リフト",
+    "tagGDX3RiftGlacialGrotto": "氷河の洞穴リフト",
+    "tagGDX3RiftGlaciersEdge": "氷河の涯リフト",
+    "tagGDX3RiftPilgrimsRest": "巡礼者の休息所リフト",
+    "tagGDX3RiftAuroraPeaks": "オーロラ峰リフト",
+    "tagGDX3RiftBitterWind": "苦き風リフト",
+    "tagGDX3RiftAuroraPinnacle": "オーロラ尖峰リフト",
+    "tagGDX3RiftRoofOfTheWorld": "世界の屋根リフト",    
   },
   ko:{
     "tagRiftDevilsCrossing": "데블스 크로싱 리프트",
@@ -683,6 +893,24 @@ pl:{
     "tagGDX2RiftTemple": "엘드리치 태양의 무덤 리프트",
     "tagGDX2RiftEldritch": "엘드리치 관문 리프트",
     "tagGDX2RiftLostOasis": "잃어버린 오아시스 리프트",
+
+    "tagGDX3RiftIceboundPassage": "얼어붙은 통로 리프트",
+    "tagGDX3RiftFreyollValley": "프레이올 계곡 리프트",
+    "tagGDX3RiftKurnhold": "쿠른홀드 리프트",
+    "tagGDX3RiftVoldurRiver": "볼두르 강 리프트",
+    "tagGDX3RiftGuardiansSorrow": "수호자의 슬픔 리프트",
+    "tagGDX3RiftKruuSulCrags": "크루'술 바위산 리프트",
+    "tagGDX3RiftUlosSprings": "울로의 샘 리프트",
+    "tagGDX3RiftUtakKunar": "우탁 쿠나르 리프트",
+    "tagGDX3RiftDreadWastes": "공포의 황무지 리프트",
+    "tagGDX3RiftBlackCitadel": "검은 성채 리프트",
+    "tagGDX3RiftGlacialGrotto": "빙하 동굴 리프트",
+    "tagGDX3RiftGlaciersEdge": "빙하 끝자락 리프트",
+    "tagGDX3RiftPilgrimsRest": "순례자의 안식처 리프트",
+    "tagGDX3RiftAuroraPeaks": "오로라 봉우리 리프트",
+    "tagGDX3RiftBitterWind": "쓰라린 바람 리프트",
+    "tagGDX3RiftAuroraPinnacle": "오로라 정상 리프트",
+    "tagGDX3RiftRoofOfTheWorld": "세계의 지붕 리프트",
   }
 };
 
