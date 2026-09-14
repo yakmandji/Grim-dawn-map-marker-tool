@@ -1052,10 +1052,10 @@ header button.menu-button.select-current:hover {
 
 .region-label {
   font-family: var(--font-title);
-  font-size: 1em;
+  font-size: 1.30em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #cab398;
+  color: #decbb5;
   text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.75),  0 0 3px rgba(0, 0, 0, 0.9);
   white-space: nowrap;
   user-select: none;
