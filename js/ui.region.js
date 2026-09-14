@@ -485,6 +485,8 @@ en: {
   tagGDX2MapSideAreas_03: "Arkovian Coliseum",
   tagGoTo: "Go to ",
 
+  tagGDX3AuroraPinacle_01: "Aurora Pinnacle",
+
 // --- Dungeons & Caves ---
   tagUGLowerCrossingRatDen01: "Putrid Den",
   tagUGBurrwitchVillageRatDen01: "Festering Lair",

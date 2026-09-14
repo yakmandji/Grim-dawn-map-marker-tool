@@ -1262,7 +1262,7 @@ viewport.addEventListener('pointermove', e => {
     rememberActiveProfile();
     showLoader(GDMMLang.t('toast.LoadingMap'));
 
-    // ✅ FIX shared: load real campaign map name instead of "[Shared] X"
+    // FIX shared: load real campaign map name instead of "[Shared] X"
     let loadKey = name;
     const prof = currentProfile();
 
@@ -1280,7 +1280,7 @@ viewport.addEventListener('pointermove', e => {
       await ensureMapLoadedForProfile(loadKey);
     }
 
-    // ✅ Now map should be available on currentProfile().map
+    // Now map should be available on currentProfile().map
     const p = currentProfile();
     if (p && p.map && p.map.embedData) {
       setMapSrc(p.map.embedData);

@@ -236,12 +236,12 @@ window.DUNGEON_ENTRY_MARKERS_ASTERKARN = [
   { id: "entry_kamurs_ridge2", xp: 64.99, yp: 16.65, tag: "Kamur's Ridge 2" },
   { id: "entry_scarstone_depths", xp: 66.87, yp: 15.38, tag: "Scarstone Depths" },
   { id: "entry_scarstone_depths_exit", xp: 65.79, yp: 14.52, tag: "Scarstone Depths Exit", eyeColor:"gray-muted" },
-  { id: "entry_aurora_pinnacle", xp: 65.92, yp: 13.50, tag: "Aurora Pinnacle" },
+/*  { id: "entry_aurora_pinnacle", xp: 65.92, yp: 13.50, tag: "Aurora Pinnacle" },*/
   { id: "entry_bitter_wind_pass", xp: 79.53, yp: 8.62, tag: "Bitter Wind Pass" },
   { id: "entry_glacierbound_cave", xp: 78.07, yp: 8.79, tag: "Glacierbound Cave" },
   { id: "entry_rimespire_cavern", xp: 79.86, yp: 5.60, tag: "Rimespire Cavern" },
   { id: "entry_windwalkers_den", xp: 85.27, yp: 6.48, tag: "Windwalker's Den" },
-  { id: "entry_windwalkers_den_exit", xp: 84.90, yp: 6.13, tag: "Windwalker's Den Exit", eyeColor:"gray-muted" },
+  { id: "entry_windwalkers_den_exit", xp: 84.90, yp: 6.13, tag: "Windwalker's Den Exit", eyeColor:"gray" },
   { id: "entry_roof_of_the_world", xp: 81.55, yp: 3.39, tag: "Roof of the World" },
 
 ];
@@ -375,9 +375,21 @@ window.DUNGEON_LINKS = {
   "icebound_passage":["entry_icebound_passage"],
   "blackhearts_hideout":["entry_blackhearts_hideout"],
   "fekks_burrow":["entry_fekks_burrow"],
-  "kurn-cellar":["entry_kurn_cellar"],
+  "kurn_cellar":["entry_kurn_cellar"],
   "elderveil":["entry_elderveil"],
-
+  "ulos_remorse":["entry_ulos_remorse"],
+  "lost_cairn_grotto":["entry_lost_cairn_grotto"],
+  "scarfell_depths":["entry_scarfell_depths"],
+  "ironeyes_hideout":["entry_ironeyes_hideout", "entry_ironeyes_hideout_exit"],
+  "crimson_expanse":["entry_crimson_expanse", "entry_crimson_expanse_exit"],
+  "obsidian_wound":["entry_obsidian_wound", "entry_obsidian_wound_exit"],
+  "the_world_tear":["entry_the_world_tear"],
+  "glacial_grotto":["entry_glacial_grotto", "entry_glacial_grotto2"],
+  "black_lodge":["entry_black_lodge"],
+  "mammoth_burial_grounds":["entry_mammoth_burial_grounds"],
+  "the_threshold_between":["entry_the_threshold_between"],
+  "kamurs_ridge":["entry_kamurs_ridge", "entry_kamurs_ridge2"],
+  "scarstone_depths":["entry_scarstone_depths", "entry_scarstone_depths_exit"],
 
 };
 

@@ -121,10 +121,21 @@ window.DUNGEON_OVERLAYS = [
 { id: 'icebound_passage', map: 'asterkarn', img: 'icebound-passage.jpg',  left: 37.8867, top: 82.4870, width: 8.6824, height: 16.8282 },
 { id: 'blackhearts_hideout', map: 'asterkarn', img: 'blackhearts-hideout.jpg',  left: 36.4848, top: 58.9805, width: 4.3862, height: 3.6556 },
 { id: 'fekks_burrow', map: 'asterkarn', img: 'fekks-burrow.jpg',  left: 54.5504, top: 60.4551, width: 5.9714, height: 4.4404 },
-{ id: 'kurn-cellar', map: 'asterkarn', img: 'kurn-cellar.jpg',  left: 41.0135, top: 56.2479, width: 2.7387, height: 2.2028 },
+{ id: 'kurn_cellar', map: 'asterkarn', img: 'kurn-cellar.jpg',  left: 41.0135, top: 56.2479, width: 2.7387, height: 2.2028 },
 { id: 'elderveil', map: 'asterkarn', img: 'elderveil.jpg',  left: 52.7481, top: 55.0622, width: 3.4361, height: 1.8960 },
-
-
+{ id: 'ulos_remorse', map: 'asterkarn', img: 'ulos-remorse.jpg',  left: 33.8547, top: 50.3144, width: 5.0176, height: 4.3977 },
+{ id: 'lost_cairn_grotto', map: 'asterkarn', img: 'lost-cairn-grotto.jpg',  left: 37.2280, top: 46.6393, width: 4.0755, height: 3.3266 },
+{ id: 'scarfell_depths', map: 'asterkarn', img: 'scarfell-depths.jpg',  left: 26.7512, top: 42.3664, width: 6.1383, height: 5.0711 },
+{ id: 'ironeyes_hideout', map: 'asterkarn', img: 'ironeyes-hideout.jpg',  left: 41.9178, top: 31.5549, width: 5.9142, height: 6.1413 },
+{ id: 'crimson_expanse', map: 'asterkarn', img: 'crimson-expanse.jpg',  left: 13.9989, top: 36.8910, width: 7.8504, height: 10.0890 },
+{ id: 'obsidian_wound', map: 'asterkarn', img: 'obsidian-wound.jpg',  left: 33.4238, top: 26.9377, width: 7.6727, height: 6.8717 },
+{ id: 'the_world_tear', map: 'asterkarn', img: 'the-world-tear.jpg',  left: 8.3044, top: 24.0741, width: 11.0141, height: 12.3117 },
+{ id: 'glacial_grotto', map: 'asterkarn', img: 'glacial-grotto.jpg',  left: 24.3111, top: 17.5106, width: 8.0999, height: 8.3286 },
+{ id: 'black_lodge', map: 'asterkarn', img: 'black-lodge.jpg',  left: 57.2465, top: 26.0474, width: 19.3743, height: 9.7823 },
+{ id: 'mammoth_burial_grounds', map: 'asterkarn', img: 'mammoth-burial-grounds.jpg',  left: 58.4602, top: 20.3659, width: 6.2558, height: 4.6912 },
+{ id: 'the_threshold_between', map: 'asterkarn', img: 'the-threshold-between.jpg',  left: 33.1542, top: 3.0511, width: 20.8446, height: 11.9087 },
+{ id: 'kamurs_ridge', map: 'asterkarn', img: 'kamurs-ridge.jpg',  left: 54.1518, top: 14.5837, width: 5.7472, height: 4.2722 },
+{ id: 'scarstone_depths', map: 'asterkarn', img: 'scarstone-depths.jpg',  left: 68.8915, top: 15.2135, width: 4.3139, height: 3.7357 },
 
 
 ];

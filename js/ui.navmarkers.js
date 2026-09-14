@@ -289,7 +289,6 @@ window.NAV_MARKERS_CAIRN = [
         yp: 98.47,
         tag: 'tagGoTo + tagMapDevilsCrossing01',
         icon: 'img/icon-link.png',
-        targetProfile: 'Cairn',
         targetXp: 62.90,
         targetYp: 89.81,
         targetScale: 1,
@@ -298,6 +297,32 @@ window.NAV_MARKERS_CAIRN = [
       },
   ];
 
+  window.NAV_MARKERS_ASTERKARN = [
+      {
+        xp: 79.54, 
+        yp: 8.44,
+        tag: 'tagGoTo + tagGDX3AuroraPinacle_01',
+        icon: 'img/icon-link.png',
+        targetProfile: 'Asterkarn',
+        targetXp: 65.55, 
+        targetYp: 13.51,
+        targetScale: 1,
+        id: 'AuroraPinacle2',
+        targetId: 'AuroraPinacleGo'
+      },
+      {
+        xp: 65.97,
+        yp: 13.51,
+        tag: 'tagGoTo + tagGDX3AuroraPinacle_01',
+        icon: 'img/icon-link.png',
+        targetProfile: 'Asterkarn',
+        targetXp: 79.54, 
+        targetYp: 8.44,       
+        targetScale: 1,
+        id: 'AuroraPinacleGo',
+        targetId: 'AuroraPinacle2'
+      },      
+  ];
 
   // --- Mapping map sise ---
   window.NAV_MARKERS_BY_SIZE = {
