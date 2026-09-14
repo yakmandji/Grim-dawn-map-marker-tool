@@ -45,6 +45,8 @@
     { id: 'shrinetagUGSecret02', regionTag: 'tagUGSecret02', xp: 28.57, yp: 21.00, difficulty: 'ultimate' },
     { id: 'shrinetagGDX1MapUgdenbogAncient', regionTag: 'tagGDX1MapUgdenbogAncient', xp: 90.31, yp: 40.50, difficulty: 'ultimate' },
     { id: 'shrinetagGDX1UGUgdenbogMine01', regionTag: 'tagGDX1UGUgdenbogMine01', xp: 99.54, yp: 27.94, difficulty: 'ultimate' },
+    { id: 'shrinetagtagGDX3RegionFrostveilHighlands', regionTag: 'tagGDX3RegionFrostveilHighlands', xp: 13.11, yp: 8.84, difficulty: 'normal' },
+
   ];
 
   window.SHRINE_MARKERS_MALMOUTH = [
@@ -68,6 +70,14 @@
     { id: 'shrinetagGDX2KorvaakTomb01', regionTag: 'tagGDX2KorvaakTomb01', xp: 60.73, yp: -4.00, difficulty: 'normal' },
     { id: 'shrinetagGDX2Roguelike_01', regionTag: 'tagGDX2Roguelike_01', xp: 82.94, yp: 20.85, difficulty: 'normal' },
     { id: 'shrinetagGDX1UGSecret01Korvan', regionTag: 'tagGDX1UGSecret01', xp: 17.87, yp: 23.93, difficulty: 'ultimate' },
+  ];
+
+  window.SHRINE_MARKERS_ASTERKARN = [
+    { id: 'shrinetagtagGDX3RegionVoldurRiver', regionTag: 'tagGDX3RegionVoldurRiver', xp: 48.56, yp: 66.46, difficulty: 'normal' },
+    { id: 'shrinetagGDX3RegionRuinsOfUtakKunar', regionTag: 'tagGDX3RegionRuinsOfUtakKunar', xp: 37.06, yp: 38.1, difficulty: 'normal' },
+    { id: 'shrinetagGDX3RegionDreadWastes', regionTag: 'tagGDX3RegionDreadWastes', xp: 25.89, yp: 34.54, difficulty: 'normal' },
+    { id: 'shrinetagGDX3RegionAuroraPinnacle', regionTag: 'tagGDX3RegionAuroraPinnacle', xp: 80.56, yp: 7.86, difficulty: 'normal' },
+    { id: 'shrinetagScarstoneDepths', regionTag: 'Scarstone Depths', xp: 72.50, yp: 16.85, difficulty: 'normal' },
   ];
 
   // MAPPING PAR TAILLE D’IMAGE

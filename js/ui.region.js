@@ -352,7 +352,7 @@ window.REGION_MARKERS_ASTERKARN = [
   { id: 'tagGDX3_Region_Pilgrims_Rest', tag: 'tagGDX3RegionPilgrimsRest', xp: 52.78, yp: 21.82 },
   { id: 'tagGDX3_Region_Aurora_Peaks', tag: 'tagGDX3RegionAuroraPeaks', xp: 50.90, yp: 19.32 },
   { id: 'tagGDX3_Region_Bitter_Wind_Pass', tag: 'tagGDX3RegionBitterWindPass', xp: 64.51, yp: 14.77 },
-  { id: 'tagGDX3_Region_Aurora_Pinnacle', tag: 'tagGDX3RegionAuroraPinnacle', xp: 79.50, yp: 7.35 },
+  { id: 'tagGDX3_Region_Aurora_Pinnacle', tag: 'tagGDX3RegionAuroraPinnacle', xp: 79.50, yp: 7.9 },
   { id: 'tagGDX3_Region_Yulgirs_Overlook', tag: 'tagGDX3RegionYulgirsOverlook', xp: 83.24, yp: 6.92 },
   { id: 'tagGDX3_Region_Roof_Of_The_World', tag: 'tagGDX3RegionRoofOfTheWorld', xp: 79.74, yp: 3.88 },
 
