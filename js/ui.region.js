@@ -326,10 +326,12 @@ window.REGION_MARKERS_MALMOUTH = [
 { id: 'tag_gDX2_roguelike_Area03', tag: 'tagGDX2Roguelike_Area03', xp: 54.97, yp: 65.59, isDungeon: true },
 { id: 'tag_Splendor_OfShattered_Realm', tag: 'tagSplendorOfShatteredRealm', xp: 12.57, yp: 95.23, isDungeon: true },
 
-
-
-
 ];
+
+window.REGION_MARKERS_ASTERKARN = [
+
+
+]
 
 
 window.REGION_LABELS = {
@@ -485,7 +487,29 @@ en: {
   tagGDX2MapSideAreas_03: "Arkovian Coliseum",
   tagGoTo: "Go to ",
 
-  tagGDX3AuroraPinacle_01: "Aurora Pinnacle",
+  tagGDX3RegionVoldurRiver: "Voldur River",
+  tagGDX3RegionKurnhold: "Kurnhold",
+  tagGDX3RegionFreyollValley: "Freyoll Valley",
+  tagGDX3RegionFrostveilHighlands: "Frostveil Highlands",
+  tagGDX3RegionAuroraPeaks: "Aurora Peaks",
+  tagGDX3RegionPilgrimsRest: "Pilgrim's Rest",
+  tagGDX3RegionGlaciersEdge: "Glacier's Edge",
+  tagGDX3RegionTamarogTheBlackCitadel: "Tamarog, the Black Citadel",
+  tagGDX3RegionDreadWastes: "Dread Wastes",
+  tagGDX3RegionRuinsOfUtakKunarBastion: "Ruins of Utak Kunar",
+  tagGDX3RegionBloodboundBastion: "Bloodbound Bastion",
+  tagGDX3RegionRavagersRedoubt: "Ravager's Redoubt",
+  tagGDX3RegionChthulRise: "Ch'thul Rise",
+  tagGDX3RegionEvernightValley: "Evernight Valley",
+  tagGDX3RegionKruuSulCrags: "Kruu'Sul Crags",
+  tagGDX3RegionUlosSprings: "Ulo's Springs",
+  tagGDX3RegionUlosRemorse: "Ulo's Remorse",
+  tagGDX3RegionGuardiansSorrow: "Guardian's Sorrow",
+  tagGDX3RegionBitterWindPass: "Bitter Wind Pass",
+  tagGDX3RegionRoofOfTheWorld: "Roof of the World",
+  tagGDX3RegionYulgirsOverlook: "Yulgir's Overlook",
+  tagGDX3RegionAuroraPinnacle: "Aurora Pinnacle",
+  
 
 // --- Dungeons & Caves ---
   tagUGLowerCrossingRatDen01: "Putrid Den",
