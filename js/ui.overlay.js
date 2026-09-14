@@ -72,6 +72,8 @@ window.DUNGEON_OVERLAYS = [
 { id: "Fort_Ikon_town", map: "cairn", img: "fort-icon-town.jpg", left: 15.5988, top: 24.6959, width: 5.1066, height: 4.6750 },
 { id: "HomeStead_town", map: "cairn", img: "home-stead-town.jpg", left: 41.2463, top: 62.1956, width: 4.9, height: 3.7528 },
 { id: "Covens_town", map: "cairn", img: "covens-village.jpg?1.0", left: 79.2969, top: 40.4631, width: 6.4470, height: 4.8357 },
+{ id: "icehowl_cavern", map: "cairn", img: "icehowl-cavern.jpg", left: 6.6181, top: 9.8664, width: 2.5592, height: 2.3922 },
+
 
 
 
@@ -136,6 +138,14 @@ window.DUNGEON_OVERLAYS = [
 { id: 'the_threshold_between', map: 'asterkarn', img: 'the-threshold-between.jpg',  left: 33.1542, top: 3.0511, width: 20.8446, height: 11.9087 },
 { id: 'kamurs_ridge', map: 'asterkarn', img: 'kamurs-ridge.jpg',  left: 54.1518, top: 14.5837, width: 5.7472, height: 4.2722 },
 { id: 'scarstone_depths', map: 'asterkarn', img: 'scarstone-depths.jpg',  left: 68.8915, top: 15.2135, width: 4.3139, height: 3.7357 },
+{ id: 'glacierbound_cave', map: 'asterkarn', img: 'glacierbound-cave.jpg',  left: 76.1711, top: 10.8201, width: 3.4019, height: 2.7697 },
+{ id: 'rimespire_cavern', map: 'asterkarn', img: 'rimespire-cavern.jpg',  left: 73.6956, top: 2.1793, width: 4.3300, height: 3.6773 },
+{ id: 'roof_of_the_world', map: 'asterkarn', img: 'roof-of-the-world.jpg',  left: 80.4256, top: 0.4366, width: 2.9163, height: 2.1296 },
+{ id: 'windwalkers_den', map: 'asterkarn', img: 'windwalkers-den.jpg',  left: 86.3179, top: 5.2913, width: 4.5054, height: 4.1588 },
+
+
+
+
 
 
 ];

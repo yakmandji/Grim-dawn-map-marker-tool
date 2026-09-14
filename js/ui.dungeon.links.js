@@ -130,7 +130,7 @@ window.DUNGEON_ENTRY_MARKERS_CAIRN = [
 
 
 { id: "entry_icehowl_cavern", xp: 10.90, yp: 12.77, tag: "Icehowl Cavern" },
-{ id: "entry_Icebound_passage_cairn", xp: 6.55, yp: 0.13, tag: "Icebound Passage Cairn" },
+
 
 
 ];
@@ -212,7 +212,6 @@ window.DUNGEON_ENTRY_MARKERS_KORVAN = [
 
 window.DUNGEON_ENTRY_MARKERS_ASTERKARN = [
   { id: "entry_blackhearts_hideout", xp: 43.86, yp: 62.45, tag: "Blackhearts Hideout" },
-  { id: "entry_roof_of_the_world", xp: 35.55, yp: 66.94, tag: "Roof of the World", eyeColor:"gray-muted" },
   { id: "entry_icebound_passage", xp: 38.52, yp: 80.44, tag: "Icebound Passage" },
   { id: "entry_fekks_burrow", xp: 51.75, yp: 59.36, tag: "Fekk's Burrow" },
   { id: "entry_kurn_cellar", xp: 45.54, yp: 57.23, tag: "Kurn Cellar" },
@@ -325,6 +324,9 @@ window.DUNGEON_LINKS = {
   "port_valbury_fondation": ["entry_port_valbury_fondation","entry_port_valbury_fondation2"],
   "altritch_karters": ["entry_altritch_karters"],
 
+  "icehowl_cavern": ["entry_icehowl_cavern"],
+
+
   /*MALMOUTH*/
 
   "steel_cap_town":["entry_steel_cap_town"],
@@ -388,6 +390,11 @@ window.DUNGEON_LINKS = {
   "the_threshold_between":["entry_the_threshold_between"],
   "kamurs_ridge":["entry_kamurs_ridge", "entry_kamurs_ridge2"],
   "scarstone_depths":["entry_scarstone_depths", "entry_scarstone_depths_exit"],
+  "glacierbound_cave":["entry_glacierbound_cave"],
+  "rimespire_cavern":["entry_rimespire_cavern"],
+  "roof_of_the_world":["entry_roof_of_the_world"],
+  "windwalkers_den":["entry_windwalkers_den", "entry_windwalkers_den_exit"],
+
 
 };
 

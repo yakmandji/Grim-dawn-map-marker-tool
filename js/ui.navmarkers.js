@@ -203,6 +203,20 @@ window.NAV_MARKERS_CAIRN = [
         id: 'HargatesIsle',
         targetId: 'LowerCrossing'
       },
+      // --------------------------------------------------Téléport to Asterkarn
+      {
+        xp: 6.56, 
+        yp: 0.10,
+        tag: 'tagGoTo + Icebound Passage',
+        icon: 'img/icon-link.png',
+        targetProfile: 'Asterkarn',
+        targetXp: 45.09,
+        targetYp: 96.35,
+        targetScale: 1,
+        id: 'IceboundPassage',
+        targetId: 'IceboundPassageGo'
+      },     
+
 ];
 
   window.NAV_MARKERS_MALMOUTH = [
@@ -321,7 +335,21 @@ window.NAV_MARKERS_CAIRN = [
         targetScale: 1,
         id: 'AuroraPinacleGo',
         targetId: 'AuroraPinacle2'
-      },      
+      },
+
+      {
+        xp: 45.34, 
+        yp: 96.26,
+        tag: 'tagGoTo + Frostveil Highlands',
+        icon: 'img/icon-link.png',
+        targetProfile: 'Cairn',
+        targetXp: 6.92,
+        targetYp: 0.26,
+        targetScale: 1,
+        id: 'IceboundPassageGo',
+        targetId: 'IceboundPassage'
+      },  
+
   ];
 
   // --- Mapping map sise ---
