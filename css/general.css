@@ -810,7 +810,7 @@ label.checkbox{
 .js-character-dropdown .custom-dropdown-inner{
   left: 50%;
   transform: translateX(-50%) !important;
-  top: 84px;
+  top: 52px;
   box-shadow: var(--shadow);
 }
 
