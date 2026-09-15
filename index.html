@@ -28,8 +28,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v2.04" />
-  <link rel="stylesheet" href="css/items.css?v2.12" />
+  <link rel="stylesheet" href="css/general.css?v2.05" />
+  <link rel="stylesheet" href="css/items.css?v2.13" />
   <link rel="stylesheet" href="css/responsive.css?v1.43" />
   
 </head>
@@ -228,7 +228,10 @@
         <div class="row">
         <!-- === FILTER BAR === -->
             <div class="filterBar">
-              <div class="filterAll">
+              <div class="filterAll d-flex">
+                <div class="filterToggle"  data-i18n-title="ui.HideAllMarker" data-none title="Hide all">
+                    <img src="img/eye-hide.svg" alt="All" >
+                </div>                
                 <div class="filterToggle is-on"  data-i18n-title="ui.ShowAllMarker" data-all title="Show all">
                     <img src="img/all-icon.svg" alt="All" >
                 </div>
@@ -265,7 +268,7 @@
 
     <aside class="sidebar markers-scroll">
       <div id="version">
-        <span>V.6.16</span>
+        <span>V.6.17</span>
       </div>      
       <div class="title-banner">
         <div class="app-logo">
@@ -620,29 +623,29 @@
 
   <div class="done-panel-inner">
 
-    <div id="shrineCounter" class="shrine-counter-row done-panel-header">
-      <h4 class="d-flex m0 title">
-        <img src="img/icon-shrine.png" width="22" />
-        <span data-i18n="ui.shrineTotal" style="max-width: 180px;">
-          Shrines completed
-        </span>
-      </h4>
-      <div class="count-shrine d-flex">
-          <span id="shrineCountDone">0</span> /
-          <span id="shrineCountMax">0</span>
-      </div>
-    </div>
-
     <div id="archive-container">
       <div class="section principal tool-section">
-            <div class="d-flex mb3" style="padding-left:4px; justify-content: space-between;">
+          <div id="shrineCounter" class="d-flex shrine-counter-row" style="padding-left:4px; justify-content: space-between;">
+            <h4 class="d-flex m0 title">
+              <img src="img/icon-shrine.png" width="18" />
+              <span data-i18n="ui.shrineTotal" style="max-width: 180px;">
+                Shrines completed
+              </span>
+            </h4>
+            <div class="count-shrine d-flex">
+                <span id="shrineCountDone">0</span> /
+                <span id="shrineCountMax">0</span>
+            </div>
+          </div>
+
+            <div class="d-flex mb2" style="padding-left:4px; justify-content: space-between;">
               <h4 class="d-flex m0 title">
                  <img src="img/archive-icon.svg" width="18" />
                   <span data-i18n="ui.ArchiveMarkersTitle" class="title">
                     Archived markers
                   </span>
                </h4>
-              <span class="done-count">( <span id="doneCount">0</span> )</span>
+              <span class="done-count"><span id="doneCount">0</span></span>
             </div>
 
             <div id="doneList" class="done-list markers-scroll">
@@ -756,7 +759,7 @@
   <script src="js/ui.tools.js?v=3.16"></script>
   <script src="js/ui.overlay.js?v=3.59"></script>
   <script src="js/ui.dungeon.links.js?v=1.43"></script>
-  <script src="js/ui.filter.js?v=3.06"></script>
+  <script src="js/ui.filter.js?v=3.07"></script>
   <script src="js/ui.search.js?v=1.32"></script>
 
   <script src="js/characterManager.js?v=1.08"></script>

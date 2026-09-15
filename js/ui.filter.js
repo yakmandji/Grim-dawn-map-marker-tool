@@ -9,8 +9,10 @@
 
       const catButtons = document.querySelectorAll('.filterToggle[data-cat]');
       const allBtn = document.querySelector('.filterToggle[data-all]');
+      const noneBtn = document.querySelector('.filterToggle[data-none]');
 
       const allActive = !!(allBtn && allBtn.classList.contains('is-on'));
+      const noneActive = !!(noneBtn && noneBtn.classList.contains('is-on'));
 
       const activeCategoryBtn = [...catButtons].find(btn => btn.classList.contains('is-on'));
       const activeCategory = (!allActive && activeCategoryBtn)
@@ -49,6 +51,34 @@
 
         return;
       }
+
+      // =====================================================
+      // MODE NONE : on masque tous les markers utilisateur
+      // =====================================================
+      if (noneActive) {
+        document.querySelectorAll('.marker').forEach(el => {
+          const markerCat = getCatFromClassList(el.classList);
+
+          // Les markers système restent visibles
+          if (!markerCat) {
+            el.style.display = "";
+            return;
+          }
+
+          el.style.display = "none";
+        });
+
+        document.querySelectorAll('#list .listItem').forEach(el => {
+          el.style.display = "none";
+        });
+
+        document.querySelectorAll('#doneList .doneItem').forEach(el => {
+          el.style.display = "none";
+        });
+
+        return;
+      }
+
 
       // =====================================================
       // MODE FILTRE CATEGORIE (exclusive)
@@ -103,6 +133,7 @@
 
       // --- Masquer "All" tant qu'il n'y a aucun marqueur actif ---
         const allBtn = document.querySelector('.filterToggle[data-all]');
+        const noneBtn = document.querySelector('.filterToggle[data-none]');
         const totalActive = Object.values(counts).reduce((a, b) => a + b, 0);
 
       if (allBtn) {
@@ -121,6 +152,7 @@
           // Sécurité : si aucun filtre n'est actif, All devient actif
           const anyActive =
             allBtn.classList.contains('is-on') ||
+            noneBtn?.classList.contains('is-on') ||
             [...document.querySelectorAll('.filterToggle[data-cat]')]
               .some(btn => btn.classList.contains('is-on'));
 
@@ -178,10 +210,10 @@
   document.querySelectorAll('.filterToggle[data-all]').forEach(btn => {
     btn.addEventListener('click', () => {
 
-      // All ON
       btn.classList.add('is-on');
 
-      // Toutes les catégories OFF
+      document.querySelector('.filterToggle[data-none]')?.classList.remove('is-on');
+
       document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
         catBtn.classList.remove('is-on');
       });
@@ -203,6 +235,26 @@
       // Les autres OFF
       document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
         if (catBtn !== btn) catBtn.classList.remove('is-on');
+      });
+
+      document.querySelector('.filterToggle[data-none]')?.classList.remove('is-on');
+
+      applyCategoryFilters();
+    });
+  });
+
+  document.querySelectorAll('.filterToggle[data-none]').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+      // None ON
+      btn.classList.add('is-on');
+
+      // All OFF
+      document.querySelector('.filterToggle[data-all]')?.classList.remove('is-on');
+
+      // Toutes les catégories OFF
+      document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
+        catBtn.classList.remove('is-on');
       });
 
       applyCategoryFilters();

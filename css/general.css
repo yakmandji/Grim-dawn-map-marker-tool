@@ -111,7 +111,7 @@ body.editing-region-note .marker-region {
   font-weight: 400;
   color: var(--gold-txt);
   text-align: center;
-  margin-top: 55px;
+  margin-top: 20px;
   margin-bottom: 3px;
 }
 
@@ -138,6 +138,7 @@ body.editing-region-note .marker-region {
 .mb0{margin-bottom: 0!important;}
 .mt0{margin-top: 0!important;}
 
+.mb2{margin-bottom: 6px;}
 .mb3{margin-bottom: 12px;}
 .mb4{margin-bottom: 22px;}
 
@@ -194,7 +195,7 @@ header .sep {
       url("../img/grim_dawn_icon.jpg"),
       linear-gradient(rgb(9 24 27), rgb(8 19 22));
     background-attachment: scroll, local, scroll;
-    background-size: cover, 105px, cover;
+    background-size: cover, 58px, cover;
     background-position-y: 0, -18px, 0;
     background-position-x: 0, center, 0;
     background-repeat: no-repeat;
@@ -298,8 +299,9 @@ header .sep {
 .tool-section h3,
 .tool-section h4,
 .tool-section .done-count{
-  color: var(--gold-txt);
+  color: #69dee2;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .tool-section p{
@@ -724,7 +726,7 @@ body.shared-only-view #mergeSharedBtn,
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  font-size: 13px;
+  font-size: 14px;
   background-color: var(--panel);
   border-top-left-radius: 0;
   overflow: hidden;
@@ -743,6 +745,7 @@ body.shared-only-view #mergeSharedBtn,
   font-weight: 600;
   opacity: 0.85;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 12px;
 }
 
 #list .listCategoryHeader{
@@ -823,8 +826,8 @@ label.checkbox{
   background-color: transparent;
   border: none;
   padding: 9px 16px 10px 9px!important;
-  flex-direction: column;
-  background-position: right 0 top 80%;
+  flex-direction: row;
+  background-position: right -2px top 50%;
 }
 
 .js-character-dropdown .select-green:hover,
@@ -1281,13 +1284,6 @@ header .gd-popup__card input[type="text"]{
   transition: transform 0.18s ease-out;
 }
 
-.done-panel-header {
-  padding: 12px 22px 0px 12px;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 /* Lignes de l’historique */
 .doneItem {
