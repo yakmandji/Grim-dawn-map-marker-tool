@@ -520,19 +520,19 @@ function setActiveCategoryFilter(cat) {
         }
 
         // texte
-        const catLabel = el.querySelector('[data-cat-label]');
+/*        const catLabel = el.querySelector('[data-cat-label]');
         if (catLabel) {
           const key = CATEGORY_I18N_KEYS[cat] || CATEGORY_I18N_KEYS.General;
           catLabel.textContent = (window.GDMMLang?.t)
             ? GDMMLang.t(key)
             : cat;
-        }
+        }*/
 
         // icône
         const catIcon = el.querySelector('.marker-cat-icon');
         if (catIcon) {
           catIcon.src = CATEGORY_ICONS[cat] || CATEGORY_ICONS.General;
-          catIcon.title = catLabel.textContent;
+/*          catIcon.title = catLabel.textContent;*/
         }
 
         label.addEventListener('blur', (e) => {

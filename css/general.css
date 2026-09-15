@@ -1,7 +1,7 @@
 :root {
   --bg: #0f1220;
   --panel: #09181b;
-  --p2: #0a1e23;
+  --p2: #122024;
   --txt: #67999b;
   --gold-txt: #d6c8a6;
   --titlecolor: #59afa3;
@@ -12,7 +12,7 @@
   --danger: #ff6b7a;
   --select-focus : 0 0 6px rgb(38 240 240 / 60%), inset 0 0 6px rgba(0, 0, 0, 0.4);
   --shadow: 0 10px 30px rgba(0, 0, 0, .45);
-  --sidebar-width: 356px;
+  --sidebar-width: 376px;
   --border-color : #6d532f;
   --gold-main: #d5b278;       /* doré principal */
   --gold-dark: #8a6a3f;       /* version ombrée */
@@ -147,9 +147,9 @@ body.editing-region-note .marker-region {
 .app {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
-  gap: 30px;
+  gap: 12px;
   max-height: 100vh; 
-  padding: 0 30px 12px 20px;
+  padding: 0 12px 10px 12px;
 }
 
 header {
@@ -195,15 +195,15 @@ header .sep {
       url("../img/grim_dawn_icon.jpg"),
       linear-gradient(rgb(9 24 27), rgb(8 19 22));
     background-attachment: scroll, local, scroll;
-    background-size: cover, 58px, cover;
-    background-position-y: 0, -18px, 0;
+    background-size: cover, 50px, cover;
+    background-position-y: 0, -6px, 0;
     background-position-x: 0, center, 0;
     background-repeat: no-repeat;
 
     position: relative;
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    padding: 6px 24px 6px 24px;
+    padding: 6px 17px 6px 14px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -316,6 +316,7 @@ header .sep {
 }
 
 #noteList .listItem{
+  justify-content: space-between;
   padding: 8px 8px 8px 8px;
 }
 
@@ -324,14 +325,18 @@ header .sep {
   justify-content: space-between;
 }
 
+#routesList .listItem input{
+  flex: 1;
+}
+
 .listItem { 
   position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 8px 13px 16px;
+  padding: 10px 8px 10px 8px;
   align-items: center;
-  margin: 14px 4px 14px 4px;
+  margin: 11px 4px 11px 4px;
   border-radius: 6px;
   background: var(--p2);
 }
@@ -351,8 +356,8 @@ header .sep {
 }
 
 #list .left{
-  min-width: 184px;
-  max-width: 190px;
+  width: 253px;
+  justify-content: space-between;
 }
 
 #list .left .row{
@@ -360,7 +365,7 @@ header .sep {
 }
 
 #list .left input[type="text"]{
-  width: 100%;
+  flex: 1;
 }
 
 .marker-list-menu,
@@ -707,7 +712,7 @@ body.shared-only-view #mergeSharedBtn,
 .done-panel {
   position: fixed;
   bottom: 57px;
-  right: 30px;
+  right: 12px;
   z-index: 4;
   transition: transform 0.2s ease-out;
 }
@@ -934,7 +939,7 @@ label.checkbox{
 
 .floating { 
   position: absolute;
-  right: 48px;
+  right: 22px;
   top: 94px;
   display: flex;
   flex-direction: column;

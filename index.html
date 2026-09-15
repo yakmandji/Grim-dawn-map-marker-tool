@@ -28,8 +28,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v2.06" />
-  <link rel="stylesheet" href="css/items.css?v2.13" />
+  <link rel="stylesheet" href="css/general.css?v2.08" />
+  <link rel="stylesheet" href="css/items.css?v2.14" />
   <link rel="stylesheet" href="css/responsive.css?v1.43" />
   
 </head>
@@ -294,7 +294,7 @@
     </div>
 <!--     END Character selection ------------------------------------- -->  
 
-      <div class="section light" id="marker-container" style="display:flex;flex-direction:column;gap:0px;max-height:60vh;margin-top: 0;">
+      <div class="section light" id="marker-container" style="display:flex;flex-direction:column;gap:0px;max-height:54vh;margin-top: 0;">
         <div class="row">
           <h3 class="title" data-i18n="ui.MarkerList">Markers list(<span id="count">0</span>)
           </h3>
@@ -505,16 +505,15 @@
     <div class="listItem">
       <div class="pin" data-pin></div>
       <div>
-          <div class="row d-flex" style="gap:20px; align-items: flex-start;">
-              <div class="left">
+          <div class="d-flex" style="gap:10px; align-items: flex-start; justify-content: space-between;">
+              <div class="left d-flex">
+                <div class="marker-cat-badge d-flex" data-cat-badge>
+                    <img class="marker-cat-icon" src="" width="12" height="12" alt="">
+                </div>
                 <input data-label type="text" data-i18n-placeholder="ui.MarkerNamePlaceholder" placeholder="marker name" />
-                <div class="row mt-2" style="gap:15px;">
-                    <div class="marker-cat-badge d-flex" data-cat-badge>
-                      <img class="marker-cat-icon" src="" width="12" height="12" alt="">
-                      <span data-cat-label></span>
-                    </div>
+                <div>
                     <!-- Dropdown new -->              
-                    <label style="flex:0 0 auto" class="small list-input done-input" data-i18n-title="ui.ArchiveTitle" title="The marker will remain accessible from the map, search, and the archive panel">
+                    <label class="small list-input done-input d-flex" data-i18n-title="ui.ArchiveTitle" title="The marker will remain accessible from the map, search, and the archive panel">
                       <span class="hide-collapsed" data-i18n="ui.Archive">Archive</span>
                       <input data-done type="checkbox" class="checkbox-green" /> 
                     </label>                   
@@ -745,7 +744,7 @@
   <script src="js/ui.map.base.js?v=1.75"></script>
   <script src="js/ui.map.minimap.js?v=1.14"></script>
 
-  <script src="js/ui.markers.js?v=30"></script>
+  <script src="js/ui.markers.js?v=31"></script>
   <script src="js/ui.routes.js?v=1.29"></script>
 
   <script src="js/ui.core.js?v=4.19"></script>
