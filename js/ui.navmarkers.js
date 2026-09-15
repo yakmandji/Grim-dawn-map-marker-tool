@@ -348,7 +348,77 @@ window.NAV_MARKERS_CAIRN = [
         targetScale: 1,
         id: 'IceboundPassageGo',
         targetId: 'IceboundPassage'
-      },  
+      },
+
+      //ROOF OF THE WORLD
+      {
+        xp: 81.85, 
+        yp: 0.01,
+        tag: 'tagGoTo + tagGDX3RegionKurnhold',
+        icon: 'img/icon-link.png',
+        targetXp: 35.73,
+        targetYp: 66.92,
+        targetScale: 1,
+        id: 'RoofOfTheWorld',
+        targetId: 'KurnholdTop'
+      },
+      {
+        xp: 35.64, 
+        yp: 67.00,
+        tag: 'tagOutOnly + tagGDX3RegionRoofOfTheWorld',
+        icon: 'img/icon-link.png',
+        targetXp: 81.85,
+        targetYp: 0.01,
+        targetScale: 1,
+        id: 'KurnholdTop',
+        targetId: 'RoofOfTheWorld'
+      },
+      // The dump
+      {
+        xp: 52.44, 
+        yp: 7.26,
+        tag: 'tagGoTo + tagGDX3RegionKurnhold',
+        icon: 'img/icon-link.png',
+        targetXp: 35.73,
+        targetYp: 67.92,
+        targetScale: 1,
+        id: 'TheDump',
+        targetId: 'KurnholdBottom'
+      },
+      //Nerf Temple
+      {
+        xp: 50.39, 
+        yp: 4.55,
+        tag: 'tagGoTo + tagGDX3RegionKurnhold',
+        icon: 'img/icon-link.png',
+        targetXp: 35.73,
+        targetYp: 67.92,
+        targetScale: 1,
+        id: 'TempleOfNerf',
+        targetId: 'KurnholdBottomRight'
+      },      
+      {
+        xp: 35.58, 
+        yp: 68.41,
+        tag: 'tagOutOnly + tagGDX3TheDumps',
+        icon: 'img/icon-link.png',
+        targetXp: 51.96,
+        targetYp: 7.25,
+        targetScale: 1,
+        id: 'KurnholdBottom',
+        targetId: 'TheDump'
+      },
+      {
+        xp: 35.98, 
+        yp: 68.41,
+        tag: 'tagOutOnly + tagGDX3TempleOfNerf',
+        icon: 'img/icon-link.png',
+        targetXp: 51.96,
+        targetYp: 6.25,
+        targetScale: 1,
+        id: 'KurnholdBottomRight',
+        targetId: 'TempleOfNerf'
+      },        
 
   ];
 

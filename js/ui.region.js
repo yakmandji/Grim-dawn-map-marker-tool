@@ -231,7 +231,7 @@
 { id: 'tag_gDX1UG_ancient_grove01C', tag: 'tagGDX1UGAncientGrove01C', xp: 95.77, yp: 55.68, isDungeon: true, overlayPoly: [[96.7,56.7],[96.6,56.4],[95.9,56.2],[95.8,55.5],[95.2,55.4],[95.2,54.7],[95.6,54.5],[96.2,54.9],[96.2,55.2],[96.7,55.1],[97.2,55.4],[97.3,56],[97.9,56]] },
 { id: 'tag_uG_secret01', tag: 'tagUGSecret01', xp: 31.11, yp: 17.55, isDungeon: true },
 
-{ id: 'tag_GDX3Region_Frostveil_Highlands', tag: 'tagGDX3RegionFrostveilHighlands', xp: 10.96, yp: 10.10 },
+{ id: 'tag_GDX3Region_Frostveil_Highlands', tag: 'tagGDX3RegionFrostveilHighlands', xp: 10.96, yp: 10.10, overlayPoly: [[14.3,18.9],[12.1,20],[11.1,19],[10.1,17.8],[10.1,17.1],[9.3,16.9],[9.5,16.3],[9.4,15.9],[8,15.1],[7.9,14.4],[8.1,14],[8.9,13.7],[9.4,12.3],[10.3,12.1],[11.2,12.5],[11.6,12],[10.4,11.8],[10,11.2],[9.9,10.5],[10.5,10.3],[10.2,9.7],[11.5,9.5],[12.1,9.3],[12.7,9.5],[12.7,9.1],[12.4,8.6],[10,8.5],[10,7.8],[9.5,7.3],[9.5,6.5],[8.6,6],[8.4,5.3],[7.2,4.9],[7.1,4.3],[7.9,4],[7.9,3.6],[8.2,3.5],[8.1,3.1],[7.6,2.9],[7.6,2.3],[7.9,2],[6.7,2.2],[6.2,1.8],[6.2,1.4],[6.6,1],[6.1,0],[7.3,0],[7.7,1],[7.5,1.3],[8.6,1.4],[8.8,2.1],[8.5,2.5],[9.1,3.1],[11.5,3.2],[11.3,4.1],[12.8,4.5],[13.1,5.1],[13.1,5.6],[14.5,6.6],[15.2,6.6],[16,7.2],[16,7.6],[17.8,8.3],[17.6,8.7],[18.3,9.3],[18.3,9.7],[17.7,10.2],[17.3,11],[17.3,11.5],[16.6,11.9],[16.9,12.8],[16.1,13.7],[16,14.2],[15.2,14.5],[14.4,14.3],[14.1,13.8],[13.4,13.7],[13.1,13.8],[12.7,13.6],[11.8,13.8],[11.4,14.7],[10.9,14.8],[10.1,15.2],[10.3,16.2],[11.2,16.4],[11.9,15.9],[12.4,15.8],[12.7,16.3],[13.2,16.3],[13.4,16.8],[14.1,17.1],[14.5,18],[14.5,18.6]] },
 { id: 'tag_GDX3Icehowl_Cavern', tag: 'tagGDX3IcehowlCavern', xp: 6.94, yp: 10.10, isDungeon: true },
 
 
@@ -335,28 +335,28 @@ window.REGION_MARKERS_MALMOUTH = [
 
 window.REGION_MARKERS_ASTERKARN = [
 
-  { id: 'tagGDX3_Region_Voldur_River', tag: 'tagGDX3RegionVoldurRiver', xp: 46.42, yp: 63.34 },
-  { id: 'tagGDX3_Region_Kurnhold', tag: 'tagGDX3RegionKurnhold', xp: 34.96, yp: 67.50 },
-  { id: 'tagGDX3_Region_Freyoll_Valley', tag: 'tagGDX3RegionFreyollValley', xp: 37.93, yp: 74.10  },
-  { id: 'tagGDX3_Region_Guardians_Sorrow', tag: 'tagGDX3RegionGuardiansSorrow', xp: 48.70, yp: 56.59 },
-  { id: 'tagGDX3_Region_Ulos_Remorse', tag: 'tagGDX3RegionUlosRemorse', xp: 41.66, yp: 52.67 },
-  { id: 'tagGDX3_Region_KruuSul_Crags', tag: 'tagGDX3RegionKruuSulCrags', xp: 60.09, yp: 47.10 },
-  { id: 'tagGDX3_Region_Chthul_Rise', tag: 'tagGDX3RegionChthulRise', xp: 65.48, yp: 42.54 },
-  { id: 'tagGDX3_Region_Ulos_Springs', tag: 'tagGDX3RegionUlosSprings', xp: 46.09, yp: 48.91 },
-  { id: 'tagGDX3_Region_Evernight_Valley', tag: 'tagGDX3RegionEvernightValley', xp: 50.67, yp: 46.80 },
-  { id: 'tagGDX3_Region_Ravagers_Redoubt', tag: 'tagGDX3RegionRavagersRedoubt', xp: 45.08, yp: 40.55 },
-  { id: 'tagGDX3_Region_Ruins_Of_Utak_Kunar', tag: 'tagGDX3RegionRuinsOfUtakKunar', xp: 33.92, yp: 38.74 },
-  { id: 'tagGDX3_Region_Bloodbound_Bastion', tag: 'tagGDX3RegionBloodboundBastion', xp: 42.50, yp: 38.96 },
-  { id: 'tagGDX3_Region_Dread_Wastes', tag: 'tagGDX3RegionDreadWastes', xp: 26.35, yp: 35.74 },
-  { id: 'tagGDX3_Region_Tamarog_The_Black_Citadel', tag: 'tagGDX3RegionTamarogTheBlackCitadel', xp: 20.95, yp: 30.95 },
-  { id: 'tagGDX3_Region_Glaciers_Edge', tag: 'tagGDX3RegionGlaciersEdge', xp: 22.58, yp: 28.13 },
-  { id: 'tagGDX3_Region_Glaciers_Edge2', tag: 'tagGDX3RegionGlaciersEdge', xp: 53.11, yp: 26.02 },
-  { id: 'tagGDX3_Region_Pilgrims_Rest', tag: 'tagGDX3RegionPilgrimsRest', xp: 52.78, yp: 21.82 },
-  { id: 'tagGDX3_Region_Aurora_Peaks', tag: 'tagGDX3RegionAuroraPeaks', xp: 50.90, yp: 19.32 },
-  { id: 'tagGDX3_Region_Bitter_Wind_Pass', tag: 'tagGDX3RegionBitterWindPass', xp: 64.51, yp: 14.77 },
-  { id: 'tagGDX3_Region_Aurora_Pinnacle', tag: 'tagGDX3RegionAuroraPinnacle', xp: 79.50, yp: 7.9 },
-  { id: 'tagGDX3_Region_Yulgirs_Overlook', tag: 'tagGDX3RegionYulgirsOverlook', xp: 83.24, yp: 6.92 },
-  { id: 'tagGDX3_Region_Roof_Of_The_World', tag: 'tagGDX3RegionRoofOfTheWorld', xp: 79.74, yp: 3.88 },
+  { id: 'tagGDX3_Region_Voldur_River', tag: 'tagGDX3RegionVoldurRiver', xp: 46.42, yp: 63.34,  overlayPoly: [[40.9,68.8],[39.7,66.4],[39.5,65.6],[41.1,65.3],[42,65.5],[42.3,64.7],[44.4,64.5],[44.8,63.9],[43.1,63.2],[42.9,62.4],[43.4,62.1],[44.1,62],[44.2,62.6],[45.6,62.7],[45.9,62.1],[45.3,61.3],[45.6,60.7],[46.5,60],[46.5,58.8],[45.7,58.4],[45.6,57.9],[45,57.1],[46.3,56.6],[46.7,57.5],[48.5,57.3],[49,57.6],[49.7,57.6],[49.9,57.3],[50.6,57.3],[50.5,57.8],[51.9,58.3],[51.9,59.1],[52.8,59.3],[53.2,59.9],[52.7,60.4],[51.9,60.6],[51.3,62.1],[51.5,62.4],[51.5,62.9],[50.5,63.3],[50.8,64.1],[50.1,64.9],[49.9,65.8],[49.9,66.1],[49.3,66.3],[47.9,67.5],[47.2,67.5],[44.5,68.4],[43.6,68.3],[43.3,67.8],[41.8,67.6],[42.2,68.2],[41.9,68.8],[41.3,68.9]] },
+  { id: 'tagGDX3_Region_Kurnhold', tag: 'tagGDX3RegionKurnhold', xp: 34.96, yp: 67.50, overlayPoly: [[36.7,70.3],[38.7,69.1],[39.8,68.1],[39.9,67.6],[38.9,67.2],[38.4,66.2],[35.5,66],[35,66.8],[35.3,67.4],[34.8,68.2],[34.9,68.5],[34.8,69.1],[35.4,69.7],[35.5,70.2],[36.4,70.3]] },
+  { id: 'tagGDX3_Region_Freyoll_Valley', tag: 'tagGDX3RegionFreyollValley', xp: 37.93, yp: 74.10, overlayPoly: [[37.9,81.3],[35,78.6],[35,76.9],[35.5,75.8],[37.9,75.4],[38.5,75.7],[38.9,72.9],[38.4,71.8],[36.5,70.4],[40.4,68.4],[43.9,72.8],[43.4,73.8],[43.8,74.9],[40,78.4],[38.3,79.1],[39.1,79.7],[38.7,81.4],[38.2,81.4]]  },
+  { id: 'tagGDX3_Region_Guardians_Sorrow', tag: 'tagGDX3RegionGuardiansSorrow', xp: 48.70, yp: 56.59, overlayPoly: [[50.5,57.1],[51,56.9],[51.6,57.2],[52,56.5],[52,55.6],[51.3,54.9],[50.2,54.8],[49.9,55.3],[49.8,56],[49.9,57.2],[50.2,57.2]] },
+  { id: 'tagGDX3_Region_Ulos_Remorse', tag: 'tagGDX3RegionUlosRemorse', xp: 41.66, yp: 52.67, overlayPoly: [[42.4,53.1],[43.3,53.3],[44.5,53],[44.4,51.8],[44,51.2],[43.1,51.1],[42.2,51.3],[41.9,52.1],[42,52.6]] },
+  { id: 'tagGDX3_Region_KruuSul_Crags', tag: 'tagGDX3RegionKruuSulCrags', xp: 60.09, yp: 47.10, overlayPoly: [[51.4,52.4],[52,51.8],[52.7,51.1],[53.6,51.1],[54,51.5],[55.3,51],[56.3,50.5],[57.1,50.1],[57.7,49.2],[57.5,48.4],[57.6,47.8],[58.1,47.6],[58.6,46.2],[59.7,45.7],[59.5,44.1],[60.1,43.9],[60.6,44],[61.6,43.4],[62.1,42.9],[63.2,42.7],[64.5,42.6],[65.3,42.6],[66.3,43.3],[67.2,43.4],[67.4,43],[68.1,43.1],[68.3,43.8],[67.5,45],[67,45.3],[67.3,45.8],[67.1,46.4],[66.5,46.7],[64.7,46.6],[63.9,47.2],[63,47.6],[62.5,48.2],[63.3,49.2],[63.3,49.5],[62.5,50],[61.7,49.9],[61.6,49.6],[60.7,50],[58.8,50.3],[57.9,50.5],[57.8,50.8],[57,51.2],[55.8,52.5],[53.8,53.1],[53.2,53],[53,53.3],[51.6,53.3],[51.5,52.6]] },
+  { id: 'tagGDX3_Region_Chthul_Rise', tag: 'tagGDX3RegionChthulRise', xp: 65.48, yp: 42.54, overlayPoly: [[67.1,43.3],[65.9,43.1],[65.2,42.4],[64.8,42.3],[64.5,41.7],[65,41.4],[65.9,41.5],[66.2,42.2],[66.7,42.4],[67.6,43.1],[67.4,43.2]] },
+  { id: 'tagGDX3_Region_Ulos_Springs', tag: 'tagGDX3RegionUlosSprings', xp: 46.09, yp: 48.91, overlayPoly: [[49,57.2],[48,57],[47.6,57.3],[47,56.5],[46.9,55.8],[46.8,55.2],[47.3,54.9],[46.5,54.8],[46.4,55.3],[45.9,55.6],[45.5,55.4],[44.9,55],[43.2,53.4],[44.4,52.7],[44,51.8],[43.3,51],[42.8,50.3],[43.3,49.7],[43,49],[43.3,48.5],[44.1,47.8],[43.8,47.2],[44.1,46.7],[44.5,46.5],[44.4,45.8],[44.6,45.4],[44.3,45],[44.5,44.4],[43.8,43.9],[43.1,43.8],[42.4,43.1],[41.9,42.8],[41.8,42.5],[41.4,42],[41.1,40.8],[43.1,40.7],[44.1,41],[44.7,42.4],[45,43.3],[45.4,43.8],[46.2,44],[46.8,43.9],[47.5,44.5],[48,44.1],[49,44.1],[49.6,44.6],[50.4,44.7],[50.6,45.3],[50.1,46],[49.6,46.4],[48.8,46.4],[48.8,47.3],[49.6,47.4],[50.2,47.8],[50,48.3],[51,48.6],[51.2,49.2],[50.8,49.9],[50,50],[49.9,50.6],[50.5,51],[50.5,51.8],[51.4,52.4],[51.6,53.3],[50.6,54.1],[50.4,54.4],[49.9,55.1],[49.4,56.1],[49.1,56.9]] },
+  { id: 'tagGDX3_Region_Evernight_Valley', tag: 'tagGDX3RegionEvernightValley', xp: 50.67, yp: 46.80, overlayPoly: [[50.1,46.8],[50.1,47.5],[50.7,47.8],[51.2,47.6],[51.8,47.6],[52.2,47.2],[52.3,46.5],[51.6,46],[50.8,46],[50.2,46.5]] },
+  { id: 'tagGDX3_Region_Ravagers_Redoubt', tag: 'tagGDX3RegionRavagersRedoubt', xp: 45.08, yp: 40.55, overlayPoly: [[44.7,42.3],[44.1,41],[44.9,40.8],[45.6,41.1],[46.9,40.4],[47.1,39.9],[48,40],[48.7,40.4],[48.6,41.1],[48.2,41.6],[47.8,42],[47.7,42.2],[46.7,42.8],[46.3,42.8],[45.5,42.4],[45.3,42],[45,42.2]] },
+  { id: 'tagGDX3_Region_Ruins_Of_Utak_Kunar', tag: 'tagGDX3RegionRuinsOfUtakKunar', xp: 33.92, yp: 38.74, overlayPoly: [[41.1,42.2],[41.1,40.7],[40.3,40.9],[40.2,41.4],[39,41.3],[39.3,41.1],[39.9,40.7],[40.8,40.5],[40.4,39.3],[41.4,38.3],[40.9,38.1],[40.4,38.1],[40.2,37.8],[40.4,37.5],[39.6,36.9],[39.6,36.3],[39.2,35.6],[38.3,34.9],[37.3,35],[36.3,34.8],[35.2,35.2],[34.5,35.5],[33.2,36.6],[31.9,36.8],[30,37.7],[29.6,38.5],[30.4,38.7],[30.9,38.2],[31.6,38.3],[31.8,38],[35.1,37.9],[34.9,38.6],[34.5,39.4],[33.4,40],[33.2,40.6],[32.6,40.9],[32.8,41.6],[33.5,41.6],[34,42.3],[34.8,42.7],[35.9,43.6],[37.2,43.5],[37.6,43.8],[38.3,43.3],[39.3,43.2],[40.1,42.9],[40.8,42.3]] },
+  { id: 'tagGDX3_Region_Bloodbound_Bastion', tag: 'tagGDX3RegionBloodboundBastion', xp: 42.50, yp: 38.96, overlayPoly: [[40.8,40.4],[40.4,39.2],[41.4,38.3],[42.4,38.3],[42.9,38.6],[43.3,39.6],[42.6,40.1],[41.6,40.1],[41.2,40.2]] },
+  { id: 'tagGDX3_Region_Dread_Wastes', tag: 'tagGDX3RegionDreadWastes', xp: 26.35, yp: 35.74, overlayPoly: [[30.1,37.7],[29.5,38.5],[29,38.2],[29,37.4],[28.6,37.3],[27.9,37.9],[28,38.4],[27.6,39.4],[26.7,39.6],[25.4,39.2],[25.2,38.1],[24.7,38.3],[23.8,38.1],[23.2,37.1],[23.3,36.8],[22.7,36.6],[22.3,35.9],[22.4,35.6],[23.1,35.6],[23.2,35.2],[23,33.9],[22.6,33.5],[23.4,33],[24.7,32.8],[26.1,32.2],[26.6,32.6],[27,32.5],[27.3,32.7],[27.3,33.5],[28.2,33.7],[29.3,33.6],[30.1,33.4],[30.3,33],[31.3,33.3],[31.6,33.7],[31.6,34.2],[32.4,34.3],[33,35.1],[32.4,36],[31.7,36],[31.5,36.6],[30.5,36.8],[29.9,36.7],[29.9,37.5]] },
+  { id: 'tagGDX3_Region_Tamarog_The_Black_Citadel', tag: 'tagGDX3RegionTamarogTheBlackCitadel', xp: 20.95, yp: 30.95, overlayPoly: [[22.7,33.5],[23.4,32.9],[24.6,32.8],[26,32.1],[26.4,31.8],[25.9,31.5],[25.4,31.4],[25,30.9],[24.2,30.8],[24.2,30.3],[23.9,30.2],[23.8,29.6],[23.6,29.4],[23.7,29.1],[22.7,28.7],[22.3,29.5],[22,29.9],[22.2,30.8],[21.5,30.7],[21.1,30.9],[21.3,31.4],[20.7,31.6],[20.8,32],[21.1,32.2],[21,32.6],[21.5,32.8],[22.4,33.5]] },
+  { id: 'tagGDX3_Region_Glaciers_Edge', tag: 'tagGDX3RegionGlaciersEdge', xp: 22.58, yp: 28.13, overlayPoly: [[23.8,29],[24.7,28.6],[25.4,27.7],[25.4,27.2],[24.9,27.1],[24.1,27.5],[22.8,28.7],[23.5,28.9]] },
+  { id: 'tagGDX3_Region_Glaciers_Edge2', tag: 'tagGDX3RegionGlaciersEdge', xp: 53.11, yp: 26.02, overlayPoly: [[52.8,29.3],[52.1,28.4],[51.5,27.7],[50.1,26.9],[49.6,26.6],[49.8,26.2],[49.9,25.9],[50.5,25.9],[50.9,26.3],[51.2,26.2],[51.3,25.9],[52.1,25.8],[51.7,25.4],[51.9,24.9],[51.4,24.4],[51.8,23.9],[52.7,23.6],[54.2,22.9],[55.3,22.7],[56.4,23.4],[55.7,24.6],[55.2,25.2],[55.4,25.6],[54.9,25.9],[55,26.6],[54,28],[54.7,28],[54.7,28.5],[53.9,29.1],[53.7,29.5],[53.2,29.3]] },
+  { id: 'tagGDX3_Region_Pilgrims_Rest', tag: 'tagGDX3RegionPilgrimsRest', xp: 52.78, yp: 21.82, overlayPoly: [[51.7,24],[51.4,24.4],[50.5,24.2],[50.4,23.1],[50.8,22.7],[51.5,22.3],[51.9,22.3],[53.6,21.4],[53.1,21.2],[53.1,19.9],[53.7,20.1],[54.7,19.4],[55.3,19.7],[55,20.1],[54.4,20.3],[54.9,20.4],[55.9,20],[56.8,20.7],[56.6,21.4],[57.1,21.6],[57.1,21.9],[56.9,22.3],[56.5,22.3],[55.9,23.1],[54.8,22.6],[53.9,22.6],[53.9,22.9],[53.8,23.2],[52.6,23.6],[52,23.8]] },
+  { id: 'tagGDX3_Region_Aurora_Peaks', tag: 'tagGDX3RegionAuroraPeaks', xp: 50.90, yp: 19.32, overlayPoly: [[53.2,19.9],[53.2,21.3],[51.9,21.6],[50.8,21.5],[50.3,20.7],[50.4,20.1],[51,20.2],[50.4,19.8],[50.6,19.3],[51.3,19.2],[51.6,18.7],[51.9,18.6],[51.8,18.2],[52.4,18],[52.9,18.2],[53.4,18.8],[53,19],[52.9,19.8]] },
+  { id: 'tagGDX3_Region_Bitter_Wind_Pass', tag: 'tagGDX3RegionBitterWindPass', xp: 64.51, yp: 14.77, overlayPoly: [[64.4,16.1],[65.2,16.4],[65.4,16.8],[65.1,17.1],[64.4,16.9],[64.3,16.7],[63.7,16.7],[63.5,16.4],[63,16.2],[62.9,16],[63.3,15.2],[63.7,14.8],[64.4,14.8],[64.8,14.7],[64.6,14.4],[64.7,13.9],[65,13.6],[65.6,13.5],[65.9,13.2],[66.4,13.4],[66.2,13.9],[66.2,14.5],[65.6,15.2],[65.7,15.7],[66.3,15.5],[66.8,15.1],[67.4,15.4],[67.2,15.6],[67.5,15.8],[67.3,16.4],[66.6,16.6],[66.1,16.4],[65.5,16.4],[65.3,16.1],[64.8,16.1]] },
+  { id: 'tagGDX3_Region_Aurora_Pinnacle', tag: 'tagGDX3RegionAuroraPinnacle', xp: 79.50, yp: 7.9, overlayPoly: [[79,9.3],[78.4,9.8],[77.6,9.8],[77.3,9.1],[76.4,8.7],[76.6,8.3],[77.4,8.2],[76.8,8],[76.8,7.6],[77,7.3],[76.8,6.8],[77.5,6.3],[78.4,6.5],[78.9,6],[79.3,5.5],[79.9,5.3],[80.5,5.3],[81.3,4.8],[81.3,5.3],[81.6,5.3],[81.8,4.7],[83,4.9],[82.6,5.4],[82.1,5.5],[82.1,6.4],[82,6.7],[82.8,7.4],[83.9,7.4],[83.5,8.1],[82.1,7.8],[82.1,8.3],[82.7,8.4],[82.6,8.8],[82.3,8.9],[81.9,8.8],[81.5,8.9],[80.6,8.3],[79.9,7.7],[79.8,7.5],[78.8,7.7],[78.9,8.2],[78.4,8.4],[79.2,8.5],[79.6,8.3],[80.1,8.8],[80,9.2],[79.3,9.2]] },
+  { id: 'tagGDX3_Region_Yulgirs_Overlook', tag: 'tagGDX3RegionYulgirsOverlook', xp: 83.24, yp: 6.92, overlayPoly: [[85.5,6.3],[85.1,7.3],[84.6,7.7],[84,7.5],[83.2,7.3],[82.7,7.3],[82.4,6.6],[82,6.3],[82.1,5.9],[82.5,5.7],[83,5],[83.4,5.2],[83.3,5.6],[83.7,5.8],[83.6,6.1],[83.8,6.1],[84,5.8],[84.6,5.9],[84.9,5.9],[85.2,6.1]] },
+  { id: 'tagGDX3_Region_Roof_Of_The_World', tag: 'tagGDX3RegionRoofOfTheWorld', xp: 79.74, yp: 3.88, overlayPoly: [[81.1,4.7],[80.3,5.3],[79.9,4.8],[79.9,3.9],[80.4,3.6],[81,3.5],[81.3,3.2],[81.7,3.1],[81.9,3.4],[81.7,3.7],[81.3,3.9],[81,4.4]] },
 
     { id: 'tag_GDX3_Icebound_Passage', tag: 'tagGDX3IceboundPassage', xp: 43.42, yp: 93.73, isDungeon: true },
     { id: 'tag_GDX3_Icebound_Passage2', tag: 'tagGDX3IceboundPassage', xp: 42.46, yp: 83.97, isDungeon: true },
@@ -549,6 +549,7 @@ en: {
   tagGDX2MapSideAreas_02: "Arkovian Docks",
   tagGDX2MapSideAreas_03: "Arkovian Coliseum",
   tagGoTo: "Go to ",
+  tagOutOnly: "Exit only ",
 
   tagGDX3RegionVoldurRiver: "Voldur River",
   tagGDX3RegionKurnhold: "Kurnhold",
@@ -757,6 +758,7 @@ en: {
 
 fr: {
   tagGoTo: "Aller vers ",
+  tagOutOnly : "Sortie uniquement ",
   tagMapHiddenPath01: "Le 1er Chemin Caché",
   tagMapHiddenPath02: "Le 2ème Chemin Caché",
   tagMapHiddenPath03: "Le 3ème Chemin Caché",
@@ -1115,6 +1117,7 @@ fr: {
 
   es: {
     tagGoTo: "Ir a ",
+    tagOutOnly: "Solo salida ",
     tagMapHiddenPath01: "El Primer Camino Oculto",
     tagMapHiddenPath02: "El Segundo Camino Oculto",
     tagMapHiddenPath03: "El Tercer Camino Oculto",
@@ -1471,6 +1474,7 @@ fr: {
 
 de: {
   tagGoTo: "Gehe zu ",
+  tagOutOnly: "Nur Ausgang ",
   tagMapHiddenPath01: "Der erste Verborgene Pfad",
     tagMapHiddenPath02: "Der zweite Verborgene Pfad",
     tagMapHiddenPath03: "Der dritte Verborgene Pfad",
@@ -1830,6 +1834,7 @@ de: {
 
 pt: {
   tagGoTo: "Ir para ",
+  tagOutOnly: "Apenas saída ",
   tagMapHiddenPath01: "O Primeiro Caminho Oculto",
 tagMapHiddenPath02: "O Segundo Caminho Oculto",
 tagMapHiddenPath03: "O Terceiro Caminho Oculto",
@@ -2188,6 +2193,7 @@ tagMapHiddenPath04: "O Quarto Caminho Oculto",
 
 it: {
   tagGoTo: "Vai a ",
+  tagOutOnly: "Solo uscita ",
   tagMapHiddenPath01: "Il Primo Percorso Nascosto",
     tagMapHiddenPath02: "Il Secondo Percorso Nascosto",
     tagMapHiddenPath03: "Il Terzo Percorso Nascosto",
@@ -2547,6 +2553,7 @@ it: {
 
 ru: {
   tagGoTo: "Перейти к ",
+  tagOutOnly: "Только выход ",
   tagMapHiddenPath01: "Первый скрытый путь",
     tagMapHiddenPath02: "Второй скрытый путь",
     tagMapHiddenPath03: "Третий скрытый путь",
@@ -2907,6 +2914,7 @@ ru: {
 
 pl: {
   tagGoTo: "Przejdź do ",
+  tagOutOnly: "Tylko wyjście ",
   tagSplendorOfShatteredRealm: "Wspaniałości Rozbitego Wymiaru",
   tagMapHiddenPath01: "Pierwsza Ukryta Ścieżka",
   tagMapHiddenPath02: "Druga Ukryta Ścieżka",
@@ -3288,6 +3296,7 @@ pl: {
 
   zh: {
     tagGoTo: "前往",
+    tagOutOnly: "仅出口 ",
     tagMapHiddenPath01: "第一个隐藏之路",
     tagMapHiddenPath02: "第二个隐藏之路",
     tagMapHiddenPath03: "第三个隐藏之路",
@@ -3646,6 +3655,7 @@ pl: {
 
   ja: {
     tagGoTo: "移動",
+    tagOutOnly: "出口のみ ",
     tagMapHiddenPath01: "最初の隠された道",
     tagMapHiddenPath02: "2番目の隠された道",
     tagMapHiddenPath03: "3番目の隠された道",
@@ -4003,6 +4013,7 @@ pl: {
   },
 
   ko: {
+    tagOutOnly: "출구 전용 ",
     tagMapHiddenPath01: "첫 번째 숨겨진 길",
     tagMapHiddenPath02: "두 번째 숨겨진 길",
     tagMapHiddenPath03: "세 번째 숨겨진 길",
