@@ -23,23 +23,20 @@
   /*Map decoration*/
 
   window.DECOR_ICONS_CAIRN = [
-    { id:'rashalga', w: 110, h: 80, img: 'img/qol/rashalga-queen.png', xp: 15.35, yp: 30.07, isDungeon: true },
-    { id:'attendant', w: 60, h: 60, img: 'img/qol/attendant.png?1.0', xp: 87.77, yp: 63.4, isDungeon: true },
-    { id:'sentinel', w: 95, h: 115, img: 'img/qol/sentinel.png?1.0', xp: 87, yp: 63.69, isDungeon: true },
+/*    { id:'rashalga', w: 110, h: 80, img: 'img/qol/rashalga-queen.png', xp: 15.35, yp: 30.07, isDungeon: true },*/
     { id:'hidden-donjon1', w: 70, h: 70, img: 'img/qol/hidden-donjon1.png', xp: 78.47, yp: 62.03,  anchor: 'center' },
-    { id:'warden-krieg', w: 110, h: 140, img: 'img/qol/warden-krieg.png', xp: 58.60, yp: 45.82, isDungeon: true },
-    { id:'Bastion-order', w: 55, h: 62, img: 'img/qol/bastion-order.png', xp: 31.85, yp: 58.64,  anchor: 'center' },
-    { id:'kymon-sanctuary', w: 55, h: 62, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },
+/*    { id:'warden-krieg', w: 110, h: 140, img: 'img/qol/warden-krieg.png', xp: 58.60, yp: 45.82, isDungeon: true },*/
+/*    { id:'Bastion-order', w: 55, h: 62, img: 'img/qol/bastion-order.png', xp: 31.85, yp: 58.64,  anchor: 'center' },*/
+/*    { id:'kymon-sanctuary', w: 55, h: 62, img: 'img/qol/kymon-sanctuary.png', xp: 34.34, yp: 57.40,  anchor: 'center' },*/
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
-    { id:'bloodfeast', w: 140, h: 100, img: 'img/qol/bloodfeast.png?1.0', xp: 48.11, yp: 61.1, isDungeon: true },
+/*    { id:'bloodfeast', w: 140, h: 100, img: 'img/qol/bloodfeast.png?1.0', xp: 48.11, yp: 61.1, isDungeon: true },*/
     { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90, isDungeon: true },
     { id:'lucius', w: 100, h: 110, img: 'img/qol/lucius.png', xp: 15.7, yp: 16.5, isDungeon: true },
-    { id:'loghorrean', w: 140, h: 110, img: 'img/qol/loghorrean.png', xp: 13.34, yp: -4.00, isDungeon: true },
-    { id:'thalonis.png', w: 90, h: 130, img: 'img/qol/thalonis.png', xp: 10.70, yp: -0.65, isDungeon: true },
-    { id:'sharzul.png', w: 140, h: 170, img: 'img/qol/sharzul.png', xp: 52.30, yp: 1, isDungeon: true },
+
+/*    { id:'sharzul.png', w: 140, h: 170, img: 'img/qol/sharzul.png', xp: 52.30, yp: 1, isDungeon: true },*/
     { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 4.5, yp: 18.43, isDungeon: true },
-    { id:'igor-eternal', w: 100, h: 130, img: 'img/qol/igor-eternal.png', xp: 44.60, yp: 97.91, isDungeon: true },
-    { id:'kaliska', w: 120, h: 90, img: 'img/qol/kaliska.png', xp: 79.35, yp: 64.20,  anchor: 'center' },
+/*    { id:'igor-eternal', w: 100, h: 130, img: 'img/qol/igor-eternal.png', xp: 44.60, yp: 97.91, isDungeon: true },*/
+/*    { id:'kaliska', w: 120, h: 90, img: 'img/qol/kaliska.png', xp: 79.35, yp: 64.20,  anchor: 'center' },*/
     { id:'alkamos', w: 100, h: 140, img: 'img/qol/alkamos.png', xp: 54.19, yp: 96.72, isDungeon: true },
     { id:'ravna', w: 140, h: 130, img: 'img/qol/ravna.png', xp: 21.8, yp: 64.15, isDungeon: true },
     { id:'kilrian', w: 110, h: 145, img: 'img/qol/kilrian.png', xp: 50.49, yp: 67.9, isDungeon: true },
@@ -49,15 +46,15 @@
     { id:'darius', w: 100, h: 150, img: 'img/qol/darius.png', xp: 59.38, yp: 69.94, isDungeon: true },
     { id:'gargabol', w: 130, h: 190, img: 'img/qol/gargabol.png', xp: 98.27, yp: 58.4, isDungeon: true },
     { id:'manticore', w: 180, h: 120, img: 'img/qol/manticore.png', xp: 92.42, yp: 55, isDungeon: true },
-    { id:'ekketzul', w: 190, h: 245, img: 'img/qol/ekketzul.png', xp: 73.66, yp: 19.33, isDungeon: true },
-    { id:'naxen', w: 130, h: 90, img: 'img/qol/naxen.png', xp: 99.84, yp: 26.93, isDungeon: true },
+/*    { id:'ekketzul', w: 190, h: 245, img: 'img/qol/ekketzul.png', xp: 73.66, yp: 19.33, isDungeon: true },*/
+
     { id:'namadea', w: 140, h: 130, img: 'img/qol/namadea.png', xp: 79.10, yp: 28.1, isDungeon: true },
-    { id:'voldrak', w: 130, h: 130, img: 'img/qol/voldrak.png', xp: 26.47, yp: 85.68, isDungeon: true },
-    { id:'ragnadar', w: 130, h: 130, img: 'img/qol/ragnadar.png', xp: 22.45, yp: 58.42, isDungeon: true },
+/*    { id:'voldrak', w: 130, h: 130, img: 'img/qol/voldrak.png', xp: 26.47, yp: 85.68, isDungeon: true },*/
+/*    { id:'ragnadar', w: 130, h: 130, img: 'img/qol/ragnadar.png', xp: 22.45, yp: 58.42, isDungeon: true },*/
     { id:'balokanatu', w: 170, h: 140, img: 'img/qol/balokanatu.png', xp: 35.52, yp: 4.6, isDungeon: true },
-    { id:'lagothak', w: 100, h: 190, img: 'img/qol/lagothak.png', xp: 42.55, yp: -1.00, isDungeon: true },
-    { id:'harvoul', w: 70, h: 70, img: 'img/qol/harvoul.png', xp: 3.65, yp: 37.06, isDungeon: true },
-    { id:'sharanatu', w: 80, h: 160, img: 'img/qol/lagothak.png', xp: 4.14, yp: 36.63, isDungeon: true },
+/*    { id:'lagothak', w: 100, h: 190, img: 'img/qol/lagothak.png', xp: 42.55, yp: -1.00, isDungeon: true },*/
+/*    { id:'harvoul', w: 70, h: 70, img: 'img/qol/harvoul.png', xp: 3.65, yp: 37.06, isDungeon: true },*/
+/*    { id:'sharanatu', w: 80, h: 160, img: 'img/qol/lagothak.png', xp: 4.14, yp: 36.63, isDungeon: true },*/
 
     { id:'noveria', w: 80, h: 90, img: 'img/qol/noveria.png', xp: 30.2, yp: 60.42, isDungeon: true },
     { id:'kymon-father', w: 90, h: 85, img: 'img/qol/kymon-father.png', xp: 39.26, yp: 56.98, isDungeon: true },
@@ -67,10 +64,7 @@
     { id:'salazar', w: 90, h: 140, img: 'img/qol/salazar.png', xp: 78.70, yp: 74.32, isDungeon: true },
     { id:'carraxus', w: 155, h: 110, img: 'img/qol/carraxus.png', xp: 76.96, yp: 42.46, isDungeon: true },
     { id:'sylvarria', w: 95, h: 78, img: 'img/qol/sylvarria.png', xp: 95.23, yp: 36.05, isDungeon: true },
-    { id:'ugdall', w: 75, h: 120, img: 'img/qol/ugdall.png', xp: 93.37, yp: 33.8, isDungeon: true },
     { id:'larria', w: 145, h: 115, img: 'img/qol/larria.png', xp: 51.43, yp: 73.65, isDungeon: true },
-
-
 
   ];
 
