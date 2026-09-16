@@ -543,6 +543,8 @@
           const hoverEl = lab.parentElement;
 
           // Entrée dans la zone (padding inclus)
+          let regionOverlayTimer = null;
+
           hoverEl.addEventListener('mouseenter', () => {
             const old = hoverEl._noteTooltip;
             if (old) old.remove();
@@ -550,7 +552,12 @@
 
             if (window.__gdmmIsPanning) return;
 
-            showRegionOverlay(inner, m);
+            clearTimeout(regionOverlayTimer);
+
+            regionOverlayTimer = setTimeout(() => {
+              if (window.__gdmmIsPanning) return;
+              showRegionOverlay(inner, m);
+            }, 200);
 
             const txt = getRegionNote(m.id);
             if (!txt) return;
@@ -569,6 +576,9 @@
           });
 
           hoverEl.addEventListener('mouseleave', () => {
+            clearTimeout(regionOverlayTimer);
+            regionOverlayTimer = null;
+
             if (window.__gdmmIsPanning) return;
 
             hideRegionOverlay();
