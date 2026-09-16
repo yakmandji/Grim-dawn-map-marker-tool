@@ -994,8 +994,8 @@ header button.menu-button.select-current:hover {
   display: flex;
   align-items: center;
   gap: 4px; 
-  pointer-events: none!important;
   z-index: 3;
+  cursor: auto!important;
 }
 
 .marker-rift.rift-dungeon{
@@ -1007,18 +1007,24 @@ header button.menu-button.select-current:hover {
 }
 
 .marker-rift .label {
-  font-size: 0.90em;
-  background: #3d0f0f;
-  border: none;
-  color: #bb9595;
-  padding: 4px 7px;
-  max-width: inherit;
-  opacity: 1;
+    font-size: 1.05em;
+    background: #3d0f0f;
+    border: none;
+    color: #bb9595;
+    padding: 6px 13px;
+    max-width: inherit;
+    opacity: 1;
+    display: none
 }
+
+.marker-rift:hover > .label{
+  display: block;
+}
+
 
 .marker-rift .rift-icon {
   display: block;
-  width: 18px;
+  width: 22px;
 }
 
 .marker-rift.marker-highlight::after {

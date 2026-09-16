@@ -155,7 +155,7 @@ body.editing-region-note .marker-region {
 header {
   grid-column: 1 / -1;
   border-radius: 14px;
-  padding: 16px 22px;
+  padding: 10px 22px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -225,7 +225,7 @@ header .sep {
   background: #0e0a06;
   border-radius: 14px;
   overflow: hidden;
-  margin-top: 85px;
+  margin-top: 68px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
 

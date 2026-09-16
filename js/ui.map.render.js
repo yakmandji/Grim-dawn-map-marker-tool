@@ -363,6 +363,7 @@
         if (!state.mapNatural) return;
 
         // 1) RIFTS ---------------------------------------------------
+        
         let riftData = [];
         if (window.RIFT_MARKERS_BY_SIZE) {
           const key = resolveSizeKey(window.RIFT_MARKERS_BY_SIZE);

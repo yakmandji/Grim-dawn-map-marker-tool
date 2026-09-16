@@ -389,6 +389,8 @@ function initCharacterUI() {
     'profile10.png',
     'profile11.png',
     'profile12.png',
+    'profile13.png',
+    'profile14.png',
   ];
 
   function buildAvatarGrid(container, selectedName) {
