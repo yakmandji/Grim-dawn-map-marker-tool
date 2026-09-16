@@ -44,11 +44,11 @@
 /*    { id:'plagius', w: 110, h: 125, img: 'img/qol/plagius.png', xp: 35.63, yp: 10.81, isDungeon: true },*/
 /*    { id:'salazar', w: 90, h: 140, img: 'img/qol/salazar.png', xp: 78.70, yp: 74.32, isDungeon: true },*/
 /*    { id:'ravna', w: 140, h: 130, img: 'img/qol/ravna.png', xp: 21.8, yp: 64.15, isDungeon: true },*/
+/*    { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90, isDungeon: true },*/
     
 
     { id:'hidden-donjon1', w: 70, h: 70, img: 'img/qol/hidden-donjon1.png', xp: 78.47, yp: 62.03,  anchor: 'center' },    
     { id:'stonerend-quarry', w: 64, h: 70, img: 'img/qol/stonerend-quarry.png', xp: 32.8, yp: 49.55,  anchor: 'center' },
-    { id:'banegargoth', w: 115, h: 138, img: 'img/qol/bane-gargoth.png', xp: 29.00, yp: 29.90, isDungeon: true },
     { id:'anasteria', w: 150, h: 90, img: 'img/qol/anasteria.png', xp: 4.5, yp: 18.43, isDungeon: true },
     { id:'alkamos', w: 100, h: 140, img: 'img/qol/alkamos.png', xp: 54.19, yp: 96.72, isDungeon: true },
     { id:'kilrian', w: 110, h: 145, img: 'img/qol/kilrian.png', xp: 50.49, yp: 67.9, isDungeon: true },
