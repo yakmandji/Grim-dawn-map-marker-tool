@@ -142,12 +142,21 @@
           allBtn.style.display = 'none';
           allBtn.classList.remove('is-on');
 
+          if (noneBtn) {
+            noneBtn.style.display = 'none';
+            noneBtn.classList.remove('is-on');
+          }
+
           document.querySelectorAll('.filterToggle[data-cat]').forEach(catBtn => {
             catBtn.classList.remove('is-on');
           });
         } else {
           // Au moins un marqueur → All redevient visible
           allBtn.style.display = '';
+
+        if (noneBtn) {
+          noneBtn.style.display = '';
+        }
 
           // Sécurité : si aucun filtre n'est actif, All devient actif
           const anyActive =
