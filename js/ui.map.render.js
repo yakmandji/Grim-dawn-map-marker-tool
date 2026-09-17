@@ -681,6 +681,10 @@
               el.appendChild(badge);
             }
 
+            if (m.isDungeon) {
+               el.classList.add('shrine-dungeon');
+            }
+
             // Classe CSS selon la difficulté
             if (m.difficulty === 'elite') {
               el.classList.add('shrine-elite');

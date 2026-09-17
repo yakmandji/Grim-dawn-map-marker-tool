@@ -626,6 +626,9 @@ function clearDungeonLinks() {
   const rift = document.querySelectorAll('.marker.marker-rift');
   rift.forEach(i => i.classList.remove('opacity'));
 
+  const shrines = document.querySelectorAll('.marker-shrine.shrine-dungeon');
+  shrines.forEach(i => i.classList.remove('opacity'));
+
   const poly = document.querySelector('#regionOverlaySvg #regionHoverOverlay');
   if (poly) poly.style.display = 'none';
 
@@ -698,6 +701,32 @@ function highlightRiftForOverlay(overlayObj) {
   const rect = overlayObj.el.getBoundingClientRect();
 
   rift.forEach(i => {
+    const r = i.getBoundingClientRect();
+    const intersect =
+      !(r.right  < rect.left ||
+        r.left   > rect.right ||
+        r.bottom < rect.top ||
+        r.top    > rect.bottom);
+
+    if (intersect) {
+      i.classList.add('opacity');
+    }
+  });
+}
+
+// --- highlight des Shrines dans un donjon donné ---
+function highlightShrinesForOverlay(overlayObj) {
+  if (!overlayObj || !overlayObj.el) return;
+
+  const shrines = document.querySelectorAll('.marker-shrine.shrine-dungeon');
+  if (!shrines.length) return;
+
+  // reset
+  shrines.forEach(i => i.classList.remove('opacity'));
+
+  const rect = overlayObj.el.getBoundingClientRect();
+
+  shrines.forEach(i => {
     const r = i.getBoundingClientRect();
     const intersect =
       !(r.right  < rect.left ||
@@ -894,7 +923,8 @@ function showDungeonLinksForEntry(entryId) {
   drawDungeonLinesForOverlay(overlayObj);
   highlightDungeonRegionLabelsForOverlay(overlayObj);
   highlightDungeonDecorIconsForOverlay(overlayObj);
-  highlightRiftForOverlay(overlayObj);  
+  highlightRiftForOverlay(overlayObj);
+  highlightShrinesForOverlay(overlayObj);
 
 }
 window.showDungeonLinksForEntry = showDungeonLinksForEntry;
@@ -927,6 +957,7 @@ function showDungeonLinksForOverlay(overlayId) {
   highlightDungeonRegionLabelsForOverlay(overlayObj);
   highlightDungeonDecorIconsForOverlay(overlayObj);
   highlightRiftForOverlay(overlayObj);
+  highlightShrinesForOverlay(overlayObj);
 
 }
 
