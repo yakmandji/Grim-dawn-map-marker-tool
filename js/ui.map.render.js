@@ -102,7 +102,6 @@
 
 
           if (type === 'start') {
-            // Compact endpoint (icon only) + label displayed like markers (tooltip on hover)
             const icon = document.createElement('img');
             icon.src = 'img/foot-icon.svg';
             icon.className = 'route-icon';
@@ -112,19 +111,27 @@
             icon.draggable = false;
             icon.addEventListener('dragstart', e => e.preventDefault());
             tag.appendChild(icon);
-
-            // Reuse marker label styling (hidden by default, shown on hover)
-            const lab = document.createElement('div');
-            lab.className = 'label';
-            const p = document.createElement('p');
-            p.textContent = path.name || '(route)';
-            lab.appendChild(p);
-            tag.appendChild(lab);
-          }else {
-            tag.innerHTML = `
-              <img src="img/flag-icon.svg" class="route-icon" width="14" height="14" alt="">
-            `;
+          } else {
+            const icon = document.createElement('img');
+            icon.src = 'img/flag-icon.svg';
+            icon.className = 'route-icon';
+            icon.width = 14;
+            icon.height = 14;
+            icon.alt = '';
+            icon.draggable = false;
+            icon.addEventListener('dragstart', e => e.preventDefault());
+            tag.appendChild(icon);
           }
+
+          // Label commun au départ et à l'arrivée
+          const lab = document.createElement('div');
+          lab.className = 'label';
+
+          const p = document.createElement('p');
+          p.textContent = path.name || '(route)';
+          lab.appendChild(p);
+
+          tag.appendChild(lab);
 
           tag.style.left = ex + 'px';
           tag.style.top  = ey + 'px';
@@ -139,25 +146,35 @@
             const b = parseInt(c.substring(4, 6), 16);
             const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
             tag.style.color = luminance > 0.6 ? '#000' : '#fff';
+
+             const textColor = luminance > 0.6 ? '#000' : '#fff';
+            tag.style.color = textColor;
+
+            const label = tag.querySelector('.label');
+            if (label) {
+              label.style.background = path.color;
+              label.style.borderColor = path.color;
+              label.style.color = textColor;
+            }            
           }
 
-          if (type === 'start') {
-            tag.addEventListener('pointerdown', e => {
-              e.stopPropagation();
-              const row = document.querySelector(
-                `#routesList .listItem[data-pid="${path.id}"]`
-              );
-              if (row) {
-                if (window.UiCore?.scrollToAndHighlight) {
-                  window.UiCore.scrollToAndHighlight(row);
-                } else {
-                  row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  row.classList.add('highlight');
-                  setTimeout(() => row.classList.remove('highlight'), 2200);
-                }
+          tag.addEventListener('pointerdown', e => {
+            e.stopPropagation();
+
+            const row = document.querySelector(
+              `#routesList .listItem[data-pid="${path.id}"]`
+            );
+
+            if (row) {
+              if (window.UiCore?.scrollToAndHighlight) {
+                window.UiCore.scrollToAndHighlight(row);
+              } else {
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                row.classList.add('highlight');
+                setTimeout(() => row.classList.remove('highlight'), 2200);
               }
-            });
-          }
+            }
+          });
           inner.appendChild(tag);
         };
 

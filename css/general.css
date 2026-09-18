@@ -718,7 +718,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .done-panel.collapsed {
-  transform: translateX(336px);
+  transform: translateX(320px);
 }
 
 .done-panel.collapsed .done-toggle img {
@@ -727,7 +727,7 @@ body.shared-only-view #mergeSharedBtn,
 }
 
 .done-panel-inner {
-  width: 350px;
+  width: 380px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -939,7 +939,7 @@ label.checkbox{
 
 .floating { 
   position: absolute;
-  right: 22px;
+  right: 28px;
   top: 94px;
   display: flex;
   flex-direction: column;

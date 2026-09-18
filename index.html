@@ -28,9 +28,9 @@
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/general.css?v2.09" />
-  <link rel="stylesheet" href="css/items.css?v2.18" />
-  <link rel="stylesheet" href="css/responsive.css?v1.43" />
+  <link rel="stylesheet" href="css/general.css?v2.10" />
+  <link rel="stylesheet" href="css/items.css?v2.19" />
+  <link rel="stylesheet" href="css/responsive.css?v1.44" />
   
 </head>
 <body id="mainmap-page">
@@ -229,15 +229,21 @@
         <!-- === FILTER BAR === -->
             <div class="filterBar">
               <div class="filterAll d-flex">
-                <div class="filterToggle"  data-i18n-title="ui.HideAllMarker" data-none title="Hide all">
-                    <img src="img/eye-hide.svg" alt="All" >
-                </div>                
-                <div class="filterToggle is-on"  data-i18n-title="ui.ShowAllMarker" data-all title="Show all">
-                    <img src="img/all-icon.svg" alt="All" >
-                </div>
+                <button class="filterToggle admin-btn is-on" data-admin="route" data-i18n-title="ui.ShowHideRoute" title="Show/Hide Routes">
+                  <img src="img/route-icon.svg" alt="Routes">
+                </button>               
+                <button class="filterToggle admin-btn is-on" data-admin="history" data-i18n-title="ui.ShowHideArchived" title="Show/Hide History">
+                  <img src="img/archive-icon-green.svg" alt="Archived">
+                </button>
               </div>
 
               <div class="filterCats">
+                  <div class="filterToggle"  data-i18n-title="ui.HideAllMarker" data-none title="Hide all">
+                      <img src="img/eye-hide.svg" alt="All" >
+                  </div>                
+                  <div class="filterToggle is-on"  data-i18n-title="ui.ShowAllMarker" data-all title="Show all">
+                      <img src="img/all-icon.svg" alt="All" >
+                  </div>                
                   <button class="filterToggle" data-cat="General" data-i18n-title="ui.ShowHideGeneral" title="Show General">
                     <img src="img/waypoint.svg" alt="General">
                   </button>
@@ -449,13 +455,13 @@
                 <img src="img/icon-shrine.png" alt="Shrine">
               </button>
 
-              <button class="filterToggle admin-btn is-on" data-admin="route" data-i18n-title="ui.ShowHideRoute" title="Show/Hide Routes">
+<!--               <button class="filterToggle admin-btn is-on" data-admin="route" data-i18n-title="ui.ShowHideRoute" title="Show/Hide Routes">
                 <img src="img/route-icon.svg" alt="Routes">
-              </button> 
+              </button>  -->
 
-              <button class="filterToggle admin-btn is-on" data-admin="history" data-i18n-title="ui.ShowHideArchived" title="Show/Hide History">
+<!--               <button class="filterToggle admin-btn is-on" data-admin="history" data-i18n-title="ui.ShowHideArchived" title="Show/Hide History">
                 <img src="img/archive-icon-green.svg" alt="Archived">
-              </button>             
+              </button>   -->           
 
           </div>
             <!--         Profil map------------------------------------- -->
@@ -751,7 +757,7 @@
 
   <script src="js/ui.map.notes.js?v=1.08"></script>
 
-  <script src="js/ui.map.render.js?v=1.97"></script>
+  <script src="js/ui.map.render.js?v=1.98"></script>
   <script src="js/ui.share.js?v=1.19"></script>
 
   <script src="libs/pako.min.js"></script>
