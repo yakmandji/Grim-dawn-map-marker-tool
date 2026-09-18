@@ -341,6 +341,30 @@ header .sep {
   background: var(--p2);
 }
 
+.listItem.general{
+  background: #0a1f1c;
+}
+
+.listItem.boss{
+  background: #1d1716;
+}
+
+.listItem.loot{
+  background: #1b1708;
+}
+
+.listItem.waypoint{
+  background: #152028;
+}
+
+.listItem.donjon{
+  background: #1d1d1d;
+}
+
+.listItem.npc{
+  background: #1d1812;
+}
+
 .listItem > div {
   min-width: 100%;
 }

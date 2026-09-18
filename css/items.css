@@ -221,6 +221,16 @@ textarea {
   font-size: 11px;
 }
 
+#list .listItem:not(.general) input[type="text"]{
+  background-color: rgb(22 19 9);
+  border: 1px solid rgb(51 43 19);
+}
+
+#list .listItem.waypoint input[type="text"]{
+  background-color: rgb(10 26 39);
+  border: 1px solid rgb(22 58 87);
+}
+
 input[type="text"]:focus,
 input[type="search"]:focus,
 textarea:focus,
