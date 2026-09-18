@@ -735,7 +735,7 @@ input[type="color"]::-moz-color-swatch {
 
 #globalFilters{
   position: fixed;
-  top: 105px; 
+  top: 90px; 
   left: calc(var(--sidebar-width) + ((100% - var(--sidebar-width)) / 2));
   transform: translateX(-50%);
   z-index: 7;
