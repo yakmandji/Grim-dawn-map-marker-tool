@@ -58,7 +58,7 @@
 { id: 'tag_map_hidden_path03b', tag: 'tagMapHiddenPath03', xp: 16.82, yp: 30.41, isDungeon: true },
 { id: 'tag_UG_secret_02', tag: 'tagUGSecret02', xp: 27.24, yp: 20.29, isDungeon: true },
 { id: 'tag_MapWardens_Labratory02', tag: 'tagMapWardensLabratory02', xp: 62.47, yp: 48.70, isDungeon: true, overlayPoly: [[62.6,48.3],[63.2,47.7],[63.7,48.1],[64.1,47.7],[65.2,48.8],[64.9,49.2],[64.6,49],[64.1,49.5],[63.5,49],[63.4,49.1]] },
-{ id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89 },
+{ id: 'tag_uGSlith_lab01', tag: 'tagUGSlithLab01', xp: 60.02, yp: 81.89, overlayPoly: [[61.8,82.5],[62.2,82.2],[62.6,82.1],[62.7,81.6],[62.6,81.2],[61.5,80.5],[61,80.7],[60.8,81.1],[60.5,81.3],[60.3,81.7],[61,82.1],[60.9,82.4],[61.3,82.7]] },
 { id: 'tag_map_hidden_path02', tag: 'tagMapHiddenPath02', xp: 46.34, yp: 84.94, overlayPoly: [[46.8,86],[47.3,85.2],[47.4,85.4],[47.6,85.2],[47.7,85.3],[48.1,84.6],[48.3,84.2],[48.5,84],[48.5,83.6],[46.9,83.5],[46.5,83.3],[46.4,83.7],[46.7,84],[46.8,84.2],[46.5,84.7],[46.3,84.8],[46.2,84.8],[46.1,85.4],[46.4,85.7]],
     overlayStyle: {
       fill: '#BDC449',

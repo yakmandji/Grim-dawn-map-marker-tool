@@ -12,7 +12,7 @@
     { id: 'shrineMapOminousLair', regionTag: 'tagMapOminousLair', xp: 62.00, yp: 50.66, difficulty: 'normal', isDungeon: true },
     { id: 'shrinetagMapEastMarsh03', regionTag: 'tagMapEastMarsh03', xp: 80.67, yp: 65.27, difficulty: 'normal' },
     { id: 'shrinetagWorldMapWitchGodTemple', regionTag: 'tagWorldMapWitchGodTemple', xp: 84.88, yp: 63.84, difficulty: 'normal', isDungeon:true },
-    { id: 'shrinetagUGArkovianFoothills02', regionTag: 'tagUGArkovianFoothills02', xp: 60.83, yp: 84.68, difficulty: 'normal', },
+    { id: 'shrinetagUGArkovianFoothills02', regionTag: 'tagUGArkovianFoothills02', xp: 60.83, yp: 84.68, difficulty: 'normal', isDungeon:true },
     { id: 'shrinetagMapRockyCoast', regionTag: 'tagMapRockyCoast', xp: 53.81, yp: 80.69, difficulty: 'normal' },
     { id: 'shrinetagMapCronleysHideout', regionTag: 'tagMapCronleysHideout', xp: 55.66, yp: 70.3, difficulty: 'normal', isDungeon:true },
     { id: 'shrinetagMapOldArkovia', regionTag: 'tagMapOldArkovia', xp: 49.95, yp: 79.05, difficulty: 'normal' },
@@ -31,7 +31,7 @@
     { id: 'shrinetagMapAlpineValley', regionTag: 'tagMapAlpineValley', xp: 6.72, yp: 30.12, difficulty: 'normal' },
     { id: 'shrinetagMapAlpineValleyWest', regionTag: 'tagMapAlpineValley', xp: 12.00, yp: 30.93, difficulty: 'normal' },
     { id: 'shrinetagGDX1MapDarkWood', regionTag: 'tagGDX1MapDarkWood', xp: 77.96, yp: 51.51, difficulty: 'normal' },
-    { id: 'shrineUgdenbogCave04', regionTag: 'tagGDX1UGUgdenbogCave04', xp: 92.10, yp: 33.51, difficulty: 'normal' },
+    { id: 'shrineUgdenbogCave04', regionTag: 'tagGDX1UGUgdenbogCave04', xp: 92.10, yp: 33.51, difficulty: 'normal', isDungeon:true },
     { id: 'shrineGDX1UGAncientGrove01', regionTag: 'tagGDX1UGAncientGrove01', xp: 94.42, yp: 52.13, difficulty: 'normal', isDungeon:true },
     { id: 'shrineUGCryptFactionBattle02', regionTag: 'tagUGCryptFactionBattle02', xp: 4.20, yp: 21.35, difficulty: 'normal', isDungeon: true },
     { id: 'shrineMapBloodGroveAetherMine', regionTag: 'tagMapBloodGroveAetherMine', xp: 34.18, yp: 46.64, difficulty: 'elite' },
@@ -40,36 +40,36 @@
     { id: 'shrinetagUGVoidlands01', regionTag: 'tagUGVoidlands01', xp: 31.86, yp: 0.56, difficulty: 'normal', isDungeon:true },
     { id: 'shrinetagMapHallowedHill', regionTag: 'tagMapHallowedHill', xp: 71.10, yp: 64.58, difficulty: 'elite' },
     { id: 'shrinetagMapNecropolis', regionTag: 'tagMapNecropolis', xp: 24.31, yp: 7.53, difficulty: 'normal' },
-    { id: 'shrinetagGDX1UGUgdenbogVoidRift01', regionTag: 'tagGDX1UGUgdenbogVoidRift01', xp: 78.32, yp: 21.41, difficulty: 'elite' },
+    { id: 'shrinetagGDX1UGUgdenbogVoidRift01', regionTag: 'tagGDX1UGUgdenbogVoidRift01', xp: 78.32, yp: 21.41, difficulty: 'elite', isDungeon:true },
     { id: 'shrinetagMapHiddenPath01', regionTag: 'tagMapHiddenPath01', xp: 67.36, yp: 84.30, difficulty: 'ultimate' },
-    { id: 'shrinetagUGSecret02', regionTag: 'tagUGSecret02', xp: 28.57, yp: 21.00, difficulty: 'ultimate' },
+    { id: 'shrinetagUGSecret02', regionTag: 'tagUGSecret02', xp: 28.57, yp: 21.00, difficulty: 'ultimate', isDungeon:true },
     { id: 'shrinetagGDX1MapUgdenbogAncient', regionTag: 'tagGDX1MapUgdenbogAncient', xp: 90.31, yp: 40.50, difficulty: 'ultimate' },
-    { id: 'shrinetagGDX1UGUgdenbogMine01', regionTag: 'tagGDX1UGUgdenbogMine01', xp: 99.54, yp: 27.94, difficulty: 'ultimate' },
+    { id: 'shrinetagGDX1UGUgdenbogMine01', regionTag: 'tagGDX1UGUgdenbogMine01', xp: 99.54, yp: 27.94, difficulty: 'ultimate', isDungeon:true },
     { id: 'shrinetagtagGDX3RegionFrostveilHighlands', regionTag: 'tagGDX3RegionFrostveilHighlands', xp: 13.11, yp: 8.84, difficulty: 'normal' },
 
   ];
 
   window.SHRINE_MARKERS_MALMOUTH = [
     { id: 'shrineGDX1MapMalmouthOutskirtsRuins', regionTag: 'tagGDX1MapMalmouthOutskirtsRuins', xp: 69.60, yp: 47.57, difficulty: 'normal' },
-    { id: 'shrinetagGDX1UGMalmouthLighthouse01', regionTag: 'tagGDX1UGMalmouthLighthouse01', xp: 18.78, yp: 45.25, difficulty: 'normal' },
+    { id: 'shrinetagGDX1UGMalmouthLighthouse01', regionTag: 'tagGDX1UGMalmouthLighthouse01', xp: 18.78, yp: 45.25, difficulty: 'normal', isDungeon:true },
     { id: 'shrinetagGDX1MapMalmouthInner', regionTag: 'tagGDX1MapMalmouthInner', xp: 47.75, yp: 14.22, difficulty: 'normal' },
-    { id: 'shrinetagGDX1UGMalmouthAetherialFactory01', regionTag: 'tagGDX1UGMalmouthAetherialFactory01', xp: 30.75, yp: 0.00, difficulty: 'ultimate' },
-    { id: 'shrinetagGDX2RuinedDC', regionTag: 'tagGDX2RuinedDC', xp: 83.50, yp: 53.86, difficulty: 'ultimate' },
+    { id: 'shrinetagGDX1UGMalmouthAetherialFactory01', regionTag: 'tagGDX1UGMalmouthAetherialFactory01', xp: 30.75, yp: 0.00, difficulty: 'ultimate', isDungeon:true },
+    { id: 'shrinetagGDX2RuinedDC', regionTag: 'tagGDX2RuinedDC', xp: 83.50, yp: 53.86, difficulty: 'ultimate', isDungeon:true },
   ];
 
   window.SHRINE_MARKERS_KORVAN = [
-    { id: 'shrinetagGDX2CairanRuins01', regionTag: 'tagGDX2CairanRuins01', xp: 12.76, yp: 51.09, difficulty: 'normal' },
-    { id: 'shrinetagSplendorOfShatteredRealm', regionTag: 'tagSplendorOfShatteredRealm', xp: 15.75, yp: 97.47, difficulty: 'normal' },
-    { id: 'shrinetagGDX2MapRuinedTemple01', regionTag: 'tagGDX2MapRuinedTemple01', xp: 54.86, yp: 83.70, difficulty: 'normal' },
+    { id: 'shrinetagGDX2CairanRuins01', regionTag: 'tagGDX2CairanRuins01', xp: 12.76, yp: 51.09, difficulty: 'normal', isDungeon:true },
+    { id: 'shrinetagSplendorOfShatteredRealm', regionTag: 'tagSplendorOfShatteredRealm', xp: 15.75, yp: 97.47, difficulty: 'normal', isDungeon:true },
+    { id: 'shrinetagGDX2MapRuinedTemple01', regionTag: 'tagGDX2MapRuinedTemple01', xp: 54.86, yp: 83.70, difficulty: 'normal', isDungeon:true },
     { id: 'shrinetagGDX2MapHiddenOasis', regionTag: 'tagGDX2MapHiddenOasis', xp: 33.76, yp: 71.72, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapRuinedCity01', regionTag: 'tagGDX2MapRuinedCity01', xp: 30.53, yp: 45.04, difficulty: 'normal' },
     { id: 'shrinetagGDX2SanctuaryOfHorran', regionTag: 'tagGDX2SanctuaryOfHorran', xp: 45.56, yp: 42.08, difficulty: 'normal' },
     { id: 'shrinetagGDX2MapRuinedCity02', regionTag: 'tagGDX2MapRuinedCity02', xp: 74.37, yp: 43.74, difficulty: 'normal' },
-    { id: 'shrinetagGDX2VOTC02', regionTag: 'tagGDX2VOTC02', xp: 71.11, yp: 35.37, difficulty: 'normal' },
+    { id: 'shrinetagGDX2VOTC02', regionTag: 'tagGDX2VOTC02', xp: 71.11, yp: 35.37, difficulty: 'normal', isDungeon:true },
     { id: 'shrinetagGDX2MapRaisedTemple', regionTag: 'tagGDX2MapRaisedTemple', xp: 51.95, yp: 15.22, difficulty: 'normal' },
-    { id: 'shrinetagGDX2KorvaakTomb01', regionTag: 'tagGDX2KorvaakTomb01', xp: 60.73, yp: -4.00, difficulty: 'normal' },
-    { id: 'shrinetagGDX2Roguelike_01', regionTag: 'tagGDX2Roguelike_01', xp: 82.94, yp: 20.85, difficulty: 'normal' },
-    { id: 'shrinetagGDX1UGSecret01Korvan', regionTag: 'tagGDX1UGSecret01', xp: 17.87, yp: 23.93, difficulty: 'ultimate' },
+    { id: 'shrinetagGDX2KorvaakTomb01', regionTag: 'tagGDX2KorvaakTomb01', xp: 60.73, yp: -4.00, difficulty: 'normal', isDungeon:true },
+    { id: 'shrinetagGDX2Roguelike_01', regionTag: 'tagGDX2Roguelike_01', xp: 82.94, yp: 20.85, difficulty: 'normal', isDungeon:true },
+    { id: 'shrinetagGDX1UGSecret01Korvan', regionTag: 'tagGDX1UGSecret01', xp: 17.87, yp: 23.93, difficulty: 'ultimate', isDungeon:true },
   ];
 
   window.SHRINE_MARKERS_ASTERKARN = [
@@ -77,7 +77,7 @@
     { id: 'shrinetagGDX3RegionRuinsOfUtakKunar', regionTag: 'tagGDX3RegionRuinsOfUtakKunar', xp: 37.06, yp: 38.1, difficulty: 'normal' },
     { id: 'shrinetagGDX3RegionDreadWastes', regionTag: 'tagGDX3RegionDreadWastes', xp: 25.89, yp: 34.54, difficulty: 'normal' },
     { id: 'shrinetagGDX3RegionAuroraPinnacle', regionTag: 'tagGDX3RegionAuroraPinnacle', xp: 80.56, yp: 7.86, difficulty: 'normal' },
-    { id: 'shrinetagScarstoneDepths', regionTag: 'Scarstone Depths', xp: 72.50, yp: 16.85, difficulty: 'normal' },
+    { id: 'shrinetagScarstoneDepths', regionTag: 'Scarstone Depths', xp: 72.50, yp: 16.85, difficulty: 'normal', isDungeon:true },
   ];
 
   // MAPPING PAR TAILLE D’IMAGE

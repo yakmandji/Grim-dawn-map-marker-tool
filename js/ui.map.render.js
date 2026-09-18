@@ -495,7 +495,7 @@
 
           const style = m.overlayStyle || {};
           const fill = style.fill || (m.isDungeon ? '#ffcc00' : '#26a68c');
-          const opacity = (typeof style.opacity === 'number') ? style.opacity : 0.15;
+          const opacity = (typeof style.opacity === 'number') ? style.opacity : 0.20;
           const strokeWidth = (typeof style.strokeWidth === 'number') ? style.strokeWidth : 0;
           const stroke = style.stroke || fill;
 

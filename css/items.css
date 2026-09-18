@@ -1251,7 +1251,7 @@ header button.menu-button.select-current:hover {
 
 .marker-region-dungeon .region-label{
   opacity: 0.30;
-  font-size: 0.95em;
+  font-size: 1.05em;
 }
 
 .malmouthmap .region-label{
@@ -1793,7 +1793,7 @@ button.marker-save{
 }
 
 .shrine-dungeon{
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .marker-shrine.shrine-dungeon.opacity{
