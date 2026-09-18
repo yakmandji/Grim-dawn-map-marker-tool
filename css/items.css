@@ -231,6 +231,11 @@ textarea {
   border: 1px solid rgb(22 58 87);
 }
 
+#list .listItem.quest input[type="text"]{
+  background-color: rgb(23 18 26);
+  border: 1px solid rgb(59 32 72);
+}
+
 input[type="text"]:focus,
 input[type="search"]:focus,
 textarea:focus,
@@ -399,9 +404,9 @@ input[type="password"]:focus
 button.marker-sub-menu,
 button.route-sub-menu{
   max-width: 30px;
-  min-width: 30px;
+  min-width: 26px;
   font-size: 16px;
-  padding: 6px 6px;
+  padding: 4px 3px;
 }
 
 #list button.danger{

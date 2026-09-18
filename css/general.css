@@ -365,6 +365,10 @@ header .sep {
   background: #1d1812;
 }
 
+.listItem.quest{
+  background: #19161b;
+}
+
 .listItem > div {
   min-width: 100%;
 }
