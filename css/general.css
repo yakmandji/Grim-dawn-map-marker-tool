@@ -7,7 +7,7 @@
   --titlecolor: #59afa3;
   --buttontxt : #5cccbe;
   --placeholdertext : #5da3b1;
-  --muted: #367177;
+  --muted: #428289;
   --ok: #8be38b;
   --danger: #ff6b7a;
   --select-focus : 0 0 6px rgb(38 240 240 / 60%), inset 0 0 6px rgba(0, 0, 0, 0.4);
@@ -342,15 +342,15 @@ header .sep {
 }
 
 .listItem.general{
-  background: #0a1f1c;
+  background: #0c2824;
 }
 
 .listItem.boss{
-  background: #1d1716;
+  background: #0a0505;
 }
 
 .listItem.loot{
-  background: #1b180e;
+  background: #272009;
 }
 
 .listItem.waypoint{
@@ -362,11 +362,11 @@ header .sep {
 }
 
 .listItem.npc{
-  background: #1d1812;
+  background: #251d14;
 }
 
 .listItem.quest{
-  background: #19161b;
+  background: #0c0610;
 }
 
 .listItem > div {
