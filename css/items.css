@@ -325,6 +325,7 @@ input[type="password"]:focus
 .path-endpoint .label {
   opacity: 0;
   position: absolute;
+  pointer-events: none;
   left: 14px;
   transform: translate(12px, -50%);
   transition: opacity 0.2s ease;
